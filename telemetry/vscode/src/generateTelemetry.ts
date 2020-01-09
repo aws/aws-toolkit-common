@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /*!
  * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
@@ -194,7 +193,7 @@ function parseArguments(): CommandLineArguments {
     }
 
     // Always append the global definitions
-    input.push('./telemetrydefinitions.json')
+    input.push(`${__dirname}/telemetrydefinitions.json`)
 
     return {
         input: input,
@@ -218,7 +217,7 @@ function parseArguments(): CommandLineArguments {
         .map(parseInput)
         .reduce((item: MetricDefinitionRoot, input: MetricDefinitionRoot) => { 
             item.metrics.push(...input.metrics)
-            item.types.push(...input.metrics)
+            item.types.push(...input.types)
             return item
         }, {types: [], metrics: []} )
     output += generateTelemetry(input)
