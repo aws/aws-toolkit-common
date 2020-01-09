@@ -1,0 +1,59 @@
+{
+    "types": [
+        {
+            "name": "lambdaruntime",
+            "type": "string",
+            "allowedValues": [
+                "dotnetcore2.1",
+                "nodejs12.x",
+                "nodejs10.x",
+                "nodejs8.10",
+                "ruby2.5",
+                "java8",
+                "java11",
+                "go1.x",
+                "python3.8",
+                "python3.7",
+                "python3.6",
+                "python2.7"
+            ],
+            "description": "What lambda runtime was used in the operation"
+        },
+        {
+            "name": "zerooneortwo",
+            "type": "int",
+            "allowedValues": [0, 1, 2],
+            "description": "test number enum"
+        },
+        {
+            "name": "duration",
+            "type": "double",
+            "description": "The duration of the operation in miliseconds"
+        },
+        {
+            "name": "result",
+            "allowedValues": ["Succeeded", "Failed", "Cancelled"],
+            "description": "The result of the operation"
+        }
+    ],
+    "metrics": [
+        {
+            "name": "lambda_delete",
+            "description": "called when deleting lambdas remotely",
+            "unit": "None",
+            "metadata": [{ "type": "duration" }, { "type": "result" }]
+        },
+        {
+            "name": "lambda_create",
+            "description": "called when creating lambdas remotely",
+            "unit": "None",
+            "metadata": [{ "type": "lambdaruntime" }]
+        },
+        {
+            "name": "lambda_remoteinvoke",
+            "description": "called when invoking lambdas remotely",
+            "unit": "None",
+            "metadata": [{ "type": "lambdaruntime", "required": false }, { "type": "result" }]
+        }
+    ]
+}

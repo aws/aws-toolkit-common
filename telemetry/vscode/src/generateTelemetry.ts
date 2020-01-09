@@ -9,8 +9,8 @@ import * as jsonParser from 'jsonc-parser'
 // tslint:disable-next-line: no-implicit-dependencies
 import { argv } from 'yargs'
 
-interface commandLineArguments {
-    input: string
+interface CommandLineArguments {
+    input: string[]
     output: string
 }
 
@@ -182,18 +182,21 @@ export function millisecondsSince(d: Date): number {
 `
 }
 
-function parseArguments(): commandLineArguments {
+function parseArguments(): CommandLineArguments {
+    let input: string[] = []
     if (!argv.output) {
         console.log("Argument 'output' required")
         throw undefined
     }
-    if (!argv.input) {
-        console.log("Argument 'input' required")
-        throw undefined
+    if (argv.input) {
+        input = (argv.input as string).split(',').map(item => item.trim())
     }
 
+    // Always append the global definitions
+    input.push('../../data/telemetrydefinitions.json')
+
     return {
-        input: argv.input as string,
+        input: input,
         output: argv.output as string
     }
 }
@@ -210,7 +213,13 @@ function parseArguments(): commandLineArguments {
     `
 
     const args = parseArguments()
-    const input: MetricDefinitionRoot = parseInput(args.input)
+    const input: MetricDefinitionRoot = args.input
+        .map(parseInput)
+        .reduce((item: MetricDefinitionRoot, input: MetricDefinitionRoot) => { 
+            item.metrics.push(...input.metrics)
+            item.types.push(...input.metrics)
+            return item
+        }, {types: [], metrics: []} )
     output += generateTelemetry(input)
     output += generateHelperFunctions()
 

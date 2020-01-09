@@ -5,9 +5,10 @@
   "description": "A library used for the AWS Toolkit for VSCode to provide telemetry",
   "main": "index.js",
   "bin": {
-	  "generate-telemetry" : "ts-node ./src/generateTelemetry.ts"
+    "generate-telemetry": "./out/generateTelemetry.ts"
   },
   "scripts": {
+    "build": "tsc -p ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,7 +21,13 @@
   },
   "homepage": "https://github.com/aws/aws-toolkit-common#readme",
   "devDependencies": {
-    "ts-node": "^8.5.4",
     "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "@types/fs-extra": "^8.0.1",
+    "@types/yargs": "^15.0.0",
+    "fs-extra": "^8.1.0",
+    "jsonc-parser": "^2.2.0",
+    "yargs": "^15.1.0"
   }
 }
