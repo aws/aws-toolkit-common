@@ -3,6 +3,4 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-fs = require('fs-extra')
-
-fs.copySync('../data/telemetrydefinitions.json', './out/telemetrydefinitions.json')
+require('../aws-toolkit-telemetry/out/generateTelemetry.js')
