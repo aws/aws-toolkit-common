@@ -5,11 +5,11 @@
   "description": "A library used for the AWS Toolkit for VSCode to provide telemetry",
   "main": "index.js",
   "bin": {
-    "generate-telemetry": "./out/generateTelemetry.ts"
+    "generate-telemetry": "./out/generateTelemetry.js"
   },
   "scripts": {
-    "build": "tsc -p ./",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node ./setUpPackage.js && tsc -p ./",
+    "test": "echo \"todo\" && exit 1"
   },
   "repository": {
     "type": "git",

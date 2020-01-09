@@ -1,5 +1,6 @@
+#!/usr/bin/env node
 /*!
- * Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -193,7 +194,7 @@ function parseArguments(): CommandLineArguments {
     }
 
     // Always append the global definitions
-    input.push('../../data/telemetrydefinitions.json')
+    input.push('./telemetrydefinitions.json')
 
     return {
         input: input,
