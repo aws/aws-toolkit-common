@@ -12,7 +12,7 @@ Components in here should mostly not be a concern for customers or people lookin
 
 ### Telemetry
 
-Telemetry will be the first shared component in this repository.
+Telemetry is the first shared component in this repository. [Read about it here](telemetry/README.md)
 
 ## License
 
