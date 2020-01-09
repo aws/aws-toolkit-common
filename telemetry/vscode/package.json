@@ -1,0 +1,26 @@
+{
+  "name": "aws-toolkit-telemetry",
+  "version": "1.0.0",
+  "publisher": "amazonwebservices",
+  "description": "A library used for the AWS Toolkit for VSCode to provide telemetry",
+  "main": "index.js",
+  "bin": {
+	  "generate-telemetry" : "ts-node ./src/generateTelemetry.ts"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aws/aws-toolkit-common.git"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/aws/aws-toolkit-common/issues"
+  },
+  "homepage": "https://github.com/aws/aws-toolkit-common#readme",
+  "devDependencies": {
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.4"
+  }
+}
