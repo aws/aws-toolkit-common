@@ -1,13 +1,19 @@
-## My Project
+## AWS Toolkit Common
 
-TODO: Fill this README out!
+This repo contains shared components for the AWS Toolkits for
 
-Be sure to:
+* [Jetbrains](https://github.com/aws/aws-toolkit-jetbrains)
+* [VSCode](https://github.com/aws/aws-toolkit-vscode/)
+* [Visual Studio](https://github.com/aws/aws-toolkit-visual-studio)
 
-* Change the title in this README
-* Edit your repository description on GitHub
+Components in here should mostly not be a concern for customers or people looking to contribute, see the contributing guide on the repos of projects you are interested in.
+
+## Components
+
+### Telemetry
+
+Telemetry will be the first shared component in this repository.
 
 ## License
 
 This project is licensed under the Apache-2.0 License.
-
