@@ -20,12 +20,6 @@
             "description": "The lambda runtime"
         },
         {
-            "name": "zerooneortwo",
-            "type": "int",
-            "allowedValues": [0, 1, 2],
-            "description": "test number enum"
-        },
-        {
             "name": "duration",
             "type": "double",
             "description": "The duration of the operation in miliseconds"

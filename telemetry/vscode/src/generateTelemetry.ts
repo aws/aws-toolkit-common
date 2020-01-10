@@ -14,12 +14,9 @@ interface CommandLineArguments {
     outputFile: string
 }
 
-type AllowedTypes = 'string' | 'int' | 'double' | 'boolean'
-type MetricType = 'Milliseconds' | 'Bytes' | 'Percent' | 'Count' | 'None'
-
 interface MetadataType {
     name: string
-    type?: AllowedTypes
+    type?: string
     allowedValues?: string[] | number[]
     description: string
 }
@@ -36,10 +33,11 @@ interface MetricMetadata {
 interface Metric {
     name: string
     description: string
-    unit: MetricType
+    unit: string
     metadata: MetricMetadata[]
 }
 
+// converts snake_case to CamelCase. E.x. lambda_invoke => LambdaInvoke
 function metricToTypeName(m: Metric): string {
     return m.name
         .split('_')
@@ -117,11 +115,11 @@ function parseInput(s: string): MetricDefinitionRoot {
 }
 
 function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
-    const metadatum = telemetryJson.types
+    const metadataTypes = telemetryJson.types
     const metrics = telemetryJson.metrics
     let str = ''
 
-    metadatum.forEach((m: MetadataType) => {
+    metadataTypes.forEach((m: MetadataType) => {
         if ((m?.allowedValues?.length ?? 0) === 0) {
             return
         }
@@ -137,7 +135,7 @@ function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
 
     metrics.forEach((metric: Metric) => {
         const metadata: MetricMetadataType[] = metric.metadata.map((item: MetricMetadata) => {
-            const foundMetadata: MetadataType | undefined = metadatum.find(
+            const foundMetadata: MetadataType | undefined = metadataTypes.find(
                 (candidate: MetadataType) => candidate.name === item.type
             )
             if (!foundMetadata) {

@@ -1,5 +1,5 @@
 {
-    "name": "aws-toolkit-telemetry",
+    "name": "@aws-toolkit/telemetry",
     "version": "0.0.1",
     "publisher": "amazonwebservices",
     "description": "A library used for the AWS Toolkit for VSCode to provide telemetry",
@@ -9,7 +9,6 @@
     },
     "scripts": {
         "build": "node ./setUpPackage.js && tsc -p ./",
-        "test": "echo \"todo\" && exit 1",
         "prepack": "npm run build"
     },
     "repository": {
@@ -22,12 +21,12 @@
     },
     "homepage": "https://github.com/aws/aws-toolkit-common#readme",
     "devDependencies": {
+        "@types/fs-extra": "^8.0.1",
+        "@types/yargs": "^15.0.0",
         "typescript": "^3.7.4",
         "prettier": "^1.19.1"
     },
     "dependencies": {
-        "@types/fs-extra": "^8.0.1",
-        "@types/yargs": "^15.0.0",
         "ajv": "^6.10.2",
         "fs-extra": "^8.1.0",
         "yargs": "^15.1.0"

@@ -40,7 +40,41 @@ _types_ is an optional field that contains 0 or more entries
 ]
 ```
 
-These are then used to generate functions that take arguments pertaining to metrics
+These are then used to generate functions that take arguments pertaining to metrics. An example of one of these generated functions is:
+
+```typescript
+interface LambdaRemoteinvoke {
+    // What lambda runtime was used in the operation
+    lambdaruntime?: lambdaruntime
+    // The result of the operation
+    result: result
+    // The time that the event took place,
+    createTime?: Date
+    // Value based on unit and call type,
+    value?: number
+}
+/**
+ * called when invoking lambdas remotely
+ * @param args See the LambdaRemoteinvoke interface
+ * @returns Nothing
+ */
+export function recordLambdaRemoteinvoke(args: LambdaRemoteinvoke) {
+    ext.telemetry.record({
+        createTime: args?.createTime ?? new Date(),
+        data: [
+            {
+                MetricName: 'lambda_remoteinvoke',
+                Value: args?.value ?? 1,
+                Unit: 'None',
+                Metadata: [
+                    { Key: 'lambdaruntime', Value: args.lambdaruntime?.toString() ?? '' },
+                    { Key: 'result', Value: args.result?.toString() ?? '' }
+                ]
+            }
+        ]
+    })
+}
+```
 
 ### Global Arguments
 
