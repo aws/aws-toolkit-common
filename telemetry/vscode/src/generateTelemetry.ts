@@ -130,7 +130,7 @@ function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
             values = (m.allowedValues as string[])!.map((item: string) => `'${item}'`).join(' | ')
         }
 
-        str += `export type ${m.name} = ${values}\n`
+        str += `type ${m.name} = ${values}\n`
     })
 
     metrics.forEach((metric: Metric) => {

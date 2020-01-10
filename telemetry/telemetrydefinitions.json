@@ -1,7 +1,7 @@
 {
     "types": [
         {
-            "name": "lambdaruntime",
+            "name": "lambdaRuntime",
             "type": "string",
             "allowedValues": [
                 "dotnetcore2.1",
@@ -41,13 +41,13 @@
             "name": "lambda_create",
             "description": "called when creating lambdas remotely",
             "unit": "None",
-            "metadata": [{ "type": "lambdaruntime" }]
+            "metadata": [{ "type": "lambdaRuntime" }]
         },
         {
             "name": "lambda_remoteinvoke",
             "description": "called when invoking lambdas remotely",
             "unit": "None",
-            "metadata": [{ "type": "lambdaruntime", "required": false }, { "type": "result" }]
+            "metadata": [{ "type": "lambdaRuntime", "required": false }, { "type": "result" }]
         }
     ]
 }

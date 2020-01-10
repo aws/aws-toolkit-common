@@ -22,6 +22,8 @@ _types_ is an optional field that contains 0 or more entries
     ...
 ```
 
+**Note: typename MUST be camelCase**
+
 ### Metrics
 
 *metrics* is a required field that contains 1 or more entries
