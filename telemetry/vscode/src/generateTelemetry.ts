@@ -4,6 +4,7 @@
  */
 
 import { readFileSync, writeFileSync } from 'fs-extra'
+import { execSync } from 'child_process'
 import * as jsonParser from 'jsonc-parser'
 // This is defined as a DevDependency
 // tslint:disable-next-line: no-implicit-dependencies
@@ -201,6 +202,14 @@ function parseArguments(): CommandLineArguments {
     }
 }
 
+function formatOutput(output: string) {
+    try {
+        execSync(`npx prettier --write ${output}`, { stdio: 'inherit' })
+    } catch (e) {
+        console.warn(`Unable to run prettier on output ${e}`)
+    }
+}
+
 // Generate
 ;(() => {
     let output = `
@@ -227,4 +236,6 @@ function parseArguments(): CommandLineArguments {
     writeFileSync(args.output, output)
 
     console.log('Done generating, formatting!')
+
+    formatOutput(args.output)
 })()
