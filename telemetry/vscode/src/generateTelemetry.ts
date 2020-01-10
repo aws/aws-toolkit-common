@@ -5,9 +5,7 @@
 
 import { readFileSync, writeFileSync } from 'fs-extra'
 import { execSync } from 'child_process'
-import * as jsonParser from 'jsonc-parser'
-// This is defined as a DevDependency
-// tslint:disable-next-line: no-implicit-dependencies
+import { parse, ParseError } from 'jsonc-parser'
 import { argv } from 'yargs'
 
 interface CommandLineArguments {
@@ -99,8 +97,8 @@ function getArgsFromMetadata(m: MetricMetadataType): string {
 
 function parseInput(s: string): MetricDefinitionRoot {
     const file = readFileSync(s, 'utf8')
-    const errors: jsonParser.ParseError[] = []
-    const jsonOutput = jsonParser.parse(file, errors) as MetricDefinitionRoot
+    const errors: ParseError[] = []
+    const jsonOutput = parse(file, errors) as MetricDefinitionRoot
 
     if (errors.length > 0) {
         console.error(`Errors while trying to parse the definitions file ${errors.join('\n')}`)
