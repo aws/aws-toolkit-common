@@ -6,11 +6,11 @@ Telemetry definitions are made up of json files. Multiple files can exist and ar
 
 The format is JSON object with two fields:
 
-### types
+### Types
 
-*types* is an optional field that contains 0 or more entries
+_types_ is an optional field that contains 0 or more entries
 
-```json
+```
 "types": [
    {
         // comments are allowed
@@ -22,11 +22,11 @@ The format is JSON object with two fields:
     ...
 ```
 
-### metrics
+### Metrics
 
 *metrics *is a required field that contains 1 or more entries
 
-```json
+```
 "metrics": [
     {
         "name": string,
@@ -42,11 +42,11 @@ The format is JSON object with two fields:
 
 These are then used to generate functions that take arguments pertaining to metrics
 
-### global arguments
+### Global Arguments
 
-*Additionally* two additional global arguments that can be appended to any call
+_Additionally_ two additional global arguments that can be appended to any call
 
-```json
+```
 // The time that the event took place
 createTime?: Date
 // Value based on unit and call type

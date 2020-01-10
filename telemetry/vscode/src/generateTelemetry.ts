@@ -98,8 +98,7 @@ function parseInput(s: string): MetricDefinitionRoot {
     try {
         const file = readFileSync(s, 'utf8')
         return JSON.parse(file) as MetricDefinitionRoot
-    }
-    catch(errors) {
+    } catch (errors) {
         console.error(`Errors while trying to parse the definitions file ${errors.join('\n')}`)
         throw undefined
     }
@@ -199,7 +198,7 @@ function parseArguments(): CommandLineArguments {
 
 function formatOutput(output: string) {
     try {
-       spawnSync('npx', ['prettier',  '--write', output])
+        spawnSync('npx', ['prettier', '--write', output])
     } catch (e) {
         console.warn(`Unable to run prettier on output ${e}`)
     }

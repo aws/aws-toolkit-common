@@ -1,4 +1,4 @@
-# usage
+# Usage
 
 To generate telemtry for VSCode, install this package in your package.json, then run:
 
