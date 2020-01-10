@@ -32,7 +32,6 @@
         },
         "metrics": {
             "type": "array",
-            "description": "The person's last name.",
             "items": {
                 "type": "object",
                 "properties": {

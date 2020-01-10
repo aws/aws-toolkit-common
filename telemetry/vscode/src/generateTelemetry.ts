@@ -6,6 +6,8 @@
 import { readFileSync, writeFileSync } from 'fs-extra'
 import { spawnSync } from 'child_process'
 import { argv } from 'yargs'
+import * as Ajv from 'ajv'
+import * as path from 'path'
 
 interface CommandLineArguments {
     inputFiles: string[]
@@ -96,10 +98,20 @@ function getArgsFromMetadata(m: MetricMetadataType): string {
 
 function parseInput(s: string): MetricDefinitionRoot {
     try {
-        const file = readFileSync(s, 'utf8')
-        return JSON.parse(file) as MetricDefinitionRoot
+        const schemaInput = readFileSync(path.join(__dirname, 'telemetrySchema.json'), 'utf8')
+        const schema = JSON.parse(schemaInput)
+        const jsonValidator = new Ajv().compile(schema)
+        const fileInput = readFileSync(s, 'utf8')
+        const input = JSON.parse(fileInput)
+        const valid = jsonValidator(input)
+        if(!valid) {
+            console.error("validating schema failed!")
+            console.error(jsonValidator.errors)
+            throw undefined
+        }
+        return  input as MetricDefinitionRoot
     } catch (errors) {
-        console.error(`Errors while trying to parse the definitions file ${errors.join('\n')}`)
+        console.error(`Error while trying to parse the definitions file ${errors}`)
         throw undefined
     }
 }
@@ -188,7 +200,7 @@ function parseArguments(): CommandLineArguments {
     }
 
     // Always append the global definitions
-    input.push(`${__dirname}/telemetrydefinitions.json`)
+    input.push(path.join(__dirname, 'telemetryDefinitions.json'))
 
     return {
         inputFiles: input,
@@ -208,7 +220,7 @@ function formatOutput(output: string) {
 ;(() => {
     let output = `
     /*!
-     * Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+     * Copyright ${new Date().getUTCFullYear()} Amazon.com, Inc. or its affiliates. All Rights Reserved.
      * SPDX-License-Identifier: Apache-2.0
      */
 

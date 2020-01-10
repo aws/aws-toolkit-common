@@ -17,7 +17,7 @@
                 "python3.6",
                 "python2.7"
             ],
-            "description": "What lambda runtime was used in the operation"
+            "description": "The lambda runtime"
         },
         {
             "name": "zerooneortwo",

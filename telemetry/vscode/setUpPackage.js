@@ -5,4 +5,5 @@
 
 fs = require('fs-extra')
 
-fs.copySync('../telemetrydefinitions.json', './out/telemetrydefinitions.json')
+fs.copySync('../../telemetryDefinitions.json', './out/telemetryDefinitions.json')
+fs.copySync('../../telemetrySchema.json', './out/telemetrySchema.json')
