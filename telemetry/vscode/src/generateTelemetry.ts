@@ -213,13 +213,14 @@ function parseArguments(): CommandLineArguments {
     `
 
     const args = parseArguments()
-    const input: MetricDefinitionRoot = args.input
-        .map(parseInput)
-        .reduce((item: MetricDefinitionRoot, input: MetricDefinitionRoot) => { 
+    const input: MetricDefinitionRoot = args.input.map(parseInput).reduce(
+        (item: MetricDefinitionRoot, input: MetricDefinitionRoot) => {
             item.metrics.push(...input.metrics)
             item.types.push(...input.types)
             return item
-        }, {types: [], metrics: []} )
+        },
+        { types: [], metrics: [] }
+    )
     output += generateTelemetry(input)
     output += generateHelperFunctions()
 
