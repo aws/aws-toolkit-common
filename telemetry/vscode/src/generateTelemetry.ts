@@ -4,13 +4,12 @@
  */
 
 import { readFileSync, writeFileSync } from 'fs-extra'
-import { execSync } from 'child_process'
-import { parse, ParseError } from 'jsonc-parser'
+import { spawnSync } from 'child_process'
 import { argv } from 'yargs'
 
 interface CommandLineArguments {
-    input: string[]
-    output: string
+    inputFiles: string[]
+    outputFile: string
 }
 
 type AllowedTypes = 'string' | 'int' | 'double' | 'boolean'
@@ -96,16 +95,14 @@ function getArgsFromMetadata(m: MetricMetadataType): string {
 }
 
 function parseInput(s: string): MetricDefinitionRoot {
-    const file = readFileSync(s, 'utf8')
-    const errors: ParseError[] = []
-    const jsonOutput = parse(file, errors) as MetricDefinitionRoot
-
-    if (errors.length > 0) {
+    try {
+        const file = readFileSync(s, 'utf8')
+        return JSON.parse(file) as MetricDefinitionRoot
+    }
+    catch(errors) {
         console.error(`Errors while trying to parse the definitions file ${errors.join('\n')}`)
         throw undefined
     }
-
-    return jsonOutput
 }
 
 function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
@@ -195,14 +192,14 @@ function parseArguments(): CommandLineArguments {
     input.push(`${__dirname}/telemetrydefinitions.json`)
 
     return {
-        input: input,
-        output: argv.output as string
+        inputFiles: input,
+        outputFile: argv.output as string
     }
 }
 
 function formatOutput(output: string) {
     try {
-        execSync(`npx prettier --write ${output}`, { stdio: 'inherit' })
+       spawnSync('npx', ['prettier',  '--write', output])
     } catch (e) {
         console.warn(`Unable to run prettier on output ${e}`)
     }
@@ -220,7 +217,7 @@ function formatOutput(output: string) {
     `
 
     const args = parseArguments()
-    const input: MetricDefinitionRoot = args.input.map(parseInput).reduce(
+    const input: MetricDefinitionRoot = args.inputFiles.map(parseInput).reduce(
         (item: MetricDefinitionRoot, input: MetricDefinitionRoot) => {
             item.metrics.push(...input.metrics)
             item.types.push(...input.types)
@@ -231,9 +228,9 @@ function formatOutput(output: string) {
     output += generateTelemetry(input)
     output += generateHelperFunctions()
 
-    writeFileSync(args.output, output)
+    writeFileSync(args.outputFile, output)
 
     console.log('Done generating, formatting!')
 
-    formatOutput(args.output)
+    formatOutput(args.outputFile)
 })()
