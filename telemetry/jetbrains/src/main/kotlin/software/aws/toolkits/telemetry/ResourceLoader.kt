@@ -7,10 +7,6 @@ object ResourceLoader {
     private val schemaPath = "/telemetrySchema.json"
     private val definitionsPath = "/telemetryDefinitions.json"
 
-    val SCHEMA_FILE = this.javaClass.getResourceAsStream(schemaPath).use {
-        it.bufferedReader().readText()
-    }
-    val DEFINITONS_FILE = this.javaClass.getResourceAsStream(definitionsPath).use {
-        it.bufferedReader().readText()
-    }
+    val SCHEMA_FILE = this.javaClass.getResourceAsStream(schemaPath).use { it.bufferedReader().readText() }
+    val DEFINITONS_FILE = this.javaClass.getResourceAsStream(definitionsPath).use { it.bufferedReader().readText() }
 }

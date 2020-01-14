@@ -19,13 +19,13 @@ class GeneratorTest() {
     @Test
     fun generateFailsWhenvalidationFails() {
         assertThatThrownBy {
-            generateTelemetryFromFiles(listOf(), folder.root, "{}")
+            TelemetryGenerator.generateTelemetryFromFiles(listOf(), folder.root, "{}")
         }.hasMessageContaining("required key [metrics] not found")
     }
 
     @Test
     fun generateGenerates() {
-        generateTelemetryFromFiles(
+        TelemetryGenerator.generateTelemetryFromFiles(
             listOf(), folder.root,
             """
                     {
@@ -89,7 +89,7 @@ class GeneratorTest() {
         assertThat(outputFile.toFile().readText()).isEqualToIgnoringWhitespace(
             """
                 // THIS FILE IS GENERATED! DO NOT EDIT BY HAND!
-                package software.amazon.toolkits.telemetry
+                package software.aws.toolkits.telemetry
 
                 import com.intellij.openapi.project.Project
                 import kotlin.Any
