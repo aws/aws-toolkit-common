@@ -67,5 +67,5 @@
             }
         }
     },
-    "required": ["types", "metrics"]
+    "required": ["metrics"]
 }

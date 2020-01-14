@@ -1,7 +1,7 @@
 {
     "types": [
         {
-            "name": "value",
+            "name": "lambdaRuntime",
             "type": "string",
             "allowedValues": [
                 "dotnetcore2.1",
