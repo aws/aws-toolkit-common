@@ -46,7 +46,7 @@ function metricToTypeName(m: Metric): string {
 }
 
 interface MetricDefinitionRoot {
-    types: MetadataType[]
+    types?: MetadataType[]
     metrics: Metric[]
 }
 
@@ -107,7 +107,7 @@ function parseInput(s: string): MetricDefinitionRoot {
             console.error(jsonValidator.errors)
             throw undefined
         }
-        return  input as MetricDefinitionRoot
+        return input as MetricDefinitionRoot
     } catch (errors) {
         console.error(`Error while trying to parse the definitions file ${errors}`)
         throw undefined
@@ -119,7 +119,7 @@ function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
     const metrics = telemetryJson.metrics
     let str = ''
 
-    metadataTypes.forEach((m: MetadataType) => {
+    metadataTypes?.forEach((m: MetadataType) => {
         if ((m?.allowedValues?.length ?? 0) === 0) {
             return
         }
@@ -135,7 +135,7 @@ function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
 
     metrics.forEach((metric: Metric) => {
         const metadata: MetricMetadataType[] = metric.metadata.map((item: MetricMetadata) => {
-            const foundMetadata: MetadataType | undefined = metadataTypes.find(
+            const foundMetadata: MetadataType | undefined = metadataTypes?.find(
                 (candidate: MetadataType) => candidate.name === item.type
             )
             if (!foundMetadata) {
@@ -228,8 +228,8 @@ function formatOutput(output: string) {
     const args = parseArguments()
     const input: MetricDefinitionRoot = args.inputFiles.map(parseInput).reduce(
         (item: MetricDefinitionRoot, input: MetricDefinitionRoot) => {
+            item.types!.push(...input.types ?? [])
             item.metrics.push(...input.metrics)
-            item.types.push(...input.types)
             return item
         },
         { types: [], metrics: [] }

@@ -2,7 +2,7 @@
 
 To generate telemetry for VSCode, install this package in your package.json, then run:
 
-`node node_modules/aws-toolkit-telemetry/out/generateTelemetry.js --output=<path/to/file>.ts`
+`node node_modules/aws-toolkit-telemetry/lib/generateTelemetry.js --output=<path/to/file>.ts`
 
 The script has two arguments:
 

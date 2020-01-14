@@ -3,10 +3,7 @@
     "version": "0.0.1",
     "publisher": "amazonwebservices",
     "description": "A library used for the AWS Toolkit for VSCode to provide telemetry",
-    "main": "index.js",
-    "bin": {
-        "generate-telemetry": "./out/index.js"
-    },
+    "main": "./lib/generateTelemetry.js",
     "scripts": {
         "build": "node ./scripts/setUpPackage.js && tsc -p ./",
         "validatePackaged": "node ./scripts/validatePackagedJson.js",
@@ -24,10 +21,10 @@
     "devDependencies": {
         "@types/fs-extra": "^8.0.1",
         "@types/yargs": "^15.0.0",
-        "typescript": "^3.7.4",
-        "prettier": "^1.19.1"
+        "typescript": "^3.7.4"
     },
     "dependencies": {
+        "prettier": "^1.19.1",
         "ajv": "^6.10.2",
         "fs-extra": "^8.1.0",
         "yargs": "^15.1.0"
