@@ -1,4 +1,8 @@
 .DS_Store
+build
+.gradle
+.idea
+gradle
 **/node_modules
 **/out
 **/*.tgz
