@@ -8,8 +8,9 @@
         "generate-telemetry": "./out/index.js"
     },
     "scripts": {
-        "build": "node ./setUpPackage.js && tsc -p ./",
-        "prepack": "npm run build"
+        "build": "node ./scripts/setUpPackage.js && tsc -p ./",
+        "validatePackaged": "node ./scripts/validatePackagedJson.js",
+        "prepack": "npm run build && npm run validatePackaged"
     },
     "repository": {
         "type": "git",
