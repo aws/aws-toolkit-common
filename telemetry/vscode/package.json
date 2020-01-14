@@ -1,5 +1,5 @@
 {
-    "name": "@aws-toolkit/telemetry",
+    "name": "@aws-toolkits/telemetry",
     "version": "0.0.1",
     "publisher": "amazonwebservices",
     "description": "A library used for the AWS Toolkit for VSCode to provide telemetry",
