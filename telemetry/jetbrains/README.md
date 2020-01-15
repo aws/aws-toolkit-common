@@ -2,7 +2,7 @@
 
 1. To your buildSrc build.gradle, add:
     ```groovy
-    compile "software.amazon:toolkits.telemetry:1.0"
+    compile "software.amazon:toolkits.telemetry.generator:1.0"
     ```
    
     to the `dependencies` as well as

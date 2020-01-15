@@ -11,7 +11,7 @@ val assertjVersion = "3.12.0"
 plugins {
     java
     `kotlin-dsl` version "1.1.3"
-    kotlin("jvm") version "1.3.20"
+    kotlin("jvm") version "1.3.60"
     `maven-publish`
 }
 
@@ -27,7 +27,7 @@ buildscript {
     }
 }
 
-group = "software.aws.toolkits.telemetry"
+group = "software.aws.toolkits.telemetry.generator"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -39,7 +39,6 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("com.squareup:kotlinpoet:1.5.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:$jacksonVersion")
     implementation("com.github.everit-org.json-schema:org.everit.json.schema:1.12.1")
     testImplementation("junit:junit:$junitVersion")
     testImplementation("org.assertj:assertj-core:$assertjVersion")
@@ -51,9 +50,9 @@ tasks {
         kotlinOptions.jvmTarget = "1.8"
     }
     compileTestKotlin {
+        dependsOn(":copyTestTelemetryResources")
         kotlinOptions.jvmTarget = "1.8"
     }
-    withType<Jar> {}
     register("validatePackagedSchema") {
         group = "build"
         description = "Validates that the packaged definition is compatable with the packaged schema"
@@ -68,14 +67,15 @@ tasks {
         }
     }
     task(name = "copyTelemetryResources", type = Copy::class) {
-        doFirst {
-            mkdir("src/main/resources")
-            mkdir("src/test/resources")
-        }
         from("..") {
             include("*.json")
         }
         into("src/main/resources")
+    }
+    task(name = "copyTestTelemetryResources", type = Copy::class) {
+        from("..") {
+            include("*.json")
+        }
         into("src/test/resources")
     }
 }
@@ -84,9 +84,6 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             from(components["java"])
-            groupId = "com.amazonaws"
-            artifactId = "toolkits.telemetry"
-            version = "1.0"
             pom {
                 licenses {
                     license {

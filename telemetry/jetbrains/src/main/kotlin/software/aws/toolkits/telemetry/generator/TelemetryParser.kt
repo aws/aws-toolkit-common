@@ -1,7 +1,7 @@
 // Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-package software.aws.toolkits.telemetry
+package software.aws.toolkits.telemetry.generator
 
 import com.fasterxml.jackson.annotation.JsonValue
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
@@ -73,7 +73,13 @@ object TelemetryParser {
         val rawSchema = JSONObject(JSONTokener(ResourceLoader.SCHEMA_FILE))
         val schema: Schema = SchemaLoader.load(rawSchema)
         files.forEach { validate(it, schema) }
-        return parse(files)
+        return files.map { parse(it) }.fold(TelemetryDefinition(listOf(), listOf())) { it, it2 ->
+            TelemetryDefinition(
+                // !! always works because we start with listOf()
+                it.types!!.plus(it2.types ?: listOf()),
+                it.metrics.plus(it2.metrics)
+            )
+        }
     }
 
     private fun validate(fileContents: String, schema: Schema) {
@@ -85,20 +91,12 @@ object TelemetryParser {
         }
     }
 
-    private fun parse(input: List<String>): TelemetryDefinition =
-        // TODO validate schema using json schema
-        input.map {
-            try {
-                val mapper = jacksonObjectMapper()
-                return@map mapper.readValue<TelemetryDefinition>(it)
-            } catch (e: Exception) {
-                System.err.println("Error while parsing: $e")
-                throw e
-            }
-        }.fold(TelemetryDefinition(listOf(), listOf())) { it, it2 ->
-            TelemetryDefinition(
-                it.types!!.plus(it2.types ?: listOf()),
-                it.metrics.plus(it2.metrics)
-            )
+    private fun parse(input: String): TelemetryDefinition =
+        try {
+            val mapper = jacksonObjectMapper()
+            mapper.readValue(input)
+        } catch (e: Exception) {
+            System.err.println("Error while parsing: $e")
+            throw e
         }
 }

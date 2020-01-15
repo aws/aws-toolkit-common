@@ -1,9 +1,10 @@
 // Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-package software.aws.toolkits.telemetry
+package software.aws.toolkits.telemetry.generator
 
 import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.DOUBLE
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
@@ -28,51 +29,55 @@ object TelemetryGenerator {
         output.build().writeTo(outputFolder)
     }
 
+    private fun generateTelemetryEnumType(output: FileSpec.Builder, item: TelemetryMetricType) {
+        val enum = TypeSpec.enumBuilder(item.name.toTypeFormat())
+            .primaryConstructor(
+                FunSpec.constructorBuilder()
+                    .addParameter("name", String::class)
+                    .build()
+            )
+        item.allowedValues!!.forEach { enumValue ->
+            enum.addEnumConstant(
+                enumValue.toString().toUpperCase().filterInvalidCharacters(), TypeSpec.anonymousClassBuilder()
+                    .addSuperclassConstructorParameter("%S", enumValue.toString())
+                    .build()
+            )
+        }
+        enum.addFunction(FunSpec.builder("toString").addModifiers(KModifier.OVERRIDE).returns(String::class).addStatement("return name").build())
+        enum.addFunction(
+            FunSpec.builder("from").returns(ClassName("", item.name.toTypeFormat())).addParameter(
+                "type",
+                Any::class
+            ).addStatement("return values().filter { it.name == type.toString() }.first()").build()
+        )
+        enum.addKdoc(item.description)
+
+        output.addType(enum.build())
+    }
+
     private fun generateTelemetryEnumTypes(output: FileSpec.Builder, items: List<TelemetryMetricType>) {
         items.forEach {
             // We only need to generate enums if they are actually enums, skip other types
             if (it.allowedValues == null) {
                 return@forEach
             }
-            val enum = TypeSpec.enumBuilder(it.name.toTypeFormat())
-                .primaryConstructor(
-                    FunSpec.constructorBuilder()
-                        .addParameter("name", String::class)
-                        .build()
-                )
-            it.allowedValues.forEach { enumValue ->
-                enum.addEnumConstant(
-                    enumValue.toString().toUpperCase().filterInvalidCharacters(), TypeSpec.anonymousClassBuilder()
-                        .addSuperclassConstructorParameter("%S", enumValue.toString())
-                        .build()
-                )
-            }
-            enum.addFunction(FunSpec.builder("toString").addModifiers(KModifier.OVERRIDE).returns(String::class).addStatement("return name").build())
-            enum.addFunction(
-                FunSpec.builder("from").returns(ClassName("", it.name.toTypeFormat())).addParameter(
-                    "type",
-                    Any::class
-                ).addStatement("return values().filter { it.name == type.toString() }.first()").build()
-            )
-            enum.addKdoc(it.description)
-
-            output.addType(enum.build())
+            generateTelemetryEnumType(output, it)
         }
     }
 
-    private fun generateTelemetry(output: FileSpec.Builder, items: TelemetryDefinition) =
-        items
+    private fun generateTelemetry(output: FileSpec.Builder, item: TelemetryDefinition) =
+        item
             .metrics
             .sortedBy { it.name }
             .groupBy { it.name.split("_").first().toLowerCase() }
-            .forEach { metrics: Map.Entry<String, List<Metric>> -> generateNamespaces(output, items.types!!, metrics.key, metrics.value) }
+            .forEach { metrics: Map.Entry<String, List<Metric>> -> generateNamespaces(output, item.types!!, metrics.key, metrics.value) }
 
     private fun generateFunctionParameters(functionBuilder: FunSpec.Builder, metric: Metric, types: List<TelemetryMetricType>) {
         val projectParameter = ClassName("com.intellij.openapi.project", "Project").copy(nullable = true)
-        val valueParameter = com.squareup.kotlinpoet.DOUBLE
+        val valueParameter = DOUBLE
         val additionalParameters = metric.metadata?.map { metadata ->
-            val telemetryMetricType =
-                types.find { it.name == metadata.type } ?: throw IllegalStateException("Type ${metadata.type} on ${metric.name} not found in types!")
+            val telemetryMetricType = types.find { it.name == metadata.type }
+                ?: throw IllegalStateException("Type ${metadata.type} on ${metric.name} not found in types!")
             val typeName = if (telemetryMetricType.allowedValues != null) {
                 ClassName(PACKAGE_NAME, telemetryMetricType.name.toTypeFormat())
             } else {
