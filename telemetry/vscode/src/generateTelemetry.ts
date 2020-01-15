@@ -51,7 +51,7 @@ function formatOutput(output: string) {
     const args = parseArguments()
     const input: MetricDefinitionRoot = args.inputFiles.map(validateInput).reduce(
         (item: MetricDefinitionRoot, input: MetricDefinitionRoot) => {
-            item.types!.push(...input.types ?? [])
+            item.types!.push(...(input.types ?? []))
             item.metrics.push(...input.metrics)
             return item
         },

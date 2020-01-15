@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { MetadataType, MetricMetadataType, MetricMetadata, Metric, MetricDefinitionRoot } from "./parser"
+import { MetadataType, MetricMetadataType, MetricMetadata, Metric, MetricDefinitionRoot } from './parser'
 
 // converts snake_case to CamelCase. E.x. lambda_invoke => LambdaInvoke
 function metricToTypeName(m: Metric): string {
@@ -56,8 +56,6 @@ function getArgsFromMetadata(m: MetricMetadataType): string {
 
     return `${m.name}${m.required ? '' : '?'}: ${t}`
 }
-
-
 
 export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
     const metadataTypes = telemetryJson.types

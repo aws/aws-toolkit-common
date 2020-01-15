@@ -47,8 +47,8 @@ export function validateInput(inputFile: string): MetricDefinitionRoot {
         const fileInput = readFileSync(inputFile, 'utf8')
         const input = JSON.parse(fileInput)
         const valid = jsonValidator(input)
-        if(!valid) {
-            console.error("validating schema failed!")
+        if (!valid) {
+            console.error('validating schema failed!')
             throw jsonValidator.errors
         }
         return input as MetricDefinitionRoot
