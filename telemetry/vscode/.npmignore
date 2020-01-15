@@ -1,2 +1,4 @@
 **/*.tgz
 src
+tsconfig.json
+lib/src
