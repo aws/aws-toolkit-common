@@ -1,8 +1,12 @@
-# Usage
+# AWS Toolkit for VSCode Telemetry
 
-To generate telemtry for VSCode, install this package in your package.json, then run:
+This package contains scripts and files to generate telemetry calls for the [AWS Toolkit for VS Code](https://github.com/aws/aws-toolkit-vscode). See that repo for more information on the project and how to contribute.
 
-`node node_modules/aws-toolkit-telemetry/out/generateTelemetry.js --output=<path/to/file>.ts`
+## Usage
+
+To generate telemetry for VSCode, install this package in your package.json, then run:
+
+`node node_modules/aws-toolkit-telemetry/lib/generateTelemetry.js --output=<path/to/file>.ts`
 
 The script has two arguments:
 
