@@ -1,0 +1,52 @@
+{
+  "types": [
+    {
+      "name": "lambdaRuntime",
+      "type": "string",
+      "allowedValues": [
+        "dotnetcore2.1",
+        "nodejs12.x"
+      ],
+      "description": "The lambda runtime"
+    },
+    {
+      "name": "duration",
+      "type": "double",
+      "description": "The duration of the operation in miliseconds"
+    },
+    {
+      "name": "inttype",
+      "description": "a test int type",
+      "type": "int"
+    },
+    {
+      "name": "booltype",
+      "description": "a test boolean type",
+      "type": "boolean"
+    },
+    {
+      "name": "arbitraryString",
+      "description": "untyped string type"
+    }
+  ],
+  "metrics": [
+    {
+      "name": "lambda_delete",
+      "description": "called when deleting lambdas remotely",
+      "unit": "None",
+      "metadata": [{ "type": "duration" }, { "type": "booltype" }]
+    },
+    {
+      "name": "lambda_create",
+      "description": "called when creating lambdas remotely",
+      "unit": "None",
+      "metadata": [{ "type": "lambdaRuntime" }, { "type": "arbitraryString" } ]
+    },
+    {
+      "name": "lambda_remoteinvoke",
+      "description": "called when invoking lambdas remotely",
+      "unit": "None",
+      "metadata": [{ "type": "lambdaRuntime", "required": false }, { "type": "inttype" }]
+    }
+  ]
+}

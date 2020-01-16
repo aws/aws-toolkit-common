@@ -1,3 +1,4 @@
 src/main/resources/
-src/test/resources/
+src/test/resources/telemetryDefinitions.json
+src/test/resources/telemetrySchema.json
 /gradle
