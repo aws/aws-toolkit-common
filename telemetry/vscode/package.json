@@ -1,8 +1,7 @@
 {
     "name": "@aws-toolkits/telemetry",
     "version": "0.0.1",
-    "publisher": "amazonwebservices",
-    "description": "A library used for the AWS Toolkit for VSCode to provide telemetry",
+    "description": "A library used by the AWS Toolkit for VSCode to provide telemetry",
     "main": "./lib/generateTelemetry.js",
     "scripts": {
         "build": "ts-node ./scripts/setUpPackage.ts && tsc -p ./",
