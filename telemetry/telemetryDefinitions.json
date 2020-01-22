@@ -1,6 +1,31 @@
 {
     "types": [
         {
+            "name": "duration",
+            "type": "double",
+            "description": "The duration of the operation in miliseconds"
+        },
+        {
+            "name": "result",
+            "allowedValues": ["Succeeded", "Failed", "Cancelled"],
+            "description": "The result of the operation"
+        },
+        {
+            "name": "name",
+            "type": "string",
+            "description": "A generic name metadata"
+        },
+        {
+            "name": "version",
+            "type": "string",
+            "description": "A generic version metadata"
+        },
+        {
+            "name": "hasException",
+            "type": "boolean",
+            "description": "Determines if the operation had an exception or not"
+        },
+        {
             "name": "runtime",
             "type": "string",
             "allowedValues": [
@@ -20,14 +45,9 @@
             "description": "The lambda runtime"
         },
         {
-            "name": "duration",
-            "type": "double",
-            "description": "The duration of the operation in miliseconds"
-        },
-        {
-            "name": "result",
-            "allowedValues": ["Succeeded", "Failed", "Cancelled"],
-            "description": "The result of the operation"
+            "name": "templateName",
+            "type": "string",
+            "description": "Generic name of a template"
         }
     ],
     "metrics": [
@@ -44,10 +64,40 @@
             "metadata": [{ "type": "runtime" }]
         },
         {
-            "name": "lambda_remoteinvoke",
+            "name": "lambda_invokeremote",
             "description": "called when invoking lambdas remotely",
             "unit": "None",
-            "metadata": [{ "type": "runtime", "required": false }, { "type": "result" }]
+            "metadata": [{ "type": "runtime" }, { "type": "result" }]
+        },
+        {
+            "name": "lambda_invokelocal",
+            "description": "Called when invoking lambdas locally (with SAM in most toolkits)",
+            "unit": "None",
+            "metadata": [{ "type": "runtime" }, { "type": "result" }]
+        },
+        {
+            "name": "cloudformation_delete",
+            "description": "Called when deleting a cloudformation stack",
+            "unit": "None",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "sam_deploy",
+            "description": "Called when deploying a sam application",
+            "unit": "None",
+            "metadata": [{ "type": "hasException" }, { "type": "version" }]
+        },
+        {
+            "name": "sam_init",
+            "description": "Called when initing a sam application",
+            "unit": "None",
+            "metadata": [
+                { "type": "name" },
+                { "type": "runtime" },
+                { "type": "hasException" },
+                { "type": "templateName" },
+                { "type": "version" }
+            ]
         }
     ]
 }
