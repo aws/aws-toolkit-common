@@ -33,7 +33,7 @@ class GeneratorTest() {
         val outputFile = Paths.get(folder.root.absolutePath, "software", "aws", "toolkits", "telemetry", "TelemetryDefinitions.kt")
         assertThat(Files.exists(outputFile)).isTrue
 
-        assertThat(outputFile.toFile().readText()).isEqualToIgnoringWhitespace(this.javaClass.getResourceAsStream("/testGeneratorOutput.kt").use {
+        assertThat(outputFile.toFile().readText()).isEqualToIgnoringWhitespace(this.javaClass.getResourceAsStream("/testGeneratorOutput").use {
             it.bufferedReader().readText()
         })
     }
