@@ -77,7 +77,7 @@ export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
     })
 
     metrics.forEach((metric: Metric) => {
-        const metadata: MetricMetadataType[] = metric.metadata.map((item: MetricMetadata) => {
+        const metadata: MetricMetadataType[] = metric.metadata?.map((item: MetricMetadata) => {
             const foundMetadata: MetadataType | undefined = metadataTypes?.find(
                 (candidate: MetadataType) => candidate.name === item.type
             )
@@ -90,7 +90,7 @@ export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
                 ...foundMetadata,
                 required: item.required ?? true
             }
-        })
+        }) ?? []
 
         const name = metricToTypeName(metric)
         str += `interface ${name} {

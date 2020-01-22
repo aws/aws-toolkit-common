@@ -47,6 +47,11 @@
       "description": "called when invoking lambdas remotely",
       "unit": "None",
       "metadata": [{ "type": "lambdaRuntime", "required": false }, { "type": "inttype" }]
+    },
+    {
+      "name": "no_metadata",
+      "description": "called when invoking lambdas remotely",
+      "unit": "None"
     }
   ]
 }
