@@ -80,3 +80,16 @@ object LambdaTelemetry {
             }}
     }
 }
+
+object NoTelemetry {
+    /**
+     * called when invoking lambdas remotely
+     */
+    fun recordMetadata(project: Project?, value: Double = 1.0) {
+        TelemetryService.getInstance().record(project) {
+            datum("no_metadata") {
+                unit(Unit.NONE)
+                value(value)
+            }}
+    }
+}
