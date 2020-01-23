@@ -98,6 +98,20 @@
                 { "type": "templateName" },
                 { "type": "version" }
             ]
+        },
+        {
+            "name": "schemas_view",
+            "description": "Called when selecting an EventBridge schema to view",
+            "metadata": [ { "type": "result" } ]
+        },
+        {
+            "name": "schemas_download",
+            "description": "Called when downloading an EventBridge schema",
+            "metadata": [ { "type": "result" } ]
+        },
+        {
+            "name": "schemas_search",
+            "description": "Called when searching an EventBridge schema registry"
         }
     ]
 }
