@@ -1,6 +1,5 @@
 import org.everit.json.schema.Schema
 import org.everit.json.schema.loader.SchemaLoader
-import org.gradle.jvm.tasks.Jar
 import org.json.JSONObject
 
 val jacksonVersion = "2.10.0"
@@ -68,19 +67,13 @@ tasks {
         }
     }
     task(name = "copyTelemetryResources", type = Copy::class) {
-        from("..") {
-            include("telemetrySchema.json")
-            include("definitions/commonDefintions.json")
-            include("definitions/jetbrainsDefinitions.json")
-        }
+        from("../telemetrySchema.json", "../definitions/commonDefinitions.json", "../definitions/jetbrainsDefinitions.json")
+        include("*.json")
         into("src/main/resources")
     }
     task(name = "copyTestTelemetryResources", type = Copy::class) {
-        from("..") {
-            include("telemetrySchema.json")
-            include("definitions/commonDefintions.json")
-            include("definitions/jetbrainsDefinitions.json")
-        }
+        from("../telemetrySchema.json", "../definitions/commonDefinitions.json", "../definitions/jetbrainsDefinitions.json")
+        include("*.json")
         into("src/test/resources")
     }
 }
