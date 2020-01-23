@@ -4,6 +4,11 @@
             "name": "vscode_activeregions",
             "description": "Record the number of active regions at startup and when regions are added/removed",
             "unit": "Count"
+        },
+        {
+            "name": "sam_detect",
+            "description": "Called when detecting the location of the same CLI",
+            "metadata": [{ "type": "hasException" }, { "type": "version" }]
         }
     ]
 }

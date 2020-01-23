@@ -58,6 +58,11 @@
             "metadata": [{ "type": "duration" }, { "type": "result" }]
         },
         {
+            "name": "lambda_configurelocal",
+            "description": "Called when opening the local configuration of a Lambda to edit",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "lambda_create",
             "description": "called when creating lambdas remotely",
             "metadata": [{ "type": "runtime" }]
