@@ -7,8 +7,8 @@
         },
         {
             "name": "sam_detect",
-            "description": "Called when detecting the location of the same CLI",
-            "metadata": [{ "type": "hasException" }, { "type": "version" }]
+            "description": "Called when detecting the location of the SAM CLI",
+            "metadata": [{ "type": "result" }]
         }
     ]
 }
