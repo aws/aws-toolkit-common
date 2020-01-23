@@ -110,7 +110,7 @@ export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
             data: [{
                 MetricName: '${metric.name}',
                 Value: args?.value ?? 1,
-                Unit: '${metric.unit}',
+                Unit: '${metric.unit ?? 'None'}',
                 Metadata: [${metadata.map(
                     (item: MetadataType) => `{Key: '${item.name}', Value: args.${item.name}?.toString() ?? ''}`
                 )}]
