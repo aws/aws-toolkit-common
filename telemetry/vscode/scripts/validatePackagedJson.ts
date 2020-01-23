@@ -8,7 +8,7 @@
 import { validateInput } from '../src/parser'
 
 [
-    './lib/telemetryDefinitions.json',
-    './lib/vscodeTelemetryDefinitions.json'
+    './lib/commonDefinitions.json',
+    './lib/vscodeDefinitions.json'
 ]
 .forEach((item) => validateInput(item))
