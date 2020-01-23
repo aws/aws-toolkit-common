@@ -9,3 +9,4 @@ import { copySync } from 'fs-extra'
 
 copySync('../telemetryDefinitions.json', './lib/telemetryDefinitions.json')
 copySync('../telemetrySchema.json', './lib/telemetrySchema.json')
+copySync('vscodeTelemetryDefinitions.json', './lib/vscodeTelemetryDefinitions.json')

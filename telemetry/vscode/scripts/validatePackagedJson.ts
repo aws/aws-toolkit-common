@@ -8,5 +8,5 @@
 import { validateInput } from '../src/parser'
 import * as path from 'path'
 
-const telemetryDefinitions = path.join(__dirname, '../lib/telemetryDefinitions.json')
-validateInput(telemetryDefinitions)
+[path.join(__dirname, '../lib/telemetryDefinitions.json'),
+path.join(__dirname, '../lib/vscodeTelemetryDefinitions.json')].forEach((item) => validateInput(item))
