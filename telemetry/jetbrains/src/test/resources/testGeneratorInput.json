@@ -50,8 +50,7 @@
     },
     {
       "name": "no_metadata",
-      "description": "called when invoking lambdas remotely",
-      "unit": "None"
+      "description": "called when invoking lambdas remotely"
     }
   ]
 }
