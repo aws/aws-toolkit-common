@@ -69,7 +69,7 @@ object TelemetryParser {
         paths: List<File> = listOf(),
         defaultResourcesFiles: List<String>
     ): TelemetryDefinition {
-        val files = paths.map { it.readText() }.plus(defaultResourcesFiles)
+        val files = paths.map { it.readText() } + defaultResourcesFiles
         val rawSchema = JSONObject(JSONTokener(ResourceLoader.SCHEMA_FILE))
         val schema: Schema = SchemaLoader.load(rawSchema)
         files.forEach { validate(it, schema) }
