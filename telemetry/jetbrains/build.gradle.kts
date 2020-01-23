@@ -1,6 +1,5 @@
 import org.everit.json.schema.Schema
 import org.everit.json.schema.loader.SchemaLoader
-import org.gradle.jvm.tasks.Jar
 import org.json.JSONObject
 
 val jacksonVersion = "2.10.0"
@@ -60,22 +59,21 @@ tasks {
             try {
                 val rawSchema = JSONObject(org.json.JSONTokener(File("src/main/resources/telemetrySchema.json").readText()))
                 val schema: Schema = SchemaLoader.load(rawSchema)
-                schema.validate(JSONObject(File("src/main/resources/telemetryDefinitions.json").readText()))
+                schema.validate(JSONObject(File("src/main/resources/commonDefinitions.json").readText()))
+                schema.validate(JSONObject(File("src/main/resources/jetbrainsDefinitions.json").readText()))
             } catch (e: Exception) {
                 println("Exception while validating packaged schema, ${e.printStackTrace()}")
             }
         }
     }
     task(name = "copyTelemetryResources", type = Copy::class) {
-        from("..") {
-            include("*.json")
-        }
+        from("../telemetrySchema.json", "../definitions/commonDefinitions.json", "../definitions/jetbrainsDefinitions.json")
+        include("*.json")
         into("src/main/resources")
     }
     task(name = "copyTestTelemetryResources", type = Copy::class) {
-        from("..") {
-            include("*.json")
-        }
+        from("../telemetrySchema.json", "../definitions/commonDefinitions.json", "../definitions/jetbrainsDefinitions.json")
+        include("*.json")
         into("src/test/resources")
     }
 }

@@ -12,7 +12,8 @@ class ParserTest {
         assertThatThrownBy {
             TelemetryParser.parseFiles(
                 listOf(),
-                """
+                listOf(
+                    """
             {
                 "types": [
                     {
@@ -23,6 +24,7 @@ class ParserTest {
                 "metrics": []
             }
             """.trimIndent()
+                )
             )
         }.hasMessageContaining("required key [description] not found")
     }
@@ -30,7 +32,7 @@ class ParserTest {
     @Test
     fun missingMetricsField() {
         assertThatThrownBy {
-            TelemetryParser.parseFiles(listOf(), """{"types": []}""")
+            TelemetryParser.parseFiles(listOf(), listOf("""{"types": []}"""))
         }.hasMessageContaining("required key [metrics] not found")
     }
 
@@ -39,7 +41,8 @@ class ParserTest {
         assertThatThrownBy {
             TelemetryParser.parseFiles(
                 listOf(),
-                """
+                listOf(
+                    """
             {
                 "types": [
                     {
@@ -51,6 +54,7 @@ class ParserTest {
                 "metrics": []
             }
             """.trimIndent()
+                )
             )
         }.hasMessageContaining("type that does not exist is not a valid enum value")
 
@@ -60,11 +64,13 @@ class ParserTest {
     fun successfulParse() {
         TelemetryParser.parseFiles(
             listOf(),
-            """
+            listOf(
+                """
             {
                 "metrics": []
             }
             """.trimIndent()
+            )
         )
     }
 }

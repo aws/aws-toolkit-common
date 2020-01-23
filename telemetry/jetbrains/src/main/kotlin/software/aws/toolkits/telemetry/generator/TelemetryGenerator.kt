@@ -20,7 +20,11 @@ object TelemetryGenerator {
     private fun String.toTypeFormat() = this.filterInvalidCharacters().capitalize()
     private fun String.toArgumentFormat() = this.filterInvalidCharacters().toLowerCase()
 
-    fun generateTelemetryFromFiles(inputFiles: List<File>, outputFolder: File, defaultDefinitions: String = ResourceLoader.DEFINITONS_FILE) {
+    fun generateTelemetryFromFiles(
+        inputFiles: List<File>,
+        defaultDefinitions: List<String> = listOf(ResourceLoader.DEFINITONS_FILE, ResourceLoader.JETBRAINS_DEFINITONS_FILE),
+        outputFolder: File
+    ) {
         val telemetry = TelemetryParser.parseFiles(inputFiles, defaultDefinitions)
         val output = FileSpec.builder(PACKAGE_NAME, "TelemetryDefinitions")
         output.addComment("THIS FILE IS GENERATED! DO NOT EDIT BY HAND!")

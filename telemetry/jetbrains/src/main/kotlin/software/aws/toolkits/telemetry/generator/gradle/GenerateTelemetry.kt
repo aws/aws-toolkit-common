@@ -21,7 +21,7 @@ open class GenerateTelemetry : DefaultTask() {
     fun generate() {
         println("Generating telemetry using packaged file and:\n ${inputFiles.map { it.absolutePath }.joinToString("\n")}")
         try {
-            TelemetryGenerator.generateTelemetryFromFiles(inputFiles, outputDirectory)
+            TelemetryGenerator.generateTelemetryFromFiles(inputFiles = inputFiles, outputFolder = outputDirectory)
         } catch (e: Exception) {
             System.err.println("Generating telemetry threw an exception! $e\n")
             throw e

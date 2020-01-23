@@ -6,7 +6,9 @@
 // This script validates the packaged JSON file with the packaged schema to make sure it is valid
 
 import { validateInput } from '../src/parser'
-import * as path from 'path'
 
-const telemetryDefinitions = path.join(__dirname, '../lib/telemetryDefinitions.json')
-validateInput(telemetryDefinitions)
+[
+    './lib/commonDefinitions.json',
+    './lib/vscodeDefinitions.json'
+]
+.forEach((item) => validateInput(item))

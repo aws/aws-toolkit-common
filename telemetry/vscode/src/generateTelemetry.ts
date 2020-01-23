@@ -16,12 +16,13 @@ function parseArguments(): CommandLineArguments {
         console.log("Argument 'output' required")
         throw undefined
     }
-    if (argv.input) {
-        input = (argv.input as string).split(',').map(item => item.trim())
+    if (argv.extraInput) {
+        input = (argv.extraInput as string).split(',').map(item => item.trim())
     }
 
     // Always append the global definitions
-    input.push(path.join(__dirname, 'telemetryDefinitions.json'))
+    input.push(path.join(__dirname, 'commonDefinitions.json'))
+    input.push(path.join(__dirname, 'vscodeDefinitions.json'))
 
     return {
         inputFiles: input,
