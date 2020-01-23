@@ -105,7 +105,8 @@
         },
         {
             "name": "schemas_search",
-            "description": "Called when searching an EventBridge schema registry"
+            "description": "Called when searching an EventBridge schema registry",
+            "metadata": [ { "type": "result" } ]
         }
     ]
 }
