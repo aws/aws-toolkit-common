@@ -21,8 +21,8 @@ function parseArguments(): CommandLineArguments {
     }
 
     // Always append the global definitions
-    input.push(path.join(__dirname, 'telemetryDefinitions.json'))
-    input.push(path.join(__dirname, 'vscodeTelemetryDefinitions.json'))
+    input.push(path.join(__dirname, 'commonDefinitions.json'))
+    input.push(path.join(__dirname, 'vscodeDefinitions.json'))
 
     return {
         inputFiles: input,

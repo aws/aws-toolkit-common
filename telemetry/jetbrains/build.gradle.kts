@@ -60,7 +60,8 @@ tasks {
             try {
                 val rawSchema = JSONObject(org.json.JSONTokener(File("src/main/resources/telemetrySchema.json").readText()))
                 val schema: Schema = SchemaLoader.load(rawSchema)
-                schema.validate(JSONObject(File("src/main/resources/telemetryDefinitions.json").readText()))
+                schema.validate(JSONObject(File("src/main/resources/commonDefinitions.json").readText()))
+                schema.validate(JSONObject(File("src/main/resources/jetbrainsDefinitions.json").readText()))
             } catch (e: Exception) {
                 println("Exception while validating packaged schema, ${e.printStackTrace()}")
             }
@@ -68,13 +69,17 @@ tasks {
     }
     task(name = "copyTelemetryResources", type = Copy::class) {
         from("..") {
-            include("*.json")
+            include("telemetrySchema.json")
+            include("definitions/commonDefintions.json")
+            include("definitions/jetbrainsDefinitions.json")
         }
         into("src/main/resources")
     }
     task(name = "copyTestTelemetryResources", type = Copy::class) {
         from("..") {
-            include("*.json")
+            include("telemetrySchema.json")
+            include("definitions/commonDefintions.json")
+            include("definitions/jetbrainsDefinitions.json")
         }
         into("src/test/resources")
     }
