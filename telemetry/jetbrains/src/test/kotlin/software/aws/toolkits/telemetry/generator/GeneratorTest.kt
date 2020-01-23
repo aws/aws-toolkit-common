@@ -19,7 +19,7 @@ class GeneratorTest() {
     @Test
     fun generateFailsWhenValidationFails() {
         assertThatThrownBy {
-            TelemetryGenerator.generateTelemetryFromFiles(listOf(), folder.root, listOf("{}"))
+            TelemetryGenerator.generateTelemetryFromFiles(listOf(), listOf("{}"), folder.root)
         }.hasMessageContaining("required key [metrics] not found")
     }
 
@@ -27,8 +27,8 @@ class GeneratorTest() {
     fun generateGenerates() {
         TelemetryGenerator.generateTelemetryFromFiles(
             listOf(),
-            folder.root,
-            listOf(this.javaClass.getResourceAsStream("/testGeneratorInput.json").use { it.bufferedReader().readText() })
+            listOf(this.javaClass.getResourceAsStream("/testGeneratorInput.json").use { it.bufferedReader().readText() }),
+            folder.root
         )
 
         val outputFile = Paths.get(folder.root.absolutePath, "software", "aws", "toolkits", "telemetry", "TelemetryDefinitions.kt")
