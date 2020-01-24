@@ -26,11 +26,6 @@
             "description": "The reason for a metric or exception depending on context"
         },
         {
-            "name": "hasException",
-            "type": "boolean",
-            "description": "Determines if the operation had an exception or not"
-        },
-        {
             "name": "runtime",
             "type": "string",
             "allowedValues": [
@@ -54,9 +49,18 @@
             "name": "templateName",
             "type": "string",
             "description": "Generic name of a template"
+        },
+        {
+            "name": "debug",
+            "type": "boolean",
+            "description": "If the action was run in debug mode or not"
         }
     ],
     "metrics": [
+        {
+            "name": "aws_refreshExplorer",
+            "description": "Refresh the AWS explorer window"
+        },
         {
             "name": "lambda_delete",
             "description": "called when deleting lambdas remotely",
@@ -64,7 +68,7 @@
             "metadata": [{ "type": "duration" }, { "type": "result" }]
         },
         {
-            "name": "lambda_configurelocal",
+            "name": "lambda_configure",
             "description": "Called when opening the local configuration of a Lambda to edit",
             "metadata": [{ "type": "result" }]
         },
@@ -81,7 +85,7 @@
         {
             "name": "lambda_invokelocal",
             "description": "Called when invoking lambdas locally (with SAM in most toolkits)",
-            "metadata": [{ "type": "runtime" }, { "type": "result" }]
+            "metadata": [{ "type": "runtime" }, { "type": "result" }, { "type": "debug"}]
         },
         {
             "name": "cloudformation_delete",
@@ -91,7 +95,7 @@
         {
             "name": "sam_deploy",
             "description": "Called when deploying a sam application",
-            "metadata": [{ "type": "hasException" }, { "type": "version" }]
+            "metadata": [{ "type": "result" }, { "type": "version", "required": false }]
         },
         {
             "name": "sam_init",
