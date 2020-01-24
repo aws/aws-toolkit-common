@@ -58,8 +58,28 @@
     ],
     "metrics": [
         {
+            "name": "aws_createCredentials",
+            "description": "Create a new credentials file"
+        },
+        {
+            "name": "aws_help",
+            "description": "Open docs for the extension"
+        },
+        {
+            "name": "aws_helpQuickstart",
+            "description": "Open the quickstart guide"
+        },
+        {
+            "name": "aws_showExtensionSource",
+            "description": "Open the repo for the extension"
+        },
+        {
             "name": "aws_refreshExplorer",
             "description": "Refresh the AWS explorer window"
+        },
+        {
+            "name": "aws_reportPluginIssue",
+            "description": "Report an issue with the plugin"
         },
         {
             "name": "lambda_delete",
@@ -123,6 +143,14 @@
             "name": "schemas_search",
             "description": "Called when searching an EventBridge schema registry",
             "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "session_start",
+            "description": "Called when starting the plugin"
+        },
+        {
+            "name": "session_end",
+            "description": "Called when stopping the IDE on a best effort basis"
         }
     ]
 }
