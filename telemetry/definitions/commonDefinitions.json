@@ -85,7 +85,7 @@
         {
             "name": "lambda_invokelocal",
             "description": "Called when invoking lambdas locally (with SAM in most toolkits)",
-            "metadata": [{ "type": "runtime" }, { "type": "result" }, { "type": "debug"}]
+            "metadata": [{ "type": "runtime" }, { "type": "result" }, { "type": "debug" }]
         },
         {
             "name": "cloudformation_delete",
@@ -104,25 +104,25 @@
                 { "type": "result" },
                 { "type": "name", "required": false },
                 { "type": "runtime", "required": false },
-                { "type": "templateName", "required": false  },
-                { "type": "version", "required": false  },
+                { "type": "templateName", "required": false },
+                { "type": "version", "required": false },
                 { "type": "reason", "required": false }
             ]
         },
         {
             "name": "schemas_view",
             "description": "Called when selecting an EventBridge schema to view",
-            "metadata": [ { "type": "result" } ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "schemas_download",
             "description": "Called when downloading an EventBridge schema",
-            "metadata": [ { "type": "result" } ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "schemas_search",
             "description": "Called when searching an EventBridge schema registry",
-            "metadata": [ { "type": "result" } ]
+            "metadata": [{ "type": "result" }]
         }
     ]
 }

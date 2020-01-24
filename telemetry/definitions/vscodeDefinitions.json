@@ -22,6 +22,30 @@
             "name": "sam_detect",
             "description": "Called when detecting the location of the SAM CLI",
             "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "cdk_explorerDisabled",
+            "description": "Called when expanding the CDK explorer is disabled"
+        },
+        {
+            "name": "cdk_explorerEnabled",
+            "description": "Called when the CDK explorer is enabled"
+        },
+        {
+            "name": "cdk_appExpanded",
+            "description": "Called when the CDK explorer is expanded"
+        },
+        {
+            "name": "cdk_provideFeedback",
+            "description": "Called when providing feedback for CDK"
+        },
+        {
+            "name": "cdk_help",
+            "description": "Called when clicking on help for CDK"
+        },
+        {
+            "name": "cdk_refreshExplorer",
+            "description": "Called when refreshing the CDK explorer"
         }
     ]
 }
