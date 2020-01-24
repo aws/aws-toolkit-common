@@ -16,6 +16,11 @@
             "description": "A generic name metadata"
         },
         {
+            "name": "attempts",
+            "type": "int",
+            "description": "A generic number of attempts"
+        },
+        {
             "name": "version",
             "type": "string",
             "description": "A generic version metadata"
