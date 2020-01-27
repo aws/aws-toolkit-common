@@ -63,6 +63,11 @@
     ],
     "metrics": [
         {
+            "name": "aws_setCredentials",
+            "description": "Select a credentials profile",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "aws_createCredentials",
             "description": "Create a new credentials file"
         },
