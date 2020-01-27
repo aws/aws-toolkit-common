@@ -1,7 +1,7 @@
 {
     "metrics": [
         {
-            "name": "vscode_activeregions",
+            "name": "vscode_activeRegions",
             "description": "Record the number of active regions at startup and when regions are added/removed",
             "unit": "Count"
         },
