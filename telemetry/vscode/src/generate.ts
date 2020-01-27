@@ -5,11 +5,15 @@
 
 import { MetadataType, MetricMetadataType, MetricMetadata, Metric, MetricDefinitionRoot } from './parser'
 
-// converts snake_case to CamelCase. E.x. lambda_invoke => LambdaInvoke
+function toTitleCase(s: string): string {
+    return s.replace(s[0], s[0].toUpperCase())
+}
+
+// converts snake_case to PascalCase. E.x. lambda_invoke => LambdaInvoke
 function metricToTypeName(m: Metric): string {
     return m.name
         .split('_')
-        .map(item => item.replace(item[0], item[0].toUpperCase()))
+        .map(toTitleCase)
         .join('')
 }
 
@@ -31,7 +35,7 @@ function isNumberArray(a?: any[]): boolean {
 }
 
 function getArgsFromMetadata(m: MetricMetadataType): string {
-    let t = m.name
+    let t = toTitleCase(m.name)
     if ((m?.allowedValues?.length ?? 0) === 0) {
         switch (m.type) {
             case undefined:
@@ -73,7 +77,7 @@ export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
             values = (m.allowedValues as string[])!.map((item: string) => `'${item}'`).join(' | ')
         }
 
-        str += `export type ${m.name} = ${values}\n`
+        str += `export type ${toTitleCase(m.name)} = ${values}\n`
     })
 
     metrics.forEach((metric: Metric) => {
