@@ -12,6 +12,7 @@ plugins {
     `kotlin-dsl` version "1.1.3"
     kotlin("jvm") version "1.3.60"
     `maven-publish`
+    signing
 }
 
 buildscript {
@@ -26,13 +27,12 @@ buildscript {
     }
 }
 
-group = "software.aws.toolkits.telemetry.generator"
-version = "1.0-SNAPSHOT"
-
 repositories {
     mavenCentral()
     maven { setUrl("https://jitpack.io") }
 }
+
+group = "software.aws.toolkits.telemetry.generator"
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
@@ -88,8 +88,33 @@ publishing {
                         name.set("The Apache License, Version 2.0")
                         url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
                     }
+                    developers {
+                        developer {
+                            id.set("aws-toolkits")
+                            name.set("AWS Toolkits Team")
+                            email.set("aws-toolkits@amazon.com")
+                        }
+                    }
                 }
             }
         }
     }
+    repositories {
+        maven {
+            name = "sonatype"
+            url = if (!version.toString().endsWith("SNAPSHOT")) {
+                uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+            } else {
+                uri("https://oss.sonatype.org/content/repositories/snapshots/")
+            }
+            credentials {
+                username = project.findProperty("ossrhUsername") as? String
+                password = project.findProperty("ossrhPassword") as? String
+            }
+        }
+    }
+}
+
+signing {
+    sign(publishing.publications["maven"])
 }
