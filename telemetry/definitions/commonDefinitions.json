@@ -107,12 +107,12 @@
             "metadata": [{ "type": "runtime" }]
         },
         {
-            "name": "lambda_invokeremote",
+            "name": "lambda_invokeRemote",
             "description": "called when invoking lambdas remotely",
             "metadata": [{ "type": "runtime" }, { "type": "result" }]
         },
         {
-            "name": "lambda_invokelocal",
+            "name": "lambda_invokeLocal",
             "description": "Called when invoking lambdas locally (with SAM in most toolkits)",
             "metadata": [{ "type": "runtime", "required": false }, { "type": "result" }, { "type": "debug" }]
         },
