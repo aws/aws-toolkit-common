@@ -34,7 +34,6 @@
             "name": "runtime",
             "type": "string",
             "allowedValues": [
-                "unknown",
                 "dotnetcore2.1",
                 "nodejs12.x",
                 "nodejs10.x",
@@ -115,7 +114,7 @@
         {
             "name": "lambda_invokelocal",
             "description": "Called when invoking lambdas locally (with SAM in most toolkits)",
-            "metadata": [{ "type": "runtime" }, { "type": "result" }, { "type": "debug" }]
+            "metadata": [{ "type": "runtime", "required": false }, { "type": "result" }, { "type": "debug" }]
         },
         {
             "name": "cloudformation_delete",
