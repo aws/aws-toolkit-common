@@ -16,14 +16,19 @@
             "description": "A generic name metadata"
         },
         {
+            "name": "attempts",
+            "type": "int",
+            "description": "A generic number of attempts"
+        },
+        {
             "name": "version",
             "type": "string",
             "description": "A generic version metadata"
         },
         {
-            "name": "hasException",
-            "type": "boolean",
-            "description": "Determines if the operation had an exception or not"
+            "name": "reason",
+            "type": "string",
+            "description": "The reason for a metric or exception depending on context"
         },
         {
             "name": "runtime",
@@ -48,14 +53,53 @@
             "name": "templateName",
             "type": "string",
             "description": "Generic name of a template"
+        },
+        {
+            "name": "debug",
+            "type": "boolean",
+            "description": "If the action was run in debug mode or not"
         }
     ],
     "metrics": [
+        {
+            "name": "aws_setCredentials",
+            "description": "Select a credentials profile",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "aws_createCredentials",
+            "description": "Create a new credentials file"
+        },
+        {
+            "name": "aws_help",
+            "description": "Open docs for the extension"
+        },
+        {
+            "name": "aws_helpQuickstart",
+            "description": "Open the quickstart guide"
+        },
+        {
+            "name": "aws_showExtensionSource",
+            "description": "Open the repo for the extension"
+        },
+        {
+            "name": "aws_refreshExplorer",
+            "description": "Refresh the AWS explorer window"
+        },
+        {
+            "name": "aws_reportPluginIssue",
+            "description": "Report an issue with the plugin"
+        },
         {
             "name": "lambda_delete",
             "description": "called when deleting lambdas remotely",
             "unit": "None",
             "metadata": [{ "type": "duration" }, { "type": "result" }]
+        },
+        {
+            "name": "lambda_configure",
+            "description": "Called when opening the local configuration of a Lambda to edit",
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "lambda_create",
@@ -70,7 +114,7 @@
         {
             "name": "lambda_invokelocal",
             "description": "Called when invoking lambdas locally (with SAM in most toolkits)",
-            "metadata": [{ "type": "runtime" }, { "type": "result" }]
+            "metadata": [{ "type": "runtime", "required": false }, { "type": "result" }, { "type": "debug" }]
         },
         {
             "name": "cloudformation_delete",
@@ -80,32 +124,42 @@
         {
             "name": "sam_deploy",
             "description": "Called when deploying a sam application",
-            "metadata": [{ "type": "hasException" }, { "type": "version" }]
+            "metadata": [{ "type": "result" }, { "type": "version", "required": false }]
         },
         {
             "name": "sam_init",
             "description": "Called when initing a sam application",
             "metadata": [
-                { "type": "name" },
-                { "type": "runtime" },
-                { "type": "hasException" },
-                { "type": "templateName" },
-                { "type": "version" }
+                { "type": "result" },
+                { "type": "name", "required": false },
+                { "type": "runtime", "required": false },
+                { "type": "templateName", "required": false },
+                { "type": "version", "required": false },
+                { "type": "reason", "required": false }
             ]
         },
         {
             "name": "schemas_view",
             "description": "Called when selecting an EventBridge schema to view",
-            "metadata": [ { "type": "result" } ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "schemas_download",
             "description": "Called when downloading an EventBridge schema",
-            "metadata": [ { "type": "result" } ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "schemas_search",
-            "description": "Called when searching an EventBridge schema registry"
+            "description": "Called when searching an EventBridge schema registry",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "session_start",
+            "description": "Called when starting the plugin"
+        },
+        {
+            "name": "session_end",
+            "description": "Called when stopping the IDE on a best effort basis"
         }
     ]
 }
