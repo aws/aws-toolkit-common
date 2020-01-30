@@ -9,8 +9,8 @@ val assertjVersion = "3.12.0"
 
 plugins {
     java
-    `kotlin-dsl` version "1.1.3"
-    kotlin("jvm") version "1.3.60"
+    `kotlin-dsl`
+    kotlin("jvm") version "1.3.61"
     `maven-publish`
     signing
 }
@@ -116,5 +116,8 @@ publishing {
 }
 
 signing {
+    val signingKey: String? by project
+    val signingPassword: String? by project
+    useInMemoryPgpKeys(signingKey, signingPassword)
     sign(publishing.publications["maven"])
 }
