@@ -116,8 +116,9 @@ publishing {
 }
 
 signing {
-    val signingKey: String? by project
-    val signingPassword: String? by project
-    useInMemoryPgpKeys(signingKey, signingPassword)
-    sign(publishing.publications["maven"])
+    if (project.hasProperty("signing.keyId")
+        && project.hasProperty("signing.password")
+        && project.hasProperty("signing.secretKeyRingFile")) {
+        sign(publishing.publications["maven"])
+    }
 }
