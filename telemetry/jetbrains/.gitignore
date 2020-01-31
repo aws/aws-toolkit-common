@@ -2,4 +2,3 @@ src/main/resources/
 src/test/resources/commonDefinitions.json
 src/test/resources/jetbrainsDefinitions.json
 src/test/resources/telemetrySchema.json
-/gradle
