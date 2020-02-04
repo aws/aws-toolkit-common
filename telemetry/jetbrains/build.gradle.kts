@@ -15,6 +15,11 @@ plugins {
     signing
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
 buildscript {
     repositories {
         mavenCentral()
@@ -88,6 +93,9 @@ publishing {
         create<MavenPublication>("maven") {
             from(components["java"])
             pom {
+                name.set(project.name)
+                description.set("Telemetry generation for AWS Toolkit for JetBrains")
+                url.set("https://github.com/aws/aws-toolkit-common")
                 licenses {
                     license {
                         name.set("The Apache License, Version 2.0")
@@ -100,6 +108,11 @@ publishing {
                             email.set("aws-toolkits@amazon.com")
                         }
                     }
+                    scm {
+                        connection.set("scm:git:https://github.com/aws/aws-toolkit-common.git")
+                        developerConnection.set("scm:git:https://github.com/aws/aws-toolkit-common.git")
+                        url.set("https://github.com/aws/aws-toolkit-common")
+                    }
                 }
             }
         }
@@ -108,7 +121,7 @@ publishing {
         maven {
             name = "sonatype"
             url = if (!version.toString().endsWith("SNAPSHOT")) {
-                uri("https://aws.oss.sonatype.org/content/repositories/releases/")
+                uri("https://aws.oss.sonatype.org/service/local/staging/deploy/maven2/")
             } else {
                 uri("https://aws.oss.sonatype.org/content/repositories/snapshots/")
             }
