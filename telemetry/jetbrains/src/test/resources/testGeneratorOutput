@@ -31,9 +31,9 @@ object LambdaTelemetry {
      */
     fun recordCreate(
         project: Project?,
-        value: Double = 1.0,
         lambdaruntime: LambdaRuntime,
-        arbitrarystring: String
+        arbitrarystring: String,
+        value: Double = 1.0
     ) {
         TelemetryService.getInstance().record(project) {
             datum("lambda_create") {
@@ -49,9 +49,9 @@ object LambdaTelemetry {
      */
     fun recordDelete(
         project: Project?,
-        value: Double = 1.0,
         duration: Double,
-        booltype: Boolean
+        booltype: Boolean,
+        value: Double = 1.0
     ) {
         TelemetryService.getInstance().record(project) {
             datum("lambda_delete") {
@@ -67,9 +67,9 @@ object LambdaTelemetry {
      */
     fun recordRemoteinvoke(
         project: Project?,
-        value: Double = 1.0,
         lambdaruntime: LambdaRuntime,
-        inttype: Int
+        inttype: Int,
+        value: Double = 1.0
     ) {
         TelemetryService.getInstance().record(project) {
             datum("lambda_remoteinvoke") {

@@ -91,8 +91,8 @@ object TelemetryGenerator {
         } ?: listOf()
         functionBuilder
             .addParameter("project", projectParameter)
-            .addParameter(ParameterSpec.builder("value", valueParameter).defaultValue("1.0").build())
             .addParameters(additionalParameters)
+            .addParameter(ParameterSpec.builder("value", valueParameter).defaultValue("1.0").build())
     }
 
     private fun generateFunctionBody(functionBuilder: FunSpec.Builder, metric: Metric) {
