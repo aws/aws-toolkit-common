@@ -40,6 +40,9 @@ object TelemetryGenerator {
                     .addParameter("name", String::class)
                     .build()
             )
+            .addFunction(FunSpec.builder("toString").addModifiers(KModifier.OVERRIDE).returns(String::class).addStatement("return name").build())
+            .addKdoc(item.description)
+
         item.allowedValues!!.forEach { enumValue ->
             enum.addEnumConstant(
                 enumValue.toString().toUpperCase().filterInvalidCharacters(), TypeSpec.anonymousClassBuilder()
@@ -47,14 +50,17 @@ object TelemetryGenerator {
                     .build()
             )
         }
-        enum.addFunction(FunSpec.builder("toString").addModifiers(KModifier.OVERRIDE).returns(String::class).addStatement("return name").build())
-        enum.addFunction(
-            FunSpec.builder("from")
-                .returns(ClassName("", item.name.toTypeFormat()).copy(nullable = true))
-                .addParameter("type", Any::class)
-                .addStatement("return values().firstOrNull { it.name == type.toString() }").build()
-        )
-        enum.addKdoc(item.description)
+
+        val companion = TypeSpec.companionObjectBuilder()
+            .addFunction(
+                FunSpec.builder("from")
+                    .returns(ClassName("", item.name.toTypeFormat()).copy(nullable = true))
+                    .addParameter("type", Any::class)
+                    .addStatement("return values().firstOrNull { it.name == type.toString() }").build()
+            )
+            .build()
+
+        enum.addType(companion)
 
         output.addType(enum.build())
     }

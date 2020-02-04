@@ -22,7 +22,9 @@ enum class LambdaRuntime(
 
     override fun toString(): String = name
 
+    companion object {
     fun from(type: Any): LambdaRuntime? = values().firstOrNull { it.name == type.toString() }
+    }
 }
 
 object LambdaTelemetry {
