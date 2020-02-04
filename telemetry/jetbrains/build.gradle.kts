@@ -32,7 +32,7 @@ repositories {
     maven { setUrl("https://jitpack.io") }
 }
 
-group = "software.aws.toolkits.telemetry.generator"
+group = "software.aws.toolkits"
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
@@ -78,6 +78,11 @@ tasks {
     }
 }
 
+// maven can't handle this
+tasks.withType<GenerateModuleMetadata> {
+    enabled = false
+}
+
 publishing {
     publications {
         create<MavenPublication>("maven") {
@@ -103,9 +108,9 @@ publishing {
         maven {
             name = "sonatype"
             url = if (!version.toString().endsWith("SNAPSHOT")) {
-                uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+                uri("https://aws.oss.sonatype.org/service/local/staging/deploy/maven2/")
             } else {
-                uri("https://oss.sonatype.org/content/repositories/snapshots/")
+                uri("https://aws.oss.sonatype.org/content/repositories/snapshots/")
             }
             credentials {
                 username = project.findProperty("ossrhUsername") as? String

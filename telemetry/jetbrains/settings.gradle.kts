@@ -1,1 +1,1 @@
-rootProject.name = "aws-toolkit-telemetry"
+rootProject.name = "telemetry-generator"
