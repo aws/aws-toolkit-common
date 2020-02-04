@@ -67,7 +67,7 @@ object LambdaTelemetry {
      */
     fun recordRemoteinvoke(
         project: Project?,
-        lambdaruntime: LambdaRuntime,
+        lambdaruntime: LambdaRuntime?,
         inttype: Int,
         value: Double = 1.0
     ) {
@@ -75,7 +75,9 @@ object LambdaTelemetry {
             datum("lambda_remoteinvoke") {
                 unit(Unit.NONE)
                 value(value)
+                if(lambdaruntime != null) {
                 metadata("lambdaruntime", lambdaruntime.toString())
+                }
                 metadata("inttype", inttype.toString())
             }}
     }

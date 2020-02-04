@@ -86,7 +86,7 @@ object TelemetryGenerator {
                 ClassName(PACKAGE_NAME, telemetryMetricType.name.toTypeFormat())
             } else {
                 telemetryMetricType.type?.getTypeFromType() ?: com.squareup.kotlinpoet.STRING
-            }.copy(nullable = metadata.required ?: false)
+            }.copy(nullable = metadata.required == false)
             ParameterSpec(telemetryMetricType.name.toArgumentFormat(), typeName)
         } ?: listOf()
         functionBuilder
@@ -104,7 +104,13 @@ object TelemetryGenerator {
             .addStatement("unit(%M.${(metric.unit ?: MetricUnit.NONE).name})", metricUnit)
             .addStatement("value(value)")
         metric.metadata?.forEach {
+            if(it.required == false) {
+                functionBuilder.beginControlFlow("if(%L != null) {", it.type.toArgumentFormat())
+            }
             functionBuilder.addStatement("metadata(%S, %L.toString())", it.type.toArgumentFormat(), it.type.toArgumentFormat())
+            if(it.required == false) {
+                functionBuilder.endControlFlow()
+            }
         }
         functionBuilder.addStatement("}}")
         functionBuilder.addKdoc(metric.description)
