@@ -87,10 +87,15 @@ object TelemetryGenerator {
             } else {
                 telemetryMetricType.type?.getTypeFromType() ?: com.squareup.kotlinpoet.STRING
             }.copy(nullable = metadata.required == false)
-            ParameterSpec(telemetryMetricType.name.toArgumentFormat(), typeName)
+
+            val parameterSpec = ParameterSpec.builder(telemetryMetricType.name.toArgumentFormat(), typeName)
+            if (metadata.required == false) {
+                parameterSpec.defaultValue("null")
+            }
+            parameterSpec.build()
         } ?: listOf()
         functionBuilder
-            .addParameter("project", projectParameter)
+            .addParameter(ParameterSpec.builder("project", projectParameter).defaultValue("null").build())
             .addParameters(additionalParameters)
             .addParameter(ParameterSpec.builder("value", valueParameter).defaultValue("1.0").build())
     }
@@ -104,11 +109,11 @@ object TelemetryGenerator {
             .addStatement("unit(%M.${(metric.unit ?: MetricUnit.NONE).name})", metricUnit)
             .addStatement("value(value)")
         metric.metadata?.forEach {
-            if(it.required == false) {
+            if (it.required == false) {
                 functionBuilder.beginControlFlow("if(%L != null) {", it.type.toArgumentFormat())
             }
             functionBuilder.addStatement("metadata(%S, %L.toString())", it.type.toArgumentFormat(), it.type.toArgumentFormat())
-            if(it.required == false) {
+            if (it.required == false) {
                 functionBuilder.endControlFlow()
             }
         }

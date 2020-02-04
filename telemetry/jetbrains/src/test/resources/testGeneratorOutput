@@ -30,7 +30,7 @@ object LambdaTelemetry {
      * called when creating lambdas remotely
      */
     fun recordCreate(
-        project: Project?,
+        project: Project? = null,
         lambdaruntime: LambdaRuntime,
         arbitrarystring: String,
         value: Double = 1.0
@@ -48,7 +48,7 @@ object LambdaTelemetry {
      * called when deleting lambdas remotely
      */
     fun recordDelete(
-        project: Project?,
+        project: Project? = null,
         duration: Double,
         booltype: Boolean,
         value: Double = 1.0
@@ -66,8 +66,8 @@ object LambdaTelemetry {
      * called when invoking lambdas remotely
      */
     fun recordRemoteinvoke(
-        project: Project?,
-        lambdaruntime: LambdaRuntime?,
+        project: Project? = null,
+        lambdaruntime: LambdaRuntime? = null,
         inttype: Int,
         value: Double = 1.0
     ) {
@@ -87,7 +87,7 @@ object NoTelemetry {
     /**
      * called when invoking lambdas remotely
      */
-    fun recordMetadata(project: Project?, value: Double = 1.0) {
+    fun recordMetadata(project: Project? = null, value: Double = 1.0) {
         TelemetryService.getInstance().record(project) {
             datum("no_metadata") {
                 unit(Unit.NONE)
