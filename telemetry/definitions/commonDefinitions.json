@@ -60,7 +60,7 @@
             "description": "If the action was run in debug mode or not"
         },
         {
-            "name": "schemasLanguage",
+            "name": "schemaLanguage",
             "type": "string",
             "allowedValues": ["Java8", "Python36", "TypeScript3"],
             "description": "Languages targeted by the schemas service"
@@ -152,7 +152,7 @@
         {
             "name": "schemas_download",
             "description": "Called when downloading an EventBridge schema",
-            "metadata": [{ "type": "result" }, { "type": "schemasLanguage", "required": false }]
+            "metadata": [{ "type": "result" }, { "type": "schemaLanguage", "required": false }]
         },
         {
             "name": "schemas_search",
