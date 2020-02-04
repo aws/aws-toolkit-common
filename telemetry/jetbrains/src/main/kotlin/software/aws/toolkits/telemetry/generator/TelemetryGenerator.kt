@@ -49,10 +49,10 @@ object TelemetryGenerator {
         }
         enum.addFunction(FunSpec.builder("toString").addModifiers(KModifier.OVERRIDE).returns(String::class).addStatement("return name").build())
         enum.addFunction(
-            FunSpec.builder("from").returns(ClassName("", item.name.toTypeFormat())).addParameter(
-                "type",
-                Any::class
-            ).addStatement("return values().filter { it.name == type.toString() }.first()").build()
+            FunSpec.builder("from")
+                .returns(ClassName("", item.name.toTypeFormat()).copy(nullable = true))
+                .addParameter("type", Any::class)
+                .addStatement("return values().firstOrNull { it.name == type.toString() }").build()
         )
         enum.addKdoc(item.description)
 
