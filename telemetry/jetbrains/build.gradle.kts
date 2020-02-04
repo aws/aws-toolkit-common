@@ -108,7 +108,7 @@ publishing {
         maven {
             name = "sonatype"
             url = if (!version.toString().endsWith("SNAPSHOT")) {
-                uri("https://aws.oss.sonatype.org/content/repositories/releases/")
+                uri("https://aws.oss.sonatype.org/service/local/staging/deploy/maven2/")
             } else {
                 uri("https://aws.oss.sonatype.org/content/repositories/snapshots/")
             }
