@@ -7,7 +7,9 @@ import kotlin.Boolean
 import kotlin.Double
 import kotlin.Int
 import kotlin.String
+import org.slf4j.Logger
 import software.amazon.awssdk.services.toolkittelemetry.model.Unit
+import software.aws.toolkits.core.utils.getLogger
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
 /**
@@ -23,7 +25,15 @@ enum class LambdaRuntime(
     override fun toString(): String = name
 
     companion object {
-    fun from(type: Any): LambdaRuntime? = values().firstOrNull { it.name == type.toString() }
+        val LOG: Logger = getLogger<LambdaRuntime>()
+
+        fun from(type: Any): LambdaRuntime? {
+          val result = values().firstOrNull { it.name == type.toString() }
+          if(result == null) {
+              LOG.warn("Invalid property ${type.toString()} passed into LambdaRuntime"
+          }
+          return result
+        }
     }
 }
 
