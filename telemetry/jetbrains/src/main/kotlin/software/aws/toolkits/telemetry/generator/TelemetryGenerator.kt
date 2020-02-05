@@ -10,10 +10,7 @@ import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.ParameterSpec
-import com.squareup.kotlinpoet.PropertySpec
-import org.slf4j.Logger
 import com.squareup.kotlinpoet.TypeSpec
-import com.squareup.kotlinpoet.asTypeName
 import java.io.File
 
 object TelemetryGenerator {
@@ -30,7 +27,8 @@ object TelemetryGenerator {
     ) {
         val telemetry = TelemetryParser.parseFiles(inputFiles, defaultDefinitions)
         val output = FileSpec.builder(PACKAGE_NAME, "TelemetryDefinitions")
-        output.addImport("software.aws.toolkits.core.utils", "getLogger")
+        output.addComment("Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.\n")
+        output.addComment("SPDX-License-Identifier: Apache-2.0\n")
         output.addComment("THIS FILE IS GENERATED! DO NOT EDIT BY HAND!")
         telemetry.types?.let { generateTelemetryEnumTypes(output, it) }
         generateTelemetry(output, telemetry)
@@ -58,15 +56,11 @@ object TelemetryGenerator {
         val companion = TypeSpec.companionObjectBuilder()
             .addFunction(
                 FunSpec.builder("from")
-                    .returns(ClassName("", item.name.toTypeFormat()).copy(nullable = true))
-                    .addParameter("type", Any::class.asTypeName().copy(nullable = true))
-                    .addStatement("val result = values().firstOrNull { it.name == type.toString() }")
-                    .beginControlFlow("if(result == null)")
-                    .addStatement("LOG.warn(\"Invalid property \$type passed into %L\")", item.name.toTypeFormat())
-                    .endControlFlow()
-                    .addStatement("return result").build()
+                    .returns(ClassName("", item.name.toTypeFormat()))
+                    .addParameter("type", Any::class)
+                    .addStatement("return values().first { it.name == type.toString() }")
+                    .build()
             )
-            .addProperty(PropertySpec.builder("LOG", Logger::class).initializer("getLogger<%L>()", item.name.toTypeFormat()).build())
             .build()
 
         enum.addType(companion)

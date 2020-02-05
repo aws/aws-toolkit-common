@@ -1,3 +1,5 @@
+// Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
 // THIS FILE IS GENERATED! DO NOT EDIT BY HAND!
 package software.aws.toolkits.telemetry
 
@@ -7,9 +9,7 @@ import kotlin.Boolean
 import kotlin.Double
 import kotlin.Int
 import kotlin.String
-import org.slf4j.Logger
 import software.amazon.awssdk.services.toolkittelemetry.model.Unit
-import software.aws.toolkits.core.utils.getLogger
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
 /**
@@ -25,15 +25,7 @@ enum class LambdaRuntime(
     override fun toString(): String = name
 
     companion object {
-        val LOG: Logger = getLogger<LambdaRuntime>()
-
-        fun from(type: Any?): LambdaRuntime? {
-          val result = values().firstOrNull { it.name == type.toString() }
-          if(result == null) {
-              LOG.warn("Invalid property $type passed into LambdaRuntime")
-          }
-          return result
-        }
+        fun from(type: Any): LambdaRuntime = values().first { it.name == type.toString() }
     }
 }
 
