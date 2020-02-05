@@ -27,6 +27,8 @@ object TelemetryGenerator {
     ) {
         val telemetry = TelemetryParser.parseFiles(inputFiles, defaultDefinitions)
         val output = FileSpec.builder(PACKAGE_NAME, "TelemetryDefinitions")
+        output.addComment("Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.\n")
+        output.addComment("SPDX-License-Identifier: Apache-2.0\n")
         output.addComment("THIS FILE IS GENERATED! DO NOT EDIT BY HAND!")
         telemetry.types?.let { generateTelemetryEnumTypes(output, it) }
         generateTelemetry(output, telemetry)
@@ -40,6 +42,9 @@ object TelemetryGenerator {
                     .addParameter("name", String::class)
                     .build()
             )
+            .addFunction(FunSpec.builder("toString").addModifiers(KModifier.OVERRIDE).returns(String::class).addStatement("return name").build())
+            .addKdoc(item.description)
+
         item.allowedValues!!.forEach { enumValue ->
             enum.addEnumConstant(
                 enumValue.toString().toUpperCase().filterInvalidCharacters(), TypeSpec.anonymousClassBuilder()
@@ -47,14 +52,18 @@ object TelemetryGenerator {
                     .build()
             )
         }
-        enum.addFunction(FunSpec.builder("toString").addModifiers(KModifier.OVERRIDE).returns(String::class).addStatement("return name").build())
-        enum.addFunction(
-            FunSpec.builder("from")
-                .returns(ClassName("", item.name.toTypeFormat()).copy(nullable = true))
-                .addParameter("type", Any::class)
-                .addStatement("return values().firstOrNull { it.name == type.toString() }").build()
-        )
-        enum.addKdoc(item.description)
+
+        val companion = TypeSpec.companionObjectBuilder()
+            .addFunction(
+                FunSpec.builder("from")
+                    .returns(ClassName("", item.name.toTypeFormat()))
+                    .addParameter("type", Any::class)
+                    .addStatement("return values().first { it.name == type.toString() }")
+                    .build()
+            )
+            .build()
+
+        enum.addType(companion)
 
         output.addType(enum.build())
     }
@@ -86,11 +95,16 @@ object TelemetryGenerator {
                 ClassName(PACKAGE_NAME, telemetryMetricType.name.toTypeFormat())
             } else {
                 telemetryMetricType.type?.getTypeFromType() ?: com.squareup.kotlinpoet.STRING
-            }.copy(nullable = metadata.required ?: false)
-            ParameterSpec(telemetryMetricType.name.toArgumentFormat(), typeName)
+            }.copy(nullable = metadata.required == false)
+
+            val parameterSpec = ParameterSpec.builder(telemetryMetricType.name.toArgumentFormat(), typeName)
+            if (metadata.required == false) {
+                parameterSpec.defaultValue("null")
+            }
+            parameterSpec.build()
         } ?: listOf()
         functionBuilder
-            .addParameter("project", projectParameter)
+            .addParameter(ParameterSpec.builder("project", projectParameter).defaultValue("null").build())
             .addParameters(additionalParameters)
             .addParameter(ParameterSpec.builder("value", valueParameter).defaultValue("1.0").build())
     }
@@ -104,7 +118,13 @@ object TelemetryGenerator {
             .addStatement("unit(%M.${(metric.unit ?: MetricUnit.NONE).name})", metricUnit)
             .addStatement("value(value)")
         metric.metadata?.forEach {
+            if (it.required == false) {
+                functionBuilder.beginControlFlow("if(%L != null) {", it.type.toArgumentFormat())
+            }
             functionBuilder.addStatement("metadata(%S, %L.toString())", it.type.toArgumentFormat(), it.type.toArgumentFormat())
+            if (it.required == false) {
+                functionBuilder.endControlFlow()
+            }
         }
         functionBuilder.addStatement("}}")
         functionBuilder.addKdoc(metric.description)

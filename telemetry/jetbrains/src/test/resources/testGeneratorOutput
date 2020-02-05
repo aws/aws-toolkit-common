@@ -1,3 +1,5 @@
+// Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
 // THIS FILE IS GENERATED! DO NOT EDIT BY HAND!
 package software.aws.toolkits.telemetry
 
@@ -22,7 +24,9 @@ enum class LambdaRuntime(
 
     override fun toString(): String = name
 
-    fun from(type: Any): LambdaRuntime? = values().firstOrNull { it.name == type.toString() }
+    companion object {
+        fun from(type: Any): LambdaRuntime = values().first { it.name == type.toString() }
+    }
 }
 
 object LambdaTelemetry {
@@ -30,7 +34,7 @@ object LambdaTelemetry {
      * called when creating lambdas remotely
      */
     fun recordCreate(
-        project: Project?,
+        project: Project? = null,
         lambdaruntime: LambdaRuntime,
         arbitrarystring: String,
         value: Double = 1.0
@@ -48,7 +52,7 @@ object LambdaTelemetry {
      * called when deleting lambdas remotely
      */
     fun recordDelete(
-        project: Project?,
+        project: Project? = null,
         duration: Double,
         booltype: Boolean,
         value: Double = 1.0
@@ -66,8 +70,8 @@ object LambdaTelemetry {
      * called when invoking lambdas remotely
      */
     fun recordRemoteinvoke(
-        project: Project?,
-        lambdaruntime: LambdaRuntime,
+        project: Project? = null,
+        lambdaruntime: LambdaRuntime? = null,
         inttype: Int,
         value: Double = 1.0
     ) {
@@ -75,7 +79,9 @@ object LambdaTelemetry {
             datum("lambda_remoteinvoke") {
                 unit(Unit.NONE)
                 value(value)
+                if(lambdaruntime != null) {
                 metadata("lambdaruntime", lambdaruntime.toString())
+                }
                 metadata("inttype", inttype.toString())
             }}
     }
@@ -85,7 +91,7 @@ object NoTelemetry {
     /**
      * called when invoking lambdas remotely
      */
-    fun recordMetadata(project: Project?, value: Double = 1.0) {
+    fun recordMetadata(project: Project? = null, value: Double = 1.0) {
         TelemetryService.getInstance().record(project) {
             datum("no_metadata") {
                 unit(Unit.NONE)

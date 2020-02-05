@@ -38,4 +38,11 @@ class GeneratorTest() {
             it.bufferedReader().readText()
         })
     }
+
+    @Test
+    fun generateGeneratesWithDefaultDefinitions() {
+        TelemetryGenerator.generateTelemetryFromFiles(inputFiles = listOf(), outputFolder = folder.root)
+        val outputFile = Paths.get(folder.root.absolutePath, "software", "aws", "toolkits", "telemetry", "TelemetryDefinitions.kt")
+        assertThat(Files.exists(outputFile)).isTrue
+    }
 }
