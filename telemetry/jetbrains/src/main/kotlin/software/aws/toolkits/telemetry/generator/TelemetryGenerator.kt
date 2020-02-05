@@ -10,6 +10,7 @@ import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.ParameterSpec
+import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import java.io.File
 
@@ -39,10 +40,11 @@ object TelemetryGenerator {
         val enum = TypeSpec.enumBuilder(item.name.toTypeFormat())
             .primaryConstructor(
                 FunSpec.constructorBuilder()
-                    .addParameter("name", String::class)
+                    .addParameter("value", String::class)
                     .build()
             )
-            .addFunction(FunSpec.builder("toString").addModifiers(KModifier.OVERRIDE).returns(String::class).addStatement("return name").build())
+            .addProperty(PropertySpec.builder("value", String::class).initializer("value").build())
+            .addFunction(FunSpec.builder("toString").addModifiers(KModifier.OVERRIDE).returns(String::class).addStatement("return value").build())
             .addKdoc(item.description)
 
         item.allowedValues!!.forEach { enumValue ->
@@ -58,7 +60,7 @@ object TelemetryGenerator {
                 FunSpec.builder("from")
                     .returns(ClassName("", item.name.toTypeFormat()))
                     .addParameter("type", Any::class)
-                    .addStatement("return values().first { it.name == type.toString() }")
+                    .addStatement("return values().first { it.value == type.toString() }")
                     .build()
             )
             .build()
