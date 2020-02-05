@@ -27,7 +27,7 @@ enum class LambdaRuntime(
     companion object {
         val LOG: Logger = getLogger<LambdaRuntime>()
 
-        fun from(type: Any): LambdaRuntime? {
+        fun from(type: Any?): LambdaRuntime? {
           val result = values().firstOrNull { it.name == type.toString() }
           if(result == null) {
               LOG.warn("Invalid property $type passed into LambdaRuntime")

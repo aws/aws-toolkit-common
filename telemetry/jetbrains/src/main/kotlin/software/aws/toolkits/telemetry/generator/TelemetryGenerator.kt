@@ -13,6 +13,7 @@ import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.PropertySpec
 import org.slf4j.Logger
 import com.squareup.kotlinpoet.TypeSpec
+import com.squareup.kotlinpoet.asTypeName
 import java.io.File
 
 object TelemetryGenerator {
@@ -58,7 +59,7 @@ object TelemetryGenerator {
             .addFunction(
                 FunSpec.builder("from")
                     .returns(ClassName("", item.name.toTypeFormat()).copy(nullable = true))
-                    .addParameter("type", Any::class)
+                    .addParameter("type", Any::class.asTypeName().copy(nullable = true))
                     .addStatement("val result = values().firstOrNull { it.name == type.toString() }")
                     .beginControlFlow("if(result == null)")
                     .addStatement("LOG.warn(\"Invalid property \$type passed into %L\")", item.name.toTypeFormat())
