@@ -11,7 +11,7 @@ import org.junit.rules.TemporaryFolder
 import java.nio.file.Files
 import java.nio.file.Paths
 
-class GeneratorTest() {
+class GeneratorTest {
     @JvmField
     @Rule
     val folder = TemporaryFolder()

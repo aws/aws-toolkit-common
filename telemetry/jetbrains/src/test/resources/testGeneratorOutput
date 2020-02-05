@@ -16,16 +16,16 @@ import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
  * The lambda runtime
  */
 enum class LambdaRuntime(
-    name: String
+    val value: String
 ) {
     DOTNETCORE21("dotnetcore2.1"),
 
     NODEJS12X("nodejs12.x");
 
-    override fun toString(): String = name
+    override fun toString(): String = value
 
     companion object {
-        fun from(type: Any): LambdaRuntime = values().first { it.name == type.toString() }
+        fun from(type: Any): LambdaRuntime = values().first { it.value == type.toString() }
     }
 }
 
