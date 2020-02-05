@@ -30,7 +30,7 @@ enum class LambdaRuntime(
         fun from(type: Any): LambdaRuntime? {
           val result = values().firstOrNull { it.name == type.toString() }
           if(result == null) {
-              LOG.warn("Invalid property ${type.toString()} passed into LambdaRuntime"
+              LOG.warn("Invalid property $type passed into LambdaRuntime")
           }
           return result
         }

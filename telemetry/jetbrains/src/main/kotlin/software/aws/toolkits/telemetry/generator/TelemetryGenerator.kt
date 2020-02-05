@@ -61,7 +61,7 @@ object TelemetryGenerator {
                     .addParameter("type", Any::class)
                     .addStatement("val result = values().firstOrNull { it.name == type.toString() }")
                     .beginControlFlow("if(result == null)")
-                    .addStatement("LOG.warn(\"Invalid property \${type.toString()} passed into %L\"", item.name.toTypeFormat())
+                    .addStatement("LOG.warn(\"Invalid property \$type passed into %L\")", item.name.toTypeFormat())
                     .endControlFlow()
                     .addStatement("return result").build()
             )
