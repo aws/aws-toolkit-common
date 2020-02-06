@@ -166,6 +166,16 @@
         {
             "name": "session_end",
             "description": "Called when stopping the IDE on a best effort basis"
+        },
+        {
+            "name": "s3_createBucket",
+            "description": "Create a S3 bucket",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_openEditor",
+            "description": "Create a S3 bucket",
+            "metadata": [{ "type": "result" }]
         }
     ]
 }
