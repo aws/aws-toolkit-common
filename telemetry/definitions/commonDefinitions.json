@@ -173,8 +173,18 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "s3_deleteBucket",
+            "description": "Delete a S3 bucket",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_deleteObject",
+            "description": "Delete a single S3 object",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "s3_openEditor",
-            "description": "Create a S3 bucket",
+            "description": "Open a view of a S3 bucket",
             "metadata": [{ "type": "result" }]
         }
     ]
