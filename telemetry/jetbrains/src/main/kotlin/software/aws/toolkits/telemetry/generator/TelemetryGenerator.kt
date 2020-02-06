@@ -140,7 +140,7 @@ object TelemetryGenerator {
 
     private fun generateRecordFunction(metric: Metric, types: List<TelemetryMetricType>, namespace: TypeSpec.Builder) {
         // metric.name.split("_")[1] is guaranteed to exist at this point because the schema requires the metric name to have at least 1 underscore
-        val functionBuilder = FunSpec.builder("record${metric.name.split("_")[1].toTypeFormat()}")
+        val functionBuilder = FunSpec.builder(metric.name.split("_")[1].toTypeFormat())
         generateFunctionParameters(functionBuilder, metric, types)
         generateFunctionBody(functionBuilder, metric)
         namespace.addFunction(functionBuilder.build())
