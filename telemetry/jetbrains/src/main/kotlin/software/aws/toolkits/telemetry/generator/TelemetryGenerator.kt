@@ -28,12 +28,18 @@ object TelemetryGenerator {
     ) {
         val telemetry = TelemetryParser.parseFiles(inputFiles, defaultDefinitions)
         val output = FileSpec.builder(PACKAGE_NAME, "TelemetryDefinitions")
+        generateHeader(output)
+        telemetry.types?.let { generateTelemetryEnumTypes(output, it) }
+        generateTelemetry(output, telemetry)
+        // make sure the output directory exists before writing to it
+        outputFolder.mkdirs()
+        output.build().writeTo(outputFolder)
+    }
+
+    private fun generateHeader(output: FileSpec.Builder) {
         output.addComment("Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.\n")
         output.addComment("SPDX-License-Identifier: Apache-2.0\n")
         output.addComment("THIS FILE IS GENERATED! DO NOT EDIT BY HAND!")
-        telemetry.types?.let { generateTelemetryEnumTypes(output, it) }
-        generateTelemetry(output, telemetry)
-        output.build().writeTo(outputFolder)
     }
 
     private fun generateTelemetryEnumType(output: FileSpec.Builder, item: TelemetryMetricType) {
