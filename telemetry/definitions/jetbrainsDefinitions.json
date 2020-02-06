@@ -1,10 +1,46 @@
 {
+    "types": [
+        {
+            "name": "cloudDebugPlatform",
+            "type": "string",
+            "description": "Platforms for cloud debugging",
+            "allowedValues": [
+                "JVM",
+                "PYTHON",
+                "NODE",
+                "DOTNET"
+            ]
+        }
+    ],
     "metrics": [
+        {
+            "name": "clouddebug_attachDebugger",
+            "description": "Confirm the resource that will be debugged is not a production resource",
+            "unit": "Milliseconds",
+            "metadata": [{ "type": "result" }, { "type": "workflowToken" }, { "type":  "cloudDebugPlatform"}]
+        },
+        {
+            "name": "clouddebug_confirmNotProduction",
+            "description": "Confirm the resource that will be debugged is not a production resource",
+            "metadata": [{ "type": "result" }]
+        },
         {
             "name": "clouddebug_shell",
             "description": "Open the shell on a remote resource",
             "unit": "Milliseconds",
-            "metadata": [{ "type": "version" }, { "type": "result" }]
+            "metadata": [{ "type": "result" }, { "type": "version", "required": false }]
+        },
+        {
+            "name": "clouddebug_install",
+            "description": "Install the cloud debug CLI",
+            "unit": "Milliseconds",
+            "metadata": [{ "type": "result" }, { "type": "version", "required": false }, { "type": "oldVersion", "required": false }]
+        },
+        {
+            "name": "clouddebug_retrieveRole",
+            "description": "Install the cloud debug CLI",
+            "unit": "Milliseconds",
+            "metadata": [{ "type": "result" }, { "type": "workflowToken" }]
         }
     ]
 }

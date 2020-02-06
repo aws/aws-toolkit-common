@@ -60,6 +60,11 @@
             "description": "If the action was run in debug mode or not"
         },
         {
+            "name": "oldVersion",
+            "type": "string",
+            "description": "The old version of something. Useful when updating dependent resources."
+        },
+        {
             "name": "update",
             "type": "boolean",
             "description": "If the operation was an update or not"
@@ -69,6 +74,11 @@
             "type": "string",
             "allowedValues": ["Java8", "Python36", "TypeScript3"],
             "description": "Languages targeted by the schemas service"
+        },
+        {
+            "name": "workflowToken",
+            "type": "string",
+            "description": "A token used for flow metrics to link calls together"
         }
     ],
     "metrics": [
