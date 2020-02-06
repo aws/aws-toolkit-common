@@ -60,6 +60,7 @@ data class Metric(
 )
 
 data class TelemetryDefinition(
+    // Types is optional in the schema, but we work with listOf()'s in the code to avoid hitting nullability issues
     val types: List<TelemetryMetricType>?,
     val metrics: List<Metric>
 )
@@ -86,7 +87,7 @@ object TelemetryParser {
         try {
             schema.validate(JSONObject(fileContents))
         } catch (e: Exception) {
-            System.err.println("Schema validation failed due to thrown exception $e")
+            System.err.println("Schema validation failed due to thrown exception $e\n on input: $fileContents")
             throw e
         }
     }

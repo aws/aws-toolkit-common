@@ -30,7 +30,7 @@ object TelemetryGenerator {
         val output = FileSpec.builder(PACKAGE_NAME, "TelemetryDefinitions")
         generateHeader(output)
         telemetry.types?.let { generateTelemetryEnumTypes(output, it) }
-        generateTelemetry(output, telemetry)
+        generateTelemetryObjects(output, telemetry)
         // make sure the output directory exists before writing to it
         outputFolder.mkdirs()
         output.build().writeTo(outputFolder)
@@ -86,7 +86,7 @@ object TelemetryGenerator {
         }
     }
 
-    private fun generateTelemetry(output: FileSpec.Builder, item: TelemetryDefinition) =
+    private fun generateTelemetryObjects(output: FileSpec.Builder, item: TelemetryDefinition) =
         item
             .metrics
             .sortedBy { it.name }
