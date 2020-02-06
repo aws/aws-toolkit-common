@@ -31,6 +31,11 @@
             "description": "The reason for a metric or exception depending on context"
         },
         {
+            "name": "eventbridgeschema",
+            "type": "string",
+            "description": "The name of the EventBridge Schema used in the operation"
+        },
+        {
             "name": "runtime",
             "type": "string",
             "allowedValues": [
@@ -171,7 +176,8 @@
                 { "type": "runtime", "required": false },
                 { "type": "templateName", "required": false },
                 { "type": "version", "required": false },
-                { "type": "reason", "required": false }
+                { "type": "reason", "required": false },
+                { "type": "eventbridgeschema", "required": false }
             ]
         },
         {
