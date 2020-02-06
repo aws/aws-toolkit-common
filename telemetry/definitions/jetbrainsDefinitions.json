@@ -1,3 +1,10 @@
 {
-    "metrics": []
+    "metrics": [
+        {
+            "name": "clouddebug_shell",
+            "description": "Open the shell on a remote resource",
+            "unit": "Milliseconds",
+            "metadata": [{ "type": "version" }, { "type": "result" }]
+        }
+    ]
 }
