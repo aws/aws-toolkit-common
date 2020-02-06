@@ -27,7 +27,7 @@ class GeneratorTest {
     fun generateGenerates() {
         TelemetryGenerator.generateTelemetryFromFiles(
             inputFiles = listOf(),
-            defaultDefinitions = listOf(this.javaClass.getResourceAsStream("/testGeneratorInput.json").use { it.bufferedReader().readText() }),
+            defaultDefinitions = listOf(this.javaClass.getResourceAsStream("/testGeneratorInput").use { it.bufferedReader().readText() }),
             outputFolder = folder.root
         )
 

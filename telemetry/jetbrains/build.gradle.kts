@@ -62,22 +62,27 @@ tasks {
         description = "Validates that the packaged definition is compatable with the packaged schema"
         doFirst {
             try {
-                val rawSchema = JSONObject(org.json.JSONTokener(File("src/main/resources/telemetrySchema.json").readText()))
+                val telemetrySchema = File("src/main/resources/telemetrySchema.json")
+                val rawSchema = JSONObject(org.json.JSONTokener(telemetrySchema.readText()))
                 val schema: Schema = SchemaLoader.load(rawSchema)
-                schema.validate(JSONObject(File("src/main/resources/commonDefinitions.json").readText()))
-                schema.validate(JSONObject(File("src/main/resources/jetbrainsDefinitions.json").readText()))
+                File("src/main/resources/").listFiles().forEach {
+                    if(it.path == telemetrySchema.path) {
+                        return@forEach
+                    }
+                    schema.validate(JSONObject(it.readText()))
+                }
             } catch (e: Exception) {
                 println("Exception while validating packaged schema, ${e.printStackTrace()}")
             }
         }
     }
     task(name = "copyTelemetryResources", type = Copy::class) {
-        from("../telemetrySchema.json", "../definitions/commonDefinitions.json", "../definitions/jetbrainsDefinitions.json")
+        from("../definitions", "../telemetrySchema.json")
         include("*.json")
         into("src/main/resources")
     }
     task(name = "copyTestTelemetryResources", type = Copy::class) {
-        from("../telemetrySchema.json", "../definitions/commonDefinitions.json", "../definitions/jetbrainsDefinitions.json")
+        from("../definitions", "../telemetrySchema.json")
         include("*.json")
         into("src/test/resources")
     }

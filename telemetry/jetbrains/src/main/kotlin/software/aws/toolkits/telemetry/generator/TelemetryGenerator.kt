@@ -24,7 +24,7 @@ object TelemetryGenerator {
 
     fun generateTelemetryFromFiles(
         inputFiles: List<File>,
-        defaultDefinitions: List<String> = listOf(ResourceLoader.DEFINITONS_FILE, ResourceLoader.JETBRAINS_DEFINITONS_FILE),
+        defaultDefinitions: List<String> = ResourceLoader.DEFINITONS_FILES,
         outputFolder: File
     ) {
         val telemetry = TelemetryParser.parseFiles(inputFiles, defaultDefinitions)
@@ -114,8 +114,8 @@ object TelemetryGenerator {
         functionBuilder
             .addParameter(ParameterSpec.builder("project", projectParameter).defaultValue("null").build())
             .addParameters(additionalParameters)
-            .addParameter(ParameterSpec.builder("value",  DOUBLE).defaultValue("1.0").build())
-            .addParameter(ParameterSpec.builder("createTime",  Instant::class).defaultValue("Instant.now()").build())
+            .addParameter(ParameterSpec.builder("value", DOUBLE).defaultValue("1.0").build())
+            .addParameter(ParameterSpec.builder("createTime", Instant::class).defaultValue("Instant.now()").build())
     }
 
     private fun generateFunctionBody(functionBuilder: FunSpec.Builder, metric: Metric) {

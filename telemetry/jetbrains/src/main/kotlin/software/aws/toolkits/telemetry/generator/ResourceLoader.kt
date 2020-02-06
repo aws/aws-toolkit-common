@@ -3,12 +3,19 @@
 
 package software.aws.toolkits.telemetry.generator
 
+import java.io.File
+
 object ResourceLoader {
     private val schemaPath = "/telemetrySchema.json"
-    private val definitionsPath = "/commonDefinitions.json"
-    private val jetbrainsDefinitionsPath = "/jetbrainsDefinitions.json"
 
     val SCHEMA_FILE = this.javaClass.getResourceAsStream(schemaPath).use { it.bufferedReader().readText() }
-    val DEFINITONS_FILE = this.javaClass.getResourceAsStream(definitionsPath).use { it.bufferedReader().readText() }
-    val JETBRAINS_DEFINITONS_FILE = this.javaClass.getResourceAsStream(jetbrainsDefinitionsPath).use { it.bufferedReader().readText() }
+    val DEFINITONS_FILES =
+        File(this.javaClass.getResource("/").toURI()).listFiles()?.mapNotNull {
+            // Skip the schema file
+            if (it.path == schemaPath || it.extension != "json") {
+                null
+            } else {
+                it.bufferedReader().readText()
+            }
+        } ?: listOf()
 }
