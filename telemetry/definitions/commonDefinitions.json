@@ -183,6 +183,28 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "s3_downloadObject",
+            "description": "Download a single S3 object",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_downloadObjects",
+            "description": "Download multiple S3 objects",
+            "unit": "Count",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_uploadObject",
+            "description": "Upload a single S3 object",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_uploadObjects",
+            "description": "Upload multiple S3 objects",
+            "unit": "Count",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "s3_openEditor",
             "description": "Open a view of a S3 bucket",
             "metadata": [{ "type": "result" }]
