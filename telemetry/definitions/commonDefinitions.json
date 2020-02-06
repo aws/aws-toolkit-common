@@ -60,6 +60,11 @@
             "description": "If the action was run in debug mode or not"
         },
         {
+            "name": "update",
+            "type": "boolean",
+            "description": "If the operation was an update or not"
+        },
+        {
             "name": "schemaLanguage",
             "type": "string",
             "allowedValues": ["Java8", "Python36", "TypeScript3"],
@@ -111,6 +116,11 @@
             "name": "lambda_create",
             "description": "called when creating lambdas remotely",
             "metadata": [{ "type": "runtime" }]
+        },
+        {
+            "name": "lambda_editFunction",
+            "description": "called when creating lambdas remotely",
+            "metadata": [{ "type": "update", "required": false }, { "type": "result" }]
         },
         {
             "name": "lambda_invokeRemote",
@@ -168,6 +178,14 @@
             "description": "Called when stopping the IDE on a best effort basis"
         },
         {
+            "name": "s3_copyBucketName",
+            "description": "Copy the bucket name to the clipboard"
+        },
+        {
+            "name": "s3_copyPath",
+            "description": "Copy the path of a S3 object to the clipboard"
+        },
+        {
             "name": "s3_createBucket",
             "description": "Create a S3 bucket",
             "metadata": [{ "type": "result" }]
@@ -196,6 +214,11 @@
         {
             "name": "s3_uploadObject",
             "description": "Upload a single S3 object",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_renameObject",
+            "description": "Rename a single S3 object",
             "metadata": [{ "type": "result" }]
         },
         {
