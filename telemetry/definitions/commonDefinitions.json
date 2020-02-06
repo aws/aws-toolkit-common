@@ -78,8 +78,18 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "aws_openCredentials",
+            "description": "Open the credentials file",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "aws_createCredentials",
             "description": "Create a new credentials file"
+        },
+        {
+            "name": "aws_validateCredentials",
+            "description": "Validate set credentials",
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "aws_help",

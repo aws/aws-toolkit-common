@@ -13,6 +13,7 @@ import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import java.io.File
+import java.time.Instant
 
 object TelemetryGenerator {
     private const val PACKAGE_NAME = "software.aws.toolkits.telemetry"
@@ -95,7 +96,6 @@ object TelemetryGenerator {
 
     private fun generateFunctionParameters(functionBuilder: FunSpec.Builder, metric: Metric, types: List<TelemetryMetricType>) {
         val projectParameter = ClassName("com.intellij.openapi.project", "Project").copy(nullable = true)
-        val valueParameter = DOUBLE
         val additionalParameters = metric.metadata?.map { metadata ->
             val telemetryMetricType = types.find { it.name == metadata.type }
                 ?: throw IllegalStateException("Type ${metadata.type} on ${metric.name} not found in types!")
@@ -114,7 +114,8 @@ object TelemetryGenerator {
         functionBuilder
             .addParameter(ParameterSpec.builder("project", projectParameter).defaultValue("null").build())
             .addParameters(additionalParameters)
-            .addParameter(ParameterSpec.builder("value", valueParameter).defaultValue("1.0").build())
+            .addParameter(ParameterSpec.builder("value",  DOUBLE).defaultValue("1.0").build())
+            .addParameter(ParameterSpec.builder("createTime",  Instant::class).defaultValue("Instant.now()").build())
     }
 
     private fun generateFunctionBody(functionBuilder: FunSpec.Builder, metric: Metric) {
@@ -123,6 +124,7 @@ object TelemetryGenerator {
         functionBuilder
             .addStatement("%M.getInstance().record(project) { ", telemetryClient)
             .addStatement("datum(%S) {", metric.name)
+            .addStatement("createTime(createTime)")
             .addStatement("unit(%M.${(metric.unit ?: MetricUnit.NONE).name})", metricUnit)
             .addStatement("value(value)")
         metric.metadata?.forEach {
