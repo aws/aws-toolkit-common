@@ -31,7 +31,7 @@
             "description": "The reason for a metric or exception depending on context"
         },
         {
-            "name": "eventbridgeschema",
+            "name": "eventBridgeSchema",
             "type": "string",
             "description": "The name of the EventBridge Schema used in the operation"
         },
@@ -103,7 +103,7 @@
         },
         {
             "name": "aws_validateCredentials",
-            "description": "Validate set credentials",
+            "description": "Validate credentials when selecting new credentials",
             "metadata": [{ "type": "result" }]
         },
         {
@@ -139,17 +139,17 @@
         },
         {
             "name": "lambda_create",
-            "description": "called when creating lambdas remotely",
+            "description": "Called when creating lambdas remotely",
             "metadata": [{ "type": "runtime" }]
         },
         {
             "name": "lambda_editFunction",
-            "description": "called when creating lambdas remotely",
+            "description": "Called when creating lambdas remotely",
             "metadata": [{ "type": "update", "required": false }, { "type": "result" }]
         },
         {
             "name": "lambda_invokeRemote",
-            "description": "called when invoking lambdas remotely",
+            "description": "Called when invoking lambdas remotely",
             "metadata": [{ "type": "runtime" }, { "type": "result" }]
         },
         {
@@ -177,7 +177,7 @@
                 { "type": "templateName", "required": false },
                 { "type": "version", "required": false },
                 { "type": "reason", "required": false },
-                { "type": "eventbridgeschema", "required": false }
+                { "type": "eventBridgeSchema", "required": false }
             ]
         },
         {
