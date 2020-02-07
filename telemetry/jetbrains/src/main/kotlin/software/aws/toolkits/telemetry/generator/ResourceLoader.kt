@@ -9,13 +9,8 @@ object ResourceLoader {
     private val schemaPath = "/telemetrySchema.json"
 
     val SCHEMA_FILE = this.javaClass.getResourceAsStream(schemaPath).use { it.bufferedReader().readText() }
-    val DEFINITONS_FILES =
-        File(this.javaClass.getResource("/").toURI()).listFiles()?.mapNotNull {
-            // Skip the schema file
-            if (it.path == schemaPath || it.extension != "json") {
-                null
-            } else {
-                it.bufferedReader().readText()
-            }
-        } ?: listOf()
+    val DEFINITONS_FILES = File(this.javaClass.getResource("/definitions").toURI())
+        .listFiles()
+        ?.mapNotNull { it.bufferedReader().readText() }
+        ?: listOf()
 }

@@ -65,10 +65,7 @@ tasks {
                 val telemetrySchema = File("src/main/resources/telemetrySchema.json")
                 val rawSchema = JSONObject(org.json.JSONTokener(telemetrySchema.readText()))
                 val schema: Schema = SchemaLoader.load(rawSchema)
-                File("src/main/resources/").listFiles().forEach {
-                    if(it.path == telemetrySchema.path) {
-                        return@forEach
-                    }
+                File("src/main/resources/definitons").listFiles().forEach {
                     schema.validate(JSONObject(it.readText()))
                 }
             } catch (e: Exception) {
@@ -77,14 +74,14 @@ tasks {
         }
     }
     task(name = "copyTelemetryResources", type = Copy::class) {
-        from("../definitions", "../telemetrySchema.json")
-        include("*.json")
-        into("src/main/resources")
+        from("..")
+        include("*.json", "definitions/*.json")
+        into("src/main/resources/")
     }
     task(name = "copyTestTelemetryResources", type = Copy::class) {
-        from("../definitions", "../telemetrySchema.json")
-        include("*.json")
-        into("src/test/resources")
+        from("..")
+        include("*.json", "definitions/*.json")
+        into("src/test/resources/")
     }
 }
 

@@ -87,7 +87,7 @@ object TelemetryParser {
         try {
             schema.validate(JSONObject(fileContents))
         } catch (e: Exception) {
-            System.err.println("Schema validation failed due to thrown exception $e\n on input: $fileContents")
+            System.err.println("Schema validation failed due to thrown exception $e\non input:\n$fileContents")
             throw e
         }
     }
