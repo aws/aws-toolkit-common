@@ -65,11 +65,12 @@ tasks {
                 val telemetrySchema = File("src/main/resources/telemetrySchema.json")
                 val rawSchema = JSONObject(org.json.JSONTokener(telemetrySchema.readText()))
                 val schema: Schema = SchemaLoader.load(rawSchema)
-                File("src/main/resources/definitons").listFiles().forEach {
+                File("src/main/resources/definitions").listFiles()!!.forEach {
                     schema.validate(JSONObject(it.readText()))
                 }
             } catch (e: Exception) {
                 println("Exception while validating packaged schema, ${e.printStackTrace()}")
+                throw e
             }
         }
     }

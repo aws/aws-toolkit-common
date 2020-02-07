@@ -3,14 +3,14 @@
 
 package software.aws.toolkits.telemetry.generator
 
-import java.io.File
-
 object ResourceLoader {
-    private val schemaPath = "/telemetrySchema.json"
+    private const val schemaPath = "/telemetrySchema.json"
 
     val SCHEMA_FILE = this.javaClass.getResourceAsStream(schemaPath).use { it.bufferedReader().readText() }
-    val DEFINITONS_FILES = File(this.javaClass.getResource("/definitions").toURI())
-        .listFiles()
-        ?.mapNotNull { it.bufferedReader().readText() }
-        ?: listOf()
+    // TODO add a manifest or something
+    val DEFINITIONS_FILES = listOf("/definitions/clouddebugDefinitions.json", "/definitions/commonDefinitions.json").map {
+        this.javaClass.getResourceAsStream(it).use {
+            it.bufferedReader().readText()
+        }
+    }
 }

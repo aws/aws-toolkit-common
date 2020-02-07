@@ -24,7 +24,7 @@ object TelemetryGenerator {
 
     fun generateTelemetryFromFiles(
         inputFiles: List<File>,
-        defaultDefinitions: List<String> = ResourceLoader.DEFINITONS_FILES,
+        defaultDefinitions: List<String> = ResourceLoader.DEFINITIONS_FILES,
         outputFolder: File
     ) {
         val telemetry = TelemetryParser.parseFiles(inputFiles, defaultDefinitions)
