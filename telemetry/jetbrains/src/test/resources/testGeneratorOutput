@@ -4,6 +4,7 @@
 package software.aws.toolkits.telemetry
 
 import com.intellij.openapi.project.Project
+import java.time.Instant
 import kotlin.Any
 import kotlin.Boolean
 import kotlin.Double
@@ -33,14 +34,16 @@ object LambdaTelemetry {
     /**
      * called when creating lambdas remotely
      */
-    fun recordCreate(
+    fun create(
         project: Project? = null,
         lambdaruntime: LambdaRuntime,
         arbitrarystring: String,
-        value: Double = 1.0
+        value: Double = 1.0,
+        createTime: Instant = Instant.now()
     ) {
         TelemetryService.getInstance().record(project) {
             datum("lambda_create") {
+                createTime(createTime)
                 unit(Unit.NONE)
                 value(value)
                 metadata("lambdaruntime", lambdaruntime.toString())
@@ -51,14 +54,16 @@ object LambdaTelemetry {
     /**
      * called when deleting lambdas remotely
      */
-    fun recordDelete(
+    fun delete(
         project: Project? = null,
         duration: Double,
         booltype: Boolean,
-        value: Double = 1.0
+        value: Double = 1.0,
+        createTime: Instant = Instant.now()
     ) {
         TelemetryService.getInstance().record(project) {
             datum("lambda_delete") {
+                createTime(createTime)
                 unit(Unit.NONE)
                 value(value)
                 metadata("duration", duration.toString())
@@ -69,14 +74,16 @@ object LambdaTelemetry {
     /**
      * called when invoking lambdas remotely
      */
-    fun recordRemoteinvoke(
+    fun remoteinvoke(
         project: Project? = null,
         lambdaruntime: LambdaRuntime? = null,
         inttype: Int,
-        value: Double = 1.0
+        value: Double = 1.0,
+        createTime: Instant = Instant.now()
     ) {
         TelemetryService.getInstance().record(project) {
             datum("lambda_remoteinvoke") {
+                createTime(createTime)
                 unit(Unit.NONE)
                 value(value)
                 if(lambdaruntime != null) {
@@ -91,9 +98,14 @@ object NoTelemetry {
     /**
      * called when invoking lambdas remotely
      */
-    fun recordMetadata(project: Project? = null, value: Double = 1.0) {
+    fun metadata(
+        project: Project? = null,
+        value: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ) {
         TelemetryService.getInstance().record(project) {
             datum("no_metadata") {
+                createTime(createTime)
                 unit(Unit.NONE)
                 value(value)
             }}

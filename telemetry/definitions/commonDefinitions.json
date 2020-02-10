@@ -31,6 +31,11 @@
             "description": "The reason for a metric or exception depending on context"
         },
         {
+            "name": "eventBridgeSchema",
+            "type": "string",
+            "description": "The name of the EventBridge Schema used in the operation"
+        },
+        {
             "name": "runtime",
             "type": "string",
             "allowedValues": [
@@ -60,10 +65,25 @@
             "description": "If the action was run in debug mode or not"
         },
         {
+            "name": "oldVersion",
+            "type": "string",
+            "description": "The old version of something. Useful when updating dependent resources."
+        },
+        {
+            "name": "update",
+            "type": "boolean",
+            "description": "If the operation was an update or not"
+        },
+        {
             "name": "schemaLanguage",
             "type": "string",
             "allowedValues": ["Java8", "Python36", "TypeScript3"],
             "description": "Languages targeted by the schemas service"
+        },
+        {
+            "name": "workflowToken",
+            "type": "string",
+            "description": "A token used for flow metrics to link calls together"
         }
     ],
     "metrics": [
@@ -73,8 +93,18 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "aws_openCredentials",
+            "description": "Open the credentials file",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "aws_createCredentials",
             "description": "Create a new credentials file"
+        },
+        {
+            "name": "aws_validateCredentials",
+            "description": "Validate credentials when selecting new credentials",
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "aws_help",
@@ -109,12 +139,17 @@
         },
         {
             "name": "lambda_create",
-            "description": "called when creating lambdas remotely",
+            "description": "Called when creating lambdas remotely",
             "metadata": [{ "type": "runtime" }]
         },
         {
+            "name": "lambda_editFunction",
+            "description": "Called when creating lambdas remotely",
+            "metadata": [{ "type": "update", "required": false }, { "type": "result" }]
+        },
+        {
             "name": "lambda_invokeRemote",
-            "description": "called when invoking lambdas remotely",
+            "description": "Called when invoking lambdas remotely",
             "metadata": [{ "type": "runtime" }, { "type": "result" }]
         },
         {
@@ -141,7 +176,8 @@
                 { "type": "runtime", "required": false },
                 { "type": "templateName", "required": false },
                 { "type": "version", "required": false },
-                { "type": "reason", "required": false }
+                { "type": "reason", "required": false },
+                { "type": "eventBridgeSchema", "required": false }
             ]
         },
         {
@@ -166,6 +202,61 @@
         {
             "name": "session_end",
             "description": "Called when stopping the IDE on a best effort basis"
+        },
+        {
+            "name": "s3_copyBucketName",
+            "description": "Copy the bucket name to the clipboard"
+        },
+        {
+            "name": "s3_copyPath",
+            "description": "Copy the path of a S3 object to the clipboard"
+        },
+        {
+            "name": "s3_createBucket",
+            "description": "Create a S3 bucket",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_deleteBucket",
+            "description": "Delete a S3 bucket",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_deleteObject",
+            "description": "Delete a single S3 object",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_downloadObject",
+            "description": "Download a single S3 object",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_downloadObjects",
+            "description": "Download multiple S3 objects",
+            "unit": "Count",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_uploadObject",
+            "description": "Upload a single S3 object",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_renameObject",
+            "description": "Rename a single S3 object",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_uploadObjects",
+            "description": "Upload multiple S3 objects",
+            "unit": "Count",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_openEditor",
+            "description": "Open a view of a S3 bucket",
+            "metadata": [{ "type": "result" }]
         }
     ]
 }

@@ -13,6 +13,7 @@ import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import java.io.File
+import java.time.Instant
 
 object TelemetryGenerator {
     private const val PACKAGE_NAME = "software.aws.toolkits.telemetry"
@@ -23,17 +24,23 @@ object TelemetryGenerator {
 
     fun generateTelemetryFromFiles(
         inputFiles: List<File>,
-        defaultDefinitions: List<String> = listOf(ResourceLoader.DEFINITONS_FILE, ResourceLoader.JETBRAINS_DEFINITONS_FILE),
+        defaultDefinitions: List<String> = ResourceLoader.DEFINITIONS_FILES,
         outputFolder: File
     ) {
         val telemetry = TelemetryParser.parseFiles(inputFiles, defaultDefinitions)
         val output = FileSpec.builder(PACKAGE_NAME, "TelemetryDefinitions")
+        generateHeader(output)
+        telemetry.types?.let { generateTelemetryEnumTypes(output, it) }
+        generateTelemetryObjects(output, telemetry)
+        // make sure the output directory exists before writing to it
+        outputFolder.mkdirs()
+        output.build().writeTo(outputFolder)
+    }
+
+    private fun generateHeader(output: FileSpec.Builder) {
         output.addComment("Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.\n")
         output.addComment("SPDX-License-Identifier: Apache-2.0\n")
         output.addComment("THIS FILE IS GENERATED! DO NOT EDIT BY HAND!")
-        telemetry.types?.let { generateTelemetryEnumTypes(output, it) }
-        generateTelemetry(output, telemetry)
-        output.build().writeTo(outputFolder)
     }
 
     private fun generateTelemetryEnumType(output: FileSpec.Builder, item: TelemetryMetricType) {
@@ -80,7 +87,7 @@ object TelemetryGenerator {
         }
     }
 
-    private fun generateTelemetry(output: FileSpec.Builder, item: TelemetryDefinition) =
+    private fun generateTelemetryObjects(output: FileSpec.Builder, item: TelemetryDefinition) =
         item
             .metrics
             .sortedBy { it.name }
@@ -89,7 +96,6 @@ object TelemetryGenerator {
 
     private fun generateFunctionParameters(functionBuilder: FunSpec.Builder, metric: Metric, types: List<TelemetryMetricType>) {
         val projectParameter = ClassName("com.intellij.openapi.project", "Project").copy(nullable = true)
-        val valueParameter = DOUBLE
         val additionalParameters = metric.metadata?.map { metadata ->
             val telemetryMetricType = types.find { it.name == metadata.type }
                 ?: throw IllegalStateException("Type ${metadata.type} on ${metric.name} not found in types!")
@@ -108,7 +114,8 @@ object TelemetryGenerator {
         functionBuilder
             .addParameter(ParameterSpec.builder("project", projectParameter).defaultValue("null").build())
             .addParameters(additionalParameters)
-            .addParameter(ParameterSpec.builder("value", valueParameter).defaultValue("1.0").build())
+            .addParameter(ParameterSpec.builder("value", DOUBLE).defaultValue("1.0").build())
+            .addParameter(ParameterSpec.builder("createTime", Instant::class).defaultValue("Instant.now()").build())
     }
 
     private fun generateFunctionBody(functionBuilder: FunSpec.Builder, metric: Metric) {
@@ -117,6 +124,7 @@ object TelemetryGenerator {
         functionBuilder
             .addStatement("%M.getInstance().record(project) { ", telemetryClient)
             .addStatement("datum(%S) {", metric.name)
+            .addStatement("createTime(createTime)")
             .addStatement("unit(%M.${(metric.unit ?: MetricUnit.NONE).name})", metricUnit)
             .addStatement("value(value)")
         metric.metadata?.forEach {
@@ -134,7 +142,7 @@ object TelemetryGenerator {
 
     private fun generateRecordFunction(metric: Metric, types: List<TelemetryMetricType>, namespace: TypeSpec.Builder) {
         // metric.name.split("_")[1] is guaranteed to exist at this point because the schema requires the metric name to have at least 1 underscore
-        val functionBuilder = FunSpec.builder("record${metric.name.split("_")[1].toTypeFormat()}")
+        val functionBuilder = FunSpec.builder(metric.name.split("_")[1])
         generateFunctionParameters(functionBuilder, metric, types)
         generateFunctionBody(functionBuilder, metric)
         namespace.addFunction(functionBuilder.build())
