@@ -13,7 +13,3 @@ phases:
                 npm install --unsafe-perm
                 npm pack --unsafe-perm
 
-artifacts:
-    files:
-        - '**/*'
-

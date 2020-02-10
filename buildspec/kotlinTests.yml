@@ -12,7 +12,3 @@ phases:
                 cd telemetry/jetbrains
                 ./gradlew test
 
-artifacts:
-    files:
-        - '**/*'
-
