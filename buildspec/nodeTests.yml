@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+    install:
+        runtime-versions:
+            nodejs: 12
+
+    build:
+        commands:
+            - |
+                # TODO - iterate through the subdirectories to have one build script per runtime
+                # unsafe perm is used because we run as root on CodeBuild and is needed for every non-publish command
+                npm install --unsafe-perm
+                npm pack --unsafe-perm
+
+artifacts:
+    files:
+        - '**/*'
+
