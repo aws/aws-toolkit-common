@@ -1,6 +1,6 @@
 # Telemetry Format
 
-Telemetry definitions are made up of json files that live in `definitions`. Files are merged together at build time. They output one file in the target language that can call the platform specific telemetry client. Each platform's generator has platform specific tweaks in  the to generate a final telemetry file, see each platform's readme for more details.
+Telemetry definitions are made up of json files that live in `definitions`. Files are merged together at build time. They output one file in the target language that can call the platform specific telemetry client.
 
 ## Format
 
