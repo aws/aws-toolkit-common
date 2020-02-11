@@ -1,4 +1,4 @@
-## AWS Toolkit Common
+# AWS Toolkit Common
 
 This repo contains shared components for the AWS Toolkits for
 
@@ -6,7 +6,9 @@ This repo contains shared components for the AWS Toolkits for
 * [VSCode](https://github.com/aws/aws-toolkit-vscode/)
 * [Visual Studio](https://github.com/aws/aws-toolkit-visual-studio)
 
-Components in here should mostly not be a concern for customers or people looking to contribute, see the contributing guide on the repos of projects you are interested in.
+Contributers looking to contribute to the above projects should consult the contributing guide 
+on the repos they are interested in: this repo contains internal components that most contributers
+If you're looking to contribute to the above projects, consult their respective CONTRIBUTING.md docs: this repo contains internal components that most contributors would find boring.
 
 ## Components
 
