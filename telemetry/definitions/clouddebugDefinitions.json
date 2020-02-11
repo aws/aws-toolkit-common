@@ -1,0 +1,87 @@
+{
+    "types": [
+        {
+            "name": "cloudDebugPlatform",
+            "type": "string",
+            "description": "Platforms for cloud debugging",
+            "allowedValues": [
+                "JVM",
+                "PYTHON",
+                "NODE",
+                "DOTNET"
+            ]
+        }
+    ],
+    "metrics": [
+        {
+            "name": "clouddebug_attachDebugger",
+            "description": "Confirm the resource that will be debugged is not a production resource",
+            "unit": "Milliseconds",
+            "metadata": [{ "type": "result" }, { "type": "workflowToken" }, { "type":  "cloudDebugPlatform"}]
+        },
+        {
+            "name": "clouddebug_confirmNotProduction",
+            "description": "Confirm the resource that will be debugged is not a production resource",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "clouddebug_copy",
+            "description": "Copy a directory to a remote machine for debugging",
+            "unit": "Milliseconds",
+            "metadata": [{ "type": "result" },  { "type": "workflowToken" } ]
+        },
+        {
+            "name": "clouddebug_deinstrument",
+            "description": "Revert a resource that was set up for debugging to its original state",
+            "unit": "Milliseconds",
+            "metadata": [{ "type": "result" }, { "type": "version", "required": false } ]
+        },
+        {
+            "name": "clouddebug_install",
+            "description": "Install the cloud debug CLI",
+            "unit": "Milliseconds",
+            "metadata": [{ "type": "result" }, { "type": "version", "required": false }, { "type": "oldVersion", "required": false }]
+        },
+        {
+            "name": "clouddebug_instrument",
+            "description": "Set up a service for debugging",
+            "unit": "Milliseconds",
+            "metadata": [{ "type": "result" }, { "type": "version", "required": false }, { "type": "workflowToken", "required": false }]
+        },
+        {
+            "name": "clouddebug_portForward",
+            "description": "Forward a local port to a remote machine for debugging",
+            "unit": "Milliseconds",
+            "metadata": [{ "type": "result" }, { "type": "workflowToken" } ]
+        },
+        {
+            "name": "clouddebug_retrieveRole",
+            "description": "Install the cloud debug CLI",
+            "unit": "Milliseconds",
+            "metadata": [{ "type": "result" }, { "type": "workflowToken" }]
+        },
+        {
+            "name": "clouddebug_shell",
+            "description": "Open the shell on a remote resource",
+            "unit": "Milliseconds",
+            "metadata": [{ "type": "result" }, { "type": "version", "required": false }]
+        },
+        {
+            "name": "clouddebug_startApplication",
+            "description": "Start an application on a remote machine for debugging",
+            "unit": "Milliseconds",
+            "metadata": [{ "type": "result" },  { "type": "workflowToken" } ]
+        },
+        {
+            "name": "clouddebug_stopApplication",
+            "description": "Stop an application on a remote machine after debugging is completed",
+            "unit": "Milliseconds",
+            "metadata": [{ "type": "result" },  { "type": "workflowToken" } ]
+        },
+        {
+            "name": "clouddebug_startRemoteDebug",
+            "description": "Start the remote debug session",
+            "metadata": [{ "type": "result" },  { "type": "workflowToken" } ]
+        }
+    ]
+}
