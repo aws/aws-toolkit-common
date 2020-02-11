@@ -22,7 +22,7 @@ the definitions you just added to to the appropriate file in `definitions` in th
 ### How to Edit
 
 The easiest way to edit telemetry is to copy existing telemetry and change the values. For example,
-to add a piece of metadata that takes a limited number of strings, take an existing type:
+to add a piece of metadata that is best represented by a string based enum, take an existing type:
 
 ```json
     {
@@ -44,10 +44,12 @@ and change `name`, `description`, and the values in `allowedValues`
     }
 ```
 
+Then rerun the generator. This example will generate a new type that can be imported or used in telemetry calls.
+
 ### Editing in IDE
 
-The telemety format comes with a json schema document [here](telemetrySchema.json) that can ber loaded
-into the IDE while editing the documents. This will give you feedback on edits as you edit.
+The telemetry format comes with a json schema document [here](telemetrySchema.json) that can be loaded
+into the IDE while editing the documents. This will give you feedback as you edit.
 
 - [VS Code Instructions](https://code.visualstudio.com/docs/languages/json#_mapping-to-a-schema-in-the-workspace)
 - [JetBrains Instructions](https://www.jetbrains.com/help/idea/json.html#ws_json_schema_add_custom)
@@ -55,7 +57,7 @@ into the IDE while editing the documents. This will give you feedback on edits a
 ### Format Specification
 
 See the [telemetry format document](telemetryformat.md) for complete format specification, or the 
-[json schema that is used to validate at generate time](telemetrySchema.json)
+[json schema](telemetrySchema.json)
 
 ## Consuming Generators
 
