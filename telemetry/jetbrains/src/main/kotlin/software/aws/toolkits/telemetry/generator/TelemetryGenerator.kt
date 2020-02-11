@@ -12,6 +12,7 @@ import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
+import software.aws.toolkits.telemetry.generator.TelemetryGenerator.toArgumentFormat
 import java.io.File
 import java.time.Instant
 
@@ -41,6 +42,16 @@ object TelemetryGenerator {
         output.addComment("Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.\n")
         output.addComment("SPDX-License-Identifier: Apache-2.0\n")
         output.addComment("THIS FILE IS GENERATED! DO NOT EDIT BY HAND!")
+    }
+
+    private fun generateTelemetryEnumTypes(output: FileSpec.Builder, items: List<TelemetryMetricType>) {
+        items.forEach {
+            // We only need to generate enums if they are actually enums, skip other types
+            if (it.allowedValues == null) {
+                return@forEach
+            }
+            generateTelemetryEnumType(output, it)
+        }
     }
 
     private fun generateTelemetryEnumType(output: FileSpec.Builder, item: TelemetryMetricType) {
@@ -77,22 +88,30 @@ object TelemetryGenerator {
         output.addType(enum.build())
     }
 
-    private fun generateTelemetryEnumTypes(output: FileSpec.Builder, items: List<TelemetryMetricType>) {
-        items.forEach {
-            // We only need to generate enums if they are actually enums, skip other types
-            if (it.allowedValues == null) {
-                return@forEach
-            }
-            generateTelemetryEnumType(output, it)
-        }
-    }
-
     private fun generateTelemetryObjects(output: FileSpec.Builder, item: TelemetryDefinition) =
         item
             .metrics
             .sortedBy { it.name }
             .groupBy { it.name.split("_").first().toLowerCase() }
             .forEach { metrics: Map.Entry<String, List<Metric>> -> generateNamespaces(output, item.types!!, metrics.key, metrics.value) }
+
+    private fun generateNamespaces(output: FileSpec.Builder, types: List<TelemetryMetricType>, namespaceType: String, metrics: List<Metric>) {
+        val namespace = TypeSpec.objectBuilder("${namespaceType.toTypeFormat()}Telemetry")
+        metrics.forEach { generateRecordFunction(it, types, namespace) }
+        output.addType(namespace.build())
+    }
+
+    private fun generateRecordFunction(metric: Metric, types: List<TelemetryMetricType>, namespace: TypeSpec.Builder) {
+        // metric.name.split("_")[1] is guaranteed to exist at this point because the schema requires the metric name to have at least 1 underscore
+        val functionBuilder = FunSpec.builder(metric.name.split("_")[1])
+        generateFunctionParameters(functionBuilder, metric, types)
+        generateFunctionBody(functionBuilder, metric)
+        namespace.addFunction(functionBuilder.build())
+        // Result is special cased to 
+        if(metric.metadata?.any { it.type == "result" } == true) {
+
+        }
+    }
 
     private fun generateFunctionParameters(functionBuilder: FunSpec.Builder, metric: Metric, types: List<TelemetryMetricType>) {
         val projectParameter = ClassName("com.intellij.openapi.project", "Project").copy(nullable = true)
@@ -128,29 +147,19 @@ object TelemetryGenerator {
             .addStatement("unit(%M.${(metric.unit ?: MetricUnit.NONE).name})", metricUnit)
             .addStatement("value(value)")
         metric.metadata?.forEach {
-            if (it.required == false) {
-                functionBuilder.beginControlFlow("if(%L != null) {", it.type.toArgumentFormat())
-            }
-            functionBuilder.addStatement("metadata(%S, %L.toString())", it.type.toArgumentFormat(), it.type.toArgumentFormat())
-            if (it.required == false) {
-                functionBuilder.endControlFlow()
-            }
+            generateMetadataStatement(functionBuilder, it)
         }
         functionBuilder.addStatement("}}")
         functionBuilder.addKdoc(metric.description)
     }
 
-    private fun generateRecordFunction(metric: Metric, types: List<TelemetryMetricType>, namespace: TypeSpec.Builder) {
-        // metric.name.split("_")[1] is guaranteed to exist at this point because the schema requires the metric name to have at least 1 underscore
-        val functionBuilder = FunSpec.builder(metric.name.split("_")[1])
-        generateFunctionParameters(functionBuilder, metric, types)
-        generateFunctionBody(functionBuilder, metric)
-        namespace.addFunction(functionBuilder.build())
-    }
-
-    private fun generateNamespaces(output: FileSpec.Builder, types: List<TelemetryMetricType>, namespaceType: String, metrics: List<Metric>) {
-        val namespace = TypeSpec.objectBuilder("${namespaceType.toTypeFormat()}Telemetry")
-        metrics.forEach { generateRecordFunction(it, types, namespace) }
-        output.addType(namespace.build())
+    private fun generateMetadataStatement(functionBuilder: FunSpec.Builder, data: Metadata) {
+        if (data.required == false) {
+            functionBuilder.beginControlFlow("if(%L != null) {", data.type.toArgumentFormat())
+        }
+        functionBuilder.addStatement("metadata(%S, %L.toString())", data.type.toArgumentFormat(), data.type.toArgumentFormat())
+        if (data.required == false) {
+            functionBuilder.endControlFlow()
+        }
     }
 }
