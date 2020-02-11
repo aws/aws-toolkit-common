@@ -4,7 +4,7 @@ AWS Toolkits.
 
 ## Adding Telemetry
 
-### What to edit
+### Where to Edit
 
 Each AWS Toolkit has a file that is useful for prototyping telemetry. They can be found in their repos at the path:
 
@@ -19,7 +19,7 @@ Make changes in these files, then from the AWS Toolkit repo root run:
 To update the generated output. When you are satisfied with generated telemetry, move
 the definitions you just added to to the appropriate file in `definitions` in this repo.
 
-### How to edit
+### How to Edit
 
 The easiest way to edit telemetry is to copy existing telemetry and change the values. For example,
 to add a piece of metadata that takes a limited number of strings, take an existing type:
