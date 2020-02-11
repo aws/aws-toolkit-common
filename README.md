@@ -1,4 +1,4 @@
-## AWS Toolkit Common
+# AWS Toolkit Common
 
 This repo contains shared components for the AWS Toolkits for
 
@@ -14,9 +14,7 @@ would find boring.
 
 ### Telemetry
 
-[Telemetry README](telemetry/README.md)
-
-The telemetry component contains telemetry generators that enforce consistency across toolkits. 
+Telemetry is the first shared component in this repository. [Read about telemetry here.](telemetry/README.md)
 
 ## License
 

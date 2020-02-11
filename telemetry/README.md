@@ -63,5 +63,5 @@ See the [telemetry format document](telemetryformat.md) for complete format spec
 
 For specifics on how to consume the generators, see each IDE specific doc:
 
-* [vscode](vscode/README.md)
-* [jetbrains](jetbrains/README.md)
+-   [vscode](vscode/README.md)
+-   [jetbrains](jetbrains/README.md)

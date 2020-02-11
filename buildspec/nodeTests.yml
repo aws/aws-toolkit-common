@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+    install:
+        runtime-versions:
+            nodejs: 10
+
+    build:
+        commands:
+            - |
+                # TODO - iterate through the subdirectories to have one build script per runtime
+                # unsafe perm is used because we run as root on CodeBuild and is needed for every non-publish command
+                cd telemetry/vscode
+                npm install --unsafe-perm
+                npm pack --unsafe-perm
