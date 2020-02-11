@@ -1,7 +1,6 @@
 # Telemetry Format
 
-Telemetry definitions are made up of json files that live in `definitions`. Files are merged together at build time. They output one file in the target language that can call the platform specific telemetry client. Each platform's generator has platform specific tweaks in 
-the to generate a final telemetry file, see each platform's readme for more details.
+Telemetry definitions are made up of json files that live in `definitions`. Files are merged together at build time. They output one file in the target language that can call the platform specific telemetry client. Each platform's generator has platform specific tweaks in  the to generate a final telemetry file, see each platform's readme for more details.
 
 ## Format
 
@@ -45,11 +44,11 @@ posted to the service, `metadata` contains data from `types` that define charact
 ]
 ```
 
-These are then used to generate functions that take arguments pertaining to metrics. For a concrete example:
+These are then used to generate functions that take arguments pertaining to metrics.
 
 ### Global Arguments
 
-_Additionally_ two additional global arguments that can be appended to any generated telemetry call. 
+_Additionally_ two additional global arguments that can be appended to any generated telemetry call.
 
 ```
 // The time that the event took place

@@ -17,7 +17,7 @@ Make changes in these files, then from the AWS Toolkit repo root run:
 - JetBrains - `./gradlew generateTelemetry`
 
 To update the generated output. When you are satisfied with generated telemetry, move
-the definitions you just added to to the appropriate file in `definitions` in this repo.
+the definitions you just added to the appropriate file in `definitions` in this repo.
 
 ### How to Edit
 
