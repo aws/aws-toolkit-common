@@ -8,7 +8,7 @@ This repo contains shared components for the AWS Toolkits for
 
 Contributers looking to contribute to the above projects should consult the contributing guide 
 on the repos they are interested in: this repo contains internal components that most contributers
-would find boring.
+If you're looking to contribute to the above projects, consult their respective CONTRIBUTING.md docs: this repo contains internal components that most contributors would find boring.
 
 ## Components
 
