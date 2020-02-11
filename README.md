@@ -6,13 +6,17 @@ This repo contains shared components for the AWS Toolkits for
 * [VSCode](https://github.com/aws/aws-toolkit-vscode/)
 * [Visual Studio](https://github.com/aws/aws-toolkit-visual-studio)
 
-Components in here should mostly not be a concern for customers or people looking to contribute, see the contributing guide on the repos of projects you are interested in.
+Contributers looking to contribute to the above projects should consult the contributing guide 
+on the repos they are interested in: this repo contains internal components that most contributers
+would find boring.
 
 ## Components
 
 ### Telemetry
 
-Telemetry is the first shared component in this repository. [Read about it here](telemetry/README.md)
+[Telemetry README](telemetry/README.md)
+
+The telemetry component contains telemetry generators that enforce consistency across toolkits. 
 
 ## License
 
