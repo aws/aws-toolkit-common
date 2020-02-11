@@ -3,6 +3,7 @@
 
 package software.aws.toolkits.telemetry.generator
 
+import com.squareup.kotlinpoet.BOOLEAN
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.DOUBLE
 import com.squareup.kotlinpoet.FileSpec
@@ -12,7 +13,6 @@ import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
-import software.aws.toolkits.telemetry.generator.TelemetryGenerator.toArgumentFormat
 import java.io.File
 import java.time.Instant
 
@@ -103,33 +103,46 @@ object TelemetryGenerator {
 
     private fun generateRecordFunction(metric: Metric, types: List<TelemetryMetricType>, namespace: TypeSpec.Builder) {
         // metric.name.split("_")[1] is guaranteed to exist at this point because the schema requires the metric name to have at least 1 underscore
-        val functionBuilder = FunSpec.builder(metric.name.split("_")[1])
-        generateFunctionParameters(functionBuilder, metric, types)
+        val functionName = metric.name.split("_")[1]
+        val parameters = buildParameters(metric, types)
+        val functionBuilder = FunSpec.builder(functionName)
+        generateFunctionParameters(functionBuilder, parameters)
         generateFunctionBody(functionBuilder, metric)
         namespace.addFunction(functionBuilder.build())
-        // Result is special cased to 
-        if(metric.metadata?.any { it.type == "result" } == true) {
-
+        // Result is special cased to generate a function that acceptstrue/false as well
+        if (metric.metadata?.any { it.type == "result" } != true) {
+            return
         }
+        val function2 = FunSpec.builder(functionName)
+        val parameters2 = parameters.map {
+            if (it.name != "result") {
+                it
+            } else {
+                ParameterSpec.builder(it.name, BOOLEAN).build()
+            }
+        }
+        generateFunctionParameters(function2, parameters2)
+        namespace.addFunction(function2.build())
     }
 
-    private fun generateFunctionParameters(functionBuilder: FunSpec.Builder, metric: Metric, types: List<TelemetryMetricType>) {
-        val projectParameter = ClassName("com.intellij.openapi.project", "Project").copy(nullable = true)
-        val additionalParameters = metric.metadata?.map { metadata ->
-            val telemetryMetricType = types.find { it.name == metadata.type }
-                ?: throw IllegalStateException("Type ${metadata.type} on ${metric.name} not found in types!")
-            val typeName = if (telemetryMetricType.allowedValues != null) {
-                ClassName(PACKAGE_NAME, telemetryMetricType.name.toTypeFormat())
-            } else {
-                telemetryMetricType.type?.getTypeFromType() ?: com.squareup.kotlinpoet.STRING
-            }.copy(nullable = metadata.required == false)
+    private fun buildParameters(metric: Metric, types: List<TelemetryMetricType>) = metric.metadata?.map { metadata ->
+        val telemetryMetricType = types.find { it.name == metadata.type }
+            ?: throw IllegalStateException("Type ${metadata.type} on ${metric.name} not found in types!")
+        val typeName = if (telemetryMetricType.allowedValues != null) {
+            ClassName(PACKAGE_NAME, telemetryMetricType.name.toTypeFormat())
+        } else {
+            telemetryMetricType.type?.getTypeFromType() ?: com.squareup.kotlinpoet.STRING
+        }.copy(nullable = metadata.required == false)
 
-            val parameterSpec = ParameterSpec.builder(telemetryMetricType.name.toArgumentFormat(), typeName)
-            if (metadata.required == false) {
-                parameterSpec.defaultValue("null")
-            }
-            parameterSpec.build()
-        } ?: listOf()
+        val parameterSpec = ParameterSpec.builder(telemetryMetricType.name.toArgumentFormat(), typeName)
+        if (metadata.required == false) {
+            parameterSpec.defaultValue("null")
+        }
+        parameterSpec.build()
+    } ?: listOf()
+
+    private fun generateFunctionParameters(functionBuilder: FunSpec.Builder, additionalParameters: List<ParameterSpec>) {
+        val projectParameter = ClassName("com.intellij.openapi.project", "Project").copy(nullable = true)
         functionBuilder
             .addParameter(ParameterSpec.builder("project", projectParameter).defaultValue("null").build())
             .addParameters(additionalParameters)

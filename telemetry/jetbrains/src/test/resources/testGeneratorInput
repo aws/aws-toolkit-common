@@ -27,6 +27,11 @@
     {
       "name": "arbitraryString",
       "description": "untyped string type"
+    },
+    {
+        "name": "result",
+        "allowedValues": ["Succeeded", "Failed", "Cancelled"],
+        "description": "The result of the operation"
     }
   ],
   "metrics": [
@@ -51,6 +56,11 @@
     {
       "name": "no_metadata",
       "description": "called when invoking lambdas remotely"
+    },
+    {
+      "name": "metadata_hasResult",
+      "description": "called when invoking lambdas remotely",
+      "metadata": [{"type": "result"}]
     }
   ]
 }
