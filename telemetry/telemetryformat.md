@@ -28,7 +28,8 @@ _types_ is an array that holds telemetry metadata types. This is the information
 ### Metrics
 
 *metrics* is an array that contains the actual metrics posted to the service. `name` defines the metric name what is
-posted to the service. `name` must be in the format`namespace_camelCaseName` (e.g. `s3_uploadObject`). The field is optional.
+posted to the service, `metadata` contains data from `types` that define characteristics of the telemetry beyond 
+ `createTime` and a `value`. `name` must be in the format`namespace_camelCaseName` (e.g. `s3_uploadObject`). The field is optional.
 
 ```
 "metrics": [
@@ -46,42 +47,57 @@ posted to the service. `name` must be in the format`namespace_camelCaseName` (e.
 
 These are then used to generate functions that take arguments pertaining to metrics. For a concrete example:
 
+### Global Arguments
+
+_Additionally_ two additional global arguments that can be appended to any generated telemetry call. 
+
+```
+// The time that the event took place
+createTime?: Date
+// Value based on unit and call type
+value?: number
+```
+
+If not specified `createTime` defaults to UTC now, `value` defaults to `1.0`.
+
 ### Example
 
 #### Input
 ```json
-"types": [
-    {
-        "name": "result",
-        "allowedValues": ["Succeeded", "Failed", "Cancelled"],
-        "description": "The result of the operation"
-    },
+{
+    "types": [
+        {
+            "name": "result",
+            "allowedValues": ["Succeeded", "Failed", "Cancelled"],
+            "description": "The result of the operation"
+        },
         {
             "name": "runtime",
             "type": "string",
             "allowedValues": [
                 "dotnetcore2.1",
-                ...
+                "...",
                 "python2.7"
             ],
-            "description": "The lambda runtime"
+            "description": "The Lambda runtime"
         },
-    ...
+    "..."
 ],
-metrics: [
-    {
-        "name": "lambda_invokeRemote",
-        "description": "Called when invoking lambdas remotely",
-        "metadata": [{ "type": "runtime" }, { "type": "result" }]
-    },
-    ...
-]
+    "metrics": [
+        {
+            "name": "lambda_invokeRemote",
+            "description": "Called when invoking lambdas remotely",
+            "metadata": [{ "type": "runtime" }, { "type": "result" }]
+        },
+        "..."
+    ]
+}
 ```
 #### Output
 
 ```typescript
 interface LambdaRemoteinvoke {
-    // What lambda runtime was used in the operation
+    // The Lambda runtime
     runtime: runtime
     // The result of the operation
     result: result
@@ -113,16 +129,3 @@ export function recordLambdaRemoteinvoke(args: LambdaRemoteinvoke) {
     })
 }
 ```
-
-### Global Arguments
-
-_Additionally_ two additional global arguments that can be appended to any call. 
-
-```
-// The time that the event took place
-createTime?: Date
-// Value based on unit and call type
-value?: number
-```
-
-If not specified `createTime` defaults to UTC now, `value` defaults to `1.0`.
