@@ -13,4 +13,3 @@ phases:
                 cd telemetry/vscode
                 npm install --unsafe-perm
                 npm pack --unsafe-perm
-
