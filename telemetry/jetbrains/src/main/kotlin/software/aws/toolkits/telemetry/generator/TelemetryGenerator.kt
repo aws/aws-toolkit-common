@@ -20,11 +20,12 @@ fun generateTelemetryFromFiles(
     outputFolder: File
 ) {
     val telemetry = TelemetryParser.parseFiles(inputFiles, defaultDefinitions)
-    val output = FileSpec.builder(PACKAGE_NAME, "TelemetryDefinitions")
-    output.generateHeader()
-    telemetry.types?.let { output.generateTelemetryEnumTypes(it) }
-    output.generateTelemetryObjects(telemetry)
     // make sure the output directory exists before writing to it
     outputFolder.mkdirs()
-    output.build().writeTo(outputFolder)
+    FileSpec.builder(PACKAGE_NAME, "TelemetryDefinitions")
+        .generateHeader()
+        .generateTelemetryEnumTypes(telemetry.types)
+        .generateTelemetryObjects(telemetry)
+        .build()
+        .writeTo(outputFolder)
 }

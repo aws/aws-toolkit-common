@@ -12,23 +12,27 @@ import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import java.time.Instant
 
-fun FileSpec.Builder.generateHeader() {
+fun FileSpec.Builder.generateHeader(): FileSpec.Builder {
     addComment("Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.\n")
     addComment("SPDX-License-Identifier: Apache-2.0\n")
     addComment("THIS FILE IS GENERATED! DO NOT EDIT BY HAND!")
+
+    return this
 }
 
-fun FileSpec.Builder.generateTelemetryEnumTypes(items: List<TelemetryMetricType>) {
-    items.forEach {
+fun FileSpec.Builder.generateTelemetryEnumTypes(items: List<TelemetryMetricType>?): FileSpec.Builder {
+    items?.forEach {
         // We only need to generate enums if they are actually enums, skip other types
         if (it.allowedValues == null) {
             return@forEach
         }
         generateTelemetryEnumType(it)
     }
+
+    return this
 }
 
-fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType) {
+private fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType): FileSpec.Builder {
     val enum = TypeSpec.enumBuilder(item.name.toTypeFormat())
         .primaryConstructor(
             FunSpec.constructorBuilder()
@@ -60,21 +64,29 @@ fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType) {
     enum.addType(companion)
 
     addType(enum.build())
+
+    return this
 }
 
-fun FileSpec.Builder.generateTelemetryObjects(item: TelemetryDefinition) = item
-    .metrics
-    .sortedBy { it.name }
-    .groupBy { it.name.split("_").first().toLowerCase() }
-    .forEach { metrics: Map.Entry<String, List<Metric>> -> generateNamespaces(item.types!!, metrics.key, metrics.value) }
+fun FileSpec.Builder.generateTelemetryObjects(item: TelemetryDefinition): FileSpec.Builder {
+    item
+        .metrics
+        .sortedBy { it.name }
+        .groupBy { it.name.split("_").first().toLowerCase() }
+        .forEach { metrics: Map.Entry<String, List<Metric>> -> generateNamespaces(item.types!!, metrics.key, metrics.value) }
 
-fun FileSpec.Builder.generateNamespaces(types: List<TelemetryMetricType>, namespaceType: String, metrics: List<Metric>) {
+    return this
+}
+
+private fun FileSpec.Builder.generateNamespaces(types: List<TelemetryMetricType>, namespaceType: String, metrics: List<Metric>): FileSpec.Builder {
     val namespace = TypeSpec.objectBuilder("${namespaceType.toTypeFormat()}Telemetry")
     metrics.forEach { namespace.generateRecordFunctions(it, types) }
     addType(namespace.build())
+
+    return this
 }
 
-fun TypeSpec.Builder.generateRecordFunctions(metric: Metric, types: List<TelemetryMetricType>) {
+private fun TypeSpec.Builder.generateRecordFunctions(metric: Metric, types: List<TelemetryMetricType>): TypeSpec.Builder {
     // metric.name.split("_")[1] is guaranteed to work at this point because the schema requires the metric name to have at least 1 underscore
     val functionName = metric.name.split("_")[1]
     val parameters = buildParameters(metric, types)
@@ -88,7 +100,7 @@ fun TypeSpec.Builder.generateRecordFunctions(metric: Metric, types: List<Telemet
     addFunction(function)
     // Result is special cased to generate a function that accepts true/false instead of a Result
     if (metric.metadata?.any { it.type == RESULT } != true) {
-        return
+        return this
     }
     val resultFunction = FunSpec.builder(functionName)
     val resultParameters = parameters.map {
@@ -103,9 +115,11 @@ fun TypeSpec.Builder.generateRecordFunctions(metric: Metric, types: List<Telemet
         .generateResultOverloadFunctionBody(function, resultParameters)
         .addKdoc(metric.description)
     addFunction(resultFunction.build())
+
+    return this
 }
 
-fun buildParameters(metric: Metric, types: List<TelemetryMetricType>): List<ParameterSpec> {
+private fun buildParameters(metric: Metric, types: List<TelemetryMetricType>): List<ParameterSpec> {
     val projectParameter = ClassName("com.intellij.openapi.project", "Project").copy(nullable = true)
     val list = mutableListOf<ParameterSpec>()
     list.add(ParameterSpec.builder("project", projectParameter).defaultValue("null").build())
@@ -115,7 +129,7 @@ fun buildParameters(metric: Metric, types: List<TelemetryMetricType>): List<Para
     return list
 }
 
-fun Metadata.metadataToParameter(types: List<TelemetryMetricType>): ParameterSpec {
+private fun Metadata.metadataToParameter(types: List<TelemetryMetricType>): ParameterSpec {
     val telemetryMetricType = types.find { it.name == type } ?: throw IllegalStateException("Type $type not found in types!")
 
     val typeName = if (telemetryMetricType.allowedValues != null) {
@@ -131,7 +145,7 @@ fun Metadata.metadataToParameter(types: List<TelemetryMetricType>): ParameterSpe
     return parameterSpec.build()
 }
 
-fun FunSpec.Builder.generateFunctionBody(metric: Metric): FunSpec.Builder {
+private fun FunSpec.Builder.generateFunctionBody(metric: Metric): FunSpec.Builder {
     val telemetryClient = MemberName("software.aws.toolkits.jetbrains.services.telemetry", "TelemetryService")
     val metricUnit = MemberName("software.amazon.awssdk.services.toolkittelemetry.model", "Unit")
     addStatement("%M.getInstance().record(project) { ", telemetryClient)
@@ -147,7 +161,7 @@ fun FunSpec.Builder.generateFunctionBody(metric: Metric): FunSpec.Builder {
     return this
 }
 
-fun FunSpec.Builder.generateResultOverloadFunctionBody(originalFunction: FunSpec, parameters: List<ParameterSpec>): FunSpec.Builder {
+private fun FunSpec.Builder.generateResultOverloadFunctionBody(originalFunction: FunSpec, parameters: List<ParameterSpec>): FunSpec.Builder {
     addStatement("%L(%L)", originalFunction.name, parameters.joinToString {
         if (it.name != SUCCESS) {
             it.name
@@ -159,7 +173,7 @@ fun FunSpec.Builder.generateResultOverloadFunctionBody(originalFunction: FunSpec
     return this
 }
 
-fun FunSpec.Builder.generateMetadataStatement(data: Metadata, setStatement: String) {
+private fun FunSpec.Builder.generateMetadataStatement(data: Metadata, setStatement: String): FunSpec.Builder {
     if (data.required == false) {
         beginControlFlow("if(%L != null) {", data.type.toArgumentFormat())
     }
@@ -167,4 +181,6 @@ fun FunSpec.Builder.generateMetadataStatement(data: Metadata, setStatement: Stri
     if (data.required == false) {
         endControlFlow()
     }
+
+    return this
 }
