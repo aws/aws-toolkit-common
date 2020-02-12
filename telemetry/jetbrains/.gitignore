@@ -1,4 +1,3 @@
 src/main/resources/
-src/test/resources/*
-!src/tests/resources/testGeneratorOutput
-!src/tests/resources/testGeneratorInput
+src/test/resources/definitions
+src/test/resources/telemetrySchema.json

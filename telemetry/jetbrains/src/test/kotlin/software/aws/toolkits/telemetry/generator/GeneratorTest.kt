@@ -25,18 +25,12 @@ class GeneratorTest {
 
     @Test
     fun generateGenerates() {
-        TelemetryGenerator.generateTelemetryFromFiles(
-            inputFiles = listOf(),
-            defaultDefinitions = listOf(this.javaClass.getResourceAsStream("/testGeneratorInput").use { it.bufferedReader().readText() }),
-            outputFolder = folder.root
-        )
+        testGenerator("/testGeneratorInput.json", "/testGeneratorOutput")
+    }
 
-        val outputFile = Paths.get(folder.root.absolutePath, "software", "aws", "toolkits", "telemetry", "TelemetryDefinitions.kt")
-        assertThat(Files.exists(outputFile)).isTrue
-
-        assertThat(outputFile.toFile().readText()).isEqualToIgnoringWhitespace(this.javaClass.getResourceAsStream("/testGeneratorOutput").use {
-            it.bufferedReader().readText()
-        })
+    @Test
+    fun generateGeneratesTwoFunctionsForResult() {
+        testGenerator("/testResultInput.json", "/testResultOutput")
     }
 
     @Test
@@ -44,5 +38,22 @@ class GeneratorTest {
         TelemetryGenerator.generateTelemetryFromFiles(inputFiles = listOf(), outputFolder = folder.root)
         val outputFile = Paths.get(folder.root.absolutePath, "software", "aws", "toolkits", "telemetry", "TelemetryDefinitions.kt")
         assertThat(Files.exists(outputFile)).isTrue
+    }
+
+    // inputPath and outputPath must be in test resources
+    private fun testGenerator(inputPath: String, outputPath: String) {
+        TelemetryGenerator.generateTelemetryFromFiles(
+            inputFiles = listOf(),
+            defaultDefinitions = listOf(this.javaClass.getResourceAsStream(inputPath).use { it.bufferedReader().readText() }),
+            outputFolder = folder.root
+        )
+
+        val outputFile = Paths.get(folder.root.absolutePath, "software", "aws", "toolkits", "telemetry", "TelemetryDefinitions.kt")
+        assertThat(Files.exists(outputFile)).isTrue
+
+        assertThat(outputFile.toFile().readText()).isEqualToIgnoringWhitespace(
+            this.javaClass.getResourceAsStream(outputPath).use {
+                it.bufferedReader().readText()
+            })
     }
 }

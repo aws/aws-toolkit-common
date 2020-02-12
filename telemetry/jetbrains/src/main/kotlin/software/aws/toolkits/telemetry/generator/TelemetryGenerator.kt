@@ -13,7 +13,6 @@ import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
-import software.aws.toolkits.telemetry.generator.TelemetryGenerator.toArgumentFormat
 import java.io.File
 import java.time.Instant
 
