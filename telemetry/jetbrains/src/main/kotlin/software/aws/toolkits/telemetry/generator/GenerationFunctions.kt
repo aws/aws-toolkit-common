@@ -62,12 +62,11 @@ fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType) {
     addType(enum.build())
 }
 
-fun FileSpec.Builder.generateTelemetryObjects(item: TelemetryDefinition) =
-    item
-        .metrics
-        .sortedBy { it.name }
-        .groupBy { it.name.split("_").first().toLowerCase() }
-        .forEach { metrics: Map.Entry<String, List<Metric>> -> generateNamespaces(item.types!!, metrics.key, metrics.value) }
+fun FileSpec.Builder.generateTelemetryObjects(item: TelemetryDefinition) = item
+    .metrics
+    .sortedBy { it.name }
+    .groupBy { it.name.split("_").first().toLowerCase() }
+    .forEach { metrics: Map.Entry<String, List<Metric>> -> generateNamespaces(item.types!!, metrics.key, metrics.value) }
 
 fun FileSpec.Builder.generateNamespaces(types: List<TelemetryMetricType>, namespaceType: String, metrics: List<Metric>) {
     val namespace = TypeSpec.objectBuilder("${namespaceType.toTypeFormat()}Telemetry")
@@ -80,27 +79,30 @@ fun TypeSpec.Builder.generateRecordFunctions(metric: Metric, types: List<Telemet
     val functionName = metric.name.split("_")[1]
     val parameters = buildParameters(metric, types)
     val functionBuilder = FunSpec.builder(functionName)
-    functionBuilder.addParameters(parameters)
-    functionBuilder.generateFunctionBody(metric)
-    functionBuilder.addKdoc(metric.description)
+    functionBuilder
+        .addParameters(parameters)
+        .generateFunctionBody(metric)
+        .addKdoc(metric.description)
+
     val function = functionBuilder.build()
     addFunction(function)
     // Result is special cased to generate a function that accepts true/false instead of a Result
     if (metric.metadata?.any { it.type == RESULT } != true) {
         return
     }
-    val resultOverloadFunction = FunSpec.builder(functionName)
-    val resultOverloadParameters = parameters.map {
+    val resultFunction = FunSpec.builder(functionName)
+    val resultParameters = parameters.map {
         if (it.name == RESULT) {
             ParameterSpec.builder(SUCCESS, BOOLEAN).build()
         } else {
             it
         }
     }
-    resultOverloadFunction.addParameters(resultOverloadParameters)
-    resultOverloadFunction.generateResultOverloadFunctionBody(function, resultOverloadParameters)
-    resultOverloadFunction.addKdoc(metric.description)
-    addFunction(resultOverloadFunction.build())
+    resultFunction
+        .addParameters(resultParameters)
+        .generateResultOverloadFunctionBody(function, resultParameters)
+        .addKdoc(metric.description)
+    addFunction(resultFunction.build())
 }
 
 fun buildParameters(metric: Metric, types: List<TelemetryMetricType>): List<ParameterSpec> {
@@ -129,7 +131,7 @@ fun Metadata.metadataToParameter(types: List<TelemetryMetricType>): ParameterSpe
     return parameterSpec.build()
 }
 
-fun FunSpec.Builder.generateFunctionBody(metric: Metric) {
+fun FunSpec.Builder.generateFunctionBody(metric: Metric): FunSpec.Builder {
     val telemetryClient = MemberName("software.aws.toolkits.jetbrains.services.telemetry", "TelemetryService")
     val metricUnit = MemberName("software.amazon.awssdk.services.toolkittelemetry.model", "Unit")
     addStatement("%M.getInstance().record(project) { ", telemetryClient)
@@ -141,9 +143,11 @@ fun FunSpec.Builder.generateFunctionBody(metric: Metric) {
         generateMetadataStatement(it, "${it.type.toArgumentFormat()}.toString()")
     }
     addStatement("}}")
+
+    return this
 }
 
-fun FunSpec.Builder.generateResultOverloadFunctionBody(originalFunction: FunSpec, parameters: List<ParameterSpec>) {
+fun FunSpec.Builder.generateResultOverloadFunctionBody(originalFunction: FunSpec, parameters: List<ParameterSpec>): FunSpec.Builder {
     addStatement("%L(%L)", originalFunction.name, parameters.joinToString {
         if (it.name != SUCCESS) {
             it.name
@@ -151,6 +155,8 @@ fun FunSpec.Builder.generateResultOverloadFunctionBody(originalFunction: FunSpec
             "if(${SUCCESS}) Result.SUCCEEDED else Result.FAILED"
         }
     })
+
+    return this
 }
 
 fun FunSpec.Builder.generateMetadataStatement(data: Metadata, setStatement: String) {
