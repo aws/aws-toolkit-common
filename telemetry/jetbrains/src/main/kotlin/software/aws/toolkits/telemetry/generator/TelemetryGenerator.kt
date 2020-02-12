@@ -98,11 +98,11 @@ object TelemetryGenerator {
 
     private fun generateNamespaces(output: FileSpec.Builder, types: List<TelemetryMetricType>, namespaceType: String, metrics: List<Metric>) {
         val namespace = TypeSpec.objectBuilder("${namespaceType.toTypeFormat()}Telemetry")
-        metrics.forEach { generateRecordFunction(it, types, namespace) }
+        metrics.forEach { generateRecordFunctions(it, types, namespace) }
         output.addType(namespace.build())
     }
 
-    private fun generateRecordFunction(metric: Metric, types: List<TelemetryMetricType>, namespace: TypeSpec.Builder) {
+    private fun generateRecordFunctions(metric: Metric, types: List<TelemetryMetricType>, namespace: TypeSpec.Builder) {
         // metric.name.split("_")[1] is guaranteed to work at this point because the schema requires the metric name to have at least 1 underscore
         val functionName = metric.name.split("_")[1]
         val parameters = buildParameters(metric, types)
@@ -110,7 +110,7 @@ object TelemetryGenerator {
         generateFunctionParameters(functionBuilder, parameters)
         generateFunctionBody(functionBuilder, metric)
         namespace.addFunction(functionBuilder.build())
-        // Result is special cased to generate a function that acceptstrue/false as well
+        // Result is special cased to generate a function that accepts true/false as well
         if (metric.metadata?.any { it.type == RESULT } != true) {
             return
         }

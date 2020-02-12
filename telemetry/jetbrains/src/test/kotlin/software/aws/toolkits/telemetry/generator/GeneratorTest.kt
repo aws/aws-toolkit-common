@@ -24,12 +24,12 @@ class GeneratorTest {
     }
 
     @Test
-    fun generateGenerates() {
+    fun generatesWithNormalInput() {
         testGenerator("/testGeneratorInput.json", "/testGeneratorOutput")
     }
 
     @Test
-    fun generateGeneratesTwoFunctionsForResult() {
+    fun resultGeneratesTwoFunctions() {
         testGenerator("/testResultInput.json", "/testResultOutput")
     }
 

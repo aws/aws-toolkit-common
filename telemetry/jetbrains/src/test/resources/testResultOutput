@@ -33,7 +33,7 @@ enum class Result(
 
 object MetadataTelemetry {
   /**
-   * called when invoking lambdas remotely
+   * It has a result
    */
   fun hasResult(
     project: Project? = null,
@@ -51,7 +51,7 @@ object MetadataTelemetry {
   }
 
   /**
-   * called when invoking lambdas remotely
+   * It has a result
    */
   fun hasResult(
     project: Project? = null,
