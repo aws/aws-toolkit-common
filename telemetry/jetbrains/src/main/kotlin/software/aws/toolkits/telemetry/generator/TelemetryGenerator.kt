@@ -19,6 +19,7 @@ import java.time.Instant
 object TelemetryGenerator {
     private const val PACKAGE_NAME = "software.aws.toolkits.telemetry"
     private const val RESULT = "result"
+    private const val SUCCESS = "success"
 
     private fun String.filterInvalidCharacters() = this.replace(".", "")
     private fun String.toTypeFormat() = this.filterInvalidCharacters().capitalize()
@@ -107,52 +108,53 @@ object TelemetryGenerator {
         val functionName = metric.name.split("_")[1]
         val parameters = buildParameters(metric, types)
         val functionBuilder = FunSpec.builder(functionName)
-        generateFunctionParameters(functionBuilder, parameters)
+        functionBuilder.addParameters(parameters)
         generateFunctionBody(functionBuilder, metric)
-        namespace.addFunction(functionBuilder.build())
-        // Result is special cased to generate a function that accepts true/false as well
+        val function = functionBuilder.build()
+        namespace.addFunction(function)
+        // Result is special cased to generate a function that accepts true/false instead of a Result
         if (metric.metadata?.any { it.type == RESULT } != true) {
             return
         }
-        val function2 = FunSpec.builder(functionName)
-        val parameters2 = parameters.map {
+        val resultOverloadFunction = FunSpec.builder(functionName)
+        val resultOverloadParameters = parameters.map {
             if (it.name == RESULT) {
-                ParameterSpec.builder(it.name, BOOLEAN).build()
+                ParameterSpec.builder(SUCCESS, BOOLEAN).build()
             } else {
                 it
             }
         }
-        generateFunctionParameters(function2, parameters2)
-        generateFunctionBody(function2, metric, boolResultField = true)
-        namespace.addFunction(function2.build())
+        resultOverloadFunction.addParameters(resultOverloadParameters)
+        generateResultOverloadFunctionBody(resultOverloadFunction, function, resultOverloadParameters)
+        namespace.addFunction(resultOverloadFunction.build())
     }
 
-    private fun buildParameters(metric: Metric, types: List<TelemetryMetricType>) = metric.metadata?.map { metadata ->
-        val telemetryMetricType = types.find { it.name == metadata.type }
-            ?: throw IllegalStateException("Type ${metadata.type} on ${metric.name} not found in types!")
-        val typeName = if (telemetryMetricType.allowedValues != null) {
-            ClassName(PACKAGE_NAME, telemetryMetricType.name.toTypeFormat())
-        } else {
-            telemetryMetricType.type?.getTypeFromType() ?: com.squareup.kotlinpoet.STRING
-        }.copy(nullable = metadata.required == false)
-
-        val parameterSpec = ParameterSpec.builder(telemetryMetricType.name.toArgumentFormat(), typeName)
-        if (metadata.required == false) {
-            parameterSpec.defaultValue("null")
-        }
-        parameterSpec.build()
-    } ?: listOf()
-
-    private fun generateFunctionParameters(functionBuilder: FunSpec.Builder, additionalParameters: List<ParameterSpec>) {
+    private fun buildParameters(metric: Metric, types: List<TelemetryMetricType>): List<ParameterSpec> {
         val projectParameter = ClassName("com.intellij.openapi.project", "Project").copy(nullable = true)
-        functionBuilder
-            .addParameter(ParameterSpec.builder("project", projectParameter).defaultValue("null").build())
-            .addParameters(additionalParameters)
-            .addParameter(ParameterSpec.builder("value", DOUBLE).defaultValue("1.0").build())
-            .addParameter(ParameterSpec.builder("createTime", Instant::class).defaultValue("Instant.now()").build())
+        val list = mutableListOf<ParameterSpec>()
+        list.add(ParameterSpec.builder("project", projectParameter).defaultValue("null").build())
+        list.addAll(metric.metadata?.map { metadata ->
+            val telemetryMetricType = types.find { it.name == metadata.type }
+                ?: throw IllegalStateException("Type ${metadata.type} on ${metric.name} not found in types!")
+
+            val typeName = if (telemetryMetricType.allowedValues != null) {
+                ClassName(PACKAGE_NAME, telemetryMetricType.name.toTypeFormat())
+            } else {
+                telemetryMetricType.type?.getTypeFromType() ?: com.squareup.kotlinpoet.STRING
+            }.copy(nullable = metadata.required == false)
+
+            val parameterSpec = ParameterSpec.builder(telemetryMetricType.name.toArgumentFormat(), typeName)
+            if (metadata.required == false) {
+                parameterSpec.defaultValue("null")
+            }
+            parameterSpec.build()
+        } ?: listOf())
+        list.add(ParameterSpec.builder("value", DOUBLE).defaultValue("1.0").build())
+        list.add(ParameterSpec.builder("createTime", Instant::class).defaultValue("Instant.now()").build())
+        return list
     }
 
-    private fun generateFunctionBody(functionBuilder: FunSpec.Builder, metric: Metric, boolResultField: Boolean = false) {
+    private fun generateFunctionBody(functionBuilder: FunSpec.Builder, metric: Metric) {
         val telemetryClient = MemberName("software.aws.toolkits.jetbrains.services.telemetry", "TelemetryService")
         val metricUnit = MemberName("software.amazon.awssdk.services.toolkittelemetry.model", "Unit")
         functionBuilder
@@ -162,14 +164,20 @@ object TelemetryGenerator {
             .addStatement("unit(%M.${(metric.unit ?: MetricUnit.NONE).name})", metricUnit)
             .addStatement("value(value)")
         metric.metadata?.forEach {
-            if (boolResultField && it.type == RESULT) {
-                generateMetadataStatement(functionBuilder, it, "if(result) Result.SUCCEEDED.toString() else Result.FAILED.toString()")
-            } else {
-                generateMetadataStatement(functionBuilder, it, "${it.type.toArgumentFormat()}.toString()")
-            }
+            generateMetadataStatement(functionBuilder, it, "${it.type.toArgumentFormat()}.toString()")
         }
         functionBuilder.addStatement("}}")
         functionBuilder.addKdoc(metric.description)
+    }
+
+    private fun generateResultOverloadFunctionBody(functionBuilder: FunSpec.Builder, originalFunction: FunSpec, parameters: List<ParameterSpec>) {
+        functionBuilder.addStatement("%L(%L)", originalFunction.name, parameters.joinToString {
+            if (it.name != SUCCESS) {
+                it.name
+            } else {
+                "if($SUCCESS) Result.SUCCEEDED else Result.FAILED"
+            }
+        })
     }
 
     private fun generateMetadataStatement(

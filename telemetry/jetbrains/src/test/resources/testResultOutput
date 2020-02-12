@@ -50,21 +50,13 @@ object MetadataTelemetry {
     }}
   }
 
-  /**
-   * It has a result
-   */
+
   fun hasResult(
     project: Project? = null,
-    result: Boolean,
+    success: Boolean,
     value: Double = 1.0,
     createTime: Instant = Instant.now()
   ) {
-    TelemetryService.getInstance().record(project) {
-    datum("metadata_hasResult") {
-    createTime(createTime)
-    unit(Unit.NONE)
-    value(value)
-    metadata("result", if(result) Result.SUCCEEDED.toString() else Result.FAILED.toString())
-    }}
+    hasResult(project, if(success) Result.SUCCEEDED else Result.FAILED, value, createTime)
   }
 }
