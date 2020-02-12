@@ -13,11 +13,13 @@ import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
+import software.aws.toolkits.telemetry.generator.TelemetryGenerator.toArgumentFormat
 import java.io.File
 import java.time.Instant
 
 object TelemetryGenerator {
     private const val PACKAGE_NAME = "software.aws.toolkits.telemetry"
+    private const val RESULT = "result"
 
     private fun String.filterInvalidCharacters() = this.replace(".", "")
     private fun String.toTypeFormat() = this.filterInvalidCharacters().capitalize()
@@ -102,7 +104,7 @@ object TelemetryGenerator {
     }
 
     private fun generateRecordFunction(metric: Metric, types: List<TelemetryMetricType>, namespace: TypeSpec.Builder) {
-        // metric.name.split("_")[1] is guaranteed to exist at this point because the schema requires the metric name to have at least 1 underscore
+        // metric.name.split("_")[1] is guaranteed to work at this point because the schema requires the metric name to have at least 1 underscore
         val functionName = metric.name.split("_")[1]
         val parameters = buildParameters(metric, types)
         val functionBuilder = FunSpec.builder(functionName)
@@ -110,18 +112,19 @@ object TelemetryGenerator {
         generateFunctionBody(functionBuilder, metric)
         namespace.addFunction(functionBuilder.build())
         // Result is special cased to generate a function that acceptstrue/false as well
-        if (metric.metadata?.any { it.type == "result" } != true) {
+        if (metric.metadata?.any { it.type == RESULT } != true) {
             return
         }
         val function2 = FunSpec.builder(functionName)
         val parameters2 = parameters.map {
-            if (it.name != "result") {
-                it
-            } else {
+            if (it.name == RESULT) {
                 ParameterSpec.builder(it.name, BOOLEAN).build()
+            } else {
+                it
             }
         }
         generateFunctionParameters(function2, parameters2)
+        generateFunctionBody(function2, metric, boolResultField = true)
         namespace.addFunction(function2.build())
     }
 
@@ -150,7 +153,7 @@ object TelemetryGenerator {
             .addParameter(ParameterSpec.builder("createTime", Instant::class).defaultValue("Instant.now()").build())
     }
 
-    private fun generateFunctionBody(functionBuilder: FunSpec.Builder, metric: Metric) {
+    private fun generateFunctionBody(functionBuilder: FunSpec.Builder, metric: Metric, boolResultField: Boolean = false) {
         val telemetryClient = MemberName("software.aws.toolkits.jetbrains.services.telemetry", "TelemetryService")
         val metricUnit = MemberName("software.amazon.awssdk.services.toolkittelemetry.model", "Unit")
         functionBuilder
@@ -160,17 +163,25 @@ object TelemetryGenerator {
             .addStatement("unit(%M.${(metric.unit ?: MetricUnit.NONE).name})", metricUnit)
             .addStatement("value(value)")
         metric.metadata?.forEach {
-            generateMetadataStatement(functionBuilder, it)
+            if (boolResultField && it.type == RESULT) {
+                generateMetadataStatement(functionBuilder, it, "if(result) Result.SUCCEEDED.toString() else Result.FAILED.toString()")
+            } else {
+                generateMetadataStatement(functionBuilder, it, "${it.type.toArgumentFormat()}.toString()")
+            }
         }
         functionBuilder.addStatement("}}")
         functionBuilder.addKdoc(metric.description)
     }
 
-    private fun generateMetadataStatement(functionBuilder: FunSpec.Builder, data: Metadata) {
+    private fun generateMetadataStatement(
+        functionBuilder: FunSpec.Builder,
+        data: Metadata,
+        setStatement: String
+    ) {
         if (data.required == false) {
             functionBuilder.beginControlFlow("if(%L != null) {", data.type.toArgumentFormat())
         }
-        functionBuilder.addStatement("metadata(%S, %L.toString())", data.type.toArgumentFormat(), data.type.toArgumentFormat())
+        functionBuilder.addStatement("metadata(%S, %L)", data.type.toArgumentFormat(), setStatement)
         if (data.required == false) {
             functionBuilder.endControlFlow()
         }
