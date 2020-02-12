@@ -50,7 +50,9 @@ object MetadataTelemetry {
     }}
   }
 
-
+  /**
+   * It has a result
+   */
   fun hasResult(
     project: Project? = null,
     success: Boolean,
