@@ -7,7 +7,7 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.InputFiles
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
-import software.aws.toolkits.telemetry.generator.TelemetryGenerator
+import software.aws.toolkits.telemetry.generator.generateTelemetryFromFiles
 import java.io.File
 
 open class GenerateTelemetry : DefaultTask() {
@@ -21,7 +21,7 @@ open class GenerateTelemetry : DefaultTask() {
     fun generate() {
         println("Generating telemetry using packaged file and additional files:\n ${inputFiles.map { it.absolutePath }.joinToString("\n")}")
         try {
-            TelemetryGenerator.generateTelemetryFromFiles(inputFiles = inputFiles, outputFolder = outputDirectory)
+            generateTelemetryFromFiles(inputFiles = inputFiles, outputFolder = outputDirectory)
         } catch (e: Exception) {
             System.err.println("Generating telemetry threw an exception! $e\n")
             throw e

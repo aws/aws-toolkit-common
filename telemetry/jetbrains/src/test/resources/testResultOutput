@@ -1,0 +1,64 @@
+// Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+// THIS FILE IS GENERATED! DO NOT EDIT BY HAND!
+package software.aws.toolkits.telemetry
+
+import com.intellij.openapi.project.Project
+import java.time.Instant
+import kotlin.Any
+import kotlin.Boolean
+import kotlin.Double
+import kotlin.String
+import software.amazon.awssdk.services.toolkittelemetry.model.Unit
+import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
+
+/**
+ * The result of the operation
+ */
+enum class Result(
+  val value: String
+) {
+  SUCCEEDED("Succeeded"),
+
+  FAILED("Failed"),
+
+  CANCELLED("Cancelled");
+
+  override fun toString(): String = value
+
+  companion object {
+    fun from(type: Any): Result = values().first { it.value == type.toString() }
+  }
+}
+
+object MetadataTelemetry {
+  /**
+   * It has a result
+   */
+  fun hasResult(
+    project: Project? = null,
+    result: Result,
+    value: Double = 1.0,
+    createTime: Instant = Instant.now()
+  ) {
+    TelemetryService.getInstance().record(project) {
+    datum("metadata_hasResult") {
+    createTime(createTime)
+    unit(Unit.NONE)
+    value(value)
+    metadata("result", result.toString())
+    }}
+  }
+
+  /**
+   * It has a result
+   */
+  fun hasResult(
+    project: Project? = null,
+    success: Boolean,
+    value: Double = 1.0,
+    createTime: Instant = Instant.now()
+  ) {
+    hasResult(project, if(success) Result.SUCCEEDED else Result.FAILED, value, createTime)
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "types": [
+        {
+            "name": "result",
+            "allowedValues": ["Succeeded", "Failed", "Cancelled"],
+            "description": "The result of the operation"
+        }
+    ],
+    "metrics": [
+        {
+            "name": "metadata_hasResult",
+            "description": "It has a result",
+            "metadata": [{ "type": "result" }]
+        }
+    ]
+}
