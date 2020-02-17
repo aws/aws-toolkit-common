@@ -13,7 +13,7 @@
         {
             "name": "resourceType",
             "type": "string",
-            "description": "A generic name metadata"
+            "description": "The type of resource acted on, usually a service"
         },
         {
             "name": "name",
