@@ -11,9 +11,10 @@
             "description": "The result of the operation"
         },
         {
-            "name": "resourceType",
+            "name": "serviceType",
+            "allowedValues": ["ecs", "cloudformation", "lambda", "s3", "schemas"],
             "type": "string",
-            "description": "The type of resource acted on, usually a service"
+            "description": "The name of the AWS service acted on"
         },
         {
             "name": "name",
@@ -95,12 +96,12 @@
         {
             "name": "aws_copyArn",
             "description": "Copy the ARN of an AWS resource",
-            "metadata": [{ "type": "resourceType" }]
+            "metadata": [{ "type": "serviceType" }]
         },
         {
             "name": "aws_deleteResource",
             "description": "Delete an AWS resource",
-            "metadata": [{ "type": "resourceType" }, {"type": "result"}]
+            "metadata": [{ "type": "serviceType" }, {"type": "result"}]
         },
         {
             "name": "aws_setCredentials",
