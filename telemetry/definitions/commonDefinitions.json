@@ -11,6 +11,11 @@
             "description": "The result of the operation"
         },
         {
+            "name": "resourceType",
+            "type": "string",
+            "description": "A generic name metadata"
+        },
+        {
             "name": "name",
             "type": "string",
             "description": "A generic name metadata"
@@ -88,6 +93,16 @@
     ],
     "metrics": [
         {
+            "name": "aws_copyArn",
+            "description": "Copy the ARN of an AWS resource",
+            "metadata": [{ "type": "resourceType" }]
+        },
+        {
+            "name": "aws_deleteResource",
+            "description": "Delete an AWS resource",
+            "metadata": [{ "type": "resourceType" }, {"type": "result"}]
+        },
+        {
             "name": "aws_setCredentials",
             "description": "Select a credentials profile",
             "metadata": [{ "type": "result" }]
@@ -127,6 +142,10 @@
             "description": "Report an issue with the plugin"
         },
         {
+            "name": "cloudformation_open",
+            "description": "Open a CloudFormation stack in the stack viewer"
+        },
+        {
             "name": "lambda_delete",
             "description": "called when deleting lambdas remotely",
             "unit": "None",
@@ -141,6 +160,11 @@
             "name": "lambda_create",
             "description": "Called when creating lambdas remotely",
             "metadata": [{ "type": "runtime" }]
+        },
+        {
+            "name": "lambda_goToHandler",
+            "description": "Jump to a lambda handler from elsewhere",
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "lambda_editFunction",
