@@ -19,7 +19,7 @@ open class GenerateTelemetry : DefaultTask() {
 
     @TaskAction
     fun generate() {
-        println("Generating telemetry using packaged file and additional files:\n ${inputFiles.map { it.absolutePath }.joinToString("\n")}")
+        println("Generating telemetry using packaged file and additional files:\n ${inputFiles.joinToString("\n") { it.absolutePath }}")
         try {
             generateTelemetryFromFiles(inputFiles = inputFiles, outputFolder = outputDirectory)
         } catch (e: Exception) {

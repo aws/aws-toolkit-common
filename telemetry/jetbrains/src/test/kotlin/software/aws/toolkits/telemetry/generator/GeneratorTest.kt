@@ -37,7 +37,7 @@ class GeneratorTest {
     fun generateGeneratesWithDefaultDefinitions() {
         generateTelemetryFromFiles(inputFiles = listOf(), outputFolder = folder.root)
         val outputFile = Paths.get(folder.root.absolutePath, "software", "aws", "toolkits", "telemetry", "TelemetryDefinitions.kt")
-        assertThat(Files.exists(outputFile)).isTrue
+        assertThat(Files.exists(outputFile)).isTrue()
     }
 
     // inputPath and outputPath must be in test resources
@@ -49,7 +49,7 @@ class GeneratorTest {
         )
 
         val outputFile = Paths.get(folder.root.absolutePath, "software", "aws", "toolkits", "telemetry", "TelemetryDefinitions.kt")
-        assertThat(Files.exists(outputFile)).isTrue
+        assertThat(Files.exists(outputFile)).isTrue()
 
         assertThat(outputFile.toFile().readText()).isEqualToIgnoringWhitespace(
             this.javaClass.getResourceAsStream(outputPath).use {

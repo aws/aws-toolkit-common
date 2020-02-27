@@ -2,18 +2,16 @@ import org.everit.json.schema.Schema
 import org.everit.json.schema.loader.SchemaLoader
 import org.json.JSONObject
 
-val jacksonVersion = "2.10.0"
-val junitVersion = "4.13"
-val kotlinVersion = "1.3.20"
-val assertjVersion = "3.12.0"
-
 plugins {
+    kotlin("jvm")
     java
-    `kotlin-dsl`
-    kotlin("jvm") version "1.3.61"
-    `maven-publish`
+    id("maven-publish")
     signing
 }
+
+val jacksonVersion = "2.10.0"
+val junitVersion = "4.13"
+val assertjVersion = "3.12.0"
 
 java {
     withJavadocJar()
@@ -27,8 +25,7 @@ buildscript {
         maven { setUrl("https://plugins.gradle.org/m2/") }
     }
     dependencies {
-        "classpath"(group = "com.github.everit-org.json-schema", name = "org.everit.json.schema", version = "1.12.1")
-        classpath(kotlin("gradle-plugin", version = "1.3.20"))
+        classpath(group = "com.github.everit-org.json-schema", name = "org.everit.json.schema", version = "1.12.1")
     }
 }
 
@@ -37,10 +34,9 @@ repositories {
     maven { setUrl("https://jitpack.io") }
 }
 
-group = "software.aws.toolkits"
-
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
+    implementation(gradleApi())
     implementation("com.squareup:kotlinpoet:1.5.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
     implementation("com.github.everit-org.json-schema:org.everit.json.schema:1.12.1")
@@ -49,23 +45,20 @@ dependencies {
 }
 
 tasks {
-    compileKotlin {
-        dependsOn(":copyTelemetryResources", ":validatePackagedSchema")
-        kotlinOptions.jvmTarget = "1.8"
+    processResources {
+        from("..")
+        include("*.json", "definitions/*.json")
     }
-    compileTestKotlin {
-        dependsOn(":copyTestTelemetryResources")
-        kotlinOptions.jvmTarget = "1.8"
-    }
-    register("validatePackagedSchema") {
-        group = "build"
+
+    task("validatePackagedSchema") {
+        group = "verification"
         description = "Validates that the packaged definition is compatable with the packaged schema"
         doFirst {
             try {
-                val telemetrySchema = File("src/main/resources/telemetrySchema.json")
+                val telemetrySchema = project.buildDir.resolve("resources/main/telemetrySchema.json")
                 val rawSchema = JSONObject(org.json.JSONTokener(telemetrySchema.readText()))
                 val schema: Schema = SchemaLoader.load(rawSchema)
-                File("src/main/resources/definitions").listFiles()!!.forEach {
+                project.buildDir.resolve("resources/main/definitions").listFiles()!!.forEach {
                     schema.validate(JSONObject(it.readText()))
                 }
             } catch (e: Exception) {
@@ -74,17 +67,11 @@ tasks {
             }
         }
     }
-    task(name = "copyTelemetryResources", type = Copy::class) {
-        from("..")
-        include("*.json", "definitions/*.json")
-        into("src/main/resources/")
-    }
-    task(name = "copyTestTelemetryResources", type = Copy::class) {
-        from("..")
-        include("*.json", "definitions/*.json")
-        into("src/test/resources/")
-    }
 }
+
+val validatePackagedSchema = tasks.getByName("validatePackagedSchema")
+validatePackagedSchema.dependsOn(tasks.getByName("processResources"))
+tasks.getByName("check").dependsOn(validatePackagedSchema)
 
 // maven can't handle this
 tasks.withType<GenerateModuleMetadata> {
@@ -96,7 +83,7 @@ publishing {
         create<MavenPublication>("maven") {
             from(components["java"])
             pom {
-                name.set(project.name)
+                name.set("telemetry-generator")
                 description.set("Telemetry generation for AWS Toolkit for JetBrains")
                 url.set("https://github.com/aws/aws-toolkit-common")
                 licenses {
