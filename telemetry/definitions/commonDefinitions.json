@@ -12,9 +12,9 @@
         },
         {
             "name": "serviceType",
-            "allowedValues": ["ecs", "cloudformation", "lambda", "s3", "schemas"],
+            "allowedValues": ["ecs", "cloudformation", "lambda", "logs", "s3", "schemas"],
             "type": "string",
-            "description": "The name of the AWS service acted on"
+            "description": "The name of the AWS service acted on. These values come from the AWS SDK."
         },
         {
             "name": "name",
@@ -141,6 +141,16 @@
         {
             "name": "aws_reportPluginIssue",
             "description": "Report an issue with the plugin"
+        },
+        {
+            "name": "cloudwatchlogs_openGroup",
+            "description": "Open the CloudWatch Logs group window",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "cloudwatchlogs_openStream",
+            "description": "Open a CloudWatch Logs stream in the window. serviceType determines which service the request to open came from.",
+            "metadata": [{"type": "result"}, {"type": "serviceType"}]
         },
         {
             "name": "cloudformation_open",
