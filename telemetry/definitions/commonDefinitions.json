@@ -172,7 +172,7 @@
         {
             "name": "cloudwatchlogs_openCurrentInEditor",
             "unit": "Bytes",
-            "description": "Open currently loaded log stream in editor. Value indicates the final size of the formatted log stream.",
+            "description": "Open currently loaded log stream in editor. Value indicates the number of lines opened.",
             "metadata": [{"type": "result"}]
         },
         {
@@ -188,6 +188,10 @@
         {
             "name": "cloudwatchlogs_refreshLogGroup",
             "description": "Refresh log group is pressed"
+        },
+        {
+            "name": "cloudwatchlogs_refreshLogStream",
+            "description": "Refresh log stream is pressed"
         },
         {
             "name": "cloudwatchlogs_searchStream",
