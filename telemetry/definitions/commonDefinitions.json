@@ -90,6 +90,11 @@
             "name": "workflowToken",
             "type": "string",
             "description": "A token used for flow metrics to link calls together"
+        },
+        {
+            "name": "enabled",
+            "type": "boolean",
+            "description": "True if turned on, false if turned off"
         }
     ],
     "metrics": [
@@ -149,8 +154,51 @@
         },
         {
             "name": "cloudwatchlogs_openStream",
-            "description": "Open a CloudWatch Logs stream in the window. serviceType determines which service the request to open came from.",
-            "metadata": [{"type": "result"}, {"type": "serviceType"}]
+            "description": "Open a CloudWatch Logs stream in the window",
+            "metadata": [{"type": "result"}]
+        },
+        {
+            "name": "cloudwatchlogs_downloadToFile",
+            "unit": "Bytes",
+            "description": "Download a log stream to a file. Value indicates the final size of the formatted log stream.",
+            "metadata": [{"type": "result"}]
+        },
+        {
+            "name": "cloudwatchlogs_openStreamInEditor",
+            "unit": "Bytes",
+            "description": "Download a log stream to open in editor. Value indicates the final size of the formatted log stream.",
+            "metadata": [{"type": "result"}]
+        },
+        {
+            "name": "cloudwatchlogs_openCurrentInEditor",
+            "unit": "Bytes",
+            "description": "Open currently loaded log stream in editor. Value indicates the final size of the formatted log stream.",
+            "metadata": [{"type": "result"}]
+        },
+        {
+            "name": "cloudwatchlogs_wrapLogs",
+            "description": "Word wrap logs off/on",
+            "metadata": [{"type": "enabled"}]
+        },
+        {
+            "name": "cloudwatchlogs_tailLogs",
+            "description": "Tail logs off/on",
+            "metadata": [{"type": "enabled"}]
+        },
+        {
+            "name": "cloudwatchlogs_refreshLogGroup",
+            "description": "Refresh log group is pressed"
+        },
+        {
+            "name": "cloudwatchlogs_searchStream",
+            "description": "Called when a log stream is searched",
+            "metadata": [{"type": "result"}]
+        },
+        {
+            "name": "cloudwatchlogs_showLogsAround",
+            "description": "Show logs around a time period in ms specified by Value",
+            "unit": "Milliseconds",
+            "metadata": [{"type": "result"}]
         },
         {
             "name": "cloudformation_open",
