@@ -174,8 +174,8 @@
             "metadata": [{"type": "result"}]
         },
         {
-            "name": "cloudwatchlogs_wrapLogs",
-            "description": "Word wrap logs off/on",
+            "name": "cloudwatchlogs_wrapEvents",
+            "description": "Word wrap events off/on",
             "metadata": [{"type": "enabled"}]
         },
         {
@@ -184,7 +184,7 @@
             "metadata": [{"type": "enabled"}]
         },
         {
-            "name": "cloudwatchlogs_refreshLogGroup",
+            "name": "cloudwatchlogs_refreshGroup",
             "description": "Refresh group is pressed"
         },
         {
@@ -197,8 +197,8 @@
             "metadata": [{"type": "result"}]
         },
         {
-            "name": "cloudwatchlogs_showLogsAround",
-            "description": "Show logs around a time period in ms specified by Value",
+            "name": "cloudwatchlogs_showEventsAround",
+            "description": "Show event around a time period in ms specified by Value",
             "unit": "Milliseconds",
             "metadata": [{"type": "result"}]
         },
