@@ -170,8 +170,8 @@
             "metadata": [{"type": "result"}]
         },
         {
-            "name": "cloudwatchlogs_openCurrentInEditor",
-            "description": "Export the currently open or filtered log stream to an editor",
+            "name": "cloudwatchlogs_viewCurrentInEditor",
+            "description": "Export the currently open (possibly filtered) log stream to an editor",
             "metadata": [{"type": "result"}]
         },
         {
