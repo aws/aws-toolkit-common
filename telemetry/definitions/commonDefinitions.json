@@ -14,7 +14,7 @@
             "name": "serviceType",
             "allowedValues": ["ecs", "cloudformation", "lambda", "logs", "s3", "schemas"],
             "type": "string",
-            "description": "The name of the AWS service acted on. These values come from the AWS SDK."
+            "description": "The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client."
         },
         {
             "name": "name",
@@ -158,7 +158,7 @@
             "metadata": [{"type": "result"}]
         },
         {
-            "name": "cloudwatchlogs_downloadToFile",
+            "name": "cloudwatchlogs_downloadStreamToFile",
             "unit": "Bytes",
             "description": "Download a log stream to a file. Value indicates the final size of the formatted log stream.",
             "metadata": [{"type": "result"}]
@@ -171,8 +171,7 @@
         },
         {
             "name": "cloudwatchlogs_openCurrentInEditor",
-            "unit": "Bytes",
-            "description": "Open currently loaded log stream in editor. Value indicates the number of lines opened.",
+            "description": "Open currently loaded log stream in editor.",
             "metadata": [{"type": "result"}]
         },
         {
