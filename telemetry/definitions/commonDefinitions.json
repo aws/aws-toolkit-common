@@ -150,12 +150,12 @@
         {
             "name": "cloudwatchlogs_openGroup",
             "description": "Open the CloudWatch Logs group window. ServiceType indicates that it was opened from a different service (like directly from an ECS container)",
-            "metadata": [{ "type": "result" }, {"type": "serviceType", "required": "false"}]
+            "metadata": [{ "type": "result" }, {"type": "serviceType", "required": false}]
         },
         {
             "name": "cloudwatchlogs_openStream",
             "description": "Open a CloudWatch Logs stream in the window. ServiceType indicates that it was opened from a different service (like directly from an ECS container)",
-            "metadata": [{"type": "result"}, {"type": "serviceType", "required": "false"}]
+            "metadata": [{"type": "result"}, {"type": "serviceType", "required": false}]
         },
         {
             "name": "cloudwatchlogs_downloadStreamToFile",
