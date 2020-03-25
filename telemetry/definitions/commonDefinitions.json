@@ -160,17 +160,17 @@
         {
             "name": "cloudwatchlogs_downloadStreamToFile",
             "unit": "Bytes",
-            "description": "Download a log stream to a file. Value indicates the final size of the formatted log stream.",
+            "description": "Download a stream to a file on disk. Value indicates the final size of the formatted stream.",
             "metadata": [{"type": "result"}]
         },
         {
             "name": "cloudwatchlogs_openStreamInEditor",
-            "description": "Download a log stream to open in editor.",
+            "description": "Download a stream to memory then open in an editor.",
             "metadata": [{"type": "result"}]
         },
         {
-            "name": "cloudwatchlogs_viewCurrentInEditor",
-            "description": "Export the currently open (possibly filtered) log stream to an editor",
+            "name": "cloudwatchlogs_viewCurrentMessagesInEditor",
+            "description": "Copy the currently open (possibly filtered) messages to an editor",
             "metadata": [{"type": "result"}]
         },
         {
@@ -179,21 +179,21 @@
             "metadata": [{"type": "enabled"}]
         },
         {
-            "name": "cloudwatchlogs_tailLogs",
-            "description": "Tail logs off/on",
+            "name": "cloudwatchlogs_tailStream",
+            "description": "Tail stream off/on",
             "metadata": [{"type": "enabled"}]
         },
         {
             "name": "cloudwatchlogs_refreshLogGroup",
-            "description": "Refresh log group is pressed"
+            "description": "Refresh group is pressed"
         },
         {
-            "name": "cloudwatchlogs_refreshLogStream",
-            "description": "Refresh log stream is pressed"
+            "name": "cloudwatchlogs_refreshStream",
+            "description": "Refresh stream is pressed"
         },
         {
             "name": "cloudwatchlogs_searchStream",
-            "description": "Called when a log stream is searched",
+            "description": "Called when a stream is searched",
             "metadata": [{"type": "result"}]
         },
         {
