@@ -165,8 +165,7 @@
         },
         {
             "name": "cloudwatchlogs_openStreamInEditor",
-            "unit": "Bytes",
-            "description": "Download a log stream to open in editor. Value indicates the final size of the formatted log stream.",
+            "description": "Download a log stream to open in editor.",
             "metadata": [{"type": "result"}]
         },
         {
