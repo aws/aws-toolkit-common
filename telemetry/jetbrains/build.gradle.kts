@@ -62,10 +62,10 @@ tasks {
         description = "Validates that the packaged definition is compatable with the packaged schema"
         doFirst {
             try {
-                val telemetrySchema = File("src/main/resources/telemetrySchema.json")
+                val telemetrySchema = file("src/main/resources/telemetrySchema.json")
                 val rawSchema = JSONObject(org.json.JSONTokener(telemetrySchema.readText()))
                 val schema: Schema = SchemaLoader.load(rawSchema)
-                File("src/main/resources/definitions").listFiles()!!.forEach {
+                file("src/main/resources/definitions").listFiles()!!.forEach {
                     schema.validate(JSONObject(it.readText()))
                 }
             } catch (e: Exception) {

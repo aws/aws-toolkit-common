@@ -207,6 +207,11 @@
             "description": "Open a CloudFormation stack in the stack viewer"
         },
         {
+            "name": "feedback_result",
+            "description": "Called while submitting in-IDE feedback",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "lambda_delete",
             "description": "called when deleting lambdas remotely",
             "unit": "None",
