@@ -6,18 +6,26 @@ AWS Toolkits.
 
 ### Where to Edit
 
-Each AWS Toolkit has a file that is useful for prototyping telemetry. They can be found in their repos at the path:
+#### VS Code
+For prototyping telemetry, modify the `src/shared/telemetry/vscodeTelemetry.json` inside the toolkit repository.
 
-- VS Code - `src/shared/telemetry/vscodeTelemetry.json`
-- JetBrains - TBD
+Make changes in that file, then from the AWS Toolkit repo root run:
 
-Make changes in these files, then from the AWS Toolkit repo root run:
-
-- VS Code - `npm run generateTelemetry`
-- JetBrains - `./gradlew generateTelemetry`
+`npm run generateTelemetry`
 
 To update the generated output. When you are satisfied with generated telemetry, move
 the definitions you just added to the appropriate file in `definitions` in this repo.
+
+
+#### JetBrains
+By using Gradle composite builds, we can prototype telemetry for the JetBrains toolkit directly in this repository.
+
+Make changes to the appropriate file in `definitions` in this repository, then from the toolkit directory run:
+
+`./gradlew generateTelemetry --include-build <path/to/aws-toolkit-common>/telemetry/jetbrains`
+
+Your changes should then be reflected in the generated output.
+
 
 ### How to Edit
 
