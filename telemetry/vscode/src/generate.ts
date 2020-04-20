@@ -109,15 +109,17 @@ export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
       */\n`
 
         str += `export function record${name}(args${metadata.every(item => !item.required) ? '?' : ''}: ${name}) {
+    let metadata: any[] = []
+    ${metadata.map(
+        (item: MetadataType) => `if(args.${item.name}) {metadata.push({Key: '${item.name}', Value: args.${item.name}.toString()})}`
+    ).join('\n')}
     ext.telemetry.record({
             createTime: args?.createTime ?? new Date(),
             data: [{
                 MetricName: '${metric.name}',
                 Value: args?.value ?? 1,
                 Unit: '${metric.unit ?? 'None'}',
-                Metadata: [${metadata.map(
-                    (item: MetadataType) => `{Key: '${item.name}', Value: args.${item.name}?.toString() ?? ''}`
-                )}]
+                Metadata: metadata
             }]
         })
 }`
