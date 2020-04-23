@@ -158,11 +158,6 @@
             "metadata": [{"type": "result"}, {"type": "serviceType", "required": false}]
         },
         {
-            "name": "cloudwatchlogs_deleteGroup",
-            "description": "Called when deleting a log group",
-            "metadata": [{"type": "result"}]
-        },
-        {
             "name": "cloudwatchlogs_downloadStreamToFile",
             "unit": "Bytes",
             "description": "Download a stream to a file on disk. Value indicates the final size of the formatted stream.",
