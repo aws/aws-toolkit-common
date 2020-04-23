@@ -197,6 +197,11 @@
             "metadata": [{"type": "result"}]
         },
         {
+            "name": "cloudwatchlogs_searchGroup",
+            "description": "Called when a group is searched",
+            "metadata": [{"type": "result"}]
+        },
+        {
             "name": "cloudwatchlogs_showEventsAround",
             "description": "Show event around a time period in ms specified by Value",
             "unit": "Milliseconds",
