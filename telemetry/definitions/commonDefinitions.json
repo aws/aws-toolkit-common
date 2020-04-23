@@ -240,7 +240,7 @@
         {
             "name": "lambda_invokeRemote",
             "description": "Called when invoking lambdas remotely",
-            "metadata": [{ "type": "runtime" }, { "type": "result" }]
+            "metadata": [{ "type": "runtime", "required": false }, { "type": "result" }]
         },
         {
             "name": "lambda_invokeLocal",
