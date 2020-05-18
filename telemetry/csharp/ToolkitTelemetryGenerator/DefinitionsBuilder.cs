@@ -94,7 +94,8 @@ namespace ToolkitTelemetryGenerator
             // eg: name: duration, type: double  =>  using Duration = System.double;
             if (type.IsAliasedType())
             {
-                _blankNamespace.Imports.Add(new CodeNamespaceImport($"{type.GetGeneratedTypeName()} = {type.GetAliasedTypeName()}"));
+                _blankNamespace.Imports.Add(
+                    new CodeNamespaceImport($"{type.GetGeneratedTypeName()} = {type.GetAliasedTypeName()}"));
             }
             else
             {
@@ -133,9 +134,11 @@ namespace ToolkitTelemetryGenerator
             type.allowedValues.Select(allowedValue =>
             {
                 // TODO : Process value into a clean enum value
-                CodeMemberField field = new CodeMemberField($"readonly {type.GetGeneratedTypeName()}", allowedValue.ToCamelCase().Replace(".", ""));
+                CodeMemberField field = new CodeMemberField($"readonly {type.GetGeneratedTypeName()}",
+                    allowedValue.ToCamelCase().Replace(".", ""));
                 field.InitExpression = new CodePrimitiveExpression(allowedValue);
-                field.InitExpression = new CodeObjectCreateExpression(type.GetGeneratedTypeName(), new CodeExpression[]{ new CodePrimitiveExpression(allowedValue) });
+                field.InitExpression = new CodeObjectCreateExpression(type.GetGeneratedTypeName(),
+                    new CodeExpression[] {new CodePrimitiveExpression(allowedValue)});
                 field.Attributes = MemberAttributes.Static | MemberAttributes.Public;
                 field.Comments.Add(new CodeCommentStatement(allowedValue, true));
 
@@ -164,29 +167,14 @@ namespace ToolkitTelemetryGenerator
             var method = new CodeMemberMethod();
 
             method.Attributes = MemberAttributes.Public | MemberAttributes.Static;
-            method.Name = $"Create{SanitizeName(metric.name)}";
+            method.Name = GetCreateMetricMethodName(metric);
             method.ReturnType = new CodeTypeReference("TelemetryEvent"); // TelemetryEvent is an in-toolkit datatype
             method.Comments.Add(new CodeCommentStatement(metric.description, true));
 
             // Generate the method's parameters
-            metric.metadata?
-                .OrderBy(x => x.required.Value ? 0 : 1) // put all required metrics first
-                .ThenBy(x => x.type)
-                .ToList().ForEach(metadata =>
-                {
-                    // TODO : handle if metadata.required is supposed to default to true when not present
-                    Console.WriteLine($"{metadata.type}, {metadata.required}");
-
-                    var type = GetMetricType(metadata.type);
-
-                    // var param = new CodeParameterDeclarationExpression(metadata.type, metadata.type);
-                    var isRequired = !metadata.required.HasValue || metadata.required.Value;
-                    var generatedTypeName = isRequired ? type.GetGeneratedTypeName() : $"{type.GetGeneratedTypeName()}?";
-                    var param = new CodeParameterDeclarationExpression(generatedTypeName, metadata.type);
-                    method.Parameters.Add(param);
-
-                    // TODO : Generate these params in a common method. Need them for the RecordXXX calls too
-                });
+            CreateMetadataParameters(metric)
+                .ToList()
+                .ForEach(param => method.Parameters.Add(param));
 
             // TODO : Body of method: Produce the TelemetryEvent and return it
             // TODO : metric.unit ?? "None"
@@ -197,9 +185,72 @@ namespace ToolkitTelemetryGenerator
             _telemetryEventsClass.Members.Add(method);
         }
 
+        private string GetCreateMetricMethodName(Metric metric)
+        {
+            return $"Create{SanitizeName(metric.name)}";
+        }
+
         private void CreateRecordMetricMethod(Metric metric)
         {
+            var metadataParameters = CreateMetadataParameters(metric).ToList();
 
+            CodeMemberMethod recordMethod = new CodeMemberMethod();
+            recordMethod.Attributes = MemberAttributes.Public | MemberAttributes.Static;
+            recordMethod.Name = $"Record{SanitizeName(metric.name)}";
+            recordMethod.ReturnType = new CodeTypeReference();
+
+            if (!string.IsNullOrWhiteSpace(metric.description))
+            {
+                recordMethod.Comments.Add(new CodeCommentStatement("Records Telemetry Event:", true));
+                recordMethod.Comments.Add(new CodeCommentStatement(metric.description, true));
+            }
+
+            // RecordXxx Parameters
+            // TODO : have this Builder generate ITelemetryLogger interface
+            var telemetryLogger = new CodeParameterDeclarationExpression("this ITelemetryLogger", "telemetryLogger");
+            recordMethod.Parameters.Add(telemetryLogger);
+            metadataParameters.ForEach(param => recordMethod.Parameters.Add(param));
+
+            // Generate: telemetryLogger.Record(CreateXxx(params));
+            var createEventInvoke =
+                new CodeMethodInvokeExpression(
+                    new CodeMethodReferenceExpression(null, GetCreateMetricMethodName(metric)));
+            metadataParameters
+                .ForEach(parameter =>
+                {
+                    createEventInvoke.Parameters.Add(new CodeArgumentReferenceExpression(parameter.Name));
+                });
+
+            var recordStatement = new CodeMethodInvokeExpression(
+                new CodeMethodReferenceExpression(new CodeArgumentReferenceExpression(telemetryLogger.Name), "Record")
+            );
+            recordStatement.Parameters.Add(createEventInvoke);
+
+            recordMethod.Statements.Add(recordStatement);
+
+            _telemetryEventsClass.Members.Add(recordMethod);
+        }
+
+        private IList<CodeParameterDeclarationExpression> CreateMetadataParameters(Metric metric)
+        {
+            var parameters = new List<CodeParameterDeclarationExpression>();
+
+            // Generate the method's parameters
+            metric.metadata?
+                .OrderBy(metadata => metadata.ResolvedRequired ? 0 : 1) // put all required metrics first
+                .ThenBy(metadata => metadata.type)
+                .ToList().ForEach(metadata =>
+                {
+                    var metricType = GetMetricType(metadata.type);
+
+                    var generatedTypeName = metadata.ResolvedRequired
+                        ? metricType.GetGeneratedTypeName()
+                        : $"{metricType.GetGeneratedTypeName()}?";
+                    var param = new CodeParameterDeclarationExpression(generatedTypeName, metadata.type);
+                    parameters.Add(param);
+                });
+
+            return parameters;
         }
 
         private MetricType GetMetricType(string name)
@@ -212,9 +263,9 @@ namespace ToolkitTelemetryGenerator
             return string.Join(
                 "",
                 name
-                    .Split(new char[] { '.', ',', '_', '-' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Split(new char[] {'.', ',', '_', '-'}, StringSplitOptions.RemoveEmptyEntries)
                     .Select(x => x.ToCamelCase())
-                );
+            );
         }
     }
 
