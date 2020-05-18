@@ -123,6 +123,11 @@
             "description": "Create a new credentials file"
         },
         {
+            "name": "aws_injectCredentials",
+            "description": "Inject selected AWS credentials into a third-party run (e.g. RunConfiguration)",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "aws_validateCredentials",
             "description": "Validate credentials when selecting new credentials",
             "metadata": [{ "type": "result" }]
