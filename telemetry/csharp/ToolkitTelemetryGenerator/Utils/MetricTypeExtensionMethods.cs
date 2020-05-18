@@ -35,7 +35,7 @@ namespace ToolkitTelemetryGenerator.Utils
 
         public static string GetGeneratedTypeName(this MetricType type)
         {
-            return $"{type.name[0].ToString().ToUpper()}{type.name.Substring(1)}";
+            return type.name.ToCamelCase();
         }
     }
 }

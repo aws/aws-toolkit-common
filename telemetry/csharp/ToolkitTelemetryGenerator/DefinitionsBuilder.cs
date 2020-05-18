@@ -98,29 +98,51 @@ namespace ToolkitTelemetryGenerator
             }
             else
             {
-                // Generate Enum types
+                // Generate Enum style Classes for types with allowed Values
                 // eg: "name": "runtime", "allowedValues": [ "dotnetcore2.1", "nodejs12.x" ]
-                // public enum Runtime
-                // {
-                //     Dotnetcore21 = "dotnetcore2.1",
-                //     Nodejs12x = "nodejs12.x",
-                // }
-                var typeDeclaration = new CodeTypeDeclaration(type.GetGeneratedTypeName());
-                typeDeclaration.IsEnum = true;
-                typeDeclaration.TypeAttributes =
-                    TypeAttributes.Public | TypeAttributes.Sealed;
-
-                type.allowedValues.Select(allowedValue =>
-                {
-                    // TODO : Process value into a clean enum value
-                    CodeMemberField field = new CodeMemberField("", allowedValue.ToCamelCase().Replace(".", ""));
-                    field.InitExpression = new CodePrimitiveExpression(allowedValue);
-
-                    return field;
-                }).ToList().ForEach(enumField => typeDeclaration.Members.Add(enumField));
-
-                _generatedNamespace.Types.Add(typeDeclaration);
+                GenerateEnumClass(type);
             }
+        }
+
+        private void GenerateEnumClass(MetricType type)
+        {
+            var typeDeclaration = new CodeTypeDeclaration(type.GetGeneratedTypeName());
+            typeDeclaration.IsClass = true;
+            typeDeclaration.TypeAttributes =
+                TypeAttributes.Public | TypeAttributes.Sealed;
+
+            if (!string.IsNullOrWhiteSpace(type.description))
+            {
+                typeDeclaration.Comments.Add(new CodeCommentStatement(type.description, true));
+            }
+
+            var valueField = new CodeMemberField(typeof(string), "Value");
+            valueField.Attributes = MemberAttributes.Public;
+            typeDeclaration.Members.Add(valueField);
+
+            var typeConstructor = new CodeConstructor();
+            typeConstructor.Attributes = MemberAttributes.Public;
+            typeConstructor.Parameters.Add(new CodeParameterDeclarationExpression("System.string", "value"));
+
+            // this.Value = value;
+            var xref = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), "Value");
+            typeConstructor.Statements.Add(new CodeAssignStatement(xref, new CodeArgumentReferenceExpression("value")));
+
+            typeDeclaration.Members.Add(typeConstructor);
+
+            type.allowedValues.Select(allowedValue =>
+            {
+                // TODO : Process value into a clean enum value
+                CodeMemberField field = new CodeMemberField($"readonly {type.GetGeneratedTypeName()}", allowedValue.ToCamelCase().Replace(".", ""));
+                field.InitExpression = new CodePrimitiveExpression(allowedValue);
+                field.InitExpression = new CodeObjectCreateExpression(type.GetGeneratedTypeName(), new CodeExpression[]{ new CodePrimitiveExpression(allowedValue) });
+                field.Attributes = MemberAttributes.Static | MemberAttributes.Public;
+                field.Comments.Add(new CodeCommentStatement(allowedValue, true));
+
+                return field;
+            }).ToList().ForEach(enumField => typeDeclaration.Members.Add(enumField));
+
+            _generatedNamespace.Types.Add(typeDeclaration);
         }
 
         private void ProcessMetrics()
@@ -158,7 +180,9 @@ namespace ToolkitTelemetryGenerator
                     var type = GetMetricType(metadata.type);
 
                     // var param = new CodeParameterDeclarationExpression(metadata.type, metadata.type);
-                    var param = new CodeParameterDeclarationExpression(type.GetGeneratedTypeName(), metadata.type);
+                    var isRequired = !metadata.required.HasValue || metadata.required.Value;
+                    var generatedTypeName = isRequired ? type.GetGeneratedTypeName() : $"{type.GetGeneratedTypeName()}?";
+                    var param = new CodeParameterDeclarationExpression(generatedTypeName, metadata.type);
                     method.Parameters.Add(param);
 
                     // TODO : Generate these params in a common method. Need them for the RecordXXX calls too
