@@ -63,6 +63,7 @@ namespace ToolkitTelemetryGenerator
 
             // Set up top level using statements
             _blankNamespace.Imports.Add(new CodeNamespaceImport("System"));
+            _blankNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
 
             // public sealed class ToolkitTelemetryEvent (contains generated code)
             _telemetryEventsClass = new CodeTypeDeclaration("ToolkitTelemetryEvent");
@@ -87,16 +88,21 @@ namespace ToolkitTelemetryGenerator
         private void GenerateFixedCode()
         {
             GenerateTelemetryEventClass();
+            GenerateTelemetryLoggerClass();
         }
 
         private void GenerateTelemetryEventClass()
         {
-            var telemetryEventClass = new CodeTypeDeclaration("TelemetryEvent");
-            telemetryEventClass.IsClass = true;
-            telemetryEventClass.TypeAttributes = TypeAttributes.Public | TypeAttributes.Sealed;
+            var telemetryEventClass = new CodeTypeDeclaration("TelemetryEvent")
+            {
+                IsClass = true,
+                TypeAttributes = TypeAttributes.Public | TypeAttributes.Sealed
+            };
 
-            var createdOnField = new CodeMemberField(typeof(DateTime), "CreatedOn");
-            createdOnField.Attributes = MemberAttributes.Public;
+            var createdOnField = new CodeMemberField(typeof(DateTime), "CreatedOn")
+            {
+                Attributes = MemberAttributes.Public
+            };
             createdOnField.Comments.Add(
                 new CodeCommentStatement("Timestamp is applied to all Data entries when sent to server", true));
             telemetryEventClass.Members.Add(createdOnField);
@@ -110,6 +116,25 @@ namespace ToolkitTelemetryGenerator
             telemetryEventClass.Members.Add(dataField);
 
             _generatedNamespace.Types.Add(telemetryEventClass);
+        }
+
+        private void GenerateTelemetryLoggerClass()
+        {
+            var telemetryLogger = new CodeTypeDeclaration("ITelemetryLogger")
+            {
+                IsInterface = true,
+            };
+
+            var recordMethod = new CodeMemberMethod()
+            {
+                Name = "Record",
+            };
+            recordMethod.Comments.Add(new CodeCommentStatement("Send Telemetry information", true));
+            recordMethod.Parameters.Add(new CodeParameterDeclarationExpression("TelemetryEvent", "telemetryEvent"));
+
+            telemetryLogger.Members.Add(recordMethod);
+
+            _generatedNamespace.Types.Add(telemetryLogger);
         }
 
         private void ProcessMetricTypes()
