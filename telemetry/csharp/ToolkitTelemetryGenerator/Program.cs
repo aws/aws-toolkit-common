@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using ToolkitTelemetryGenerator.Models;
 
 namespace ToolkitTelemetryGenerator
 {
@@ -6,7 +8,22 @@ namespace ToolkitTelemetryGenerator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // TODO : Command Line Options
+
+            var definitionPath = @"Definitions\commonDefinitions.json";
+
+            var definitions = TelemetryDefinitions.Load(definitionPath);
+
+            DefinitionsBuilder builder = new DefinitionsBuilder()
+                // TODO : Namespace
+                .WithNamespace("C2Namespace")
+                .AddMetrics(definitions.metrics)
+                .AddMetricsTypes(definitions.types);
+
+            var code = builder.Build();
+
+            // TODO : Output file
+            File.WriteAllText(@"..\..\..\..\GeneratedCode.cs", code);
         }
     }
 }

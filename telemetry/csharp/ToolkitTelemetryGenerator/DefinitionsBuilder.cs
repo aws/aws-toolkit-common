@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using ToolkitTelemetryGenerator.Models;
+using ToolkitTelemetryGenerator.Utils;
 
 namespace ToolkitTelemetryGenerator
 {

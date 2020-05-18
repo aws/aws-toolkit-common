@@ -6,8 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="..\..\definitions\commonDefinitions.json" Link="Definitions\commonDefinitions.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="System.CodeDom" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Definitions\" />
   </ItemGroup>
 
 </Project>
