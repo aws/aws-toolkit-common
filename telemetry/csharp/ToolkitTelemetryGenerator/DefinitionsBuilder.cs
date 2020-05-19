@@ -15,6 +15,7 @@ namespace ToolkitTelemetryGenerator
     /// </summary>
     public class DefinitionsBuilder
     {
+        private const string MetadataEntryFullName = "Amazon.ToolkitTelemetry.Model.MetadataEntry";
         private const string MetricDatumFullName = "Amazon.ToolkitTelemetry.Model.MetricDatum";
         private readonly List<MetricType> _types = new List<MetricType>();
         private readonly List<Metric> _metrics = new List<Metric>();
@@ -92,15 +93,7 @@ namespace ToolkitTelemetryGenerator
         {
             GenerateTelemetryEventClass();
             GenerateTelemetryLoggerClass();
-            // TODO : Generate extension method AddMetadata on MetricDatum objects
-            // public static void AddMetadata(this MetricDatum metricDatum, string key, string value)
-            // {
-            //     metricDatum.Metadata.Add(new MetadataEntry()
-            //     {
-            //         Key = key,
-            //         Value = value
-            //     });
-            // }
+            GenerateMetricDatumExtensionMethod();
         }
 
         private void GenerateTelemetryEventClass()
@@ -147,6 +140,33 @@ namespace ToolkitTelemetryGenerator
             telemetryLogger.Members.Add(recordMethod);
 
             _generatedNamespace.Types.Add(telemetryLogger);
+        }
+
+        private void GenerateMetricDatumExtensionMethod()
+        {
+            var addMetadata = new CodeMemberMethod()
+            {
+                Name = "AddMetadata",
+                Attributes = MemberAttributes.Public | MemberAttributes.Static,
+                ReturnType = new CodeTypeReference(typeof(void))
+            };
+
+            // Signature Args
+            addMetadata.Parameters.Add(new CodeParameterDeclarationExpression($"this {MetricDatumFullName}", "metricDatum"));
+            addMetadata.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "key"));
+            addMetadata.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "value"));
+
+            // Method Body
+            var entryVar = new CodeVariableReferenceExpression("entry");
+
+            addMetadata.Statements.Add(new CodeVariableDeclarationStatement("var", entryVar.VariableName, new CodeObjectCreateExpression(MetadataEntryFullName)));
+            addMetadata.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(entryVar, "Key"), new CodeArgumentReferenceExpression("key")));
+            addMetadata.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(entryVar, "Value"), new CodeArgumentReferenceExpression("value")));
+
+            addMetadata.Statements.Add(new CodeSnippetStatement());
+            addMetadata.Statements.Add(new CodeMethodInvokeExpression(new CodeFieldReferenceExpression(new CodeArgumentReferenceExpression("metricDatum"), "Metadata"), "Add", entryVar));
+
+            _telemetryEventsClass.Members.Add(addMetadata);
         }
 
         private void ProcessMetricTypes()
