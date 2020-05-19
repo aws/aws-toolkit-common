@@ -138,7 +138,6 @@ publishing {
 }
 
 nexusStaging {
-    stagingProfileId = "yourStagingProfileId" //when not defined will be got from server using "packageGroup"
     serverUrl = if (!version.toString().endsWith("SNAPSHOT")) {
         uri("https://aws.oss.sonatype.org/service/local/staging/deploy/maven2/")
     } else {
