@@ -215,7 +215,7 @@ namespace ToolkitTelemetryGenerator
             var toString = new CodeMemberMethod()
             {
                 Name = "ToString",
-                Attributes = MemberAttributes.Public,
+                Attributes = MemberAttributes.Public | MemberAttributes.Override,
             };
 
             toString.Statements.Add(
@@ -266,13 +266,13 @@ namespace ToolkitTelemetryGenerator
             var datetimeNow = new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(DateTime)), "Now");
 
             // Instantiate TelemetryEvent
-            method.Statements.Add(new CodeVariableDeclarationStatement("var", telemetryEventVar.VariableName, new CodeObjectCreateExpression(telemetryEventVar.VariableName)));
+            method.Statements.Add(new CodeVariableDeclarationStatement("var", telemetryEventVar.VariableName, new CodeObjectCreateExpression("TelemetryEvent")));
             method.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(telemetryEventVar, "CreatedOn"), datetimeNow));
             method.Statements.Add(new CodeAssignStatement(telemetryEventDataField, new CodeObjectCreateExpression($"List<{MetricDatumFullName}>")));
 
             // Instantiate MetricDatum
             method.Statements.Add(new CodeSnippetStatement());
-            method.Statements.Add(new CodeAssignStatement(datumVar, new CodeObjectCreateExpression(MetricDatumFullName)));
+            method.Statements.Add(new CodeVariableDeclarationStatement("var", datumVar.VariableName, new CodeObjectCreateExpression(MetricDatumFullName)));
             method.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datumVar, "MetricName"), new CodePrimitiveExpression(metric.name)));
             method.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datumVar, "Unit"), GetMetricUnitExpression(metric)));
             method.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datumVar, "Value"), new CodePrimitiveExpression(1))); // TODO : Is this more dynamic?
