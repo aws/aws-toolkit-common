@@ -181,23 +181,25 @@ namespace ToolkitTelemetryGenerator
                 typeDeclaration.Comments.Add(new CodeCommentStatement(type.description, true));
             }
 
-            // TODO : Put ToString methods on the Enum Classes
-            var valueField = new CodeMemberField(typeof(string), "Value");
-            valueField.Attributes = MemberAttributes.Public;
+            var valueField = new CodeMemberField(typeof(string), "_value");
+            valueField.Attributes = MemberAttributes.Private;
             typeDeclaration.Members.Add(valueField);
 
+            // Generate the constructor
             var typeConstructor = new CodeConstructor();
             typeConstructor.Attributes = MemberAttributes.Public;
             typeConstructor.Parameters.Add(new CodeParameterDeclarationExpression("System.string", "value"));
 
-            // this.Value = value;
-            var xref = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), "Value");
-            typeConstructor.Statements.Add(new CodeAssignStatement(xref, new CodeArgumentReferenceExpression("value")));
+            // this._value = value;
+            var valueFieldRef = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), valueField.Name);
+            typeConstructor.Statements.Add(new CodeAssignStatement(valueFieldRef, new CodeArgumentReferenceExpression("value")));
 
             typeDeclaration.Members.Add(typeConstructor);
 
+            // Generate static fields for each allowed value
             type.allowedValues.Select(allowedValue =>
             {
+                // eg: public static readonly Runtime Dotnetcore21 = new Runtime("dotnetcore2.1")
                 CodeMemberField field = new CodeMemberField($"readonly {type.GetGeneratedTypeName()}",
                     allowedValue.ToCamelCase().Replace(".", ""));
                 field.InitExpression = new CodePrimitiveExpression(allowedValue);
@@ -208,6 +210,19 @@ namespace ToolkitTelemetryGenerator
 
                 return field;
             }).ToList().ForEach(enumField => typeDeclaration.Members.Add(enumField));
+
+            // Generate a ToString method
+            var toString = new CodeMemberMethod()
+            {
+                Name = "ToString",
+                Attributes = MemberAttributes.Public,
+            };
+
+            toString.Statements.Add(
+                new CodeMethodReturnStatement(new CodeFieldReferenceExpression(new CodeThisReferenceExpression(),
+                    valueField.Name)));
+
+            typeDeclaration.Members.Add(toString);
 
             _generatedNamespace.Types.Add(typeDeclaration);
         }
