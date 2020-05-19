@@ -15,6 +15,7 @@ namespace ToolkitTelemetryGenerator
     /// </summary>
     public class DefinitionsBuilder
     {
+        private const string MetricDatumFullName = "Amazon.ToolkitTelemetry.Model.MetricDatum";
         private readonly List<MetricType> _types = new List<MetricType>();
         private readonly List<Metric> _metrics = new List<Metric>();
 
@@ -89,6 +90,15 @@ namespace ToolkitTelemetryGenerator
         {
             GenerateTelemetryEventClass();
             GenerateTelemetryLoggerClass();
+            // TODO : Generate extension method AddMetadata on MetricDatum objects
+            // public static void AddMetadata(this MetricDatum metricDatum, string key, string value)
+            // {
+            //     metricDatum.Metadata.Add(new MetadataEntry()
+            //     {
+            //         Key = key,
+            //         Value = value
+            //     });
+            // }
         }
 
         private void GenerateTelemetryEventClass()
@@ -171,6 +181,7 @@ namespace ToolkitTelemetryGenerator
                 typeDeclaration.Comments.Add(new CodeCommentStatement(type.description, true));
             }
 
+            // TODO : Put ToString methods on the Enum Classes
             var valueField = new CodeMemberField(typeof(string), "Value");
             valueField.Attributes = MemberAttributes.Public;
             typeDeclaration.Members.Add(valueField);
@@ -187,7 +198,6 @@ namespace ToolkitTelemetryGenerator
 
             type.allowedValues.Select(allowedValue =>
             {
-                // TODO : Process value into a clean enum value
                 CodeMemberField field = new CodeMemberField($"readonly {type.GetGeneratedTypeName()}",
                     allowedValue.ToCamelCase().Replace(".", ""));
                 field.InitExpression = new CodePrimitiveExpression(allowedValue);
@@ -218,25 +228,91 @@ namespace ToolkitTelemetryGenerator
         /// </summary>
         private void CreateMetricGeneratorMethod(Metric metric)
         {
-            var method = new CodeMemberMethod();
+            var metadataParameters = CreateMetadataParameters(metric);
 
-            method.Attributes = MemberAttributes.Public | MemberAttributes.Static;
-            method.Name = GetCreateMetricMethodName(metric);
-            method.ReturnType = new CodeTypeReference("TelemetryEvent"); // TelemetryEvent is an in-toolkit datatype
+            var method = new CodeMemberMethod
+            {
+                Attributes = MemberAttributes.Public | MemberAttributes.Static,
+                Name = GetCreateMetricMethodName(metric),
+                ReturnType = new CodeTypeReference("TelemetryEvent")
+            };
+
             method.Comments.Add(new CodeCommentStatement(metric.description, true));
 
-            // Generate the method's parameters
-            CreateMetadataParameters(metric)
+            // Generate the method signature's parameters
+            metadataParameters
                 .ToList()
                 .ForEach(param => method.Parameters.Add(param));
 
-            // TODO : Body of method: Produce the TelemetryEvent and return it
-            // TODO : metric.unit ?? "None"
+            // Generate the method body
+            var telemetryEventVar = new CodeVariableReferenceExpression("telemetryEvent");
+            var telemetryEventDataField = new CodeFieldReferenceExpression(telemetryEventVar, "Data");
+            var datumVar = new CodeVariableReferenceExpression("datum");
+            var datetimeNow = new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(DateTime)), "Now");
 
-            // TODO : Produce a TelemetryEvent and return it
-            method.Statements.Add(new CodeMethodReturnStatement(new CodePrimitiveExpression(null))); // "return null;"
+            // Instantiate TelemetryEvent
+            method.Statements.Add(new CodeVariableDeclarationStatement("var", telemetryEventVar.VariableName, new CodeObjectCreateExpression(telemetryEventVar.VariableName)));
+            method.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(telemetryEventVar, "CreatedOn"), datetimeNow));
+            method.Statements.Add(new CodeAssignStatement(telemetryEventDataField, new CodeObjectCreateExpression($"List<{MetricDatumFullName}>")));
+
+            // Instantiate MetricDatum
+            method.Statements.Add(new CodeSnippetStatement());
+            method.Statements.Add(new CodeAssignStatement(datumVar, new CodeObjectCreateExpression(MetricDatumFullName)));
+            method.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datumVar, "MetricName"), new CodePrimitiveExpression(metric.name)));
+            method.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datumVar, "Unit"), GetMetricUnitExpression(metric)));
+            method.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datumVar, "Value"), new CodePrimitiveExpression(1))); // TODO : Is this more dynamic?
+            // TODO : All CreateXxx should have CreateTime? and Value? args, then update the Value assignment above
+
+            // Set MetricDatum Metadata values
+            metric.metadata?.ToList().ForEach(metadata =>
+            {
+                method.Statements.Add(new CodeSnippetStatement());
+
+                var parameter = metadataParameters.Single(p => p.Name == metadata.type);
+                var argReference = new CodeArgumentReferenceExpression(parameter.Name);
+
+                if (metadata.ResolvedRequired)
+                {
+                    // Generate: datum.AddMetadata("foo", foo.ToString());
+                    var invokeToString = new CodeMethodInvokeExpression(argReference, "ToString");
+                    method.Statements.Add(new CodeMethodInvokeExpression(datumVar, "AddMetadata",
+                        new CodePrimitiveExpression(metadata.type), invokeToString));
+                }
+                else
+                {
+                    // Generate: 
+                    // if (foo.HasValue)
+                    // {
+                    //     datum.AddMetadata("foo", foo.Value.ToString());
+                    // }
+                    var hasValue = new CodeFieldReferenceExpression(argReference, "HasValue");
+                    var invokeToString =
+                        new CodeMethodInvokeExpression(new CodeFieldReferenceExpression(argReference, "Value"),
+                            "ToString");
+                    var addMetadata = new CodeMethodInvokeExpression(datumVar, "AddMetadata",
+                        new CodePrimitiveExpression(metadata.type), invokeToString);
+
+                    method.Statements.Add(
+                        new CodeConditionStatement(hasValue, new CodeExpressionStatement(addMetadata)));
+                }
+            });
+
+            // Generate: telemetryEvent.Data.Add(datum);
+            method.Statements.Add(new CodeSnippetStatement());
+            method.Statements.Add(new CodeMethodInvokeExpression(telemetryEventDataField, "Add", datumVar));
+
+            // Generate: return telemetryEvent;
+            method.Statements.Add(new CodeSnippetStatement());
+            method.Statements.Add(new CodeMethodReturnStatement(telemetryEventVar));
 
             _telemetryEventsClass.Members.Add(method);
+        }
+
+        // Eg: 'count' -> "Unit.Count"
+        private CodeExpression GetMetricUnitExpression(Metric metric)
+        {
+            var unit = metric.unit ?? "None"; // Fall back to "Unit.None" if there is no metric unit provided
+            return new CodeFieldReferenceExpression(new CodeTypeReferenceExpression("Amazon.ToolkitTelemetry.Unit"), unit.ToCamelCase());
         }
 
         private string GetCreateMetricMethodName(Metric metric)
