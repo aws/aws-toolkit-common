@@ -69,7 +69,7 @@ namespace ToolkitTelemetryGenerator
             // public sealed class ToolkitTelemetryEvent (contains generated code)
             _telemetryEventsClass = new CodeTypeDeclaration("ToolkitTelemetryEvent");
             _telemetryEventsClass.IsClass = true;
-            _telemetryEventsClass.TypeAttributes = TypeAttributes.Public | TypeAttributes.Sealed;
+            _telemetryEventsClass.TypeAttributes = TypeAttributes.Public;
             _generatedNamespace.Types.Add(_telemetryEventsClass);
 
             GenerateFixedCode();
@@ -82,7 +82,9 @@ namespace ToolkitTelemetryGenerator
             using (var writer = new StringWriter())
             {
                 provider.GenerateCodeFromCompileUnit(_generatedCode, writer, options);
-                return writer.ToString();
+                return writer.ToString()
+                    // XXX: CodeDom does not support static class generation. Post processing to accomplish this.
+                    .Replace($"public class {_telemetryEventsClass.Name}", $"public static class {_telemetryEventsClass.Name}");
             }
         }
 
