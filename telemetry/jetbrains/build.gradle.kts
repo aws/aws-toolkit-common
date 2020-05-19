@@ -13,6 +13,7 @@ plugins {
     kotlin("jvm") version "1.3.61"
     `maven-publish`
     signing
+    id("io.codearte.nexus-staging") version "0.21.2"
 }
 
 java {
@@ -134,6 +135,18 @@ publishing {
             }
         }
     }
+}
+
+nexusStaging {
+    stagingProfileId = "yourStagingProfileId" //when not defined will be got from server using "packageGroup"
+    serverUrl = if (!version.toString().endsWith("SNAPSHOT")) {
+        uri("https://aws.oss.sonatype.org/service/local/staging/deploy/maven2/")
+    } else {
+        uri("https://aws.oss.sonatype.org/content/repositories/snapshots/")
+    }
+
+    username = project.findProperty("ossrhUsername") as? String
+    password = project.findProperty("ossrhPassword") as? String
 }
 
 signing {
