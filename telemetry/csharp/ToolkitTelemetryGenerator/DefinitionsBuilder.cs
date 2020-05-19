@@ -354,7 +354,6 @@ namespace ToolkitTelemetryGenerator
             }
 
             // RecordXxx Parameters
-            // TODO : have this Builder generate ITelemetryLogger interface
             var telemetryLogger = new CodeParameterDeclarationExpression("this ITelemetryLogger", "telemetryLogger");
             recordMethod.Parameters.Add(telemetryLogger);
             metadataParameters.ForEach(param => recordMethod.Parameters.Add(param));
