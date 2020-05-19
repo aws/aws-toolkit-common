@@ -125,7 +125,7 @@
         {
             "name": "aws_injectCredentials",
             "description": "Inject selected AWS credentials into a third-party run (e.g. RunConfiguration)",
-            "metadata": [{ "type": "result" }]
+            "metadata": [{ "type": "result" }, { "type": "runtime", "required": false }]
         },
         {
             "name": "aws_validateCredentials",
