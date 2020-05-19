@@ -218,6 +218,7 @@ namespace ToolkitTelemetryGenerator
             {
                 Name = "ToString",
                 Attributes = MemberAttributes.Public | MemberAttributes.Override,
+                ReturnType = new CodeTypeReference(typeof(string))
             };
 
             toString.Statements.Add(
