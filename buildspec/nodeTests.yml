@@ -13,3 +13,8 @@ phases:
                 cd telemetry/vscode
                 npm install --unsafe-perm
                 npm pack --unsafe-perm
+
+artifacts:
+    files:
+        - 'telemetry/vscode/*.tgz'
+
