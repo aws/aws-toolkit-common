@@ -56,6 +56,7 @@ namespace ToolkitTelemetryGenerator
                 throw new MissingFieldException("Namespace not provided");
             }
 
+            // TODO : File heading comment - where generated from
             _generatedCode = new CodeCompileUnit();
             _blankNamespace = new CodeNamespace();
             _generatedNamespace = new CodeNamespace(_namespace);
@@ -91,9 +92,25 @@ namespace ToolkitTelemetryGenerator
 
         private void GenerateFixedCode()
         {
+            GenerateBaseMetricDataClass();
             GenerateTelemetryEventClass();
             GenerateTelemetryLoggerClass();
             GenerateMetricDatumExtensionMethod();
+        }
+
+        private void GenerateBaseMetricDataClass()
+        {
+            var cls = new CodeTypeDeclaration
+            {
+                IsClass = true,
+                Name = "BaseMetricData",
+                TypeAttributes = TypeAttributes.Public | TypeAttributes.Abstract
+            };
+
+            cls.Members.Add(new CodeMemberField("DateTime?", "CreatedOn") {Attributes = MemberAttributes.Public});
+            cls.Members.Add(new CodeMemberField("double?", "Value") { Attributes = MemberAttributes.Public });
+
+            _generatedNamespace.Types.Add(cls);
         }
 
         private void GenerateTelemetryEventClass()
@@ -147,7 +164,7 @@ namespace ToolkitTelemetryGenerator
             var addMetadata = new CodeMemberMethod()
             {
                 Name = "AddMetadata",
-                Attributes = MemberAttributes.Public | MemberAttributes.Static,
+                Attributes = MemberAttributes.Private | MemberAttributes.Static,
                 ReturnType = new CodeTypeReference(typeof(void))
             };
 
@@ -158,7 +175,8 @@ namespace ToolkitTelemetryGenerator
 
             // Method Body
             var entryVar = new CodeVariableReferenceExpression("entry");
-
+            
+            // TODO : Skip if value is null
             addMetadata.Statements.Add(new CodeVariableDeclarationStatement("var", entryVar.VariableName, new CodeObjectCreateExpression(MetadataEntryFullName)));
             addMetadata.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(entryVar, "Key"), new CodeArgumentReferenceExpression("key")));
             addMetadata.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(entryVar, "Value"), new CodeArgumentReferenceExpression("value")));
@@ -176,25 +194,17 @@ namespace ToolkitTelemetryGenerator
 
         internal void ProcessMetricType(MetricType type)
         {
-            // Handle POCO types
-            // eg: name: duration, type: double  =>  using Duration = System.double;
-            if (type.IsAliasedType())
+            // Handle non-POCO types
+            if (!type.IsAliasedType())
             {
-                _blankNamespace.Imports.Add(
-                    new CodeNamespaceImport($"{type.GetGeneratedTypeName()} = {type.GetAliasedTypeName()}"));
-            }
-            else
-            {
-                // Generate Enum style Classes for types with allowed Values
-                // eg: "name": "runtime", "allowedValues": [ "dotnetcore2.1", "nodejs12.x" ]
-                GenerateEnumClass(type);
+                GenerateEnumStruct(type);
             }
         }
 
-        private void GenerateEnumClass(MetricType type)
+        private void GenerateEnumStruct(MetricType type)
         {
             var typeDeclaration = new CodeTypeDeclaration(type.GetGeneratedTypeName());
-            typeDeclaration.IsClass = true;
+            typeDeclaration.IsStruct = true;
             typeDeclaration.TypeAttributes =
                 TypeAttributes.Public | TypeAttributes.Sealed;
 
@@ -257,8 +267,66 @@ namespace ToolkitTelemetryGenerator
 
         private void ProcessMetric(Metric metric)
         {
-            CreateMetricGeneratorMethod(metric);
-            CreateRecordMetricMethod(metric);
+            CreateMetricDataClass(metric);
+            // CreateMetricGeneratorMethod(metric);
+            // CreateRecordMetricMethod(metric);
+            CreateRecordMetricMethodByDataClass(metric);
+        }
+
+        private void CreateMetricDataClass(Metric metric)
+        {
+            var cls = new CodeTypeDeclaration
+            {
+                IsClass = true,
+                Name = SanitizeName(metric.name),
+                TypeAttributes = TypeAttributes.Public | TypeAttributes.Sealed
+            };
+
+            cls.BaseTypes.Add("BaseMetricData");
+
+            if (!string.IsNullOrWhiteSpace(metric.description))
+            {
+                cls.Comments.Add(new CodeCommentStatement(metric.description, true));
+            }
+
+            // Generate the class members
+            metric.metadata?
+                .ToList().ForEach(metadata =>
+                {
+                    var metricType = GetMetricType(metadata.type);
+                    var fieldName = metadata.type.ToCamelCase();
+
+                    var generatedTypeName = metadata.ResolvedRequired
+                        ? metricType.GetGeneratedTypeName()
+                        : $"{metricType.GetGeneratedTypeName()}?";
+
+                    if (metricType.IsAliasedType())
+                    {
+                        var t = metricType.GetAliasedType();
+
+                        generatedTypeName = t.FullName;
+                        // System.string cannot be made nullable
+                        if (t != typeof(string) && !metadata.ResolvedRequired)
+                        {
+                            generatedTypeName += "?";
+                        }
+                    }
+
+                    var field = new CodeMemberField(generatedTypeName, fieldName)
+                    {
+                        Attributes = MemberAttributes.Public
+                    };
+
+                    var description = $"{(metadata.ResolvedRequired ? "" : "Optional - ")}{metricType.description ?? string.Empty}";
+                    if (!string.IsNullOrEmpty(description))
+                    {
+                        field.Comments.Add(new CodeCommentStatement(description, true));
+                    }
+
+                    cls.Members.Add(field);
+                });
+
+            _generatedNamespace.Types.Add(cls);
         }
 
         /// <summary>
@@ -398,6 +466,126 @@ namespace ToolkitTelemetryGenerator
             _telemetryEventsClass.Members.Add(recordMethod);
         }
 
+        private void CreateRecordMetricMethodByDataClass(Metric metric)
+        {
+            // var metadataParameters = CreateMetadataParameters(metric).ToList();
+
+            CodeMemberMethod recordMethod = new CodeMemberMethod();
+            recordMethod.Attributes = MemberAttributes.Public | MemberAttributes.Static;
+            recordMethod.Name = $"Record{SanitizeName(metric.name)}";
+            recordMethod.ReturnType = new CodeTypeReference();
+
+            if (!string.IsNullOrWhiteSpace(metric.description))
+            {
+                recordMethod.Comments.Add(new CodeCommentStatement("Records Telemetry Event:", true));
+                recordMethod.Comments.Add(new CodeCommentStatement(metric.description, true));
+            }
+
+            // RecordXxx Parameters
+            var telemetryLogger = new CodeParameterDeclarationExpression("this ITelemetryLogger", "telemetryLogger");
+            recordMethod.Parameters.Add(telemetryLogger);
+            recordMethod.Parameters.Add(new CodeParameterDeclarationExpression(SanitizeName(metric.name), "payload"));
+
+            // Generate method body
+
+            // Create a TelemetryEvent from the given payload
+            // Generate the method body
+            var telemetryEventVar = new CodeVariableReferenceExpression("telemetryEvent");
+            var telemetryEventDataField = new CodeFieldReferenceExpression(telemetryEventVar, "Data");
+            var argReference = new CodeArgumentReferenceExpression("payload");
+            var datumVar = new CodeVariableReferenceExpression("datum");
+            var datetimeNow = new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(DateTime)), "Now");
+
+            // Instantiate TelemetryEvent
+            recordMethod.Statements.Add(new CodeVariableDeclarationStatement("var", telemetryEventVar.VariableName, new CodeObjectCreateExpression("TelemetryEvent")));
+
+            // Set telemetryEvent.CreatedOn to (payload.CreatedOn ?? DateTime.Now)
+            var payloadCreatedOn = new CodeFieldReferenceExpression(argReference, "CreatedOn");
+            var telemetryEventCreatedOn = new CodeFieldReferenceExpression(telemetryEventVar, "CreatedOn");
+
+            var createdOnCond = new CodeConditionStatement();
+            createdOnCond.Condition = new CodeFieldReferenceExpression(payloadCreatedOn, "HasValue");
+            createdOnCond.TrueStatements.Add(new CodeAssignStatement(telemetryEventCreatedOn, new CodeFieldReferenceExpression(payloadCreatedOn, "Value")));
+            createdOnCond.FalseStatements.Add(new CodeAssignStatement(telemetryEventCreatedOn, datetimeNow));
+            recordMethod.Statements.Add(createdOnCond);
+
+            // recordMethod.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(telemetryEventVar, "CreatedOn"), datetimeNow));
+            recordMethod.Statements.Add(new CodeAssignStatement(telemetryEventDataField, new CodeObjectCreateExpression($"List<{MetricDatumFullName}>")));
+            
+            // Instantiate MetricDatum
+            recordMethod.Statements.Add(new CodeSnippetStatement());
+            recordMethod.Statements.Add(new CodeVariableDeclarationStatement("var", datumVar.VariableName, new CodeObjectCreateExpression(MetricDatumFullName)));
+            recordMethod.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datumVar, "MetricName"), new CodePrimitiveExpression(metric.name)));
+            recordMethod.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datumVar, "Unit"), GetMetricUnitExpression(metric)));
+
+            // Set Datum.Value to (payload.Value ?? 1)
+            var payloadValue = new CodeFieldReferenceExpression(argReference, "Value");
+            var datumValue = new CodeFieldReferenceExpression(datumVar, "Value");
+
+            var valueCond = new CodeConditionStatement();
+            valueCond.Condition = new CodeFieldReferenceExpression(payloadValue, "HasValue");
+            valueCond.TrueStatements.Add(new CodeAssignStatement(datumValue, new CodeFieldReferenceExpression(payloadValue, "Value")));
+            valueCond.FalseStatements.Add(new CodeAssignStatement(datumValue, new CodePrimitiveExpression(1)));
+            recordMethod.Statements.Add(valueCond);
+
+            // Set MetricDatum Metadata values
+            metric.metadata?.ToList().ForEach(metadata =>
+            {
+                recordMethod.Statements.Add(new CodeSnippetStatement());
+
+                // var parameter = metadataParameters.Single(p => p.Name == metadata.type);
+                var payloadField = new CodeFieldReferenceExpression(argReference, SanitizeName(metadata.type));
+
+                // TODO : types that are string are not nullable
+                //
+                if (IsNullable(metadata))
+                {
+                    // Generate: 
+                    // if (foo.HasValue)
+                    // {
+                    //     datum.AddMetadata("foo", foo.Value.ToString());
+                    // }
+                    var hasValue = new CodeFieldReferenceExpression(payloadField, "HasValue");
+                    var invokeToString =
+                        new CodeMethodInvokeExpression(new CodeFieldReferenceExpression(payloadField, "Value"),
+                            "ToString");
+                    var addMetadata = new CodeMethodInvokeExpression(datumVar, "AddMetadata",
+                        new CodePrimitiveExpression(metadata.type), invokeToString);
+
+                    recordMethod.Statements.Add(
+                        new CodeConditionStatement(hasValue, new CodeExpressionStatement(addMetadata)));
+                }
+                else
+                {
+                    // Generate: datum.AddMetadata("foo", foo.ToString());
+                    var invokeToString = new CodeMethodInvokeExpression(payloadField, "ToString");
+                    recordMethod.Statements.Add(new CodeMethodInvokeExpression(datumVar, "AddMetadata",
+                        new CodePrimitiveExpression(metadata.type), invokeToString));
+                }
+            });
+
+            // Generate: telemetryEvent.Data.Add(datum);
+            recordMethod.Statements.Add(new CodeSnippetStatement());
+            recordMethod.Statements.Add(new CodeMethodInvokeExpression(telemetryEventDataField, "Add", datumVar));
+
+            _telemetryEventsClass.Members.Add(recordMethod);
+        }
+
+        private bool IsNullable(Metadata metadata)
+        {
+            var metricType = GetMetricType(metadata.type);
+
+            if (!metricType.IsAliasedType())
+            {
+                return !metadata.ResolvedRequired;
+            }
+
+            var type = metricType.GetAliasedType();
+
+            // System.string cannot be made nullable
+            return type != typeof(string) && !metadata.ResolvedRequired;
+        }
+
         private IList<CodeParameterDeclarationExpression> CreateMetadataParameters(Metric metric)
         {
             var parameters = new List<CodeParameterDeclarationExpression>();
@@ -435,5 +623,4 @@ namespace ToolkitTelemetryGenerator
             );
         }
     }
-
 }

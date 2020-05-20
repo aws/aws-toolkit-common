@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ToolkitTelemetryGenerator.Models;
 
 namespace ToolkitTelemetryGenerator.Utils
@@ -23,14 +24,14 @@ namespace ToolkitTelemetryGenerator.Utils
             return AliasedTypes.ContainsKey(type.type);
         }
 
-        public static string GetAliasedTypeName(this MetricType type)
+        public static Type GetAliasedType(this MetricType type)
         {
             if (!type.IsAliasedType())
             {
                 throw new System.Exception($"type not aliased: {type.type}");
             }
 
-            return AliasedTypes[type.type].FullName;
+            return AliasedTypes[type.type];
         }
 
         public static string GetGeneratedTypeName(this MetricType type)
