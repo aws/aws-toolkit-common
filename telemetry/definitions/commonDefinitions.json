@@ -61,6 +61,11 @@
             "description": "The lambda runtime"
         },
         {
+            "name": "runtimeString",
+            "type": "string",
+            "description": "A free-text field to record runtimes that may be separate from Lambda runtimes"
+        },
+        {
             "name": "templateName",
             "type": "string",
             "description": "Generic name of a template"
@@ -121,6 +126,11 @@
         {
             "name": "aws_createCredentials",
             "description": "Create a new credentials file"
+        },
+        {
+            "name": "aws_injectCredentials",
+            "description": "Inject selected AWS credentials into a third-party run (e.g. RunConfiguration)",
+            "metadata": [{ "type": "result" }, { "type": "runtimeString", "required": false }]
         },
         {
             "name": "aws_validateCredentials",
