@@ -17,4 +17,4 @@ phases:
 artifacts:
     files:
         - 'telemetry/vscode/*.tgz'
-
+    discard-paths: true
