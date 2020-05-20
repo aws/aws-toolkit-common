@@ -36,7 +36,13 @@ namespace ToolkitTelemetryGenerator.Utils
 
         public static string GetGeneratedTypeName(this MetricType type)
         {
-            return type.name.ToCamelCase();
+            var typeName = type.name;
+            if (type.IsAliasedType())
+            {
+                typeName = type.GetAliasedType().FullName;
+            }
+
+            return typeName.ToCamelCase();
         }
     }
 }

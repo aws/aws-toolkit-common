@@ -296,20 +296,11 @@ namespace ToolkitTelemetryGenerator
                     var metricType = GetMetricType(metadata.type);
                     var fieldName = metadata.type.ToCamelCase();
 
-                    var generatedTypeName = metadata.ResolvedRequired
-                        ? metricType.GetGeneratedTypeName()
-                        : $"{metricType.GetGeneratedTypeName()}?";
+                    var generatedTypeName = metricType.GetGeneratedTypeName();
 
-                    if (metricType.IsAliasedType())
+                    if (IsNullable(metadata))
                     {
-                        var t = metricType.GetAliasedType();
-
-                        generatedTypeName = t.FullName;
-                        // System.string cannot be made nullable
-                        if (t != typeof(string) && !metadata.ResolvedRequired)
-                        {
-                            generatedTypeName += "?";
-                        }
+                        generatedTypeName += "?";
                     }
 
                     var field = new CodeMemberField(generatedTypeName, fieldName)
