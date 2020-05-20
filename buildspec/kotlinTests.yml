@@ -11,3 +11,9 @@ phases:
                 # TODO - iterate through the subdirectories to have one build script per runtime
                 cd telemetry/jetbrains
                 ./gradlew test
+
+artifacts:
+    files:
+        - telemetry/jetbrains/build/**/*.jar
+    discard-paths: true
+
