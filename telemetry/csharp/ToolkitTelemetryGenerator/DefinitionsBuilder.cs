@@ -168,6 +168,9 @@ namespace ToolkitTelemetryGenerator
                 ReturnType = new CodeTypeReference(typeof(void))
             };
 
+            addMetadata.Comments.Add(new CodeCommentStatement("Utility method for generated code to add a metadata to a datum", true));
+            addMetadata.Comments.Add(new CodeCommentStatement("Metadata is only added if the value is non-blank", true));
+
             // Signature Args
             addMetadata.Parameters.Add(new CodeParameterDeclarationExpression($"this {MetricDatumFullName}", "metricDatum"));
             addMetadata.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "key"));
@@ -176,7 +179,13 @@ namespace ToolkitTelemetryGenerator
             // Method Body
             var entryVar = new CodeVariableReferenceExpression("entry");
             
-            // TODO : Skip if value is null
+            var conditional = new CodeConditionStatement()
+            {
+                Condition = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(string)), "IsNullOrWhiteSpace", new CodeArgumentReferenceExpression("value"))
+            };
+            conditional.TrueStatements.Add(new CodeMethodReturnStatement());
+            addMetadata.Statements.Add(conditional);
+
             addMetadata.Statements.Add(new CodeVariableDeclarationStatement("var", entryVar.VariableName, new CodeObjectCreateExpression(MetadataEntryFullName)));
             addMetadata.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(entryVar, "Key"), new CodeArgumentReferenceExpression("key")));
             addMetadata.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(entryVar, "Value"), new CodeArgumentReferenceExpression("value")));
@@ -527,6 +536,8 @@ namespace ToolkitTelemetryGenerator
                 // var parameter = metadataParameters.Single(p => p.Name == metadata.type);
                 var payloadField = new CodeFieldReferenceExpression(argReference, SanitizeName(metadata.type));
 
+                // TODO : Bool fields should emit "true"/"false"
+                // TODO : String fields could be null, don't call .ToString()
                 // TODO : types that are string are not nullable
                 //
                 if (IsNullable(metadata))
