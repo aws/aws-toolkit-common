@@ -685,6 +685,9 @@ namespace ToolkitTelemetryGenerator
             recordMethod.Statements.Add(new CodeSnippetStatement());
             recordMethod.Statements.Add(new CodeMethodInvokeExpression(telemetryEventDataField, "Add", datum));
 
+            // Generate: telemetryLogger.Record(telemetryEvent);
+            recordMethod.Statements.Add(new CodeMethodInvokeExpression(new CodeArgumentReferenceExpression("telemetryLogger"), "Record", telemetryEvent));
+
             _telemetryEventsClass.Members.Add(recordMethod);
         }
 
