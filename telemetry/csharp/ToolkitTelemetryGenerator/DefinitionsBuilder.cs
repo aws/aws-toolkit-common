@@ -18,6 +18,7 @@ namespace ToolkitTelemetryGenerator
     {
         private const string MetadataEntryFullName = "Amazon.ToolkitTelemetry.Model.MetadataEntry";
         private const string MetricDatumFullName = "Amazon.ToolkitTelemetry.Model.MetricDatum";
+        private const string AddMetadataMethodName = "AddMetadata";
         private readonly List<MetricType> _types = new List<MetricType>();
         private readonly List<Metric> _metrics = new List<Metric>();
 
@@ -116,7 +117,7 @@ namespace ToolkitTelemetryGenerator
             GenerateBaseMetricDataClass();
             GenerateTelemetryEventClass();
             GenerateTelemetryLoggerClass();
-            GenerateMetricDatumExtensionMethods();
+            GenerateAddMetadataMethods();
         }
 
         /// <summary>
@@ -195,20 +196,27 @@ namespace ToolkitTelemetryGenerator
             _generatedNamespace.Types.Add(telemetryLogger);
         }
 
-        private void GenerateMetricDatumExtensionMethods()
+        /// <summary>
+        /// Generates extension methods that process a value into MetricDatum's metadata
+        /// </summary>
+        private void GenerateAddMetadataMethods()
         {
-            GenerateMetricDatumExtensionMethod();
-            GenerateMetricDatumExtensionMethod_Object();
-            GenerateMetricDatumExtensionMethod_Bool();
-            GenerateMetricDatumExtensionMethod_Double();
-            GenerateMetricDatumExtensionMethod_Int();
+            GenerateAddMetadataMethod();
+            GenerateAddMetadataMethod_Object();
+            GenerateAddMetadataMethod_Bool();
+            GenerateAddMetadataMethod_Double();
+            GenerateAddMetadataMethod_Int();
         }
 
-        private void GenerateMetricDatumExtensionMethod()
+        /// <summary>
+        /// Generates the core AddMetadata method that takes a string value.
+        /// Overloaded AddMetadata methods flow into this one.
+        /// </summary>
+        private void GenerateAddMetadataMethod()
         {
             var addMetadata = new CodeMemberMethod()
             {
-                Name = "AddMetadata",
+                Name = AddMetadataMethodName,
                 Attributes = MemberAttributes.Private | MemberAttributes.Static,
                 ReturnType = new CodeTypeReference(typeof(void))
             };
@@ -223,6 +231,7 @@ namespace ToolkitTelemetryGenerator
             // Method Body
             var entryVar = new CodeVariableReferenceExpression("entry");
             
+            // "If the string is null/blank, do nothing"
             var conditional = new CodeConditionStatement()
             {
                 Condition = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(string)), nameof(string.IsNullOrWhiteSpace), new CodeArgumentReferenceExpression("value"))
@@ -231,6 +240,7 @@ namespace ToolkitTelemetryGenerator
             addMetadata.Statements.Add(conditional);
             addMetadata.Statements.Add(new CodeSnippetStatement());
 
+            // "Add the key/value to metadata"
             addMetadata.Statements.Add(new CodeVariableDeclarationStatement("var", entryVar.VariableName, new CodeObjectCreateExpression(MetadataEntryFullName)));
             addMetadata.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(entryVar, "Key"), new CodeArgumentReferenceExpression("key")));
             addMetadata.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(entryVar, "Value"), new CodeArgumentReferenceExpression("value")));
@@ -241,11 +251,14 @@ namespace ToolkitTelemetryGenerator
             _telemetryEventsClass.Members.Add(addMetadata);
         }
 
-        private void GenerateMetricDatumExtensionMethod_Object()
+        /// <summary>
+        /// Generates the object-overload for AddMetadata, which simply calls "ToString()" on the object to get the value.
+        /// </summary>
+        private void GenerateAddMetadataMethod_Object()
         {
             var addMetadata = new CodeMemberMethod()
             {
-                Name = "AddMetadata",
+                Name = AddMetadataMethodName,
                 Attributes = MemberAttributes.Private | MemberAttributes.Static,
                 ReturnType = new CodeTypeReference(typeof(void))
             };
@@ -274,7 +287,7 @@ namespace ToolkitTelemetryGenerator
             addMetadata.Statements.Add(
                 new CodeMethodInvokeExpression(
                     new CodeArgumentReferenceExpression("metricDatum"),
-                    "AddMetadata",
+                    AddMetadataMethodName,
                     new CodeArgumentReferenceExpression("key"),
                     new CodeMethodInvokeExpression(valueArg, "ToString")
                 ));
@@ -282,11 +295,14 @@ namespace ToolkitTelemetryGenerator
             _telemetryEventsClass.Members.Add(addMetadata);
         }
 
-        private void GenerateMetricDatumExtensionMethod_Bool()
+        /// <summary>
+        /// Generates the bool-overload for AddMetadata, which emits lowercase values of true/false
+        /// </summary>
+        private void GenerateAddMetadataMethod_Bool()
         {
             var addMetadata = new CodeMemberMethod()
             {
-                Name = "AddMetadata",
+                Name = AddMetadataMethodName,
                 Attributes = MemberAttributes.Private | MemberAttributes.Static,
                 ReturnType = new CodeTypeReference(typeof(void)),
             };
@@ -314,7 +330,7 @@ namespace ToolkitTelemetryGenerator
             addMetadata.Statements.Add(
                 new CodeMethodInvokeExpression(
                     new CodeArgumentReferenceExpression("metricDatum"),
-                    "AddMetadata",
+                    AddMetadataMethodName,
                     new CodeArgumentReferenceExpression("key"),
                     valueStrRef
                 ));
@@ -322,11 +338,14 @@ namespace ToolkitTelemetryGenerator
             _telemetryEventsClass.Members.Add(addMetadata);
         }
 
-        private void GenerateMetricDatumExtensionMethod_Double()
+        /// <summary>
+        /// Generates the double-overload for AddMetadata, which calls "ToString(CultureInfo.InvariantCulture)"
+        /// </summary>
+        private void GenerateAddMetadataMethod_Double()
         {
             var addMetadata = new CodeMemberMethod()
             {
-                Name = "AddMetadata",
+                Name = AddMetadataMethodName,
                 Attributes = MemberAttributes.Private | MemberAttributes.Static,
                 ReturnType = new CodeTypeReference(typeof(void)),
             };
@@ -344,7 +363,7 @@ namespace ToolkitTelemetryGenerator
             addMetadata.Statements.Add(
                 new CodeMethodInvokeExpression(
                     new CodeArgumentReferenceExpression("metricDatum"),
-                    "AddMetadata",
+                    AddMetadataMethodName,
                     new CodeArgumentReferenceExpression("key"),
                     new CodeMethodInvokeExpression(new CodeArgumentReferenceExpression("value"), nameof(int.ToString),
                         _invariantCulture)
@@ -353,11 +372,14 @@ namespace ToolkitTelemetryGenerator
             _telemetryEventsClass.Members.Add(addMetadata);
         }
 
-        private void GenerateMetricDatumExtensionMethod_Int()
+        /// <summary>
+        /// Generates the int-overload for AddMetadata, which calls "ToString(CultureInfo.InvariantCulture)"
+        /// </summary>
+        private void GenerateAddMetadataMethod_Int()
         {
             var addMetadata = new CodeMemberMethod()
             {
-                Name = "AddMetadata",
+                Name = AddMetadataMethodName,
                 Attributes = MemberAttributes.Private | MemberAttributes.Static,
                 ReturnType = new CodeTypeReference(typeof(void)),
             };
@@ -375,7 +397,7 @@ namespace ToolkitTelemetryGenerator
             addMetadata.Statements.Add(
                 new CodeMethodInvokeExpression(
                     new CodeArgumentReferenceExpression("metricDatum"),
-                    "AddMetadata",
+                    AddMetadataMethodName,
                     new CodeArgumentReferenceExpression("key"),
                     new CodeMethodInvokeExpression(new CodeArgumentReferenceExpression("value"), nameof(int.ToString),
                         _invariantCulture)
@@ -566,7 +588,7 @@ namespace ToolkitTelemetryGenerator
             var telemetryEventDataField = new CodeFieldReferenceExpression(telemetryEventVar, "Data");
             var argReference = new CodeArgumentReferenceExpression("payload");
             var datumVar = new CodeVariableReferenceExpression("datum");
-            var datumAddData = new CodeMethodReferenceExpression(datumVar, "AddMetadata");
+            var datumAddData = new CodeMethodReferenceExpression(datumVar, AddMetadataMethodName);
             var datetimeNow = new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(DateTime)), nameof(DateTime.Now));
 
             // Instantiate TelemetryEvent
