@@ -8,6 +8,8 @@ namespace ToolkitTelemetryGenerator.Utils
     {
         static readonly Dictionary<string, System.Type> AliasedTypes = new Dictionary<string, System.Type>()
         {
+            // See https://github.com/aws/aws-toolkit-common/blob/master/telemetry/telemetrySchema.json
+            // properties/types/items/properties/type
             {"int", typeof(int) },
             {"double", typeof(double) },
             {"string", typeof(string) },
@@ -28,7 +30,7 @@ namespace ToolkitTelemetryGenerator.Utils
         {
             if (!type.IsAliasedType())
             {
-                throw new System.Exception($"type not aliased: {type.type}");
+                throw new Exception($"type not aliased: {type.type}");
             }
 
             return AliasedTypes[type.type];

@@ -196,6 +196,8 @@ namespace ToolkitTelemetryGenerator
             _generatedNamespace.Types.Add(telemetryLogger);
         }
 
+        #region AddMetadata Related
+
         /// <summary>
         /// Generates extension methods that process a value into MetricDatum's metadata
         /// </summary>
@@ -419,20 +421,32 @@ namespace ToolkitTelemetryGenerator
             return statements;
         }
 
+        #endregion
+
+        /// <summary>
+        /// Generate code to support defined metric types
+        /// </summary>
         private void ProcessMetricTypes()
         {
             _types.ForEach(ProcessMetricType);
         }
 
+        /// <summary>
+        /// Generate code to support a metric type
+        /// </summary>
         internal void ProcessMetricType(MetricType type)
         {
             // Handle non-POCO types
             if (!type.IsAliasedType())
             {
+                // Generate strongly typed code for types that contain "allowed values"
                 GenerateEnumStruct(type);
             }
         }
 
+        /// <summary>
+        /// Given a type that contains a set of allowed values, generates a struct containing static fields.
+        /// </summary>
         private void GenerateEnumStruct(MetricType type)
         {
             var typeDeclaration = new CodeTypeDeclaration(type.GetGeneratedTypeName())
@@ -441,6 +455,7 @@ namespace ToolkitTelemetryGenerator
                 TypeAttributes = TypeAttributes.Public | TypeAttributes.Sealed
             };
 
+            typeDeclaration.Comments.Add(new CodeCommentStatement("Metric field type", true));
             if (!string.IsNullOrWhiteSpace(type.description))
             {
                 typeDeclaration.Comments.Add(new CodeCommentStatement(type.description, true));
@@ -450,7 +465,7 @@ namespace ToolkitTelemetryGenerator
             valueField.Attributes = MemberAttributes.Private;
             typeDeclaration.Members.Add(valueField);
 
-            // Generate the constructor
+            // Generate the constructor (stores provided value in _value)
             var typeConstructor = new CodeConstructor();
             typeConstructor.Attributes = MemberAttributes.Public;
             typeConstructor.Parameters.Add(new CodeParameterDeclarationExpression("System.string", "value"));
@@ -462,28 +477,32 @@ namespace ToolkitTelemetryGenerator
             typeDeclaration.Members.Add(typeConstructor);
 
             // Generate static fields for each allowed value
-            type.allowedValues.Select(allowedValue =>
+            type.allowedValues
+                .ToList()
+                .ForEach(allowedValue =>
             {
                 // eg: public static readonly Runtime Dotnetcore21 = new Runtime("dotnetcore2.1")
                 CodeMemberField field = new CodeMemberField($"readonly {type.GetGeneratedTypeName()}",
-                    allowedValue.ToCamelCase().Replace(".", ""));
-                field.InitExpression = new CodePrimitiveExpression(allowedValue);
-                field.InitExpression = new CodeObjectCreateExpression(type.GetGeneratedTypeName(),
-                    new CodeExpression[] {new CodePrimitiveExpression(allowedValue)});
-                field.Attributes = MemberAttributes.Static | MemberAttributes.Public;
+                    allowedValue.ToCamelCase().Replace(".", ""))
+                {
+                    InitExpression = new CodeObjectCreateExpression(type.GetGeneratedTypeName(),
+                        new CodeExpression[] {new CodePrimitiveExpression(allowedValue)}),
+                    Attributes = MemberAttributes.Static | MemberAttributes.Public
+                };
                 field.Comments.Add(new CodeCommentStatement(allowedValue, true));
 
-                return field;
-            }).ToList().ForEach(enumField => typeDeclaration.Members.Add(enumField));
+                typeDeclaration.Members.Add(field);
+            });
 
-            // Generate a ToString method
+            // Generate a ToString method, which returns this._value
+            // ToString is used by the AddMetadata method
             var toString = new CodeMemberMethod()
             {
                 Name = "ToString",
                 Attributes = MemberAttributes.Public | MemberAttributes.Override,
                 ReturnType = new CodeTypeReference(typeof(string))
             };
-
+            
             toString.Statements.Add(
                 new CodeMethodReturnStatement(new CodeFieldReferenceExpression(new CodeThisReferenceExpression(),
                     valueField.Name)));
