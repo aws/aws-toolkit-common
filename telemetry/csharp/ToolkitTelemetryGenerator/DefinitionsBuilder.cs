@@ -61,13 +61,17 @@ namespace ToolkitTelemetryGenerator
                 throw new MissingFieldException("Namespace not provided");
             }
 
-            // TODO : File heading comment - where generated from
             _generatedCode = new CodeCompileUnit();
             _blankNamespace = new CodeNamespace();
             _generatedNamespace = new CodeNamespace(_namespace);
 
             _generatedCode.Namespaces.Add(_blankNamespace);
             _generatedCode.Namespaces.Add(_generatedNamespace);
+
+            // Add a top level comment
+            _blankNamespace.Comments.Add(new CodeCommentStatement("--------------------------------------------------------------------------------", true));
+            _blankNamespace.Comments.Add(new CodeCommentStatement("This file is generated from https://github.com/aws/aws-toolkit-common/tree/master/telemetry", true));
+            _blankNamespace.Comments.Add(new CodeCommentStatement("--------------------------------------------------------------------------------", true));
 
             // Set up top level using statements
             _blankNamespace.Imports.Add(new CodeNamespaceImport("System"));
@@ -87,8 +91,12 @@ namespace ToolkitTelemetryGenerator
             ProcessMetrics();
 
             CodeDomProvider provider = CodeDomProvider.CreateProvider("CSharp");
-            CodeGeneratorOptions options = new CodeGeneratorOptions();
-            options.BracingStyle = "C";
+            CodeGeneratorOptions options = new CodeGeneratorOptions
+            {
+                BracingStyle = "C", 
+                BlankLinesBetweenMembers = true
+            };
+
             using (var writer = new StringWriter())
             {
                 provider.GenerateCodeFromCompileUnit(_generatedCode, writer, options);
