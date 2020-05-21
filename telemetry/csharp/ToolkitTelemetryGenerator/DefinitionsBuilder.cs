@@ -108,6 +108,9 @@ namespace ToolkitTelemetryGenerator
             }
         }
 
+        /// <summary>
+        /// Generate base classes and utility methods to support recording metrics
+        /// </summary>
         private void GenerateFixedCode()
         {
             GenerateBaseMetricDataClass();
@@ -116,6 +119,9 @@ namespace ToolkitTelemetryGenerator
             GenerateMetricDatumExtensionMethods();
         }
 
+        /// <summary>
+        /// Generate the base class to all telemetry event classes that the Toolkit can instantiate
+        /// </summary>
         private void GenerateBaseMetricDataClass()
         {
             var cls = new CodeTypeDeclaration
@@ -131,6 +137,9 @@ namespace ToolkitTelemetryGenerator
             _generatedNamespace.Types.Add(cls);
         }
 
+        /// <summary>
+        /// Generates the TelemetryEvent class, which is the generalized shape of a telemetry event to be recorded by the Toolkit.
+        /// </summary>
         private void GenerateTelemetryEventClass()
         {
             var telemetryEventClass = new CodeTypeDeclaration("TelemetryEvent")
@@ -138,6 +147,9 @@ namespace ToolkitTelemetryGenerator
                 IsClass = true,
                 TypeAttributes = TypeAttributes.Public | TypeAttributes.Sealed
             };
+
+            telemetryEventClass.Comments.Add(new CodeCommentStatement("Generalized Telemetry information to send to the backend", true));
+            telemetryEventClass.Comments.Add(new CodeCommentStatement("<seealso cref=\"ITelemetryLogger\"/>", true));
 
             var createdOnField = new CodeMemberField(typeof(DateTime), "CreatedOn")
             {
@@ -158,12 +170,18 @@ namespace ToolkitTelemetryGenerator
             _generatedNamespace.Types.Add(telemetryEventClass);
         }
 
+        /// <summary>
+        /// Generates the ITelemetryLogger interface, which the Toolkit implements as the means of handling telemetry
+        /// events to be sent to the backend. Auto-generated "RecordXxx" calls operate against this.
+        /// </summary>
         private void GenerateTelemetryLoggerClass()
         {
             var telemetryLogger = new CodeTypeDeclaration("ITelemetryLogger")
             {
                 IsInterface = true,
             };
+
+            telemetryLogger.Comments.Add(new CodeCommentStatement("Implementations handle sending Telemetry Events to the backend.", true));
 
             var recordMethod = new CodeMemberMethod()
             {
