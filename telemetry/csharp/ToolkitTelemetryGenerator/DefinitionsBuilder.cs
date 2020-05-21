@@ -447,8 +447,6 @@ namespace ToolkitTelemetryGenerator
         private void ProcessMetric(Metric metric)
         {
             CreateMetricDataClass(metric);
-            // CreateMetricGeneratorMethod(metric);
-            // CreateRecordMetricMethod(metric);
             CreateRecordMetricMethodByDataClass(metric);
         }
 
@@ -499,141 +497,11 @@ namespace ToolkitTelemetryGenerator
             _generatedNamespace.Types.Add(cls);
         }
 
-        /// <summary>
-        /// Eg: lambda_invokeRemote => "public static TelemetryEvent CreateLambdaInvokeRemote(...) {...}"
-        /// </summary>
-        private void CreateMetricGeneratorMethod(Metric metric)
-        {
-            var metadataParameters = CreateMetadataParameters(metric);
-
-            var method = new CodeMemberMethod
-            {
-                Attributes = MemberAttributes.Public | MemberAttributes.Static,
-                Name = GetCreateMetricMethodName(metric),
-                ReturnType = new CodeTypeReference("TelemetryEvent")
-            };
-
-            method.Comments.Add(new CodeCommentStatement(metric.description, true));
-
-            // Generate the method signature's parameters
-            metadataParameters
-                .ToList()
-                .ForEach(param => method.Parameters.Add(param));
-
-            // Generate the method body
-            var telemetryEventVar = new CodeVariableReferenceExpression("telemetryEvent");
-            var telemetryEventDataField = new CodeFieldReferenceExpression(telemetryEventVar, "Data");
-            var datumVar = new CodeVariableReferenceExpression("datum");
-            var datetimeNow = new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(DateTime)), "Now");
-            
-            // Instantiate TelemetryEvent
-            method.Statements.Add(new CodeVariableDeclarationStatement("var", telemetryEventVar.VariableName, new CodeObjectCreateExpression("TelemetryEvent")));
-            method.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(telemetryEventVar, "CreatedOn"), datetimeNow));
-            method.Statements.Add(new CodeAssignStatement(telemetryEventDataField, new CodeObjectCreateExpression($"List<{MetricDatumFullName}>")));
-
-            // Instantiate MetricDatum
-            method.Statements.Add(new CodeSnippetStatement());
-            method.Statements.Add(new CodeVariableDeclarationStatement("var", datumVar.VariableName, new CodeObjectCreateExpression(MetricDatumFullName)));
-            method.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datumVar, "MetricName"), new CodePrimitiveExpression(metric.name)));
-            method.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datumVar, "Unit"), GetMetricUnitExpression(metric)));
-            method.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datumVar, "Value"), new CodePrimitiveExpression(1))); // TODO : Is this more dynamic?
-            // TODO : All CreateXxx should have CreateTime? and Value? args, then update the Value assignment above
-
-            // Set MetricDatum Metadata values
-            metric.metadata?.ToList().ForEach(metadata =>
-            {
-                method.Statements.Add(new CodeSnippetStatement());
-
-                var parameter = metadataParameters.Single(p => p.Name == metadata.type);
-                var argReference = new CodeArgumentReferenceExpression(parameter.Name);
-
-                if (metadata.ResolvedRequired)
-                {
-                    // Generate: datum.AddMetadata("foo", foo.ToString());
-                    var invokeToString = new CodeMethodInvokeExpression(argReference, "ToString");
-                    method.Statements.Add(new CodeMethodInvokeExpression(datumVar, "AddMetadata",
-                        new CodePrimitiveExpression(metadata.type), invokeToString));
-                }
-                else
-                {
-                    // Generate: 
-                    // if (foo.HasValue)
-                    // {
-                    //     datum.AddMetadata("foo", foo.Value.ToString());
-                    // }
-                    var hasValue = new CodeFieldReferenceExpression(argReference, "HasValue");
-                    var invokeToString =
-                        new CodeMethodInvokeExpression(new CodeFieldReferenceExpression(argReference, "Value"),
-                            "ToString");
-                    var addMetadata = new CodeMethodInvokeExpression(datumVar, "AddMetadata",
-                        new CodePrimitiveExpression(metadata.type), invokeToString);
-
-                    method.Statements.Add(
-                        new CodeConditionStatement(hasValue, new CodeExpressionStatement(addMetadata)));
-                }
-            });
-
-            // Generate: telemetryEvent.Data.Add(datum);
-            method.Statements.Add(new CodeSnippetStatement());
-            method.Statements.Add(new CodeMethodInvokeExpression(telemetryEventDataField, "Add", datumVar));
-
-            // Generate: return telemetryEvent;
-            method.Statements.Add(new CodeSnippetStatement());
-            method.Statements.Add(new CodeMethodReturnStatement(telemetryEventVar));
-
-            _telemetryEventsClass.Members.Add(method);
-        }
-
         // Eg: 'count' -> "Unit.Count"
         private CodeExpression GetMetricUnitExpression(Metric metric)
         {
             var unit = metric.unit ?? "None"; // Fall back to "Unit.None" if there is no metric unit provided
             return new CodeFieldReferenceExpression(new CodeTypeReferenceExpression("Amazon.ToolkitTelemetry.Unit"), unit.ToCamelCase());
-        }
-
-        private string GetCreateMetricMethodName(Metric metric)
-        {
-            return $"Create{SanitizeName(metric.name)}";
-        }
-
-        private void CreateRecordMetricMethod(Metric metric)
-        {
-            var metadataParameters = CreateMetadataParameters(metric).ToList();
-
-            CodeMemberMethod recordMethod = new CodeMemberMethod();
-            recordMethod.Attributes = MemberAttributes.Public | MemberAttributes.Static;
-            recordMethod.Name = $"Record{SanitizeName(metric.name)}";
-            recordMethod.ReturnType = new CodeTypeReference();
-
-            if (!string.IsNullOrWhiteSpace(metric.description))
-            {
-                recordMethod.Comments.Add(new CodeCommentStatement("Records Telemetry Event:", true));
-                recordMethod.Comments.Add(new CodeCommentStatement(metric.description, true));
-            }
-
-            // RecordXxx Parameters
-            var telemetryLogger = new CodeParameterDeclarationExpression("this ITelemetryLogger", "telemetryLogger");
-            recordMethod.Parameters.Add(telemetryLogger);
-            metadataParameters.ForEach(param => recordMethod.Parameters.Add(param));
-
-            // Generate: telemetryLogger.Record(CreateXxx(params));
-            var createEventInvoke =
-                new CodeMethodInvokeExpression(
-                    new CodeMethodReferenceExpression(null, GetCreateMetricMethodName(metric)));
-            metadataParameters
-                .ForEach(parameter =>
-                {
-                    createEventInvoke.Parameters.Add(new CodeArgumentReferenceExpression(parameter.Name));
-                });
-
-            var recordStatement = new CodeMethodInvokeExpression(
-                new CodeMethodReferenceExpression(new CodeArgumentReferenceExpression(telemetryLogger.Name), "Record")
-            );
-            recordStatement.Parameters.Add(createEventInvoke);
-
-            recordMethod.Statements.Add(recordStatement);
-
-            _telemetryEventsClass.Members.Add(recordMethod);
         }
 
         private void CreateRecordMetricMethodByDataClass(Metric metric)
@@ -749,28 +617,6 @@ namespace ToolkitTelemetryGenerator
 
             // System.string cannot be made nullable
             return type != typeof(string) && !metadata.ResolvedRequired;
-        }
-
-        private IList<CodeParameterDeclarationExpression> CreateMetadataParameters(Metric metric)
-        {
-            var parameters = new List<CodeParameterDeclarationExpression>();
-
-            // Generate the method's parameters
-            metric.metadata?
-                .OrderBy(metadata => metadata.ResolvedRequired ? 0 : 1) // put all required metrics first
-                .ThenBy(metadata => metadata.type)
-                .ToList().ForEach(metadata =>
-                {
-                    var metricType = GetMetricType(metadata.type);
-
-                    var generatedTypeName = metadata.ResolvedRequired
-                        ? metricType.GetGeneratedTypeName()
-                        : $"{metricType.GetGeneratedTypeName()}?";
-                    var param = new CodeParameterDeclarationExpression(generatedTypeName, metadata.type);
-                    parameters.Add(param);
-                });
-
-            return parameters;
         }
 
         private MetricType GetMetricType(string name)
