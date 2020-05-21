@@ -74,9 +74,12 @@ namespace ToolkitTelemetryGenerator
             _blankNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
 
             // public sealed class ToolkitTelemetryEvent (contains generated code)
-            _telemetryEventsClass = new CodeTypeDeclaration("ToolkitTelemetryEvent");
-            _telemetryEventsClass.IsClass = true;
-            _telemetryEventsClass.TypeAttributes = TypeAttributes.Public;
+            _telemetryEventsClass = new CodeTypeDeclaration()
+            {
+                Name = "ToolkitTelemetryEvent",
+                IsClass = true,
+                TypeAttributes = TypeAttributes.Public
+            };
             _generatedNamespace.Types.Add(_telemetryEventsClass);
 
             GenerateFixedCode();
@@ -382,10 +385,11 @@ namespace ToolkitTelemetryGenerator
 
         private void GenerateEnumStruct(MetricType type)
         {
-            var typeDeclaration = new CodeTypeDeclaration(type.GetGeneratedTypeName());
-            typeDeclaration.IsStruct = true;
-            typeDeclaration.TypeAttributes =
-                TypeAttributes.Public | TypeAttributes.Sealed;
+            var typeDeclaration = new CodeTypeDeclaration(type.GetGeneratedTypeName())
+            {
+                IsStruct = true,
+                TypeAttributes = TypeAttributes.Public | TypeAttributes.Sealed
+            };
 
             if (!string.IsNullOrWhiteSpace(type.description))
             {
@@ -508,10 +512,12 @@ namespace ToolkitTelemetryGenerator
         {
             // var metadataParameters = CreateMetadataParameters(metric).ToList();
 
-            CodeMemberMethod recordMethod = new CodeMemberMethod();
-            recordMethod.Attributes = MemberAttributes.Public | MemberAttributes.Static;
-            recordMethod.Name = $"Record{SanitizeName(metric.name)}";
-            recordMethod.ReturnType = new CodeTypeReference();
+            CodeMemberMethod recordMethod = new CodeMemberMethod
+            {
+                Attributes = MemberAttributes.Public | MemberAttributes.Static,
+                Name = $"Record{SanitizeName(metric.name)}",
+                ReturnType = new CodeTypeReference()
+            };
 
             if (!string.IsNullOrWhiteSpace(metric.description))
             {
