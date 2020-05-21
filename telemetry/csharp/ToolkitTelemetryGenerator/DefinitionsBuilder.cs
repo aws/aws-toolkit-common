@@ -512,17 +512,26 @@ namespace ToolkitTelemetryGenerator
             _generatedNamespace.Types.Add(typeDeclaration);
         }
 
+        /// <summary>
+        /// Generate code to support defined metrics
+        /// </summary>
         private void ProcessMetrics()
         {
             _metrics.ForEach(ProcessMetric);
         }
 
+        /// <summary>
+        /// Generate code to support a metric
+        /// </summary>
         private void ProcessMetric(Metric metric)
         {
             CreateMetricDataClass(metric);
             CreateRecordMetricMethodByDataClass(metric);
         }
 
+        /// <summary>
+        /// Generates the data class used by the toolkit to represent this metric
+        /// </summary>
         private void CreateMetricDataClass(Metric metric)
         {
             var cls = new CodeTypeDeclaration
@@ -577,10 +586,11 @@ namespace ToolkitTelemetryGenerator
             return new CodeFieldReferenceExpression(new CodeTypeReferenceExpression("Amazon.ToolkitTelemetry.Unit"), unit.ToCamelCase());
         }
 
+        /// <summary>
+        /// Generates the "Record Metric" method used by the toolkit to send this metric to the backend
+        /// </summary>
         private void CreateRecordMetricMethodByDataClass(Metric metric)
         {
-            // var metadataParameters = CreateMetadataParameters(metric).ToList();
-
             CodeMemberMethod recordMethod = new CodeMemberMethod
             {
                 Attributes = MemberAttributes.Public | MemberAttributes.Static,
@@ -623,7 +633,6 @@ namespace ToolkitTelemetryGenerator
             createdOnCond.FalseStatements.Add(new CodeAssignStatement(telemetryEventCreatedOn, datetimeNow));
             recordMethod.Statements.Add(createdOnCond);
 
-            // recordMethod.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(telemetryEventVar, "CreatedOn"), datetimeNow));
             recordMethod.Statements.Add(new CodeAssignStatement(telemetryEventDataField, new CodeObjectCreateExpression($"List<{MetricDatumFullName}>")));
             
             // Instantiate MetricDatum
@@ -647,7 +656,6 @@ namespace ToolkitTelemetryGenerator
             {
                 recordMethod.Statements.Add(new CodeSnippetStatement());
 
-                // var parameter = metadataParameters.Single(p => p.Name == metadata.type);
                 var payloadField = new CodeFieldReferenceExpression(argReference, SanitizeName(metadata.type));
 
                 if (IsNullable(metadata))
