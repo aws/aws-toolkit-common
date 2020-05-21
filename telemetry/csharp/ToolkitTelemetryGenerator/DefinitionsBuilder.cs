@@ -2,6 +2,7 @@
 using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -19,6 +20,10 @@ namespace ToolkitTelemetryGenerator
         private const string MetricDatumFullName = "Amazon.ToolkitTelemetry.Model.MetricDatum";
         private readonly List<MetricType> _types = new List<MetricType>();
         private readonly List<Metric> _metrics = new List<Metric>();
+
+        private readonly CodeMethodReferenceExpression _invariantCulture =
+            new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(CultureInfo)),
+                nameof(CultureInfo.InvariantCulture));
 
         private string _namespace;
 
@@ -164,6 +169,8 @@ namespace ToolkitTelemetryGenerator
             GenerateMetricDatumExtensionMethod();
             GenerateMetricDatumExtensionMethod_Object();
             GenerateMetricDatumExtensionMethod_Bool();
+            GenerateMetricDatumExtensionMethod_Double();
+            GenerateMetricDatumExtensionMethod_Int();
         }
 
         private void GenerateMetricDatumExtensionMethod()
@@ -279,6 +286,68 @@ namespace ToolkitTelemetryGenerator
                     "AddMetadata",
                     new CodeArgumentReferenceExpression("key"),
                     valueStrRef
+                ));
+
+            _telemetryEventsClass.Members.Add(addMetadata);
+        }
+
+        private void GenerateMetricDatumExtensionMethod_Double()
+        {
+            var addMetadata = new CodeMemberMethod()
+            {
+                Name = "AddMetadata",
+                Attributes = MemberAttributes.Private | MemberAttributes.Static,
+                ReturnType = new CodeTypeReference(typeof(void)),
+            };
+
+            addMetadata.Comments.AddRange(CreateAddMetadataComments("(double overload)").ToArray());
+
+            // Signature Args
+            addMetadata.Parameters.Add(
+                new CodeParameterDeclarationExpression($"this {MetricDatumFullName}", "metricDatum"));
+            addMetadata.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "key"));
+            addMetadata.Parameters.Add(new CodeParameterDeclarationExpression(typeof(double), "value"));
+
+            // Method Body
+            // "Call AddMetadata with value.ToString(CultureInfo.InvariantCulture)"
+            addMetadata.Statements.Add(
+                new CodeMethodInvokeExpression(
+                    new CodeArgumentReferenceExpression("metricDatum"),
+                    "AddMetadata",
+                    new CodeArgumentReferenceExpression("key"),
+                    new CodeMethodInvokeExpression(new CodeArgumentReferenceExpression("value"), nameof(int.ToString),
+                        _invariantCulture)
+                ));
+
+            _telemetryEventsClass.Members.Add(addMetadata);
+        }
+
+        private void GenerateMetricDatumExtensionMethod_Int()
+        {
+            var addMetadata = new CodeMemberMethod()
+            {
+                Name = "AddMetadata",
+                Attributes = MemberAttributes.Private | MemberAttributes.Static,
+                ReturnType = new CodeTypeReference(typeof(void)),
+            };
+
+            addMetadata.Comments.AddRange(CreateAddMetadataComments("(int overload)").ToArray());
+
+            // Signature Args
+            addMetadata.Parameters.Add(
+                new CodeParameterDeclarationExpression($"this {MetricDatumFullName}", "metricDatum"));
+            addMetadata.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "key"));
+            addMetadata.Parameters.Add(new CodeParameterDeclarationExpression(typeof(int), "value"));
+
+            // Method Body
+            // "Call AddMetadata with value.ToString(CultureInfo.InvariantCulture)"
+            addMetadata.Statements.Add(
+                new CodeMethodInvokeExpression(
+                    new CodeArgumentReferenceExpression("metricDatum"),
+                    "AddMetadata",
+                    new CodeArgumentReferenceExpression("key"),
+                    new CodeMethodInvokeExpression(new CodeArgumentReferenceExpression("value"), nameof(int.ToString),
+                        _invariantCulture)
                 ));
 
             _telemetryEventsClass.Members.Add(addMetadata);
@@ -456,7 +525,7 @@ namespace ToolkitTelemetryGenerator
             var telemetryEventDataField = new CodeFieldReferenceExpression(telemetryEventVar, "Data");
             var datumVar = new CodeVariableReferenceExpression("datum");
             var datetimeNow = new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(DateTime)), "Now");
-
+            
             // Instantiate TelemetryEvent
             method.Statements.Add(new CodeVariableDeclarationStatement("var", telemetryEventVar.VariableName, new CodeObjectCreateExpression("TelemetryEvent")));
             method.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(telemetryEventVar, "CreatedOn"), datetimeNow));
