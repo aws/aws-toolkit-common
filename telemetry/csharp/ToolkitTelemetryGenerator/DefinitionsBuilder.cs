@@ -194,7 +194,7 @@ namespace ToolkitTelemetryGenerator
             
             var conditional = new CodeConditionStatement()
             {
-                Condition = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(string)), "IsNullOrWhiteSpace", new CodeArgumentReferenceExpression("value"))
+                Condition = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(typeof(string)), nameof(string.IsNullOrWhiteSpace), new CodeArgumentReferenceExpression("value"))
             };
             conditional.TrueStatements.Add(new CodeMethodReturnStatement());
             addMetadata.Statements.Add(conditional);
@@ -665,7 +665,7 @@ namespace ToolkitTelemetryGenerator
             var argReference = new CodeArgumentReferenceExpression("payload");
             var datumVar = new CodeVariableReferenceExpression("datum");
             var datumAddData = new CodeMethodReferenceExpression(datumVar, "AddMetadata");
-            var datetimeNow = new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(DateTime)), "Now");
+            var datetimeNow = new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(DateTime)), nameof(DateTime.Now));
 
             // Instantiate TelemetryEvent
             recordMethod.Statements.Add(new CodeVariableDeclarationStatement("var", telemetryEventVar.VariableName, new CodeObjectCreateExpression("TelemetryEvent")));
