@@ -164,7 +164,6 @@ namespace ToolkitTelemetryGenerator
             GenerateMetricDatumExtensionMethod();
             GenerateMetricDatumExtensionMethod_Object();
             GenerateMetricDatumExtensionMethod_Bool();
-            // TODO : overload for nullable types
         }
 
         private void GenerateMetricDatumExtensionMethod()
@@ -639,14 +638,10 @@ namespace ToolkitTelemetryGenerator
                 // var parameter = metadataParameters.Single(p => p.Name == metadata.type);
                 var payloadField = new CodeFieldReferenceExpression(argReference, SanitizeName(metadata.type));
 
-                // TODO : Bool fields should emit "true"/"false"
-                // TODO : String fields could be null, don't call .ToString()
-                // TODO : types that are string are not nullable
-                //
                 if (IsNullable(metadata))
                 {
                     // Generate: 
-                    // if (foo.HasValue)
+                    // if (payload.foo.HasValue)
                     // {
                     //     datum.AddMetadata("foo", payload.foo.Value);
                     // }
