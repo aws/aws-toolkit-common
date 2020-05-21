@@ -6,7 +6,7 @@ At this time, the generated code does not function in a standalone capacity. It 
 
 ## Generator Usage
 
-See [Options file](ToolkitTelemetryGenerator\Options.cs) for details.
+See [Options file](ToolkitTelemetryGenerator/Options.cs) for details.
 
 By default, the program produces generated code into the directory where the program is run from.
 
