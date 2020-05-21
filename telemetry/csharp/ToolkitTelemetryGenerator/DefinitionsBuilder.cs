@@ -95,7 +95,7 @@ namespace ToolkitTelemetryGenerator
             GenerateBaseMetricDataClass();
             GenerateTelemetryEventClass();
             GenerateTelemetryLoggerClass();
-            GenerateMetricDatumExtensionMethod();
+            GenerateMetricDatumExtensionMethods();
         }
 
         private void GenerateBaseMetricDataClass()
@@ -159,6 +159,14 @@ namespace ToolkitTelemetryGenerator
             _generatedNamespace.Types.Add(telemetryLogger);
         }
 
+        private void GenerateMetricDatumExtensionMethods()
+        {
+            GenerateMetricDatumExtensionMethod();
+            GenerateMetricDatumExtensionMethod_Object();
+            GenerateMetricDatumExtensionMethod_Bool();
+            // TODO : overload for nullable types
+        }
+
         private void GenerateMetricDatumExtensionMethod()
         {
             var addMetadata = new CodeMemberMethod()
@@ -168,8 +176,7 @@ namespace ToolkitTelemetryGenerator
                 ReturnType = new CodeTypeReference(typeof(void))
             };
 
-            addMetadata.Comments.Add(new CodeCommentStatement("Utility method for generated code to add a metadata to a datum", true));
-            addMetadata.Comments.Add(new CodeCommentStatement("Metadata is only added if the value is non-blank", true));
+            addMetadata.Comments.AddRange(CreateAddMetadataComments().ToArray());
 
             // Signature Args
             addMetadata.Parameters.Add(new CodeParameterDeclarationExpression($"this {MetricDatumFullName}", "metricDatum"));
@@ -185,6 +192,7 @@ namespace ToolkitTelemetryGenerator
             };
             conditional.TrueStatements.Add(new CodeMethodReturnStatement());
             addMetadata.Statements.Add(conditional);
+            addMetadata.Statements.Add(new CodeSnippetStatement());
 
             addMetadata.Statements.Add(new CodeVariableDeclarationStatement("var", entryVar.VariableName, new CodeObjectCreateExpression(MetadataEntryFullName)));
             addMetadata.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(entryVar, "Key"), new CodeArgumentReferenceExpression("key")));
@@ -194,6 +202,100 @@ namespace ToolkitTelemetryGenerator
             addMetadata.Statements.Add(new CodeMethodInvokeExpression(new CodeFieldReferenceExpression(new CodeArgumentReferenceExpression("metricDatum"), "Metadata"), "Add", entryVar));
 
             _telemetryEventsClass.Members.Add(addMetadata);
+        }
+
+        private void GenerateMetricDatumExtensionMethod_Object()
+        {
+            var addMetadata = new CodeMemberMethod()
+            {
+                Name = "AddMetadata",
+                Attributes = MemberAttributes.Private | MemberAttributes.Static,
+                ReturnType = new CodeTypeReference(typeof(void))
+            };
+
+            addMetadata.Comments.AddRange(CreateAddMetadataComments("(object overload)").ToArray());
+
+            // Signature Args
+            addMetadata.Parameters.Add(new CodeParameterDeclarationExpression($"this {MetricDatumFullName}", "metricDatum"));
+            addMetadata.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "key"));
+            addMetadata.Parameters.Add(new CodeParameterDeclarationExpression(typeof(object), "value"));
+
+            // Method Body
+            // "If value is null, return"
+            var valueArg = new CodeArgumentReferenceExpression("value");
+
+            var conditional = new CodeConditionStatement(
+                new CodeBinaryOperatorExpression(valueArg, CodeBinaryOperatorType.ValueEquality,
+                    new CodePrimitiveExpression()),
+                new CodeMethodReturnStatement()
+            );
+
+            addMetadata.Statements.Add(conditional);
+            addMetadata.Statements.Add(new CodeSnippetStatement());
+
+            // "Call AddMetadata with value.ToString()"
+            addMetadata.Statements.Add(
+                new CodeMethodInvokeExpression(
+                    new CodeArgumentReferenceExpression("metricDatum"),
+                    "AddMetadata",
+                    new CodeArgumentReferenceExpression("key"),
+                    new CodeMethodInvokeExpression(valueArg, "ToString")
+                ));
+
+            _telemetryEventsClass.Members.Add(addMetadata);
+        }
+
+        private void GenerateMetricDatumExtensionMethod_Bool()
+        {
+            var addMetadata = new CodeMemberMethod()
+            {
+                Name = "AddMetadata",
+                Attributes = MemberAttributes.Private | MemberAttributes.Static,
+                ReturnType = new CodeTypeReference(typeof(void)),
+            };
+
+            addMetadata.Comments.AddRange(CreateAddMetadataComments("(bool overload)").ToArray());
+
+            // Signature Args
+            addMetadata.Parameters.Add(new CodeParameterDeclarationExpression($"this {MetricDatumFullName}", "metricDatum"));
+            addMetadata.Parameters.Add(new CodeParameterDeclarationExpression(typeof(string), "key"));
+            addMetadata.Parameters.Add(new CodeParameterDeclarationExpression(typeof(bool), "value"));
+
+            // Method Body
+            // "Call AddMetadata with 'true' or 'false'"
+            var valueStrRef = new CodeVariableReferenceExpression("valueStr");
+            addMetadata.Statements.Add(new CodeVariableDeclarationStatement(typeof(string), valueStrRef.VariableName, new CodePrimitiveExpression("false")));
+
+            var conditional = new CodeConditionStatement(
+                new CodeArgumentReferenceExpression("value"),
+                new CodeAssignStatement(valueStrRef, new CodePrimitiveExpression("true"))
+            );
+
+            addMetadata.Statements.Add(conditional);
+            addMetadata.Statements.Add(new CodeSnippetStatement());
+
+            addMetadata.Statements.Add(
+                new CodeMethodInvokeExpression(
+                    new CodeArgumentReferenceExpression("metricDatum"),
+                    "AddMetadata",
+                    new CodeArgumentReferenceExpression("key"),
+                    valueStrRef
+                ));
+
+            _telemetryEventsClass.Members.Add(addMetadata);
+        }
+
+        private IList<CodeCommentStatement> CreateAddMetadataComments(string overloadDecorator = null)
+        {
+            var statements = new List<CodeCommentStatement>
+            {
+                new CodeCommentStatement(
+                    $"Utility method for generated code to add a metadata to a datum {overloadDecorator ?? string.Empty}",
+                    true),
+                new CodeCommentStatement("Metadata is only added if the value is non-blank", true)
+            };
+
+            return statements;
         }
 
         private void ProcessMetricTypes()
@@ -494,6 +596,7 @@ namespace ToolkitTelemetryGenerator
             var telemetryEventDataField = new CodeFieldReferenceExpression(telemetryEventVar, "Data");
             var argReference = new CodeArgumentReferenceExpression("payload");
             var datumVar = new CodeVariableReferenceExpression("datum");
+            var datumAddData = new CodeMethodReferenceExpression(datumVar, "AddMetadata");
             var datetimeNow = new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(DateTime)), "Now");
 
             // Instantiate TelemetryEvent
@@ -545,24 +648,20 @@ namespace ToolkitTelemetryGenerator
                     // Generate: 
                     // if (foo.HasValue)
                     // {
-                    //     datum.AddMetadata("foo", foo.Value.ToString());
+                    //     datum.AddMetadata("foo", payload.foo.Value);
                     // }
                     var hasValue = new CodeFieldReferenceExpression(payloadField, "HasValue");
-                    var invokeToString =
-                        new CodeMethodInvokeExpression(new CodeFieldReferenceExpression(payloadField, "Value"),
-                            "ToString");
-                    var addMetadata = new CodeMethodInvokeExpression(datumVar, "AddMetadata",
-                        new CodePrimitiveExpression(metadata.type), invokeToString);
+                    var addMetadata = new CodeMethodInvokeExpression(datumAddData,
+                        new CodePrimitiveExpression(metadata.type), new CodeFieldReferenceExpression(payloadField, "Value"));
 
                     recordMethod.Statements.Add(
                         new CodeConditionStatement(hasValue, new CodeExpressionStatement(addMetadata)));
                 }
                 else
                 {
-                    // Generate: datum.AddMetadata("foo", foo.ToString());
-                    var invokeToString = new CodeMethodInvokeExpression(payloadField, "ToString");
-                    recordMethod.Statements.Add(new CodeMethodInvokeExpression(datumVar, "AddMetadata",
-                        new CodePrimitiveExpression(metadata.type), invokeToString));
+                    // Generate: datum.AddMetadata("foo", payload.foo);
+                    recordMethod.Statements.Add(new CodeMethodInvokeExpression(datumAddData,
+                        new CodePrimitiveExpression(metadata.type), payloadField));
                 }
             });
 
