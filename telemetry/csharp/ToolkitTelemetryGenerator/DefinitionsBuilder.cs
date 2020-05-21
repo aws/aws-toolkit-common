@@ -77,19 +77,21 @@ namespace ToolkitTelemetryGenerator
             _blankNamespace.Imports.Add(new CodeNamespaceImport("System"));
             _blankNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
 
-            // public sealed class ToolkitTelemetryEvent (contains generated code)
+            // public sealed class ToolkitTelemetryEvent (contains generated code the toolkit uses to record metrics)
             _telemetryEventsClass = new CodeTypeDeclaration()
             {
                 Name = "ToolkitTelemetryEvent",
                 IsClass = true,
                 TypeAttributes = TypeAttributes.Public
             };
+            _telemetryEventsClass.Comments.Add(new CodeCommentStatement("Contains methods to record telemetry events", true));
             _generatedNamespace.Types.Add(_telemetryEventsClass);
 
             GenerateFixedCode();
             ProcessMetricTypes();
             ProcessMetrics();
 
+            // Output generated code to a string
             CodeDomProvider provider = CodeDomProvider.CreateProvider("CSharp");
             CodeGeneratorOptions options = new CodeGeneratorOptions
             {
