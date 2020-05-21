@@ -613,19 +613,19 @@ namespace ToolkitTelemetryGenerator
 
             // Create a TelemetryEvent from the given payload
             // Generate the method body
-            var telemetryEventVar = new CodeVariableReferenceExpression("telemetryEvent");
-            var telemetryEventDataField = new CodeFieldReferenceExpression(telemetryEventVar, "Data");
-            var argReference = new CodeArgumentReferenceExpression("payload");
-            var datumVar = new CodeVariableReferenceExpression("datum");
-            var datumAddData = new CodeMethodReferenceExpression(datumVar, AddMetadataMethodName);
+            var telemetryEvent = new CodeVariableReferenceExpression("telemetryEvent");
+            var telemetryEventDataField = new CodeFieldReferenceExpression(telemetryEvent, "Data");
+            var payload = new CodeArgumentReferenceExpression("payload");
+            var datum = new CodeVariableReferenceExpression("datum");
+            var datumAddData = new CodeMethodReferenceExpression(datum, AddMetadataMethodName);
             var datetimeNow = new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(DateTime)), nameof(DateTime.Now));
 
             // Instantiate TelemetryEvent
-            recordMethod.Statements.Add(new CodeVariableDeclarationStatement("var", telemetryEventVar.VariableName, new CodeObjectCreateExpression("TelemetryEvent")));
+            recordMethod.Statements.Add(new CodeVariableDeclarationStatement("var", telemetryEvent.VariableName, new CodeObjectCreateExpression("TelemetryEvent")));
 
             // Set telemetryEvent.CreatedOn to (payload.CreatedOn ?? DateTime.Now)
-            var payloadCreatedOn = new CodeFieldReferenceExpression(argReference, "CreatedOn");
-            var telemetryEventCreatedOn = new CodeFieldReferenceExpression(telemetryEventVar, "CreatedOn");
+            var payloadCreatedOn = new CodeFieldReferenceExpression(payload, "CreatedOn");
+            var telemetryEventCreatedOn = new CodeFieldReferenceExpression(telemetryEvent, "CreatedOn");
 
             var createdOnCond = new CodeConditionStatement();
             createdOnCond.Condition = new CodeFieldReferenceExpression(payloadCreatedOn, "HasValue");
@@ -633,17 +633,18 @@ namespace ToolkitTelemetryGenerator
             createdOnCond.FalseStatements.Add(new CodeAssignStatement(telemetryEventCreatedOn, datetimeNow));
             recordMethod.Statements.Add(createdOnCond);
 
+            // Instantiate a Data list
             recordMethod.Statements.Add(new CodeAssignStatement(telemetryEventDataField, new CodeObjectCreateExpression($"List<{MetricDatumFullName}>")));
             
             // Instantiate MetricDatum
             recordMethod.Statements.Add(new CodeSnippetStatement());
-            recordMethod.Statements.Add(new CodeVariableDeclarationStatement("var", datumVar.VariableName, new CodeObjectCreateExpression(MetricDatumFullName)));
-            recordMethod.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datumVar, "MetricName"), new CodePrimitiveExpression(metric.name)));
-            recordMethod.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datumVar, "Unit"), GetMetricUnitExpression(metric)));
+            recordMethod.Statements.Add(new CodeVariableDeclarationStatement("var", datum.VariableName, new CodeObjectCreateExpression(MetricDatumFullName)));
+            recordMethod.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "MetricName"), new CodePrimitiveExpression(metric.name)));
+            recordMethod.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "Unit"), GetMetricUnitExpression(metric)));
 
             // Set Datum.Value to (payload.Value ?? 1)
-            var payloadValue = new CodeFieldReferenceExpression(argReference, "Value");
-            var datumValue = new CodeFieldReferenceExpression(datumVar, "Value");
+            var payloadValue = new CodeFieldReferenceExpression(payload, "Value");
+            var datumValue = new CodeFieldReferenceExpression(datum, "Value");
 
             var valueCond = new CodeConditionStatement();
             valueCond.Condition = new CodeFieldReferenceExpression(payloadValue, "HasValue");
@@ -656,7 +657,7 @@ namespace ToolkitTelemetryGenerator
             {
                 recordMethod.Statements.Add(new CodeSnippetStatement());
 
-                var payloadField = new CodeFieldReferenceExpression(argReference, SanitizeName(metadata.type));
+                var payloadField = new CodeFieldReferenceExpression(payload, SanitizeName(metadata.type));
 
                 if (IsNullable(metadata))
                 {
@@ -682,7 +683,7 @@ namespace ToolkitTelemetryGenerator
 
             // Generate: telemetryEvent.Data.Add(datum);
             recordMethod.Statements.Add(new CodeSnippetStatement());
-            recordMethod.Statements.Add(new CodeMethodInvokeExpression(telemetryEventDataField, "Add", datumVar));
+            recordMethod.Statements.Add(new CodeMethodInvokeExpression(telemetryEventDataField, "Add", datum));
 
             _telemetryEventsClass.Members.Add(recordMethod);
         }
