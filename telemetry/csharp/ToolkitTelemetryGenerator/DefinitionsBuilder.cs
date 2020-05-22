@@ -19,20 +19,14 @@ namespace ToolkitTelemetryGenerator
         private const string MetadataEntryFullName = "Amazon.ToolkitTelemetry.Model.MetadataEntry";
         private const string MetricDatumFullName = "Amazon.ToolkitTelemetry.Model.MetricDatum";
         private const string AddMetadataMethodName = "AddMetadata";
-        private readonly List<MetricType> _types = new List<MetricType>();
-        private readonly List<Metric> _metrics = new List<Metric>();
 
         private readonly CodeMethodReferenceExpression _invariantCulture =
             new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(CultureInfo)),
                 nameof(CultureInfo.InvariantCulture));
 
         private string _namespace;
-
-        private CodeCompileUnit _generatedCode;
-        private CodeNamespace _blankNamespace; // Used for top level Using statements
-        private CodeNamespace _generatedNamespace; // Where generated code goes
-
-        private CodeTypeDeclaration _telemetryEventsClass;
+        private readonly List<MetricType> _types = new List<MetricType>();
+        private readonly List<Metric> _metrics = new List<Metric>();
 
         public DefinitionsBuilder AddMetricsTypes(IList<MetricType> types)
         {
@@ -62,36 +56,36 @@ namespace ToolkitTelemetryGenerator
                 throw new MissingFieldException("Namespace not provided");
             }
 
-            _generatedCode = new CodeCompileUnit();
-            _blankNamespace = new CodeNamespace();
-            _generatedNamespace = new CodeNamespace(_namespace);
+            var blankNamespace = new CodeNamespace(); // Used for top level Using statements
+            var generatedNamespace = new CodeNamespace(_namespace); // Where generated classes, types, etc are added to
 
-            _generatedCode.Namespaces.Add(_blankNamespace);
-            _generatedCode.Namespaces.Add(_generatedNamespace);
+            var generatedCode = new CodeCompileUnit();
+            generatedCode.Namespaces.Add(blankNamespace);
+            generatedCode.Namespaces.Add(generatedNamespace);
 
             // Add a top level comment
-            _blankNamespace.Comments.Add(new CodeCommentStatement("--------------------------------------------------------------------------------", true));
-            _blankNamespace.Comments.Add(new CodeCommentStatement("This file is generated from https://github.com/aws/aws-toolkit-common/tree/master/telemetry", true));
-            _blankNamespace.Comments.Add(new CodeCommentStatement("--------------------------------------------------------------------------------", true));
+            blankNamespace.Comments.Add(new CodeCommentStatement("--------------------------------------------------------------------------------", true));
+            blankNamespace.Comments.Add(new CodeCommentStatement("This file is generated from https://github.com/aws/aws-toolkit-common/tree/master/telemetry", true));
+            blankNamespace.Comments.Add(new CodeCommentStatement("--------------------------------------------------------------------------------", true));
 
             // Set up top level using statements
-            _blankNamespace.Imports.Add(new CodeNamespaceImport("System"));
-            _blankNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
-            _blankNamespace.Imports.Add(new CodeNamespaceImport("log4net"));
+            blankNamespace.Imports.Add(new CodeNamespaceImport("System"));
+            blankNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
+            blankNamespace.Imports.Add(new CodeNamespaceImport("log4net"));
 
-            // public sealed class ToolkitTelemetryEvent (contains generated code the toolkit uses to record metrics)
-            _telemetryEventsClass = new CodeTypeDeclaration()
+            // "public sealed class ToolkitTelemetryEvent" (contains generated code the toolkit uses to record metrics)
+            var telemetryEventsClass = new CodeTypeDeclaration()
             {
                 Name = "ToolkitTelemetryEvent",
                 IsClass = true,
                 TypeAttributes = TypeAttributes.Public
             };
-            _telemetryEventsClass.Comments.Add(new CodeCommentStatement("Contains methods to record telemetry events", true));
-            _generatedNamespace.Types.Add(_telemetryEventsClass);
+            telemetryEventsClass.Comments.Add(new CodeCommentStatement("Contains methods to record telemetry events", true));
+            generatedNamespace.Types.Add(telemetryEventsClass);
 
-            GenerateFixedCode();
-            ProcessMetricTypes();
-            ProcessMetrics();
+            GenerateFixedCode(telemetryEventsClass, generatedNamespace);
+            ProcessMetricTypes(generatedNamespace);
+            ProcessMetrics(telemetryEventsClass, generatedNamespace);
 
             // Output generated code to a string
             CodeDomProvider provider = CodeDomProvider.CreateProvider("CSharp");
@@ -103,24 +97,24 @@ namespace ToolkitTelemetryGenerator
 
             using (var writer = new StringWriter())
             {
-                provider.GenerateCodeFromCompileUnit(_generatedCode, writer, options);
+                provider.GenerateCodeFromCompileUnit(generatedCode, writer, options);
                 return writer.ToString()
                     // XXX: CodeDom does not support static class generation. Post processing to accomplish this.
-                    .Replace($"public class {_telemetryEventsClass.Name}", $"public static class {_telemetryEventsClass.Name}");
+                    .Replace($"public class {telemetryEventsClass.Name}", $"public static class {telemetryEventsClass.Name}");
             }
         }
 
         /// <summary>
         /// Generate base classes and utility methods to support recording metrics
         /// </summary>
-        private void GenerateFixedCode()
+        private void GenerateFixedCode(CodeTypeDeclaration telemetryEventsClass, CodeNamespace generatedNamespace)
         {
-            AddLoggerField(_telemetryEventsClass);
+            AddLoggerField(telemetryEventsClass);
 
-            GenerateBaseMetricDataClass();
-            GenerateTelemetryEventClass();
-            GenerateTelemetryLoggerClass();
-            GenerateAddMetadataMethods();
+            generatedNamespace.Types.Add(GenerateBaseMetricDataClass());
+            generatedNamespace.Types.Add(GenerateTelemetryEventClass());
+            generatedNamespace.Types.Add(GenerateTelemetryLoggerClass());
+            GenerateAddMetadataMethods(telemetryEventsClass);
         }
 
         /// <summary>
@@ -140,7 +134,7 @@ namespace ToolkitTelemetryGenerator
         /// <summary>
         /// Generate the base class to all telemetry event classes that the Toolkit can instantiate
         /// </summary>
-        private void GenerateBaseMetricDataClass()
+        private CodeTypeDeclaration GenerateBaseMetricDataClass()
         {
             var cls = new CodeTypeDeclaration
             {
@@ -152,13 +146,13 @@ namespace ToolkitTelemetryGenerator
             cls.Members.Add(new CodeMemberField("DateTime?", "CreatedOn") {Attributes = MemberAttributes.Public});
             cls.Members.Add(new CodeMemberField("double?", "Value") { Attributes = MemberAttributes.Public });
 
-            _generatedNamespace.Types.Add(cls);
+            return cls;
         }
 
         /// <summary>
         /// Generates the TelemetryEvent class, which is the generalized shape of a telemetry event to be recorded by the Toolkit.
         /// </summary>
-        private void GenerateTelemetryEventClass()
+        private CodeTypeDeclaration GenerateTelemetryEventClass()
         {
             var telemetryEventClass = new CodeTypeDeclaration("TelemetryEvent")
             {
@@ -185,14 +179,14 @@ namespace ToolkitTelemetryGenerator
             };
             telemetryEventClass.Members.Add(dataField);
 
-            _generatedNamespace.Types.Add(telemetryEventClass);
+            return telemetryEventClass;
         }
 
         /// <summary>
         /// Generates the ITelemetryLogger interface, which the Toolkit implements as the means of handling telemetry
         /// events to be sent to the backend. Auto-generated "RecordXxx" calls operate against this.
         /// </summary>
-        private void GenerateTelemetryLoggerClass()
+        private CodeTypeDeclaration GenerateTelemetryLoggerClass()
         {
             var telemetryLogger = new CodeTypeDeclaration("ITelemetryLogger")
             {
@@ -210,7 +204,7 @@ namespace ToolkitTelemetryGenerator
 
             telemetryLogger.Members.Add(recordMethod);
 
-            _generatedNamespace.Types.Add(telemetryLogger);
+            return telemetryLogger;
         }
 
         #region AddMetadata Related
@@ -218,20 +212,20 @@ namespace ToolkitTelemetryGenerator
         /// <summary>
         /// Generates extension methods that process a value into MetricDatum's metadata
         /// </summary>
-        private void GenerateAddMetadataMethods()
+        private void GenerateAddMetadataMethods(CodeTypeDeclaration telemetryEventsClass)
         {
-            GenerateAddMetadataMethod();
-            GenerateAddMetadataMethod_Object();
-            GenerateAddMetadataMethod_Bool();
-            GenerateAddMetadataMethod_Double();
-            GenerateAddMetadataMethod_Int();
+            telemetryEventsClass.Members.Add(GenerateAddMetadataMethod());
+            telemetryEventsClass.Members.Add(GenerateAddMetadataMethod_Object());
+            telemetryEventsClass.Members.Add(GenerateAddMetadataMethod_Bool());
+            telemetryEventsClass.Members.Add(GenerateAddMetadataMethod_Double());
+            telemetryEventsClass.Members.Add(GenerateAddMetadataMethod_Int());
         }
 
         /// <summary>
         /// Generates the core AddMetadata method that takes a string value.
         /// Overloaded AddMetadata methods flow into this one.
         /// </summary>
-        private void GenerateAddMetadataMethod()
+        private CodeMemberMethod GenerateAddMetadataMethod()
         {
             var addMetadata = new CodeMemberMethod()
             {
@@ -267,13 +261,13 @@ namespace ToolkitTelemetryGenerator
             addMetadata.Statements.Add(new CodeSnippetStatement());
             addMetadata.Statements.Add(new CodeMethodInvokeExpression(new CodeFieldReferenceExpression(new CodeArgumentReferenceExpression("metricDatum"), "Metadata"), "Add", entryVar));
 
-            _telemetryEventsClass.Members.Add(addMetadata);
+            return addMetadata;
         }
 
         /// <summary>
         /// Generates the object-overload for AddMetadata, which simply calls "ToString()" on the object to get the value.
         /// </summary>
-        private void GenerateAddMetadataMethod_Object()
+        private CodeMemberMethod GenerateAddMetadataMethod_Object()
         {
             var addMetadata = new CodeMemberMethod()
             {
@@ -311,13 +305,13 @@ namespace ToolkitTelemetryGenerator
                     new CodeMethodInvokeExpression(valueArg, "ToString")
                 ));
 
-            _telemetryEventsClass.Members.Add(addMetadata);
+            return addMetadata;
         }
 
         /// <summary>
         /// Generates the bool-overload for AddMetadata, which emits lowercase values of true/false
         /// </summary>
-        private void GenerateAddMetadataMethod_Bool()
+        private CodeMemberMethod GenerateAddMetadataMethod_Bool()
         {
             var addMetadata = new CodeMemberMethod()
             {
@@ -354,13 +348,13 @@ namespace ToolkitTelemetryGenerator
                     valueStrRef
                 ));
 
-            _telemetryEventsClass.Members.Add(addMetadata);
+            return addMetadata;
         }
 
         /// <summary>
         /// Generates the double-overload for AddMetadata, which calls "ToString(CultureInfo.InvariantCulture)"
         /// </summary>
-        private void GenerateAddMetadataMethod_Double()
+        private CodeMemberMethod GenerateAddMetadataMethod_Double()
         {
             var addMetadata = new CodeMemberMethod()
             {
@@ -388,13 +382,13 @@ namespace ToolkitTelemetryGenerator
                         _invariantCulture)
                 ));
 
-            _telemetryEventsClass.Members.Add(addMetadata);
+            return addMetadata;
         }
 
         /// <summary>
         /// Generates the int-overload for AddMetadata, which calls "ToString(CultureInfo.InvariantCulture)"
         /// </summary>
-        private void GenerateAddMetadataMethod_Int()
+        private CodeMemberMethod GenerateAddMetadataMethod_Int()
         {
             var addMetadata = new CodeMemberMethod()
             {
@@ -422,7 +416,7 @@ namespace ToolkitTelemetryGenerator
                         _invariantCulture)
                 ));
 
-            _telemetryEventsClass.Members.Add(addMetadata);
+            return addMetadata;
         }
 
         private IList<CodeCommentStatement> CreateAddMetadataComments(string overloadDecorator = null)
@@ -443,28 +437,29 @@ namespace ToolkitTelemetryGenerator
         /// <summary>
         /// Generate code to support defined metric types
         /// </summary>
-        private void ProcessMetricTypes()
+        /// <param name="generatedNamespace"></param>
+        private void ProcessMetricTypes(CodeNamespace generatedNamespace)
         {
-            _types.ForEach(ProcessMetricType);
+            _types.ForEach(metricType => ProcessMetricType(metricType, generatedNamespace));
         }
 
         /// <summary>
         /// Generate code to support a metric type
         /// </summary>
-        internal void ProcessMetricType(MetricType type)
+        internal void ProcessMetricType(MetricType type, CodeNamespace generatedNamespace)
         {
             // Handle non-POCO types
             if (!type.IsAliasedType())
             {
                 // Generate strongly typed code for types that contain "allowed values"
-                GenerateEnumStruct(type);
+                generatedNamespace.Types.Add(GenerateEnumStruct(type));
             }
         }
 
         /// <summary>
         /// Given a type that contains a set of allowed values, generates a struct containing static fields.
         /// </summary>
-        private void GenerateEnumStruct(MetricType type)
+        private CodeTypeDeclaration GenerateEnumStruct(MetricType type)
         {
             var typeDeclaration = new CodeTypeDeclaration(type.GetGeneratedTypeName())
             {
@@ -526,30 +521,31 @@ namespace ToolkitTelemetryGenerator
 
             typeDeclaration.Members.Add(toString);
 
-            _generatedNamespace.Types.Add(typeDeclaration);
+            return typeDeclaration;
         }
 
         /// <summary>
         /// Generate code to support defined metrics
         /// </summary>
-        private void ProcessMetrics()
+        /// <param name="telemetryEventsClass"></param>
+        private void ProcessMetrics(CodeTypeDeclaration telemetryEventsClass, CodeNamespace generatedNamespace)
         {
-            _metrics.ForEach(ProcessMetric);
+            _metrics.ForEach(metric => ProcessMetric(metric, telemetryEventsClass, generatedNamespace));
         }
 
         /// <summary>
         /// Generate code to support a metric
         /// </summary>
-        private void ProcessMetric(Metric metric)
+        private void ProcessMetric(Metric metric, CodeTypeDeclaration telemetryEventsClass, CodeNamespace generatedNamespace)
         {
-            CreateMetricDataClass(metric);
-            CreateRecordMetricMethodByDataClass(metric);
+            generatedNamespace.Types.Add(CreateMetricDataClass(metric));
+            telemetryEventsClass.Members.Add(CreateRecordMetricMethodByDataClass(metric));
         }
 
         /// <summary>
         /// Generates the data class used by the toolkit to represent this metric
         /// </summary>
-        private void CreateMetricDataClass(Metric metric)
+        private CodeTypeDeclaration CreateMetricDataClass(Metric metric)
         {
             var cls = new CodeTypeDeclaration
             {
@@ -593,7 +589,7 @@ namespace ToolkitTelemetryGenerator
                     cls.Members.Add(field);
                 });
 
-            _generatedNamespace.Types.Add(cls);
+            return cls;
         }
 
         // Eg: 'count' -> "Unit.Count"
@@ -606,7 +602,7 @@ namespace ToolkitTelemetryGenerator
         /// <summary>
         /// Generates the "Record Metric" method used by the toolkit to send this metric to the backend
         /// </summary>
-        private void CreateRecordMetricMethodByDataClass(Metric metric)
+        private CodeMemberMethod CreateRecordMetricMethodByDataClass(Metric metric)
         {
             CodeMemberMethod recordMethod = new CodeMemberMethod
             {
@@ -721,7 +717,7 @@ namespace ToolkitTelemetryGenerator
                 new CodeTryCatchFinallyStatement(tryStatements.ToArray(), catchClauses.ToArray())
             );
 
-            _telemetryEventsClass.Members.Add(recordMethod);
+            return recordMethod;
         }
 
         private bool IsNullable(Metadata metadata)
