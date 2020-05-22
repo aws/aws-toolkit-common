@@ -44,7 +44,7 @@ namespace ToolkitTelemetryGenerator.Utils
                 typeName = type.GetAliasedType().FullName;
             }
 
-            return typeName.ToCamelCase();
+            return typeName.ToPascalCase();
         }
     }
 }

@@ -495,7 +495,7 @@ namespace ToolkitTelemetryGenerator
             {
                 // eg: public static readonly Runtime Dotnetcore21 = new Runtime("dotnetcore2.1")
                 CodeMemberField field = new CodeMemberField($"readonly {type.GetGeneratedTypeName()}",
-                    allowedValue.ToCamelCase().Replace(".", ""))
+                    allowedValue.ToPascalCase().Replace(".", ""))
                 {
                     InitExpression = new CodeObjectCreateExpression(type.GetGeneratedTypeName(),
                         new CodeExpression[] {new CodePrimitiveExpression(allowedValue)}),
@@ -566,7 +566,7 @@ namespace ToolkitTelemetryGenerator
                 .ToList().ForEach(metadata =>
                 {
                     var metricType = GetMetricType(metadata.type);
-                    var fieldName = metadata.type.ToCamelCase();
+                    var fieldName = metadata.type.ToPascalCase();
 
                     var generatedTypeName = metricType.GetGeneratedTypeName();
 
@@ -596,7 +596,7 @@ namespace ToolkitTelemetryGenerator
         private CodeExpression GetMetricUnitExpression(Metric metric)
         {
             var unit = metric.unit ?? "None"; // Fall back to "Unit.None" if there is no metric unit provided
-            return new CodeFieldReferenceExpression(new CodeTypeReferenceExpression("Amazon.ToolkitTelemetry.Unit"), unit.ToCamelCase());
+            return new CodeFieldReferenceExpression(new CodeTypeReferenceExpression("Amazon.ToolkitTelemetry.Unit"), unit.ToPascalCase());
         }
 
         /// <summary>
@@ -746,7 +746,7 @@ namespace ToolkitTelemetryGenerator
                 "",
                 name
                     .Split(new char[] {'.', ',', '_', '-'}, StringSplitOptions.RemoveEmptyEntries)
-                    .Select(x => x.ToCamelCase())
+                    .Select(x => x.ToPascalCase())
             );
         }
     }
