@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+    install:
+        runtime-versions:
+            dotnet: 3.1
+    build:
+        commands:
+            # The Telemetry Generator has no tests at this time. Verify that it builds.
+            - dotnet build -c Release ./telemetry/csharp/ToolkitTelemetryGenerator.sln
