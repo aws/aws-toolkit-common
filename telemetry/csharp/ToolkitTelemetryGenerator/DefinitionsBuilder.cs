@@ -77,6 +77,7 @@ namespace ToolkitTelemetryGenerator
             // Set up top level using statements
             _blankNamespace.Imports.Add(new CodeNamespaceImport("System"));
             _blankNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
+            _blankNamespace.Imports.Add(new CodeNamespaceImport("log4net"));
 
             // public sealed class ToolkitTelemetryEvent (contains generated code the toolkit uses to record metrics)
             _telemetryEventsClass = new CodeTypeDeclaration()
@@ -114,10 +115,26 @@ namespace ToolkitTelemetryGenerator
         /// </summary>
         private void GenerateFixedCode()
         {
+            AddLoggerField(_telemetryEventsClass);
+
             GenerateBaseMetricDataClass();
             GenerateTelemetryEventClass();
             GenerateTelemetryLoggerClass();
             GenerateAddMetadataMethods();
+        }
+
+        /// <summary>
+        /// Apply a logger field to the given class
+        /// </summary>
+        private void AddLoggerField(CodeTypeDeclaration cls)
+        {
+            var field = new CodeMemberField("ILog", "LOGGER")
+            {
+                Attributes = MemberAttributes.Private | MemberAttributes.Static,
+                InitExpression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("LogManager"), "GetLogger", new CodeTypeOfExpression(cls.Name))
+            };
+
+            cls.Members.Add(field);
         }
 
         /// <summary>
@@ -610,6 +627,8 @@ namespace ToolkitTelemetryGenerator
             recordMethod.Parameters.Add(new CodeParameterDeclarationExpression(SanitizeName(metric.name), "payload"));
 
             // Generate method body
+            var tryStatements = new List<CodeStatement>();
+            var catchClauses = new List<CodeCatchClause>();
 
             // Create a TelemetryEvent from the given payload
             // Generate the method body
@@ -621,7 +640,7 @@ namespace ToolkitTelemetryGenerator
             var datetimeNow = new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(DateTime)), nameof(DateTime.Now));
 
             // Instantiate TelemetryEvent
-            recordMethod.Statements.Add(new CodeVariableDeclarationStatement("var", telemetryEvent.VariableName, new CodeObjectCreateExpression("TelemetryEvent")));
+            tryStatements.Add(new CodeVariableDeclarationStatement("var", telemetryEvent.VariableName, new CodeObjectCreateExpression("TelemetryEvent")));
 
             // Set telemetryEvent.CreatedOn to (payload.CreatedOn ?? DateTime.Now)
             var payloadCreatedOn = new CodeFieldReferenceExpression(payload, "CreatedOn");
@@ -631,16 +650,16 @@ namespace ToolkitTelemetryGenerator
             createdOnCond.Condition = new CodeFieldReferenceExpression(payloadCreatedOn, "HasValue");
             createdOnCond.TrueStatements.Add(new CodeAssignStatement(telemetryEventCreatedOn, new CodeFieldReferenceExpression(payloadCreatedOn, "Value")));
             createdOnCond.FalseStatements.Add(new CodeAssignStatement(telemetryEventCreatedOn, datetimeNow));
-            recordMethod.Statements.Add(createdOnCond);
+            tryStatements.Add(createdOnCond);
 
             // Instantiate a Data list
-            recordMethod.Statements.Add(new CodeAssignStatement(telemetryEventDataField, new CodeObjectCreateExpression($"List<{MetricDatumFullName}>")));
+            tryStatements.Add(new CodeAssignStatement(telemetryEventDataField, new CodeObjectCreateExpression($"List<{MetricDatumFullName}>")));
             
             // Instantiate MetricDatum
-            recordMethod.Statements.Add(new CodeSnippetStatement());
-            recordMethod.Statements.Add(new CodeVariableDeclarationStatement("var", datum.VariableName, new CodeObjectCreateExpression(MetricDatumFullName)));
-            recordMethod.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "MetricName"), new CodePrimitiveExpression(metric.name)));
-            recordMethod.Statements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "Unit"), GetMetricUnitExpression(metric)));
+            tryStatements.Add(new CodeSnippetStatement());
+            tryStatements.Add(new CodeVariableDeclarationStatement("var", datum.VariableName, new CodeObjectCreateExpression(MetricDatumFullName)));
+            tryStatements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "MetricName"), new CodePrimitiveExpression(metric.name)));
+            tryStatements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "Unit"), GetMetricUnitExpression(metric)));
 
             // Set Datum.Value to (payload.Value ?? 1)
             var payloadValue = new CodeFieldReferenceExpression(payload, "Value");
@@ -650,12 +669,12 @@ namespace ToolkitTelemetryGenerator
             valueCond.Condition = new CodeFieldReferenceExpression(payloadValue, "HasValue");
             valueCond.TrueStatements.Add(new CodeAssignStatement(datumValue, new CodeFieldReferenceExpression(payloadValue, "Value")));
             valueCond.FalseStatements.Add(new CodeAssignStatement(datumValue, new CodePrimitiveExpression(1)));
-            recordMethod.Statements.Add(valueCond);
+            tryStatements.Add(valueCond);
 
             // Set MetricDatum Metadata values
             metric.metadata?.ToList().ForEach(metadata =>
             {
-                recordMethod.Statements.Add(new CodeSnippetStatement());
+                tryStatements.Add(new CodeSnippetStatement());
 
                 var payloadField = new CodeFieldReferenceExpression(payload, SanitizeName(metadata.type));
 
@@ -670,23 +689,37 @@ namespace ToolkitTelemetryGenerator
                     var addMetadata = new CodeMethodInvokeExpression(datumAddData,
                         new CodePrimitiveExpression(metadata.type), new CodeFieldReferenceExpression(payloadField, "Value"));
 
-                    recordMethod.Statements.Add(
+                    tryStatements.Add(
                         new CodeConditionStatement(hasValue, new CodeExpressionStatement(addMetadata)));
                 }
                 else
                 {
                     // Generate: datum.AddMetadata("foo", payload.foo);
-                    recordMethod.Statements.Add(new CodeMethodInvokeExpression(datumAddData,
-                        new CodePrimitiveExpression(metadata.type), payloadField));
+                    tryStatements.Add(new CodeExpressionStatement (new CodeMethodInvokeExpression(datumAddData,
+                        new CodePrimitiveExpression(metadata.type), payloadField)));
                 }
             });
 
             // Generate: telemetryEvent.Data.Add(datum);
-            recordMethod.Statements.Add(new CodeSnippetStatement());
-            recordMethod.Statements.Add(new CodeMethodInvokeExpression(telemetryEventDataField, "Add", datum));
+            tryStatements.Add(new CodeSnippetStatement());
+            tryStatements.Add(new CodeExpressionStatement (new CodeMethodInvokeExpression(telemetryEventDataField, "Add", datum)));
 
             // Generate: telemetryLogger.Record(telemetryEvent);
-            recordMethod.Statements.Add(new CodeMethodInvokeExpression(new CodeArgumentReferenceExpression("telemetryLogger"), "Record", telemetryEvent));
+            tryStatements.Add(new CodeExpressionStatement (new CodeMethodInvokeExpression(new CodeArgumentReferenceExpression("telemetryLogger"), "Record", telemetryEvent)));
+
+            var catchClause = new CodeCatchClause("e", new CodeTypeReference(typeof(Exception)));
+            catchClause.Statements.Add(new CodeExpressionStatement(
+                new CodeMethodInvokeExpression(
+                    new CodeFieldReferenceExpression(null, "LOGGER"), 
+                    "Error", 
+                    new CodePrimitiveExpression("Error recording telemetry event"),
+                    new CodeArgumentReferenceExpression("e"))
+            ));
+            catchClauses.Add(catchClause);
+
+            recordMethod.Statements.Add(
+                new CodeTryCatchFinallyStatement(tryStatements.ToArray(), catchClauses.ToArray())
+            );
 
             _telemetryEventsClass.Members.Add(recordMethod);
         }
