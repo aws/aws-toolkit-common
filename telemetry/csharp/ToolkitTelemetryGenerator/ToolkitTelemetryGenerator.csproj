@@ -6,7 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="..\..\definitions\commonDefinitions.json" Link="Definitions\commonDefinitions.json">
+    <Content Include="..\..\definitions\*.json">
+      <Link>Definitions\%(Filename)%(Extension)</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
