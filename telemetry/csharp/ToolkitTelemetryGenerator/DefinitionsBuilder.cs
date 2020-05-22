@@ -489,7 +489,7 @@ namespace ToolkitTelemetryGenerator
             typeDeclaration.Members.Add(typeConstructor);
 
             // Generate static fields for each allowed value
-            type.allowedValues
+            type.allowedValues?
                 .ToList()
                 .ForEach(allowedValue =>
             {
