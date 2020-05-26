@@ -7,4 +7,11 @@ phases:
     build:
         commands:
             - dotnet build -c Release ./telemetry/csharp/ToolkitTelemetryGenerator.sln
-            - dotnet test -c Release ./telemetry/csharp/ToolkitTelemetryGenerator.sln
+            - dotnet test -c Release ./telemetry/csharp/ToolkitTelemetryGenerator.sln --logger trx --results-directory ./.testresults
+
+reports:
+    DotnetTestExamples:
+        file-format: VisualStudioTrx
+        files:
+            - '**/*'
+        base-directory: './.testresults'
