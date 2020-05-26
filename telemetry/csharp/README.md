@@ -14,7 +14,7 @@ By default, the program produces generated code into the directory where the pro
 
 1. Sync this repo
 1. Build and run ToolkitTelemetryGenerator
-1. Take the generated file (GeneratedCode.cs), and place it in the toolkit, as `toolkitcore/AWSToolkit.Util/Telemetry/Telemetry.cs`
+1. Take the generated file (GeneratedCode.cs), and place it in the toolkit, as `toolkitcore/AWSToolkit.Util/Telemetry/Telemetry.generated.cs`
 
 ## Roadmap
 
