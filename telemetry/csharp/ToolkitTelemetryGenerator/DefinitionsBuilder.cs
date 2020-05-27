@@ -24,6 +24,9 @@ namespace ToolkitTelemetryGenerator
             new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(CultureInfo)),
                 nameof(CultureInfo.InvariantCulture));
 
+        private readonly CodeMethodReferenceExpression _debugAssert = 
+            new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(System.Diagnostics.Debug)), "Assert");
+
         private string _namespace;
         private readonly List<MetricType> _types = new List<MetricType>();
         private readonly List<Metric> _metrics = new List<Metric>();
@@ -711,6 +714,15 @@ namespace ToolkitTelemetryGenerator
                     new CodePrimitiveExpression("Error recording telemetry event"),
                     new CodeArgumentReferenceExpression("e"))
             ));
+
+            // System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            catchClause.Statements.Add(new CodeExpressionStatement(
+                new CodeMethodInvokeExpression(
+                    _debugAssert,
+                    new CodePrimitiveExpression(false),
+                    new CodePrimitiveExpression("Error Recording Telemetry"))
+            ));
+
             catchClauses.Add(catchClause);
 
             recordMethod.Statements.Add(

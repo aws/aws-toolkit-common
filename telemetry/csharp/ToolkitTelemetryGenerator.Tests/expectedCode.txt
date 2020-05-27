@@ -115,6 +115,7 @@ namespace Test
             catch (System.Exception e)
             {
                 LOGGER.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
             }
         }
         
@@ -153,6 +154,7 @@ namespace Test
             catch (System.Exception e)
             {
                 LOGGER.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
             }
         }
         
@@ -201,6 +203,7 @@ namespace Test
             catch (System.Exception e)
             {
                 LOGGER.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
             }
         }
         
@@ -249,6 +252,7 @@ namespace Test
             catch (System.Exception e)
             {
                 LOGGER.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
             }
         }
         
@@ -309,6 +313,7 @@ namespace Test
             catch (System.Exception e)
             {
                 LOGGER.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
             }
         }
     }
