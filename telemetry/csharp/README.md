@@ -6,6 +6,18 @@ At this time, the generated code does not function in a standalone capacity. It 
 
 ## Generator Usage
 
+Command Line Arguments:
+
+`--namespace`
+
+-   The namespace to produce generated code into
+-   Defaults to `Amazon.AWSToolkit.Telemetry`
+
+`-o`
+
+-   Where to write the generated code file(s) to
+-   Defaults to the current working directory
+
 See [Options file](ToolkitTelemetryGenerator/Options.cs) for details.
 
 By default, the program produces generated code into the directory where the program is run from.
