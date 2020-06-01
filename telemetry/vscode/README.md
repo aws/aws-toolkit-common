@@ -12,3 +12,4 @@ The script has two arguments:
 
 1. `--extraInput` accepts lists of paths to telemetry JSON files, seperated by commas. For example, "--extraInput=abc.json,/abc/bcd.json"
 2. `--output` accepts one path which represents where the final output will go. For example, "--output=abc.ts"
+   /
