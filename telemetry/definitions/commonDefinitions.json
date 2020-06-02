@@ -333,7 +333,7 @@
         },
         {
             "name": "s3_createFolder",
-            "description": "Creates an S3 folder",
+            "description": "Create an S3 folder",
             "metadata": [{ "type": "result" }]
         },
         {
