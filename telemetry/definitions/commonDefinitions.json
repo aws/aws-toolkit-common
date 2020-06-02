@@ -12,7 +12,7 @@
         },
         {
             "name": "serviceType",
-            "allowedValues": ["ecs", "cloudformation", "lambda", "logs", "s3", "schemas"],
+            "allowedValues": ["ecs", "cloudformation", "lambda", "logs", "s3", "schemas", "stepfunctions"],
             "type": "string",
             "description": "The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client."
         },
@@ -329,6 +329,11 @@
         {
             "name": "s3_deleteObject",
             "description": "Delete a single S3 object",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_createFolder",
+            "description": "Creates an S3 folder",
             "metadata": [{ "type": "result" }]
         },
         {

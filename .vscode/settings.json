@@ -1,0 +1,8 @@
+{
+    "json.schemas": [
+        {
+            "fileMatch": ["*Definitions.json"],
+            "url": "./telemetry/telemetrySchema.json"
+        }
+    ]
+}
