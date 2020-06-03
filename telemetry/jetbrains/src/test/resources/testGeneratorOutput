@@ -19,9 +19,9 @@ import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 enum class LambdaRuntime(
     val value: String
 ) {
-    DOTNETCORE21("dotnetcore2.1"),
+    Dotnetcore21("dotnetcore2.1"),
 
-    NODEJS12X("nodejs12.x");
+    Nodejs12x("nodejs12.x");
 
     override fun toString(): String = value
 

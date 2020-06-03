@@ -18,11 +18,17 @@ import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 enum class Result(
   val value: String
 ) {
-  SUCCEEDED("Succeeded"),
+  Succeeded("Succeeded"),
 
-  FAILED("Failed"),
+  Failed("Failed"),
 
-  CANCELLED("Cancelled");
+  Cancelled("Cancelled"),
+
+  CamelCase("CamelCase"),
+
+  DashSeparated("dash-separated"),
+
+  UnderscoreSeparated("underscore_separated");
 
   override fun toString(): String = value
 
@@ -59,6 +65,6 @@ object MetadataTelemetry {
     value: Double = 1.0,
     createTime: Instant = Instant.now()
   ) {
-    hasResult(project, if(success) Result.SUCCEEDED else Result.FAILED, value, createTime)
+    hasResult(project, if(success) Result.Succeeded else Result.Failed, value, createTime)
   }
 }
