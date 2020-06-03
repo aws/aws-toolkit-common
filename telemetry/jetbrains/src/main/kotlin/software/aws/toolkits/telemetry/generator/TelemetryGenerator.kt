@@ -21,7 +21,7 @@ const val RESULT = "result"
 const val SUCCESS = "success"
 
 fun String.filterInvalidCharacters() = this.replace(".", "")
-fun String.toTypeFormat() = this.filterInvalidCharacters().capitalize()
+fun String.toTypeFormat() = this.filterInvalidCharacters().split("_", "-").joinToString(separator = "") { it.capitalize() }
 fun String.toArgumentFormat() = this.filterInvalidCharacters().toLowerCase()
 
 fun generateTelemetryFromFiles(
@@ -73,7 +73,7 @@ private fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType
 
     item.allowedValues!!.forEach { enumValue ->
         enum.addEnumConstant(
-            enumValue.toString().toUpperCase().filterInvalidCharacters(), TypeSpec.anonymousClassBuilder()
+            enumValue.toString().toTypeFormat(), TypeSpec.anonymousClassBuilder()
                 .addSuperclassConstructorParameter("%S", enumValue.toString())
                 .build()
         )
@@ -194,7 +194,7 @@ private fun FunSpec.Builder.generateResultOverloadFunctionBody(originalFunction:
         if (it.name != SUCCESS) {
             it.name
         } else {
-            "if($SUCCESS) Result.SUCCEEDED else Result.FAILED"
+            "if($SUCCESS) Result.Succeeded else Result.Failed"
         }
     })
 
