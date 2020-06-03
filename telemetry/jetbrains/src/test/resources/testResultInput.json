@@ -2,7 +2,7 @@
     "types": [
         {
             "name": "result",
-            "allowedValues": ["Succeeded", "Failed", "Cancelled"],
+            "allowedValues": ["Succeeded", "Failed", "Cancelled", "CamelCase", "dash-separated", "underscore_separated"],
             "description": "The result of the operation"
         }
     ],
