@@ -13,6 +13,7 @@ plugins {
     kotlin("jvm") version "1.3.61"
     `maven-publish`
     signing
+    id("io.codearte.nexus-staging") version "0.21.2"
 }
 
 java {
@@ -143,3 +144,13 @@ signing {
         sign(publishing.publications["maven"])
     }
 }
+
+nexusStaging {
+    packageGroup = "software.aws"
+    serverUrl = "https://aws.oss.sonatype.org/service/local/"
+    // gotten using ./gradlew getStagingProfile
+    stagingProfileId = "29b8dd754a6907"
+    username = project.findProperty("ossrhUsername") as? String
+    password = project.findProperty("ossrhPassword") as? String
+}
+
