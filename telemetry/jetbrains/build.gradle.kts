@@ -13,6 +13,7 @@ plugins {
     kotlin("jvm") version "1.3.61"
     `maven-publish`
     signing
+    id("io.codearte.nexus-staging") version "0.21.2"
 }
 
 java {
@@ -143,3 +144,15 @@ signing {
         sign(publishing.publications["maven"])
     }
 }
+
+nexusStaging {
+    serverUrl = if (!version.toString().endsWith("SNAPSHOT")) {
+        "https://aws.oss.sonatype.org/service/local/staging/deploy/maven2/"
+    } else {
+        "https://aws.oss.sonatype.org/content/repositories/snapshots/"
+    }
+
+    username = project.findProperty("ossrhUsername") as? String
+    password = project.findProperty("ossrhPassword") as? String
+}
+
