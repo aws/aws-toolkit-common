@@ -146,12 +146,10 @@ signing {
 }
 
 nexusStaging {
-    serverUrl = if (!version.toString().endsWith("SNAPSHOT")) {
-        "https://aws.oss.sonatype.org/service/local/staging/deploy/maven2/"
-    } else {
-        "https://aws.oss.sonatype.org/content/repositories/snapshots/"
-    }
-
+    packageGroup = "software.aws"
+    serverUrl = "https://aws.oss.sonatype.org/service/local/"
+    // gotten using ./gradlew getStagingProfile
+    stagingProfileId = "29b8dd754a6907"
     username = project.findProperty("ossrhUsername") as? String
     password = project.findProperty("ossrhPassword") as? String
 }
