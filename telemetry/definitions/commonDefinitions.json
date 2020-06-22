@@ -119,14 +119,39 @@
             ]
         },
         {
-          "name": "regionId",
-          "type": "string",
-          "description": "The ID of the region that was selected"
+            "name": "regionId",
+            "type": "string",
+            "description": "The ID of the region that was selected"
         },
         {
-          "name": "partitionId",
-          "type": "string",
-          "description": "The ID of the partition that was selected"
+            "name": "partitionId",
+            "type": "string",
+            "description": "The ID of the partition that was selected"
+        },
+        {
+            "name": "redeploy",
+            "type": "boolean",
+            "description": "Whether or not the deploy targets an existing destination (true) or a new destination (false)"
+        },
+        {
+            "name": "solutionStack",
+            "type": "string",
+            "description": "Name of the Elastic Beanstalk Solution Stack being used"
+        },
+        {
+            "name": "framework",
+            "type": "string",
+            "description": "Application framework being used"
+        },
+        {
+            "name": "xrayEnabled",
+            "type": "boolean",
+            "description": "Whether or not AWS X-Ray is enabled"
+        },
+        {
+            "name": "enhancedHealthEnabled",
+            "type": "boolean",
+            "description": "Whether or not Elastic Beanstalk enhanced health reporting and monitoring is being used"
         }
     ],
     "metrics": [
@@ -193,6 +218,19 @@
         {
             "name": "aws_reportPluginIssue",
             "description": "Report an issue with the plugin"
+        },
+        {
+            "name": "beanstalk_deploy",
+            "description": "Called when deploying an application to Elastic Beanstalk",
+            "metadata": [
+                { "type": "result" },
+                { "type": "regionId" },
+                { "type": "redeploy" },
+                { "type": "solutionStack", "required": false },
+                { "type": "framework", "required": false },
+                { "type": "xrayEnabled", "required": false },
+                { "type": "enhancedHealthEnabled", "required": false }
+            ]
         },
         {
             "name": "cloudwatchlogs_openGroup",
