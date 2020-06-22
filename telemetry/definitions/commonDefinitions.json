@@ -129,14 +129,9 @@
             "description": "The ID of the partition that was selected"
         },
         {
-            "name": "redeploy",
+            "name": "initialDeploy",
             "type": "boolean",
-            "description": "Whether or not the deploy targets an existing destination (true) or a new destination (false)"
-        },
-        {
-            "name": "solutionStack",
-            "type": "string",
-            "description": "Name of the Elastic Beanstalk Solution Stack being used"
+            "description": "Whether or not the deploy targets a new destination (true) or an existing destination (false)"
         },
         {
             "name": "framework",
@@ -225,8 +220,8 @@
             "metadata": [
                 { "type": "result" },
                 { "type": "regionId" },
-                { "type": "redeploy" },
-                { "type": "solutionStack", "required": false },
+                { "type": "initialDeploy" },
+                { "type": "name", "required": false },
                 { "type": "framework", "required": false },
                 { "type": "xrayEnabled", "required": false },
                 { "type": "enhancedHealthEnabled", "required": false }
