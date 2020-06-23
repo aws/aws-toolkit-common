@@ -12,7 +12,7 @@
         },
         {
             "name": "serviceType",
-            "allowedValues": ["ecs", "cloudformation", "lambda", "logs", "s3", "schemas", "stepfunctions"],
+            "allowedValues": ["ecs", "cloudformation", "lambda", "rds", "redshift", "logs", "s3", "schemas", "stepfunctions"],
             "type": "string",
             "description": "The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client."
         },
@@ -147,6 +147,17 @@
             "name": "enhancedHealthEnabled",
             "type": "boolean",
             "description": "Whether or not Elastic Beanstalk enhanced health reporting and monitoring is being used"
+        },
+        {
+            "name": "databaseEngine",
+            "type": "string",
+            "description": "The database engine used (mysql/postgres/redshift)"
+        },
+        {
+            "name": "databaseCredentials",
+            "type": "string",
+            "allowedValues": ["IAM", "SecretsManager"],
+            "description": "How the database credentials are being retrieved"
         }
     ],
     "metrics": [
@@ -336,6 +347,28 @@
             "name": "cloudformation_delete",
             "description": "Called when deleting a cloudformation stack",
             "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "rds_getCredentials",
+            "description": "Called when getting IAM/SecretsManager credentials for an Redshift database. Value represents how long it takes in ms.",
+            "unit": "Milliseconds",
+            "metadata": [{ "type": "result" }, {"type": "databaseCredentials" }, {"type": "databaseEngine"}]
+        },
+        {
+            "name": "rds_createConnectionConfiguration",
+            "description": "Called when creating a new database connection configuration to for a RDS database. In Datagrip we do not get this infromation if it is created directly, so this is only counts actions.",
+            "metadata": [{ "type": "result" }, {"type": "databaseCredentials" }, {"type": "databaseEngine"}]
+        },
+        {
+            "name": "redshift_getCredentials",
+            "description": "Called when getting IAM/SecretsManager credentials for a Redshift database. Value represents how long it takes in ms.",
+            "unit": "Milliseconds",
+            "metadata": [{ "type": "result" }, {"type": "databaseCredentials"}]
+        },
+        {
+            "name": "redshift_createConnectionConfiguration",
+            "description": "Called when creating a new database connection configuration to for a Redshift database. In Datagrip we do not get this infromation if it is created directly, so this only counts actions.",
+            "metadata": [{ "type": "result" }, {"type": "databaseCredentials" }]
         },
         {
             "name": "sam_deploy",
