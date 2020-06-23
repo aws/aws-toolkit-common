@@ -350,7 +350,7 @@
         },
         {
             "name": "rds_getCredentials",
-            "description": "Called when getting IAM/SecretsManager credentials for an Redshift database. Value represents how long it takes in ms.",
+            "description": "Called when getting IAM/SecretsManager credentials for a RDS database. Value represents how long it takes in ms.",
             "unit": "Milliseconds",
             "metadata": [{ "type": "result" }, {"type": "databaseCredentials" }, {"type": "databaseEngine"}]
         },
