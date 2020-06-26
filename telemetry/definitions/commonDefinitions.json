@@ -45,6 +45,7 @@
             "name": "runtime",
             "type": "string",
             "allowedValues": [
+                "dotnetcore3.1",
                 "dotnetcore2.1",
                 "nodejs12.x",
                 "nodejs10.x",
