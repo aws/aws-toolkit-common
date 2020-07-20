@@ -1,0 +1,87 @@
+{
+    "file-description": "This file is used by the SDK Client Generator. See telemetry/csharp/README.md for details",
+    "projects": [
+        {
+            "name": "Net45",
+            "targetFrameworks": ["net45"],
+            "defineConstants": [
+                "BCL",
+                "BCL45",
+                "AWS_ASYNC_API",
+                "CODE_ANALYSIS",
+                "LOCAL_FILE"
+            ],
+            "template": "VS2017ProjectFile",
+            "excludeFolders": [
+                "_android",
+                "_bcl35",
+                "_netstandard",
+                "_ios",
+                "_mobile",
+                "_pcl",
+                "_pcl-sl",
+                "_pclReference",
+                "_unity",
+                "_win8",
+                "_winPhone81",
+                "_winPhoneSilverlight8",
+                "obj"
+            ],
+            "nugetTargetPlatform": "net45",
+            "frameworkReferences": [{ "name": "System.Configuration" }]
+        }
+    ],
+    "unittestprojects": [
+        {
+            "name": "Net45",
+            "targetFrameworks": ["net45"],
+            "defineConstants": [
+                "TRACE",
+                "BCL",
+                "BCL45",
+                "ASYNC_AWAIT",
+                "LOCAL_FILE"
+            ],
+            "excludeFolders": ["obj"],
+            "visualStudioServices": ["{82a7f48d-3b50-4b1e-b82e-3ada8210c358}"],
+            "embeddedResources": [
+                "Custom\\Runtime\\TestResponses\\*.txt",
+                "Custom\\Runtime\\EventStreams\\test_vectors\\*",
+                "Custom\\TestTools\\ComparerTest.json",
+                "..\\Services\\CloudFront\\UnitTests\\Custom\\EmbeddedResource\\sample.rsa.private.key.txt"
+            ],
+            "packageReferences": [
+                {
+                    "include": "Moq",
+                    "version": "4.8.3"
+                },
+                {
+                    "include": "MSTest.TestAdapter",
+                    "version": "1.4.0"
+                },
+                {
+                    "include": "Microsoft.NET.Test.Sdk",
+                    "version": "15.9.0"
+                },
+                {
+                    "include": "MSTest.TestFramework",
+                    "version": "1.4.0"
+                },
+                {
+                    "include": "AutoFixture",
+                    "version": "3.51.0"
+                },
+                {
+                    "include": "AutoFixture.AutoMoq",
+                    "version": "3.51.0"
+                }
+            ],
+            "frameworkReferences": [
+                {
+                    "name": "System.Configuration"
+                }
+            ],
+            "noWarn": "CS1591"
+        }
+    ]
+}

@@ -1,0 +1,97 @@
+<Project ToolsVersion="15.0" DefaultTargets="generate-sdk-src" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <PropertyGroup>
+		<BuildRoot Condition="'$(BuildRoot)' == ''">$(MSBuildThisFileDirectory)</BuildRoot>
+
+        <BuildTemp>$(BuildRoot)buildtemp\</BuildTemp>
+        <DotNetSdkTag>3.3.704.0</DotNetSdkTag>
+        <DotNetSdkClone>$(BuildTemp)dotnetsdk\</DotNetSdkClone>
+        <SdkGeneratorRoot>$(DotNetSdkClone)generator\</SdkGeneratorRoot>
+        <SdkGenerator>$(SdkGeneratorRoot)ServiceClientGenerator\bin\Release\ServiceClientGenerator.exe</SdkGenerator>
+        <SdkServiceModel>$(BuildRoot)..\service\service-model.json</SdkServiceModel>
+        <SdkGeneratorModels>$(BuildTemp)client-generator\</SdkGeneratorModels>
+        <SdkGeneratorInputs>$(SdkGeneratorModels)inputs\</SdkGeneratorInputs>
+        <SdkGeneratorOutput>$(BuildTemp)telemetry-client-raw\</SdkGeneratorOutput>
+    </PropertyGroup>
+
+    <!-- Produce the Telemetry Client SDK code for use with the AwsToolkit.Telemetry.SDK project
+        
+        1. Clone the AWS .NET SDK
+        2. Build the SDK Generator
+        3. Run the SDK Generator using the Telemetry Service definition to produce the Telemetry Client
+        4. Copy the generated code into the AwsToolkit.Telemetry.SDK project
+
+      -->
+    <Target Name="generate-sdk-src">
+        <CallTarget Targets="clone-sdk;restore-sdk-generator;compile-sdk-generator;generate-raw-telemetry-client;copy-telemetry-client-code;cleanup"/>
+    </Target>
+
+    <!-- Produce a generated csproj and files in a temp location -->
+    <Target Name="clone-sdk">
+        <Message Text="Cloning AWS .NET SDK into $(DotNetSdkClone) (this will take a while)" />
+        <Exec Command="git clone --depth 1 --branch $(DotNetSdkTag) https://github.com/aws/aws-sdk-net.git $(DotNetSdkClone)" />
+    </Target>
+
+    <Target Name="restore-sdk-generator">
+        <!-- NuGet Restore -->
+        <Message Text="Restoring NuGet Packages for SDK Generator"/>
+
+        <!-- # Explicitly restore the .NET Framework projects or CodeBuild produces errors running dotnet build on the .sln :( -->
+        <Exec Command="dotnet restore -f ServiceClientGeneratorTests.csproj" WorkingDirectory="$(SdkGeneratorRoot)ServiceClientGeneratorTests" />
+
+        <Exec Command="dotnet restore -f AWSSDKGenerator.sln" WorkingDirectory="$(SdkGeneratorRoot)" />
+    </Target>
+
+    <Target Name="compile-sdk-generator">
+        <!-- Compile Generator -->
+        <Message Text="Compiling SDK Generator"/>
+        <Exec Command="dotnet clean -c Release AWSSDKGenerator.sln" WorkingDirectory="$(SdkGeneratorRoot)"/>
+        <Exec Command="dotnet build -c Release --no-incremental AWSSDKGenerator.sln" WorkingDirectory="$(SdkGeneratorRoot)"/>
+    </Target>
+
+    <!-- Produce a generated csproj and files in a temp location -->
+    <Target Name="generate-raw-telemetry-client">
+
+        <!-- Pull together Sdk Generator input files -->
+        <ItemGroup>
+            <GeneratorInputs Include="$(BuildRoot)client-generator-inputs\**\*.*" />
+        </ItemGroup>
+
+		<Copy
+			SourceFiles="$(SdkServiceModel)"
+			DestinationFiles="$(SdkGeneratorInputs)telemetry-2017-07-25.normal.json" />
+		<Copy
+			SourceFiles="@(GeneratorInputs)"
+			DestinationFolder="$(SdkGeneratorInputs)" />
+
+        <!-- Generate the Telemetry Client -->
+        <Exec WorkingDirectory="$(SdkGeneratorModels)" Command="$(SdkGenerator) -self.modelpath $(BuildRoot)..\service\service-model.json -servicemodels ToolkitTelemetry -manifest $(SdkGeneratorInputs)\generation-manifest.json -versions $(SdkGeneratorInputs)\sdk-versions.json -self.basename ToolkitTelemetry -modelsfolder $(SdkGeneratorModels) -sdkroot $(SdkGeneratorOutput)" />
+    </Target>
+
+    <Target Name="copy-telemetry-client-code">
+        <PropertyGroup>
+            <GeneratedRoot>$(SdkGeneratorOutput)src\Services\ToolkitTelemetry\Generated\</GeneratedRoot>
+            <DestinationRoot>$(BuildRoot)AwsToolkit.Telemetry.SDK\Generated\</DestinationRoot>
+        </PropertyGroup>
+
+        <ItemGroup>
+            <SourceCodeExcludes Include="$(GeneratedRoot)_bcl35\**\*.*" />
+            <SourceCodeExcludes Include="$(GeneratedRoot)_mobile\**\*.*" />
+
+            <SourceCode 
+                Include="$(GeneratedRoot)**\*.*" 
+                Exclude="@(SourceCodeExcludes)"
+                />
+        </ItemGroup>
+
+        <RemoveDir Directories="$(DestinationRoot)" />
+		<Copy
+			SourceFiles="@(SourceCode)"
+            DestinationFiles="@(SourceCode->'$(DestinationRoot)%(RecursiveDir)%(Filename)%(Extension)')" />
+    </Target>
+
+    <Target Name="cleanup">
+        <RemoveDir Directories="$(BuildTemp)" />
+    </Target>
+
+</Project>
