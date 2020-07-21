@@ -159,6 +159,17 @@
             "type": "string",
             "allowedValues": ["IAM", "SecretsManager"],
             "description": "How the database credentials are being retrieved"
+        },
+        {
+            "name": "snippetPrefix",
+            "type": "string",
+            "description": "The prefix of a snippet"
+        },
+        {
+            "name": "snippetLanguage",
+            "allowedValues": ["javascript", "typescript"],
+            "type": "string",
+            "description": "The language of a snippet"
         }
     ],
     "metrics": [
@@ -476,6 +487,11 @@
             "name": "toolkit_init",
             "description": "The Toolkit has completed initialization",
             "metadata": [{ "type": "duration" }]
+        },
+        {
+            "name": "snippet_insert",
+            "description": "Insert a snippet",
+            "metadata": [{ "type": "snippetPrefix" }, { "type": "snippetLanguage" }]
         }
     ]
 }
