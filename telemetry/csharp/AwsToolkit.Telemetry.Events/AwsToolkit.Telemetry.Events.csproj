@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net46</TargetFramework>
+		<RootNamespace>Amazon.AwsToolkit.Telemetry.Events</RootNamespace>
+		<AssemblyName>Amazon.AwsToolkit.Telemetry.Events</AssemblyName>
+		<Authors>Amazon Web Services</Authors>
+		<Product>AWS Toolkit Telemetry Events</Product>
+		<Description>Telemetry events datatypes and functionality for AWS Toolkits</Description>
+		<Copyright>Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.</Copyright>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<RepositoryUrl>https://github.com/aws/aws-toolkit-common</RepositoryUrl>
+		<PackageTags>AWS AWSToolkit</PackageTags>
+		<Optimize>true</Optimize>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<OutputType>Library</OutputType>
+	</PropertyGroup>
+	<ItemGroup>
+	  <PackageReference Include="log4net" Version="2.0.8" />
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="System" />
+		<Reference Include="System.Core" />
+		<Reference Include="System.Xml.Linq" />
+		<Reference Include="Microsoft.CSharp" />
+		<Reference Include="System.Xml" />
+	</ItemGroup>
+</Project>

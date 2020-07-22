@@ -7,6 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using Amazon.AwsToolkit.Telemetry.Events.Core;
 using System;
 using System.Collections.Generic;
 using log4net;
@@ -27,14 +28,14 @@ namespace Test
         
         /// Utility method for generated code to add a metadata to a datum 
         /// Metadata is only added if the value is non-blank
-        private static void AddMetadata(this Amazon.ToolkitTelemetry.Model.MetricDatum metricDatum, string key, string value)
+        private static void AddMetadata(this MetricDatum metricDatum, string key, string value)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
                 return;
             }
 
-            var entry = new Amazon.ToolkitTelemetry.Model.MetadataEntry();
+            var entry = new MetadataEntry();
             entry.Key = key;
             entry.Value = value;
 
@@ -43,7 +44,7 @@ namespace Test
         
         /// Utility method for generated code to add a metadata to a datum (object overload)
         /// Metadata is only added if the value is non-blank
-        private static void AddMetadata(this Amazon.ToolkitTelemetry.Model.MetricDatum metricDatum, string key, object value)
+        private static void AddMetadata(this MetricDatum metricDatum, string key, object value)
         {
             if ((value == null))
             {
@@ -55,7 +56,7 @@ namespace Test
         
         /// Utility method for generated code to add a metadata to a datum (bool overload)
         /// Metadata is only added if the value is non-blank
-        private static void AddMetadata(this Amazon.ToolkitTelemetry.Model.MetricDatum metricDatum, string key, bool value)
+        private static void AddMetadata(this MetricDatum metricDatum, string key, bool value)
         {
             string valueStr = "false";
             if (value)
@@ -68,14 +69,14 @@ namespace Test
         
         /// Utility method for generated code to add a metadata to a datum (double overload)
         /// Metadata is only added if the value is non-blank
-        private static void AddMetadata(this Amazon.ToolkitTelemetry.Model.MetricDatum metricDatum, string key, double value)
+        private static void AddMetadata(this MetricDatum metricDatum, string key, double value)
         {
             metricDatum.AddMetadata(key, value.ToString(System.Globalization.CultureInfo.InvariantCulture));
         }
         
         /// Utility method for generated code to add a metadata to a datum (int overload)
         /// Metadata is only added if the value is non-blank
-        private static void AddMetadata(this Amazon.ToolkitTelemetry.Model.MetricDatum metricDatum, string key, int value)
+        private static void AddMetadata(this MetricDatum metricDatum, string key, int value)
         {
             metricDatum.AddMetadata(key, value.ToString(System.Globalization.CultureInfo.InvariantCulture));
         }
@@ -86,20 +87,20 @@ namespace Test
         {
             try
             {
-                var telemetryEvent = new TelemetryEvent();
+                var metrics = new Metrics();
                 if (payload.CreatedOn.HasValue)
                 {
-                    telemetryEvent.CreatedOn = payload.CreatedOn.Value;
+                    metrics.CreatedOn = payload.CreatedOn.Value;
                 }
                 else
                 {
-                    telemetryEvent.CreatedOn = System.DateTime.Now;
+                    metrics.CreatedOn = System.DateTime.Now;
                 }
-                telemetryEvent.Data = new List<Amazon.ToolkitTelemetry.Model.MetricDatum>();
+                metrics.Data = new List<MetricDatum>();
 
-                var datum = new Amazon.ToolkitTelemetry.Model.MetricDatum();
+                var datum = new MetricDatum();
                 datum.MetricName = "emit_someIntMs";
-                datum.Unit = Amazon.ToolkitTelemetry.Unit.Milliseconds;
+                datum.Unit = Unit.Milliseconds;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -109,8 +110,8 @@ namespace Test
                     datum.Value = 1;
                 }
 
-                telemetryEvent.Data.Add(datum);
-                telemetryLogger.Record(telemetryEvent);
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
             }
             catch (System.Exception e)
             {
@@ -125,20 +126,20 @@ namespace Test
         {
             try
             {
-                var telemetryEvent = new TelemetryEvent();
+                var metrics = new Metrics();
                 if (payload.CreatedOn.HasValue)
                 {
-                    telemetryEvent.CreatedOn = payload.CreatedOn.Value;
+                    metrics.CreatedOn = payload.CreatedOn.Value;
                 }
                 else
                 {
-                    telemetryEvent.CreatedOn = System.DateTime.Now;
+                    metrics.CreatedOn = System.DateTime.Now;
                 }
-                telemetryEvent.Data = new List<Amazon.ToolkitTelemetry.Model.MetricDatum>();
+                metrics.Data = new List<MetricDatum>();
 
-                var datum = new Amazon.ToolkitTelemetry.Model.MetricDatum();
+                var datum = new MetricDatum();
                 datum.MetricName = "emit_noUnit";
-                datum.Unit = Amazon.ToolkitTelemetry.Unit.None;
+                datum.Unit = Unit.None;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -148,8 +149,8 @@ namespace Test
                     datum.Value = 1;
                 }
 
-                telemetryEvent.Data.Add(datum);
-                telemetryLogger.Record(telemetryEvent);
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
             }
             catch (System.Exception e)
             {
@@ -164,20 +165,20 @@ namespace Test
         {
             try
             {
-                var telemetryEvent = new TelemetryEvent();
+                var metrics = new Metrics();
                 if (payload.CreatedOn.HasValue)
                 {
-                    telemetryEvent.CreatedOn = payload.CreatedOn.Value;
+                    metrics.CreatedOn = payload.CreatedOn.Value;
                 }
                 else
                 {
-                    telemetryEvent.CreatedOn = System.DateTime.Now;
+                    metrics.CreatedOn = System.DateTime.Now;
                 }
-                telemetryEvent.Data = new List<Amazon.ToolkitTelemetry.Model.MetricDatum>();
+                metrics.Data = new List<MetricDatum>();
 
-                var datum = new Amazon.ToolkitTelemetry.Model.MetricDatum();
+                var datum = new MetricDatum();
                 datum.MetricName = "emit_someBigBlob";
-                datum.Unit = Amazon.ToolkitTelemetry.Unit.Count;
+                datum.Unit = Unit.Count;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -197,8 +198,8 @@ namespace Test
 
                 datum.AddMetadata("runtime", payload.Runtime);
 
-                telemetryEvent.Data.Add(datum);
-                telemetryLogger.Record(telemetryEvent);
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
             }
             catch (System.Exception e)
             {
@@ -213,20 +214,20 @@ namespace Test
         {
             try
             {
-                var telemetryEvent = new TelemetryEvent();
+                var metrics = new Metrics();
                 if (payload.CreatedOn.HasValue)
                 {
-                    telemetryEvent.CreatedOn = payload.CreatedOn.Value;
+                    metrics.CreatedOn = payload.CreatedOn.Value;
                 }
                 else
                 {
-                    telemetryEvent.CreatedOn = System.DateTime.Now;
+                    metrics.CreatedOn = System.DateTime.Now;
                 }
-                telemetryEvent.Data = new List<Amazon.ToolkitTelemetry.Model.MetricDatum>();
+                metrics.Data = new List<MetricDatum>();
 
-                var datum = new Amazon.ToolkitTelemetry.Model.MetricDatum();
+                var datum = new MetricDatum();
                 datum.MetricName = "emit_someBigBlob2";
-                datum.Unit = Amazon.ToolkitTelemetry.Unit.Count;
+                datum.Unit = Unit.Count;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -246,8 +247,8 @@ namespace Test
 
                 datum.AddMetadata("runtime", payload.Runtime);
 
-                telemetryEvent.Data.Add(datum);
-                telemetryLogger.Record(telemetryEvent);
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
             }
             catch (System.Exception e)
             {
@@ -262,20 +263,20 @@ namespace Test
         {
             try
             {
-                var telemetryEvent = new TelemetryEvent();
+                var metrics = new Metrics();
                 if (payload.CreatedOn.HasValue)
                 {
-                    telemetryEvent.CreatedOn = payload.CreatedOn.Value;
+                    metrics.CreatedOn = payload.CreatedOn.Value;
                 }
                 else
                 {
-                    telemetryEvent.CreatedOn = System.DateTime.Now;
+                    metrics.CreatedOn = System.DateTime.Now;
                 }
-                telemetryEvent.Data = new List<Amazon.ToolkitTelemetry.Model.MetricDatum>();
+                metrics.Data = new List<MetricDatum>();
 
-                var datum = new Amazon.ToolkitTelemetry.Model.MetricDatum();
+                var datum = new MetricDatum();
                 datum.MetricName = "emit_someBigOptionalBlob";
-                datum.Unit = Amazon.ToolkitTelemetry.Unit.Count;
+                datum.Unit = Unit.Count;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -307,8 +308,8 @@ namespace Test
                     datum.AddMetadata("runtime", payload.Runtime.Value);
                 }
 
-                telemetryEvent.Data.Add(datum);
-                telemetryLogger.Record(telemetryEvent);
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
             }
             catch (System.Exception e)
             {
@@ -316,33 +317,6 @@ namespace Test
                 System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
             }
         }
-    }
-    
-    public abstract class BaseMetricData
-    {
-        
-        public DateTime? CreatedOn;
-        
-        public double? Value;
-    }
-    
-    /// Generalized Telemetry information to send to the backend
-    /// <seealso cref="ITelemetryLogger"/>
-    public sealed class TelemetryEvent
-    {
-        
-        /// Timestamp is applied to all Data entries when sent to server
-        public System.DateTime CreatedOn;
-        
-        public IList<Amazon.ToolkitTelemetry.Model.MetricDatum> Data;
-    }
-    
-    /// Implementations handle sending Telemetry Events to the backend.
-    public interface ITelemetryLogger
-    {
-        
-        /// Send Telemetry information
-        void Record(TelemetryEvent telemetryEvent);
     }
     
     /// Metric field type
@@ -370,17 +344,17 @@ namespace Test
     }
     
     /// Emits milliseconds
-    public sealed class EmitSomeIntMs : BaseMetricData
+    public sealed class EmitSomeIntMs : BaseTelemetryEvent
     {
     }
     
     /// Emits something without a unit defined
-    public sealed class EmitNoUnit : BaseMetricData
+    public sealed class EmitNoUnit : BaseTelemetryEvent
     {
     }
     
     /// Emits a bunch of metadata varieties
-    public sealed class EmitSomeBigBlob : BaseMetricData
+    public sealed class EmitSomeBigBlob : BaseTelemetryEvent
     {
         
         /// The duration of the operation in milliseconds
@@ -400,7 +374,7 @@ namespace Test
     }
     
     /// Emits a bunch of metadata varieties - required not set
-    public sealed class EmitSomeBigBlob2 : BaseMetricData
+    public sealed class EmitSomeBigBlob2 : BaseTelemetryEvent
     {
         
         /// The duration of the operation in milliseconds
@@ -420,7 +394,7 @@ namespace Test
     }
     
     /// Emits a bunch of optional metadata varieties
-    public sealed class EmitSomeBigOptionalBlob : BaseMetricData
+    public sealed class EmitSomeBigOptionalBlob : BaseTelemetryEvent
     {
         
         /// Optional - The duration of the operation in milliseconds
