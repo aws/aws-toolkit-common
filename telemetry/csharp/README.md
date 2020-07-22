@@ -18,14 +18,14 @@ Command Line Arguments:
 -   Where to write the generated code file(s) to
 -   Defaults to the current working directory
 
-See [Options file](ToolkitTelemetryGenerator/Options.cs) for details.
+See [Options file](AwsToolkit.Telemetry.Events.Generator/Options.cs) for details.
 
 By default, the program produces generated code into the directory where the program is run from.
 
 ## Integrating Generated code into the AWS Toolkit for Visual Studio
 
 1. Sync this repo
-1. Build and run ToolkitTelemetryGenerator
+1. Build and run AwsToolkit.Telemetry
 1. Take the generated file (GeneratedCode.cs), and place it in the toolkit, as `toolkitcore/AWSToolkit.Util/Telemetry/Telemetry.generated.cs`
 
 ## Roadmap

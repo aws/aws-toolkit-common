@@ -6,10 +6,10 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using ToolkitTelemetryGenerator.Models;
-using ToolkitTelemetryGenerator.Utils;
+using Amazon.AwsToolkit.Telemetry.Events.Generator.Models;
+using Amazon.AwsToolkit.Telemetry.Events.Generator.Utils;
 
-namespace ToolkitTelemetryGenerator
+namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 {
     /// <summary>
     /// Generates code that allows programs like the Toolkit to instantiate and publish Telemetry Events

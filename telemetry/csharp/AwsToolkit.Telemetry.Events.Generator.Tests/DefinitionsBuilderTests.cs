@@ -1,12 +1,12 @@
 ﻿using System.IO;
-using ToolkitTelemetryGenerator.Models;
+using Amazon.AwsToolkit.Telemetry.Events.Generator.Models;
 using Xunit;
 
-namespace ToolkitTelemetryGenerator.Tests
+namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Tests
 {
     public class DefinitionsBuilderTests
     {
-        private DefinitionsBuilder _sut = new DefinitionsBuilder().WithNamespace("Test");
+        private readonly DefinitionsBuilder _sut = new DefinitionsBuilder().WithNamespace("Test");
         
         [Fact]
         public void Build()

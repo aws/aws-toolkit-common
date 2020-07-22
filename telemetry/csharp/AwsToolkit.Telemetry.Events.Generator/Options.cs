@@ -1,6 +1,6 @@
 ﻿using CommandLine;
 
-namespace ToolkitTelemetryGenerator
+namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 {
     public class Options
     {

@@ -1,11 +1,9 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
+using Amazon.AwsToolkit.Telemetry.Events.Generator.Models;
 using CommandLine;
-using ToolkitTelemetryGenerator.Models;
 
-namespace ToolkitTelemetryGenerator
+namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 {
     class Program
     {

@@ -1,4 +1,5 @@
-﻿namespace ToolkitTelemetryGenerator.Models
+﻿// ReSharper disable InconsistentNaming
+namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Models
 {
     public class Metadata
     {
