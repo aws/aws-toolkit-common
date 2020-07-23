@@ -6,12 +6,12 @@ phases:
             dotnet: 3.1
     build:
         commands:
-            - dotnet build -c Release ./telemetry/csharp/AwsToolkit.Telemetry.sln
-            - dotnet test -c Release ./telemetry/csharp/AwsToolkit.Telemetry.sln --logger trx --results-directory ./.testresults
-
-reports:
-    DotnetTestExamples:
-        file-format: VisualStudioTrx
-        files:
-            - '**/*'
-        base-directory: './.testresults'
+            - echo "C# CodeBuild jobs removed until an image with .NET Framework and .NET Core can be created (using GitHub Actions in the meantime)"
+            # - dotnet build -c Release ./telemetry/csharp/AwsToolkit.Telemetry.sln
+            # - dotnet test -c Release ./telemetry/csharp/AwsToolkit.Telemetry.sln --logger trx --results-directory ./.testresults
+# reports:
+#     DotnetTestExamples:
+#         file-format: VisualStudioTrx
+#         files:
+#             - '**/*'
+#         base-directory: './.testresults'
