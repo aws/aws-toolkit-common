@@ -11,7 +11,7 @@ Command Line Arguments:
 `--namespace`
 
 -   The namespace to produce generated code into
--   Defaults to `Amazon.AWSToolkit.Telemetry`
+-   Defaults to `Amazon.AwsToolkit.Telemetry.Events`
 
 `-o`
 

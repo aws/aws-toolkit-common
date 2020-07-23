@@ -5,7 +5,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
     public class Options
     {
         [Option(
-            Default = "Amazon.AWSToolkit.Telemetry",
+            Default = "Amazon.AwsToolkit.Telemetry.Events",
             Required = false,
             HelpText = "Namespace to produce generated code in"
             )]
