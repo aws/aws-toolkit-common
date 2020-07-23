@@ -1,4 +1,6 @@
-﻿namespace Amazon.AwsToolkit.Telemetry.Events.Core
+﻿using log4net;
+
+namespace Amazon.AwsToolkit.Telemetry.Events.Core
 {
     /// <summary>
     /// Implementations are responsible for handling received Telemetry Metrics
@@ -6,6 +8,8 @@
     /// </summary>
     public interface ITelemetryLogger
     {
+        ILog Logger { get; }
+
         /// <summary>
         /// Records Telemetry information for handling
         /// </summary>
