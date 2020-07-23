@@ -77,7 +77,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             // All generated code is expected to be placed in, or somewhere with a dependency on,
             // AwsToolkit.Telemetry.Events
             blankNamespace.Imports.Add(new CodeNamespaceImport("Amazon.AwsToolkit.Telemetry.Events.Core"));
-            blankNamespace.Imports.Add(new CodeNamespaceImport("log4net"));
 
             // "public sealed partial class ToolkitTelemetryEvent" (contains generated code the toolkit uses to record metrics)
             var telemetryEventsClass = new CodeTypeDeclaration()

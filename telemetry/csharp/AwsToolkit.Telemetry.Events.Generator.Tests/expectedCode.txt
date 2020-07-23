@@ -10,7 +10,6 @@
 using Amazon.AwsToolkit.Telemetry.Events.Core;
 using System;
 using System.Collections.Generic;
-using log4net;
 
 /// --------------------------------------------------------------------------------
 /// This file is generated from https://github.com/aws/aws-toolkit-common/tree/master/telemetry
