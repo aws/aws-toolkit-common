@@ -41,6 +41,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
 
             _sut.AddMetadata(Key, string.Empty);
             Assert.False(_sut.Metadata.ContainsKey(Key));
+
+            _sut.AddMetadata(Key, "   ");
+            Assert.False(_sut.Metadata.ContainsKey(Key));
         }
     }
 }
