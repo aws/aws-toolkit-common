@@ -21,10 +21,8 @@ namespace Test
     
     
     /// Contains methods to record telemetry events
-    public static class ToolkitTelemetryEvent
+    public static partial class ToolkitTelemetryEvent
     {
-        
-        private static ILog LOGGER = LogManager.GetLogger(typeof(ToolkitTelemetryEvent));
         
         /// Records Telemetry Event:
         /// Emits milliseconds
@@ -60,7 +58,7 @@ namespace Test
             }
             catch (System.Exception e)
             {
-                LOGGER.Error("Error recording telemetry event", e);
+                Logger.Error("Error recording telemetry event", e);
                 System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
             }
         }
@@ -99,7 +97,7 @@ namespace Test
             }
             catch (System.Exception e)
             {
-                LOGGER.Error("Error recording telemetry event", e);
+                Logger.Error("Error recording telemetry event", e);
                 System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
             }
         }
@@ -148,7 +146,7 @@ namespace Test
             }
             catch (System.Exception e)
             {
-                LOGGER.Error("Error recording telemetry event", e);
+                Logger.Error("Error recording telemetry event", e);
                 System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
             }
         }
@@ -197,7 +195,7 @@ namespace Test
             }
             catch (System.Exception e)
             {
-                LOGGER.Error("Error recording telemetry event", e);
+                Logger.Error("Error recording telemetry event", e);
                 System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
             }
         }
@@ -258,7 +256,7 @@ namespace Test
             }
             catch (System.Exception e)
             {
-                LOGGER.Error("Error recording telemetry event", e);
+                Logger.Error("Error recording telemetry event", e);
                 System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
             }
         }

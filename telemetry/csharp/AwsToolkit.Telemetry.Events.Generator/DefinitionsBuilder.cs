@@ -79,17 +79,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             blankNamespace.Imports.Add(new CodeNamespaceImport("Amazon.AwsToolkit.Telemetry.Events.Core"));
             blankNamespace.Imports.Add(new CodeNamespaceImport("log4net"));
 
-            // "public sealed class ToolkitTelemetryEvent" (contains generated code the toolkit uses to record metrics)
+            // "public sealed partial class ToolkitTelemetryEvent" (contains generated code the toolkit uses to record metrics)
             var telemetryEventsClass = new CodeTypeDeclaration()
             {
                 Name = "ToolkitTelemetryEvent",
                 IsClass = true,
+                IsPartial = true,
                 TypeAttributes = TypeAttributes.Public
             };
             telemetryEventsClass.Comments.Add(new CodeCommentStatement("Contains methods to record telemetry events", true));
             generatedNamespace.Types.Add(telemetryEventsClass);
 
-            GenerateFixedCode(telemetryEventsClass, generatedNamespace);
             ProcessMetricTypes(generatedNamespace);
             ProcessMetrics(telemetryEventsClass, generatedNamespace);
 
@@ -106,30 +106,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
                 provider.GenerateCodeFromCompileUnit(generatedCode, writer, options);
                 return writer.ToString()
                     // XXX: CodeDom does not support static class generation. Post processing to accomplish this.
-                    .Replace($"public class {telemetryEventsClass.Name}", $"public static class {telemetryEventsClass.Name}");
+                    .Replace($"public partial class {telemetryEventsClass.Name}", $"public static partial class {telemetryEventsClass.Name}");
             }
-        }
-
-        /// <summary>
-        /// Generate base classes and utility methods to support recording metrics
-        /// </summary>
-        private void GenerateFixedCode(CodeTypeDeclaration telemetryEventsClass, CodeNamespace generatedNamespace)
-        {
-            AddLoggerField(telemetryEventsClass);
-        }
-
-        /// <summary>
-        /// Apply a logger field to the given class
-        /// </summary>
-        private void AddLoggerField(CodeTypeDeclaration cls)
-        {
-            var field = new CodeMemberField("ILog", "LOGGER")
-            {
-                Attributes = MemberAttributes.Private | MemberAttributes.Static,
-                InitExpression = new CodeMethodInvokeExpression(new CodeTypeReferenceExpression("LogManager"), "GetLogger", new CodeTypeOfExpression(cls.Name))
-            };
-
-            cls.Members.Add(field);
         }
 
         /// <summary>
@@ -404,7 +382,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             var catchClause = new CodeCatchClause("e", new CodeTypeReference(typeof(Exception)));
             catchClause.Statements.Add(new CodeExpressionStatement(
                 new CodeMethodInvokeExpression(
-                    new CodeFieldReferenceExpression(null, "LOGGER"), 
+                    new CodeFieldReferenceExpression(null, "Logger"), 
                     "Error", 
                     new CodePrimitiveExpression("Error recording telemetry event"),
                     new CodeArgumentReferenceExpression("e"))
