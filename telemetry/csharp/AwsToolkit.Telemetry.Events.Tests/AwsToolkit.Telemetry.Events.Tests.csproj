@@ -24,7 +24,12 @@
   <ItemGroup>
     <Folder Include="Generated\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="supplementDefinitions.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="rem BUILD THE GENERATOR, THEN USE IT TO GENERATE CODE INTO THE TEST PROJECT&#xD;&#xA;dotnet build &quot;$(SolutionDir)\AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj&quot;&#xD;&#xA;dotnet run --project &quot;$(SolutionDir)\AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj&quot; -o $(ProjectDir)\Generated --namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated" />
+    <Exec Command="rem BUILD THE GENERATOR, THEN USE IT TO GENERATE CODE INTO THE TEST PROJECT&#xD;&#xA;dotnet build &quot;$(SolutionDir)\AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj&quot;&#xD;&#xA;dotnet run --project &quot;$(SolutionDir)\AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj&quot; -o $(ProjectDir)\Generated --namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated&#xD;&#xA;dotnet run --project &quot;$(SolutionDir)\AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj&quot; -o $(ProjectDir)\Generated --namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated --s supplementDefinitions.json --f SupplementalCode.cs&#xD;&#xA;" />
   </Target>
 </Project>
