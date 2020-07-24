@@ -4,6 +4,11 @@ This solution contains a code generator and datatypes that allow the AWS Toolkit
 
 At this time, the generated code does not function in a standalone capacity. It requires datatypes (within a soon-to-be-published `Amazon.AwsToolkit.Telemetry.Events.Core` namespace). See [Roadmap](#Roadmap) for future plans in this space.
 
+There are two types of telemetry definitions that serve as inputs to the code generator:
+
+-   **Common Telemetry definitions** - Central definitions applied to all AWS Toolkit products. The AWS Toolkit for Visual Studio consumes these telemetry types through a central package (package not generated yet, see Roadmap). These definitions reside in [commonDefinitions.json](/telemetry/definitions/commonDefinitions.json).
+-   **Supplemental Telemetry definitions** - definitions that are specific to one toolkit (or not necessarily applicable to all Toolkits), or definitions that are part of a to-be-released feature which that cannot be made public yet. These definitions reside in the toolkit repo, and the generator is used to produce code that is directly integrated into the toolkit. The generated code references datatypes from the common telemetry definitions, and is expected to have access to the package mentioned above.
+
 ## Generator Usage
 
 Command Line Arguments:
