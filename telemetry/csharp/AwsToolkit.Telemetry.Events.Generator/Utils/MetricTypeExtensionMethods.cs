@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using ToolkitTelemetryGenerator.Models;
+using Amazon.AwsToolkit.Telemetry.Events.Generator.Models;
 
-namespace ToolkitTelemetryGenerator.Utils
+namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Utils
 {
     public static class MetricTypeExtensionMethods
     {

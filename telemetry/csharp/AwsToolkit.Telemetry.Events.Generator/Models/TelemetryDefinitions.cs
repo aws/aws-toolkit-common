@@ -1,8 +1,9 @@
-﻿using System.IO;
+﻿// ReSharper disable InconsistentNaming
+using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace ToolkitTelemetryGenerator.Models
+namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Models
 {
     public class TelemetryDefinitions
     {

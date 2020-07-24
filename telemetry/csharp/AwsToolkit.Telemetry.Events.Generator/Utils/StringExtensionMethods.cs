@@ -1,4 +1,4 @@
-﻿namespace ToolkitTelemetryGenerator.Utils
+﻿namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Utils
 {
     public static class StringExtensionMethods
     {

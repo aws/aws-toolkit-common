@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net46</TargetFramework>
+		<RootNamespace>Amazon.AwsToolkit.Telemetry.Events.Tests</RootNamespace>
+		<Optimize>false</Optimize>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<OutputType>Library</OutputType>
+	</PropertyGroup>
+	<ItemGroup>
+		<Reference Include="System" />
+		<Reference Include="System.Core" />
+	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Moq" Version="4.14.5" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AwsToolkit.Telemetry.Events\AwsToolkit.Telemetry.Events.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Generated\" />
+  </ItemGroup>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="rem BUILD THE GENERATOR, THEN USE IT TO GENERATE CODE INTO THE TEST PROJECT&#xD;&#xA;dotnet build &quot;$(SolutionDir)\AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj&quot;&#xD;&#xA;dotnet run --project &quot;$(SolutionDir)\AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj&quot; -o $(ProjectDir)\Generated --namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated" />
+  </Target>
+</Project>
