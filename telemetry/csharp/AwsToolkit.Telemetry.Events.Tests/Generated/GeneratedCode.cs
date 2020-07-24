@@ -2591,6 +2591,137 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
             }
         }
+        
+        /// Records Telemetry Event:
+        /// Sample event that uses a type from this definition and a type from the common definitions
+        public static void RecordSampleExtendedInvoke(this ITelemetryLogger telemetryLogger, SampleExtendedInvoke payload)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "sample_extendedInvoke";
+                datum.Unit = Unit.None;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+
+                if (payload.Runtime.HasValue)
+                {
+                    datum.AddMetadata("runtime", payload.Runtime.Value);
+                }
+
+                if (payload.ExtendedRuntime.HasValue)
+                {
+                    datum.AddMetadata("extendedRuntime", payload.ExtendedRuntime.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Sample event that uses types from this definition only
+        public static void RecordSampleReleaseBees(this ITelemetryLogger telemetryLogger, SampleReleaseBees payload)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "sample_releaseBees";
+                datum.Unit = Unit.None;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+
+                datum.AddMetadata("bees", payload.Bees);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Sample event that uses a unit
+        public static void RecordSampleTestRun(this ITelemetryLogger telemetryLogger, SampleTestRun payload)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "sample_testRun";
+                datum.Unit = Unit.Milliseconds;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
     }
     
     /// Metric field type
@@ -2811,6 +2942,30 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
         public static readonly DatabaseCredentials SecretsManager = new DatabaseCredentials("SecretsManager");
         
         public DatabaseCredentials(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Sample Extended runtime
+    public struct ExtendedRuntime
+    {
+        
+        private string _value;
+        
+        /// dirt
+        public static readonly ExtendedRuntime Dirt = new ExtendedRuntime("dirt");
+        
+        /// rascal
+        public static readonly ExtendedRuntime Rascal = new ExtendedRuntime("rascal");
+        
+        public ExtendedRuntime(string value)
         {
             this._value = value;
         }
@@ -3364,5 +3519,32 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
         
         /// The duration of the operation in milliseconds
         public double Duration;
+    }
+    
+    /// Sample event that uses a type from this definition and a type from the common definitions
+    public sealed class SampleExtendedInvoke : BaseTelemetryEvent
+    {
+        
+        /// Optional - The lambda runtime
+        public Runtime? Runtime;
+        
+        /// Optional - Sample Extended runtime
+        public ExtendedRuntime? ExtendedRuntime;
+        
+        /// The result of the operation
+        public Result Result;
+    }
+    
+    /// Sample event that uses types from this definition only
+    public sealed class SampleReleaseBees : BaseTelemetryEvent
+    {
+        
+        /// Number of bees
+        public int Bees;
+    }
+    
+    /// Sample event that uses a unit
+    public sealed class SampleTestRun : BaseTelemetryEvent
+    {
     }
 }
