@@ -7,7 +7,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Tests
     public class DefinitionsBuilderTests
     {
         private readonly DefinitionsBuilder _sut = new DefinitionsBuilder().WithNamespace("Test");
-        private readonly TelemetryDefinitions _definitions = TelemetryDefinitions.Load("sampleDefinitions.json");
+        private readonly TelemetryDefinitions _definitions = TelemetryDefinitions.Load("test-data/sampleDefinitions.json");
 
         /// <summary>
         /// Treat the sample definitions as if they were the central telemetry definitions
@@ -19,7 +19,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Tests
                 .AddMetrics(_definitions.metrics)
                 .AddMetricsTypes(_definitions.types);
 
-            AssertGeneratedCode("expectedCode.txt");
+            AssertGeneratedCode("test-data/expectedCode.txt");
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Tests
                 .AddMetrics(_definitions.metrics)
                 .AddMetricsTypes(_definitions.types, referenceOnly: true);
 
-            AssertGeneratedCode("expectedCode-supplemental.txt");
+            AssertGeneratedCode("test-data/expectedCode-supplemental.txt");
         }
 
         private void AssertGeneratedCode(string expectedCodePath)

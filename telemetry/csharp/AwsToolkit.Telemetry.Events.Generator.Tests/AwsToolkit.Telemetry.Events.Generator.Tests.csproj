@@ -23,13 +23,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="expectedCode-supplemental.txt">
+    <None Update="test-data\expectedCode*.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="expectedCode.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="sampleDefinitions.json">
+    <None Update="test-data\sampleDefinitions.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
