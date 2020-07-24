@@ -29,32 +29,33 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 
             var definitionPath = Path.Combine(GetTelemetryDefinitionsFolder(), "commonDefinitions.json");
 
-            var definitions = TelemetryDefinitions.Load(definitionPath);
+            var commonDefinitions = TelemetryDefinitions.Load(definitionPath);
 
             DefinitionsBuilder builder = new DefinitionsBuilder()
                 .WithNamespace(options.Namespace);
 
-            builder
-                .AddMetricsTypes(definitions.types)
-                .AddMetrics(definitions.metrics);
-
             // Generate the main telemetry definitions, or supplemental definitions
             if (!options.SupplementalDefinitions.Any())
             {
-                // builder
-                    // .AddMetricsTypes(definitions.types)
-                    // .AddMetrics(definitions.metrics);
+                // We're producing the main telemetry definitions
+                builder
+                    .AddMetricsTypes(commonDefinitions.types)
+                    .AddMetrics(commonDefinitions.metrics);
             }
             else
             {
+                // We're producing supplemental "repo-specific" definitions
+                builder
+                    .AddMetricsTypes(commonDefinitions.types, referenceOnly: true);
+
                 // Load each file, add types and metrics
                 options.SupplementalDefinitions.Select(TelemetryDefinitions.Load)
                     .ToList()
-                    .ForEach(telemetryDefinitions =>
+                    .ForEach(definitions =>
                     {
                         builder
-                            .AddMetricsTypes(telemetryDefinitions.types)
-                            .AddMetrics(telemetryDefinitions.metrics);
+                            .AddMetricsTypes(definitions.types)
+                            .AddMetrics(definitions.metrics);
                     });
             }
 

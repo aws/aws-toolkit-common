@@ -8,19 +8,23 @@ At this time, the generated code does not function in a standalone capacity. It 
 
 Command Line Arguments:
 
-`--namespace`
+```
+  --namespace    (Default: Amazon.AwsToolkit.Telemetry.Events) Namespace to produce generated code in. When generating code for supplemental telemetry definitions, this can help 'fit' the generated code into a
+                 host codebase
 
--   The namespace to produce generated code into
--   Defaults to `Amazon.AwsToolkit.Telemetry.Events`
+  -s             Optional, space separated. Supplemental telemetry definition files. When provided, code is not generated for common telemetry definitions. This is intended for toolkit-specific telemetry
+                 definitions that live in the host repo (rather than the toolkit common repo). Generated code is expected to have access to the common Telemetry Events package and namespace.
 
-`-o`
+  -o             Location to write generated code to. Defaults to current folder.
 
--   Where to write the generated code file(s) to
--   Defaults to the current working directory
+  -f             (Default: GeneratedCode.cs) Name of file to produce.
+
+  --help         Display this help screen.
+
+  --version      Display version information.
+```
 
 See [Options file](AwsToolkit.Telemetry.Events.Generator/Options.cs) for details.
-
-By default, the program produces generated code into the directory where the program is run from.
 
 ## Integrating Generated code into the AWS Toolkit for Visual Studio
 
@@ -33,7 +37,6 @@ This project is currently not intended to be integrated into the toolkit until p
 
 ## Roadmap
 
--   add Generator support for supplemental telemetry definitions
 -   Standalone NuGet Packages
     -   Produce and publish a package containing the telemetry SDK
     -   Produce and publish a package containing the telemetry events datatypes

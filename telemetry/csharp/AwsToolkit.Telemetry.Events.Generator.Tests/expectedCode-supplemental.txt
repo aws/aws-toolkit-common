@@ -262,30 +262,6 @@ namespace Test
         }
     }
     
-    /// Metric field type
-    /// The lambda runtime
-    public struct Runtime
-    {
-        
-        private string _value;
-        
-        /// dotnetcore2.1
-        public static readonly Runtime Dotnetcore21 = new Runtime("dotnetcore2.1");
-        
-        /// java11
-        public static readonly Runtime Java11 = new Runtime("java11");
-        
-        public Runtime(string value)
-        {
-            this._value = value;
-        }
-        
-        public override string ToString()
-        {
-            return this._value;
-        }
-    }
-    
     /// Emits milliseconds
     public sealed class EmitSomeIntMs : BaseTelemetryEvent
     {

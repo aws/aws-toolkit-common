@@ -23,6 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="expectedCode-supplemental.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="expectedCode.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
