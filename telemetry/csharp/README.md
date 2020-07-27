@@ -11,7 +11,7 @@ There are two types of telemetry definitions that serve as inputs to the code ge
 
 ## Generator Usage
 
-Command Line Arguments:
+Here is the usage information output when run with `--help`:
 
 ```
   --namespace    (Default: Amazon.AwsToolkit.Telemetry.Events) Namespace to produce generated code in. When generating code for supplemental telemetry definitions, this can help 'fit' the generated code into a
