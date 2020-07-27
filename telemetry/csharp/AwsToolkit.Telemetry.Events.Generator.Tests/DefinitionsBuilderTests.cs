@@ -38,7 +38,12 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Tests
         private void AssertGeneratedCode(string expectedCodePath)
         {
             var expectedCode = File.ReadAllText(expectedCodePath);
-            Assert.Equal(expectedCode, _sut.Build());
+            Assert.Equal(NormalizeLineEndings(expectedCode), NormalizeLineEndings(_sut.Build()));
+        }
+
+        private string NormalizeLineEndings(string text)
+        {
+            return text.Replace("\r\n", "\n");
         }
     }
 }

@@ -1,3 +1,0 @@
-# Declare files that will always have CRLF line endings on checkout.
-# (The code generator emits CRLF, and we need the tests to match expected contents against this)
-/telemetry/csharp/**/test-data/** text eol=crlf
