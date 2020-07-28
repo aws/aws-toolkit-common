@@ -11,6 +11,7 @@ There are two types of telemetry definitions that serve as inputs to the code ge
 
 ## Generator Usage
 
+-
 Here is the usage information output when run with `--help`:
 
 ```
