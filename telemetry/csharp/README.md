@@ -9,6 +9,8 @@ There are two types of telemetry definitions that serve as inputs to the code ge
 -   **Common Telemetry definitions** - Central definitions applied to all AWS Toolkit products. The AWS Toolkit for Visual Studio consumes these telemetry types through a central package (package not generated yet, see Roadmap). These definitions reside in [commonDefinitions.json](/telemetry/definitions/commonDefinitions.json).
 -   **Supplemental Telemetry definitions** - definitions that are specific to one toolkit (or not necessarily applicable to all Toolkits), or definitions that are part of a to-be-released feature which that cannot be made public yet. These definitions reside in the toolkit repo, and the generator is used to produce code that is directly integrated into the toolkit. The generated code references datatypes from the common telemetry definitions, and is expected to have access to the package mentioned above.
 
+As an example, the common telemetry definitions contains a type called `result`, which some events use in their metadata to indicate whether an operation succeeded or failed. A toolkit could have a supplemental telemetry definition which also makes use of the same `result` type. Running the generator against the supplemental definitions would not produce code for the `result` type, because it exists in the code that was produced for the common definitions.
+
 ## Generator Usage
 
 Here is the usage information output when run with `--help`:
