@@ -7,6 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using Amazon.AwsToolkit.Telemetry.Events;
 using Amazon.AwsToolkit.Telemetry.Events.Core;
 using System;
 using System.Collections.Generic;

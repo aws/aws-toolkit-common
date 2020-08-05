@@ -28,12 +28,33 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(System.Diagnostics.Debug)), "Assert");
 
         private string _namespace;
+
+        // Used for lookup during generation
         private readonly List<MetricType> _types = new List<MetricType>();
+
+        // Types to produce generated code for
+        private readonly List<MetricType> _typesToGenerate = new List<MetricType>();
         private readonly List<Metric> _metrics = new List<Metric>();
 
-        public DefinitionsBuilder AddMetricsTypes(IList<MetricType> types)
+        /// <summary>
+        /// Supply Metrics Type definitions to the builder
+        /// </summary>
+        /// <param name="types"></param>
+        /// <param name="referenceOnly">
+        /// When true, the types will only be used to assist in generating code for metrics.
+        ///     The code that is generated is expected to reside somewhere that can reference these types.
+        ///     This would be used by repo-specific telemetry definitions.
+        /// When false, the types will have code produced to define them.
+        ///     This would be used by the toolkit common telemetry definitions, and baked into a package.
+        /// </param>
+        public DefinitionsBuilder AddMetricsTypes(IList<MetricType> types, bool referenceOnly = false)
         {
             _types.AddRange(types);
+
+            if (!referenceOnly)
+            {
+                _typesToGenerate.AddRange(types);
+            }
 
             return this;
         }
@@ -76,6 +97,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             blankNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
             // All generated code is expected to be placed in, or somewhere with a dependency on,
             // AwsToolkit.Telemetry.Events
+            if (_namespace != Options.DefaultEventsNamespace)
+            {
+                blankNamespace.Imports.Add(new CodeNamespaceImport(Options.DefaultEventsNamespace));
+            }
             blankNamespace.Imports.Add(new CodeNamespaceImport("Amazon.AwsToolkit.Telemetry.Events.Core"));
 
             // "public sealed partial class ToolkitTelemetryEvent" (contains generated code the toolkit uses to record metrics)
@@ -115,7 +140,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
         /// <param name="generatedNamespace"></param>
         private void ProcessMetricTypes(CodeNamespace generatedNamespace)
         {
-            _types.ForEach(metricType => ProcessMetricType(metricType, generatedNamespace));
+            _typesToGenerate.ForEach(metricType => ProcessMetricType(metricType, generatedNamespace));
         }
 
         /// <summary>

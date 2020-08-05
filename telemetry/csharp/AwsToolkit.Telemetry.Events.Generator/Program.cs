@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using Amazon.AwsToolkit.Telemetry.Events.Generator.Models;
 using CommandLine;
 
@@ -28,16 +29,39 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 
             var definitionPath = Path.Combine(GetTelemetryDefinitionsFolder(), "commonDefinitions.json");
 
-            var definitions = TelemetryDefinitions.Load(definitionPath);
+            var commonDefinitions = TelemetryDefinitions.Load(definitionPath);
 
             DefinitionsBuilder builder = new DefinitionsBuilder()
-                .WithNamespace(options.Namespace)
-                .AddMetrics(definitions.metrics)
-                .AddMetricsTypes(definitions.types);
+                .WithNamespace(options.Namespace);
+
+            // Generate the main telemetry definitions, or supplemental definitions
+            if (!options.SupplementalDefinitions.Any())
+            {
+                // We're producing the main telemetry definitions
+                builder
+                    .AddMetricsTypes(commonDefinitions.types)
+                    .AddMetrics(commonDefinitions.metrics);
+            }
+            else
+            {
+                // We're producing supplemental "repo-specific" definitions
+                builder
+                    .AddMetricsTypes(commonDefinitions.types, referenceOnly: true);
+
+                // Load each file, add types and metrics
+                options.SupplementalDefinitions.Select(TelemetryDefinitions.Load)
+                    .ToList()
+                    .ForEach(definitions =>
+                    {
+                        builder
+                            .AddMetricsTypes(definitions.types)
+                            .AddMetrics(definitions.metrics);
+                    });
+            }
 
             var code = builder.Build();
 
-            File.WriteAllText(Path.Combine(options.OutputFolder, "GeneratedCode.cs"), code);
+            File.WriteAllText(Path.Combine(options.OutputFolder, options.OutputFilename), code);
         }
 
         public static string GetTelemetryDefinitionsFolder()

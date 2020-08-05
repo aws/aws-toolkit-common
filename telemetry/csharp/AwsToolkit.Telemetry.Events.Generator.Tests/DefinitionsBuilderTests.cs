@@ -7,27 +7,43 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Tests
     public class DefinitionsBuilderTests
     {
         private readonly DefinitionsBuilder _sut = new DefinitionsBuilder().WithNamespace("Test");
-        
+        private readonly TelemetryDefinitions _definitions = TelemetryDefinitions.Load("test-data/sampleDefinitions.json");
+
+        /// <summary>
+        /// Treat the sample definitions as if they were the central telemetry definitions
+        /// </summary>
         [Fact]
-        public void Build()
+        public void Build_CommonDefinition()
         {
-            LoadDefinitions("sampleDefinitions.json");
-            AssertGeneratedCode("expectedCode.txt");
+            _sut
+                .AddMetrics(_definitions.metrics)
+                .AddMetricsTypes(_definitions.types);
+
+            AssertGeneratedCode("test-data/expectedCode.txt");
         }
 
-        private void LoadDefinitions(string path)
+        /// <summary>
+        /// Treat the sample definitions as if they were the repo-specific "supplemental" telemetry definitions
+        /// </summary>
+        [Fact]
+        public void Build_ReferenceDefinition()
         {
-            var definitions = TelemetryDefinitions.Load(path);
-
             _sut
-                .AddMetrics(definitions.metrics)
-                .AddMetricsTypes(definitions.types);
+                .AddMetrics(_definitions.metrics)
+                .AddMetricsTypes(_definitions.types, referenceOnly: true);
+
+            AssertGeneratedCode("test-data/expectedCode-supplemental.txt");
         }
 
         private void AssertGeneratedCode(string expectedCodePath)
         {
             var expectedCode = File.ReadAllText(expectedCodePath);
-            Assert.Equal(expectedCode, _sut.Build());
+            Assert.Equal(NormalizeLineEndings(expectedCode), NormalizeLineEndings(_sut.Build()));
+        }
+
+        private string NormalizeLineEndings(string text)
+        {
+            return text.Replace("\r\n", "\n");
         }
     }
 }

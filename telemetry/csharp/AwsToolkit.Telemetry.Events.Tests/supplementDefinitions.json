@@ -1,0 +1,43 @@
+{
+    "toolkit-common-description": "Example of a telemetry definitions file residing in the toolkit repo (separate from the toolkit-common commonDefinitions.json)",
+    "types": [
+        {
+            "name": "bees",
+            "type": "int",
+            "description": "Number of bees"
+        },
+        {
+            "name": "extendedRuntime",
+            "type": "string",
+            "allowedValues": ["dirt", "rascal"],
+            "description": "Sample Extended runtime"
+        }
+    ],
+    "metrics": [
+        {
+            "name": "sample_extendedInvoke",
+            "description": "Sample event that uses a type from this definition and a type from the common definitions",
+            "metadata": [
+                {
+                    "type": "runtime",
+                    "required": false
+                },
+                {
+                    "type": "extendedRuntime",
+                    "required": false
+                },
+                { "type": "result" }
+            ]
+        },
+        {
+            "name": "sample_releaseBees",
+            "description": "Sample event that uses types from this definition only",
+            "metadata": [{ "type": "bees" }]
+        },
+        {
+            "name": "sample_testRun",
+            "description": "Sample event that uses a unit",
+            "unit": "Milliseconds"
+        }
+    ]
+}
