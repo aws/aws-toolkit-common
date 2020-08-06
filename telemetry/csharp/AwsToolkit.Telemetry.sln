@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AwsToolkit.Telemetry.Events
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AwsToolkit.Telemetry.Events", "AwsToolkit.Telemetry.Events\AwsToolkit.Telemetry.Events.csproj", "{F7334F32-FB00-41FF-8C32-3C9402F2C099}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwsToolkit.Telemetry.Events.Tests", "AwsToolkit.Telemetry.Events.Tests\AwsToolkit.Telemetry.Events.Tests.csproj", "{7800B019-0023-405F-9ED6-A93430025D77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AwsToolkit.Telemetry.Events.Tests", "AwsToolkit.Telemetry.Events.Tests\AwsToolkit.Telemetry.Events.Tests.csproj", "{7800B019-0023-405F-9ED6-A93430025D77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

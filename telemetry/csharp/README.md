@@ -1,6 +1,33 @@
 # C# AWS Toolkit Telemetry
 
-This solution contains a code generator and datatypes that allow the AWS Toolkit for Visual Studio to produce and record telemetry events.
+## Telemetry SDK (AwsToolkit.Telemtry.SDK)
+
+This is the SDK client used by the Toolkit to send telemetry events to the backend service.
+
+The backend service is defined in the [service definition file](/telemetry/service/service-model.json). The [AWS SDK for .Net](https://github.com/aws/aws-sdk-net) service generator is used with the service definition file to produce SDK client code. The client code is then placed in a project (AwsToolkit.Telemtry.SDK) that is compatible for use with the Toolkit.
+
+To generate the client code, run:
+
+```
+msbuild TelemetryClient.proj
+```
+
+Afterwards, the `AwsToolkit.Telemtry.SDK` solution can be built.
+
+The SDK Generator code is pinned to a release tag, so that changes in the SDK repo do not have an unepxected impact in the Telemetry CI/CD.
+
+### Updating the AWSSDK version used
+
+When the toolkit is updated to use a newer version of the AWSSDK, it may be necessary to update the version used by `AwsToolkit.Telemtry.SDK`. Perform the following steps:
+
+-   Determine which version of `AWSSDK.Core` you need ([NuGet](https://www.nuget.org/packages/AWSSDK.Core/), [SDK Changelog](https://github.com/aws/aws-sdk-net/blob/master/SDK.CHANGELOG.md)), then look up the corresponding [release tag](https://github.com/aws/aws-sdk-net/tags).
+-   If necessary, update the tag of the SDK Generator source used. This is the `DotNetSdkTag` value in [TelemetryClient.proj](/telemetry/csharp/TelemetryClient.proj).
+-   Update the `AWSSDK.Core` version used by [AwsToolkit.Telemetry.SDK.csproj](/telemetry/csharp/AwsToolkit.Telemetry.SDK/AwsToolkit.Telemetry.SDK.csproj) by updating the appropriate `PackageReference` Version.
+-   Update the `AWSSDK.Core` dependency used by the [NuGet package](/telemetry/csharp/AwsToolkit.Telemetry.SDK/AwsToolkit.Telemetry.SDK.nuspec) by updating the appropriate `dependency` version.
+
+## Telemetry Events (AwsToolkit.Telemetry.Events) and Generator (AwsToolkit.Telemetry.Events.Generator)
+
+The `AwsToolkit.Telemetry.sln` solution contains a code generator and datatypes that allow the AWS Toolkit for Visual Studio to produce and record telemetry events.
 
 At this time, the generated code does not function in a standalone capacity. It requires datatypes (within a soon-to-be-published `Amazon.AwsToolkit.Telemetry.Events.Core` namespace). See [Roadmap](#Roadmap) for future plans in this space.
 
@@ -11,7 +38,7 @@ There are two types of telemetry definitions that serve as inputs to the code ge
 
 As an example, the common telemetry definitions contains a type called `result`, which some events use in their metadata to indicate whether an operation succeeded or failed. A toolkit could have a supplemental telemetry definition which also makes use of the same `result` type. Running the generator against the supplemental definitions would not produce code for the `result` type, because it exists in the code that was produced for the common definitions.
 
-## Generator Usage
+### Generator Usage
 
 Here is the usage information output when run with `--help`:
 
@@ -33,7 +60,7 @@ Here is the usage information output when run with `--help`:
 
 See [Options file](AwsToolkit.Telemetry.Events.Generator/Options.cs) for details.
 
-## Integrating Generated code into the AWS Toolkit for Visual Studio
+### Integrating Generated code into the AWS Toolkit for Visual Studio
 
 This project is currently not intended to be integrated into the toolkit until packages are published. See [Roadmap](#Roadmap). The steps below are provided as a workaround.
 

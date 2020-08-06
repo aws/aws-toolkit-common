@@ -8,8 +8,19 @@ phases:
     install:
         runtime-versions:
             dotnet: 3.1
+        commands:
+            # Fixes for cloning aws net sdk and getting 'filename too long' errors
+            # LongPathsEnabled Reference:
+            # https://docs.microsoft.com/en-us/windows/win32/fileio/naming-a-file#enable-long-paths-in-windows-10-version-1607-and-later
+            - '& Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name LongPathsEnabled -Value 1'
+            - git config --system core.longpaths true
+
     build:
         commands:
+            ############################################################################################################
+            # Telemetry Events Generator
+            ############################################################################################################
+
             # Explicitly restore the .NET Framework projects or CodeBuild produces errors running dotnet build on the .sln :(
             - dotnet -d restore .\telemetry\csharp\AwsToolkit.Telemetry.Events\AwsToolkit.Telemetry.Events.csproj
             - dotnet -d restore .\telemetry\csharp\AwsToolkit.Telemetry.Events.Tests\AwsToolkit.Telemetry.Events.Tests.csproj
@@ -22,6 +33,19 @@ phases:
 
             # Test
             - dotnet test -c Release ./telemetry/csharp/AwsToolkit.Telemetry.sln --logger trx --results-directory ./.testresults
+
+            ############################################################################################################
+            # SDK Telemetry Client
+            ############################################################################################################
+
+            # Generate the SDK Telemetry Client Source
+            - dotnet msbuild .\telemetry\csharp\TelemetryClient.proj
+
+            # Restore and Build the SDK Telemetry Client
+            - dotnet -d restore ./telemetry/csharp/AwsToolkit.Telemetry.SDK/AwsToolkit.Telemetry.SDK.csproj
+            - dotnet -d restore ./telemetry/csharp/AwsToolkit.Telemetry.SDK.sln
+            - dotnet build -c Release ./telemetry/csharp/AwsToolkit.Telemetry.SDK.sln
+
 reports:
     DotnetTestExamples:
         file-format: VisualStudioTrx

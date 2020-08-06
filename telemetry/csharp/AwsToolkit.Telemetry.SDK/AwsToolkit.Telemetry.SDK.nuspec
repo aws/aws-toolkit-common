@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">Apache-2.0</license>
+    <projectUrl>https://github.com/aws/aws-toolkit-common</projectUrl>
+    <description>$description$</description>
+    <copyright>$copyright$</copyright>
+    <tags>AWS AWSToolkit</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.6">
+        <dependency id="AWSSDK.Core" version="3.3.105.1" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
