@@ -12,7 +12,7 @@
         },
         {
             "name": "serviceType",
-            "allowedValues": ["ecs", "cloudformation", "lambda", "rds", "redshift", "logs", "s3", "schemas", "stepfunctions"],
+            "allowedValues": ["ecs", "cloudformation", "lambda", "rds", "redshift", "logs", "s3", "schemas", "stepfunctions", "sqs"],
             "type": "string",
             "description": "The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client."
         },
