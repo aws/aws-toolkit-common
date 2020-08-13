@@ -52,6 +52,7 @@
                 "nodejs8.10",
                 "ruby2.5",
                 "java8",
+                "java8.al2",
                 "java11",
                 "go1.x",
                 "python3.8",
