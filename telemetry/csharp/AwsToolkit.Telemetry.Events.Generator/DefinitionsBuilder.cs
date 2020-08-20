@@ -356,6 +356,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             tryStatements.Add(new CodeVariableDeclarationStatement("var", datum.VariableName, new CodeObjectCreateExpression(MetricDatumFullName)));
             tryStatements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "MetricName"), new CodePrimitiveExpression(metric.name)));
             tryStatements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "Unit"), GetMetricUnitExpression(metric)));
+            tryStatements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "Passive"), new CodePrimitiveExpression(metric.passive)));
 
             // Set Datum.Value to (payload.Value ?? 1)
             var payloadValue = new CodeFieldReferenceExpression(payload, "Value");

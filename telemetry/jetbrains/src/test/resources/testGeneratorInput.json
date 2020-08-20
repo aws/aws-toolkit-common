@@ -51,6 +51,11 @@
     {
       "name": "no_metadata",
       "description": "called when invoking lambdas remotely"
+    },
+    {
+      "name": "passive_passive",
+      "description": "a passive metric",
+      "passive": true
     }
   ]
 }

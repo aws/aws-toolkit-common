@@ -7,5 +7,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Models
         public string description { get; set; }
         public Metadata[] metadata { get; set; }
         public string unit { get; set; }
+        public bool passive { get; set; }
     }
 }

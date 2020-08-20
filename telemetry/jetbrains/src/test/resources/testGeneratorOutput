@@ -46,6 +46,7 @@ object LambdaTelemetry {
                 createTime(createTime)
                 unit(Unit.NONE)
                 value(value)
+                passive(false)
                 metadata("lambdaruntime", lambdaruntime.toString())
                 metadata("arbitrarystring", arbitrarystring.toString())
             }}
@@ -66,6 +67,7 @@ object LambdaTelemetry {
                 createTime(createTime)
                 unit(Unit.NONE)
                 value(value)
+                passive(false)
                 metadata("duration", duration.toString())
                 metadata("booltype", booltype.toString())
             }}
@@ -86,6 +88,7 @@ object LambdaTelemetry {
                 createTime(createTime)
                 unit(Unit.NONE)
                 value(value)
+                passive(false)
                 if(lambdaruntime != null) {
                 metadata("lambdaruntime", lambdaruntime.toString())
                 }
@@ -108,6 +111,26 @@ object NoTelemetry {
                 createTime(createTime)
                 unit(Unit.NONE)
                 value(value)
+                passive(false)
+            }}
+    }
+}
+
+object PassiveTelemetry {
+    /**
+     * a passive metric
+     */
+    fun passive(
+        project: Project? = null,
+        value: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ) {
+        TelemetryService.getInstance().record(project) {
+            datum("passive_passive") {
+                createTime(createTime)
+                unit(Unit.NONE)
+                value(value)
+                passive(true)
             }}
     }
 }

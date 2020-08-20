@@ -181,6 +181,7 @@ private fun FunSpec.Builder.generateFunctionBody(metric: Metric): FunSpec.Builde
     addStatement("createTime(createTime)")
     addStatement("unit(%M.${(metric.unit ?: MetricUnit.NONE).name})", metricUnit)
     addStatement("value(value)")
+    addStatement("passive(${metric.passive})")
     metric.metadata?.forEach {
         generateMetadataStatement(it, "${it.type.toArgumentFormat()}.toString()")
     }

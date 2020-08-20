@@ -56,7 +56,8 @@ data class Metric(
     val name: String,
     val description: String,
     val unit: MetricUnit?,
-    val metadata: List<Metadata>?
+    val metadata: List<Metadata>?,
+    val passive: Boolean = false
 )
 
 data class TelemetryDefinition(

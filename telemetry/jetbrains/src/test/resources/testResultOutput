@@ -52,6 +52,7 @@ object MetadataTelemetry {
     createTime(createTime)
     unit(Unit.NONE)
     value(value)
+    passive(false)
     metadata("result", result.toString())
     }}
   }
