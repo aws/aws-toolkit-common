@@ -346,6 +346,16 @@
             "metadata": [{ "type": "runtime", "required": false }, { "type": "result" }, { "type": "debug" }]
         },
         {
+            "name": "lambda_import",
+            "description": "Called when importing a remote Lambda function",
+            "metadata": [{ "type": "runtime", "required": false }, { "type": "result" }]
+        },
+        {
+            "name": "lambda_updateFunctionCode",
+            "description": "Called when updating a Lambda function's code outside the context of a SAM template",
+            "metadata": [{ "type": "runtime", "required": false }, { "type": "result" }]
+        },
+        {
             "name": "cloudformation_delete",
             "description": "Called when deleting a cloudformation stack",
             "metadata": [{ "type": "result" }]
