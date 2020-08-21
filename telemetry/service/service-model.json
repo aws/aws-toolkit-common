@@ -2,7 +2,7 @@
   "version":"2.0",
   "metadata":{
     "apiVersion":"2017-07-25",
-    "endpointPrefix":"ToolkitTelemetry",
+    "endpointPrefix":"client-telemetry",
     "jsonVersion":"1.1",
     "protocol":"rest-json",
     "serviceAbbreviation":"ToolkitTelemetry",
