@@ -72,6 +72,12 @@
                 { "type": "name", "required": false },
                 { "type": "runtime", "required": false }
             ]
+        },
+        {
+            "name": "emit_passive",
+            "unit": "Count",
+            "description": "Emit a passive metric",
+            "passive": true
         }
     ]
 }

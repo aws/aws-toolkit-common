@@ -44,6 +44,7 @@ namespace Test
                 var datum = new MetricDatum();
                 datum.MetricName = "emit_someIntMs";
                 datum.Unit = Unit.Milliseconds;
+                datum.Passive = false;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -83,6 +84,7 @@ namespace Test
                 var datum = new MetricDatum();
                 datum.MetricName = "emit_noUnit";
                 datum.Unit = Unit.None;
+                datum.Passive = false;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -122,6 +124,7 @@ namespace Test
                 var datum = new MetricDatum();
                 datum.MetricName = "emit_someBigBlob";
                 datum.Unit = Unit.Count;
+                datum.Passive = false;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -171,6 +174,7 @@ namespace Test
                 var datum = new MetricDatum();
                 datum.MetricName = "emit_someBigBlob2";
                 datum.Unit = Unit.Count;
+                datum.Passive = false;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -220,6 +224,7 @@ namespace Test
                 var datum = new MetricDatum();
                 datum.MetricName = "emit_someBigOptionalBlob";
                 datum.Unit = Unit.Count;
+                datum.Passive = false;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -249,6 +254,46 @@ namespace Test
                 if (payload.Runtime.HasValue)
                 {
                     datum.AddMetadata("runtime", payload.Runtime.Value);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Emit a passive metric
+        public static void RecordEmitPassive(this ITelemetryLogger telemetryLogger, EmitPassive payload)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "emit_passive";
+                datum.Unit = Unit.Count;
+                datum.Passive = true;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
                 }
 
                 metrics.Data.Add(datum);
@@ -354,5 +399,10 @@ namespace Test
         
         /// Optional - The lambda runtime
         public Runtime? Runtime;
+    }
+    
+    /// Emit a passive metric
+    public sealed class EmitPassive : BaseTelemetryEvent
+    {
     }
 }
