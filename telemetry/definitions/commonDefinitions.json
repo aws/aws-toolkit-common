@@ -12,7 +12,19 @@
         },
         {
             "name": "serviceType",
-            "allowedValues": ["ecs", "cloudformation", "lambda", "rds", "redshift", "logs", "s3", "schemas", "stepfunctions", "sqs"],
+            "allowedValues": [
+                "apigateway",
+                "ecs",
+                "cloudformation",
+                "lambda",
+                "rds",
+                "redshift",
+                "logs",
+                "s3",
+                "schemas",
+                "stepfunctions",
+                "sqs"
+            ],
             "type": "string",
             "description": "The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client."
         },
@@ -76,6 +88,11 @@
             "name": "debug",
             "type": "boolean",
             "description": "If the action was run in debug mode or not"
+        },
+        {
+            "name": "httpMethod",
+            "type": "string",
+            "description": "Any valid HTTP method (GET/HEAD/etc)"
         },
         {
             "name": "oldVersion",
@@ -163,6 +180,31 @@
         }
     ],
     "metrics": [
+        {
+            "name": "apigateway_copyUrl",
+            "description": "Copying an API Gateway remote URL",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "apigateway_invokeLocal",
+            "description": "Invoking one simulated API Gateway call using the SAM cli",
+            "metadata": [
+                { "type": "runtime", "required": false },
+                { "type": "httpMethod", "required": false },
+                { "type": "result" },
+                { "type": "debug" }
+            ]
+        },
+        {
+            "name": "apigateway_invokeRemote",
+            "description": "Calling a remote API Gateway",
+            "metadata": [{ "type": "result" }, { "type": "httpMethod", "required": false }]
+        },
+        {
+            "name": "apigateway_startLocalServer",
+            "description": "Called when starting a local API Gateway server simulator with SAM. Only called when starting it for long running testing, not for single invokes",
+            "metadata": [{ "type": "result" }]
+        },
         {
             "name": "aws_copyArn",
             "description": "Copy the ARN of an AWS resource",
@@ -364,23 +406,27 @@
             "name": "rds_getCredentials",
             "description": "Called when getting IAM/SecretsManager credentials for a RDS database. Value represents how long it takes in ms.",
             "unit": "Milliseconds",
-            "metadata": [{ "type": "result" }, {"type": "databaseCredentials" }, {"type": "databaseEngine"}]
+            "metadata": [{ "type": "result" }, { "type": "databaseCredentials" }, { "type": "databaseEngine" }]
         },
         {
             "name": "rds_createConnectionConfiguration",
             "description": "Called when creating a new database connection configuration to for a RDS database. In Datagrip we do not get this infromation if it is created directly, so this is only counts actions.",
-            "metadata": [{ "type": "result" }, {"type": "databaseCredentials" }, {"type": "databaseEngine", "required": false}]
+            "metadata": [
+                { "type": "result" },
+                { "type": "databaseCredentials" },
+                { "type": "databaseEngine", "required": false }
+            ]
         },
         {
             "name": "redshift_getCredentials",
             "description": "Called when getting IAM/SecretsManager credentials for a Redshift database. Value represents how long it takes in ms.",
             "unit": "Milliseconds",
-            "metadata": [{ "type": "result" }, {"type": "databaseCredentials"}]
+            "metadata": [{ "type": "result" }, { "type": "databaseCredentials" }]
         },
         {
             "name": "redshift_createConnectionConfiguration",
             "description": "Called when creating a new database connection configuration to for a Redshift database. In Datagrip we do not get this infromation if it is created directly, so this only counts actions.",
-            "metadata": [{ "type": "result" }, {"type": "databaseCredentials" }]
+            "metadata": [{ "type": "result" }, { "type": "databaseCredentials" }]
         },
         {
             "name": "sam_deploy",
