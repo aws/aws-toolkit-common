@@ -61,6 +61,10 @@
                             },
                             "required": ["type"]
                         }
+                    },
+                    "passive": {
+                        "type": "boolean",
+                        "description": "Set as true if the metric is emitted without any explicit user action."
                     }
                 },
                 "required": ["name", "description"]

@@ -33,6 +33,7 @@ export interface Metric {
     description: string
     unit: string
     metadata: MetricMetadata[]
+    passive: boolean
 }
 export interface MetricDefinitionRoot {
     types?: MetadataType[]

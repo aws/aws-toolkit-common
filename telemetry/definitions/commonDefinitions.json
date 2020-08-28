@@ -247,7 +247,8 @@
         {
             "name": "aws_validateCredentials",
             "description": "Validate credentials when selecting new credentials",
-            "metadata": [{ "type": "result" }]
+            "metadata": [{ "type": "result" }],
+            "passive": true
         },
         {
             "name": "aws_help",
@@ -463,11 +464,13 @@
         },
         {
             "name": "session_start",
-            "description": "Called when starting the plugin"
+            "description": "Called when starting the plugin",
+            "passive": true
         },
         {
             "name": "session_end",
-            "description": "Called when stopping the IDE on a best effort basis"
+            "description": "Called when stopping the IDE on a best effort basis",
+            "passive": true
         },
         {
             "name": "s3_copyBucketName",
@@ -532,7 +535,8 @@
         {
             "name": "toolkit_init",
             "description": "The Toolkit has completed initialization",
-            "metadata": [{ "type": "duration" }]
+            "metadata": [{ "type": "duration" }],
+            "passive": true
         }
     ]
 }

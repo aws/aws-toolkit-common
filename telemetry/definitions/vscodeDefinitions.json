@@ -3,7 +3,8 @@
         {
             "name": "vscode_activeRegions",
             "description": "Record the number of active regions at startup and when regions are added/removed",
-            "unit": "Count"
+            "unit": "Count",
+            "passive": true
         },
         {
             "name": "vscode_viewLogs",
@@ -25,7 +26,8 @@
         {
             "name": "sam_detect",
             "description": "Called when detecting the location of the SAM CLI",
-            "metadata": [{ "type": "result" }]
+            "metadata": [{ "type": "result" }],
+            "passive": true
         },
         {
             "name": "cdk_explorerDisabled",

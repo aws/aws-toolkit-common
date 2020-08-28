@@ -8,5 +8,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Core
         public string MetricName { get; set; }
         public Unit Unit { get; set; } = Unit.None;
         public double Value { get; set; } = 0;
+        public bool Passive { get; set; } = false;
     }
 }

@@ -46,6 +46,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.NotNull(datum);
             Assert.Equal("lambda_invokeRemote", datum.MetricName);
             Assert.Equal(Unit.None, datum.Unit);
+            Assert.False(datum.Passive);
             Assert.Equal(lambdaInvokeRemote.Runtime.Value.ToString(), datum.Metadata["runtime"]);
             Assert.Equal(lambdaInvokeRemote.Result.ToString(), datum.Metadata["result"]);
         }
@@ -74,6 +75,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.NotNull(datum);
             Assert.Equal("sam_deploy", datum.MetricName);
             Assert.Equal(Unit.None, datum.Unit);
+            Assert.False(datum.Passive);
             Assert.Equal(samDeploy.Version, datum.Metadata["version"]);
             Assert.Equal(samDeploy.Result.ToString(), datum.Metadata["result"]);
         }
@@ -101,6 +103,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.NotNull(datum);
             Assert.Equal("sam_deploy", datum.MetricName);
             Assert.Equal(Unit.None, datum.Unit);
+            Assert.False(datum.Passive);
             Assert.False(datum.Metadata.ContainsKey("version"));
             Assert.Equal(samDeploy.Result.ToString(), datum.Metadata["result"]);
         }
