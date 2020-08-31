@@ -119,7 +119,7 @@ export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
                 MetricName: '${metric.name}',
                 Value: args?.value ?? 1,
                 Unit: '${metric.unit ?? 'None'}',
-                Passive: ${metric.passive}
+                Passive: ${metric.passive},
                 Metadata: metadata
             }]
         })
