@@ -23,7 +23,7 @@
                 "s3",
                 "schemas",
                 "stepfunctions",
-				"sns",
+                "sns",
                 "sqs"
             ],
             "type": "string",
@@ -544,55 +544,55 @@
             "metadata": [{ "type": "duration" }],
             "passive": true
         },
-		{
-			"name": "sqs_openQueue",
-			"description": "Open an SQS queue. Initially opens to the send message pane or poll messags pane."
-		},
-		{
-			"name": "sqs_createQueue",
-			"description": "Create a new SQS queue",
-            "metadata": [{ "type": "result"}, {"type": "sqsQueueType" }]
-		},
-		{
-			"name": "sqs_deleteQueue",
-			"description": "Delete a SQS queue",
-            "metadata": [{ "type": "result" }, {"type": "sqsQueueType"}]
-		},
-		{
-			"name": "sqs_sendMessage",
-			"description": "Send a message to an SQS queue",
-            "metadata": [{ "type": "result"}, {"type": "sqsQueueType" }]
-		},
-		{
-			"name": "sqs_deleteMessages",
-			"description": "Delete one or more messages from an SQS queue. Value indicates the number of messages deleted.",
+        {
+            "name": "sqs_openQueue",
+            "description": "Open an SQS queue. Initially opens to the send message pane or poll messags pane."
+        },
+        {
+            "name": "sqs_createQueue",
+            "description": "Create a new SQS queue",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sqs_deleteQueue",
+            "description": "Delete a SQS queue",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sqs_sendMessage",
+            "description": "Send a message to an SQS queue",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sqs_deleteMessages",
+            "description": "Delete one or more messages from an SQS queue. Value indicates the number of messages deleted.",
             "unit": "Count",
-            "metadata": [{ "type": "result"}, {"type": "sqsQueueType" }]
-		},
-		{
-			"name": "sqs_copyMessage",
-			"description": "Copy a message to the clipboard",
-            "metadata": [{ "type": "result"}, {"type": "sqsQueueType" }]
-		},
-		{
-			"name": "sqs_subscribeSns",
-			"description": "Subscribe the queue to messages from an sns topic",
-            "metadata": [{ "type": "result"}, {"type": "sqsQueueType" }]
-		},
-		{
-			"name": "sqs_configureLambdaTrigger",
-			"description": "Configure the queue as a trigger for a Lambda",
-            "metadata": [{ "type": "result"}, {"type": "sqsQueueType" }]
-		},
-		{
-			"name": "sqs_editQueueAttributes",
-			"description": "Edit the Queue attributes",
-            "metadata": [{ "type": "result"}, {"type": "sqsQueueType" }]
-		},
-		{
-			"name": "sqs_purgeQueue",
-			"description": "Purge all messages from the queue",
-            "metadata": [{ "type": "result"}, {"type": "sqsQueueType" }]
-		}
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sqs_copyMessage",
+            "description": "Copy a message to the clipboard",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sqs_subscribeSns",
+            "description": "Subscribe the queue to messages from an sns topic",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sqs_configureLambdaTrigger",
+            "description": "Configure the queue as a trigger for a Lambda",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sqs_editQueueAttributes",
+            "description": "Edit the Queue attributes",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sqs_purgeQueue",
+            "description": "Purge all messages from the queue",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        }
     ]
 }
