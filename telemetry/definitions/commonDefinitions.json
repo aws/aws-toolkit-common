@@ -552,12 +552,7 @@
         {
             "name": "sqs_createQueue",
             "description": "Create a new SQS queue",
-            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
-        },
-        {
-            "name": "sqs_deleteQueue",
-            "description": "Delete a SQS queue",
-            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType", "required": false }]
         },
         {
             "name": "sqs_sendMessage",
