@@ -573,7 +573,7 @@
         {
             "name": "sqs_copyMessage",
             "description": "Copy a message to the clipboard",
-            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+            "metadata": [{ "type": "sqsQueueType" }]
         },
         {
             "name": "sqs_subscribeSns",
