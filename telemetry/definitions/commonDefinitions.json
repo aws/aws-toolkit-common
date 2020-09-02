@@ -546,7 +546,7 @@
         },
         {
             "name": "sqs_openQueue",
-            "description": "Open an SQS queue. Initially opens to the send message pane or poll messags pane.",
+            "description": "Open an SQS queue. Initially opens to either the send message pane or poll messags pane.",
             "metadata": [{ "type": "sqsQueueType" }]
         },
         {
@@ -566,7 +566,7 @@
         },
         {
             "name": "sqs_deleteMessages",
-            "description": "Delete one or more messages from an SQS queue. Value indicates the number of messages deleted.",
+            "description": "Delete one or more messages from an SQS queue. Value indicates the number of messages that we tried to delete.",
             "unit": "Count",
             "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
         },
