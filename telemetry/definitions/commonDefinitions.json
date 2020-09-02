@@ -546,7 +546,8 @@
         },
         {
             "name": "sqs_openQueue",
-            "description": "Open an SQS queue. Initially opens to the send message pane or poll messags pane."
+            "description": "Open an SQS queue. Initially opens to the send message pane or poll messags pane.",
+            "metadata": [{ "type": "sqsQueueType" }]
         },
         {
             "name": "sqs_createQueue",
