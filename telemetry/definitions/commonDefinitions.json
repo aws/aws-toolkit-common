@@ -23,6 +23,7 @@
                 "s3",
                 "schemas",
                 "stepfunctions",
+                "sns",
                 "sqs"
             ],
             "type": "string",
@@ -177,6 +178,11 @@
             "type": "string",
             "allowedValues": ["IAM", "SecretsManager"],
             "description": "How the database credentials are being retrieved"
+        },
+        {
+            "name": "sqsQueueType",
+            "allowedValues": ["standard", "fifo"],
+            "description": "The type of an SQS Queue"
         }
     ],
     "metrics": [
@@ -537,6 +543,52 @@
             "description": "The Toolkit has completed initialization",
             "metadata": [{ "type": "duration" }],
             "passive": true
+        },
+        {
+            "name": "sqs_openQueue",
+            "description": "Open an SQS queue. Initially opens to either the send message pane or poll messags pane.",
+            "metadata": [{ "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sqs_createQueue",
+            "description": "Create a new SQS queue",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sqs_deleteQueue",
+            "description": "Delete a SQS queue",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sqs_sendMessage",
+            "description": "Send a message to an SQS queue",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sqs_deleteMessages",
+            "description": "Delete one or more messages from an SQS queue. Value indicates the number of messages that we tried to delete.",
+            "unit": "Count",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sqs_subscribeSns",
+            "description": "Subscribe the queue to messages from an sns topic",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sqs_configureLambdaTrigger",
+            "description": "Configure the queue as a trigger for a Lambda",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sqs_editQueueAttributes",
+            "description": "Edit the Queue attributes",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sqs_purgeQueue",
+            "description": "Purge all messages from the queue",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
         }
     ]
 }
