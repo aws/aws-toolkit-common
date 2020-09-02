@@ -182,7 +182,7 @@
         {
             "name": "sqsQueueType",
             "allowedValues": ["standard", "fifo"],
-            "description": "The type of an SQS Queue (either standard or fifo)"
+            "description": "The type of an SQS Queue"
         }
     ],
     "metrics": [
@@ -569,11 +569,6 @@
             "description": "Delete one or more messages from an SQS queue. Value indicates the number of messages that we tried to delete.",
             "unit": "Count",
             "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
-        },
-        {
-            "name": "sqs_copyMessage",
-            "description": "Copy a message to the clipboard",
-            "metadata": [{ "type": "sqsQueueType" }]
         },
         {
             "name": "sqs_subscribeSns",
