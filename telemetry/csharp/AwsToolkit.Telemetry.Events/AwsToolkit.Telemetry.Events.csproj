@@ -4,7 +4,7 @@
 		<RootNamespace>Amazon.AwsToolkit.Telemetry.Events</RootNamespace>
 		<AssemblyName>Amazon.AwsToolkit.Telemetry.Events</AssemblyName>
 		<PackageId>Amazon.AwsToolkit.Telemetry.Events</PackageId>
-		<Version>$(Version)</Version>
+		<Version Condition="'$(Version)' == ''">0.0.1</Version>
 		<Authors>Amazon Web Services</Authors>
 		<Company>Amazon</Company>
 		<Product>AWS Toolkit Telemetry Events</Product>
@@ -20,11 +20,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <PackageReference Include="log4net" Version="2.0.8" />
-	  <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.2.0"/>
 	</ItemGroup>
-	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-		<Exec Command="rem BUILD THE GENERATOR, THEN USE IT TO GENERATE CODE INTO THE EVENTS PROJECT&#xD;&#xA;dotnet build &quot;$(ProjectDir)..\AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj&quot;&#xD;&#xA;dotnet run --project &quot;$(ProjectDir)..\AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj&quot; -o $(ProjectDir) --namespace Amazon.AwsToolkit.Telemetry.Events.Generated&#xD;&#xA;" />
-	</Target>
 	<ItemGroup>
 		<Reference Include="System" />
 		<Reference Include="System.Core" />

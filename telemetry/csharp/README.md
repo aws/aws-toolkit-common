@@ -12,13 +12,13 @@ To generate the client code, run:
 msbuild TelemetryClient.proj
 ```
 
-Afterwards, the `AwsToolkit.Telemtry.SDK` solution can be built.
+Afterwards, the `AwsToolkit.Telemetry.SDK` solution can be built.
 
-The SDK Generator code is pinned to a release tag, so that changes in the SDK repo do not have an unepxected impact in the Telemetry CI/CD.
+The SDK Generator code is pinned to a release tag, so that changes in the SDK repo do not have an unexpected impact in the Telemetry CI/CD.
 
 ### Updating the AWSSDK version used
 
-When the toolkit is updated to use a newer version of the AWSSDK, it may be necessary to update the version used by `AwsToolkit.Telemtry.SDK`. Perform the following steps:
+When the toolkit is updated to use a newer version of the AWSSDK, it may be necessary to update the version used by `AwsToolkit.Telemetry.SDK`. Perform the following steps:
 
 -   Determine which version of `AWSSDK.Core` you need ([NuGet](https://www.nuget.org/packages/AWSSDK.Core/), [SDK Changelog](https://github.com/aws/aws-sdk-net/blob/master/SDK.CHANGELOG.md)), then look up the corresponding [release tag](https://github.com/aws/aws-sdk-net/tags).
 -   If necessary, update the tag of the SDK Generator source used. This is the `DotNetSdkTag` value in [TelemetryClient.proj](/telemetry/csharp/TelemetryClient.proj).
@@ -29,7 +29,14 @@ When the toolkit is updated to use a newer version of the AWSSDK, it may be nece
 
 The `AwsToolkit.Telemetry.sln` solution contains a code generator and datatypes that allow the AWS Toolkit for Visual Studio to produce and record telemetry events.
 
-At this time, the generated code does not function in a standalone capacity. It requires datatypes (within a soon-to-be-published `Amazon.AwsToolkit.Telemetry.Events.Core` namespace). See [Roadmap](#Roadmap) for future plans in this space.
+At this time, the generated code does not function in a standalone capacity. It requires datatypes (present in the `Amazon.AwsToolkit.Telemetry.Events.Core` namespace). 
+To produce a NuGet package containing Telemetry event code and supporting datatypes, run:
+
+```
+msbuild TelemetryPackage.proj /p:Configuration:Release /p:Version=$(VERSION)
+```
+
+See [Roadmap](#Roadmap) for future plans in this space.
 
 There are two types of telemetry definitions that serve as inputs to the code generator:
 
