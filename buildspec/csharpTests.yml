@@ -51,7 +51,7 @@ phases:
             ############################################################################################################
 
             # Generate the NuGet package for supported datatypes
-            - dotnet msbuild .\telemetry\csharp\TelemetryPackage.proj -c Release
+            - dotnet msbuild .\telemetry\csharp\TelemetryPackage.proj
 
 reports:
     DotnetTestExamples:
