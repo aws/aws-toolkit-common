@@ -1,6 +1,6 @@
 # C# AWS Toolkit Telemetry
 
-## Telemetry SDK (AwsToolkit.Telemtry.SDK)
+## Telemetry SDK (AwsToolkit.Telemetry.SDK)
 
 This is the SDK client used by the Toolkit to send telemetry events to the backend service.
 
@@ -30,7 +30,8 @@ When the toolkit is updated to use a newer version of the AWSSDK, it may be nece
 The `AwsToolkit.Telemetry.sln` solution contains a code generator and datatypes that allow the AWS Toolkit for Visual Studio to produce and record telemetry events.
 
 At this time, the generated code does not function in a standalone capacity. It requires datatypes (present in the `Amazon.AwsToolkit.Telemetry.Events.Core` namespace). 
-To produce a NuGet package containing Telemetry event code and supporting datatypes, run:
+
+To produce a NuGet package ```Amazon.AwsToolkit.Telemetry.Events``` containing Telemetry event code and supporting datatypes, run:
 
 ```
 msbuild TelemetryPackage.proj /p:Configuration:Release /p:Version=$(VERSION)
