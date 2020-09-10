@@ -24,4 +24,4 @@ jobs:
                   dotnet test -c Release ./telemetry/csharp/AwsToolkit.Telemetry.sln
             - name: Build Events NuGet Package
               run: |
-                  dotnet msbuild -c Release ./telemetry/csharp/TelemetryPackage.proj
+                  dotnet msbuild -property:Configuration=Release ./telemetry/csharp/TelemetryPackage.proj
