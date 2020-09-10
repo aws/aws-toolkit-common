@@ -46,6 +46,13 @@ phases:
             - dotnet -d restore ./telemetry/csharp/AwsToolkit.Telemetry.SDK.sln
             - dotnet build -c Release ./telemetry/csharp/AwsToolkit.Telemetry.SDK.sln
 
+            ############################################################################################################
+            # Telemetry Events Datatypes
+            ############################################################################################################
+
+            # Generate the NuGet package for supported datatypes
+            - dotnet msbuild .\telemetry\csharp\TelemetryPackage.proj -c Release
+
 reports:
     DotnetTestExamples:
         file-format: VisualStudioTrx

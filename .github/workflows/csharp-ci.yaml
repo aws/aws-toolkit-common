@@ -22,3 +22,6 @@ jobs:
             - name: Test
               run: |
                   dotnet test -c Release ./telemetry/csharp/AwsToolkit.Telemetry.sln
+            - name: Build
+              run: |
+                  dotnet msbuild .\telemetry\csharp\TelemetryPackage.proj -c Release
