@@ -3,11 +3,15 @@
 		<TargetFramework>net46</TargetFramework>
 		<RootNamespace>Amazon.AwsToolkit.Telemetry.Events</RootNamespace>
 		<AssemblyName>Amazon.AwsToolkit.Telemetry.Events</AssemblyName>
+		<PackageId>Amazon.AwsToolkit.Telemetry.Events</PackageId>
+		<Version Condition="'$(Version)' == ''">0.0.1</Version>
 		<Authors>Amazon Web Services</Authors>
+		<Company>Amazon</Company>
 		<Product>AWS Toolkit Telemetry Events</Product>
 		<Description>Telemetry events datatypes and functionality for AWS Toolkits</Description>
 		<Copyright>Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.</Copyright>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<RepositoryUrl>https://github.com/aws/aws-toolkit-common</RepositoryUrl>
 		<PackageTags>AWS AWSToolkit</PackageTags>
 		<Optimize>true</Optimize>
