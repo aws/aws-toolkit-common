@@ -3,7 +3,7 @@
 		<TargetFramework>net46</TargetFramework>
 		<RootNamespace>Amazon.AwsToolkit.Telemetry.Events</RootNamespace>
 		<AssemblyName>Amazon.AwsToolkit.Telemetry.Events</AssemblyName>
-		<PackageId>Amazon.AwsToolkit.Telemetry.Events</PackageId>
+		<PackageId>AWS.Toolkit.Telemetry.Events</PackageId>
 		<Version Condition="'$(Version)' == ''">0.0.1</Version>
 		<Authors>Amazon Web Services</Authors>
 		<Company>Amazon</Company>
