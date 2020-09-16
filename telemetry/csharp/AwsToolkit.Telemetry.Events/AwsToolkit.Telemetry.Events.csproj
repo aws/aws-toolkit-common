@@ -6,7 +6,7 @@
 		<PackageId>AWS.Toolkit.Telemetry.Events</PackageId>
 		<Version Condition="'$(Version)' == ''">0.0.1</Version>
 		<Authors>Amazon Web Services</Authors>
-		<Company>Amazon</Company>
+		<Company>Amazon Web Services</Company>
 		<Product>AWS Toolkit Telemetry Events</Product>
 		<Description>Telemetry events datatypes and functionality for AWS Toolkits</Description>
 		<Copyright>Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.</Copyright>
