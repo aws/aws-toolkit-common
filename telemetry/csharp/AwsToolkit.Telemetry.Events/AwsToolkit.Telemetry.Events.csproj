@@ -3,7 +3,7 @@
 		<TargetFramework>net46</TargetFramework>
 		<RootNamespace>Amazon.AwsToolkit.Telemetry.Events</RootNamespace>
 		<AssemblyName>Amazon.AwsToolkit.Telemetry.Events</AssemblyName>
-		<PackageId>AWS.Toolkit.Telemetry.Events</PackageId>
+		<PackageId>AWSToolkit.Telemetry.Events</PackageId>
 		<Version Condition="'$(Version)' == ''">0.0.1</Version>
 		<Authors>Amazon Web Services</Authors>
 		<Company>Amazon Web Services</Company>
@@ -13,7 +13,7 @@
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<RepositoryUrl>https://github.com/aws/aws-toolkit-common</RepositoryUrl>
-		<PackageTags>AWS AWSToolkit</PackageTags>
+		<PackageTags>AWS Toolkit Telemetry Events;</PackageTags>
 		<Optimize>true</Optimize>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<OutputType>Library</OutputType>
