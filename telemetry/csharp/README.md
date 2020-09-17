@@ -31,7 +31,7 @@ The `AwsToolkit.Telemetry.sln` solution contains a code generator and datatypes 
 
 At this time, the generated code does not function in a standalone capacity. It requires datatypes (present in the `Amazon.AwsToolkit.Telemetry.Events.Core` namespace). 
 
-To produce a NuGet package ```Amazon.AwsToolkit.Telemetry.Events``` containing Telemetry event code and supporting datatypes, run:
+To produce a NuGet package ```AWS.Toolkit.Telemetry.Events``` containing Telemetry event code and supporting datatypes, run:
 
 ```
 msbuild TelemetryPackage.proj /p:Configuration:Release /p:Version=$(VERSION)
