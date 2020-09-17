@@ -15,7 +15,7 @@
 		<RepositoryUrl>https://github.com/aws/aws-toolkit-common</RepositoryUrl>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-		<PackageTags>AWS Toolkit Telemetry SDK;</PackageTags>
+		<PackageTags>AWS AWSToolkit</PackageTags>
 		<Description>Telemetry module used by the AWS Toolkit</Description>
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\toolkit-telemetry.snk</AssemblyOriginatorKeyFile>
