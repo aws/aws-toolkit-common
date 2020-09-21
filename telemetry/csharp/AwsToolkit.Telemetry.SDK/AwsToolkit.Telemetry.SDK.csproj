@@ -4,7 +4,7 @@
 	<PropertyGroup>
 		<RootNamespace>Amazon.AwsToolkit.Telemetry.SDK</RootNamespace>
 		<AssemblyName>Amazon.AwsToolkit.Telemetry.SDK</AssemblyName>
-		<PackageId>AWSToolkit.Telemetry.SDK</PackageId>
+		<PackageId>AWS.Toolkit.Telemetry.SDK</PackageId>
 		<TargetFramework>net46</TargetFramework>
 		<Authors>Amazon Web Services</Authors>
 		<Company>Amazon Web Services</Company>
