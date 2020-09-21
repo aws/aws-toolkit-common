@@ -80,6 +80,4 @@ This project is currently not intended to be integrated into the toolkit until p
 ## Roadmap
 
 -   Standalone NuGet Packages
-    -   Produce and publish a package containing the telemetry SDK
-    -   Produce and publish a package containing the telemetry events datatypes
     -   Produce and publish a package containing the telemetry events code generator
