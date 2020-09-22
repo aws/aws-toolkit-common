@@ -224,17 +224,17 @@
         {
             "name": "aws_setCredentials",
             "description": "Select a credentials profile",
-            "metadata": [{ "type": "result" }, { "type": "credentialType", "required": false }]
+            "metadata": [{ "type": "credentialType", "required": false }]
         },
         {
             "name": "aws_setRegion",
             "description": "A region change occurred",
-            "metadata": [{ "type": "result" }, { "type": "regionId" }]
+            "metadata": [{ "type": "regionId" }]
         },
         {
             "name": "aws_setPartition",
             "description": "A partition change occurred",
-            "metadata": [{ "type": "result" }, { "type": "partitionId" }]
+            "metadata": [{ "type": "partitionId" }]
         },
         {
             "name": "aws_openCredentials",
