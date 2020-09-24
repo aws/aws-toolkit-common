@@ -487,6 +487,10 @@
             "description": "Copy the path of a S3 object to the clipboard"
         },
         {
+            "name": "s3_copyUrl",
+            "description": "Copy the URL of a S3 object to the clipboard"
+        },
+        {
             "name": "s3_createBucket",
             "description": "Create a S3 bucket",
             "metadata": [{ "type": "result" }]
