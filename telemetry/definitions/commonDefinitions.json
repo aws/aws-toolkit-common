@@ -183,6 +183,11 @@
             "name": "sqsQueueType",
             "allowedValues": ["standard", "fifo"],
             "description": "The type of an SQS Queue"
+        },
+        {
+            "name": "presigned",
+            "type": "boolean",
+            "description": "Whether or not it was a presigned request"
         }
     ],
     "metrics": [
@@ -488,7 +493,8 @@
         },
         {
             "name": "s3_copyUrl",
-            "description": "Copy the URL of a S3 object to the clipboard"
+            "description": "Copy the URL of a S3 object to the clipboard",
+            "metadata": [{ "type": "presigned" }]
         },
         {
             "name": "s3_createBucket",
