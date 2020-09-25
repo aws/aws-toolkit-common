@@ -1,11 +1,12 @@
 import org.everit.json.schema.Schema
 import org.everit.json.schema.loader.SchemaLoader
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.json.JSONObject
 
 val jacksonVersion = "2.10.0"
 val junitVersion = "4.13"
 val kotlinVersion = "1.3.20"
-val assertjVersion = "3.12.0"
+val assertjVersion = "3.17.2"
 
 plugins {
     java
@@ -90,6 +91,12 @@ tasks {
 // maven can't handle this
 tasks.withType<GenerateModuleMetadata> {
     enabled = false
+}
+
+tasks.withType<Test> {
+    testLogging {
+        exceptionFormat = TestExceptionFormat.FULL
+    }
 }
 
 publishing {

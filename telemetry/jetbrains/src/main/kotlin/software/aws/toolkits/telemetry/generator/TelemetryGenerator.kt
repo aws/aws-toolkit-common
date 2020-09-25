@@ -3,6 +3,7 @@
 
 package software.aws.toolkits.telemetry.generator
 
+import com.squareup.kotlinpoet.AnnotationSpec
 import com.squareup.kotlinpoet.BOOLEAN
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.DOUBLE
@@ -33,6 +34,7 @@ fun generateTelemetryFromFiles(
     // make sure the output directory exists before writing to it
     outputFolder.mkdirs()
     FileSpec.builder(PACKAGE_NAME, "TelemetryDefinitions")
+        .indent(" ".repeat(4))
         .generateHeader()
         .generateTelemetryEnumTypes(telemetry.types)
         .generateTelemetryObjects(telemetry)
@@ -44,6 +46,7 @@ private fun FileSpec.Builder.generateHeader(): FileSpec.Builder {
     addComment("Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.\n")
     addComment("SPDX-License-Identifier: Apache-2.0\n")
     addComment("THIS FILE IS GENERATED! DO NOT EDIT BY HAND!")
+    addAnnotation(AnnotationSpec.builder(Suppress::class).addMember("\"unused\"").build())
 
     return this
 }
@@ -176,8 +179,8 @@ private fun Metadata.metadataToParameter(types: List<TelemetryMetricType>): Para
 private fun FunSpec.Builder.generateFunctionBody(metric: Metric): FunSpec.Builder {
     val telemetryClient = MemberName("software.aws.toolkits.jetbrains.services.telemetry", "TelemetryService")
     val metricUnit = MemberName("software.amazon.awssdk.services.toolkittelemetry.model", "Unit")
-    addStatement("%M.getInstance().record(project) { ", telemetryClient)
-    addStatement("datum(%S) {", metric.name)
+    beginControlFlow("%M.getInstance().record(project)", telemetryClient)
+    beginControlFlow("datum(%S)", metric.name)
     addStatement("createTime(createTime)")
     addStatement("unit(%M.${(metric.unit ?: MetricUnit.NONE).name})", metricUnit)
     addStatement("value(value)")
@@ -185,7 +188,8 @@ private fun FunSpec.Builder.generateFunctionBody(metric: Metric): FunSpec.Builde
     metric.metadata?.forEach {
         generateMetadataStatement(it, "${it.type.toArgumentFormat()}.toString()")
     }
-    addStatement("}}")
+    endControlFlow()
+    endControlFlow()
 
     return this
 }
