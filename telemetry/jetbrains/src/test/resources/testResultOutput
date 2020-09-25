@@ -1,6 +1,8 @@
 // Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 // THIS FILE IS GENERATED! DO NOT EDIT BY HAND!
+@file:Suppress("unused")
+
 package software.aws.toolkits.telemetry
 
 import com.intellij.openapi.project.Project
@@ -9,6 +11,7 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.Double
 import kotlin.String
+import kotlin.Suppress
 import software.amazon.awssdk.services.toolkittelemetry.model.Unit
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
@@ -16,56 +19,57 @@ import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
  * The result of the operation
  */
 enum class Result(
-  val value: String
+    val value: String
 ) {
-  Succeeded("Succeeded"),
+    Succeeded("Succeeded"),
 
-  Failed("Failed"),
+    Failed("Failed"),
 
-  Cancelled("Cancelled"),
+    Cancelled("Cancelled"),
 
-  CamelCase("CamelCase"),
+    CamelCase("CamelCase"),
 
-  DashSeparated("dash-separated"),
+    DashSeparated("dash-separated"),
 
-  UnderscoreSeparated("underscore_separated");
+    UnderscoreSeparated("underscore_separated");
 
-  override fun toString(): String = value
+    override fun toString(): String = value
 
-  companion object {
-    fun from(type: Any): Result = values().first { it.value == type.toString() }
-  }
+    companion object {
+        fun from(type: Any): Result = values().first { it.value == type.toString() }
+    }
 }
 
 object MetadataTelemetry {
-  /**
-   * It has a result
-   */
-  fun hasResult(
-    project: Project? = null,
-    result: Result,
-    value: Double = 1.0,
-    createTime: Instant = Instant.now()
-  ) {
-    TelemetryService.getInstance().record(project) {
-    datum("metadata_hasResult") {
-    createTime(createTime)
-    unit(Unit.NONE)
-    value(value)
-    passive(false)
-    metadata("result", result.toString())
-    }}
-  }
+    /**
+     * It has a result
+     */
+    fun hasResult(
+        project: Project? = null,
+        result: Result,
+        value: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ) {
+        TelemetryService.getInstance().record(project) {
+            datum("metadata_hasResult") {
+                createTime(createTime)
+                unit(Unit.NONE)
+                value(value)
+                passive(false)
+                metadata("result", result.toString())
+            }
+        }
+    }
 
-  /**
-   * It has a result
-   */
-  fun hasResult(
-    project: Project? = null,
-    success: Boolean,
-    value: Double = 1.0,
-    createTime: Instant = Instant.now()
-  ) {
-    hasResult(project, if(success) Result.Succeeded else Result.Failed, value, createTime)
-  }
+    /**
+     * It has a result
+     */
+    fun hasResult(
+        project: Project? = null,
+        success: Boolean,
+        value: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ) {
+        hasResult(project, if(success) Result.Succeeded else Result.Failed, value, createTime)
+    }
 }

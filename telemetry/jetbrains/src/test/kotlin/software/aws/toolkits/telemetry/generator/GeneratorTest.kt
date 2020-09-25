@@ -3,7 +3,6 @@
 
 package software.aws.toolkits.telemetry.generator
 
-import junit.framework.ComparisonFailure
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.Rule
@@ -50,19 +49,12 @@ class GeneratorTest {
         )
 
         val outputFile = Paths.get(folder.root.absolutePath, "software", "aws", "toolkits", "telemetry", "TelemetryDefinitions.kt")
-        assertThat(Files.exists(outputFile)).isTrue
-
-        val actual = outputFile.toFile().readText()
+        assertThat(outputFile).exists()
 
         val expected = this.javaClass.getResourceAsStream(expectedOutputFile).use {
             it.bufferedReader().readText()
         }
 
-        try {
-            assertThat(actual).isEqualToIgnoringWhitespace(expected)
-        } catch (e: AssertionError) {
-            // This gives us better visualization of the differences in the IDE
-            throw ComparisonFailure(e.message!!, expected, actual)
-        }
+        assertThat(outputFile).hasContent(expected)
     }
 }

@@ -1,6 +1,8 @@
 // Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 // THIS FILE IS GENERATED! DO NOT EDIT BY HAND!
+@file:Suppress("unused")
+
 package software.aws.toolkits.telemetry
 
 import com.intellij.openapi.project.Project
@@ -10,6 +12,7 @@ import kotlin.Boolean
 import kotlin.Double
 import kotlin.Int
 import kotlin.String
+import kotlin.Suppress
 import software.amazon.awssdk.services.toolkittelemetry.model.Unit
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
@@ -49,7 +52,8 @@ object LambdaTelemetry {
                 passive(false)
                 metadata("lambdaruntime", lambdaruntime.toString())
                 metadata("arbitrarystring", arbitrarystring.toString())
-            }}
+            }
+        }
     }
 
     /**
@@ -70,7 +74,8 @@ object LambdaTelemetry {
                 passive(false)
                 metadata("duration", duration.toString())
                 metadata("booltype", booltype.toString())
-            }}
+            }
+        }
     }
 
     /**
@@ -90,10 +95,11 @@ object LambdaTelemetry {
                 value(value)
                 passive(false)
                 if(lambdaruntime != null) {
-                metadata("lambdaruntime", lambdaruntime.toString())
+                    metadata("lambdaruntime", lambdaruntime.toString())
                 }
                 metadata("inttype", inttype.toString())
-            }}
+            }
+        }
     }
 }
 
@@ -112,7 +118,8 @@ object NoTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(false)
-            }}
+            }
+        }
     }
 }
 
@@ -131,6 +138,7 @@ object PassiveTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(true)
-            }}
+            }
+        }
     }
 }
