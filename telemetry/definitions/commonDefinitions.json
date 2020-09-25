@@ -494,7 +494,7 @@
         {
             "name": "s3_copyUrl",
             "description": "Copy the URL of a S3 object to the clipboard",
-            "metadata": [{ "type": "presigned" }]
+            "metadata": [{ "type": "result" }, { "type": "presigned" }]
         },
         {
             "name": "s3_createBucket",
