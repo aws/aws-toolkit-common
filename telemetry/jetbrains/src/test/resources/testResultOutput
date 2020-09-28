@@ -58,7 +58,7 @@ object MetadataTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(false)
-                metadata("result", result)
+                metadata("result", result.toString())
             }
         }
     }
@@ -78,7 +78,7 @@ object MetadataTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(false)
-                metadata("result", result)
+                metadata("result", result.toString())
             }
         }
     }
