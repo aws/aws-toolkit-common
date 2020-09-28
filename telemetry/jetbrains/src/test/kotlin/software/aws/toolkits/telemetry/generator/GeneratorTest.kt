@@ -55,6 +55,6 @@ class GeneratorTest {
             it.bufferedReader().readText()
         }
 
-        assertThat(outputFile).hasContent(expected)
+        assertThat(outputFile.toFile().readText()).isEqualTo(expected)
     }
 }

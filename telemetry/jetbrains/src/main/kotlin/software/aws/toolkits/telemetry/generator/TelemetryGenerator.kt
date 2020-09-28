@@ -18,12 +18,18 @@ import java.io.File
 import java.time.Instant
 
 const val PACKAGE_NAME = "software.aws.toolkits.telemetry"
+
+const val JETBRAINS_TELEMETRY_PACKAGE_NAME = "software.aws.toolkits.jetbrains.services.telemetry"
+val METRIC_METADATA = ClassName(JETBRAINS_TELEMETRY_PACKAGE_NAME, "MetricEventMetadata")
+val TELEMETRY_SERVICE = ClassName(JETBRAINS_TELEMETRY_PACKAGE_NAME, "TelemetryService")
+val PROJECT = ClassName("com.intellij.openapi.project", "Project").copy(nullable = true)
+
 const val RESULT = "result"
 const val SUCCESS = "success"
 
 fun String.filterInvalidCharacters() = this.replace(".", "")
 fun String.toTypeFormat() = this.filterInvalidCharacters().split("_", "-").joinToString(separator = "") { it.capitalize() }
-fun String.toArgumentFormat() = this.filterInvalidCharacters().toLowerCase()
+fun String.toArgumentFormat() = this.toTypeFormat().decapitalize()
 
 fun generateTelemetryFromFiles(
     inputFiles: List<File>,
@@ -37,7 +43,7 @@ fun generateTelemetryFromFiles(
         .indent(" ".repeat(4))
         .generateHeader()
         .generateTelemetryEnumTypes(telemetry.types)
-        .generateTelemetryObjects(telemetry)
+        .generateTelemetryObjects(telemetry.metrics)
         .build()
         .writeTo(outputFolder)
 }
@@ -99,94 +105,99 @@ private fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType
     return this
 }
 
-private fun FileSpec.Builder.generateTelemetryObjects(item: TelemetryDefinition): FileSpec.Builder {
-    item
-        .metrics
-        .sortedBy { it.name }
-        .groupBy { it.name.split("_").first().toLowerCase() }
-        .forEach { metrics: Map.Entry<String, List<Metric>> -> generateNamespaces(item.types!!, metrics.key, metrics.value) }
+private fun FileSpec.Builder.generateTelemetryObjects(schema: List<MetricSchema>): FileSpec.Builder {
+    schema.groupBy { it.namespace() }
+        .toSortedMap()
+        .forEach { (namespace, metrics) -> generateNamespaces(namespace, metrics) }
 
     return this
 }
 
-private fun FileSpec.Builder.generateNamespaces(types: List<TelemetryMetricType>, namespaceType: String, metrics: List<Metric>): FileSpec.Builder {
-    val namespace = TypeSpec.objectBuilder("${namespaceType.toTypeFormat()}Telemetry")
-    metrics.forEach { namespace.generateRecordFunctions(it, types) }
-    addType(namespace.build())
+private fun FileSpec.Builder.generateNamespaces(namespace: String, metrics: List<MetricSchema>): FileSpec.Builder {
+    val telemetryObject = TypeSpec.objectBuilder("${namespace.toTypeFormat()}Telemetry")
+
+    metrics.sortedBy { it.name }.forEach { telemetryObject.generateRecordFunctions(it) }
+
+    addType(telemetryObject.build())
 
     return this
 }
 
-private fun TypeSpec.Builder.generateRecordFunctions(metric: Metric, types: List<TelemetryMetricType>): TypeSpec.Builder {
+private fun TypeSpec.Builder.generateRecordFunctions(metric: MetricSchema) {
     // metric.name.split("_")[1] is guaranteed to work at this point because the schema requires the metric name to have at least 1 underscore
     val functionName = metric.name.split("_")[1]
-    val parameters = buildParameters(metric, types)
-    val functionBuilder = FunSpec.builder(functionName)
-    functionBuilder
-        .addParameters(parameters)
-        .generateFunctionBody(metric)
-        .addKdoc(metric.description)
 
-    val function = functionBuilder.build()
-    addFunction(function)
+    addFunction(buildProjectFunction(functionName, metric))
+    addFunction(buildMetricMetadataFunction(functionName, metric))
+
     // Result is special cased to generate a function that accepts true/false instead of a Result
-    if (metric.metadata?.any { it.type == RESULT } != true) {
-        return this
+    if (metric.metadata.none { it.type.name == RESULT }) {
+        return
     }
-    val resultFunction = FunSpec.builder(functionName)
-    val resultParameters = parameters.map {
-        if (it.name == RESULT) {
-            ParameterSpec.builder(SUCCESS, BOOLEAN).build()
-        } else {
-            it
-        }
-    }
-    resultFunction
-        .addParameters(resultParameters)
-        .generateResultOverloadFunctionBody(function, resultParameters)
-        .addKdoc(metric.description)
-    addFunction(resultFunction.build())
 
-    return this
+    addFunction(buildProjectOverloadFunction(functionName, metric))
+    addFunction(buildMetricMetadataOverloadFunction(functionName, metric))
 }
 
-private fun buildParameters(metric: Metric, types: List<TelemetryMetricType>): List<ParameterSpec> {
-    val projectParameter = ClassName("com.intellij.openapi.project", "Project").copy(nullable = true)
+fun buildProjectFunction(functionName: String, metric: MetricSchema): FunSpec {
+    val metadataProvider = ParameterSpec.builder("project", PROJECT).defaultValue("null").build()
+
+    return buildRecordFunction(metadataProvider, functionName, metric)
+}
+
+fun buildMetricMetadataFunction(functionName: String, metric: MetricSchema): FunSpec {
+    val metadataProvider = ParameterSpec.builder("metadata", METRIC_METADATA).build()
+
+    return buildRecordFunction(metadataProvider, functionName, metric)
+}
+
+private fun buildRecordFunction(metadataProvider: ParameterSpec, functionName: String, metric: MetricSchema): FunSpec {
+    val functionParameters = mutableListOf<ParameterSpec>()
+    functionParameters.add(metadataProvider)
+    functionParameters.addAll(buildMetricParameters(metric))
+
+    return FunSpec.builder(functionName)
+        .addKdoc(metric.description)
+        .addParameters(functionParameters)
+        .generateFunctionBody(metadataProvider, metric)
+        .build()
+}
+
+private fun buildMetricParameters(metric: MetricSchema): List<ParameterSpec> {
     val list = mutableListOf<ParameterSpec>()
-    list.add(ParameterSpec.builder("project", projectParameter).defaultValue("null").build())
-    list.addAll(metric.metadata?.map { metadata -> metadata.metadataToParameter(types) } ?: listOf())
+
+    list.addAll(metric.metadata.map { it.metadataToParameter() })
     list.add(ParameterSpec.builder("value", DOUBLE).defaultValue("1.0").build())
     list.add(ParameterSpec.builder("createTime", Instant::class).defaultValue("Instant.now()").build())
+
     return list
 }
 
-private fun Metadata.metadataToParameter(types: List<TelemetryMetricType>): ParameterSpec {
-    val telemetryMetricType = types.find { it.name == type } ?: throw IllegalStateException("Type $type not found in types!")
-
-    val typeName = if (telemetryMetricType.allowedValues != null) {
-        ClassName(PACKAGE_NAME, telemetryMetricType.name.toTypeFormat())
+private fun MetadataSchema.metadataToParameter(): ParameterSpec {
+    // Allowed values indicates an enum
+    val typeName = if (type.allowedValues != null) {
+        ClassName(PACKAGE_NAME, type.name.toTypeFormat())
     } else {
-        telemetryMetricType.type?.getTypeFromType() ?: com.squareup.kotlinpoet.STRING
+        type.type.kotlinType()
     }.copy(nullable = required == false)
 
-    val parameterSpec = ParameterSpec.builder(telemetryMetricType.name.toArgumentFormat(), typeName)
+    val parameterSpec = ParameterSpec.builder(type.name.toArgumentFormat(), typeName)
     if (required == false) {
         parameterSpec.defaultValue("null")
     }
     return parameterSpec.build()
 }
 
-private fun FunSpec.Builder.generateFunctionBody(metric: Metric): FunSpec.Builder {
-    val telemetryClient = MemberName("software.aws.toolkits.jetbrains.services.telemetry", "TelemetryService")
+private fun FunSpec.Builder.generateFunctionBody(metadataParameter: ParameterSpec, metric: MetricSchema): FunSpec.Builder {
     val metricUnit = MemberName("software.amazon.awssdk.services.toolkittelemetry.model", "Unit")
-    beginControlFlow("%M.getInstance().record(project)", telemetryClient)
+    beginControlFlow("%T.getInstance().record(${metadataParameter.name})", TELEMETRY_SERVICE)
     beginControlFlow("datum(%S)", metric.name)
     addStatement("createTime(createTime)")
     addStatement("unit(%M.${(metric.unit ?: MetricUnit.NONE).name})", metricUnit)
     addStatement("value(value)")
     addStatement("passive(${metric.passive})")
-    metric.metadata?.forEach {
-        generateMetadataStatement(it, "${it.type.toArgumentFormat()}.toString()")
+    metric.metadata.forEach {
+        generateMetadataStatement(it, "${it.type.name.toArgumentFormat()}.toString()")
     }
     endControlFlow()
     endControlFlow()
@@ -194,8 +205,40 @@ private fun FunSpec.Builder.generateFunctionBody(metric: Metric): FunSpec.Builde
     return this
 }
 
-private fun FunSpec.Builder.generateResultOverloadFunctionBody(originalFunction: FunSpec, parameters: List<ParameterSpec>): FunSpec.Builder {
-    addStatement("%L(%L)", originalFunction.name, parameters.joinToString {
+fun buildProjectOverloadFunction(functionName: String, metric: MetricSchema): FunSpec {
+    val metadataProvider = ParameterSpec.builder("project", PROJECT).defaultValue("null").build()
+
+    return buildResultOverloadFunction(metadataProvider, functionName, metric)
+}
+
+fun buildMetricMetadataOverloadFunction(functionName: String, metric: MetricSchema): FunSpec {
+    val metadataProvider = ParameterSpec.builder("metadata", METRIC_METADATA).build()
+
+    return buildResultOverloadFunction(metadataProvider, functionName, metric)
+}
+
+fun buildResultOverloadFunction(metadataProvider: ParameterSpec, functionName: String, metric: MetricSchema): FunSpec {
+    val overloadedParameters = buildMetricParameters(metric).map {
+        if (it.name == RESULT) {
+            ParameterSpec.builder(SUCCESS, BOOLEAN).build()
+        } else {
+            it
+        }
+    }
+
+    val functionParameters = mutableListOf<ParameterSpec>()
+    functionParameters.add(metadataProvider)
+    functionParameters.addAll(overloadedParameters)
+
+    return FunSpec.builder(functionName)
+        .addKdoc(metric.description)
+        .addParameters(functionParameters)
+        .generateResultOverloadFunctionBody(functionName, functionParameters)
+        .build()
+}
+
+private fun FunSpec.Builder.generateResultOverloadFunctionBody(functionName: String, parameters: List<ParameterSpec>): FunSpec.Builder {
+    addStatement("%L(%L)", functionName, parameters.joinToString {
         if (it.name != SUCCESS) {
             it.name
         } else {
@@ -206,11 +249,11 @@ private fun FunSpec.Builder.generateResultOverloadFunctionBody(originalFunction:
     return this
 }
 
-private fun FunSpec.Builder.generateMetadataStatement(data: Metadata, setStatement: String): FunSpec.Builder {
+private fun FunSpec.Builder.generateMetadataStatement(data: MetadataSchema, setStatement: String): FunSpec.Builder {
     if (data.required == false) {
-        beginControlFlow("if(%L != null) {", data.type.toArgumentFormat())
+        beginControlFlow("if(%L != null) {", data.type.name.toArgumentFormat())
     }
-    addStatement("metadata(%S, %L)", data.type.toArgumentFormat(), setStatement)
+    addStatement("metadata(%S, %L)", data.type.name.toArgumentFormat().toLowerCase(), setStatement)
     if (data.required == false) {
         endControlFlow()
     }
