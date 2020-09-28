@@ -1,13 +1,12 @@
 // Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 // THIS FILE IS GENERATED! DO NOT EDIT BY HAND!
-@file:Suppress("unused")
+@file:Suppress("unused", "MemberVisibilityCanBePrivate")
 
 package software.aws.toolkits.telemetry
 
 import com.intellij.openapi.project.Project
 import java.time.Instant
-import kotlin.Any
 import kotlin.Boolean
 import kotlin.Double
 import kotlin.String
@@ -20,7 +19,7 @@ import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
  * The result of the operation
  */
 enum class Result(
-    val value: String
+    private val value: String
 ) {
     Succeeded("Succeeded"),
 
@@ -32,12 +31,14 @@ enum class Result(
 
     DashSeparated("dash-separated"),
 
-    UnderscoreSeparated("underscore_separated");
+    UnderscoreSeparated("underscore_separated"),
+
+    Unknown("unknown");
 
     override fun toString(): String = value
 
     companion object {
-        fun from(type: Any): Result = values().first { it.value == type.toString() }
+        fun from(type: String): Result = values().firstOrNull { it.value == type } ?: Unknown
     }
 }
 
@@ -57,7 +58,7 @@ object MetadataTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(false)
-                metadata("result", result.toString())
+                metadata("result", result)
             }
         }
     }
@@ -77,7 +78,7 @@ object MetadataTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(false)
-                metadata("result", result.toString())
+                metadata("result", result)
             }
         }
     }
