@@ -14,6 +14,7 @@ import kotlin.Int
 import kotlin.String
 import kotlin.Suppress
 import software.amazon.awssdk.services.toolkittelemetry.model.Unit
+import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
 /**
@@ -39,8 +40,8 @@ object LambdaTelemetry {
      */
     fun create(
         project: Project? = null,
-        lambdaruntime: LambdaRuntime,
-        arbitrarystring: String,
+        lambdaRuntime: LambdaRuntime,
+        arbitraryString: String,
         value: Double = 1.0,
         createTime: Instant = Instant.now()
     ) {
@@ -50,8 +51,30 @@ object LambdaTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(false)
-                metadata("lambdaruntime", lambdaruntime.toString())
-                metadata("arbitrarystring", arbitrarystring.toString())
+                metadata("lambdaruntime", lambdaRuntime.toString())
+                metadata("arbitrarystring", arbitraryString.toString())
+            }
+        }
+    }
+
+    /**
+     * called when creating lambdas remotely
+     */
+    fun create(
+        metadata: MetricEventMetadata,
+        lambdaRuntime: LambdaRuntime,
+        arbitraryString: String,
+        value: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ) {
+        TelemetryService.getInstance().record(metadata) {
+            datum("lambda_create") {
+                createTime(createTime)
+                unit(Unit.NONE)
+                value(value)
+                passive(false)
+                metadata("lambdaruntime", lambdaRuntime.toString())
+                metadata("arbitrarystring", arbitraryString.toString())
             }
         }
     }
@@ -79,11 +102,33 @@ object LambdaTelemetry {
     }
 
     /**
+     * called when deleting lambdas remotely
+     */
+    fun delete(
+        metadata: MetricEventMetadata,
+        duration: Double,
+        booltype: Boolean,
+        value: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ) {
+        TelemetryService.getInstance().record(metadata) {
+            datum("lambda_delete") {
+                createTime(createTime)
+                unit(Unit.NONE)
+                value(value)
+                passive(false)
+                metadata("duration", duration.toString())
+                metadata("booltype", booltype.toString())
+            }
+        }
+    }
+
+    /**
      * called when invoking lambdas remotely
      */
     fun remoteinvoke(
         project: Project? = null,
-        lambdaruntime: LambdaRuntime? = null,
+        lambdaRuntime: LambdaRuntime? = null,
         inttype: Int,
         value: Double = 1.0,
         createTime: Instant = Instant.now()
@@ -94,8 +139,32 @@ object LambdaTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(false)
-                if(lambdaruntime != null) {
-                    metadata("lambdaruntime", lambdaruntime.toString())
+                if(lambdaRuntime != null) {
+                    metadata("lambdaruntime", lambdaRuntime.toString())
+                }
+                metadata("inttype", inttype.toString())
+            }
+        }
+    }
+
+    /**
+     * called when invoking lambdas remotely
+     */
+    fun remoteinvoke(
+        metadata: MetricEventMetadata,
+        lambdaRuntime: LambdaRuntime? = null,
+        inttype: Int,
+        value: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ) {
+        TelemetryService.getInstance().record(metadata) {
+            datum("lambda_remoteinvoke") {
+                createTime(createTime)
+                unit(Unit.NONE)
+                value(value)
+                passive(false)
+                if(lambdaRuntime != null) {
+                    metadata("lambdaruntime", lambdaRuntime.toString())
                 }
                 metadata("inttype", inttype.toString())
             }
@@ -121,6 +190,24 @@ object NoTelemetry {
             }
         }
     }
+
+    /**
+     * called when invoking lambdas remotely
+     */
+    fun metadata(
+        metadata: MetricEventMetadata,
+        value: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ) {
+        TelemetryService.getInstance().record(metadata) {
+            datum("no_metadata") {
+                createTime(createTime)
+                unit(Unit.NONE)
+                value(value)
+                passive(false)
+            }
+        }
+    }
 }
 
 object PassiveTelemetry {
@@ -133,6 +220,24 @@ object PassiveTelemetry {
         createTime: Instant = Instant.now()
     ) {
         TelemetryService.getInstance().record(project) {
+            datum("passive_passive") {
+                createTime(createTime)
+                unit(Unit.NONE)
+                value(value)
+                passive(true)
+            }
+        }
+    }
+
+    /**
+     * a passive metric
+     */
+    fun passive(
+        metadata: MetricEventMetadata,
+        value: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ) {
+        TelemetryService.getInstance().record(metadata) {
             datum("passive_passive") {
                 createTime(createTime)
                 unit(Unit.NONE)
