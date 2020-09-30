@@ -122,6 +122,11 @@
             "description": "True if turned on, false if turned off"
         },
         {
+            "name": "credentialSourceId",
+            "type": "string",
+            "description": "The ID of the source of credentials (e.g. profile)"
+        },
+        {
             "name": "credentialType",
             "type": "string",
             "description": "The type of credential that was selected",
@@ -245,6 +250,13 @@
             "name": "aws_openCredentials",
             "description": "Open the credentials file",
             "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "aws_loadCredentials",
+            "description": "Load credentials from a credential source",
+            "unit": "Count",
+            "metadata": [{ "type": "credentialSourceId" }],
+            "passive": true
         },
         {
             "name": "aws_createCredentials",
