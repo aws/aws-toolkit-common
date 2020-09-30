@@ -13,6 +13,7 @@ import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.PropertySpec
+import com.squareup.kotlinpoet.STRING
 import com.squareup.kotlinpoet.TypeSpec
 import java.io.File
 import java.time.Instant
@@ -52,13 +53,13 @@ private fun FileSpec.Builder.generateHeader(): FileSpec.Builder {
     addComment("Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.\n")
     addComment("SPDX-License-Identifier: Apache-2.0\n")
     addComment("THIS FILE IS GENERATED! DO NOT EDIT BY HAND!")
-    addAnnotation(AnnotationSpec.builder(Suppress::class).addMember("\"unused\"").build())
+    addAnnotation(AnnotationSpec.builder(Suppress::class).addMember("\"unused\", \"MemberVisibilityCanBePrivate\"").build())
 
     return this
 }
 
-private fun FileSpec.Builder.generateTelemetryEnumTypes(items: List<TelemetryMetricType>?): FileSpec.Builder {
-    items?.forEach {
+private fun FileSpec.Builder.generateTelemetryEnumTypes(items: List<TelemetryMetricType>): FileSpec.Builder {
+    items.forEach {
         // We only need to generate enums if they are actually enums, skip other types
         if (it.allowedValues == null) {
             return@forEach
@@ -73,7 +74,7 @@ private fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType
     val enum = TypeSpec.enumBuilder(item.name.toTypeFormat())
         .primaryConstructor(
             FunSpec.constructorBuilder()
-                .addParameter("value", String::class)
+                .addParameter("value", String::class, KModifier.PRIVATE)
                 .build()
         )
         .addProperty(PropertySpec.builder("value", String::class).initializer("value").build())
@@ -88,12 +89,22 @@ private fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType
         )
     }
 
+    // Add an unknown value
+    val unknownType = "unknown".toTypeFormat()
+
+    enum.addEnumConstant(
+        unknownType,
+        TypeSpec.anonymousClassBuilder()
+            .addSuperclassConstructorParameter("%S", "unknown")
+            .build()
+    ).build()
+
     val companion = TypeSpec.companionObjectBuilder()
         .addFunction(
             FunSpec.builder("from")
                 .returns(ClassName("", item.name.toTypeFormat()))
-                .addParameter("type", Any::class)
-                .addStatement("return values().first { it.value == type.toString() }")
+                .addParameter("type", String::class)
+                .addStatement("return values().firstOrNull { it.value == type } ?: $unknownType")
                 .build()
         )
         .build()
@@ -197,7 +208,7 @@ private fun FunSpec.Builder.generateFunctionBody(metadataParameter: ParameterSpe
     addStatement("value(value)")
     addStatement("passive(${metric.passive})")
     metric.metadata.forEach {
-        generateMetadataStatement(it, "${it.type.name.toArgumentFormat()}.toString()")
+        generateMetadataStatement(it)
     }
     endControlFlow()
     endControlFlow()
@@ -249,10 +260,18 @@ private fun FunSpec.Builder.generateResultOverloadFunctionBody(functionName: Str
     return this
 }
 
-private fun FunSpec.Builder.generateMetadataStatement(data: MetadataSchema, setStatement: String): FunSpec.Builder {
+private fun FunSpec.Builder.generateMetadataStatement(data: MetadataSchema): FunSpec.Builder {
     if (data.required == false) {
         beginControlFlow("if(%L != null) {", data.type.name.toArgumentFormat())
     }
+
+    // If its type is already a string, we dont need to call toString
+    val setStatement = if (data.type.type.kotlinType() != STRING || data.type.allowedValues?.isNotEmpty() == true) {
+        "${data.type.name.toArgumentFormat()}.toString()"
+    } else {
+        data.type.name.toArgumentFormat()
+    }
+
     addStatement("metadata(%S, %L)", data.type.name.toArgumentFormat().toLowerCase(), setStatement)
     if (data.required == false) {
         endControlFlow()

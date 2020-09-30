@@ -1,13 +1,12 @@
 // Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 // THIS FILE IS GENERATED! DO NOT EDIT BY HAND!
-@file:Suppress("unused")
+@file:Suppress("unused", "MemberVisibilityCanBePrivate")
 
 package software.aws.toolkits.telemetry
 
 import com.intellij.openapi.project.Project
 import java.time.Instant
-import kotlin.Any
 import kotlin.Boolean
 import kotlin.Double
 import kotlin.Int
@@ -21,16 +20,18 @@ import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
  * The lambda runtime
  */
 enum class LambdaRuntime(
-    val value: String
+    private val value: String
 ) {
     Dotnetcore21("dotnetcore2.1"),
 
-    Nodejs12x("nodejs12.x");
+    Nodejs12x("nodejs12.x"),
+
+    Unknown("unknown");
 
     override fun toString(): String = value
 
     companion object {
-        fun from(type: Any): LambdaRuntime = values().first { it.value == type.toString() }
+        fun from(type: String): LambdaRuntime = values().firstOrNull { it.value == type } ?: Unknown
     }
 }
 
@@ -52,7 +53,7 @@ object LambdaTelemetry {
                 value(value)
                 passive(false)
                 metadata("lambdaruntime", lambdaRuntime.toString())
-                metadata("arbitrarystring", arbitraryString.toString())
+                metadata("arbitrarystring", arbitraryString)
             }
         }
     }
@@ -74,7 +75,7 @@ object LambdaTelemetry {
                 value(value)
                 passive(false)
                 metadata("lambdaruntime", lambdaRuntime.toString())
-                metadata("arbitrarystring", arbitraryString.toString())
+                metadata("arbitrarystring", arbitraryString)
             }
         }
     }
