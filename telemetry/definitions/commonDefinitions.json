@@ -14,17 +14,23 @@
             "name": "serviceType",
             "allowedValues": [
                 "apigateway",
-                "ecs",
+                "beanstalk",
                 "cloudformation",
+                "cloudfront",
+                "dynamodb",
+                "ec2",
+                "ecs",
+                "iam",
                 "lambda",
+                "logs",
                 "rds",
                 "redshift",
-                "logs",
                 "s3",
                 "schemas",
-                "stepfunctions",
                 "sns",
-                "sqs"
+                "sqs",
+                "stepfunctions",
+                "vpc"
             ],
             "type": "string",
             "description": "The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client."
@@ -322,6 +328,21 @@
             ]
         },
         {
+            "name": "beanstalk_openApplication",
+            "description": "Open a window to view the status of the Beanstalk Application",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "beanstalk_openEnvironment",
+            "description": "Open a window to view the status of the Beanstalk Environment",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "cloudfront_openDistribution",
+            "description": "Open a window to view the status of the CloudFront Distribution",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "cloudwatchlogs_openGroup",
             "description": "Open the CloudWatch Logs group window. ServiceType indicates that it was opened from a different service (like directly from an ECS container)",
             "metadata": [{ "type": "result" }, { "type": "serviceType", "required": false }]
@@ -386,8 +407,68 @@
             "description": "Open a CloudFormation stack in the stack viewer"
         },
         {
+            "name": "dynamodb_openTable",
+            "description": "Open a DynamoDB table in the table browser",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ec2_openInstances",
+            "description": "Open a window to view EC2 Instances",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ec2_openAMIs",
+            "description": "Open a window to view EC2 AMIs",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ec2_openElasticIPs",
+            "description": "Open a window to view EC2 Elastic IPs",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ec2_openKeyPairs",
+            "description": "Open to view EC2 Key pairs",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ec2_openSecurityGroups",
+            "description": "Open a window to view EC2 Security Groups",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ec2_openVolumes",
+            "description": "Open a window to view EC2 Volumes",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ecs_openCluster",
+            "description": "Open to view status of an ECS Cluster",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ecs_openRepository",
+            "description": "Open to view status of an ECS Repository",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "feedback_result",
             "description": "Called while submitting in-IDE feedback",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "iam_openRole",
+            "description": "Open a window to view/edit IAM Role Policy",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "iam_openGroup",
+            "description": "Open a window to view/edit IAM Group Policy",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "iam_openUser",
+            "description": "Open a window to view/edit IAM User Configuration",
             "metadata": [{ "type": "result" }]
         },
         {
@@ -405,6 +486,11 @@
             "name": "lambda_create",
             "description": "Called when creating lambdas remotely",
             "metadata": [{ "type": "runtime" }]
+        },
+        {
+            "name": "lambda_openFunction",
+            "description": "Open to view configuration of a Lambda function",
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "lambda_goToHandler",
@@ -446,6 +532,21 @@
             "description": "Called when getting IAM/SecretsManager credentials for a RDS database. Value represents how long it takes in ms.",
             "unit": "Milliseconds",
             "metadata": [{ "type": "result" }, { "type": "databaseCredentials" }, { "type": "databaseEngine" }]
+        },
+        {
+            "name": "rds_openInstances",
+            "description": "Open a window to view RDS DB Instances",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "rds_openSecurityGroups",
+            "description": "Open a window to view RDS Security Groups",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "rds_openSubnets",
+            "description": "Open a window to view RDS Subnet Groups",
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "rds_createConnectionConfiguration",
@@ -621,6 +722,51 @@
             "name": "sqs_purgeQueue",
             "description": "Purge all messages from the queue",
             "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sns_openTopic",
+            "description": "Open a window to view details of SNS Topic",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "sns_openSubscriptions",
+            "description": "Open a window to view SNS Subscriptions",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "vpc_openRouteTables",
+            "description": "Open a window to view VPC RouteTable",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "vpc_openEIPs",
+            "description": "Open a window to view VPC Elastic IPs",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "vpc_openGateways",
+            "description": "Open a window to view VPC Internet Gateway",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "vpc_openACLs",
+            "description": "Open a window to view VPC Network ACLs",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "vpc_openSecurityGroups",
+            "description": "Open a window to view VPC Security Groups",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "vpc_openSubnets",
+            "description": "Open a window to view VPC Subnets",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "vpc_openVPCs",
+            "description": "Open a window to view VPC details",
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "cloudwatchinsights_openEditor",
