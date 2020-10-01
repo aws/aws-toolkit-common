@@ -111,13 +111,13 @@ export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
         str += `export function record${name}(args${metadata.every(item => !item.required) ? '?' : ''}: ${name}) {
     let metadata: any[] = []
     ${metadata.map(
-        (item: MetadataType) => `if(args.${item.name}) {metadata.push({Key: '${item.name}', Value: args.${item.name}.toString()})}`
+        (item: MetadataType) => `if(args?.${item.name}) {metadata.push({Key: '${item.name}', Value: args.${item.name}.toString()})}`
     ).join('\n')}
     ext.telemetry.record({
-            createTime: args?.createTime ?? new Date(),
             data: [{
                 MetricName: '${metric.name}',
                 Value: args?.value ?? 1,
+                EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
                 Unit: '${metric.unit ?? 'None'}',
                 Passive: ${metric.passive},
                 Metadata: metadata
