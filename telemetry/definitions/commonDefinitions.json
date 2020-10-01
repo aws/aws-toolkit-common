@@ -16,6 +16,11 @@
                 "apigateway",
                 "ecs",
                 "cloudformation",
+                "cloudfront",
+                "beanstalk",
+                "dynamodb",
+                "ec2",
+                "iam",
                 "lambda",
                 "rds",
                 "redshift",
@@ -24,7 +29,8 @@
                 "schemas",
                 "stepfunctions",
                 "sns",
-                "sqs"
+                "sqs",
+                "vpc"
             ],
             "type": "string",
             "description": "The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client."
@@ -199,63 +205,121 @@
         {
             "name": "apigateway_copyUrl",
             "description": "Copying an API Gateway remote URL",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "apigateway_invokeLocal",
             "description": "Invoking one simulated API Gateway call using the SAM cli",
             "metadata": [
-                { "type": "runtime", "required": false },
-                { "type": "httpMethod", "required": false },
-                { "type": "result" },
-                { "type": "debug" }
+                {
+                    "type": "runtime",
+                    "required": false
+                },
+                {
+                    "type": "httpMethod",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "debug"
+                }
             ]
         },
         {
             "name": "apigateway_invokeRemote",
             "description": "Calling a remote API Gateway",
-            "metadata": [{ "type": "result" }, { "type": "httpMethod", "required": false }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "httpMethod",
+                    "required": false
+                }
+            ]
         },
         {
             "name": "apigateway_startLocalServer",
             "description": "Called when starting a local API Gateway server simulator with SAM. Only called when starting it for long running testing, not for single invokes",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "aws_copyArn",
             "description": "Copy the ARN of an AWS resource",
-            "metadata": [{ "type": "serviceType" }]
+            "metadata": [
+                {
+                    "type": "serviceType"
+                }
+            ]
         },
         {
             "name": "aws_deleteResource",
             "description": "Delete an AWS resource",
-            "metadata": [{ "type": "serviceType" }, { "type": "result" }]
+            "metadata": [
+                {
+                    "type": "serviceType"
+                },
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "aws_setCredentials",
             "description": "Select a credentials profile",
-            "metadata": [{ "type": "credentialType", "required": false }]
+            "metadata": [
+                {
+                    "type": "credentialType",
+                    "required": false
+                }
+            ]
         },
         {
             "name": "aws_setRegion",
             "description": "A region change occurred",
-            "metadata": [{ "type": "regionId" }]
+            "metadata": [
+                {
+                    "type": "regionId"
+                }
+            ]
         },
         {
             "name": "aws_setPartition",
             "description": "A partition change occurred",
-            "metadata": [{ "type": "partitionId" }]
+            "metadata": [
+                {
+                    "type": "partitionId"
+                }
+            ]
         },
         {
             "name": "aws_openCredentials",
             "description": "Open the credentials file",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "aws_loadCredentials",
             "description": "Load credentials from a credential source",
             "unit": "Count",
-            "metadata": [{ "type": "credentialSourceId" }],
+            "metadata": [
+                {
+                    "type": "credentialSourceId"
+                }
+            ],
             "passive": true
         },
         {
@@ -265,12 +329,24 @@
         {
             "name": "aws_injectCredentials",
             "description": "Inject selected AWS credentials into a third-party run (e.g. RunConfiguration)",
-            "metadata": [{ "type": "result" }, { "type": "runtimeString", "required": false }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "runtimeString",
+                    "required": false
+                }
+            ]
         },
         {
             "name": "aws_validateCredentials",
             "description": "Validate credentials when selecting new credentials",
-            "metadata": [{ "type": "result" }],
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ],
             "passive": true
         },
         {
@@ -297,50 +373,131 @@
             "name": "beanstalk_deploy",
             "description": "Called when deploying an application to Elastic Beanstalk",
             "metadata": [
-                { "type": "result" },
-                { "type": "regionId" },
-                { "type": "initialDeploy" },
-                { "type": "name", "required": false },
-                { "type": "framework", "required": false },
-                { "type": "xrayEnabled", "required": false },
-                { "type": "enhancedHealthEnabled", "required": false }
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "regionId"
+                },
+                {
+                    "type": "initialDeploy"
+                },
+                {
+                    "type": "name",
+                    "required": false
+                },
+                {
+                    "type": "framework",
+                    "required": false
+                },
+                {
+                    "type": "xrayEnabled",
+                    "required": false
+                },
+                {
+                    "type": "enhancedHealthEnabled",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "beanstalk_openApplication",
+            "description": "Open a window to view the status of the Beanstalk Application",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "beanstalk_openEnvironment",
+            "description": "Open a window to view the status of the Beanstalk Environment",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "cloudfront_openDistribution",
+            "description": "Open a window to view the status of the CloudFront Distribution",
+            "metadata": [
+                {
+                    "type": "result"
+                }
             ]
         },
         {
             "name": "cloudwatchlogs_openGroup",
             "description": "Open the CloudWatch Logs group window. ServiceType indicates that it was opened from a different service (like directly from an ECS container)",
-            "metadata": [{ "type": "result" }, { "type": "serviceType", "required": false }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "serviceType",
+                    "required": false
+                }
+            ]
         },
         {
             "name": "cloudwatchlogs_openStream",
             "description": "Open a CloudWatch Logs stream in the window. ServiceType indicates that it was opened from a different service (like directly from an ECS container)",
-            "metadata": [{ "type": "result" }, { "type": "serviceType", "required": false }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "serviceType",
+                    "required": false
+                }
+            ]
         },
         {
             "name": "cloudwatchlogs_downloadStreamToFile",
             "unit": "Bytes",
             "description": "Download a stream to a file on disk. Value indicates the final size of the formatted stream.",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "cloudwatchlogs_openStreamInEditor",
             "description": "Download a stream to memory then open in an editor.",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "cloudwatchlogs_viewCurrentMessagesInEditor",
             "description": "Copy the currently open (possibly filtered) messages to an editor",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "cloudwatchlogs_wrapEvents",
             "description": "Word wrap events off/on",
-            "metadata": [{ "type": "enabled" }]
+            "metadata": [
+                {
+                    "type": "enabled"
+                }
+            ]
         },
         {
             "name": "cloudwatchlogs_tailStream",
             "description": "Tail stream off/on",
-            "metadata": [{ "type": "enabled" }]
+            "metadata": [
+                {
+                    "type": "enabled"
+                }
+            ]
         },
         {
             "name": "cloudwatchlogs_refreshGroup",
@@ -353,137 +510,438 @@
         {
             "name": "cloudwatchlogs_searchStream",
             "description": "Called when a stream is searched",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "cloudwatchlogs_searchGroup",
             "description": "Called when a group is searched",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "cloudwatchlogs_showEventsAround",
             "description": "Show event around a time period in ms specified by Value",
             "unit": "Milliseconds",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "cloudformation_open",
             "description": "Open a CloudFormation stack in the stack viewer"
         },
         {
+            "name": "dynamodb_openTable",
+            "description": "Open a DynamoDB table in the table browser",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "ec2_openInstances",
+            "description": "Open a window to view EC2 Instances",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "ec2_openAMIs",
+            "description": "Open a window to view EC2 AMIs",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "ec2_openElasticIPs",
+            "description": "Open a window to view EC2 Elastic IPs",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "ec2_openKeyPairs",
+            "description": "Open to view EC2 Key pairs",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "ec2_openSecurityGroups",
+            "description": "Open a window to view EC2 Security Groups",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "ec2_openVolumes",
+            "description": "Open a window to view EC2 Volumes",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "ecs_openCluster",
+            "description": "Open to view status of an ECS Cluster",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "ecs_openRepository",
+            "description": "Open to view status of an ECS Repository",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
             "name": "feedback_result",
             "description": "Called while submitting in-IDE feedback",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "iam_openRole",
+            "description": "Open a window to view/edit IAM Role Policy",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "iam_openGroup",
+            "description": "Open a window to view/edit IAM Group Policy",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "iam_openUser",
+            "description": "Open a window to view/edit IAM User Configuration",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "lambda_delete",
             "description": "called when deleting lambdas remotely",
             "unit": "None",
-            "metadata": [{ "type": "duration" }, { "type": "result" }]
+            "metadata": [
+                {
+                    "type": "duration"
+                },
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "lambda_configure",
             "description": "Called when opening the local configuration of a Lambda to edit",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "lambda_create",
             "description": "Called when creating lambdas remotely",
-            "metadata": [{ "type": "runtime" }]
+            "metadata": [
+                {
+                    "type": "runtime"
+                }
+            ]
+        },
+        {
+            "name": "lambda_openFunction",
+            "description": "Open to view configuration of a Lambda function",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "lambda_goToHandler",
             "description": "Jump to a lambda handler from elsewhere",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "lambda_editFunction",
             "description": "Called when creating lambdas remotely",
-            "metadata": [{ "type": "update", "required": false }, { "type": "result" }]
+            "metadata": [
+                {
+                    "type": "update",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "lambda_invokeRemote",
             "description": "Called when invoking lambdas remotely",
-            "metadata": [{ "type": "runtime", "required": false }, { "type": "result" }]
+            "metadata": [
+                {
+                    "type": "runtime",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "lambda_invokeLocal",
             "description": "Called when invoking lambdas locally (with SAM in most toolkits)",
-            "metadata": [{ "type": "runtime", "required": false }, { "type": "result" }, { "type": "debug" }]
+            "metadata": [
+                {
+                    "type": "runtime",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "debug"
+                }
+            ]
         },
         {
             "name": "lambda_import",
             "description": "Called when importing a remote Lambda function",
-            "metadata": [{ "type": "runtime", "required": false }, { "type": "result" }]
+            "metadata": [
+                {
+                    "type": "runtime",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "lambda_updateFunctionCode",
             "description": "Called when updating a Lambda function's code outside the context of a SAM template",
-            "metadata": [{ "type": "runtime", "required": false }, { "type": "result" }]
+            "metadata": [
+                {
+                    "type": "runtime",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "cloudformation_delete",
             "description": "Called when deleting a cloudformation stack",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "rds_getCredentials",
             "description": "Called when getting IAM/SecretsManager credentials for a RDS database. Value represents how long it takes in ms.",
             "unit": "Milliseconds",
-            "metadata": [{ "type": "result" }, { "type": "databaseCredentials" }, { "type": "databaseEngine" }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "databaseCredentials"
+                },
+                {
+                    "type": "databaseEngine"
+                }
+            ]
+        },
+        {
+            "name": "rds_openInstances",
+            "description": "Open a window to view RDS DB Instances",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "rds_openSecurityGroups",
+            "description": "Open a window to view RDS Security Groups",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "rds_openSubnets",
+            "description": "Open a window to view RDS Subnet Groups",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "rds_createConnectionConfiguration",
             "description": "Called when creating a new database connection configuration to for a RDS database. In Datagrip we do not get this infromation if it is created directly, so this is only counts actions.",
             "metadata": [
-                { "type": "result" },
-                { "type": "databaseCredentials" },
-                { "type": "databaseEngine", "required": false }
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "databaseCredentials"
+                },
+                {
+                    "type": "databaseEngine",
+                    "required": false
+                }
             ]
         },
         {
             "name": "redshift_getCredentials",
             "description": "Called when getting IAM/SecretsManager credentials for a Redshift database. Value represents how long it takes in ms.",
             "unit": "Milliseconds",
-            "metadata": [{ "type": "result" }, { "type": "databaseCredentials" }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "databaseCredentials"
+                }
+            ]
         },
         {
             "name": "redshift_createConnectionConfiguration",
             "description": "Called when creating a new database connection configuration to for a Redshift database. In Datagrip we do not get this infromation if it is created directly, so this only counts actions.",
-            "metadata": [{ "type": "result" }, { "type": "databaseCredentials" }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "databaseCredentials"
+                }
+            ]
         },
         {
             "name": "sam_deploy",
             "description": "Called when deploying a sam application",
-            "metadata": [{ "type": "result" }, { "type": "version", "required": false }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "version",
+                    "required": false
+                }
+            ]
         },
         {
             "name": "sam_init",
             "description": "Called when initing a sam application",
             "metadata": [
-                { "type": "result" },
-                { "type": "name", "required": false },
-                { "type": "runtime", "required": false },
-                { "type": "templateName", "required": false },
-                { "type": "version", "required": false },
-                { "type": "reason", "required": false },
-                { "type": "eventBridgeSchema", "required": false }
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "name",
+                    "required": false
+                },
+                {
+                    "type": "runtime",
+                    "required": false
+                },
+                {
+                    "type": "templateName",
+                    "required": false
+                },
+                {
+                    "type": "version",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "eventBridgeSchema",
+                    "required": false
+                }
             ]
         },
         {
             "name": "schemas_view",
             "description": "Called when selecting an EventBridge schema to view",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "schemas_download",
             "description": "Called when downloading an EventBridge schema",
-            "metadata": [{ "type": "result" }, { "type": "schemaLanguage", "required": false }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "schemaLanguage",
+                    "required": false
+                }
+            ]
         },
         {
             "name": "schemas_search",
             "description": "Called when searching an EventBridge schema registry",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "session_start",
@@ -506,106 +964,292 @@
         {
             "name": "s3_copyUrl",
             "description": "Copy the URL of a S3 object to the clipboard",
-            "metadata": [{ "type": "result" }, { "type": "presigned" }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "presigned"
+                }
+            ]
         },
         {
             "name": "s3_createBucket",
             "description": "Create a S3 bucket",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "s3_deleteBucket",
             "description": "Delete a S3 bucket",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "s3_deleteObject",
             "description": "Delete a single S3 object",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "s3_createFolder",
             "description": "Create an S3 folder",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "s3_downloadObject",
             "description": "Download a single S3 object",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "s3_downloadObjects",
             "description": "Download multiple S3 objects",
             "unit": "Count",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "s3_uploadObject",
             "description": "Upload a single S3 object",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "s3_renameObject",
             "description": "Rename a single S3 object",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "s3_uploadObjects",
             "description": "Upload multiple S3 objects",
             "unit": "Count",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "s3_openEditor",
             "description": "Open a view of a S3 bucket",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "toolkit_init",
             "description": "The Toolkit has completed initialization",
-            "metadata": [{ "type": "duration" }],
+            "metadata": [
+                {
+                    "type": "duration"
+                }
+            ],
             "passive": true
         },
         {
             "name": "sqs_openQueue",
             "description": "Open an SQS queue. Initially opens to either the send message pane or poll messags pane.",
-            "metadata": [{ "type": "sqsQueueType" }]
+            "metadata": [
+                {
+                    "type": "sqsQueueType"
+                }
+            ]
         },
         {
             "name": "sqs_createQueue",
             "description": "Create a new SQS queue",
-            "metadata": [{ "type": "result" }, { "type": "sqsQueueType", "required": false }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "sqsQueueType",
+                    "required": false
+                }
+            ]
         },
         {
             "name": "sqs_sendMessage",
             "description": "Send a message to an SQS queue",
-            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "sqsQueueType"
+                }
+            ]
         },
         {
             "name": "sqs_deleteMessages",
             "description": "Delete one or more messages from an SQS queue. Value indicates the number of messages that we tried to delete.",
             "unit": "Count",
-            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "sqsQueueType"
+                }
+            ]
         },
         {
             "name": "sqs_subscribeSns",
             "description": "Subscribe the queue to messages from an sns topic",
-            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "sqsQueueType"
+                }
+            ]
         },
         {
             "name": "sqs_configureLambdaTrigger",
             "description": "Configure the queue as a trigger for a Lambda",
-            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "sqsQueueType"
+                }
+            ]
         },
         {
             "name": "sqs_editQueueAttributes",
             "description": "Edit the Queue attributes",
-            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "sqsQueueType"
+                }
+            ]
         },
         {
             "name": "sqs_purgeQueue",
             "description": "Purge all messages from the queue",
-            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "sqsQueueType"
+                }
+            ]
+        },
+        {
+            "name": "sns_openTopic",
+            "description": "Open a window to view details of SNS Topic",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "sns_openSubscriptions",
+            "description": "Open a window to view SNS Subscriptions",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "vpc_openRouteTables",
+            "description": "Open a window to view VPC RouteTable",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "vpc_openEIPs",
+            "description": "Open a window to view VPC Elastic IPs",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "vpc_openGateways",
+            "description": "Open a window to view VPC Internet Gateway",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "vpc_openACLs",
+            "description": "Open a window to view VPC Network ACLs",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "vpc_openSecurityGroups",
+            "description": "Open a window to view VPC Security Groups",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "vpc_openSubnets",
+            "description": "Open a window to view VPC Subnets",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "vpc_openVPCs",
+            "description": "Open a window to view VPC details",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
         }
     ]
 }
