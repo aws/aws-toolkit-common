@@ -193,6 +193,21 @@
             "name": "presigned",
             "type": "boolean",
             "description": "Whether or not it was a presigned request"
+        },
+        {
+            "name": "insightsDialogOpenSource",
+            "allowedValues": ["explorer", "resultsWindow"],
+            "description": "Dialog open trigger source location"
+        },
+        {
+            "name": "insightsQueryTimeType",
+            "allowedValues": ["relative", "absolute"],
+            "description": "User-selected time range type while starting an insights query"
+        },
+        {
+            "name": "insightsQueryStringType",
+            "allowedValues": ["insights", "searchTerm"],
+            "description": "User-specified search string type while starting an insights query"
         }
     ],
     "metrics": [
@@ -568,7 +583,7 @@
         },
         {
             "name": "sqs_openQueue",
-            "description": "Open an SQS queue. Initially opens to either the send message pane or poll messags pane.",
+            "description": "Open an SQS queue. Initially opens to either the send message pane or poll messages pane.",
             "metadata": [{ "type": "sqsQueueType" }]
         },
         {
@@ -606,6 +621,31 @@
             "name": "sqs_purgeQueue",
             "description": "Purge all messages from the queue",
             "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "cloudwatchinsights_openEditor",
+            "description": "Open the insights query editor",
+            "metadata": [{ "type": "insightsDialogOpenSource" }]
+        },
+        {
+            "name": "cloudwatchinsights_executeQuery",
+            "description": "Start an insights query",
+            "metadata": [{ "type": "result" }, { "type": "insightsQueryTimeType" }, { "type": "insightsQueryStringType" }]
+        },
+        {
+            "name": "cloudwatchinsights_saveQuery",
+            "description": "Save query parameters to AWS",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "cloudwatchinsights_retrieveQuery",
+            "description": "Retrieve list of available saved queries from AWS",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "cloudwatchinsights_openDetailedLogRecord",
+            "description": "Get all details for the selected log record",
+            "metadata": [{ "type": "result" }]
         }
     ]
 }
