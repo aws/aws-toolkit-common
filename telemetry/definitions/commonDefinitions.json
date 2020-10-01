@@ -488,11 +488,6 @@
             "metadata": [{ "type": "runtime" }]
         },
         {
-            "name": "lambda_openFunction",
-            "description": "Open to view configuration of a Lambda function",
-            "metadata": [{ "type": "result" }]
-        },
-        {
             "name": "lambda_goToHandler",
             "description": "Jump to a lambda handler from elsewhere",
             "metadata": [{ "type": "result" }]
