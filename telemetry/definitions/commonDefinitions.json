@@ -209,7 +209,7 @@
         {
             "name": "platform",
             "type": "string",
-            "description": "Language-specific identification"
+            "description": "Language-specific identification. Examples: v4.6.1, netcoreapp3.1, nodejs12.x. Not AWS Lambda specific. Allows for additional details when other fields are opaque, such as the Lambda runtime value 'provided'."
         },
         {
             "name": "insightsDialogOpenSource",
@@ -823,7 +823,11 @@
         {
             "name": "cloudwatchinsights_executeQuery",
             "description": "Start an insights query",
-            "metadata": [{ "type": "result" }, { "type": "insightsQueryTimeType" }, { "type": "insightsQueryStringType" }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "insightsQueryTimeType" },
+                { "type": "insightsQueryStringType" }
+            ]
         },
         {
             "name": "cloudwatchinsights_saveQuery",
