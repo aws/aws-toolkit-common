@@ -317,7 +317,7 @@
         {
             "name": "aws_helpQuickstart",
             "description": "Open the quickstart guide",
-            "metadata": [ {"type": "result", "required": false } ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "aws_showExtensionSource",
@@ -437,7 +437,7 @@
         {
             "name": "cloudformation_open",
             "description": "Open a CloudFormation stack in the stack viewer",
-            "metadata": [ { "type": "result", "required": false  } ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "dynamodb_openTable",
