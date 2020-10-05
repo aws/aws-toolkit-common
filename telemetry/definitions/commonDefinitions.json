@@ -229,7 +229,7 @@
         {
             "name": "ecsLaunchType",
             "allowedValues": ["ec2", "fargate"],
-            "description": "Type of ECS Task"
+            "description": "Infrastructure type used by ECS tasks and services"
         }
     ],
     "metrics": [
