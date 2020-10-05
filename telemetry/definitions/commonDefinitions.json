@@ -359,6 +359,16 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "cloudfront_openStreamingDistribution",
+            "description": "Open a window to view the status of the CloudFront Streaming Distribution",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "cloudfront_openInvalidationRequest",
+            "description": "Open a window to view the Cloudfront Invalidation requests",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "cloudwatchlogs_openGroup",
             "description": "Open the CloudWatch Logs group window. ServiceType indicates that it was opened from a different service (like directly from an ECS container)",
             "metadata": [{ "type": "result" }, { "type": "serviceType", "required": false }]
@@ -721,6 +731,16 @@
         {
             "name": "s3_openEditor",
             "description": "Open a view of a S3 bucket",
+            "metadata": [ { "type": "result" } ]
+        },
+        {
+            "name": "s3_openBucketProperties",
+            "description": "Open a window to view S3 bucket properties",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_openMultipartUpload",
+            "description": "Open a window to view S3 Multipart upload",
             "metadata": [{ "type": "result" }]
         },
         {
@@ -786,11 +806,6 @@
             "metadata": [{ "type": "result" }]
         },
         {
-            "name": "vpc_openEIPs",
-            "description": "Open a window to view VPC Elastic IPs",
-            "metadata": [{ "type": "result" }]
-        },
-        {
             "name": "vpc_openGateways",
             "description": "Open a window to view VPC Internet Gateway",
             "metadata": [{ "type": "result" }]
@@ -798,11 +813,6 @@
         {
             "name": "vpc_openACLs",
             "description": "Open a window to view VPC Network ACLs",
-            "metadata": [{ "type": "result" }]
-        },
-        {
-            "name": "vpc_openSecurityGroups",
-            "description": "Open a window to view VPC Security Groups",
             "metadata": [{ "type": "result" }]
         },
         {
