@@ -19,6 +19,7 @@
                 "cloudfront",
                 "dynamodb",
                 "ec2",
+                "ecr",
                 "ecs",
                 "iam",
                 "lambda",
@@ -128,6 +129,11 @@
             "description": "True if turned on, false if turned off"
         },
         {
+            "name": "scheduled",
+            "type": "boolean",
+            "description": "Whether or not the referenced item is scheduled (true) or not (false)"
+        },
+        {
             "name": "credentialSourceId",
             "type": "string",
             "description": "The ID of the source of credentials (e.g. profile)"
@@ -201,6 +207,11 @@
             "description": "Whether or not it was a presigned request"
         },
         {
+            "name": "platform",
+            "type": "string",
+            "description": "Language-specific identification. Examples: v4.6.1, netcoreapp3.1, nodejs12.x. Not AWS Lambda specific. Allows for additional details when other fields are opaque, such as the Lambda runtime value 'provided'."
+        },
+        {
             "name": "insightsDialogOpenSource",
             "allowedValues": ["explorer", "resultsWindow"],
             "description": "Dialog open trigger source location"
@@ -214,6 +225,11 @@
             "name": "insightsQueryStringType",
             "allowedValues": ["insights", "searchTerm"],
             "description": "User-specified search string type while starting an insights query"
+        },
+        {
+            "name": "ecsLaunchType",
+            "allowedValues": ["ec2", "fargate"],
+            "description": "Infrastructure type used by ECS tasks and services"
         }
     ],
     "metrics": [
@@ -414,6 +430,11 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "cloudformation_deploy",
+            "description": "Called when deploying a CloudFormation template",
+            "metadata": [{ "type": "result" }, { "type": "regionId" }, { "type": "initialDeploy" }]
+        },
+        {
             "name": "cloudformation_open",
             "description": "Open a CloudFormation stack in the stack viewer",
             "metadata": [ { "type": "result", "required": false  } ]
@@ -457,6 +478,26 @@
             "name": "ecs_openCluster",
             "description": "Open to view status of an ECS Cluster",
             "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ecr_deployImage",
+            "description": "Called when deploying an image to ECR",
+            "metadata": [{ "type": "result" }, { "type": "regionId" }]
+        },
+        {
+            "name": "ecs_deployService",
+            "description": "Called when deploying a service to an ECS cluster",
+            "metadata": [{ "type": "result" }, { "type": "regionId" }, { "type": "ecsLaunchType" }]
+        },
+        {
+            "name": "ecs_deployTask",
+            "description": "Called when deploying a task to an ECS cluster",
+            "metadata": [
+                { "type": "result" },
+                { "type": "regionId" },
+                { "type": "ecsLaunchType" },
+                { "type": "scheduled" }
+            ]
         },
         {
             "name": "ecs_openRepository",
@@ -528,6 +569,17 @@
             "name": "lambda_updateFunctionCode",
             "description": "Called when updating a Lambda function's code outside the context of a SAM template",
             "metadata": [{ "type": "runtime", "required": false }, { "type": "result" }]
+        },
+        {
+            "name": "lambda_deploy",
+            "description": "Called when deploying a Lambda Function",
+            "metadata": [
+                { "type": "result" },
+                { "type": "regionId" },
+                { "type": "initialDeploy" },
+                { "type": "runtime", "required": false },
+                { "type": "platform", "required": false }
+            ]
         },
         {
             "name": "cloudformation_delete",
@@ -783,7 +835,11 @@
         {
             "name": "cloudwatchinsights_executeQuery",
             "description": "Start an insights query",
-            "metadata": [{ "type": "result" }, { "type": "insightsQueryTimeType" }, { "type": "insightsQueryStringType" }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "insightsQueryTimeType" },
+                { "type": "insightsQueryStringType" }
+            ]
         },
         {
             "name": "cloudwatchinsights_saveQuery",
