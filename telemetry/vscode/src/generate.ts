@@ -114,14 +114,12 @@ export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
         (item: MetadataType) => `if(args?.${item.name}) {metadata.push({Key: '${item.name}', Value: args.${item.name}.toString()})}`
     ).join('\n')}
     ext.telemetry.record({
-            data: [{
-                MetricName: '${metric.name}',
-                Value: args?.value ?? 1,
-                EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
-                Unit: '${metric.unit ?? 'None'}',
-                Passive: ${metric.passive},
-                Metadata: metadata
-            }]
+            MetricName: '${metric.name}',
+            Value: args?.value ?? 1,
+            EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
+            Unit: '${metric.unit ?? 'None'}',
+            Passive: ${metric.passive},
+            Metadata: metadata
         })
 }`
     })
