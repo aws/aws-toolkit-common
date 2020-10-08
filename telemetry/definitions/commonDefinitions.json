@@ -129,11 +129,6 @@
             "description": "True if turned on, false if turned off"
         },
         {
-            "name": "scheduled",
-            "type": "boolean",
-            "description": "Whether or not the referenced item is scheduled (true) or not (false)"
-        },
-        {
             "name": "credentialSourceId",
             "type": "string",
             "description": "The ID of the source of credentials (e.g. profile)"
@@ -486,6 +481,11 @@
             "metadata": [{ "type": "result" }, { "type": "regionId" }]
         },
         {
+            "name": "ecs_deployScheduledTask",
+            "description": "Called when deploying a scheduled task to an ECS cluster",
+            "metadata": [{ "type": "result" }, { "type": "regionId" }, { "type": "ecsLaunchType" }]
+        },
+        {
             "name": "ecs_deployService",
             "description": "Called when deploying a service to an ECS cluster",
             "metadata": [{ "type": "result" }, { "type": "regionId" }, { "type": "ecsLaunchType" }]
@@ -493,12 +493,7 @@
         {
             "name": "ecs_deployTask",
             "description": "Called when deploying a task to an ECS cluster",
-            "metadata": [
-                { "type": "result" },
-                { "type": "regionId" },
-                { "type": "ecsLaunchType" },
-                { "type": "scheduled" }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "regionId" }, { "type": "ecsLaunchType" }]
         },
         {
             "name": "ecs_openRepository",
@@ -734,7 +729,7 @@
         {
             "name": "s3_openEditor",
             "description": "Open a view of a S3 bucket",
-            "metadata": [ { "type": "result" } ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "s3_openBucketProperties",
