@@ -5,7 +5,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 {
     public class Options
     {
-        public const string DefaultEventsNamespace = "Amazon.AwsToolkit.Telemetry.Events";
+        public const string DefaultEventsNamespace = "Amazon.AwsToolkit.Telemetry.Events.Generated";
 
         [Option(
             Default = DefaultEventsNamespace,

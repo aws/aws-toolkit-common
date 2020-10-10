@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Amazon.AwsToolkit.Telemetry.Events;
 using Amazon.AwsToolkit.Telemetry.Events.Core;
+using Amazon.AwsToolkit.Telemetry.Events.Generated;
 using System;
 using System.Collections.Generic;
 
@@ -44,6 +44,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sample_extendedInvoke";
                 datum.Unit = Unit.None;
+                datum.Passive = false;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -95,6 +96,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sample_releaseBees";
                 datum.Unit = Unit.None;
+                datum.Passive = false;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -136,6 +138,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sample_testRun";
                 datum.Unit = Unit.Milliseconds;
+                datum.Passive = false;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
