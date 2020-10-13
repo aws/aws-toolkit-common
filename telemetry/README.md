@@ -28,6 +28,18 @@ Make changes to the appropriate file in `definitions` in this repository, then f
 
 Your changes should then be reflected in the generated output.
 
+#### Visual Studio
+
+For prototyping telemetry, and to define product-specific metrics, modify `toolkitcore\AWSToolkit.Util\Telemetry\vs-telemetry-definitions.json` inside the toolkit repository. These are known as Supplemental Telemetry definitions, and you can read more about this [here](csharp/README.md).
+
+After changing the file, you'll need to build the generator from this repo. Then you'll use the generator as follows to update the generated supplemental telemetry code:
+
+```
+Amazon.AwsToolkit.Telemetry.Events.Generator.exe -s <VS_TOOLKIT_REPO_ROOT>\toolkitcore\AWSToolkit.Util\Telemetry\vs-telemetry-definitions.json -o <VS_TOOLKIT_REPO_ROOT>\toolkitcore\AWSToolkit.Util\Telemetry -f ToolkitTelemetryEvents.generated.cs
+```
+
+Commit the json and cs files to the VS Toolkit repo as needed.
+
 ### How to Edit
 
 The easiest way to edit telemetry is to copy existing telemetry and change the values. For example,
