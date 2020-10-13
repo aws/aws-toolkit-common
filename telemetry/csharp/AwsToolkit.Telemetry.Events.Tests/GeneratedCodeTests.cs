@@ -1,5 +1,5 @@
 ﻿using Amazon.AwsToolkit.Telemetry.Events.Core;
-using Amazon.AwsToolkit.Telemetry.Events.Tests.Generated;
+using Amazon.AwsToolkit.Telemetry.Events.Generated;
 using Moq;
 using Xunit;
 

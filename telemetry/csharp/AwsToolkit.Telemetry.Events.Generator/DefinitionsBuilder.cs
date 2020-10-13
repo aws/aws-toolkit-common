@@ -96,7 +96,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             blankNamespace.Imports.Add(new CodeNamespaceImport("System"));
             blankNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
             // All generated code is expected to be placed in, or somewhere with a dependency on,
-            // AwsToolkit.Telemetry.Events
+            // AwsToolkit.Telemetry.Events.Generated
             if (_namespace != Options.DefaultEventsNamespace)
             {
                 blankNamespace.Imports.Add(new CodeNamespaceImport(Options.DefaultEventsNamespace));
