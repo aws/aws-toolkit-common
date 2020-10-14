@@ -272,7 +272,7 @@ private fun FunSpec.Builder.generateMetadataStatement(data: MetadataSchema): Fun
         data.type.name.toArgumentFormat()
     }
 
-    addStatement("metadata(%S, %L)", data.type.name.toArgumentFormat().toLowerCase(), setStatement)
+    addStatement("metadata(%S, %L)", data.type.name.toArgumentFormat(), setStatement)
     if (data.required == false) {
         endControlFlow()
     }
