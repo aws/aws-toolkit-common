@@ -52,8 +52,8 @@ object LambdaTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(false)
-                metadata("lambdaruntime", lambdaRuntime.toString())
-                metadata("arbitrarystring", arbitraryString)
+                metadata("lambdaRuntime", lambdaRuntime.toString())
+                metadata("arbitraryString", arbitraryString)
             }
         }
     }
@@ -74,8 +74,8 @@ object LambdaTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(false)
-                metadata("lambdaruntime", lambdaRuntime.toString())
-                metadata("arbitrarystring", arbitraryString)
+                metadata("lambdaRuntime", lambdaRuntime.toString())
+                metadata("arbitraryString", arbitraryString)
             }
         }
     }
@@ -141,7 +141,7 @@ object LambdaTelemetry {
                 value(value)
                 passive(false)
                 if(lambdaRuntime != null) {
-                    metadata("lambdaruntime", lambdaRuntime.toString())
+                    metadata("lambdaRuntime", lambdaRuntime.toString())
                 }
                 metadata("inttype", inttype.toString())
             }
@@ -165,7 +165,7 @@ object LambdaTelemetry {
                 value(value)
                 passive(false)
                 if(lambdaRuntime != null) {
-                    metadata("lambdaruntime", lambdaRuntime.toString())
+                    metadata("lambdaRuntime", lambdaRuntime.toString())
                 }
                 metadata("inttype", inttype.toString())
             }
