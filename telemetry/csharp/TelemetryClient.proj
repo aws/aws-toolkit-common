@@ -4,7 +4,7 @@
 		<BuildRoot Condition="'$(BuildRoot)' == ''">$(MSBuildThisFileDirectory)</BuildRoot>
 
         <BuildTemp>$(BuildRoot)buildtemp\</BuildTemp>
-        <DotNetSdkTag>3.3.704.0</DotNetSdkTag>
+        <DotNetSdkTag>3.5.43.0</DotNetSdkTag>
         <DotNetSdkClone>$(BuildTemp)dotnetsdk\</DotNetSdkClone>
         <SdkGeneratorRoot>$(DotNetSdkClone)generator\</SdkGeneratorRoot>
         <SdkGenerator>$(SdkGeneratorRoot)ServiceClientGenerator\bin\Release\ServiceClientGenerator.exe</SdkGenerator>
@@ -77,6 +77,7 @@
         <ItemGroup>
             <SourceCodeExcludes Include="$(GeneratedRoot)_bcl35\**\*.*" />
             <SourceCodeExcludes Include="$(GeneratedRoot)_mobile\**\*.*" />
+            <SourceCodeExcludes Include="$(GeneratedRoot)_netstandard\**\*.*" />
 
             <SourceCode 
                 Include="$(GeneratedRoot)**\*.*" 
