@@ -67,6 +67,11 @@ and change `name`, `description`, and the values in `allowedValues`
 
 Then rerun the generator. This example will generate a new type that can be imported or used in telemetry calls.
 
+### Overriding existing telemetry
+In VSCode and JetBrains, extra telemetry files will take precedence over existing definitions. For example, if you have a metric for `lambda_update`, adding another `lambda_update` in the repo's extra telemetry files will override all of the values of it.
+
+Types work similarly, and will also be overwritten by extra telemetry files.
+
 ### Editing in IDE
 
 The telemetry format comes with a json schema document [here](telemetrySchema.json) that can be loaded
