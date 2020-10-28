@@ -37,7 +37,7 @@ fun generateTelemetryFromFiles(
     defaultDefinitions: List<String> = ResourceLoader.DEFINITIONS_FILES,
     outputFolder: File
 ) {
-    val telemetry = TelemetryParser.parseFiles(inputFiles, defaultDefinitions)
+    val telemetry = TelemetryParser.parseFiles(defaultDefinitions, inputFiles)
     // make sure the output directory exists before writing to it
     outputFolder.mkdirs()
     FileSpec.builder(PACKAGE_NAME, "TelemetryDefinitions")

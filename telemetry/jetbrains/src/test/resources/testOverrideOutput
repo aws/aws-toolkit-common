@@ -1,0 +1,70 @@
+// Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+// THIS FILE IS GENERATED! DO NOT EDIT BY HAND!
+@file:Suppress("unused", "MemberVisibilityCanBePrivate")
+
+package software.aws.toolkits.telemetry
+
+import com.intellij.openapi.project.Project
+import java.time.Instant
+import kotlin.Double
+import kotlin.String
+import kotlin.Suppress
+import software.amazon.awssdk.services.toolkittelemetry.model.Unit
+import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
+import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
+
+/**
+ * The result of the operation
+ */
+enum class Result(
+    private val value: String
+) {
+    Succeeded("Succeeded"),
+
+    Unknown("unknown");
+
+    override fun toString(): String = value
+
+    companion object {
+        fun from(type: String): Result = values().firstOrNull { it.value == type } ?: Unknown
+    }
+}
+
+object MetadataTelemetry {
+    /**
+     * It does not actually have a result, yep
+     */
+    fun hasResult(
+        project: Project? = null,
+        value: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ) {
+        TelemetryService.getInstance().record(project) {
+            datum("metadata_hasResult") {
+                createTime(createTime)
+                unit(Unit.NONE)
+                value(value)
+                passive(false)
+            }
+        }
+    }
+
+    /**
+     * It does not actually have a result, yep
+     */
+    fun hasResult(
+        metadata: MetricEventMetadata,
+        value: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ) {
+        TelemetryService.getInstance().record(metadata) {
+            datum("metadata_hasResult") {
+                createTime(createTime)
+                unit(Unit.NONE)
+                value(value)
+                passive(false)
+            }
+        }
+    }
+}

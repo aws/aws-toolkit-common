@@ -8,6 +8,7 @@ import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
+import java.io.File
 import java.nio.file.Files
 import java.nio.file.Paths
 
@@ -25,12 +26,17 @@ class GeneratorTest {
 
     @Test
     fun generatesWithNormalInput() {
-        testGenerator("/testGeneratorInput.json", "/testGeneratorOutput")
+        testGenerator(defaultDefinitionsFile = "/testGeneratorInput.json", expectedOutputFile = "/testGeneratorOutput")
     }
 
     @Test
     fun resultGeneratesTwoFunctions() {
-        testGenerator("/testResultInput.json", "/testResultOutput")
+        testGenerator(defaultDefinitionsFile = "/testResultInput.json", expectedOutputFile = "/testResultOutput")
+    }
+
+    @Test
+    fun generateOverrides() {
+        testGenerator(defaultDefinitionsFile = "/testResultInput.json", definitionsOverrides = listOf("/testOverrideInput.json"), expectedOutputFile = "/testOverrideOutput")
     }
 
     @Test
@@ -41,10 +47,10 @@ class GeneratorTest {
     }
 
     // inputPath and outputPath must be in test resources
-    private fun testGenerator(inputPath: String, expectedOutputFile: String) {
+    private fun testGenerator(defaultDefinitionsFile: String, definitionsOverrides: List<String> = listOf(), expectedOutputFile: String) {
         generateTelemetryFromFiles(
-            inputFiles = listOf(),
-            defaultDefinitions = listOf(this.javaClass.getResourceAsStream(inputPath).use { it.bufferedReader().readText() }),
+            defaultDefinitions = listOf(this.javaClass.getResourceAsStream(defaultDefinitionsFile).use { it.bufferedReader().readText() }),
+            inputFiles = definitionsOverrides.map { File(javaClass.getResource(it).toURI()) },
             outputFolder = folder.root
         )
 

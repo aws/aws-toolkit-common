@@ -87,8 +87,8 @@ object TelemetryParser {
     private val MAPPER = jacksonObjectMapper()
 
     fun parseFiles(
-        paths: List<File> = listOf(),
-        defaultResourcesFiles: List<String>
+        defaultResourcesFiles: List<String>,
+        paths: List<File> = listOf()
     ): TelemetrySchema {
         val files = paths.map { it.readText() } + defaultResourcesFiles
         val rawSchema = JSONObject(JSONTokener(ResourceLoader.SCHEMA_FILE))
@@ -99,6 +99,13 @@ object TelemetryParser {
             TelemetryDefinition(
                 it.types.plus(it2.types),
                 it.metrics.plus(it2.metrics)
+            )
+        }.let {
+            // Allow read in files to overwrite default definitions. First one wins, so the extra
+            // files are read before the default resources
+            TelemetryDefinition(
+                it.types.distinctBy{ t -> t.name},
+                it.metrics.distinctBy { m -> m.name }
             )
         }
 
