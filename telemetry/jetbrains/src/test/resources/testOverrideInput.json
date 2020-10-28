@@ -1,0 +1,15 @@
+{
+  "types": [
+    {
+      "name": "result",
+      "allowedValues": ["Succeeded"],
+      "description": "The result of the operation"
+    }
+  ],
+  "metrics": [
+    {
+      "name": "metadata_hasResult",
+      "description": "It does not actually have a result, yep"
+    }
+  ]
+}

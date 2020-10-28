@@ -11,7 +11,6 @@ class ParserTest {
     fun typeMissingDescription() {
         assertThatThrownBy {
             TelemetryParser.parseFiles(
-                listOf(),
                 listOf(
                     """
             {
@@ -32,7 +31,7 @@ class ParserTest {
     @Test
     fun missingMetricsField() {
         assertThatThrownBy {
-            TelemetryParser.parseFiles(listOf(), listOf("""{"types": []}"""))
+            TelemetryParser.parseFiles(listOf("""{"types": []}"""))
         }.hasMessageContaining("required key [metrics] not found")
     }
 
@@ -40,7 +39,6 @@ class ParserTest {
     fun invalidDataTypes() {
         assertThatThrownBy {
             TelemetryParser.parseFiles(
-                listOf(),
                 listOf(
                     """
             {
@@ -63,7 +61,6 @@ class ParserTest {
     @Test
     fun successfulParse() {
         TelemetryParser.parseFiles(
-            listOf(),
             listOf(
                 """
             {

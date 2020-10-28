@@ -86,9 +86,15 @@ data class MetadataSchema(
 object TelemetryParser {
     private val MAPPER = jacksonObjectMapper()
 
+    /**
+     * Read in default definitions and extra definitions files, and deserialize into an object
+     *
+     * Definitions from `paths` will override definitions from defaultResourceFiles if their names
+     * are the same. This allows testing updates to existing definitions from within each IDE project.
+     */
     fun parseFiles(
-        paths: List<File> = listOf(),
-        defaultResourcesFiles: List<String>
+        defaultResourcesFiles: List<String>,
+        paths: List<File> = listOf()
     ): TelemetrySchema {
         val files = paths.map { it.readText() } + defaultResourcesFiles
         val rawSchema = JSONObject(JSONTokener(ResourceLoader.SCHEMA_FILE))
@@ -99,6 +105,11 @@ object TelemetryParser {
             TelemetryDefinition(
                 it.types.plus(it2.types),
                 it.metrics.plus(it2.metrics)
+            )
+        }.let {
+            TelemetryDefinition(
+                it.types.distinctBy{ t -> t.name},
+                it.metrics.distinctBy { m -> m.name }
             )
         }
 
