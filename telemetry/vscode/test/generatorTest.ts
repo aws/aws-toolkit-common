@@ -15,12 +15,12 @@ describe('Generator', () => {
 
     test('Generate fails when validation fails', async () => {
         try {
-            await testGenerator(['resources/invalidInput.json'], '/invalid/file/path' )
+            await testGenerator(['resources/invalidInput.json'], '/invalid/file/path')
         } catch (e) {
             expect(e).not.toBeNull
             return
         }
-        throw Error("Test did not throw as expected")
+        throw Error('Test did not throw as expected')
     })
 
     test('Generates with normal input', async () => {
@@ -28,7 +28,10 @@ describe('Generator', () => {
     })
 
     test('Generate overrides', async () => {
-        await testGenerator(['resources/testOverrideInput.json', 'resources/testResultInput.json'], 'resources/generatorOverrideOutput')
+        await testGenerator(
+            ['resources/testOverrideInput.json', 'resources/testResultInput.json'],
+            'resources/generatorOverrideOutput'
+        )
     })
 
     async function testGenerator(inputFiles: string[], expectedOutputFile: string) {

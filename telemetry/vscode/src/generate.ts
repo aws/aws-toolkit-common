@@ -152,7 +152,7 @@ export async function generate(args: CommandLineArguments) {
     const rawDefinitions: MetricDefinitionRoot = args.inputFiles
         .map(path => {
             const fileInput = readFileSync(path, 'utf8')
-            return validateInput(fileInput)
+            return validateInput(fileInput, path)
         })
         .reduce(
             (item: MetricDefinitionRoot, input: MetricDefinitionRoot) => {
@@ -172,7 +172,7 @@ export async function generate(args: CommandLineArguments) {
     output += generateHelperFunctions()
 
     const options = await prettier.resolveConfig(await readFile(`${__dirname}/../.prettierrc`, 'utf-8'))
-    const formattedOutput = prettier.format(output, {parser: 'typescript', ...options})
+    const formattedOutput = prettier.format(output, { parser: 'typescript', ...options })
 
     writeFileSync(args.outputFile, formattedOutput)
 

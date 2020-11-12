@@ -40,7 +40,7 @@ export interface MetricDefinitionRoot {
     metrics: Metric[]
 }
 
-export function validateInput(fileText: string): MetricDefinitionRoot {
+export function validateInput(fileText: string, fileName: string): MetricDefinitionRoot {
     try {
         const schemaInput = readFileSync(path.join(__dirname, '../lib/telemetrySchema.json'), 'utf8')
         const schema = JSON.parse(schemaInput)
@@ -53,7 +53,7 @@ export function validateInput(fileText: string): MetricDefinitionRoot {
         }
         return input as MetricDefinitionRoot
     } catch (errors) {
-        console.error(`Error while trying to parse the definitions file: ${JSON.stringify(errors)}`)
+        console.error(`Error while trying to parse the definitions file ${fileName}: ${JSON.stringify(errors)}`)
         throw Error('Failed to parse')
     }
 }

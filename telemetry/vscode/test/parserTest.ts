@@ -16,12 +16,12 @@ describe('Parser', () => {
             ],
             "metrics": []
         }`
-        expect(() => validateInput(input)).toThrowError('Failed to parse')
+        expect(() => validateInput(input, '/not/a/real/path')).toThrowError('Failed to parse')
     })
 
     test('Missing metrics field', () => {
         const input = `{"types": []}`
-        expect(() => validateInput(input)).toThrowError('Failed to parse')
+        expect(() => validateInput(input, '/not/a/real/path')).toThrowError('Failed to parse')
     })
 
     test('Invalid data types', () => {
@@ -35,13 +35,13 @@ describe('Parser', () => {
             ],
             "metrics": []
         }`
-        expect(() => validateInput(input)).toThrowError('Failed to parse')
+        expect(() => validateInput(input, '/not/a/real/path')).toThrowError('Failed to parse')
     })
 
     test('Successful parse', () => {
         const input = `{
             "metrics": []
         }`
-        validateInput(input)
+        validateInput(input, '/not/a/real/path')
     })
 })
