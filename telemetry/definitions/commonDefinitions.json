@@ -779,8 +779,8 @@
             "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
         },
         {
-            "name": "sqs_editQueueAttributes",
-            "description": "Edit the Queue attributes",
+            "name": "sqs_editQueueParameters",
+            "description": "Edit the Queue parameters",
             "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
         },
         {
