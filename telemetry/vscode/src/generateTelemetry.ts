@@ -10,6 +10,7 @@ import * as path from 'path'
 import * as _ from 'lodash'
 import { CommandLineArguments, MetricDefinitionRoot, validateInput } from './parser'
 import { generateTelemetry, generateHelperFunctions } from './generate'
+import { readFileSync } from 'fs-extra'
 
 function parseArguments(): CommandLineArguments {
     let input: string[] = []
@@ -51,7 +52,10 @@ function formatOutput(output: string) {
     `
 
     const args = parseArguments()
-    const rawDefinitions: MetricDefinitionRoot = args.inputFiles.map(validateInput).reduce(
+    const rawDefinitions: MetricDefinitionRoot = args.inputFiles.map((path) => {
+        const fileInput = readFileSync(path, 'utf8') 
+        return validateInput(fileInput)
+    }).reduce(
         (item: MetricDefinitionRoot, input: MetricDefinitionRoot) => {
             item.types!.push(...(input.types ?? []))
             item.metrics.push(...input.metrics)
