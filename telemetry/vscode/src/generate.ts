@@ -3,7 +3,18 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { MetadataType, MetricMetadataType, MetricMetadata, Metric, MetricDefinitionRoot } from './parser'
+import { readFile, readFileSync, writeFileSync } from 'fs-extra'
+import _ = require('lodash')
+import {
+    MetadataType,
+    MetricMetadataType,
+    MetricMetadata,
+    Metric,
+    MetricDefinitionRoot,
+    CommandLineArguments,
+    validateInput,
+} from './parser'
+import * as prettier from 'prettier'
 
 function toTitleCase(s: string): string {
     return s.replace(s[0], s[0].toUpperCase())
@@ -11,10 +22,7 @@ function toTitleCase(s: string): string {
 
 // converts snake_case to PascalCase. E.x. lambda_invoke => LambdaInvoke
 function metricToTypeName(m: Metric): string {
-    return m.name
-        .split('_')
-        .map(toTitleCase)
-        .join('')
+    return m.name.split('_').map(toTitleCase).join('')
 }
 
 function globalArgs(): string[] {
@@ -22,7 +30,7 @@ function globalArgs(): string[] {
         '// The time that the event took place',
         'createTime?: Date',
         '// Value based on unit and call type',
-        'value?: number'
+        'value?: number',
     ]
 }
 
@@ -81,20 +89,21 @@ export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
     })
 
     metrics.forEach((metric: Metric) => {
-        const metadata: MetricMetadataType[] = metric.metadata?.map((item: MetricMetadata) => {
-            const foundMetadata: MetadataType | undefined = metadataTypes?.find(
-                (candidate: MetadataType) => candidate.name === item.type
-            )
-            if (!foundMetadata) {
-                console.log(`Metric ${metric.name} references metadata ${item.type} that is not found!`)
-                throw undefined
-            }
+        const metadata: MetricMetadataType[] =
+            metric.metadata?.map((item: MetricMetadata) => {
+                const foundMetadata: MetadataType | undefined = metadataTypes?.find(
+                    (candidate: MetadataType) => candidate.name === item.type
+                )
+                if (!foundMetadata) {
+                    console.log(`Metric ${metric.name} references metadata ${item.type} that is not found!`)
+                    throw undefined
+                }
 
-            return {
-                ...foundMetadata,
-                required: item.required ?? true
-            }
-        }) ?? []
+                return {
+                    ...foundMetadata,
+                    required: item.required ?? true,
+                }
+            }) ?? []
 
         const name = metricToTypeName(metric)
         str += `interface ${name} {
@@ -110,9 +119,12 @@ export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
 
         str += `export function record${name}(args${metadata.every(item => !item.required) ? '?' : ''}: ${name}) {
     let metadata: any[] = []
-    ${metadata.map(
-        (item: MetadataType) => `if(args?.${item.name}) {metadata.push({Key: '${item.name}', Value: args.${item.name}.toString()})}`
-    ).join('\n')}
+    ${metadata
+        .map(
+            (item: MetadataType) =>
+                `if(args?.${item.name}) {metadata.push({Key: '${item.name}', Value: args.${item.name}.toString()})}`
+        )
+        .join('\n')}
     ext.telemetry.record({
             MetricName: '${metric.name}',
             Value: args?.value ?? 1,
@@ -127,8 +139,49 @@ export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
     return str
 }
 
+export async function generate(args: CommandLineArguments) {
+    let output = `
+    /*!
+     * Copyright ${new Date().getUTCFullYear()} Amazon.com, Inc. or its affiliates. All Rights Reserved.
+     * SPDX-License-Identifier: Apache-2.0
+     */
+
+    import { ext } from '../extensionGlobals'
+    `
+
+    const rawDefinitions: MetricDefinitionRoot = args.inputFiles
+        .map(path => {
+            const fileInput = readFileSync(path, 'utf8')
+            return validateInput(fileInput)
+        })
+        .reduce(
+            (item: MetricDefinitionRoot, input: MetricDefinitionRoot) => {
+                item.types!.push(...(input.types ?? []))
+                item.metrics.push(...input.metrics)
+                return item
+            },
+            { types: [], metrics: [] }
+        )
+    // Allow read in files to overwrite default definitions. First one wins, so the extra
+    // files are read before the default resources (above)
+    const input = {
+        types: _.uniqBy(rawDefinitions.types, 'name'),
+        metrics: _.uniqBy(rawDefinitions.metrics, 'name'),
+    }
+    output += generateTelemetry(input)
+    output += generateHelperFunctions()
+
+    const options = await prettier.resolveConfig(await readFile(`${__dirname}/../.prettierrc`, 'utf-8'))
+    const formattedOutput = prettier.format(output, {parser: 'typescript', ...options})
+
+    writeFileSync(args.outputFile, formattedOutput)
+
+    console.log('Done generating!')
+}
+
 export function generateHelperFunctions(): string {
     return `
+
 export function millisecondsSince(d: Date): number {
     return Date.now() - Number(d)
 }

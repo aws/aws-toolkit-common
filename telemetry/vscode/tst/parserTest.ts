@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
- import { validateInput } from '../src/parser'
+import { validateInput } from '../src/parser'
 
 describe('Parser', () => {
     test('Type missing description fails', () => {

@@ -1,0 +1,153 @@
+/*!
+ * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import { ext } from '../extensionGlobals'
+export type LambdaRuntime = 'dotnetcore2.1' | 'nodejs12.x'
+interface LambdaDelete {
+    // The duration of the operation in miliseconds
+    duration: number
+    // a test boolean type
+    booltype: boolean
+    // The time that the event took place,
+    createTime?: Date
+    // Value based on unit and call type,
+    value?: number
+}
+/**
+ * called when deleting lambdas remotely
+ * @param args See the LambdaDelete interface
+ * @returns Nothing
+ */
+export function recordLambdaDelete(args: LambdaDelete) {
+    let metadata: any[] = []
+    if (args?.duration) {
+        metadata.push({ Key: 'duration', Value: args.duration.toString() })
+    }
+    if (args?.booltype) {
+        metadata.push({ Key: 'booltype', Value: args.booltype.toString() })
+    }
+    ext.telemetry.record({
+        MetricName: 'lambda_delete',
+        Value: args?.value ?? 1,
+        EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
+        Unit: 'None',
+        Passive: undefined,
+        Metadata: metadata,
+    })
+}
+interface LambdaCreate {
+    // The lambda runtime
+    lambdaRuntime: LambdaRuntime
+    // untyped string type
+    arbitraryString: string
+    // The time that the event took place,
+    createTime?: Date
+    // Value based on unit and call type,
+    value?: number
+}
+/**
+ * called when creating lambdas remotely
+ * @param args See the LambdaCreate interface
+ * @returns Nothing
+ */
+export function recordLambdaCreate(args: LambdaCreate) {
+    let metadata: any[] = []
+    if (args?.lambdaRuntime) {
+        metadata.push({ Key: 'lambdaRuntime', Value: args.lambdaRuntime.toString() })
+    }
+    if (args?.arbitraryString) {
+        metadata.push({ Key: 'arbitraryString', Value: args.arbitraryString.toString() })
+    }
+    ext.telemetry.record({
+        MetricName: 'lambda_create',
+        Value: args?.value ?? 1,
+        EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
+        Unit: 'None',
+        Passive: undefined,
+        Metadata: metadata,
+    })
+}
+interface LambdaRemoteinvoke {
+    // The lambda runtime
+    lambdaRuntime?: LambdaRuntime
+    // a test int type
+    inttype: number
+    // The time that the event took place,
+    createTime?: Date
+    // Value based on unit and call type,
+    value?: number
+}
+/**
+ * called when invoking lambdas remotely
+ * @param args See the LambdaRemoteinvoke interface
+ * @returns Nothing
+ */
+export function recordLambdaRemoteinvoke(args: LambdaRemoteinvoke) {
+    let metadata: any[] = []
+    if (args?.lambdaRuntime) {
+        metadata.push({ Key: 'lambdaRuntime', Value: args.lambdaRuntime.toString() })
+    }
+    if (args?.inttype) {
+        metadata.push({ Key: 'inttype', Value: args.inttype.toString() })
+    }
+    ext.telemetry.record({
+        MetricName: 'lambda_remoteinvoke',
+        Value: args?.value ?? 1,
+        EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
+        Unit: 'None',
+        Passive: undefined,
+        Metadata: metadata,
+    })
+}
+interface NoMetadata {
+    // The time that the event took place,
+    createTime?: Date
+    // Value based on unit and call type,
+    value?: number
+}
+/**
+ * called when invoking lambdas remotely
+ * @param args See the NoMetadata interface
+ * @returns Nothing
+ */
+export function recordNoMetadata(args?: NoMetadata) {
+    let metadata: any[] = []
+
+    ext.telemetry.record({
+        MetricName: 'no_metadata',
+        Value: args?.value ?? 1,
+        EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
+        Unit: 'None',
+        Passive: undefined,
+        Metadata: metadata,
+    })
+}
+interface PassivePassive {
+    // The time that the event took place,
+    createTime?: Date
+    // Value based on unit and call type,
+    value?: number
+}
+/**
+ * a passive metric
+ * @param args See the PassivePassive interface
+ * @returns Nothing
+ */
+export function recordPassivePassive(args?: PassivePassive) {
+    let metadata: any[] = []
+
+    ext.telemetry.record({
+        MetricName: 'passive_passive',
+        Value: args?.value ?? 1,
+        EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
+        Unit: 'None',
+        Passive: true,
+        Metadata: metadata,
+    })
+}
+
+export function millisecondsSince(d: Date): number {
+    return Date.now() - Number(d)
+}

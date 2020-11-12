@@ -34,15 +34,5 @@
         "lodash": "^4.17.20",
         "prettier": "^2.1.2",
         "yargs": "^16.1.0"
-    },
-    "prettier": {
-        "printWidth": 120,
-        "trailingComma": "es5",
-        "tabWidth": 4,
-        "singleQuote": true,
-        "semi": false,
-        "bracketSpacing": true,
-        "arrowParens": "avoid",
-        "endOfLine": "lf"
     }
 }

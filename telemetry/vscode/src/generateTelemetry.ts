@@ -3,14 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { writeFileSync } from 'fs'
-import { spawnSync } from 'child_process'
 import { argv } from 'yargs'
 import * as path from 'path'
 import * as _ from 'lodash'
-import { CommandLineArguments, MetricDefinitionRoot, validateInput } from './parser'
-import { generateTelemetry, generateHelperFunctions } from './generate'
-import { readFileSync } from 'fs-extra'
+import { CommandLineArguments } from './parser'
+import { generate } from './generate'
 
 function parseArguments(): CommandLineArguments {
     let input: string[] = []
@@ -28,53 +25,12 @@ function parseArguments(): CommandLineArguments {
 
     return {
         inputFiles: input,
-        outputFile: argv.output as string
+        outputFile: argv.output as string,
     }
 }
 
-function formatOutput(output: string) {
-    try {
-        spawnSync('npx', ['prettier', '--write', output])
-    } catch (e) {
-        console.warn(`Unable to run prettier on output ${e}`)
-    }
-}
-
-// Generate
+// main run, parse input then generate
 ;(() => {
-    let output = `
-    /*!
-     * Copyright ${new Date().getUTCFullYear()} Amazon.com, Inc. or its affiliates. All Rights Reserved.
-     * SPDX-License-Identifier: Apache-2.0
-     */
-
-    import { ext } from '../extensionGlobals'
-    `
-
     const args = parseArguments()
-    const rawDefinitions: MetricDefinitionRoot = args.inputFiles.map((path) => {
-        const fileInput = readFileSync(path, 'utf8') 
-        return validateInput(fileInput)
-    }).reduce(
-        (item: MetricDefinitionRoot, input: MetricDefinitionRoot) => {
-            item.types!.push(...(input.types ?? []))
-            item.metrics.push(...input.metrics)
-            return item
-        },
-        { types: [], metrics: [] }
-    )
-    // Allow read in files to overwrite default definitions. First one wins, so the extra
-    // files are read before the default resources (above)
-    const input = {
-        types: _.uniqBy(rawDefinitions.types, 'name'),
-        metrics: _.uniqBy(rawDefinitions.metrics, 'name')
-    }
-    output += generateTelemetry(input)
-    output += generateHelperFunctions()
-
-    writeFileSync(args.outputFile, output)
-
-    console.log('Done generating, formatting!')
-
-    formatOutput(args.outputFile)
+    await generate(args)
 })()
