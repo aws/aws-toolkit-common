@@ -1,0 +1,23 @@
+{
+    "types": [
+        {
+            "name": "result",
+            "allowedValues": [
+                "Succeeded",
+                "Failed",
+                "Cancelled",
+                "CamelCase",
+                "dash-separated",
+                "underscore_separated"
+            ],
+            "description": "The result of the operation"
+        }
+    ],
+    "metrics": [
+        {
+            "name": "metadata_hasResult",
+            "description": "It has a result",
+            "metadata": [{ "type": "result" }]
+        }
+    ]
+}
