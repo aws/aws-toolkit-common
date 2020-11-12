@@ -30,7 +30,7 @@ function parseArguments(): CommandLineArguments {
 }
 
 // main run, parse input then generate
-;(() => {
+;(async () => {
     const args = parseArguments()
     await generate(args)
 })()

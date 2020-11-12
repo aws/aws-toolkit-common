@@ -5,7 +5,7 @@
 
 import { generate } from '../src/generate'
 import { tmpdir } from 'os'
-import { readFileSync } from 'fs-extra'
+import { readFile } from 'fs-extra'
 
 describe('Generator', () => {
     let tempDir: string
@@ -18,7 +18,9 @@ describe('Generator', () => {
             await testGenerator(['resources/invalidInput.json'], '/invalid/file/path' )
         } catch (e) {
             expect(e).not.toBeNull
+            return
         }
+        throw Error("Test did not throw as expected")
     })
 
     test('Generates with normal input', async () => {
@@ -33,8 +35,8 @@ describe('Generator', () => {
         const output = `${tempDir}/output`
         await generate({ inputFiles: inputFiles.map(item => `${__dirname}/${item}`), outputFile: output })
         // TODO remove spaces and line returns so that it matches more generally? pull in a better matching lib?
-        const actualOutput = readFileSync(output, 'utf-8')
-        const expectedOutput = readFileSync(`${__dirname}/${expectedOutputFile}`, 'utf-8')
+        const actualOutput = await readFile(output, 'utf-8')
+        const expectedOutput = await readFile(`${__dirname}/${expectedOutputFile}`, 'utf-8')
         expect(actualOutput).toEqual(expectedOutput)
     }
 })
