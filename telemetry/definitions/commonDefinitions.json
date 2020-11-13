@@ -476,6 +476,26 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "ecr_copyRepositoryUri",
+            "description": "Called when the user copies the repository uri from a node"
+        },
+        {
+            "name": "ecr_createRepository",
+            "description": "Called when creating a new ECR repository",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ecr_deleteRepository",
+            "description": "Called when deleting an existing ECR repository",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ecr_deleteTags",
+            "unit": "Count",
+            "description": "Called when deleting a tag in an ECR repository. The operation is a batch operation by default, value represents the number of tags deleted.",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "ecr_deployImage",
             "description": "Called when deploying an image to ECR",
             "metadata": [{ "type": "result" }, { "type": "regionId" }]
