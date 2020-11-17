@@ -480,6 +480,10 @@
             "description": "Called when the user copies the repository uri from a node"
         },
         {
+            "name": "ecr_copyTagUri",
+            "description": "Called when the user copies the repository tag uri from a node. The tag uri is the repository uri + : + the tag name"
+        },
+        {
             "name": "ecr_createRepository",
             "description": "Called when creating a new ECR repository",
             "metadata": [{ "type": "result" }]
