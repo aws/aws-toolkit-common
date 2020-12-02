@@ -75,6 +75,7 @@
             "allowedValues": [
                 "dotnetcore3.1",
                 "dotnetcore2.1",
+                "dotnet5.0",
                 "nodejs12.x",
                 "nodejs10.x",
                 "nodejs8.10",
@@ -602,6 +603,7 @@
             "name": "lambda_deploy",
             "description": "Called when deploying a Lambda Function",
             "metadata": [
+                { "type": "lambdaPackageType" },
                 { "type": "result" },
                 { "type": "regionId" },
                 { "type": "initialDeploy" },

@@ -2039,6 +2039,212 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
+        /// Called when the user copies the repository uri from a node
+        public static void RecordEcrCopyRepositoryUri(this ITelemetryLogger telemetryLogger, EcrCopyRepositoryUri payload)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ecr_copyRepositoryUri";
+                datum.Unit = Unit.None;
+                datum.Passive = false;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when the user copies the repository tag uri from a node. The tag uri is the repository uri + : + the tag name
+        public static void RecordEcrCopyTagUri(this ITelemetryLogger telemetryLogger, EcrCopyTagUri payload)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ecr_copyTagUri";
+                datum.Unit = Unit.None;
+                datum.Passive = false;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when creating a new ECR repository
+        public static void RecordEcrCreateRepository(this ITelemetryLogger telemetryLogger, EcrCreateRepository payload)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ecr_createRepository";
+                datum.Unit = Unit.None;
+                datum.Passive = false;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when deleting an existing ECR repository
+        public static void RecordEcrDeleteRepository(this ITelemetryLogger telemetryLogger, EcrDeleteRepository payload)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ecr_deleteRepository";
+                datum.Unit = Unit.None;
+                datum.Passive = false;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when deleting a tag in an ECR repository. The operation is a batch operation by default, value represents the number of tags deleted.
+        public static void RecordEcrDeleteTags(this ITelemetryLogger telemetryLogger, EcrDeleteTags payload)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ecr_deleteTags";
+                datum.Unit = Unit.Count;
+                datum.Passive = false;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
         /// Called when deploying an image to ECR
         public static void RecordEcrDeployImage(this ITelemetryLogger telemetryLogger, EcrDeployImage payload)
         {
@@ -2635,6 +2841,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("update", payload.Update.Value);
                 }
 
+                datum.AddMetadata("lambdaPackageType", payload.LambdaPackageType);
+
                 datum.AddMetadata("result", payload.Result);
 
                 metrics.Data.Add(datum);
@@ -2728,6 +2936,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("runtime", payload.Runtime.Value);
                 }
+
+                datum.AddMetadata("lambdaPackageType", payload.LambdaPackageType);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2866,6 +3076,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.Value = 1;
                 }
+
+                datum.AddMetadata("lambdaPackageType", payload.LambdaPackageType);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3324,6 +3536,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("templateName", payload.TemplateName);
 
                 datum.AddMetadata("version", payload.Version);
+
+                if (payload.LambdaPackageType.HasValue)
+                {
+                    datum.AddMetadata("lambdaPackageType", payload.LambdaPackageType.Value);
+                }
 
                 datum.AddMetadata("reason", payload.Reason);
 
@@ -4486,8 +4703,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
-        /// Edit the Queue attributes
-        public static void RecordSqsEditQueueAttributes(this ITelemetryLogger telemetryLogger, SqsEditQueueAttributes payload)
+        /// Edit the Queue parameters
+        public static void RecordSqsEditQueueParameters(this ITelemetryLogger telemetryLogger, SqsEditQueueParameters payload)
         {
             try
             {
@@ -4503,7 +4720,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 metrics.Data = new List<MetricDatum>();
 
                 var datum = new MetricDatum();
-                datum.MetricName = "sqs_editQueueAttributes";
+                datum.MetricName = "sqs_editQueueParameters";
                 datum.Unit = Unit.None;
                 datum.Passive = false;
                 if (payload.Value.HasValue)
@@ -5110,6 +5327,30 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     }
     
     /// Metric field type
+    /// The Lambda Package type of the function
+    public struct LambdaPackageType
+    {
+        
+        private string _value;
+        
+        /// Zip
+        public static readonly LambdaPackageType Zip = new LambdaPackageType("Zip");
+        
+        /// Image
+        public static readonly LambdaPackageType Image = new LambdaPackageType("Image");
+        
+        public LambdaPackageType(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
     /// The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client.
     public struct ServiceType
     {
@@ -5196,6 +5437,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// dotnetcore2.1
         public static readonly Runtime Dotnetcore21 = new Runtime("dotnetcore2.1");
+        
+        /// dotnet5.0
+        public static readonly Runtime Dotnet50 = new Runtime("dotnet5.0");
         
         /// nodejs12.x
         public static readonly Runtime Nodejs12x = new Runtime("nodejs12.x");
@@ -5872,6 +6116,40 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Result Result;
     }
     
+    /// Called when the user copies the repository uri from a node
+    public sealed class EcrCopyRepositoryUri : BaseTelemetryEvent
+    {
+    }
+    
+    /// Called when the user copies the repository tag uri from a node. The tag uri is the repository uri + : + the tag name
+    public sealed class EcrCopyTagUri : BaseTelemetryEvent
+    {
+    }
+    
+    /// Called when creating a new ECR repository
+    public sealed class EcrCreateRepository : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+    }
+    
+    /// Called when deleting an existing ECR repository
+    public sealed class EcrDeleteRepository : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+    }
+    
+    /// Called when deleting a tag in an ECR repository. The operation is a batch operation by default, value represents the number of tags deleted.
+    public sealed class EcrDeleteTags : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+    }
+    
     /// Called when deploying an image to ECR
     public sealed class EcrDeployImage : BaseTelemetryEvent
     {
@@ -6007,6 +6285,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - If the operation was an update or not
         public System.Boolean? Update;
         
+        /// The Lambda Package type of the function
+        public LambdaPackageType LambdaPackageType;
+        
         /// The result of the operation
         public Result Result;
     }
@@ -6028,6 +6309,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The lambda runtime
         public Runtime? Runtime;
+        
+        /// The Lambda Package type of the function
+        public LambdaPackageType LambdaPackageType;
         
         /// The result of the operation
         public Result Result;
@@ -6061,6 +6345,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     /// Called when deploying a Lambda Function
     public sealed class LambdaDeploy : BaseTelemetryEvent
     {
+        
+        /// The Lambda Package type of the function
+        public LambdaPackageType LambdaPackageType;
         
         /// The result of the operation
         public Result Result;
@@ -6189,6 +6476,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - A generic version metadata
         public string Version;
+        
+        /// Optional - The Lambda Package type of the function
+        public LambdaPackageType? LambdaPackageType;
         
         /// Optional - The reason for a metric or exception depending on context
         public string Reason;
@@ -6422,8 +6712,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SqsQueueType SqsQueueType;
     }
     
-    /// Edit the Queue attributes
-    public sealed class SqsEditQueueAttributes : BaseTelemetryEvent
+    /// Edit the Queue parameters
+    public sealed class SqsEditQueueParameters : BaseTelemetryEvent
     {
         
         /// The result of the operation
