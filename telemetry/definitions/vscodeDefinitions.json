@@ -56,7 +56,7 @@
         {
             "name": "sam_attachDebugger",
             "description": "Called after trying to attach a debugger to a local sam invoke",
-            "metadata": [{ "type": "result" }, { "type": "runtime" }, { "type": "attempts" }, { "type": "duration" }]
+            "metadata": [{ "type": "result" }, { "type": "lambdaPackageType" }, { "type": "runtime" }, { "type": "attempts" }, { "type": "duration" }]
         }
     ]
 }

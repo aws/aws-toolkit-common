@@ -11,6 +11,14 @@
             "description": "The result of the operation"
         },
         {
+            "name": "lambdaPackageType",
+            "allowedValues": [
+                "Zip",
+                "Image"
+            ],
+            "description": "The Lambda Package type of the function"
+        },
+        {
             "name": "serviceType",
             "allowedValues": [
                 "apigateway",
@@ -568,7 +576,7 @@
         {
             "name": "lambda_editFunction",
             "description": "Called when creating lambdas remotely",
-            "metadata": [{ "type": "update", "required": false }, { "type": "result" }]
+            "metadata": [{ "type": "update", "required": false }, {"type": "lambdaPackageType"}, { "type": "result" }]
         },
         {
             "name": "lambda_invokeRemote",
@@ -578,7 +586,7 @@
         {
             "name": "lambda_invokeLocal",
             "description": "Called when invoking lambdas locally (with SAM in most toolkits)",
-            "metadata": [{ "type": "runtime", "required": false }, { "type": "result" }, { "type": "debug" }]
+            "metadata": [{ "type": "runtime", "required": false }, {"type": "lambdaPackageType"}, { "type": "result" }, { "type": "debug" }]
         },
         {
             "name": "lambda_import",
@@ -661,6 +669,7 @@
                 { "type": "runtime", "required": false },
                 { "type": "templateName", "required": false },
                 { "type": "version", "required": false },
+                { "type": "lambdaPackageType", "required": false },
                 { "type": "reason", "required": false },
                 { "type": "eventBridgeSchema", "required": false }
             ]
