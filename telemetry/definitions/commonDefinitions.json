@@ -710,6 +710,11 @@
             "description": "Copy the path of a S3 object to the clipboard"
         },
         {
+            "name": "s3_copyUri",
+            "description": "Copy the S3 URI of a S3 object to the clipboard (e.g. s3://<bucketName>/abc.txt)",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "s3_copyUrl",
             "description": "Copy the URL of a S3 object to the clipboard",
             "metadata": [{ "type": "result" }, { "type": "presigned" }]
