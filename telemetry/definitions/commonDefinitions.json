@@ -322,7 +322,8 @@
         {
             "name": "aws_helpQuickstart",
             "description": "Open the quickstart guide",
-            "metadata": [{ "type": "result" }]
+            "metadata": [{ "type": "result" }],
+            "passive": true
         },
         {
             "name": "aws_showExtensionSource",
