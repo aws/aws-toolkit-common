@@ -142,7 +142,7 @@ export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
 export async function generate(args: CommandLineArguments) {
     let output = `
     /*!
-     * Copyright ${new Date().getUTCFullYear()} Amazon.com, Inc. or its affiliates. All Rights Reserved.
+     * Copyright 2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
      * SPDX-License-Identifier: Apache-2.0
      */
 
