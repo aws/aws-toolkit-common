@@ -12,10 +12,7 @@
         },
         {
             "name": "lambdaPackageType",
-            "allowedValues": [
-                "Zip",
-                "Image"
-            ],
+            "allowedValues": ["Zip", "Image"],
             "description": "The Lambda Package type of the function"
         },
         {
@@ -63,6 +60,11 @@
             "name": "reason",
             "type": "string",
             "description": "The reason for a metric or exception depending on context"
+        },
+        {
+            "name": "url",
+            "type": "string",
+            "description": "The url associated with a metric"
         },
         {
             "name": "eventBridgeSchema",
@@ -578,7 +580,7 @@
         {
             "name": "lambda_editFunction",
             "description": "Called when creating lambdas remotely",
-            "metadata": [{ "type": "update", "required": false }, {"type": "lambdaPackageType"}, { "type": "result" }]
+            "metadata": [{ "type": "update", "required": false }, { "type": "lambdaPackageType" }, { "type": "result" }]
         },
         {
             "name": "lambda_invokeRemote",
@@ -588,7 +590,12 @@
         {
             "name": "lambda_invokeLocal",
             "description": "Called when invoking lambdas locally (with SAM in most toolkits)",
-            "metadata": [{ "type": "runtime", "required": false }, {"type": "lambdaPackageType"}, { "type": "result" }, { "type": "debug" }]
+            "metadata": [
+                { "type": "runtime", "required": false },
+                { "type": "lambdaPackageType" },
+                { "type": "result" },
+                { "type": "debug" }
+            ]
         },
         {
             "name": "lambda_import",
@@ -892,6 +899,25 @@
             "name": "cloudwatchinsights_openDetailedLogRecord",
             "description": "Get all details for the selected log record",
             "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "toolkit_getExternalResource",
+            "description": "The toolkit tried to retrieve blob data from a url",
+            "metadata": [
+                {
+                    "type": "url",
+                    "required": true
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                }
+            ],
+            "passive": true
         }
     ]
 }
