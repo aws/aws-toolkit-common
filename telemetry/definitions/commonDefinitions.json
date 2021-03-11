@@ -592,7 +592,6 @@
             "description": "Called when invoking lambdas locally (with SAM in most toolkits)",
             "metadata": [
                 { "type": "runtime", "required": false },
-                { "type": "version", "required": false },
                 { "type": "lambdaPackageType" },
                 { "type": "result" },
                 { "type": "debug" }
