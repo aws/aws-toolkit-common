@@ -9,7 +9,7 @@ The format is JSON object with two fields:
 ### Types
 
 _types_ is an array that holds telemetry metadata types. This is the information posted to the telemetry service like
-`isDebug` or `runtime`.  Entries can be referenced from other files. The field is optional.
+`isDebug` or `runtime`. Entries can be referenced from other files. The field is optional.
 
 ```
 "types": [
@@ -26,9 +26,9 @@ _types_ is an array that holds telemetry metadata types. This is the information
 
 ### Metrics
 
-*metrics* is an array that contains the actual metrics posted to the service. `name` defines the metric name what is
-posted to the service, `metadata` contains data from `types` that define characteristics of the telemetry beyond 
- `createTime` and a `value`. `name` must be in the format`namespace_camelCaseName` (e.g. `s3_uploadObject`). The field is optional.
+_metrics_ is an array that contains the actual metrics posted to the service. `name` defines the metric name what is
+posted to the service, `metadata` contains data from `types` that define characteristics of the telemetry beyond
+`createTime` and a `value`. `name` must be in the format`namespace_camelCaseName` (e.g. `s3_uploadObject`). The field is optional.
 
 ```
 "metrics": [
@@ -62,6 +62,7 @@ If not specified `createTime` defaults to UTC now, `value` defaults to `1.0`.
 ### Example
 
 #### Input
+
 ```json
 {
     "types": [
@@ -73,15 +74,11 @@ If not specified `createTime` defaults to UTC now, `value` defaults to `1.0`.
         {
             "name": "runtime",
             "type": "string",
-            "allowedValues": [
-                "dotnetcore2.1",
-                "...",
-                "python2.7"
-            ],
+            "allowedValues": ["dotnetcore2.1", "...", "python2.7"],
             "description": "The Lambda runtime"
         },
-    "..."
-],
+        "..."
+    ],
     "metrics": [
         {
             "name": "lambda_invokeRemote",
@@ -92,6 +89,7 @@ If not specified `createTime` defaults to UTC now, `value` defaults to `1.0`.
     ]
 }
 ```
+
 #### Output
 
 ```typescript
