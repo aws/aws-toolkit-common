@@ -9,5 +9,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Core
     {
         public DateTime? CreatedOn;
         public double? Value;
+        public string AwsAccount;
+        public string AwsRegion;
     }
 }

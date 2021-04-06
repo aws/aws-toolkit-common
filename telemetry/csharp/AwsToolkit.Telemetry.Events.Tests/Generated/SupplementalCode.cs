@@ -53,6 +53,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 {
                     datum.Value = 1;
                 }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
 
                 if (payload.Runtime.HasValue)
                 {
@@ -105,6 +107,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 {
                     datum.Value = 1;
                 }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
 
                 datum.AddMetadata("bees", payload.Bees);
 
@@ -147,6 +151,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 {
                     datum.Value = 1;
                 }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
