@@ -55,6 +55,10 @@ _Additionally_ two additional global arguments that can be appended to any gener
 createTime?: Date
 // Value based on unit and call type
 value?: number
+// The AWS Region associated with a metric
+string? awsAccount
+// The AWS Region associated with a metric
+string? awsRegion
 ```
 
 If not specified `createTime` defaults to UTC now, `value` defaults to `1.0`.
@@ -102,6 +106,10 @@ interface LambdaRemoteinvoke {
     createTime?: Date
     // Value based on unit and call type,
     value?: number
+    // The AWS Region associated with a metric
+    awsAccount?: string
+    // The AWS Region associated with a metric
+    awsRegion?: string
 }
 
 /**
@@ -118,6 +126,8 @@ export function recordLambdaRemoteinvoke(args: LambdaRemoteinvoke) {
                 Value: args?.value ?? 1,
                 Unit: 'None',
                 Metadata: [
+                    { Key: 'awsAccount', Value: args.awsAccount ?? '' },
+                    { Key: 'awsRegion', Value: args.awsRegion ?? '' },
                     { Key: 'runtime', Value: args.runtime?.toString() ?? '' },
                     { Key: 'result', Value: args.result?.toString() ?? '' }
                 ]
