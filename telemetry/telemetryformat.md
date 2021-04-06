@@ -55,9 +55,14 @@ _Additionally_ two additional global arguments that can be appended to any gener
 createTime?: Date
 // Value based on unit and call type
 value?: number
-// The AWS Region associated with a metric
+// The AWS account ID associated with a metric
+// If a metric is not associated with credentials: "n/a"
+// If a metric is associated with credentials, but credentials are not selected: "not-set"
+// If a metric is associated with credentials, but an account ID cannot be obtained: "invalid"
 string? awsAccount
 // The AWS Region associated with a metric
+// If a metric is not associated with a region: "n/a"
+// If a metric is associated with a region, but no region is known: "not-set"
 string? awsRegion
 ```
 
@@ -106,7 +111,7 @@ interface LambdaRemoteinvoke {
     createTime?: Date
     // Value based on unit and call type,
     value?: number
-    // The AWS Region associated with a metric
+    // The AWS account ID associated with a metric
     awsAccount?: string
     // The AWS Region associated with a metric
     awsRegion?: string
