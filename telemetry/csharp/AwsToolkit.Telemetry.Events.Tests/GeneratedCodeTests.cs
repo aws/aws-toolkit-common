@@ -30,6 +30,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
         {
             var lambdaInvokeRemote = new LambdaInvokeRemote()
             {
+                AwsAccount = "abcdacbdacbd",
+                AwsRegion = "us-region-1",
                 Result = Result.Succeeded,
                 Runtime = Runtime.Dotnetcore31,
             };
@@ -47,6 +49,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.Equal("lambda_invokeRemote", datum.MetricName);
             Assert.Equal(Unit.None, datum.Unit);
             Assert.False(datum.Passive);
+            Assert.Equal(lambdaInvokeRemote.AwsAccount, datum.Metadata["awsAccount"]);
+            Assert.Equal(lambdaInvokeRemote.AwsRegion, datum.Metadata["awsRegion"]);
             Assert.Equal(lambdaInvokeRemote.Runtime.Value.ToString(), datum.Metadata["runtime"]);
             Assert.Equal(lambdaInvokeRemote.Result.ToString(), datum.Metadata["result"]);
         }

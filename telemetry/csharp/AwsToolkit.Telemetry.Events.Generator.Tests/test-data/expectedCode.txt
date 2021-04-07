@@ -53,6 +53,8 @@ namespace Test
                 {
                     datum.Value = 1;
                 }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -93,6 +95,8 @@ namespace Test
                 {
                     datum.Value = 1;
                 }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -133,6 +137,8 @@ namespace Test
                 {
                     datum.Value = 1;
                 }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
 
                 datum.AddMetadata("duration", payload.Duration);
 
@@ -183,6 +189,8 @@ namespace Test
                 {
                     datum.Value = 1;
                 }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
 
                 datum.AddMetadata("duration", payload.Duration);
 
@@ -233,6 +241,8 @@ namespace Test
                 {
                     datum.Value = 1;
                 }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
 
                 if (payload.Duration.HasValue)
                 {
@@ -295,6 +305,8 @@ namespace Test
                 {
                     datum.Value = 1;
                 }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);

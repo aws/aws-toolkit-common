@@ -9,7 +9,7 @@ The format is JSON object with two fields:
 ### Types
 
 _types_ is an array that holds telemetry metadata types. This is the information posted to the telemetry service like
-`isDebug` or `runtime`.  Entries can be referenced from other files. The field is optional.
+`isDebug` or `runtime`. Entries can be referenced from other files. The field is optional.
 
 ```
 "types": [
@@ -26,9 +26,9 @@ _types_ is an array that holds telemetry metadata types. This is the information
 
 ### Metrics
 
-*metrics* is an array that contains the actual metrics posted to the service. `name` defines the metric name what is
-posted to the service, `metadata` contains data from `types` that define characteristics of the telemetry beyond 
- `createTime` and a `value`. `name` must be in the format`namespace_camelCaseName` (e.g. `s3_uploadObject`). The field is optional.
+_metrics_ is an array that contains the actual metrics posted to the service. `name` defines the metric name what is
+posted to the service, `metadata` contains data from `types` that define characteristics of the telemetry beyond
+`createTime` and a `value`. `name` must be in the format`namespace_camelCaseName` (e.g. `s3_uploadObject`). The field is optional.
 
 ```
 "metrics": [
@@ -55,6 +55,15 @@ _Additionally_ two additional global arguments that can be appended to any gener
 createTime?: Date
 // Value based on unit and call type
 value?: number
+// The AWS account ID associated with a metric
+// If a metric is not associated with credentials: "n/a"
+// If a metric is associated with credentials, but credentials are not selected: "not-set"
+// If a metric is associated with credentials, but an account ID cannot be obtained: "invalid"
+string? awsAccount
+// The AWS Region associated with a metric
+// If a metric is not associated with a region: "n/a"
+// If a metric is associated with a region, but no region is known: "not-set"
+string? awsRegion
 ```
 
 If not specified `createTime` defaults to UTC now, `value` defaults to `1.0`.
@@ -62,6 +71,7 @@ If not specified `createTime` defaults to UTC now, `value` defaults to `1.0`.
 ### Example
 
 #### Input
+
 ```json
 {
     "types": [
@@ -73,15 +83,11 @@ If not specified `createTime` defaults to UTC now, `value` defaults to `1.0`.
         {
             "name": "runtime",
             "type": "string",
-            "allowedValues": [
-                "dotnetcore2.1",
-                "...",
-                "python2.7"
-            ],
+            "allowedValues": ["dotnetcore2.1", "...", "python2.7"],
             "description": "The Lambda runtime"
         },
-    "..."
-],
+        "..."
+    ],
     "metrics": [
         {
             "name": "lambda_invokeRemote",
@@ -92,6 +98,7 @@ If not specified `createTime` defaults to UTC now, `value` defaults to `1.0`.
     ]
 }
 ```
+
 #### Output
 
 ```typescript
@@ -104,6 +111,10 @@ interface LambdaRemoteinvoke {
     createTime?: Date
     // Value based on unit and call type,
     value?: number
+    // The AWS account ID associated with a metric
+    awsAccount?: string
+    // The AWS Region associated with a metric
+    awsRegion?: string
 }
 
 /**
@@ -120,6 +131,8 @@ export function recordLambdaRemoteinvoke(args: LambdaRemoteinvoke) {
                 Value: args?.value ?? 1,
                 Unit: 'None',
                 Metadata: [
+                    { Key: 'awsAccount', Value: args.awsAccount ?? '' },
+                    { Key: 'awsRegion', Value: args.awsRegion ?? '' },
                     { Key: 'runtime', Value: args.runtime?.toString() ?? '' },
                     { Key: 'result', Value: args.result?.toString() ?? '' }
                 ]

@@ -368,6 +368,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             valueCond.FalseStatements.Add(new CodeAssignStatement(datumValue, new CodePrimitiveExpression(1)));
             tryStatements.Add(valueCond);
 
+            // Generate: datum.AddMetadata("awsAccount", payload.AwsAccount);
+            var payloadAwsAccount = new CodeFieldReferenceExpression(payload, "AwsAccount");
+            tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
+                new CodePrimitiveExpression("awsAccount"), payloadAwsAccount)));
+
+            // Generate: datum.AddMetadata("awsRegion", payload.AwsRegion);
+            var payloadAwsRegion = new CodeFieldReferenceExpression(payload, "AwsRegion");
+            tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
+                new CodePrimitiveExpression("awsRegion"), payloadAwsRegion)));
+
+
             // Set MetricDatum Metadata values
             metric.metadata?.ToList().ForEach(metadata =>
             {
