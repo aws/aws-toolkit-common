@@ -458,15 +458,10 @@
             "metadata": [{ "type": "result" }]
         },
         {
-            "name": "codecommit_setCredentialsAutomatically",
-            "description": "A connection is automatically established to CodeCommit to perform actions on repos",
+            "name": "codecommit_setCredentials",
+            "description": "A connection is established to CodeCommit to perform actions on repos",
             "metadata": [{ "type": "credentialType", "required": false }],
             "passive": true
-        },
-        {
-            "name": "codecommit_setCredentialsManually",
-            "description": "A connection is manually established to CodeCommit to perform actions on repos",
-            "metadata": [{ "type": "credentialType", "required": false }]
         },
         {
             "name": "dynamodb_openTable",
