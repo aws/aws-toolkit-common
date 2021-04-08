@@ -448,6 +448,22 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "codecommit_cloneRepo",
+            "description": "A repo is cloned from CodeCommit",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "codecommit_createRepo",
+            "description": "A repo is created in CodeCommit",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "codecommit_setCredentials",
+            "description": "A connection is established to CodeCommit to perform actions on repos",
+            "metadata": [{ "type": "credentialType", "required": false }],
+            "passive": true
+        },
+        {
             "name": "dynamodb_openTable",
             "description": "Open a DynamoDB table in the table browser",
             "metadata": [{ "type": "result" }]
