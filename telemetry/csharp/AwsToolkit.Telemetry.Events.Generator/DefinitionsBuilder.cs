@@ -261,6 +261,16 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
                 cls.Comments.Add(new CodeCommentStatement(metric.description, true));
             }
 
+            // Generate the constructor
+            var typeConstructor = new CodeConstructor {Attributes = MemberAttributes.Public};
+
+            // Initialize the passive field based on this metric declaration
+            // Generate: this.Passive = true/false;
+            var valueFieldRef = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), "Passive");
+            typeConstructor.Statements.Add(new CodeAssignStatement(valueFieldRef, new CodePrimitiveExpression(metric.passive)));
+
+            cls.Members.Add(typeConstructor);
+
             // Generate the class members
             metric.metadata?
                 .ToList().ForEach(metadata =>
@@ -356,7 +366,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             tryStatements.Add(new CodeVariableDeclarationStatement("var", datum.VariableName, new CodeObjectCreateExpression(MetricDatumFullName)));
             tryStatements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "MetricName"), new CodePrimitiveExpression(metric.name)));
             tryStatements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "Unit"), GetMetricUnitExpression(metric)));
-            tryStatements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "Passive"), new CodePrimitiveExpression(metric.passive)));
+            tryStatements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "Passive"), new CodeFieldReferenceExpression(payload, "Passive")));
 
             // Set Datum.Value to (payload.Value ?? 1)
             var payloadValue = new CodeFieldReferenceExpression(payload, "Value");
