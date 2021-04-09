@@ -43,7 +43,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "apigateway_copyUrl";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -87,7 +87,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "apigateway_invokeLocal";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -140,7 +140,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "apigateway_invokeRemote";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -186,7 +186,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "apigateway_startLocalServer";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -230,7 +230,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "aws_copyArn";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -274,7 +274,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "aws_deleteResource";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -320,7 +320,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "aws_setCredentials";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -367,7 +367,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "aws_setRegion";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -411,7 +411,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "aws_setPartition";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -455,7 +455,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "aws_openCredentials";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -499,7 +499,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "aws_loadCredentials";
                 datum.Unit = Unit.Count;
-                datum.Passive = true;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -543,7 +543,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "aws_createCredentials";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -585,7 +585,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "aws_injectCredentials";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -631,7 +631,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "aws_validateCredentials";
                 datum.Unit = Unit.None;
-                datum.Passive = true;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -680,7 +680,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "aws_help";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -722,7 +722,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "aws_helpQuickstart";
                 datum.Unit = Unit.None;
-                datum.Passive = true;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -766,7 +766,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "aws_showExtensionSource";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -808,7 +808,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "aws_refreshExplorer";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -850,7 +850,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "aws_reportPluginIssue";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -892,7 +892,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "beanstalk_deploy";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -954,7 +954,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "beanstalk_openApplication";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -998,7 +998,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "beanstalk_openEnvironment";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1042,7 +1042,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudfront_openDistribution";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1086,7 +1086,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudfront_openStreamingDistribution";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1130,7 +1130,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudfront_openInvalidationRequest";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1174,7 +1174,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchlogs_openGroup";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1223,7 +1223,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchlogs_openStream";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1272,7 +1272,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchlogs_downloadStreamToFile";
                 datum.Unit = Unit.Bytes;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1316,7 +1316,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchlogs_openStreamInEditor";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1360,7 +1360,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchlogs_viewCurrentMessagesInEditor";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1404,7 +1404,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchlogs_wrapEvents";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1448,7 +1448,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchlogs_tailStream";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1492,7 +1492,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchlogs_refreshGroup";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1534,7 +1534,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchlogs_refreshStream";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1576,7 +1576,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchlogs_searchStream";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1620,7 +1620,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchlogs_searchGroup";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1664,7 +1664,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchlogs_showEventsAround";
                 datum.Unit = Unit.Milliseconds;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1708,7 +1708,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudformation_deploy";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1756,7 +1756,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudformation_open";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1769,6 +1769,141 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
                 datum.AddMetadata("result", payload.Result);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// A repo is cloned from CodeCommit
+        public static void RecordCodecommitCloneRepo(this ITelemetryLogger telemetryLogger, CodecommitCloneRepo payload)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codecommit_cloneRepo";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("result", payload.Result);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// A repo is created in CodeCommit
+        public static void RecordCodecommitCreateRepo(this ITelemetryLogger telemetryLogger, CodecommitCreateRepo payload)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codecommit_createRepo";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("result", payload.Result);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// A connection is established to CodeCommit to perform actions on repos
+        public static void RecordCodecommitSetCredentials(this ITelemetryLogger telemetryLogger, CodecommitSetCredentials payload)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codecommit_setCredentials";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                if (payload.CredentialType.HasValue)
+                {
+                    datum.AddMetadata("credentialType", payload.CredentialType.Value);
+                }
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1800,7 +1935,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "dynamodb_openTable";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1844,7 +1979,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ec2_openInstances";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1888,7 +2023,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ec2_openAMIs";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1932,7 +2067,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ec2_openElasticIPs";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1976,7 +2111,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ec2_openKeyPairs";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2020,7 +2155,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ec2_openSecurityGroups";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2064,7 +2199,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ec2_openVolumes";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2108,7 +2243,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ecs_openCluster";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2152,7 +2287,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ecr_copyRepositoryUri";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2194,7 +2329,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ecr_copyTagUri";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2236,7 +2371,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ecr_createRepository";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2280,7 +2415,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ecr_deleteRepository";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2324,7 +2459,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ecr_deleteTags";
                 datum.Unit = Unit.Count;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2368,7 +2503,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ecr_deployImage";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2414,7 +2549,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ecs_deployScheduledTask";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2462,7 +2597,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ecs_deployService";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2510,7 +2645,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ecs_deployTask";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2558,7 +2693,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "ecs_openRepository";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2602,7 +2737,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "feedback_result";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2646,7 +2781,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "iam_openRole";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2690,7 +2825,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "iam_openGroup";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2734,7 +2869,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "iam_openUser";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2778,7 +2913,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "lambda_delete";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2824,7 +2959,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "lambda_configure";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2868,7 +3003,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "lambda_create";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2912,7 +3047,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "lambda_goToHandler";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2956,7 +3091,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "lambda_editFunction";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3007,7 +3142,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "lambda_invokeRemote";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3056,7 +3191,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "lambda_invokeLocal";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3111,7 +3246,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "lambda_import";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3160,7 +3295,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "lambda_updateFunctionCode";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3209,7 +3344,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "lambda_deploy";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3266,7 +3401,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudformation_delete";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3310,7 +3445,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "rds_getCredentials";
                 datum.Unit = Unit.Milliseconds;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3358,7 +3493,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "rds_openInstances";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3402,7 +3537,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "rds_openSecurityGroups";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3446,7 +3581,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "rds_openSubnets";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3490,7 +3625,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "rds_createConnectionConfiguration";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3538,7 +3673,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "redshift_getCredentials";
                 datum.Unit = Unit.Milliseconds;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3584,7 +3719,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "redshift_createConnectionConfiguration";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3630,7 +3765,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sam_deploy";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3676,7 +3811,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sam_init";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3738,7 +3873,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "schemas_view";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3782,7 +3917,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "schemas_download";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3831,7 +3966,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "schemas_search";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3875,7 +4010,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "session_start";
                 datum.Unit = Unit.None;
-                datum.Passive = true;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3917,7 +4052,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "session_end";
                 datum.Unit = Unit.None;
-                datum.Passive = true;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3959,7 +4094,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "s3_copyBucketName";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4001,7 +4136,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "s3_copyPath";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4043,7 +4178,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "s3_copyUri";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4087,7 +4222,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "s3_copyUrl";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4133,7 +4268,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "s3_createBucket";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4177,7 +4312,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "s3_deleteBucket";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4221,7 +4356,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "s3_deleteObject";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4265,7 +4400,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "s3_createFolder";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4309,7 +4444,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "s3_downloadObject";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4353,7 +4488,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "s3_downloadObjects";
                 datum.Unit = Unit.Count;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4397,7 +4532,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "s3_uploadObject";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4441,7 +4576,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "s3_renameObject";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4485,7 +4620,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "s3_uploadObjects";
                 datum.Unit = Unit.Count;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4529,7 +4664,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "s3_openEditor";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4573,7 +4708,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "s3_openBucketProperties";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4617,7 +4752,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "s3_openMultipartUpload";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4661,7 +4796,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "toolkit_init";
                 datum.Unit = Unit.None;
-                datum.Passive = true;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4705,7 +4840,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sqs_openQueue";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4749,7 +4884,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sqs_createQueue";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4798,7 +4933,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sqs_sendMessage";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4844,7 +4979,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sqs_deleteMessages";
                 datum.Unit = Unit.Count;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4890,7 +5025,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sqs_subscribeSns";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4936,7 +5071,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sqs_configureLambdaTrigger";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4982,7 +5117,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sqs_editQueueParameters";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5028,7 +5163,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sqs_purgeQueue";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5074,7 +5209,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sns_openTopic";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5118,7 +5253,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sns_openSubscriptions";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5162,7 +5297,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "vpc_openRouteTables";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5206,7 +5341,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "vpc_openGateways";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5250,7 +5385,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "vpc_openACLs";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5294,7 +5429,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "vpc_openSubnets";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5338,7 +5473,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "vpc_openVPCs";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5382,7 +5517,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchinsights_openEditor";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5426,7 +5561,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchinsights_executeQuery";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5474,7 +5609,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchinsights_saveQuery";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5518,7 +5653,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchinsights_retrieveQuery";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5562,7 +5697,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "cloudwatchinsights_openDetailedLogRecord";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5606,7 +5741,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "toolkit_getExternalResource";
                 datum.Unit = Unit.None;
-                datum.Passive = true;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6052,6 +6187,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public ApigatewayCopyUrl()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Invoking one simulated API Gateway call using the SAM cli
@@ -6069,6 +6209,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// If the action was run in debug mode or not
         public bool Debug;
+        
+        public ApigatewayInvokeLocal()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Calling a remote API Gateway
@@ -6080,6 +6225,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - Any valid HTTP method (GET/HEAD/etc)
         public string HttpMethod;
+        
+        public ApigatewayInvokeRemote()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when starting a local API Gateway server simulator with SAM. Only called when starting it for long running testing, not for single invokes
@@ -6088,6 +6238,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public ApigatewayStartLocalServer()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Copy the ARN of an AWS resource
@@ -6096,6 +6251,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client.
         public ServiceType ServiceType;
+        
+        public AwsCopyArn()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Delete an AWS resource
@@ -6107,6 +6267,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public AwsDeleteResource()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Select a credentials profile
@@ -6115,6 +6280,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The type of credential that was selected
         public CredentialType? CredentialType;
+        
+        public AwsSetCredentials()
+        {
+            this.Passive = false;
+        }
     }
     
     /// A region change occurred
@@ -6123,6 +6293,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The ID of the region that was selected
         public string RegionId;
+        
+        public AwsSetRegion()
+        {
+            this.Passive = false;
+        }
     }
     
     /// A partition change occurred
@@ -6131,6 +6306,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The ID of the partition that was selected
         public string PartitionId;
+        
+        public AwsSetPartition()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open the credentials file
@@ -6139,6 +6319,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public AwsOpenCredentials()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Load credentials from a credential source
@@ -6147,11 +6332,21 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The ID of the source of credentials (e.g. profile)
         public string CredentialSourceId;
+        
+        public AwsLoadCredentials()
+        {
+            this.Passive = true;
+        }
     }
     
     /// Create a new credentials file
     public sealed class AwsCreateCredentials : BaseTelemetryEvent
     {
+        
+        public AwsCreateCredentials()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Inject selected AWS credentials into a third-party run (e.g. RunConfiguration)
@@ -6163,6 +6358,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - A free-text field to record runtimes that may be separate from Lambda runtimes
         public string RuntimeString;
+        
+        public AwsInjectCredentials()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Validate credentials when selecting new credentials
@@ -6174,11 +6374,21 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The type of credential that was selected
         public CredentialType? CredentialType;
+        
+        public AwsValidateCredentials()
+        {
+            this.Passive = true;
+        }
     }
     
     /// Open docs for the extension
     public sealed class AwsHelp : BaseTelemetryEvent
     {
+        
+        public AwsHelp()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open the quickstart guide
@@ -6187,21 +6397,41 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public AwsHelpQuickstart()
+        {
+            this.Passive = true;
+        }
     }
     
     /// Open the repo for the extension
     public sealed class AwsShowExtensionSource : BaseTelemetryEvent
     {
+        
+        public AwsShowExtensionSource()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Refresh the AWS explorer window
     public sealed class AwsRefreshExplorer : BaseTelemetryEvent
     {
+        
+        public AwsRefreshExplorer()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Report an issue with the plugin
     public sealed class AwsReportPluginIssue : BaseTelemetryEvent
     {
+        
+        public AwsReportPluginIssue()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when deploying an application to Elastic Beanstalk
@@ -6228,6 +6458,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - Whether or not Elastic Beanstalk enhanced health reporting and monitoring is being used
         public System.Boolean? EnhancedHealthEnabled;
+        
+        public BeanstalkDeploy()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view the status of the Beanstalk Application
@@ -6236,6 +6471,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public BeanstalkOpenApplication()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view the status of the Beanstalk Environment
@@ -6244,6 +6484,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public BeanstalkOpenEnvironment()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view the status of the CloudFront Distribution
@@ -6252,6 +6497,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public CloudfrontOpenDistribution()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view the status of the CloudFront Streaming Distribution
@@ -6260,6 +6510,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public CloudfrontOpenStreamingDistribution()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view the Cloudfront Invalidation requests
@@ -6268,6 +6523,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public CloudfrontOpenInvalidationRequest()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open the CloudWatch Logs group window. ServiceType indicates that it was opened from a different service (like directly from an ECS container)
@@ -6279,6 +6539,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client.
         public ServiceType? ServiceType;
+        
+        public CloudwatchlogsOpenGroup()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a CloudWatch Logs stream in the window. ServiceType indicates that it was opened from a different service (like directly from an ECS container)
@@ -6290,6 +6555,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client.
         public ServiceType? ServiceType;
+        
+        public CloudwatchlogsOpenStream()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Download a stream to a file on disk. Value indicates the final size of the formatted stream.
@@ -6298,6 +6568,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public CloudwatchlogsDownloadStreamToFile()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Download a stream to memory then open in an editor.
@@ -6306,6 +6581,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public CloudwatchlogsOpenStreamInEditor()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Copy the currently open (possibly filtered) messages to an editor
@@ -6314,6 +6594,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public CloudwatchlogsViewCurrentMessagesInEditor()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Word wrap events off/on
@@ -6322,6 +6607,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// True if turned on, false if turned off
         public bool Enabled;
+        
+        public CloudwatchlogsWrapEvents()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Tail stream off/on
@@ -6330,16 +6620,31 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// True if turned on, false if turned off
         public bool Enabled;
+        
+        public CloudwatchlogsTailStream()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Refresh group is pressed
     public sealed class CloudwatchlogsRefreshGroup : BaseTelemetryEvent
     {
+        
+        public CloudwatchlogsRefreshGroup()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Refresh stream is pressed
     public sealed class CloudwatchlogsRefreshStream : BaseTelemetryEvent
     {
+        
+        public CloudwatchlogsRefreshStream()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when a stream is searched
@@ -6348,6 +6653,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public CloudwatchlogsSearchStream()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when a group is searched
@@ -6356,6 +6666,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public CloudwatchlogsSearchGroup()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Show event around a time period in ms specified by Value
@@ -6364,6 +6679,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public CloudwatchlogsShowEventsAround()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when deploying a CloudFormation template
@@ -6378,6 +6698,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Whether or not the deploy targets a new destination (true) or an existing destination (false)
         public bool InitialDeploy;
+        
+        public CloudformationDeploy()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a CloudFormation stack in the stack viewer
@@ -6386,6 +6711,50 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public CloudformationOpen()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// A repo is cloned from CodeCommit
+    public sealed class CodecommitCloneRepo : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public CodecommitCloneRepo()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// A repo is created in CodeCommit
+    public sealed class CodecommitCreateRepo : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public CodecommitCreateRepo()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// A connection is established to CodeCommit to perform actions on repos
+    public sealed class CodecommitSetCredentials : BaseTelemetryEvent
+    {
+        
+        /// Optional - The type of credential that was selected
+        public CredentialType? CredentialType;
+        
+        public CodecommitSetCredentials()
+        {
+            this.Passive = true;
+        }
     }
     
     /// Open a DynamoDB table in the table browser
@@ -6394,6 +6763,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public DynamodbOpenTable()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view EC2 Instances
@@ -6402,6 +6776,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public Ec2OpenInstances()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view EC2 AMIs
@@ -6410,6 +6789,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public Ec2OpenAMIs()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view EC2 Elastic IPs
@@ -6418,6 +6802,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public Ec2OpenElasticIPs()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open to view EC2 Key pairs
@@ -6426,6 +6815,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public Ec2OpenKeyPairs()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view EC2 Security Groups
@@ -6434,6 +6828,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public Ec2OpenSecurityGroups()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view EC2 Volumes
@@ -6442,6 +6841,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public Ec2OpenVolumes()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open to view status of an ECS Cluster
@@ -6450,16 +6854,31 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public EcsOpenCluster()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when the user copies the repository uri from a node
     public sealed class EcrCopyRepositoryUri : BaseTelemetryEvent
     {
+        
+        public EcrCopyRepositoryUri()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when the user copies the repository tag uri from a node. The tag uri is the repository uri + : + the tag name
     public sealed class EcrCopyTagUri : BaseTelemetryEvent
     {
+        
+        public EcrCopyTagUri()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when creating a new ECR repository
@@ -6468,6 +6887,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public EcrCreateRepository()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when deleting an existing ECR repository
@@ -6476,6 +6900,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public EcrDeleteRepository()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when deleting a tag in an ECR repository. The operation is a batch operation by default, value represents the number of tags deleted.
@@ -6484,6 +6913,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public EcrDeleteTags()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when deploying an image to ECR
@@ -6495,6 +6929,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The ID of the region that was selected
         public string RegionId;
+        
+        public EcrDeployImage()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when deploying a scheduled task to an ECS cluster
@@ -6509,6 +6948,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Infrastructure type used by ECS tasks and services
         public EcsLaunchType EcsLaunchType;
+        
+        public EcsDeployScheduledTask()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when deploying a service to an ECS cluster
@@ -6523,6 +6967,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Infrastructure type used by ECS tasks and services
         public EcsLaunchType EcsLaunchType;
+        
+        public EcsDeployService()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when deploying a task to an ECS cluster
@@ -6537,6 +6986,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Infrastructure type used by ECS tasks and services
         public EcsLaunchType EcsLaunchType;
+        
+        public EcsDeployTask()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open to view status of an ECS Repository
@@ -6545,6 +6999,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public EcsOpenRepository()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called while submitting in-IDE feedback
@@ -6553,6 +7012,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public FeedbackResult()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view/edit IAM Role Policy
@@ -6561,6 +7025,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public IamOpenRole()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view/edit IAM Group Policy
@@ -6569,6 +7038,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public IamOpenGroup()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view/edit IAM User Configuration
@@ -6577,6 +7051,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public IamOpenUser()
+        {
+            this.Passive = false;
+        }
     }
     
     /// called when deleting lambdas remotely
@@ -6588,6 +7067,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public LambdaDelete()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when opening the local configuration of a Lambda to edit
@@ -6596,6 +7080,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public LambdaConfigure()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when creating lambdas remotely
@@ -6604,6 +7093,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The lambda runtime
         public Runtime Runtime;
+        
+        public LambdaCreate()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Jump to a lambda handler from elsewhere
@@ -6612,6 +7106,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public LambdaGoToHandler()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when creating lambdas remotely
@@ -6626,6 +7125,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public LambdaEditFunction()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when invoking lambdas remotely
@@ -6637,6 +7141,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public LambdaInvokeRemote()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when invoking lambdas locally (with SAM in most toolkits)
@@ -6657,6 +7166,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// If the action was run in debug mode or not
         public bool Debug;
+        
+        public LambdaInvokeLocal()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when importing a remote Lambda function
@@ -6668,6 +7182,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public LambdaImport()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when updating a Lambda function's code outside the context of a SAM template
@@ -6679,6 +7198,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public LambdaUpdateFunctionCode()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when deploying a Lambda Function
@@ -6702,6 +7226,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - Language-specific identification. Examples: v4.6.1, netcoreapp3.1, nodejs12.x. Not AWS Lambda specific. Allows for additional details when other fields are opaque, such as the Lambda runtime value 'provided'.
         public string Platform;
+        
+        public LambdaDeploy()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when deleting a cloudformation stack
@@ -6710,6 +7239,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public CloudformationDelete()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when getting IAM/SecretsManager credentials for a RDS database. Value represents how long it takes in ms.
@@ -6724,6 +7258,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The database engine used (mysql/postgres/redshift)
         public string DatabaseEngine;
+        
+        public RdsGetCredentials()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view RDS DB Instances
@@ -6732,6 +7271,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public RdsOpenInstances()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view RDS Security Groups
@@ -6740,6 +7284,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public RdsOpenSecurityGroups()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view RDS Subnet Groups
@@ -6748,6 +7297,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public RdsOpenSubnets()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when creating a new database connection configuration to for a RDS database. In Datagrip we do not get this infromation if it is created directly, so this is only counts actions.
@@ -6762,6 +7316,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The database engine used (mysql/postgres/redshift)
         public string DatabaseEngine;
+        
+        public RdsCreateConnectionConfiguration()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when getting IAM/SecretsManager credentials for a Redshift database. Value represents how long it takes in ms.
@@ -6773,6 +7332,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// How the database credentials are being retrieved
         public DatabaseCredentials DatabaseCredentials;
+        
+        public RedshiftGetCredentials()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when creating a new database connection configuration to for a Redshift database. In Datagrip we do not get this infromation if it is created directly, so this only counts actions.
@@ -6784,6 +7348,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// How the database credentials are being retrieved
         public DatabaseCredentials DatabaseCredentials;
+        
+        public RedshiftCreateConnectionConfiguration()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when deploying a sam application
@@ -6795,6 +7364,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - A generic version metadata
         public string Version;
+        
+        public SamDeploy()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when initing a sam application
@@ -6821,6 +7395,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The name of the EventBridge Schema used in the operation
         public string EventBridgeSchema;
+        
+        public SamInit()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when selecting an EventBridge schema to view
@@ -6829,6 +7408,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public SchemasView()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when downloading an EventBridge schema
@@ -6840,6 +7424,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - Languages targeted by the schemas service
         public SchemaLanguage? SchemaLanguage;
+        
+        public SchemasDownload()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when searching an EventBridge schema registry
@@ -6848,26 +7437,51 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public SchemasSearch()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Called when starting the plugin
     public sealed class SessionStart : BaseTelemetryEvent
     {
+        
+        public SessionStart()
+        {
+            this.Passive = true;
+        }
     }
     
     /// Called when stopping the IDE on a best effort basis
     public sealed class SessionEnd : BaseTelemetryEvent
     {
+        
+        public SessionEnd()
+        {
+            this.Passive = true;
+        }
     }
     
     /// Copy the bucket name to the clipboard
     public sealed class S3CopyBucketName : BaseTelemetryEvent
     {
+        
+        public S3CopyBucketName()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Copy the path of a S3 object to the clipboard
     public sealed class S3CopyPath : BaseTelemetryEvent
     {
+        
+        public S3CopyPath()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Copy the S3 URI of a S3 object to the clipboard (e.g. s3://<bucketName>/abc.txt)
@@ -6876,6 +7490,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public S3CopyUri()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Copy the URL of a S3 object to the clipboard
@@ -6887,6 +7506,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Whether or not it was a presigned request
         public bool Presigned;
+        
+        public S3CopyUrl()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Create a S3 bucket
@@ -6895,6 +7519,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public S3CreateBucket()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Delete a S3 bucket
@@ -6903,6 +7532,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public S3DeleteBucket()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Delete a single S3 object
@@ -6911,6 +7545,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public S3DeleteObject()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Create an S3 folder
@@ -6919,6 +7558,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public S3CreateFolder()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Download a single S3 object
@@ -6927,6 +7571,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public S3DownloadObject()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Download multiple S3 objects
@@ -6935,6 +7584,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public S3DownloadObjects()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Upload a single S3 object
@@ -6943,6 +7597,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public S3UploadObject()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Rename a single S3 object
@@ -6951,6 +7610,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public S3RenameObject()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Upload multiple S3 objects
@@ -6959,6 +7623,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public S3UploadObjects()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a view of a S3 bucket
@@ -6967,6 +7636,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public S3OpenEditor()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view S3 bucket properties
@@ -6975,6 +7649,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public S3OpenBucketProperties()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view S3 Multipart upload
@@ -6983,6 +7662,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public S3OpenMultipartUpload()
+        {
+            this.Passive = false;
+        }
     }
     
     /// The Toolkit has completed initialization
@@ -6991,6 +7675,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The duration of the operation in milliseconds
         public double Duration;
+        
+        public ToolkitInit()
+        {
+            this.Passive = true;
+        }
     }
     
     /// Open an SQS queue. Initially opens to either the send message pane or poll messages pane.
@@ -6999,6 +7688,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The type of an SQS Queue
         public SqsQueueType SqsQueueType;
+        
+        public SqsOpenQueue()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Create a new SQS queue
@@ -7010,6 +7704,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The type of an SQS Queue
         public SqsQueueType? SqsQueueType;
+        
+        public SqsCreateQueue()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Send a message to an SQS queue
@@ -7021,6 +7720,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The type of an SQS Queue
         public SqsQueueType SqsQueueType;
+        
+        public SqsSendMessage()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Delete one or more messages from an SQS queue. Value indicates the number of messages that we tried to delete.
@@ -7032,6 +7736,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The type of an SQS Queue
         public SqsQueueType SqsQueueType;
+        
+        public SqsDeleteMessages()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Subscribe the queue to messages from an sns topic
@@ -7043,6 +7752,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The type of an SQS Queue
         public SqsQueueType SqsQueueType;
+        
+        public SqsSubscribeSns()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Configure the queue as a trigger for a Lambda
@@ -7054,6 +7768,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The type of an SQS Queue
         public SqsQueueType SqsQueueType;
+        
+        public SqsConfigureLambdaTrigger()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Edit the Queue parameters
@@ -7065,6 +7784,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The type of an SQS Queue
         public SqsQueueType SqsQueueType;
+        
+        public SqsEditQueueParameters()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Purge all messages from the queue
@@ -7076,6 +7800,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The type of an SQS Queue
         public SqsQueueType SqsQueueType;
+        
+        public SqsPurgeQueue()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view details of SNS Topic
@@ -7084,6 +7813,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public SnsOpenTopic()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view SNS Subscriptions
@@ -7092,6 +7826,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public SnsOpenSubscriptions()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view VPC RouteTable
@@ -7100,6 +7839,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public VpcOpenRouteTables()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view VPC Internet Gateway
@@ -7108,6 +7852,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public VpcOpenGateways()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view VPC Network ACLs
@@ -7116,6 +7865,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public VpcOpenACLs()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view VPC Subnets
@@ -7124,6 +7878,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public VpcOpenSubnets()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open a window to view VPC details
@@ -7132,6 +7891,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public VpcOpenVPCs()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Open the insights query editor
@@ -7140,6 +7904,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Dialog open trigger source location
         public InsightsDialogOpenSource InsightsDialogOpenSource;
+        
+        public CloudwatchinsightsOpenEditor()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Start an insights query
@@ -7154,6 +7923,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// User-specified search string type while starting an insights query
         public InsightsQueryStringType InsightsQueryStringType;
+        
+        public CloudwatchinsightsExecuteQuery()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Save query parameters to AWS
@@ -7162,6 +7936,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public CloudwatchinsightsSaveQuery()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Retrieve list of available saved queries from AWS
@@ -7170,6 +7949,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public CloudwatchinsightsRetrieveQuery()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Get all details for the selected log record
@@ -7178,6 +7962,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public CloudwatchinsightsOpenDetailedLogRecord()
+        {
+            this.Passive = false;
+        }
     }
     
     /// The toolkit tried to retrieve blob data from a url
@@ -7192,5 +7981,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The reason for a metric or exception depending on context
         public string Reason;
+        
+        public ToolkitGetExternalResource()
+        {
+            this.Passive = true;
+        }
     }
 }

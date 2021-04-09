@@ -44,7 +44,7 @@ namespace Test
                 var datum = new MetricDatum();
                 datum.MetricName = "emit_someIntMs";
                 datum.Unit = Unit.Milliseconds;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -86,7 +86,7 @@ namespace Test
                 var datum = new MetricDatum();
                 datum.MetricName = "emit_noUnit";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -128,7 +128,7 @@ namespace Test
                 var datum = new MetricDatum();
                 datum.MetricName = "emit_someBigBlob";
                 datum.Unit = Unit.Count;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -180,7 +180,7 @@ namespace Test
                 var datum = new MetricDatum();
                 datum.MetricName = "emit_someBigBlob2";
                 datum.Unit = Unit.Count;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -232,7 +232,7 @@ namespace Test
                 var datum = new MetricDatum();
                 datum.MetricName = "emit_someBigOptionalBlob";
                 datum.Unit = Unit.Count;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -296,7 +296,7 @@ namespace Test
                 var datum = new MetricDatum();
                 datum.MetricName = "emit_passive";
                 datum.Unit = Unit.Count;
-                datum.Passive = true;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -322,11 +322,21 @@ namespace Test
     /// Emits milliseconds
     public sealed class EmitSomeIntMs : BaseTelemetryEvent
     {
+        
+        public EmitSomeIntMs()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Emits something without a unit defined
     public sealed class EmitNoUnit : BaseTelemetryEvent
     {
+        
+        public EmitNoUnit()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Emits a bunch of metadata varieties
@@ -347,6 +357,11 @@ namespace Test
         
         /// The lambda runtime
         public Runtime Runtime;
+        
+        public EmitSomeBigBlob()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Emits a bunch of metadata varieties - required not set
@@ -367,6 +382,11 @@ namespace Test
         
         /// The lambda runtime
         public Runtime Runtime;
+        
+        public EmitSomeBigBlob2()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Emits a bunch of optional metadata varieties
@@ -387,10 +407,20 @@ namespace Test
         
         /// Optional - The lambda runtime
         public Runtime? Runtime;
+        
+        public EmitSomeBigOptionalBlob()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Emit a passive metric
     public sealed class EmitPassive : BaseTelemetryEvent
     {
+        
+        public EmitPassive()
+        {
+            this.Passive = true;
+        }
     }
 }

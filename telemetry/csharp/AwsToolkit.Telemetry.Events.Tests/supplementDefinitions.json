@@ -38,6 +38,11 @@
             "name": "sample_testRun",
             "description": "Sample event that uses a unit",
             "unit": "Milliseconds"
+        },
+        {
+            "name": "sample_passive",
+            "description": "Sample event that is passive",
+            "passive": true
         }
     ]
 }

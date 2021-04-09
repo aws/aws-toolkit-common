@@ -44,7 +44,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sample_extendedInvoke";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -98,7 +98,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sample_releaseBees";
                 datum.Unit = Unit.None;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -142,7 +142,49 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 var datum = new MetricDatum();
                 datum.MetricName = "sample_testRun";
                 datum.Unit = Unit.Milliseconds;
-                datum.Passive = false;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Sample event that is passive
+        public static void RecordSamplePassive(this ITelemetryLogger telemetryLogger, SamplePassive payload)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "sample_passive";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -201,6 +243,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
         
         /// The result of the operation
         public Result Result;
+        
+        public SampleExtendedInvoke()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Sample event that uses types from this definition only
@@ -209,10 +256,30 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
         
         /// Number of bees
         public int Bees;
+        
+        public SampleReleaseBees()
+        {
+            this.Passive = false;
+        }
     }
     
     /// Sample event that uses a unit
     public sealed class SampleTestRun : BaseTelemetryEvent
     {
+        
+        public SampleTestRun()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Sample event that is passive
+    public sealed class SamplePassive : BaseTelemetryEvent
+    {
+        
+        public SamplePassive()
+        {
+            this.Passive = true;
+        }
     }
 }

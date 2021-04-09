@@ -56,6 +56,36 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
         }
 
         /// <summary>
+        /// RecordLambdaInvokeRemote is arbitrary here, we're checking that we can override the
+        /// Passive value.
+        /// </summary>
+        [Fact]
+        public void RecordLambdaInvokeRemote_AsPassive()
+        {
+            var lambdaInvokeRemote = new LambdaInvokeRemote()
+            {
+                Passive = true,
+                Result = Result.Succeeded,
+                Runtime = Runtime.Dotnetcore31,
+            };
+
+            _telemetryLogger.Object.RecordLambdaInvokeRemote(lambdaInvokeRemote);
+
+            Assert.NotNull(_recordedMetrics);
+            _telemetryLogger.Verify(
+                mock => mock.Record(_recordedMetrics),
+                Times.Once
+            );
+
+            var datum = Assert.Single(_recordedMetrics.Data);
+            Assert.NotNull(datum);
+            Assert.Equal("lambda_invokeRemote", datum.MetricName);
+            Assert.True(datum.Passive);
+            Assert.Equal(lambdaInvokeRemote.Runtime.Value.ToString(), datum.Metadata["runtime"]);
+            Assert.Equal(lambdaInvokeRemote.Result.ToString(), datum.Metadata["result"]);
+        }
+
+        /// <summary>
         /// RecordSamDeployWithVersion was chosen as a sample call that has an optional field (Version)
         /// </summary>
         [Fact]
@@ -110,6 +140,25 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.False(datum.Passive);
             Assert.False(datum.Metadata.ContainsKey("version"));
             Assert.Equal(samDeploy.Result.ToString(), datum.Metadata["result"]);
+        }
+
+        [Fact]
+        public void RecordNaturallyPassiveMetric()
+        {
+            var sessionStart = new SessionStart();
+
+            _telemetryLogger.Object.RecordSessionStart(sessionStart);
+
+            Assert.NotNull(_recordedMetrics);
+            _telemetryLogger.Verify(
+                mock => mock.Record(_recordedMetrics),
+                Times.Once
+            );
+
+            var datum = Assert.Single(_recordedMetrics.Data);
+            Assert.NotNull(datum);
+            Assert.Equal("session_start", datum.MetricName);
+            Assert.True(datum.Passive);
         }
     }
 }

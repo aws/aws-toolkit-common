@@ -107,5 +107,24 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.Equal(Unit.Milliseconds, datum.Unit);
             Assert.Equal(payload.Value.Value, datum.Value);
         }
+
+        [Fact]
+        public void PassiveSampleEvent()
+        {
+            var payload = new SamplePassive();
+
+            _telemetryLogger.Object.RecordSamplePassive(payload);
+
+            Assert.NotNull(_recordedMetrics);
+            _telemetryLogger.Verify(
+                mock => mock.Record(_recordedMetrics),
+                Times.Once
+            );
+
+            var datum = Assert.Single(_recordedMetrics.Data);
+            Assert.NotNull(datum);
+            Assert.Equal("sample_passive", datum.MetricName);
+            Assert.True(datum.Passive);
+        }
     }
 }
