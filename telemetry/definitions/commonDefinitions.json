@@ -78,6 +78,7 @@
                 "dotnetcore3.1",
                 "dotnetcore2.1",
                 "dotnet5.0",
+                "nodejs14.x",
                 "nodejs12.x",
                 "nodejs10.x",
                 "nodejs8.10",
