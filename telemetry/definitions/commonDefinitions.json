@@ -238,6 +238,11 @@
             "name": "ecsLaunchType",
             "allowedValues": ["ec2", "fargate"],
             "description": "Infrastructure type used by ECS tasks and services"
+        },
+        {
+            "name": "ecrDeploySource",
+            "allowedValues": ["dockerfile", "tag"],
+            "description": "The source content specified in the ECR deployment request"
         }
     ],
     "metrics": [
@@ -531,7 +536,11 @@
         {
             "name": "ecr_deployImage",
             "description": "Called when deploying an image to ECR",
-            "metadata": [{ "type": "result" }, { "type": "regionId" }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "regionId" },
+                { "type": "ecrDeploySource", "required": false }
+            ]
         },
         {
             "name": "ecs_deployScheduledTask",
