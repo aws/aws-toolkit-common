@@ -157,7 +157,6 @@
                 "assumeMfaRoleProfile",
                 "ssoProfile",
                 "envVars",
-                "windowsCredentialStore",
                 "ecsMetatdata",
                 "ec2Metadata",
                 "other"
@@ -280,7 +279,7 @@
             "name": "aws_setCredentials",
             "description": "Select a credentials profile",
             "metadata": [
-                { "type": "credentialType", "required": false }, 
+                { "type": "credentialType", "required": false },
                 { "type": "credentialSourceId", "required": false }
             ]
         },
