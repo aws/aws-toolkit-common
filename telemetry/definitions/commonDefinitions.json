@@ -17,29 +17,8 @@
         },
         {
             "name": "serviceType",
-            "allowedValues": [
-                "apigateway",
-                "beanstalk",
-                "cloudformation",
-                "cloudfront",
-                "dynamodb",
-                "ec2",
-                "ecr",
-                "ecs",
-                "iam",
-                "lambda",
-                "logs",
-                "rds",
-                "redshift",
-                "s3",
-                "schemas",
-                "sns",
-                "sqs",
-                "stepfunctions",
-                "vpc"
-            ],
             "type": "string",
-            "description": "The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client."
+            "description": "The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json"
         },
         {
             "name": "name",
