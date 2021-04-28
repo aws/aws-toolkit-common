@@ -122,7 +122,8 @@
         {
             "name": "credentialSourceId",
             "type": "string",
-            "description": "The ID of the source of credentials (e.g. profile)"
+            "description": "Where credentials are stored or retrieved from",
+            "allowedValues": ["sharedCredentials", "sdkStore", "ec2", "envVars", "other"]
         },
         {
             "name": "credentialType",
@@ -135,7 +136,6 @@
                 "assumeRoleProfile",
                 "assumeMfaRoleProfile",
                 "ssoProfile",
-                "envVars",
                 "ecsMetatdata",
                 "ec2Metadata",
                 "other"
@@ -517,11 +517,7 @@
         {
             "name": "ecr_deployImage",
             "description": "Called when deploying an image to ECR",
-            "metadata": [
-                { "type": "result" },
-                { "type": "regionId" },
-                { "type": "ecrDeploySource", "required": false }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "regionId" }, { "type": "ecrDeploySource", "required": false }]
         },
         {
             "name": "ecs_deployScheduledTask",
