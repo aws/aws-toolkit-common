@@ -31,6 +31,8 @@ function globalArgs(): string[] {
         'createTime?: Date',
         '// Value based on unit and call type',
         'value?: number',
+        '// Whether the metric is not explicitly called by the user',
+        'passive?: boolean'
     ]
 }
 
@@ -130,7 +132,7 @@ export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
             Value: args?.value ?? 1,
             EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
             Unit: '${metric.unit ?? 'None'}',
-            Passive: ${metric.passive},
+            Passive: args?.passive ?? ${metric.passive},
             Metadata: metadata
         })
 }`
