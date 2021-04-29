@@ -10,6 +10,8 @@ interface MetadataHasResult {
     createTime?: Date
     // Value based on unit and call type,
     value?: number
+    // Whether the metric is not explicitly called by the user,
+    passive?: boolean
 }
 /**
  * It does not actually have a result, yep
@@ -24,7 +26,7 @@ export function recordMetadataHasResult(args?: MetadataHasResult) {
         Value: args?.value ?? 1,
         EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
         Unit: 'None',
-        Passive: undefined,
+        Passive: args?.passive ?? undefined,
         Metadata: metadata,
     })
 }

@@ -14,6 +14,8 @@ interface LambdaDelete {
     createTime?: Date
     // Value based on unit and call type,
     value?: number
+    // Whether the metric is not explicitly called by the user,
+    passive?: boolean
 }
 /**
  * called when deleting lambdas remotely
@@ -33,7 +35,7 @@ export function recordLambdaDelete(args: LambdaDelete) {
         Value: args?.value ?? 1,
         EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
         Unit: 'None',
-        Passive: undefined,
+        Passive: args?.passive ?? undefined,
         Metadata: metadata,
     })
 }
@@ -46,6 +48,8 @@ interface LambdaCreate {
     createTime?: Date
     // Value based on unit and call type,
     value?: number
+    // Whether the metric is not explicitly called by the user,
+    passive?: boolean
 }
 /**
  * called when creating lambdas remotely
@@ -65,7 +69,7 @@ export function recordLambdaCreate(args: LambdaCreate) {
         Value: args?.value ?? 1,
         EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
         Unit: 'None',
-        Passive: undefined,
+        Passive: args?.passive ?? undefined,
         Metadata: metadata,
     })
 }
@@ -78,6 +82,8 @@ interface LambdaRemoteinvoke {
     createTime?: Date
     // Value based on unit and call type,
     value?: number
+    // Whether the metric is not explicitly called by the user,
+    passive?: boolean
 }
 /**
  * called when invoking lambdas remotely
@@ -97,7 +103,7 @@ export function recordLambdaRemoteinvoke(args: LambdaRemoteinvoke) {
         Value: args?.value ?? 1,
         EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
         Unit: 'None',
-        Passive: undefined,
+        Passive: args?.passive ?? undefined,
         Metadata: metadata,
     })
 }
@@ -106,6 +112,8 @@ interface NoMetadata {
     createTime?: Date
     // Value based on unit and call type,
     value?: number
+    // Whether the metric is not explicitly called by the user,
+    passive?: boolean
 }
 /**
  * called when invoking lambdas remotely
@@ -120,7 +128,7 @@ export function recordNoMetadata(args?: NoMetadata) {
         Value: args?.value ?? 1,
         EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
         Unit: 'None',
-        Passive: undefined,
+        Passive: args?.passive ?? undefined,
         Metadata: metadata,
     })
 }
@@ -129,6 +137,8 @@ interface PassivePassive {
     createTime?: Date
     // Value based on unit and call type,
     value?: number
+    // Whether the metric is not explicitly called by the user,
+    passive?: boolean
 }
 /**
  * a passive metric
@@ -143,7 +153,7 @@ export function recordPassivePassive(args?: PassivePassive) {
         Value: args?.value ?? 1,
         EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
         Unit: 'None',
-        Passive: true,
+        Passive: args?.passive ?? true,
         Metadata: metadata,
     })
 }
