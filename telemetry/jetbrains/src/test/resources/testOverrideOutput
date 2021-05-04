@@ -7,6 +7,7 @@ package software.aws.toolkits.telemetry
 
 import com.intellij.openapi.project.Project
 import java.time.Instant
+import kotlin.Boolean
 import kotlin.Double
 import kotlin.String
 import kotlin.Suppress
@@ -37,6 +38,7 @@ object MetadataTelemetry {
      */
     fun hasResult(
         project: Project? = null,
+        passive: Boolean = false,
         value: Double = 1.0,
         createTime: Instant = Instant.now()
     ) {
@@ -45,7 +47,7 @@ object MetadataTelemetry {
                 createTime(createTime)
                 unit(Unit.NONE)
                 value(value)
-                passive(false)
+                passive(passive)
             }
         }
     }
@@ -55,6 +57,7 @@ object MetadataTelemetry {
      */
     fun hasResult(
         metadata: MetricEventMetadata,
+        passive: Boolean = false,
         value: Double = 1.0,
         createTime: Instant = Instant.now()
     ) {
@@ -63,7 +66,7 @@ object MetadataTelemetry {
                 createTime(createTime)
                 unit(Unit.NONE)
                 value(value)
-                passive(false)
+                passive(passive)
             }
         }
     }
