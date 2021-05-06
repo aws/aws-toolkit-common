@@ -3,7 +3,7 @@ import org.everit.json.schema.loader.SchemaLoader
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.json.JSONObject
 
-val jacksonVersion = "2.10.0"
+val jacksonVersion = "2.12.3"
 val junitVersion = "4.13"
 val kotlinVersion = "1.3.20"
 val assertjVersion = "3.17.2"
