@@ -4,7 +4,7 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.json.JSONObject
 
 val jacksonVersion = "2.12.3"
-val junitVersion = "4.13"
+val junitVersion = "4.13.2"
 val kotlinVersion = "1.3.20"
 val assertjVersion = "3.17.2"
 
