@@ -12,44 +12,44 @@ import kotlin.Double
 import kotlin.Int
 import kotlin.String
 import kotlin.Suppress
-import software.amazon.awssdk.services.toolkittelemetry.model.Unit
+import kotlin.Unit
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
 /**
  * The lambda runtime
  */
-enum class LambdaRuntime(
-    private val value: String
+public enum class LambdaRuntime(
+    private val `value`: String
 ) {
     Dotnetcore21("dotnetcore2.1"),
-
     Nodejs12x("nodejs12.x"),
+    Unknown("unknown"),
+    ;
 
-    Unknown("unknown");
+    public override fun toString(): String = value
 
-    override fun toString(): String = value
-
-    companion object {
-        fun from(type: String): LambdaRuntime = values().firstOrNull { it.value == type } ?: Unknown
+    public companion object {
+        public fun from(type: String): LambdaRuntime = values().firstOrNull { it.value == type } ?:
+                Unknown
     }
 }
 
-object LambdaTelemetry {
+public object LambdaTelemetry {
     /**
      * called when creating lambdas remotely
      */
-    fun create(
+    public fun create(
         project: Project? = null,
         lambdaRuntime: LambdaRuntime,
         arbitraryString: String,
-        value: Double = 1.0,
+        `value`: Double = 1.0,
         createTime: Instant = Instant.now()
-    ) {
+    ): Unit {
         TelemetryService.getInstance().record(project) {
             datum("lambda_create") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
                 passive(false)
                 metadata("lambdaRuntime", lambdaRuntime.toString())
@@ -61,17 +61,17 @@ object LambdaTelemetry {
     /**
      * called when creating lambdas remotely
      */
-    fun create(
+    public fun create(
         metadata: MetricEventMetadata,
         lambdaRuntime: LambdaRuntime,
         arbitraryString: String,
-        value: Double = 1.0,
+        `value`: Double = 1.0,
         createTime: Instant = Instant.now()
-    ) {
+    ): Unit {
         TelemetryService.getInstance().record(metadata) {
             datum("lambda_create") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
                 passive(false)
                 metadata("lambdaRuntime", lambdaRuntime.toString())
@@ -83,17 +83,17 @@ object LambdaTelemetry {
     /**
      * called when deleting lambdas remotely
      */
-    fun delete(
+    public fun delete(
         project: Project? = null,
         duration: Double,
         booltype: Boolean,
-        value: Double = 1.0,
+        `value`: Double = 1.0,
         createTime: Instant = Instant.now()
-    ) {
+    ): Unit {
         TelemetryService.getInstance().record(project) {
             datum("lambda_delete") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
                 passive(false)
                 metadata("duration", duration.toString())
@@ -105,17 +105,17 @@ object LambdaTelemetry {
     /**
      * called when deleting lambdas remotely
      */
-    fun delete(
+    public fun delete(
         metadata: MetricEventMetadata,
         duration: Double,
         booltype: Boolean,
-        value: Double = 1.0,
+        `value`: Double = 1.0,
         createTime: Instant = Instant.now()
-    ) {
+    ): Unit {
         TelemetryService.getInstance().record(metadata) {
             datum("lambda_delete") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
                 passive(false)
                 metadata("duration", duration.toString())
@@ -127,17 +127,17 @@ object LambdaTelemetry {
     /**
      * called when invoking lambdas remotely
      */
-    fun remoteinvoke(
+    public fun remoteinvoke(
         project: Project? = null,
         lambdaRuntime: LambdaRuntime? = null,
         inttype: Int,
-        value: Double = 1.0,
+        `value`: Double = 1.0,
         createTime: Instant = Instant.now()
-    ) {
+    ): Unit {
         TelemetryService.getInstance().record(project) {
             datum("lambda_remoteinvoke") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
                 passive(false)
                 if(lambdaRuntime != null) {
@@ -151,17 +151,17 @@ object LambdaTelemetry {
     /**
      * called when invoking lambdas remotely
      */
-    fun remoteinvoke(
+    public fun remoteinvoke(
         metadata: MetricEventMetadata,
         lambdaRuntime: LambdaRuntime? = null,
         inttype: Int,
-        value: Double = 1.0,
+        `value`: Double = 1.0,
         createTime: Instant = Instant.now()
-    ) {
+    ): Unit {
         TelemetryService.getInstance().record(metadata) {
             datum("lambda_remoteinvoke") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
                 passive(false)
                 if(lambdaRuntime != null) {
@@ -173,19 +173,19 @@ object LambdaTelemetry {
     }
 }
 
-object NoTelemetry {
+public object NoTelemetry {
     /**
      * called when invoking lambdas remotely
      */
-    fun metadata(
+    public fun metadata(
         project: Project? = null,
-        value: Double = 1.0,
+        `value`: Double = 1.0,
         createTime: Instant = Instant.now()
-    ) {
+    ): Unit {
         TelemetryService.getInstance().record(project) {
             datum("no_metadata") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
                 passive(false)
             }
@@ -195,15 +195,15 @@ object NoTelemetry {
     /**
      * called when invoking lambdas remotely
      */
-    fun metadata(
+    public fun metadata(
         metadata: MetricEventMetadata,
-        value: Double = 1.0,
+        `value`: Double = 1.0,
         createTime: Instant = Instant.now()
-    ) {
+    ): Unit {
         TelemetryService.getInstance().record(metadata) {
             datum("no_metadata") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
                 passive(false)
             }
@@ -211,19 +211,19 @@ object NoTelemetry {
     }
 }
 
-object PassiveTelemetry {
+public object PassiveTelemetry {
     /**
      * a passive metric
      */
-    fun passive(
+    public fun passive(
         project: Project? = null,
-        value: Double = 1.0,
+        `value`: Double = 1.0,
         createTime: Instant = Instant.now()
-    ) {
+    ): Unit {
         TelemetryService.getInstance().record(project) {
             datum("passive_passive") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
                 passive(true)
             }
@@ -233,15 +233,15 @@ object PassiveTelemetry {
     /**
      * a passive metric
      */
-    fun passive(
+    public fun passive(
         metadata: MetricEventMetadata,
-        value: Double = 1.0,
+        `value`: Double = 1.0,
         createTime: Instant = Instant.now()
-    ) {
+    ): Unit {
         TelemetryService.getInstance().record(metadata) {
             datum("passive_passive") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
                 passive(true)
             }
