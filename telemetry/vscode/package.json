@@ -29,7 +29,7 @@
         "typescript": "^4.0.5"
     },
     "dependencies": {
-        "ajv": "^6.12.6",
+        "ajv": "^7.2.4",
         "fs-extra": "^9.0.1",
         "lodash": "^4.17.20",
         "prettier": "^2.1.2",
