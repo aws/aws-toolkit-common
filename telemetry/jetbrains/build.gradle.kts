@@ -14,7 +14,7 @@ plugins {
     kotlin("jvm") version "1.5.0"
     `maven-publish`
     signing
-    id("io.codearte.nexus-staging") version "0.21.2"
+    id("io.codearte.nexus-staging") version "0.30.0"
 }
 
 java {
