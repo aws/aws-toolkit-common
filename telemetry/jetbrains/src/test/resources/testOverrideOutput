@@ -10,40 +10,40 @@ import java.time.Instant
 import kotlin.Double
 import kotlin.String
 import kotlin.Suppress
-import software.amazon.awssdk.services.toolkittelemetry.model.Unit
+import kotlin.Unit
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
 /**
  * The result of the operation
  */
-enum class Result(
-    private val value: String
+public enum class Result(
+    private val `value`: String
 ) {
     Succeeded("Succeeded"),
+    Unknown("unknown"),
+    ;
 
-    Unknown("unknown");
+    public override fun toString(): String = value
 
-    override fun toString(): String = value
-
-    companion object {
-        fun from(type: String): Result = values().firstOrNull { it.value == type } ?: Unknown
+    public companion object {
+        public fun from(type: String): Result = values().firstOrNull { it.value == type } ?: Unknown
     }
 }
 
-object MetadataTelemetry {
+public object MetadataTelemetry {
     /**
      * It does not actually have a result, yep
      */
-    fun hasResult(
+    public fun hasResult(
         project: Project? = null,
-        value: Double = 1.0,
+        `value`: Double = 1.0,
         createTime: Instant = Instant.now()
-    ) {
+    ): Unit {
         TelemetryService.getInstance().record(project) {
             datum("metadata_hasResult") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
                 passive(false)
             }
@@ -53,15 +53,15 @@ object MetadataTelemetry {
     /**
      * It does not actually have a result, yep
      */
-    fun hasResult(
+    public fun hasResult(
         metadata: MetricEventMetadata,
-        value: Double = 1.0,
+        `value`: Double = 1.0,
         createTime: Instant = Instant.now()
-    ) {
+    ): Unit {
         TelemetryService.getInstance().record(metadata) {
             datum("metadata_hasResult") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
                 passive(false)
             }

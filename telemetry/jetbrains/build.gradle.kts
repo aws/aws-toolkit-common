@@ -3,18 +3,18 @@ import org.everit.json.schema.loader.SchemaLoader
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.json.JSONObject
 
-val jacksonVersion = "2.10.0"
-val junitVersion = "4.13"
+val jacksonVersion = "2.12.3"
+val junitVersion = "4.13.2"
 val kotlinVersion = "1.3.20"
-val assertjVersion = "3.17.2"
+val assertjVersion = "3.19.0"
 
 plugins {
     java
     `kotlin-dsl`
-    kotlin("jvm") version "1.3.61"
+    kotlin("jvm") version "1.5.0"
     `maven-publish`
     signing
-    id("io.codearte.nexus-staging") version "0.21.2"
+    id("io.codearte.nexus-staging") version "0.30.0"
 }
 
 java {
@@ -41,7 +41,7 @@ group = "software.aws.toolkits"
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("com.squareup:kotlinpoet:1.5.0")
+    implementation("com.squareup:kotlinpoet:1.8.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
     implementation("com.github.erosb:everit-json-schema:1.12.2")
     testImplementation("junit:junit:$junitVersion")

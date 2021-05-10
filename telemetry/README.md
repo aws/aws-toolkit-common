@@ -18,6 +18,13 @@ Make changes in that file, then from the AWS Toolkit repo root run:
 To update the generated output. When you are satisfied with generated telemetry, move
 the definitions you just added to the appropriate file in `definitions` in this repo.
 
+Edits to the generator files are made in this repo located in `telemetry/vscode/src/`.
+You can manually run your changes by first building `npm run prepack` and then modifying the dev dependency inside the AWS Toolkit repo `package.json` file:
+
+`"@aws-toolkits/telemetry": "file:/path/to/built/dependency"`
+
+To generate telemetry run `npm run generateTelemetry` from the AWS Toolkit repo.
+
 #### JetBrains
 
 By using Gradle composite builds, we can prototype telemetry for the JetBrains toolkit directly in this repository.
