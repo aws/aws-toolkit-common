@@ -11,52 +11,47 @@ import kotlin.Boolean
 import kotlin.Double
 import kotlin.String
 import kotlin.Suppress
-import software.amazon.awssdk.services.toolkittelemetry.model.Unit
+import kotlin.Unit
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
 /**
  * The result of the operation
  */
-enum class Result(
-    private val value: String
+public enum class Result(
+    private val `value`: String
 ) {
     Succeeded("Succeeded"),
-
     Failed("Failed"),
-
     Cancelled("Cancelled"),
-
     CamelCase("CamelCase"),
-
     DashSeparated("dash-separated"),
-
     UnderscoreSeparated("underscore_separated"),
+    Unknown("unknown"),
+    ;
 
-    Unknown("unknown");
+    public override fun toString(): String = value
 
-    override fun toString(): String = value
-
-    companion object {
-        fun from(type: String): Result = values().firstOrNull { it.value == type } ?: Unknown
+    public companion object {
+        public fun from(type: String): Result = values().firstOrNull { it.value == type } ?: Unknown
     }
 }
 
-object MetadataTelemetry {
+public object MetadataTelemetry {
     /**
      * It has a result
      */
-    fun hasResult(
+    public fun hasResult(
         project: Project? = null,
         result: Result,
         passive: Boolean = false,
-        value: Double = 1.0,
+        `value`: Double = 1.0,
         createTime: Instant = Instant.now()
-    ) {
+    ): Unit {
         TelemetryService.getInstance().record(project) {
             datum("metadata_hasResult") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
                 passive(passive)
                 metadata("result", result.toString())
@@ -67,17 +62,17 @@ object MetadataTelemetry {
     /**
      * It has a result
      */
-    fun hasResult(
+    public fun hasResult(
         metadata: MetricEventMetadata,
         result: Result,
         passive: Boolean = false,
-        value: Double = 1.0,
+        `value`: Double = 1.0,
         createTime: Instant = Instant.now()
-    ) {
+    ): Unit {
         TelemetryService.getInstance().record(metadata) {
             datum("metadata_hasResult") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
                 passive(passive)
                 metadata("result", result.toString())
@@ -88,13 +83,13 @@ object MetadataTelemetry {
     /**
      * It has a result
      */
-    fun hasResult(
+    public fun hasResult(
         project: Project? = null,
         success: Boolean,
         passive: Boolean = false,
-        value: Double = 1.0,
+        `value`: Double = 1.0,
         createTime: Instant = Instant.now()
-    ) {
+    ): Unit {
         hasResult(project, if(success) Result.Succeeded else Result.Failed, passive, value,
                 createTime)
     }
@@ -102,13 +97,13 @@ object MetadataTelemetry {
     /**
      * It has a result
      */
-    fun hasResult(
+    public fun hasResult(
         metadata: MetricEventMetadata,
         success: Boolean,
         passive: Boolean = false,
-        value: Double = 1.0,
+        `value`: Double = 1.0,
         createTime: Instant = Instant.now()
-    ) {
+    ): Unit {
         hasResult(metadata, if(success) Result.Succeeded else Result.Failed, passive, value,
                 createTime)
     }
