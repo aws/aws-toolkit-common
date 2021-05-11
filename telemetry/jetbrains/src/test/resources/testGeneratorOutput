@@ -43,6 +43,7 @@ public object LambdaTelemetry {
         project: Project? = null,
         lambdaRuntime: LambdaRuntime,
         arbitraryString: String,
+        passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now()
     ): Unit {
@@ -51,7 +52,7 @@ public object LambdaTelemetry {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
-                passive(false)
+                passive(passive)
                 metadata("lambdaRuntime", lambdaRuntime.toString())
                 metadata("arbitraryString", arbitraryString)
             }
@@ -65,6 +66,7 @@ public object LambdaTelemetry {
         metadata: MetricEventMetadata,
         lambdaRuntime: LambdaRuntime,
         arbitraryString: String,
+        passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now()
     ): Unit {
@@ -73,7 +75,7 @@ public object LambdaTelemetry {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
-                passive(false)
+                passive(passive)
                 metadata("lambdaRuntime", lambdaRuntime.toString())
                 metadata("arbitraryString", arbitraryString)
             }
@@ -87,6 +89,7 @@ public object LambdaTelemetry {
         project: Project? = null,
         duration: Double,
         booltype: Boolean,
+        passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now()
     ): Unit {
@@ -95,7 +98,7 @@ public object LambdaTelemetry {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
-                passive(false)
+                passive(passive)
                 metadata("duration", duration.toString())
                 metadata("booltype", booltype.toString())
             }
@@ -109,6 +112,7 @@ public object LambdaTelemetry {
         metadata: MetricEventMetadata,
         duration: Double,
         booltype: Boolean,
+        passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now()
     ): Unit {
@@ -117,7 +121,7 @@ public object LambdaTelemetry {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
-                passive(false)
+                passive(passive)
                 metadata("duration", duration.toString())
                 metadata("booltype", booltype.toString())
             }
@@ -131,6 +135,7 @@ public object LambdaTelemetry {
         project: Project? = null,
         lambdaRuntime: LambdaRuntime? = null,
         inttype: Int,
+        passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now()
     ): Unit {
@@ -139,7 +144,7 @@ public object LambdaTelemetry {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
-                passive(false)
+                passive(passive)
                 if(lambdaRuntime != null) {
                     metadata("lambdaRuntime", lambdaRuntime.toString())
                 }
@@ -155,6 +160,7 @@ public object LambdaTelemetry {
         metadata: MetricEventMetadata,
         lambdaRuntime: LambdaRuntime? = null,
         inttype: Int,
+        passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now()
     ): Unit {
@@ -163,7 +169,7 @@ public object LambdaTelemetry {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
-                passive(false)
+                passive(passive)
                 if(lambdaRuntime != null) {
                     metadata("lambdaRuntime", lambdaRuntime.toString())
                 }
@@ -179,6 +185,7 @@ public object NoTelemetry {
      */
     public fun metadata(
         project: Project? = null,
+        passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now()
     ): Unit {
@@ -187,7 +194,7 @@ public object NoTelemetry {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
-                passive(false)
+                passive(passive)
             }
         }
     }
@@ -197,6 +204,7 @@ public object NoTelemetry {
      */
     public fun metadata(
         metadata: MetricEventMetadata,
+        passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now()
     ): Unit {
@@ -205,7 +213,7 @@ public object NoTelemetry {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
-                passive(false)
+                passive(passive)
             }
         }
     }
@@ -217,6 +225,7 @@ public object PassiveTelemetry {
      */
     public fun passive(
         project: Project? = null,
+        passive: Boolean = true,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now()
     ): Unit {
@@ -225,7 +234,7 @@ public object PassiveTelemetry {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
-                passive(true)
+                passive(passive)
             }
         }
     }
@@ -235,6 +244,7 @@ public object PassiveTelemetry {
      */
     public fun passive(
         metadata: MetricEventMetadata,
+        passive: Boolean = true,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now()
     ): Unit {
@@ -243,7 +253,7 @@ public object PassiveTelemetry {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
                 value(value)
-                passive(true)
+                passive(passive)
             }
         }
     }
