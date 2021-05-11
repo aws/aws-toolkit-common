@@ -213,6 +213,16 @@
             "description": "Infrastructure type used by ECS tasks and services"
         },
         {
+            "name": "ecsExecuteCommandOrigin",
+            "allowedValues": ["standAloneCommand", "shell"],
+            "description": "Execute Command Origin Location"
+        },
+        {
+            "name": "ecsShellSelected",
+            "type": "string",
+            "description": "Shell selected to run commands in container"
+        },
+        {
             "name": "ecrDeploySource",
             "allowedValues": ["dockerfile", "tag"],
             "description": "The source content specified in the ECR deployment request"
@@ -483,6 +493,31 @@
             "name": "ecs_openCluster",
             "description": "Open to view status of an ECS Cluster",
             "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ecs_enableExecuteCommand",
+            "description": "Called when ECS execute command is enabled",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ecs_disableExecuteCommand",
+            "description": "Called when ECS execute command is disabled",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ecs_executeCommandSource",
+            "description": "Called when the option to run single commands in container or with a shell is chosen",
+            "metadata": [{ "type": "ecsExecuteCommandOrigin" }]
+        },
+        {
+            "name": "ecs_runExecuteCommand",
+            "description": "Called when the ECS execute command is run",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ecs_shellSelectedToExecuteCommand",
+            "description": "The shell selected to run commands against containers",
+            "metadata": [{ "type": "ecsShellSelected" }]
         },
         {
             "name": "ecr_copyRepositoryUri",
