@@ -30,6 +30,7 @@ const val SUCCESS = "success"
 
 fun String.filterInvalidCharacters() = this.replace(".", "")
 fun String.toTypeFormat() = this.filterInvalidCharacters().split("_", "-").joinToString(separator = "") { it.capitalize() }
+
 fun String.toArgumentFormat() = this.toTypeFormat().decapitalize()
 
 fun generateTelemetryFromFiles(
@@ -178,6 +179,7 @@ private fun buildMetricParameters(metric: MetricSchema): List<ParameterSpec> {
     val list = mutableListOf<ParameterSpec>()
 
     list.addAll(metric.metadata.map { it.metadataToParameter() })
+    list.add(ParameterSpec.builder("passive", BOOLEAN).defaultValue(metric.passive.toString()).build())
     list.add(ParameterSpec.builder("value", DOUBLE).defaultValue("1.0").build())
     list.add(ParameterSpec.builder("createTime", Instant::class).defaultValue("Instant.now()").build())
 
@@ -206,7 +208,7 @@ private fun FunSpec.Builder.generateFunctionBody(metadataParameter: ParameterSpe
     addStatement("createTime(createTime)")
     addStatement("unit(%M.${(metric.unit ?: MetricUnit.NONE).name})", metricUnit)
     addStatement("value(value)")
-    addStatement("passive(${metric.passive})")
+    addStatement("passive(passive)")
     metric.metadata.forEach {
         generateMetadataStatement(it)
     }
