@@ -213,9 +213,9 @@
             "description": "Infrastructure type used by ECS tasks and services"
         },
         {
-            "name": "ecsExecuteCommandOrigin",
+            "name": "ecsExecuteCommandType",
             "allowedValues": ["command", "shell"],
-            "description": "Execute Command Origin Location"
+            "description": "Type of execution selected while running the execute command"
         },
         {
             "name": "ecrDeploySource",
@@ -502,7 +502,7 @@
         {
             "name": "ecs_runExecuteCommand",
             "description": "Called when the ECS execute command is run",
-            "metadata": [{ "type": "result" }, { "type": "ecsExecuteCommandOrigin" }]
+            "metadata": [{ "type": "result" }, { "type": "ecsExecuteCommandType" }]
         },
         {
             "name": "ecr_copyRepositoryUri",
