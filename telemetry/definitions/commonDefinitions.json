@@ -214,7 +214,7 @@
         },
         {
             "name": "ecsExecuteCommandOrigin",
-            "allowedValues": ["standAloneCommand", "shell"],
+            "allowedValues": ["command", "shell"],
             "description": "Execute Command Origin Location"
         },
         {
@@ -500,14 +500,9 @@
             "metadata": [{ "type": "result" }]
         },
         {
-            "name": "ecs_executeCommandSource",
-            "description": "Called when the option to run single commands in container or with a shell is chosen",
-            "metadata": [{ "type": "ecsExecuteCommandOrigin" }]
-        },
-        {
             "name": "ecs_runExecuteCommand",
             "description": "Called when the ECS execute command is run",
-            "metadata": [{ "type": "result" }]
+            "metadata": [{ "type": "result" }, { "type": "ecsExecuteCommandOrigin" }]
         },
         {
             "name": "ecr_copyRepositoryUri",
