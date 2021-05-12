@@ -218,11 +218,6 @@
             "description": "Execute Command Origin Location"
         },
         {
-            "name": "ecsShellSelected",
-            "type": "string",
-            "description": "Shell selected to run commands in container"
-        },
-        {
             "name": "ecrDeploySource",
             "allowedValues": ["dockerfile", "tag"],
             "description": "The source content specified in the ECR deployment request"
@@ -513,11 +508,6 @@
             "name": "ecs_runExecuteCommand",
             "description": "Called when the ECS execute command is run",
             "metadata": [{ "type": "result" }]
-        },
-        {
-            "name": "ecs_shellSelectedToExecuteCommand",
-            "description": "The shell selected to run commands against containers",
-            "metadata": [{ "type": "ecsShellSelected" }]
         },
         {
             "name": "ecr_copyRepositoryUri",
