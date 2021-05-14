@@ -135,6 +135,7 @@
                 "credentialProcessProfile",
                 "assumeRoleProfile",
                 "assumeMfaRoleProfile",
+                "assumeSamlRoleProfile",
                 "ssoProfile",
                 "ecsMetatdata",
                 "ec2Metadata",
