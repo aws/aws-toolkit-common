@@ -284,12 +284,12 @@
             "metadata": [{ "type": "result" }]
         },
         {
-            "name": "apprunner_viewServiceLogs",
-            "description": "View the AppRunner service logs"
+            "name": "apprunner_viewApplicationLogs",
+            "description": "View the AppRunner application logs (the logs for your running service)"
         },
         {
-            "name": "apprunner_viewSystemLogs",
-            "description": "View the AppRunner service logs"
+            "name": "apprunner_viewServiceLogs",
+            "description": "View the AppRunner service logs (the logs produced by App Runner)"
         },
         {
             "name": "aws_copyArn",
