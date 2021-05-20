@@ -284,7 +284,7 @@
             "metadata": [{ "type": "result" }]
         },
         {
-            "name": "apprunner_viewApplicationLogs",
+            "name": "apprunner_viewServiceLogs",
             "description": "View the AppRunner service logs"
         },
         {
