@@ -4,7 +4,7 @@
             "name": "appRunnerServiceSource",
             "type": "string",
             "allowedValues": ["ecr", "ecrPublic", "repository"],
-            "description": "The source artifact of an AppRunner service"
+            "description": "The source artifact of an App Runner service"
         },
         {
             "name": "duration",
@@ -262,7 +262,7 @@
         },
         {
             "name": "apprunner_createService",
-            "description": "Create an AppRunner service",
+            "description": "Create an App Runner service",
             "metadata": [
                 { "type": "result" },
                 { "type": "appRunnerServiceSource" }
@@ -270,26 +270,26 @@
         },
         {
             "name": "apprunner_pauseService",
-            "description": "Pause a running AppRunner service",
+            "description": "Pause a running App Runner service",
             "metadata": [{ "type": "result" }]
         },
         {
             "name": "apprunner_resumeService",
-            "description": "Resume a paused AppRunner service",
+            "description": "Resume a paused App Runner service",
             "metadata": [{ "type": "result" }]
         },
         {
             "name": "apprunner_startDeployment",
-            "description": "Start a new deployment for an AppRunner service",
+            "description": "Start a new deployment for an App Runner service",
             "metadata": [{ "type": "result" }]
         },
         {
             "name": "apprunner_viewApplicationLogs",
-            "description": "View the AppRunner application logs (the logs for your running service)"
+            "description": "View the App Runner application logs (the logs for your running service)"
         },
         {
             "name": "apprunner_viewServiceLogs",
-            "description": "View the AppRunner service logs (the logs produced by App Runner)"
+            "description": "View the App Runner service logs (the logs produced by App Runner)"
         },
         {
             "name": "aws_copyArn",
