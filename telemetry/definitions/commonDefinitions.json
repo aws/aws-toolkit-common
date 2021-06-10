@@ -367,7 +367,7 @@
         {
             "name": "aws_expandExplorerNode",
             "description": "Expand a service root node in the AWS explorer window",
-            "metadata": [{ "type": "serviceType" }],
+            "metadata": [{ "type": "serviceType" }]
         },
         {
             "name": "aws_reportPluginIssue",
