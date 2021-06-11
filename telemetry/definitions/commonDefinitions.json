@@ -257,6 +257,10 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "apprunner_openServiceUrl",
+            "description": "Open the service URL in a browser"
+        },
+        {
             "name": "apprunner_copyServiceUrl",
             "description": "Copy the service URL"
         },
