@@ -129,7 +129,7 @@
             "name": "credentialSourceId",
             "type": "string",
             "description": "Where credentials are stored or retrieved from",
-            "allowedValues": ["sharedCredentials", "sdkStore", "ec2", "container", "envVars", "other"]
+            "allowedValues": ["sharedCredentials", "sdkStore", "ec2", "ecs", "envVars", "other"]
         },
         {
             "name": "credentialType",
