@@ -7,6 +7,12 @@
             "description": "The source artifact of an App Runner service"
         },
         {
+            "name": "appRunnerServiceStatus",
+            "type": "string",
+            "allowedValues": ["CREATE_FAILED", "RUNNING", "DELETED", "DELETE_FAILED", "PAUSED", "OPERATION_IN_PROGRESS"],
+            "description": "The current state of the App Runner service"
+        },
+        {
             "name": "duration",
             "type": "double",
             "description": "The duration of the operation in milliseconds"
@@ -281,6 +287,14 @@
             "name": "apprunner_resumeService",
             "description": "Resume a paused App Runner service",
             "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "apprunner_deleteService",
+            "description": "Delete an App Runner service",
+            "metadata": [
+                { "type": "result" },
+                { "type": "appRunnerServiceStatus", "required": false }
+            ]
         },
         {
             "name": "apprunner_startDeployment",
