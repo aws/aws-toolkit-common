@@ -23,6 +23,11 @@
             "description": "The result of the operation"
         },
         {
+            "name": "kind",
+            "allowedValues": ["Viewer", "Default"],
+            "description": "The kind of call made"
+        },
+        {
             "name": "lambdaPackageType",
             "allowedValues": ["Zip", "Image"],
             "description": "The Lambda Package type of the function"
@@ -826,7 +831,10 @@
         {
             "name": "s3_downloadObject",
             "description": "Download a single S3 object",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "kind", "required": false}
+            ]
         },
         {
             "name": "s3_downloadObjects",
@@ -837,7 +845,10 @@
         {
             "name": "s3_uploadObject",
             "description": "Upload a single S3 object",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "kind", "required": false}
+            ]
         },
         {
             "name": "s3_renameObject",
@@ -853,6 +864,11 @@
         {
             "name": "s3_openEditor",
             "description": "Open a view of a S3 bucket",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_editObject",
+            "description": "Edit a S3 object in the IDE editor",
             "metadata": [{ "type": "result" }]
         },
         {
