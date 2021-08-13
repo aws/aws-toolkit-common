@@ -25,6 +25,7 @@
         {
             "name": "component",
             "allowedValues": ["editor", "viewer", "filesystem"],
+            "description": "Where the operation came from"
         },
         {
             "name": "lambdaPackageType",
