@@ -846,7 +846,7 @@
             "description": "Upload a single S3 object",
             "metadata": [
                 { "type": "result" },
-                { "type": "kind", "required": false}
+                { "type": "component", "required": false}
             ]
         },
         {
