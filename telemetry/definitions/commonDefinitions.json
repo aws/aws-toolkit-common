@@ -25,7 +25,7 @@
         {
             "name": "component",
             "allowedValues": ["editor", "viewer", "filesystem"],
-            "description": "Where the operation came from"
+            "description": "The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...)"
         },
         {
             "name": "lambdaPackageType",
