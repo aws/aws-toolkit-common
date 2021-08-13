@@ -23,9 +23,8 @@
             "description": "The result of the operation"
         },
         {
-            "name": "kind",
-            "allowedValues": ["Viewer", "Default"],
-            "description": "The kind of call made"
+            "name": "component",
+            "allowedValues": ["editor", "viewer", "filesystem"],
         },
         {
             "name": "lambdaPackageType",
