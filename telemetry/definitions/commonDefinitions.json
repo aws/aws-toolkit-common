@@ -868,7 +868,7 @@
         },
         {
             "name": "s3_editObject",
-            "description": "Edit a S3 object in the IDE editor",
+            "description": "Edit or view one or more S3 objects in the IDE editor",
             "metadata": [{ "type": "result" }]
         },
         {
