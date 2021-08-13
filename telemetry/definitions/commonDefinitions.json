@@ -361,7 +361,11 @@
         {
             "name": "aws_validateCredentials",
             "description": "Validate credentials when selecting new credentials",
-            "metadata": [{ "type": "result" }, { "type": "credentialType", "required": false }],
+            "metadata": [
+                { "type": "result" }, 
+                { "type": "credentialType", "required": false }, 
+                { "type": "credentialSourceId", "required": false }
+            ],
             "passive": true
         },
         {
