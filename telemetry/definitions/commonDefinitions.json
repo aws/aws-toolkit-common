@@ -868,7 +868,14 @@
         },
         {
             "name": "s3_editObject",
-            "description": "Edit or view one or more S3 objects in the IDE editor",
+            "description": "Edit one or more S3 objects in the IDE editor",
+            "unit":  "Count",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "s3_previewObject",
+            "description": "Preview one or more S3 objects in the IDE editor",
+            "unit":  "Count",
             "metadata": [{ "type": "result" }]
         },
         {
