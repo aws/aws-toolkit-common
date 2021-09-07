@@ -280,7 +280,8 @@
             "description": "Create an App Runner service",
             "metadata": [
                 { "type": "result" },
-                { "type": "appRunnerServiceSource" }
+                { "type": "appRunnerServiceSource" },
+                { "type": "reason", "required": false }
             ]
         },
         {
