@@ -212,7 +212,7 @@
         },
         {
             "name": "insightsDialogOpenSource",
-            "allowedValues": ["explorer", "resultsWindow"],
+            "allowedValues": ["explorer", "resultsWindow", "logGroup"],
             "description": "Dialog open trigger source location"
         },
         {
