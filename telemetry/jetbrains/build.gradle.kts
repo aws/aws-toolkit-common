@@ -41,7 +41,7 @@ group = "software.aws.toolkits"
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("com.squareup:kotlinpoet:1.8.0")
+    implementation("com.squareup:kotlinpoet:1.9.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
     implementation("com.github.erosb:everit-json-schema:1.12.2")
     testImplementation("junit:junit:$junitVersion")
