@@ -6,7 +6,7 @@ import org.json.JSONObject
 val jacksonVersion = "2.12.3"
 val junitVersion = "4.13.2"
 val kotlinVersion = "1.3.20"
-val assertjVersion = "3.20.2"
+val assertjVersion = "3.21.0"
 
 plugins {
     java
@@ -41,7 +41,7 @@ group = "software.aws.toolkits"
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("com.squareup:kotlinpoet:1.8.0")
+    implementation("com.squareup:kotlinpoet:1.9.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
     implementation("com.github.erosb:everit-json-schema:1.12.2")
     testImplementation("junit:junit:$junitVersion")
