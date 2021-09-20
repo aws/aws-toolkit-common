@@ -525,6 +525,16 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "dynamodb_scan",
+            "description": "Performs a scan on a DynamoDB table in the table browser",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "dynamodb_query",
+            "description": "Performs a query on a DynamoDB table in the table browser",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "ec2_openInstances",
             "description": "Open a window to view EC2 Instances",
             "metadata": [{ "type": "result" }]
