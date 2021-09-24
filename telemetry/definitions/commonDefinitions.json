@@ -536,7 +536,7 @@
         },
         {
             "name": "dynamodb_fetchRecords",
-            "description": "Fetches records from a DynamoDB table in the table browser",
+            "description": "Fetch records from a DynamoDB table in the table browser",
             "metadata": [
                 { "type": "result" },
                 { "type": "dynamoDbFetchType" },
