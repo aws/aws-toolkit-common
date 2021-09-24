@@ -239,6 +239,16 @@
             "name": "ecrDeploySource",
             "allowedValues": ["dockerfile", "tag"],
             "description": "The source content specified in the ECR deployment request"
+        },
+        {
+            "name": "dynamoDbFetchType",
+            "allowedValues": ["scan", "query"],
+            "description": "The type of fetch being performed"
+        },
+        {
+            "name": "dynamoDbIndexType",
+            "allowedValues": ["primary", "localSecondary", "globalSecondary"],
+            "description": "The type of index being hit for the query/scan operation"
         }
     ],
     "metrics": [
@@ -525,14 +535,13 @@
             "metadata": [{ "type": "result" }]
         },
         {
-            "name": "dynamodb_scan",
-            "description": "Performs a scan on a DynamoDB table in the table browser",
-            "metadata": [{ "type": "result" }]
-        },
-        {
-            "name": "dynamodb_query",
-            "description": "Performs a query on a DynamoDB table in the table browser",
-            "metadata": [{ "type": "result" }]
+            "name": "dynamodb_fetchRecords",
+            "description": "Fetches records from a DynamoDB table in the table browser",
+            "metadata": [
+                { "type": "result" },
+                { "type": "dynamoDbFetchType" },
+                { "type": "dynamoDbIndexType", "required": false }
+            ]
         },
         {
             "name": "ec2_openInstances",
