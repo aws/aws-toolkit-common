@@ -12,6 +12,7 @@ import kotlin.Double
 import kotlin.String
 import kotlin.Suppress
 import kotlin.Unit
+import software.aws.toolkits.jetbrains.core.credentials.ConnectionSettings
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
@@ -42,13 +43,34 @@ public object MetadataTelemetry {
      * It has a result
      */
     public fun hasResult(
-        project: Project? = null,
+        project: Project?,
         result: Result,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now()
     ): Unit {
         TelemetryService.getInstance().record(project) {
+            datum("metadata_hasResult") {
+                createTime(createTime)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
+                value(value)
+                passive(passive)
+                metadata("result", result.toString())
+            }
+        }
+    }
+
+    /**
+     * It has a result
+     */
+    public fun hasResult(
+        connectionSettings: ConnectionSettings? = null,
+        result: Result,
+        passive: Boolean = false,
+        `value`: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ): Unit {
+        TelemetryService.getInstance().record(connectionSettings) {
             datum("metadata_hasResult") {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
@@ -92,6 +114,20 @@ public object MetadataTelemetry {
     ): Unit {
         hasResult(project, if(success) Result.Succeeded else Result.Failed, passive, value,
                 createTime)
+    }
+
+    /**
+     * It has a result
+     */
+    public fun hasResult(
+        connectionSettings: ConnectionSettings? = null,
+        success: Boolean,
+        passive: Boolean = false,
+        `value`: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ): Unit {
+        hasResult(connectionSettings, if(success) Result.Succeeded else Result.Failed, passive,
+                value, createTime)
     }
 
     /**
