@@ -24,6 +24,7 @@ const val JETBRAINS_TELEMETRY_PACKAGE_NAME = "software.aws.toolkits.jetbrains.se
 val METRIC_METADATA = ClassName(JETBRAINS_TELEMETRY_PACKAGE_NAME, "MetricEventMetadata")
 val TELEMETRY_SERVICE = ClassName(JETBRAINS_TELEMETRY_PACKAGE_NAME, "TelemetryService")
 val PROJECT = ClassName("com.intellij.openapi.project", "Project").copy(nullable = true)
+val CONNECTION_SETTINGS = ClassName("software.aws.toolkits.jetbrains.core.credentials", "ConnectionSettings").copy(nullable = true)
 
 const val RESULT = "result"
 const val SUCCESS = "success"
@@ -140,6 +141,7 @@ private fun TypeSpec.Builder.generateRecordFunctions(metric: MetricSchema) {
     val functionName = metric.name.split("_")[1]
 
     addFunction(buildProjectFunction(functionName, metric))
+    addFunction(buildConnectionSettingsFunction(functionName, metric))
     addFunction(buildMetricMetadataFunction(functionName, metric))
 
     // Result is special cased to generate a function that accepts true/false instead of a Result
@@ -148,11 +150,18 @@ private fun TypeSpec.Builder.generateRecordFunctions(metric: MetricSchema) {
     }
 
     addFunction(buildProjectOverloadFunction(functionName, metric))
+    addFunction(buildConnectionSettingsOverloadFunction(functionName, metric))
     addFunction(buildMetricMetadataOverloadFunction(functionName, metric))
 }
 
 fun buildProjectFunction(functionName: String, metric: MetricSchema): FunSpec {
-    val metadataProvider = ParameterSpec.builder("project", PROJECT).defaultValue("null").build()
+    val metadataProvider = ParameterSpec.builder("project", PROJECT).build()
+
+    return buildRecordFunction(metadataProvider, functionName, metric)
+}
+
+fun buildConnectionSettingsFunction(functionName: String, metric: MetricSchema): FunSpec {
+    val metadataProvider = ParameterSpec.builder("connectionSettings", CONNECTION_SETTINGS).defaultValue("null").build()
 
     return buildRecordFunction(metadataProvider, functionName, metric)
 }
@@ -221,6 +230,11 @@ private fun FunSpec.Builder.generateFunctionBody(metadataParameter: ParameterSpe
 fun buildProjectOverloadFunction(functionName: String, metric: MetricSchema): FunSpec {
     val metadataProvider = ParameterSpec.builder("project", PROJECT).defaultValue("null").build()
 
+    return buildResultOverloadFunction(metadataProvider, functionName, metric)
+}
+
+fun buildConnectionSettingsOverloadFunction(functionName: String, metric: MetricSchema): FunSpec {
+    val metadataProvider = ParameterSpec.builder("connectionSettings", CONNECTION_SETTINGS).defaultValue("null").build()
     return buildResultOverloadFunction(metadataProvider, functionName, metric)
 }
 
