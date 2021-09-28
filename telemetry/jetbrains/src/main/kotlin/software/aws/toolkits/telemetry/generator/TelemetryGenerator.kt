@@ -24,7 +24,7 @@ const val JETBRAINS_TELEMETRY_PACKAGE_NAME = "software.aws.toolkits.jetbrains.se
 val METRIC_METADATA = ClassName(JETBRAINS_TELEMETRY_PACKAGE_NAME, "MetricEventMetadata")
 val TELEMETRY_SERVICE = ClassName(JETBRAINS_TELEMETRY_PACKAGE_NAME, "TelemetryService")
 val PROJECT = ClassName("com.intellij.openapi.project", "Project").copy(nullable = true)
-val CONNECTION_SETTINGS = ClassName("software.aws.toolkits.jetbrains.core.credentials", "ConnectionSettings").copy(nullable = true)
+val CONNECTION_SETTINGS = ClassName("software.aws.toolkits.core", "ConnectionSettings").copy(nullable = true)
 
 const val RESULT = "result"
 const val SUCCESS = "success"
