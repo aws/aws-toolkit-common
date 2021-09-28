@@ -12,6 +12,7 @@ import kotlin.Double
 import kotlin.String
 import kotlin.Suppress
 import kotlin.Unit
+import software.aws.toolkits.jetbrains.core.credentials.ConnectionSettings
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
@@ -37,12 +38,31 @@ public object MetadataTelemetry {
      * It does not actually have a result, yep
      */
     public fun hasResult(
-        project: Project? = null,
+        project: Project?,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now()
     ): Unit {
         TelemetryService.getInstance().record(project) {
+            datum("metadata_hasResult") {
+                createTime(createTime)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
+                value(value)
+                passive(passive)
+            }
+        }
+    }
+
+    /**
+     * It does not actually have a result, yep
+     */
+    public fun hasResult(
+        connectionSettings: ConnectionSettings? = null,
+        passive: Boolean = false,
+        `value`: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ): Unit {
+        TelemetryService.getInstance().record(connectionSettings) {
             datum("metadata_hasResult") {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
