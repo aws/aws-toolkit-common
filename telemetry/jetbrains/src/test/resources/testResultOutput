@@ -12,7 +12,7 @@ import kotlin.Double
 import kotlin.String
 import kotlin.Suppress
 import kotlin.Unit
-import software.aws.toolkits.jetbrains.core.credentials.ConnectionSettings
+import software.aws.toolkits.core.ConnectionSettings
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
