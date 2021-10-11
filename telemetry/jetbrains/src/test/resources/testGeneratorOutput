@@ -13,6 +13,7 @@ import kotlin.Int
 import kotlin.String
 import kotlin.Suppress
 import kotlin.Unit
+import software.aws.toolkits.core.ConnectionSettings
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
@@ -40,7 +41,7 @@ public object LambdaTelemetry {
      * called when creating lambdas remotely
      */
     public fun create(
-        project: Project? = null,
+        project: Project?,
         lambdaRuntime: LambdaRuntime,
         arbitraryString: String,
         passive: Boolean = false,
@@ -48,6 +49,29 @@ public object LambdaTelemetry {
         createTime: Instant = Instant.now()
     ): Unit {
         TelemetryService.getInstance().record(project) {
+            datum("lambda_create") {
+                createTime(createTime)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
+                value(value)
+                passive(passive)
+                metadata("lambdaRuntime", lambdaRuntime.toString())
+                metadata("arbitraryString", arbitraryString)
+            }
+        }
+    }
+
+    /**
+     * called when creating lambdas remotely
+     */
+    public fun create(
+        connectionSettings: ConnectionSettings? = null,
+        lambdaRuntime: LambdaRuntime,
+        arbitraryString: String,
+        passive: Boolean = false,
+        `value`: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ): Unit {
+        TelemetryService.getInstance().record(connectionSettings) {
             datum("lambda_create") {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
@@ -86,7 +110,7 @@ public object LambdaTelemetry {
      * called when deleting lambdas remotely
      */
     public fun delete(
-        project: Project? = null,
+        project: Project?,
         duration: Double,
         booltype: Boolean,
         passive: Boolean = false,
@@ -94,6 +118,29 @@ public object LambdaTelemetry {
         createTime: Instant = Instant.now()
     ): Unit {
         TelemetryService.getInstance().record(project) {
+            datum("lambda_delete") {
+                createTime(createTime)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
+                value(value)
+                passive(passive)
+                metadata("duration", duration.toString())
+                metadata("booltype", booltype.toString())
+            }
+        }
+    }
+
+    /**
+     * called when deleting lambdas remotely
+     */
+    public fun delete(
+        connectionSettings: ConnectionSettings? = null,
+        duration: Double,
+        booltype: Boolean,
+        passive: Boolean = false,
+        `value`: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ): Unit {
+        TelemetryService.getInstance().record(connectionSettings) {
             datum("lambda_delete") {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
@@ -132,7 +179,7 @@ public object LambdaTelemetry {
      * called when invoking lambdas remotely
      */
     public fun remoteinvoke(
-        project: Project? = null,
+        project: Project?,
         lambdaRuntime: LambdaRuntime? = null,
         inttype: Int,
         passive: Boolean = false,
@@ -140,6 +187,31 @@ public object LambdaTelemetry {
         createTime: Instant = Instant.now()
     ): Unit {
         TelemetryService.getInstance().record(project) {
+            datum("lambda_remoteinvoke") {
+                createTime(createTime)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
+                value(value)
+                passive(passive)
+                if(lambdaRuntime != null) {
+                    metadata("lambdaRuntime", lambdaRuntime.toString())
+                }
+                metadata("inttype", inttype.toString())
+            }
+        }
+    }
+
+    /**
+     * called when invoking lambdas remotely
+     */
+    public fun remoteinvoke(
+        connectionSettings: ConnectionSettings? = null,
+        lambdaRuntime: LambdaRuntime? = null,
+        inttype: Int,
+        passive: Boolean = false,
+        `value`: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ): Unit {
+        TelemetryService.getInstance().record(connectionSettings) {
             datum("lambda_remoteinvoke") {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
@@ -184,12 +256,31 @@ public object NoTelemetry {
      * called when invoking lambdas remotely
      */
     public fun metadata(
-        project: Project? = null,
+        project: Project?,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now()
     ): Unit {
         TelemetryService.getInstance().record(project) {
+            datum("no_metadata") {
+                createTime(createTime)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
+                value(value)
+                passive(passive)
+            }
+        }
+    }
+
+    /**
+     * called when invoking lambdas remotely
+     */
+    public fun metadata(
+        connectionSettings: ConnectionSettings? = null,
+        passive: Boolean = false,
+        `value`: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ): Unit {
+        TelemetryService.getInstance().record(connectionSettings) {
             datum("no_metadata") {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
@@ -224,12 +315,31 @@ public object PassiveTelemetry {
      * a passive metric
      */
     public fun passive(
-        project: Project? = null,
+        project: Project?,
         passive: Boolean = true,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now()
     ): Unit {
         TelemetryService.getInstance().record(project) {
+            datum("passive_passive") {
+                createTime(createTime)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
+                value(value)
+                passive(passive)
+            }
+        }
+    }
+
+    /**
+     * a passive metric
+     */
+    public fun passive(
+        connectionSettings: ConnectionSettings? = null,
+        passive: Boolean = true,
+        `value`: Double = 1.0,
+        createTime: Instant = Instant.now()
+    ): Unit {
+        TelemetryService.getInstance().record(connectionSettings) {
             datum("passive_passive") {
                 createTime(createTime)
                 unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
