@@ -260,6 +260,23 @@
             "name": "dynamicResourceOperation",
             "allowedValues": ["Create", "Update", "Delete"],
             "description": "The dynamic resource operation being executed"
+        },
+        {
+            "name": "experimentState",
+            "type": "string",
+            "allowedValues": ["activated", "deactivated"],
+            "description": "The experiment action taken action taken"
+        },
+        {
+            "name": "experimentId",
+            "type": "string",
+            "description": "The id of the experiment being activated or deactivated"
+        },
+        {
+            "name": "toolId",
+            "type": "string",
+            "description": "The tool being installed",
+            "allowedValues": ["session-manager-plugin", "dotnet-lambda-deploy", "dotnet-deploy-cli"]
         }
     ],
     "metrics": [
@@ -1104,6 +1121,31 @@
                     "type": "duration"
                 }
             ]
+        },
+        {
+            "name": "aws_experimentActivation",
+            "description": "An experiment was activated or deactivated in the toolkit",
+            "metadata": [
+                {
+                    "type": "experimentId"
+                },
+                {
+                    "type": "experimentState"
+                }
+            ]
+        },
+        {
+            "name": "aws_toolInstallation",
+            "description": "An external tool was installed automatically by the toolkit",
+            "metadata": [
+                {
+                    "type": "toolId"
+                },
+                {
+                    "type": "result"
+                }
+            ],
+            "passive": true
         }
     ]
 }
