@@ -1136,7 +1136,7 @@
         },
         {
             "name": "aws_toolInstallation",
-            "description": "An external tool was installed automatically by the toolkit",
+            "description": "An external tool was installed automatically",
             "metadata": [
                 {
                     "type": "toolId"
