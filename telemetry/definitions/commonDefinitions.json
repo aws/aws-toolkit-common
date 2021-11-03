@@ -1144,7 +1144,8 @@
                 {
                     "type": "result"
                 }
-            ]
+            ],
+            "passive": true
         }
     ]
 }
