@@ -9,14 +9,17 @@ import * as _ from 'lodash'
 import { CommandLineArguments } from './parser'
 import { generate } from './generate'
 
-function parseArguments(): CommandLineArguments {
+async function parseArguments(): Promise<CommandLineArguments> {
     let input: string[] = []
-    if (!argv.output) {
+
+    const args = await argv 
+
+    if (!args.output) {
         console.log("Argument 'output' required")
         throw undefined
     }
-    if (argv.extraInput) {
-        input = (argv.extraInput as string).split(',').map(item => item.trim())
+    if (args.extraInput) {
+        input = (args.extraInput as string).split(',').map(item => item.trim())
     }
 
     // Always append the global definitions
@@ -25,12 +28,12 @@ function parseArguments(): CommandLineArguments {
 
     return {
         inputFiles: input,
-        outputFile: argv.output as string,
+        outputFile: args.output as string,
     }
 }
 
 // main run, parse input then generate
 ;(async () => {
-    const args = parseArguments()
+    const args = await parseArguments()
     await generate(args)
 })()

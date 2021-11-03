@@ -83,6 +83,7 @@
                 "java8.al2",
                 "java11",
                 "go1.x",
+                "python3.9",
                 "python3.8",
                 "python3.7",
                 "python3.6",
@@ -239,6 +240,26 @@
             "name": "ecrDeploySource",
             "allowedValues": ["dockerfile", "tag"],
             "description": "The source content specified in the ECR deployment request"
+        },
+        {
+            "name": "dynamoDbFetchType",
+            "allowedValues": ["scan", "query"],
+            "description": "The type of fetch being performed"
+        },
+        {
+            "name": "dynamoDbIndexType",
+            "allowedValues": ["primary", "localSecondary", "globalSecondary"],
+            "description": "The type of index being hit for the query/scan operation"
+        },
+        {
+            "name": "resourceType",
+            "type": "string",
+            "description": "The dynamic resource type being interacted with"
+        },
+        {
+            "name": "dynamicResourceOperation",
+            "allowedValues": ["Create", "Update", "Delete"],
+            "description": "The dynamic resource operation being executed"
         }
     ],
     "metrics": [
@@ -525,14 +546,13 @@
             "metadata": [{ "type": "result" }]
         },
         {
-            "name": "dynamodb_scan",
-            "description": "Performs a scan on a DynamoDB table in the table browser",
-            "metadata": [{ "type": "result" }]
-        },
-        {
-            "name": "dynamodb_query",
-            "description": "Performs a query on a DynamoDB table in the table browser",
-            "metadata": [{ "type": "result" }]
+            "name": "dynamodb_fetchRecords",
+            "description": "Fetch records from a DynamoDB table in the table browser",
+            "metadata": [
+                { "type": "result" },
+                { "type": "dynamoDbFetchType" },
+                { "type": "dynamoDbIndexType", "required": false }
+            ]
         },
         {
             "name": "ec2_openInstances",
@@ -1029,6 +1049,61 @@
                 }
             ],
             "passive": true
+        },
+        {
+            "name": "dynamicresource_getResource",
+            "description": "Open the dynamic resource model in the IDE",
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "resourceType"
+                }
+            ]
+        },
+        {
+            "name": "dynamicresource_listResource",
+            "description": "Expand a Resource Type node",
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "resourceType"
+                }
+            ]
+        },
+        {
+            "name": "dynamicresource_selectResources",
+            "description": "Change the list of available dynamic resources in the AWS Explorer"
+        },
+        {
+            "name": "dynamicresource_copyIdentifier",
+            "description": "Copy the dynamic resource identifier",
+            "metadata": [
+                {
+                    "type": "resourceType"
+                }
+            ]
+        },
+        {
+            "name": "dynamicresource_mutateResource",
+            "description": "A dynamic resource mutation request completed",
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "resourceType"
+                },
+                {
+                    "type": "dynamicResourceOperation"
+                },
+                {
+                    "type": "duration"
+                }
+            ]
         }
     ]
 }
