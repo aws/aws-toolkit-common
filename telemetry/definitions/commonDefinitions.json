@@ -387,6 +387,10 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "aws_saveCredentials",
+            "description": "Save credentials"
+        },
+        {
             "name": "aws_loadCredentials",
             "description": "Load credentials from a credential source",
             "unit": "Count",
@@ -414,7 +418,8 @@
         },
         {
             "name": "aws_help",
-            "description": "Open docs for the extension"
+            "description": "Open docs for the extension",
+            "metadata": [{ "type": "name", "required": false }]
         },
         {
             "name": "aws_helpQuickstart",
