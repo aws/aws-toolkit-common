@@ -881,6 +881,11 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "s3_deleteObjects",
+            "description": "Delete multiple S3 objects",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "s3_createFolder",
             "description": "Create an S3 folder",
             "metadata": [{ "type": "result" }]
