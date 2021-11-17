@@ -887,7 +887,7 @@
         },
         {
             "name": "s3_deleteObject",
-            "description": "Delete a single S3 object",
+            "description": "Delete S3 object(s)",
             "metadata": [
                 { "type": "result" },
                 { "type": "successCount", "required": false},
@@ -901,7 +901,7 @@
         },
         {
             "name": "s3_downloadObject",
-            "description": "Download a single S3 object",
+            "description": "Download S3 object(s)",
             "metadata": [
                 { "type": "result" },
                 { "type": "successCount", "required": false},
@@ -917,7 +917,7 @@
         },
         {
             "name": "s3_uploadObject",
-            "description": "Upload a single S3 object",
+            "description": "Upload S3 object(s)",
             "metadata": [
                 { "type": "result" },
                 { "type": "successCount", "required": false},
