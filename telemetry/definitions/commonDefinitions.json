@@ -280,12 +280,12 @@
         },
         {
             "name": "successCount",
-            "type": "double",
+            "type": "int",
             "description": "The number of successful operations"
         },
         {
             "name": "failedCount",
-            "type": "double",
+            "type": "int",
             "description": "The number of failed operations"
         }
     ],
