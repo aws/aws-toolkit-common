@@ -277,6 +277,16 @@
             "type": "string",
             "description": "The tool being installed",
             "allowedValues": ["session-manager-plugin", "dotnet-lambda-deploy", "dotnet-deploy-cli"]
+        },
+        {
+            "name": "successCount",
+            "type": "int",
+            "description": "The number of successful operations"
+        },
+        {
+            "name": "failedCount",
+            "type": "int",
+            "description": "The number of failed operations"
         }
     ],
     "metrics": [
@@ -877,13 +887,12 @@
         },
         {
             "name": "s3_deleteObject",
-            "description": "Delete a single S3 object",
-            "metadata": [{ "type": "result" }]
-        },
-        {
-            "name": "s3_deleteObjects",
-            "description": "Delete multiple S3 objects",
-            "metadata": [{ "type": "result" }]
+            "description": "Delete S3 object(s)",
+            "metadata": [
+                { "type": "result" },
+                { "type": "successCount", "required": false},
+                { "type": "failedCount", "required": false}
+            ]
         },
         {
             "name": "s3_createFolder",
@@ -892,9 +901,11 @@
         },
         {
             "name": "s3_downloadObject",
-            "description": "Download a single S3 object",
+            "description": "Download S3 object(s)",
             "metadata": [
                 { "type": "result" },
+                { "type": "successCount", "required": false},
+                { "type": "failedCount", "required": false},
                 { "type": "component", "required": false}
             ]
         },
@@ -906,9 +917,11 @@
         },
         {
             "name": "s3_uploadObject",
-            "description": "Upload a single S3 object",
+            "description": "Upload S3 object(s)",
             "metadata": [
                 { "type": "result" },
+                { "type": "successCount", "required": false},
+                { "type": "failedCount", "required": false},
                 { "type": "component", "required": false}
             ]
         },
