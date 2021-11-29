@@ -11,7 +11,7 @@ val assertjVersion = "3.21.0"
 plugins {
     java
     `kotlin-dsl`
-    kotlin("jvm") version "1.5.30"
+    kotlin("jvm") version "1.6.0"
     `maven-publish`
     signing
     id("io.codearte.nexus-staging") version "0.30.0"
