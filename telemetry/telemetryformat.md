@@ -123,8 +123,8 @@ interface LambdaRemoteinvoke {
  * @returns Nothing
  */
 export function recordLambdaRemoteinvoke(args: LambdaRemoteinvoke) {
-    ext.telemetry.record({
-        createTime: args?.createTime ?? new Date(),
+    globals.telemetry.record({
+        createTime: args?.createTime ?? new globals.clock.Date(),
         data: [
             {
                 MetricName: 'lambda_invokeRemote',
