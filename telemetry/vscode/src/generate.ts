@@ -127,10 +127,10 @@ export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
                 `if(args?.${item.name}) {metadata.push({Key: '${item.name}', Value: args.${item.name}.toString()})}`
         )
         .join('\n')}
-    ext.telemetry.record({
+        globals.telemetry.record({
             MetricName: '${metric.name}',
             Value: args?.value ?? 1,
-            EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
+            EpochTimestamp: (args?.createTime ?? new globals.clock.Date()).getTime(),
             Unit: '${metric.unit ?? 'None'}',
             Passive: args?.passive ?? ${metric.passive},
             Metadata: metadata
@@ -148,7 +148,7 @@ export async function generate(args: CommandLineArguments) {
      * SPDX-License-Identifier: Apache-2.0
      */
 
-    import { ext } from '../extensionGlobals'
+    import globals from '../extensionGlobals'
     `
 
     const rawDefinitions: MetricDefinitionRoot = args.inputFiles
@@ -185,7 +185,7 @@ export function generateHelperFunctions(): string {
     return `
 
 export function millisecondsSince(d: Date): number {
-    return Date.now() - Number(d)
+    return globals.clock.Date.now() - Number(d)
 }
 `
 }

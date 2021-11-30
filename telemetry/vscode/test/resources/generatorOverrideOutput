@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { ext } from '../extensionGlobals'
+import globals from '../extensionGlobals'
 export type Result = 'Succeeded'
 interface MetadataHasResult {
     // The time that the event took place,
@@ -21,10 +21,10 @@ interface MetadataHasResult {
 export function recordMetadataHasResult(args?: MetadataHasResult) {
     let metadata: any[] = []
 
-    ext.telemetry.record({
+    globals.telemetry.record({
         MetricName: 'metadata_hasResult',
         Value: args?.value ?? 1,
-        EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
+        EpochTimestamp: (args?.createTime ?? new globals.clock.Date()).getTime(),
         Unit: 'None',
         Passive: args?.passive ?? undefined,
         Metadata: metadata,
@@ -32,5 +32,5 @@ export function recordMetadataHasResult(args?: MetadataHasResult) {
 }
 
 export function millisecondsSince(d: Date): number {
-    return Date.now() - Number(d)
+    return globals.clock.Date.now() - Number(d)
 }

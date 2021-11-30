@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { ext } from '../extensionGlobals'
+import globals from '../extensionGlobals'
 export type LambdaRuntime = 'dotnetcore2.1' | 'nodejs12.x'
 interface LambdaDelete {
     // The duration of the operation in miliseconds
@@ -30,10 +30,10 @@ export function recordLambdaDelete(args: LambdaDelete) {
     if (args?.booltype) {
         metadata.push({ Key: 'booltype', Value: args.booltype.toString() })
     }
-    ext.telemetry.record({
+    globals.telemetry.record({
         MetricName: 'lambda_delete',
         Value: args?.value ?? 1,
-        EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
+        EpochTimestamp: (args?.createTime ?? new globals.clock.Date()).getTime(),
         Unit: 'None',
         Passive: args?.passive ?? undefined,
         Metadata: metadata,
@@ -64,10 +64,10 @@ export function recordLambdaCreate(args: LambdaCreate) {
     if (args?.arbitraryString) {
         metadata.push({ Key: 'arbitraryString', Value: args.arbitraryString.toString() })
     }
-    ext.telemetry.record({
+    globals.telemetry.record({
         MetricName: 'lambda_create',
         Value: args?.value ?? 1,
-        EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
+        EpochTimestamp: (args?.createTime ?? new globals.clock.Date()).getTime(),
         Unit: 'None',
         Passive: args?.passive ?? undefined,
         Metadata: metadata,
@@ -98,10 +98,10 @@ export function recordLambdaRemoteinvoke(args: LambdaRemoteinvoke) {
     if (args?.inttype) {
         metadata.push({ Key: 'inttype', Value: args.inttype.toString() })
     }
-    ext.telemetry.record({
+    globals.telemetry.record({
         MetricName: 'lambda_remoteinvoke',
         Value: args?.value ?? 1,
-        EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
+        EpochTimestamp: (args?.createTime ?? new globals.clock.Date()).getTime(),
         Unit: 'None',
         Passive: args?.passive ?? undefined,
         Metadata: metadata,
@@ -123,10 +123,10 @@ interface NoMetadata {
 export function recordNoMetadata(args?: NoMetadata) {
     let metadata: any[] = []
 
-    ext.telemetry.record({
+    globals.telemetry.record({
         MetricName: 'no_metadata',
         Value: args?.value ?? 1,
-        EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
+        EpochTimestamp: (args?.createTime ?? new globals.clock.Date()).getTime(),
         Unit: 'None',
         Passive: args?.passive ?? undefined,
         Metadata: metadata,
@@ -148,10 +148,10 @@ interface PassivePassive {
 export function recordPassivePassive(args?: PassivePassive) {
     let metadata: any[] = []
 
-    ext.telemetry.record({
+    globals.telemetry.record({
         MetricName: 'passive_passive',
         Value: args?.value ?? 1,
-        EpochTimestamp: (args?.createTime ?? new Date()).getTime(),
+        EpochTimestamp: (args?.createTime ?? new globals.clock.Date()).getTime(),
         Unit: 'None',
         Passive: args?.passive ?? true,
         Metadata: metadata,
@@ -159,5 +159,5 @@ export function recordPassivePassive(args?: PassivePassive) {
 }
 
 export function millisecondsSince(d: Date): number {
-    return Date.now() - Number(d)
+    return globals.clock.Date.now() - Number(d)
 }
