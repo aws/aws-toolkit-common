@@ -963,7 +963,10 @@
         {
             "name": "toolkit_init",
             "description": "The Toolkit has completed initialization",
-            "metadata": [{ "type": "duration" }],
+            "metadata": [
+                { "type": "result", "required": false },
+                { "type": "duration", "required": false }
+            ],
             "passive": true
         },
         {
