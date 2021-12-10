@@ -681,6 +681,11 @@
             "metadata": [{ "type": "result" }, { "type": "ecsLaunchType" }]
         },
         {
+            "name": "ecs_publishWizard",
+            "description": "Called when user finishes ECS publish wizard",
+            "metadata": [{ "type": "result" }, { "type": "duration" }]
+        },
+        {
             "name": "ecs_openRepository",
             "description": "Open to view status of an ECS Repository",
             "metadata": [{ "type": "result" }]
