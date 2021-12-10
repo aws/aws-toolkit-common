@@ -682,7 +682,7 @@
         },
         {
             "name": "ecs_publishWizard",
-            "description": "Called when user finishes ECS publish wizard",
+            "description": "Called when user completes the ECS publish wizard",
             "metadata": [{ "type": "result" }, { "type": "duration" }]
         },
         {
