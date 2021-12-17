@@ -691,6 +691,11 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "ecs_deleteService",
+            "description": "Called when user deletes an ECS service",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "feedback_result",
             "description": "Called while submitting in-IDE feedback",
             "metadata": [{ "type": "result" }]
