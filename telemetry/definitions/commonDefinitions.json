@@ -53,6 +53,16 @@
             "description": "A generic version metadata"
         },
         {
+            "name": "operation",
+            "type": "string",
+            "description": "A generic operation metadata"
+        },
+        {
+            "name": "source",
+            "type": "string",
+            "description": "The source of the operation"
+        },
+        {
             "name": "reason",
             "type": "string",
             "description": "The reason for a metric or exception depending on context"
@@ -399,6 +409,15 @@
         {
             "name": "aws_saveCredentials",
             "description": "Save credentials"
+        },
+        {
+            "name": "aws_modifyCredentials",
+            "description": "Modify credentials (e.g. Add, Edit, Delete)",
+            "metadata": [
+                { "type": "result" },
+                { "type": "operation" },
+                { "type": "source" }
+            ]
         },
         {
             "name": "aws_loadCredentials",
