@@ -53,9 +53,10 @@
             "description": "A generic version metadata"
         },
         {
-            "name": "operation",
+            "name": "credentialModification",
             "type": "string",
-            "description": "A generic operation metadata"
+            "allowedValues": ["Add", "Edit", "Delete"],
+            "description": "The type of modification performed on the credentials"
         },
         {
             "name": "source",
@@ -415,7 +416,7 @@
             "description": "Modify credentials (e.g. Add, Edit, Delete)",
             "metadata": [
                 { "type": "result" },
-                { "type": "operation" },
+                { "type": "credentialModification" },
                 { "type": "source" }
             ]
         },
