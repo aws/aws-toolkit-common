@@ -14,7 +14,7 @@ plugins {
     kotlin("jvm") version "1.5.30"
     `maven-publish`
     signing
-    id("io.codearte.nexus-staging") version "0.30.0"
+    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
 }
 
 java {
@@ -126,20 +126,6 @@ publishing {
             }
         }
     }
-    repositories {
-        maven {
-            name = "sonatype"
-            url = if (!version.toString().endsWith("SNAPSHOT")) {
-                uri("https://aws.oss.sonatype.org/service/local/staging/deploy/maven2/")
-            } else {
-                uri("https://aws.oss.sonatype.org/content/repositories/snapshots/")
-            }
-            credentials {
-                username = project.findProperty("ossrhUsername") as? String
-                password = project.findProperty("ossrhPassword") as? String
-            }
-        }
-    }
 }
 
 signing {
@@ -150,12 +136,20 @@ signing {
     }
 }
 
-nexusStaging {
-    packageGroup = "software.aws"
-    serverUrl = "https://aws.oss.sonatype.org/service/local/"
-    // gotten using ./gradlew getStagingProfile
-    stagingProfileId = "29b8dd754a6907"
-    username = project.findProperty("ossrhUsername") as? String
-    password = project.findProperty("ossrhPassword") as? String
-}
+nexusPublishing {
+    // This should ideally be removed and scoped down to our specific group, though it seems to be required for staging.
+    // Originally added in https://github.com/aws/aws-toolkit-common/pull/40/files#diff-348889e112c6981a4641210b8e895e123b131ac6df5cdb7aac0de6d75acfb99eR149
+    packageGroup.set("software.aws")
 
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://aws.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://aws.oss.sonatype.org/content/repositories/snapshots/"))
+            username.set(project.findProperty("ossrhUsername") as? String)
+            password.set(project.findProperty("ossrhPassword") as? String)
+
+            // gotten using ./gradlew getStagingProfile with an older plugin (io.codearte.nexus-staging)
+            stagingProfileId.set("29b8dd754a6907")
+        }
+    }
+}
