@@ -145,7 +145,7 @@ nexusPublishing {
             password.set(project.findProperty("ossrhPassword") as? String)
 
             // gotten using ./gradlew getStagingProfile with an older plugin (io.codearte.nexus-staging)
-            stagingProfileId = "29b8dd754a6907"
+            stagingProfileId.set("29b8dd754a6907")
         }
     }
 }
