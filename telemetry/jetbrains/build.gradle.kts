@@ -128,6 +128,11 @@ publishing {
     }
 }
 
+// Disables the creation of an automatic publishing configuration
+// This is because `kotlin-dsl` pulls in `java-gradle-plugin` which generates a new publication automatically
+// We don't want to do two publications (this will clobber the first)
+gradlePlugin { setAutomatedPublishing(false) }
+
 signing {
     if (project.hasProperty("signing.keyId")
         && project.hasProperty("signing.password")
