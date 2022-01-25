@@ -100,8 +100,8 @@ tasks.withType<Test> {
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
+            from(components["java"])
             pom {
-                from(components["java"])
                 name.set(project.name)
                 description.set("Telemetry generation for AWS Toolkit for JetBrains")
                 url.set("https://github.com/aws/aws-toolkit-common")
