@@ -574,7 +574,7 @@
         {
             "name": "cloudformation_createProject",
             "description": "Called when creating a CloudFormation project",
-            "metadata": [{ "type": "templateName", "required": "false" }]
+            "metadata": [{ "type": "templateName" }]
         },
         {
             "name": "cloudformation_deploy",
@@ -772,7 +772,7 @@
             "description": "Called when creating a lambda project",
             "metadata": [
                 { "type": "language" },
-                { "type": "templateName", "required": "false" }
+                { "type": "templateName" }
             ]
         },
         {
