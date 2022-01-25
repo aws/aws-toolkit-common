@@ -140,10 +140,6 @@ signing {
     }
 }
 
-tasks.withType(io.github.gradlenexus.publishplugin.InitializeNexusStagingRepository).configureEach {
-    shouldRunAfter(tasks.withType(Sign))
-}
-
 nexusPublishing {
     // This should ideally be removed and scoped down to our specific group, though it seems to be required for staging.
     // Originally added in https://github.com/aws/aws-toolkit-common/pull/40/files#diff-348889e112c6981a4641210b8e895e123b131ac6df5cdb7aac0de6d75acfb99eR149
