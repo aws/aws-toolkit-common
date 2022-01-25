@@ -139,6 +139,11 @@
             "description": "Languages targeted by the schemas service"
         },
         {
+            "name": "language",
+            "type": "string",
+            "description": "Language used for the project"
+        },
+        {
             "name": "workflowToken",
             "type": "string",
             "description": "A token used for flow metrics to link calls together"
@@ -567,6 +572,11 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "cloudformation_createProject",
+            "description": "Called when creating a CloudFormation project",
+            "metadata": [{ "type": "templateName", "required": "false" }]
+        },
+        {
             "name": "cloudformation_deploy",
             "description": "Called when deploying a CloudFormation template",
             "metadata": [{ "type": "result" }, { "type": "initialDeploy" }]
@@ -756,6 +766,14 @@
             "name": "lambda_create",
             "description": "Called when creating lambdas remotely",
             "metadata": [{ "type": "runtime" }]
+        },
+        {
+            "name": "lambda_createProject",
+            "description": "Called when creating a lambda project",
+            "metadata": [
+                { "type": "language" },
+                { "type": "templateName", "required": "false" }
+            ]
         },
         {
             "name": "lambda_goToHandler",
