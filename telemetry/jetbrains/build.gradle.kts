@@ -99,11 +99,7 @@ tasks.withType<Test> {
 
 publishing {
     publications {
-        // The publication currently must be named 'pluginMaven'
-        // This is because `kotlin-dsl` pulls in `java-gradle-plugin` which generates a new publication automatically
-        // We don't want to do two publications (this will clobber the first)
-        // So we just extend on the generated one
-        create<MavenPublication>("pluginMaven") {
+        withType<MavenPublication>().configureEach {
             from(components["java"])
             pom {
                 name.set(project.name)
@@ -136,6 +132,10 @@ signing {
     if (project.hasProperty("signing.keyId")
         && project.hasProperty("signing.password")
         && project.hasProperty("signing.secretKeyRingFile")) {
+        // The publication must be named 'pluginMaven'
+        // This is because `kotlin-dsl` pulls in `java-gradle-plugin` which generates a new publication automatically
+        // We don't want to do two publications (this will clobber the first)
+        // So we just extend on the generated one
         sign(publishing.publications["pluginMaven"])
     }
 }
