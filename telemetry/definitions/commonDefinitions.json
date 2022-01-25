@@ -579,12 +579,18 @@
         {
             "name": "codecommit_cloneRepo",
             "description": "A repo is cloned from CodeCommit",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "reason", "required": false }
+            ]
         },
         {
             "name": "codecommit_createRepo",
             "description": "A repo is created in CodeCommit",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "reason", "required": false }
+            ]
         },
         {
             "name": "codecommit_setCredentials",
