@@ -608,7 +608,10 @@
         {
             "name": "codecommit_setCredentials",
             "description": "A connection is established to CodeCommit to perform actions on repos",
-            "metadata": [{ "type": "credentialType", "required": false }],
+            "metadata": [
+                { "type": "result" },
+                { "type": "credentialType", "required": false }
+            ],
             "passive": true
         },
         {
