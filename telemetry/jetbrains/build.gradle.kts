@@ -99,7 +99,11 @@ tasks.withType<Test> {
 
 publishing {
     publications {
-        create<MavenPublication>("mavenJava") {
+        // The publication currently must be named 'pluginMaven'
+        // This is because `kotlin-dsl` pulls in `java-gradle-plugin` which generates a new publication automatically
+        // We don't want to do two publications (this will clobber the first)
+        // So we just extend on the generated one
+        create<MavenPublication>("pluginMaven") {
             from(components["java"])
             pom {
                 name.set(project.name)
@@ -132,8 +136,12 @@ signing {
     if (project.hasProperty("signing.keyId")
         && project.hasProperty("signing.password")
         && project.hasProperty("signing.secretKeyRingFile")) {
-        sign(publishing.publications["mavenJava"])
+        sign(publishing.publications["pluginMaven"])
     }
+}
+
+tasks.withType(io.github.gradlenexus.publishplugin.InitializeNexusStagingRepository).configureEach {
+    shouldRunAfter(tasks.withType(Sign))
 }
 
 nexusPublishing {
