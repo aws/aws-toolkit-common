@@ -99,7 +99,7 @@ tasks.withType<Test> {
 
 publishing {
     publications {
-        create<MavenPublication>("maven") {
+        create<MavenPublication>("mavenJava") {
             from(components["java"])
             pom {
                 name.set(project.name)
@@ -132,7 +132,7 @@ signing {
     if (project.hasProperty("signing.keyId")
         && project.hasProperty("signing.password")
         && project.hasProperty("signing.secretKeyRingFile")) {
-        sign(publishing.publications["maven"])
+        sign(publishing.publications["mavenJava"])
     }
 }
 
