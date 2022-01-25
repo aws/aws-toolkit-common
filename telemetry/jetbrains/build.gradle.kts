@@ -99,8 +99,9 @@ tasks.withType<Test> {
 
 publishing {
     publications {
-        withType<MavenPublication>().configureEach {
+        create<MavenPublication>("mavenJava") {
             pom {
+                from(components["java"])
                 name.set(project.name)
                 description.set("Telemetry generation for AWS Toolkit for JetBrains")
                 url.set("https://github.com/aws/aws-toolkit-common")
@@ -127,15 +128,16 @@ publishing {
     }
 }
 
+// Disables the creation of an automatic publishing configuration
+// This is because `kotlin-dsl` pulls in `java-gradle-plugin` which generates a new publication automatically
+// We don't want to do two publications (this will clobber the first)
+gradlePlugin { automatedPublishing = false }
+
 signing {
     if (project.hasProperty("signing.keyId")
         && project.hasProperty("signing.password")
         && project.hasProperty("signing.secretKeyRingFile")) {
-        // The publication must be named 'pluginMaven'
-        // This is because `kotlin-dsl` pulls in `java-gradle-plugin` which generates a new publication automatically
-        // We don't want to do two publications (this will clobber the first)
-        // So we just extend on the generated one
-        sign(publishing.publications["pluginMaven"])
+        sign(publishing.publications["mavenJava"])
     }
 }
 
