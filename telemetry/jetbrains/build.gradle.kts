@@ -100,7 +100,6 @@ tasks.withType<Test> {
 publishing {
     publications {
         withType<MavenPublication>().configureEach {
-            from(components["java"])
             pom {
                 name.set(project.name)
                 description.set("Telemetry generation for AWS Toolkit for JetBrains")
