@@ -113,6 +113,11 @@
             "description": "Generic name of a template"
         },
         {
+            "name": "templateVariant",
+            "type": "string",
+            "description": "The type of project created (e.g. Lambda Project vs. Lambda Project with Tests)"
+        },
+        {
             "name": "debug",
             "type": "boolean",
             "description": "If the action was run in debug mode or not"
@@ -779,7 +784,8 @@
             "metadata": [
                 { "type": "result" },
                 { "type": "language" },
-                { "type": "templateName" }
+                { "type": "templateName" },
+                { "type": "templateVariant", "required": false }
             ]
         },
         {
