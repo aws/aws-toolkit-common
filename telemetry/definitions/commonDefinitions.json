@@ -53,6 +53,11 @@
             "description": "A generic version metadata"
         },
         {
+            "name": "variant",
+            "type": "string",
+            "description": "A generic variant metadata"
+        },
+        {
             "name": "credentialModification",
             "type": "string",
             "allowedValues": ["Add", "Edit", "Delete"],
@@ -111,11 +116,6 @@
             "name": "templateName",
             "type": "string",
             "description": "Generic name of a template"
-        },
-        {
-            "name": "templateVariant",
-            "type": "string",
-            "description": "The type of project created (e.g. Lambda Project vs. Lambda Project with Tests)"
         },
         {
             "name": "debug",
@@ -785,7 +785,7 @@
                 { "type": "result" },
                 { "type": "language" },
                 { "type": "templateName" },
-                { "type": "templateVariant", "required": false }
+                { "type": "variant", "required": false }
             ]
         },
         {
