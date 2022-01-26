@@ -53,6 +53,11 @@
             "description": "A generic version metadata"
         },
         {
+            "name": "variant",
+            "type": "string",
+            "description": "A generic variant metadata"
+        },
+        {
             "name": "credentialModification",
             "type": "string",
             "allowedValues": ["Add", "Edit", "Delete"],
@@ -779,7 +784,8 @@
             "metadata": [
                 { "type": "result" },
                 { "type": "language" },
-                { "type": "templateName" }
+                { "type": "templateName" },
+                { "type": "variant", "required": false }
             ]
         },
         {
