@@ -832,7 +832,9 @@
                 { "type": "result" },
                 { "type": "initialDeploy" },
                 { "type": "runtime", "required": false },
-                { "type": "platform", "required": false }
+                { "type": "platform", "required": false },
+                { "type": "language", "required": false },
+                { "type": "xrayEnabled", "required": false}
             ]
         },
         {
