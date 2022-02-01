@@ -124,7 +124,7 @@ export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
     ${metadata
         .map(
             (item: MetadataType) =>
-                `if(args?.${item.name}) {metadata.push({Key: '${item.name}', Value: args.${item.name}.toString()})}`
+                `if(args?.${item.name} !== undefined) {metadata.push({Key: '${item.name}', Value: args.${item.name}.toString()})}`
         )
         .join('\n')}
         globals.telemetry.record({
