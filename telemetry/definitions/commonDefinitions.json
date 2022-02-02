@@ -33,6 +33,11 @@
             "description": "The Lambda Package type of the function"
         },
         {
+            "name": "lambdaArchitecture",
+            "allowedValues": ["x86_64", "arm64"],
+            "description": "The Lambda Architecture of the function"
+        },
+        {
             "name": "serviceType",
             "type": "string",
             "description": "The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json"
@@ -833,6 +838,7 @@
                 { "type": "initialDeploy" },
                 { "type": "runtime", "required": false },
                 { "type": "platform", "required": false },
+                { "type": "lambdaArchitecture", "required": false },
                 { "type": "language", "required": false },
                 { "type": "xrayEnabled", "required": false }
             ]
