@@ -260,7 +260,7 @@
         {
             "name": "ec2InstanceState",
             "allowedValues": ["start", "stop", "reboot", "terminate"],
-            "description": "Ways to connect to an EC2 Instance"
+            "description": "Actions that can affect an EC2 Instance state"
         },
         {
             "name": "ecsLaunchType",
@@ -650,7 +650,7 @@
         },
         {
             "name": "ec2_changeState",
-            "description": "Change the running state of an EC2 Instance",
+            "description": "Change the state of an EC2 Instance",
             "metadata": [
                 { "type": "result" }, 
                 { "type": "ec2InstanceState" }
