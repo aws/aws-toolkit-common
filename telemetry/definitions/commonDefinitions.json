@@ -33,6 +33,11 @@
             "description": "The Lambda Package type of the function"
         },
         {
+            "name": "lambdaArchitecture",
+            "allowedValues": ["x86_64", "arm64"],
+            "description": "The Lambda Architecture of the function"
+        },
+        {
             "name": "serviceType",
             "type": "string",
             "description": "The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json"
@@ -51,6 +56,11 @@
             "name": "version",
             "type": "string",
             "description": "A generic version metadata"
+        },
+        {
+            "name": "variant",
+            "type": "string",
+            "description": "A generic variant metadata"
         },
         {
             "name": "credentialModification",
@@ -805,7 +815,8 @@
             "metadata": [
                 { "type": "result" },
                 { "type": "language" },
-                { "type": "templateName" }
+                { "type": "templateName" },
+                { "type": "variant", "required": false }
             ]
         },
         {
@@ -852,7 +863,10 @@
                 { "type": "result" },
                 { "type": "initialDeploy" },
                 { "type": "runtime", "required": false },
-                { "type": "platform", "required": false }
+                { "type": "platform", "required": false },
+                { "type": "lambdaArchitecture", "required": false },
+                { "type": "language", "required": false },
+                { "type": "xrayEnabled", "required": false }
             ]
         },
         {

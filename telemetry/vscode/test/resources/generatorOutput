@@ -24,10 +24,10 @@ interface LambdaDelete {
  */
 export function recordLambdaDelete(args: LambdaDelete) {
     let metadata: any[] = []
-    if (args?.duration) {
+    if (args?.duration !== undefined) {
         metadata.push({ Key: 'duration', Value: args.duration.toString() })
     }
-    if (args?.booltype) {
+    if (args?.booltype !== undefined) {
         metadata.push({ Key: 'booltype', Value: args.booltype.toString() })
     }
     globals.telemetry.record({
@@ -58,10 +58,10 @@ interface LambdaCreate {
  */
 export function recordLambdaCreate(args: LambdaCreate) {
     let metadata: any[] = []
-    if (args?.lambdaRuntime) {
+    if (args?.lambdaRuntime !== undefined) {
         metadata.push({ Key: 'lambdaRuntime', Value: args.lambdaRuntime.toString() })
     }
-    if (args?.arbitraryString) {
+    if (args?.arbitraryString !== undefined) {
         metadata.push({ Key: 'arbitraryString', Value: args.arbitraryString.toString() })
     }
     globals.telemetry.record({
@@ -92,10 +92,10 @@ interface LambdaRemoteinvoke {
  */
 export function recordLambdaRemoteinvoke(args: LambdaRemoteinvoke) {
     let metadata: any[] = []
-    if (args?.lambdaRuntime) {
+    if (args?.lambdaRuntime !== undefined) {
         metadata.push({ Key: 'lambdaRuntime', Value: args.lambdaRuntime.toString() })
     }
-    if (args?.inttype) {
+    if (args?.inttype !== undefined) {
         metadata.push({ Key: 'inttype', Value: args.inttype.toString() })
     }
     globals.telemetry.record({
