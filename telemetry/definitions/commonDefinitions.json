@@ -253,6 +253,16 @@
             "description": "User-specified search string type while starting an insights query"
         },
         {
+            "name": "ec2ConnectionType",
+            "allowedValues": ["remoteDesktop", "ssh"],
+            "description": "Ways to connect to an EC2 Instance"
+        },
+        {
+            "name": "ec2InstanceState",
+            "allowedValues": ["start", "stop", "reboot", "terminate"],
+            "description": "Actions that can affect an EC2 Instance state"
+        },
+        {
             "name": "ecsLaunchType",
             "allowedValues": ["ec2", "fargate"],
             "description": "Infrastructure type used by ECS tasks and services"
@@ -636,6 +646,22 @@
                 { "type": "result" },
                 { "type": "dynamoDbFetchType" },
                 { "type": "dynamoDbIndexType", "required": false }
+            ]
+        },
+        {
+            "name": "ec2_changeState",
+            "description": "Change the state of an EC2 Instance",
+            "metadata": [
+                { "type": "result" }, 
+                { "type": "ec2InstanceState" }
+            ]
+        },
+        {
+            "name": "ec2_connectToInstance",
+            "description": "Perform a connection to an EC2 Instance",
+            "metadata": [
+                { "type": "result" }, 
+                { "type": "ec2ConnectionType" }
             ]
         },
         {
