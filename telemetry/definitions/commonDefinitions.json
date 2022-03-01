@@ -1273,6 +1273,19 @@
                 }
             ],
             "passive": true
+        },
+        {
+            "name": "deeplink_open",
+            "description": "User requested that a resource be opened in the browser using the deeplink service",
+            "metadata": [
+                {
+                    "type": "source"
+                },
+                {
+                    "type": "result"
+                }
+            ],
+            "passive": true
         }
     ]
 }
