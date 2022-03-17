@@ -331,6 +331,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             var telemetryLogger = new CodeParameterDeclarationExpression("this ITelemetryLogger", "telemetryLogger");
             recordMethod.Parameters.Add(telemetryLogger);
             recordMethod.Parameters.Add(new CodeParameterDeclarationExpression(SanitizeName(metric.name), "payload"));
+            recordMethod.Parameters.Add(new CodeParameterDeclarationExpression("Func<MetricDatum, MetricDatum>", "transformDatum = null"));
 
             // Generate method body
             var tryStatements = new List<CodeStatement>();
@@ -341,6 +342,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             var metrics = new CodeVariableReferenceExpression("metrics");
             var metricsDataField = new CodeFieldReferenceExpression(metrics, "Data");
             var payload = new CodeArgumentReferenceExpression("payload");
+            var transformDatum = new CodeArgumentReferenceExpression("transformDatum");
             var datum = new CodeVariableReferenceExpression("datum");
             var datumAddData = new CodeMethodReferenceExpression(datum, AddMetadataMethodName);
             var datetimeNow = new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(DateTime)), nameof(DateTime.Now));
@@ -417,6 +419,20 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
                         new CodePrimitiveExpression(metadata.type), payloadField)));
                 }
             });
+
+            // Generate: "If the transform function isn't null, assign datum to its result"
+            // datum = fnTransform(datum)
+            var transformExistsCheck = new CodeBinaryOperatorExpression(transformDatum,
+                CodeBinaryOperatorType.IdentityInequality,
+                new CodePrimitiveExpression(null));
+
+            var invokeTransform = new CodeMethodInvokeExpression(transformDatum, "Invoke", datum);
+
+            var assignTransform = new CodeAssignStatement(datum, invokeTransform);
+
+            tryStatements.Add(new CodeSnippetStatement());
+            tryStatements.Add(
+                new CodeConditionStatement(transformExistsCheck, assignTransform));
 
             // Generate: metrics.Data.Add(datum);
             tryStatements.Add(new CodeSnippetStatement());

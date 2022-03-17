@@ -1,4 +1,5 @@
-﻿using Amazon.AwsToolkit.Telemetry.Events.Core;
+﻿using System;
+using Amazon.AwsToolkit.Telemetry.Events.Core;
 using Amazon.AwsToolkit.Telemetry.Events.Generated;
 using Moq;
 using Xunit;
@@ -159,6 +160,78 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.NotNull(datum);
             Assert.Equal("session_start", datum.MetricName);
             Assert.True(datum.Passive);
+        }
+
+        [Fact]
+        public void RecordMetricWithMutationTransform()
+        {
+            var samInit = new SamInit()
+            {
+                Reason = "hello world",
+            };
+
+            _telemetryLogger.Object.RecordSamInit(samInit, TransformDuplicateReason);
+
+            Assert.NotNull(_recordedMetrics);
+            _telemetryLogger.Verify(
+                mock => mock.Record(_recordedMetrics),
+                Times.Once
+            );
+
+            var datum = Assert.Single(_recordedMetrics.Data);
+            Assert.NotNull(datum);
+            Assert.Equal("sam_init", datum.MetricName);
+
+            Assert.True(datum.Metadata.ContainsKey("reason"));
+            Assert.Equal("hello world", datum.Metadata["reason"]);
+            
+            Assert.True(datum.Metadata.ContainsKey("reason1"));
+            Assert.Equal("hello world", datum.Metadata["reason1"]);
+
+            Assert.True(datum.Metadata.ContainsKey("reason2"));
+            Assert.Equal("HELLO WORLD", datum.Metadata["reason2"]);
+        }
+
+        [Fact]
+        public void RecordMetricWithNewTransform()
+        {
+            var samInit = new SamInit()
+            {
+                Reason = "hello world",
+            };
+
+            _telemetryLogger.Object.RecordSamInit(samInit, TransformCreateNewDatum);
+
+            Assert.NotNull(_recordedMetrics);
+            _telemetryLogger.Verify(
+                mock => mock.Record(_recordedMetrics),
+                Times.Once
+            );
+
+            var datum = Assert.Single(_recordedMetrics.Data);
+            Assert.NotNull(datum);
+            Assert.Equal("sam_init", datum.MetricName);
+
+            Assert.False(datum.Metadata.ContainsKey("reason"));
+            Assert.True(datum.Metadata.ContainsKey("currentTime"));
+            Assert.Single(datum.Metadata);
+        }
+
+        private MetricDatum TransformDuplicateReason(MetricDatum datum)
+        {
+            datum.Metadata["reason1"] = datum.Metadata["reason"];
+            datum.Metadata["reason2"] = datum.Metadata["reason"].ToUpper();
+
+            return datum;
+        }
+
+        private MetricDatum TransformCreateNewDatum(MetricDatum datum)
+        {
+            MetricDatum newDatum = new MetricDatum();
+            newDatum.MetricName = datum.MetricName;
+            newDatum.Metadata.Add("currentTime", DateTime.Now.ToShortTimeString());
+
+            return newDatum;
         }
     }
 }

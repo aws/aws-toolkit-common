@@ -25,7 +25,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Copying an API Gateway remote URL
-        public static void RecordApigatewayCopyUrl(this ITelemetryLogger telemetryLogger, ApigatewayCopyUrl payload)
+        public static void RecordApigatewayCopyUrl(this ITelemetryLogger telemetryLogger, ApigatewayCopyUrl payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -57,6 +57,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -69,7 +74,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Invoking one simulated API Gateway call using the SAM cli
-        public static void RecordApigatewayInvokeLocal(this ITelemetryLogger telemetryLogger, ApigatewayInvokeLocal payload)
+        public static void RecordApigatewayInvokeLocal(this ITelemetryLogger telemetryLogger, ApigatewayInvokeLocal payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -110,6 +115,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("debug", payload.Debug);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -122,7 +132,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Calling a remote API Gateway
-        public static void RecordApigatewayInvokeRemote(this ITelemetryLogger telemetryLogger, ApigatewayInvokeRemote payload)
+        public static void RecordApigatewayInvokeRemote(this ITelemetryLogger telemetryLogger, ApigatewayInvokeRemote payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -156,6 +166,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("httpMethod", payload.HttpMethod);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -168,7 +183,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when starting a local API Gateway server simulator with SAM. Only called when starting it for long running testing, not for single invokes
-        public static void RecordApigatewayStartLocalServer(this ITelemetryLogger telemetryLogger, ApigatewayStartLocalServer payload)
+        public static void RecordApigatewayStartLocalServer(this ITelemetryLogger telemetryLogger, ApigatewayStartLocalServer payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -200,6 +215,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -212,7 +232,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open the service URL in a browser
-        public static void RecordApprunnerOpenServiceUrl(this ITelemetryLogger telemetryLogger, ApprunnerOpenServiceUrl payload)
+        public static void RecordApprunnerOpenServiceUrl(this ITelemetryLogger telemetryLogger, ApprunnerOpenServiceUrl payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -242,6 +262,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -254,7 +279,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Copy the service URL
-        public static void RecordApprunnerCopyServiceUrl(this ITelemetryLogger telemetryLogger, ApprunnerCopyServiceUrl payload)
+        public static void RecordApprunnerCopyServiceUrl(this ITelemetryLogger telemetryLogger, ApprunnerCopyServiceUrl payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -284,6 +309,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -296,7 +326,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Create an App Runner service
-        public static void RecordApprunnerCreateService(this ITelemetryLogger telemetryLogger, ApprunnerCreateService payload)
+        public static void RecordApprunnerCreateService(this ITelemetryLogger telemetryLogger, ApprunnerCreateService payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -332,6 +362,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("reason", payload.Reason);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -344,7 +379,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Pause a running App Runner service
-        public static void RecordApprunnerPauseService(this ITelemetryLogger telemetryLogger, ApprunnerPauseService payload)
+        public static void RecordApprunnerPauseService(this ITelemetryLogger telemetryLogger, ApprunnerPauseService payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -376,6 +411,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -388,7 +428,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Resume a paused App Runner service
-        public static void RecordApprunnerResumeService(this ITelemetryLogger telemetryLogger, ApprunnerResumeService payload)
+        public static void RecordApprunnerResumeService(this ITelemetryLogger telemetryLogger, ApprunnerResumeService payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -420,6 +460,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -432,7 +477,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Delete an App Runner service
-        public static void RecordApprunnerDeleteService(this ITelemetryLogger telemetryLogger, ApprunnerDeleteService payload)
+        public static void RecordApprunnerDeleteService(this ITelemetryLogger telemetryLogger, ApprunnerDeleteService payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -469,6 +514,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("appRunnerServiceStatus", payload.AppRunnerServiceStatus.Value);
                 }
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -481,7 +531,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Start a new deployment for an App Runner service
-        public static void RecordApprunnerStartDeployment(this ITelemetryLogger telemetryLogger, ApprunnerStartDeployment payload)
+        public static void RecordApprunnerStartDeployment(this ITelemetryLogger telemetryLogger, ApprunnerStartDeployment payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -513,6 +563,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -525,7 +580,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// View the App Runner application logs (the logs for your running service)
-        public static void RecordApprunnerViewApplicationLogs(this ITelemetryLogger telemetryLogger, ApprunnerViewApplicationLogs payload)
+        public static void RecordApprunnerViewApplicationLogs(this ITelemetryLogger telemetryLogger, ApprunnerViewApplicationLogs payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -555,6 +610,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -567,7 +627,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// View the App Runner service logs (the logs produced by App Runner)
-        public static void RecordApprunnerViewServiceLogs(this ITelemetryLogger telemetryLogger, ApprunnerViewServiceLogs payload)
+        public static void RecordApprunnerViewServiceLogs(this ITelemetryLogger telemetryLogger, ApprunnerViewServiceLogs payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -597,6 +657,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -609,7 +674,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Copy the ARN of an AWS resource
-        public static void RecordAwsCopyArn(this ITelemetryLogger telemetryLogger, AwsCopyArn payload)
+        public static void RecordAwsCopyArn(this ITelemetryLogger telemetryLogger, AwsCopyArn payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -641,6 +706,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -653,7 +723,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Delete an AWS resource
-        public static void RecordAwsDeleteResource(this ITelemetryLogger telemetryLogger, AwsDeleteResource payload)
+        public static void RecordAwsDeleteResource(this ITelemetryLogger telemetryLogger, AwsDeleteResource payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -687,6 +757,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -699,7 +774,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Select a credentials profile
-        public static void RecordAwsSetCredentials(this ITelemetryLogger telemetryLogger, AwsSetCredentials payload)
+        public static void RecordAwsSetCredentials(this ITelemetryLogger telemetryLogger, AwsSetCredentials payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -739,6 +814,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("credentialSourceId", payload.CredentialSourceId.Value);
                 }
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -751,7 +831,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// A region change occurred
-        public static void RecordAwsSetRegion(this ITelemetryLogger telemetryLogger, AwsSetRegion payload)
+        public static void RecordAwsSetRegion(this ITelemetryLogger telemetryLogger, AwsSetRegion payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -781,6 +861,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -793,7 +878,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// A partition change occurred
-        public static void RecordAwsSetPartition(this ITelemetryLogger telemetryLogger, AwsSetPartition payload)
+        public static void RecordAwsSetPartition(this ITelemetryLogger telemetryLogger, AwsSetPartition payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -825,6 +910,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("partitionId", payload.PartitionId);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -837,7 +927,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open the credentials file
-        public static void RecordAwsOpenCredentials(this ITelemetryLogger telemetryLogger, AwsOpenCredentials payload)
+        public static void RecordAwsOpenCredentials(this ITelemetryLogger telemetryLogger, AwsOpenCredentials payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -869,6 +959,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -881,7 +976,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Opens a url
-        public static void RecordAwsOpenUrl(this ITelemetryLogger telemetryLogger, AwsOpenUrl payload)
+        public static void RecordAwsOpenUrl(this ITelemetryLogger telemetryLogger, AwsOpenUrl payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -915,6 +1010,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("url", payload.Url);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -927,7 +1027,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Save credentials
-        public static void RecordAwsSaveCredentials(this ITelemetryLogger telemetryLogger, AwsSaveCredentials payload)
+        public static void RecordAwsSaveCredentials(this ITelemetryLogger telemetryLogger, AwsSaveCredentials payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -957,6 +1057,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -969,7 +1074,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Modify credentials (e.g. Add, Edit, Delete)
-        public static void RecordAwsModifyCredentials(this ITelemetryLogger telemetryLogger, AwsModifyCredentials payload)
+        public static void RecordAwsModifyCredentials(this ITelemetryLogger telemetryLogger, AwsModifyCredentials payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1005,6 +1110,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("source", payload.Source);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1017,7 +1127,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Load credentials from a credential source
-        public static void RecordAwsLoadCredentials(this ITelemetryLogger telemetryLogger, AwsLoadCredentials payload)
+        public static void RecordAwsLoadCredentials(this ITelemetryLogger telemetryLogger, AwsLoadCredentials payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1049,6 +1159,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("credentialSourceId", payload.CredentialSourceId);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1061,7 +1176,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Create a new credentials file
-        public static void RecordAwsCreateCredentials(this ITelemetryLogger telemetryLogger, AwsCreateCredentials payload)
+        public static void RecordAwsCreateCredentials(this ITelemetryLogger telemetryLogger, AwsCreateCredentials payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1091,6 +1206,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1103,7 +1223,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Inject selected AWS credentials into a third-party run (e.g. RunConfiguration)
-        public static void RecordAwsInjectCredentials(this ITelemetryLogger telemetryLogger, AwsInjectCredentials payload)
+        public static void RecordAwsInjectCredentials(this ITelemetryLogger telemetryLogger, AwsInjectCredentials payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1137,6 +1257,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("runtimeString", payload.RuntimeString);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1149,7 +1274,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Validate credentials when selecting new credentials
-        public static void RecordAwsValidateCredentials(this ITelemetryLogger telemetryLogger, AwsValidateCredentials payload)
+        public static void RecordAwsValidateCredentials(this ITelemetryLogger telemetryLogger, AwsValidateCredentials payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1191,6 +1316,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("credentialSourceId", payload.CredentialSourceId.Value);
                 }
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1203,7 +1333,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open docs for the extension
-        public static void RecordAwsHelp(this ITelemetryLogger telemetryLogger, AwsHelp payload)
+        public static void RecordAwsHelp(this ITelemetryLogger telemetryLogger, AwsHelp payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1235,6 +1365,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("name", payload.Name);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1247,7 +1382,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open the quickstart guide
-        public static void RecordAwsHelpQuickstart(this ITelemetryLogger telemetryLogger, AwsHelpQuickstart payload)
+        public static void RecordAwsHelpQuickstart(this ITelemetryLogger telemetryLogger, AwsHelpQuickstart payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1279,6 +1414,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1291,7 +1431,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open the repo for the extension
-        public static void RecordAwsShowExtensionSource(this ITelemetryLogger telemetryLogger, AwsShowExtensionSource payload)
+        public static void RecordAwsShowExtensionSource(this ITelemetryLogger telemetryLogger, AwsShowExtensionSource payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1321,6 +1461,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1333,7 +1478,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Refresh the AWS explorer window
-        public static void RecordAwsRefreshExplorer(this ITelemetryLogger telemetryLogger, AwsRefreshExplorer payload)
+        public static void RecordAwsRefreshExplorer(this ITelemetryLogger telemetryLogger, AwsRefreshExplorer payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1363,6 +1508,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1375,7 +1525,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Report an issue with the plugin
-        public static void RecordAwsReportPluginIssue(this ITelemetryLogger telemetryLogger, AwsReportPluginIssue payload)
+        public static void RecordAwsReportPluginIssue(this ITelemetryLogger telemetryLogger, AwsReportPluginIssue payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1405,6 +1555,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1417,7 +1572,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when deploying an application to Elastic Beanstalk
-        public static void RecordBeanstalkDeploy(this ITelemetryLogger telemetryLogger, BeanstalkDeploy payload)
+        public static void RecordBeanstalkDeploy(this ITelemetryLogger telemetryLogger, BeanstalkDeploy payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1465,6 +1620,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("enhancedHealthEnabled", payload.EnhancedHealthEnabled.Value);
                 }
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1477,7 +1637,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view the status of the Beanstalk Application
-        public static void RecordBeanstalkOpenApplication(this ITelemetryLogger telemetryLogger, BeanstalkOpenApplication payload)
+        public static void RecordBeanstalkOpenApplication(this ITelemetryLogger telemetryLogger, BeanstalkOpenApplication payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1509,6 +1669,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1521,7 +1686,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view the status of the Beanstalk Environment
-        public static void RecordBeanstalkOpenEnvironment(this ITelemetryLogger telemetryLogger, BeanstalkOpenEnvironment payload)
+        public static void RecordBeanstalkOpenEnvironment(this ITelemetryLogger telemetryLogger, BeanstalkOpenEnvironment payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1553,6 +1718,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1565,7 +1735,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view the status of the CloudFront Distribution
-        public static void RecordCloudfrontOpenDistribution(this ITelemetryLogger telemetryLogger, CloudfrontOpenDistribution payload)
+        public static void RecordCloudfrontOpenDistribution(this ITelemetryLogger telemetryLogger, CloudfrontOpenDistribution payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1597,6 +1767,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1609,7 +1784,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view the status of the CloudFront Streaming Distribution
-        public static void RecordCloudfrontOpenStreamingDistribution(this ITelemetryLogger telemetryLogger, CloudfrontOpenStreamingDistribution payload)
+        public static void RecordCloudfrontOpenStreamingDistribution(this ITelemetryLogger telemetryLogger, CloudfrontOpenStreamingDistribution payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1641,6 +1816,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1653,7 +1833,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view the Cloudfront Invalidation requests
-        public static void RecordCloudfrontOpenInvalidationRequest(this ITelemetryLogger telemetryLogger, CloudfrontOpenInvalidationRequest payload)
+        public static void RecordCloudfrontOpenInvalidationRequest(this ITelemetryLogger telemetryLogger, CloudfrontOpenInvalidationRequest payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1685,6 +1865,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1697,7 +1882,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open the CloudWatch Logs group window. ServiceType indicates that it was opened from a different service (like directly from an ECS container)
-        public static void RecordCloudwatchlogsOpenGroup(this ITelemetryLogger telemetryLogger, CloudwatchlogsOpenGroup payload)
+        public static void RecordCloudwatchlogsOpenGroup(this ITelemetryLogger telemetryLogger, CloudwatchlogsOpenGroup payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1731,6 +1916,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1743,7 +1933,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a CloudWatch Logs stream in the window. ServiceType indicates that it was opened from a different service (like directly from an ECS container)
-        public static void RecordCloudwatchlogsOpenStream(this ITelemetryLogger telemetryLogger, CloudwatchlogsOpenStream payload)
+        public static void RecordCloudwatchlogsOpenStream(this ITelemetryLogger telemetryLogger, CloudwatchlogsOpenStream payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1777,6 +1967,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1789,7 +1984,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Download a stream to a file on disk. Value indicates the final size of the formatted stream.
-        public static void RecordCloudwatchlogsDownloadStreamToFile(this ITelemetryLogger telemetryLogger, CloudwatchlogsDownloadStreamToFile payload)
+        public static void RecordCloudwatchlogsDownloadStreamToFile(this ITelemetryLogger telemetryLogger, CloudwatchlogsDownloadStreamToFile payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1821,6 +2016,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1833,7 +2033,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Download a stream to memory then open in an editor.
-        public static void RecordCloudwatchlogsOpenStreamInEditor(this ITelemetryLogger telemetryLogger, CloudwatchlogsOpenStreamInEditor payload)
+        public static void RecordCloudwatchlogsOpenStreamInEditor(this ITelemetryLogger telemetryLogger, CloudwatchlogsOpenStreamInEditor payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1865,6 +2065,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1877,7 +2082,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Copy the currently open (possibly filtered) messages to an editor
-        public static void RecordCloudwatchlogsViewCurrentMessagesInEditor(this ITelemetryLogger telemetryLogger, CloudwatchlogsViewCurrentMessagesInEditor payload)
+        public static void RecordCloudwatchlogsViewCurrentMessagesInEditor(this ITelemetryLogger telemetryLogger, CloudwatchlogsViewCurrentMessagesInEditor payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1909,6 +2114,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1921,7 +2131,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Word wrap events off/on
-        public static void RecordCloudwatchlogsWrapEvents(this ITelemetryLogger telemetryLogger, CloudwatchlogsWrapEvents payload)
+        public static void RecordCloudwatchlogsWrapEvents(this ITelemetryLogger telemetryLogger, CloudwatchlogsWrapEvents payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1953,6 +2163,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("enabled", payload.Enabled);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -1965,7 +2180,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Tail stream off/on
-        public static void RecordCloudwatchlogsTailStream(this ITelemetryLogger telemetryLogger, CloudwatchlogsTailStream payload)
+        public static void RecordCloudwatchlogsTailStream(this ITelemetryLogger telemetryLogger, CloudwatchlogsTailStream payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -1997,6 +2212,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("enabled", payload.Enabled);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2009,7 +2229,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Refresh group is pressed
-        public static void RecordCloudwatchlogsRefreshGroup(this ITelemetryLogger telemetryLogger, CloudwatchlogsRefreshGroup payload)
+        public static void RecordCloudwatchlogsRefreshGroup(this ITelemetryLogger telemetryLogger, CloudwatchlogsRefreshGroup payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2039,6 +2259,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2051,7 +2276,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Refresh stream is pressed
-        public static void RecordCloudwatchlogsRefreshStream(this ITelemetryLogger telemetryLogger, CloudwatchlogsRefreshStream payload)
+        public static void RecordCloudwatchlogsRefreshStream(this ITelemetryLogger telemetryLogger, CloudwatchlogsRefreshStream payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2081,6 +2306,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2093,7 +2323,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when a stream is searched
-        public static void RecordCloudwatchlogsSearchStream(this ITelemetryLogger telemetryLogger, CloudwatchlogsSearchStream payload)
+        public static void RecordCloudwatchlogsSearchStream(this ITelemetryLogger telemetryLogger, CloudwatchlogsSearchStream payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2125,6 +2355,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2137,7 +2372,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when a group is searched
-        public static void RecordCloudwatchlogsSearchGroup(this ITelemetryLogger telemetryLogger, CloudwatchlogsSearchGroup payload)
+        public static void RecordCloudwatchlogsSearchGroup(this ITelemetryLogger telemetryLogger, CloudwatchlogsSearchGroup payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2169,6 +2404,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2181,7 +2421,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Show event around a time period in ms specified by Value
-        public static void RecordCloudwatchlogsShowEventsAround(this ITelemetryLogger telemetryLogger, CloudwatchlogsShowEventsAround payload)
+        public static void RecordCloudwatchlogsShowEventsAround(this ITelemetryLogger telemetryLogger, CloudwatchlogsShowEventsAround payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2213,6 +2453,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2225,7 +2470,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when creating a CloudFormation project
-        public static void RecordCloudformationCreateProject(this ITelemetryLogger telemetryLogger, CloudformationCreateProject payload)
+        public static void RecordCloudformationCreateProject(this ITelemetryLogger telemetryLogger, CloudformationCreateProject payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2259,6 +2504,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("templateName", payload.TemplateName);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2271,7 +2521,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when deploying a CloudFormation template
-        public static void RecordCloudformationDeploy(this ITelemetryLogger telemetryLogger, CloudformationDeploy payload)
+        public static void RecordCloudformationDeploy(this ITelemetryLogger telemetryLogger, CloudformationDeploy payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2305,6 +2555,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("initialDeploy", payload.InitialDeploy);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2317,7 +2572,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a CloudFormation stack in the stack viewer
-        public static void RecordCloudformationOpen(this ITelemetryLogger telemetryLogger, CloudformationOpen payload)
+        public static void RecordCloudformationOpen(this ITelemetryLogger telemetryLogger, CloudformationOpen payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2349,6 +2604,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2361,7 +2621,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// A repo is cloned from CodeCommit
-        public static void RecordCodecommitCloneRepo(this ITelemetryLogger telemetryLogger, CodecommitCloneRepo payload)
+        public static void RecordCodecommitCloneRepo(this ITelemetryLogger telemetryLogger, CodecommitCloneRepo payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2395,6 +2655,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("reason", payload.Reason);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2407,7 +2672,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// A repo is created in CodeCommit
-        public static void RecordCodecommitCreateRepo(this ITelemetryLogger telemetryLogger, CodecommitCreateRepo payload)
+        public static void RecordCodecommitCreateRepo(this ITelemetryLogger telemetryLogger, CodecommitCreateRepo payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2441,6 +2706,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("reason", payload.Reason);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2453,7 +2723,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// A connection is established to CodeCommit to perform actions on repos
-        public static void RecordCodecommitSetCredentials(this ITelemetryLogger telemetryLogger, CodecommitSetCredentials payload)
+        public static void RecordCodecommitSetCredentials(this ITelemetryLogger telemetryLogger, CodecommitSetCredentials payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2490,6 +2760,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("credentialType", payload.CredentialType.Value);
                 }
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2502,7 +2777,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a DynamoDB table in the table browser
-        public static void RecordDynamodbOpenTable(this ITelemetryLogger telemetryLogger, DynamodbOpenTable payload)
+        public static void RecordDynamodbOpenTable(this ITelemetryLogger telemetryLogger, DynamodbOpenTable payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2534,6 +2809,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2546,7 +2826,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Fetch records from a DynamoDB table in the table browser
-        public static void RecordDynamodbFetchRecords(this ITelemetryLogger telemetryLogger, DynamodbFetchRecords payload)
+        public static void RecordDynamodbFetchRecords(this ITelemetryLogger telemetryLogger, DynamodbFetchRecords payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2585,6 +2865,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("dynamoDbIndexType", payload.DynamoDbIndexType.Value);
                 }
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2597,7 +2882,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Change the state of an EC2 Instance
-        public static void RecordEc2ChangeState(this ITelemetryLogger telemetryLogger, Ec2ChangeState payload)
+        public static void RecordEc2ChangeState(this ITelemetryLogger telemetryLogger, Ec2ChangeState payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2631,6 +2916,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ec2InstanceState", payload.Ec2InstanceState);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2643,7 +2933,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Perform a connection to an EC2 Instance
-        public static void RecordEc2ConnectToInstance(this ITelemetryLogger telemetryLogger, Ec2ConnectToInstance payload)
+        public static void RecordEc2ConnectToInstance(this ITelemetryLogger telemetryLogger, Ec2ConnectToInstance payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2677,6 +2967,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ec2ConnectionType", payload.Ec2ConnectionType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2689,7 +2984,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view EC2 Instances
-        public static void RecordEc2OpenInstances(this ITelemetryLogger telemetryLogger, Ec2OpenInstances payload)
+        public static void RecordEc2OpenInstances(this ITelemetryLogger telemetryLogger, Ec2OpenInstances payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2721,6 +3016,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2733,7 +3033,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view EC2 AMIs
-        public static void RecordEc2OpenAMIs(this ITelemetryLogger telemetryLogger, Ec2OpenAMIs payload)
+        public static void RecordEc2OpenAMIs(this ITelemetryLogger telemetryLogger, Ec2OpenAMIs payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2765,6 +3065,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2777,7 +3082,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view EC2 Elastic IPs
-        public static void RecordEc2OpenElasticIPs(this ITelemetryLogger telemetryLogger, Ec2OpenElasticIPs payload)
+        public static void RecordEc2OpenElasticIPs(this ITelemetryLogger telemetryLogger, Ec2OpenElasticIPs payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2809,6 +3114,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2821,7 +3131,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open to view EC2 Key pairs
-        public static void RecordEc2OpenKeyPairs(this ITelemetryLogger telemetryLogger, Ec2OpenKeyPairs payload)
+        public static void RecordEc2OpenKeyPairs(this ITelemetryLogger telemetryLogger, Ec2OpenKeyPairs payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2853,6 +3163,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2865,7 +3180,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view EC2 Security Groups
-        public static void RecordEc2OpenSecurityGroups(this ITelemetryLogger telemetryLogger, Ec2OpenSecurityGroups payload)
+        public static void RecordEc2OpenSecurityGroups(this ITelemetryLogger telemetryLogger, Ec2OpenSecurityGroups payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2897,6 +3212,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2909,7 +3229,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view EC2 Volumes
-        public static void RecordEc2OpenVolumes(this ITelemetryLogger telemetryLogger, Ec2OpenVolumes payload)
+        public static void RecordEc2OpenVolumes(this ITelemetryLogger telemetryLogger, Ec2OpenVolumes payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2941,6 +3261,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2953,7 +3278,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open to view status of an ECS Cluster
-        public static void RecordEcsOpenCluster(this ITelemetryLogger telemetryLogger, EcsOpenCluster payload)
+        public static void RecordEcsOpenCluster(this ITelemetryLogger telemetryLogger, EcsOpenCluster payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -2985,6 +3310,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -2997,7 +3327,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when ECS execute command is enabled
-        public static void RecordEcsEnableExecuteCommand(this ITelemetryLogger telemetryLogger, EcsEnableExecuteCommand payload)
+        public static void RecordEcsEnableExecuteCommand(this ITelemetryLogger telemetryLogger, EcsEnableExecuteCommand payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3029,6 +3359,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3041,7 +3376,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when ECS execute command is disabled
-        public static void RecordEcsDisableExecuteCommand(this ITelemetryLogger telemetryLogger, EcsDisableExecuteCommand payload)
+        public static void RecordEcsDisableExecuteCommand(this ITelemetryLogger telemetryLogger, EcsDisableExecuteCommand payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3073,6 +3408,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3085,7 +3425,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when the ECS execute command is run
-        public static void RecordEcsRunExecuteCommand(this ITelemetryLogger telemetryLogger, EcsRunExecuteCommand payload)
+        public static void RecordEcsRunExecuteCommand(this ITelemetryLogger telemetryLogger, EcsRunExecuteCommand payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3119,6 +3459,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ecsExecuteCommandType", payload.EcsExecuteCommandType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3131,7 +3476,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when the user copies the repository uri from a node
-        public static void RecordEcrCopyRepositoryUri(this ITelemetryLogger telemetryLogger, EcrCopyRepositoryUri payload)
+        public static void RecordEcrCopyRepositoryUri(this ITelemetryLogger telemetryLogger, EcrCopyRepositoryUri payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3161,6 +3506,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3173,7 +3523,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when the user copies the repository tag uri from a node. The tag uri is the repository uri + : + the tag name
-        public static void RecordEcrCopyTagUri(this ITelemetryLogger telemetryLogger, EcrCopyTagUri payload)
+        public static void RecordEcrCopyTagUri(this ITelemetryLogger telemetryLogger, EcrCopyTagUri payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3203,6 +3553,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3215,7 +3570,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when creating a new ECR repository
-        public static void RecordEcrCreateRepository(this ITelemetryLogger telemetryLogger, EcrCreateRepository payload)
+        public static void RecordEcrCreateRepository(this ITelemetryLogger telemetryLogger, EcrCreateRepository payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3247,6 +3602,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3259,7 +3619,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when deleting an existing ECR repository
-        public static void RecordEcrDeleteRepository(this ITelemetryLogger telemetryLogger, EcrDeleteRepository payload)
+        public static void RecordEcrDeleteRepository(this ITelemetryLogger telemetryLogger, EcrDeleteRepository payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3291,6 +3651,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3303,7 +3668,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when deleting a tag in an ECR repository. The operation is a batch operation by default, value represents the number of tags deleted.
-        public static void RecordEcrDeleteTags(this ITelemetryLogger telemetryLogger, EcrDeleteTags payload)
+        public static void RecordEcrDeleteTags(this ITelemetryLogger telemetryLogger, EcrDeleteTags payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3335,6 +3700,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3347,7 +3717,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when deploying an image to ECR
-        public static void RecordEcrDeployImage(this ITelemetryLogger telemetryLogger, EcrDeployImage payload)
+        public static void RecordEcrDeployImage(this ITelemetryLogger telemetryLogger, EcrDeployImage payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3384,6 +3754,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("ecrDeploySource", payload.EcrDeploySource.Value);
                 }
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3396,7 +3771,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when deploying a scheduled task to an ECS cluster
-        public static void RecordEcsDeployScheduledTask(this ITelemetryLogger telemetryLogger, EcsDeployScheduledTask payload)
+        public static void RecordEcsDeployScheduledTask(this ITelemetryLogger telemetryLogger, EcsDeployScheduledTask payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3430,6 +3805,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ecsLaunchType", payload.EcsLaunchType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3442,7 +3822,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when deploying a service to an ECS cluster
-        public static void RecordEcsDeployService(this ITelemetryLogger telemetryLogger, EcsDeployService payload)
+        public static void RecordEcsDeployService(this ITelemetryLogger telemetryLogger, EcsDeployService payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3476,6 +3856,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ecsLaunchType", payload.EcsLaunchType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3488,7 +3873,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when deploying a task to an ECS cluster
-        public static void RecordEcsDeployTask(this ITelemetryLogger telemetryLogger, EcsDeployTask payload)
+        public static void RecordEcsDeployTask(this ITelemetryLogger telemetryLogger, EcsDeployTask payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3522,6 +3907,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ecsLaunchType", payload.EcsLaunchType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3534,7 +3924,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when user completes the ECS publish wizard
-        public static void RecordEcsPublishWizard(this ITelemetryLogger telemetryLogger, EcsPublishWizard payload)
+        public static void RecordEcsPublishWizard(this ITelemetryLogger telemetryLogger, EcsPublishWizard payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3568,6 +3958,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("duration", payload.Duration);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3580,7 +3975,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open to view status of an ECS Repository
-        public static void RecordEcsOpenRepository(this ITelemetryLogger telemetryLogger, EcsOpenRepository payload)
+        public static void RecordEcsOpenRepository(this ITelemetryLogger telemetryLogger, EcsOpenRepository payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3612,6 +4007,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3624,7 +4024,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when user deletes an ECS service
-        public static void RecordEcsDeleteService(this ITelemetryLogger telemetryLogger, EcsDeleteService payload)
+        public static void RecordEcsDeleteService(this ITelemetryLogger telemetryLogger, EcsDeleteService payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3656,6 +4056,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3668,7 +4073,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called while submitting in-IDE feedback
-        public static void RecordFeedbackResult(this ITelemetryLogger telemetryLogger, FeedbackResult payload)
+        public static void RecordFeedbackResult(this ITelemetryLogger telemetryLogger, FeedbackResult payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3700,6 +4105,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3712,7 +4122,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view/edit IAM Role Policy
-        public static void RecordIamOpenRole(this ITelemetryLogger telemetryLogger, IamOpenRole payload)
+        public static void RecordIamOpenRole(this ITelemetryLogger telemetryLogger, IamOpenRole payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3744,6 +4154,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3756,7 +4171,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view/edit IAM Group Policy
-        public static void RecordIamOpenGroup(this ITelemetryLogger telemetryLogger, IamOpenGroup payload)
+        public static void RecordIamOpenGroup(this ITelemetryLogger telemetryLogger, IamOpenGroup payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3788,6 +4203,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3800,7 +4220,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view/edit IAM User Configuration
-        public static void RecordIamOpenUser(this ITelemetryLogger telemetryLogger, IamOpenUser payload)
+        public static void RecordIamOpenUser(this ITelemetryLogger telemetryLogger, IamOpenUser payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3832,6 +4252,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3844,7 +4269,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// called when deleting lambdas remotely
-        public static void RecordLambdaDelete(this ITelemetryLogger telemetryLogger, LambdaDelete payload)
+        public static void RecordLambdaDelete(this ITelemetryLogger telemetryLogger, LambdaDelete payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3878,6 +4303,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3890,7 +4320,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when opening the local configuration of a Lambda to edit
-        public static void RecordLambdaConfigure(this ITelemetryLogger telemetryLogger, LambdaConfigure payload)
+        public static void RecordLambdaConfigure(this ITelemetryLogger telemetryLogger, LambdaConfigure payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3922,6 +4352,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3934,7 +4369,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when creating lambdas remotely
-        public static void RecordLambdaCreate(this ITelemetryLogger telemetryLogger, LambdaCreate payload)
+        public static void RecordLambdaCreate(this ITelemetryLogger telemetryLogger, LambdaCreate payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3966,6 +4401,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("runtime", payload.Runtime);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -3978,7 +4418,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when creating a lambda project
-        public static void RecordLambdaCreateProject(this ITelemetryLogger telemetryLogger, LambdaCreateProject payload)
+        public static void RecordLambdaCreateProject(this ITelemetryLogger telemetryLogger, LambdaCreateProject payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4016,6 +4456,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("variant", payload.Variant);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4028,7 +4473,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Jump to a lambda handler from elsewhere
-        public static void RecordLambdaGoToHandler(this ITelemetryLogger telemetryLogger, LambdaGoToHandler payload)
+        public static void RecordLambdaGoToHandler(this ITelemetryLogger telemetryLogger, LambdaGoToHandler payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4060,6 +4505,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4072,7 +4522,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when creating lambdas remotely
-        public static void RecordLambdaEditFunction(this ITelemetryLogger telemetryLogger, LambdaEditFunction payload)
+        public static void RecordLambdaEditFunction(this ITelemetryLogger telemetryLogger, LambdaEditFunction payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4111,6 +4561,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4123,7 +4578,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when invoking lambdas remotely
-        public static void RecordLambdaInvokeRemote(this ITelemetryLogger telemetryLogger, LambdaInvokeRemote payload)
+        public static void RecordLambdaInvokeRemote(this ITelemetryLogger telemetryLogger, LambdaInvokeRemote payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4160,6 +4615,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4172,7 +4632,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when invoking lambdas locally (with SAM in most toolkits)
-        public static void RecordLambdaInvokeLocal(this ITelemetryLogger telemetryLogger, LambdaInvokeLocal payload)
+        public static void RecordLambdaInvokeLocal(this ITelemetryLogger telemetryLogger, LambdaInvokeLocal payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4215,6 +4675,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("debug", payload.Debug);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4227,7 +4692,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when importing a remote Lambda function
-        public static void RecordLambdaImport(this ITelemetryLogger telemetryLogger, LambdaImport payload)
+        public static void RecordLambdaImport(this ITelemetryLogger telemetryLogger, LambdaImport payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4264,6 +4729,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4276,7 +4746,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when updating a Lambda function's code outside the context of a SAM template
-        public static void RecordLambdaUpdateFunctionCode(this ITelemetryLogger telemetryLogger, LambdaUpdateFunctionCode payload)
+        public static void RecordLambdaUpdateFunctionCode(this ITelemetryLogger telemetryLogger, LambdaUpdateFunctionCode payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4313,6 +4783,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4325,7 +4800,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when deploying a Lambda Function
-        public static void RecordLambdaDeploy(this ITelemetryLogger telemetryLogger, LambdaDeploy payload)
+        public static void RecordLambdaDeploy(this ITelemetryLogger telemetryLogger, LambdaDeploy payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4380,6 +4855,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("xrayEnabled", payload.XrayEnabled.Value);
                 }
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4392,7 +4872,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when deleting a cloudformation stack
-        public static void RecordCloudformationDelete(this ITelemetryLogger telemetryLogger, CloudformationDelete payload)
+        public static void RecordCloudformationDelete(this ITelemetryLogger telemetryLogger, CloudformationDelete payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4424,6 +4904,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4436,7 +4921,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when getting IAM/SecretsManager credentials for a RDS database. Value represents how long it takes in ms.
-        public static void RecordRdsGetCredentials(this ITelemetryLogger telemetryLogger, RdsGetCredentials payload)
+        public static void RecordRdsGetCredentials(this ITelemetryLogger telemetryLogger, RdsGetCredentials payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4472,6 +4957,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("databaseEngine", payload.DatabaseEngine);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4484,7 +4974,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view RDS DB Instances
-        public static void RecordRdsOpenInstances(this ITelemetryLogger telemetryLogger, RdsOpenInstances payload)
+        public static void RecordRdsOpenInstances(this ITelemetryLogger telemetryLogger, RdsOpenInstances payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4516,6 +5006,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4528,7 +5023,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view RDS Security Groups
-        public static void RecordRdsOpenSecurityGroups(this ITelemetryLogger telemetryLogger, RdsOpenSecurityGroups payload)
+        public static void RecordRdsOpenSecurityGroups(this ITelemetryLogger telemetryLogger, RdsOpenSecurityGroups payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4560,6 +5055,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4572,7 +5072,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view RDS Subnet Groups
-        public static void RecordRdsOpenSubnets(this ITelemetryLogger telemetryLogger, RdsOpenSubnets payload)
+        public static void RecordRdsOpenSubnets(this ITelemetryLogger telemetryLogger, RdsOpenSubnets payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4604,6 +5104,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4616,7 +5121,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when creating a new database connection configuration to for a RDS database. In Datagrip we do not get this infromation if it is created directly, so this is only counts actions.
-        public static void RecordRdsCreateConnectionConfiguration(this ITelemetryLogger telemetryLogger, RdsCreateConnectionConfiguration payload)
+        public static void RecordRdsCreateConnectionConfiguration(this ITelemetryLogger telemetryLogger, RdsCreateConnectionConfiguration payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4652,6 +5157,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("databaseEngine", payload.DatabaseEngine);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4664,7 +5174,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when getting IAM/SecretsManager credentials for a Redshift database. Value represents how long it takes in ms.
-        public static void RecordRedshiftGetCredentials(this ITelemetryLogger telemetryLogger, RedshiftGetCredentials payload)
+        public static void RecordRedshiftGetCredentials(this ITelemetryLogger telemetryLogger, RedshiftGetCredentials payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4698,6 +5208,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("databaseCredentials", payload.DatabaseCredentials);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4710,7 +5225,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when creating a new database connection configuration to for a Redshift database. In Datagrip we do not get this infromation if it is created directly, so this only counts actions.
-        public static void RecordRedshiftCreateConnectionConfiguration(this ITelemetryLogger telemetryLogger, RedshiftCreateConnectionConfiguration payload)
+        public static void RecordRedshiftCreateConnectionConfiguration(this ITelemetryLogger telemetryLogger, RedshiftCreateConnectionConfiguration payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4744,6 +5259,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("databaseCredentials", payload.DatabaseCredentials);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4756,7 +5276,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when deploying a sam application
-        public static void RecordSamDeploy(this ITelemetryLogger telemetryLogger, SamDeploy payload)
+        public static void RecordSamDeploy(this ITelemetryLogger telemetryLogger, SamDeploy payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4790,6 +5310,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("version", payload.Version);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4802,7 +5327,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when initing a sam application
-        public static void RecordSamInit(this ITelemetryLogger telemetryLogger, SamInit payload)
+        public static void RecordSamInit(this ITelemetryLogger telemetryLogger, SamInit payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4852,6 +5377,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("eventBridgeSchema", payload.EventBridgeSchema);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4864,7 +5394,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when selecting an EventBridge schema to view
-        public static void RecordSchemasView(this ITelemetryLogger telemetryLogger, SchemasView payload)
+        public static void RecordSchemasView(this ITelemetryLogger telemetryLogger, SchemasView payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4896,6 +5426,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4908,7 +5443,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when downloading an EventBridge schema
-        public static void RecordSchemasDownload(this ITelemetryLogger telemetryLogger, SchemasDownload payload)
+        public static void RecordSchemasDownload(this ITelemetryLogger telemetryLogger, SchemasDownload payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4945,6 +5480,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("schemaLanguage", payload.SchemaLanguage.Value);
                 }
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -4957,7 +5497,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when searching an EventBridge schema registry
-        public static void RecordSchemasSearch(this ITelemetryLogger telemetryLogger, SchemasSearch payload)
+        public static void RecordSchemasSearch(this ITelemetryLogger telemetryLogger, SchemasSearch payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -4989,6 +5529,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5001,7 +5546,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when starting the plugin
-        public static void RecordSessionStart(this ITelemetryLogger telemetryLogger, SessionStart payload)
+        public static void RecordSessionStart(this ITelemetryLogger telemetryLogger, SessionStart payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5031,6 +5576,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5043,7 +5593,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Called when stopping the IDE on a best effort basis
-        public static void RecordSessionEnd(this ITelemetryLogger telemetryLogger, SessionEnd payload)
+        public static void RecordSessionEnd(this ITelemetryLogger telemetryLogger, SessionEnd payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5073,6 +5623,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5085,7 +5640,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Copy the bucket name to the clipboard
-        public static void RecordS3CopyBucketName(this ITelemetryLogger telemetryLogger, S3CopyBucketName payload)
+        public static void RecordS3CopyBucketName(this ITelemetryLogger telemetryLogger, S3CopyBucketName payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5115,6 +5670,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5127,7 +5687,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Copy the path of a S3 object to the clipboard
-        public static void RecordS3CopyPath(this ITelemetryLogger telemetryLogger, S3CopyPath payload)
+        public static void RecordS3CopyPath(this ITelemetryLogger telemetryLogger, S3CopyPath payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5157,6 +5717,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5169,7 +5734,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Copy the S3 URI of a S3 object to the clipboard (e.g. s3://<bucketName>/abc.txt)
-        public static void RecordS3CopyUri(this ITelemetryLogger telemetryLogger, S3CopyUri payload)
+        public static void RecordS3CopyUri(this ITelemetryLogger telemetryLogger, S3CopyUri payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5201,6 +5766,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5213,7 +5783,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Copy the URL of a S3 object to the clipboard
-        public static void RecordS3CopyUrl(this ITelemetryLogger telemetryLogger, S3CopyUrl payload)
+        public static void RecordS3CopyUrl(this ITelemetryLogger telemetryLogger, S3CopyUrl payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5247,6 +5817,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("presigned", payload.Presigned);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5259,7 +5834,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Create a S3 bucket
-        public static void RecordS3CreateBucket(this ITelemetryLogger telemetryLogger, S3CreateBucket payload)
+        public static void RecordS3CreateBucket(this ITelemetryLogger telemetryLogger, S3CreateBucket payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5291,6 +5866,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5303,7 +5883,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Delete a S3 bucket
-        public static void RecordS3DeleteBucket(this ITelemetryLogger telemetryLogger, S3DeleteBucket payload)
+        public static void RecordS3DeleteBucket(this ITelemetryLogger telemetryLogger, S3DeleteBucket payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5335,6 +5915,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5347,7 +5932,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Delete S3 object(s)
-        public static void RecordS3DeleteObject(this ITelemetryLogger telemetryLogger, S3DeleteObject payload)
+        public static void RecordS3DeleteObject(this ITelemetryLogger telemetryLogger, S3DeleteObject payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5389,6 +5974,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("failedCount", payload.FailedCount.Value);
                 }
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5401,7 +5991,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Create an S3 folder
-        public static void RecordS3CreateFolder(this ITelemetryLogger telemetryLogger, S3CreateFolder payload)
+        public static void RecordS3CreateFolder(this ITelemetryLogger telemetryLogger, S3CreateFolder payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5433,6 +6023,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5445,7 +6040,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Download S3 object(s)
-        public static void RecordS3DownloadObject(this ITelemetryLogger telemetryLogger, S3DownloadObject payload)
+        public static void RecordS3DownloadObject(this ITelemetryLogger telemetryLogger, S3DownloadObject payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5492,6 +6087,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("component", payload.Component.Value);
                 }
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5504,7 +6104,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Download multiple S3 objects
-        public static void RecordS3DownloadObjects(this ITelemetryLogger telemetryLogger, S3DownloadObjects payload)
+        public static void RecordS3DownloadObjects(this ITelemetryLogger telemetryLogger, S3DownloadObjects payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5536,6 +6136,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5548,7 +6153,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Upload S3 object(s)
-        public static void RecordS3UploadObject(this ITelemetryLogger telemetryLogger, S3UploadObject payload)
+        public static void RecordS3UploadObject(this ITelemetryLogger telemetryLogger, S3UploadObject payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5595,6 +6200,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("component", payload.Component.Value);
                 }
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5607,7 +6217,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Rename a single S3 object
-        public static void RecordS3RenameObject(this ITelemetryLogger telemetryLogger, S3RenameObject payload)
+        public static void RecordS3RenameObject(this ITelemetryLogger telemetryLogger, S3RenameObject payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5639,6 +6249,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5651,7 +6266,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Upload multiple S3 objects
-        public static void RecordS3UploadObjects(this ITelemetryLogger telemetryLogger, S3UploadObjects payload)
+        public static void RecordS3UploadObjects(this ITelemetryLogger telemetryLogger, S3UploadObjects payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5683,6 +6298,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5695,7 +6315,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a view of a S3 bucket
-        public static void RecordS3OpenEditor(this ITelemetryLogger telemetryLogger, S3OpenEditor payload)
+        public static void RecordS3OpenEditor(this ITelemetryLogger telemetryLogger, S3OpenEditor payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5727,6 +6347,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5739,7 +6364,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Edit or view one or more S3 objects in the IDE
-        public static void RecordS3EditObject(this ITelemetryLogger telemetryLogger, S3EditObject payload)
+        public static void RecordS3EditObject(this ITelemetryLogger telemetryLogger, S3EditObject payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5776,6 +6401,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("component", payload.Component.Value);
                 }
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5788,7 +6418,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view S3 bucket properties
-        public static void RecordS3OpenBucketProperties(this ITelemetryLogger telemetryLogger, S3OpenBucketProperties payload)
+        public static void RecordS3OpenBucketProperties(this ITelemetryLogger telemetryLogger, S3OpenBucketProperties payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5820,6 +6450,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5832,7 +6467,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view S3 Multipart upload
-        public static void RecordS3OpenMultipartUpload(this ITelemetryLogger telemetryLogger, S3OpenMultipartUpload payload)
+        public static void RecordS3OpenMultipartUpload(this ITelemetryLogger telemetryLogger, S3OpenMultipartUpload payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5864,6 +6499,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5876,7 +6516,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// The Toolkit has completed initialization
-        public static void RecordToolkitInit(this ITelemetryLogger telemetryLogger, ToolkitInit payload)
+        public static void RecordToolkitInit(this ITelemetryLogger telemetryLogger, ToolkitInit payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5916,6 +6556,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5928,7 +6573,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open an SQS queue. Initially opens to either the send message pane or poll messages pane.
-        public static void RecordSqsOpenQueue(this ITelemetryLogger telemetryLogger, SqsOpenQueue payload)
+        public static void RecordSqsOpenQueue(this ITelemetryLogger telemetryLogger, SqsOpenQueue payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -5960,6 +6605,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -5972,7 +6622,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Create a new SQS queue
-        public static void RecordSqsCreateQueue(this ITelemetryLogger telemetryLogger, SqsCreateQueue payload)
+        public static void RecordSqsCreateQueue(this ITelemetryLogger telemetryLogger, SqsCreateQueue payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6009,6 +6659,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("sqsQueueType", payload.SqsQueueType.Value);
                 }
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6021,7 +6676,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Send a message to an SQS queue
-        public static void RecordSqsSendMessage(this ITelemetryLogger telemetryLogger, SqsSendMessage payload)
+        public static void RecordSqsSendMessage(this ITelemetryLogger telemetryLogger, SqsSendMessage payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6055,6 +6710,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6067,7 +6727,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Delete one or more messages from an SQS queue. Value indicates the number of messages that we tried to delete.
-        public static void RecordSqsDeleteMessages(this ITelemetryLogger telemetryLogger, SqsDeleteMessages payload)
+        public static void RecordSqsDeleteMessages(this ITelemetryLogger telemetryLogger, SqsDeleteMessages payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6101,6 +6761,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6113,7 +6778,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Subscribe the queue to messages from an sns topic
-        public static void RecordSqsSubscribeSns(this ITelemetryLogger telemetryLogger, SqsSubscribeSns payload)
+        public static void RecordSqsSubscribeSns(this ITelemetryLogger telemetryLogger, SqsSubscribeSns payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6147,6 +6812,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6159,7 +6829,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Configure the queue as a trigger for a Lambda
-        public static void RecordSqsConfigureLambdaTrigger(this ITelemetryLogger telemetryLogger, SqsConfigureLambdaTrigger payload)
+        public static void RecordSqsConfigureLambdaTrigger(this ITelemetryLogger telemetryLogger, SqsConfigureLambdaTrigger payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6193,6 +6863,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6205,7 +6880,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Edit the Queue parameters
-        public static void RecordSqsEditQueueParameters(this ITelemetryLogger telemetryLogger, SqsEditQueueParameters payload)
+        public static void RecordSqsEditQueueParameters(this ITelemetryLogger telemetryLogger, SqsEditQueueParameters payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6239,6 +6914,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6251,7 +6931,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Purge all messages from the queue
-        public static void RecordSqsPurgeQueue(this ITelemetryLogger telemetryLogger, SqsPurgeQueue payload)
+        public static void RecordSqsPurgeQueue(this ITelemetryLogger telemetryLogger, SqsPurgeQueue payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6285,6 +6965,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6297,7 +6982,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view details of SNS Topic
-        public static void RecordSnsOpenTopic(this ITelemetryLogger telemetryLogger, SnsOpenTopic payload)
+        public static void RecordSnsOpenTopic(this ITelemetryLogger telemetryLogger, SnsOpenTopic payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6329,6 +7014,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6341,7 +7031,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view SNS Subscriptions
-        public static void RecordSnsOpenSubscriptions(this ITelemetryLogger telemetryLogger, SnsOpenSubscriptions payload)
+        public static void RecordSnsOpenSubscriptions(this ITelemetryLogger telemetryLogger, SnsOpenSubscriptions payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6373,6 +7063,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6385,7 +7080,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view VPC RouteTable
-        public static void RecordVpcOpenRouteTables(this ITelemetryLogger telemetryLogger, VpcOpenRouteTables payload)
+        public static void RecordVpcOpenRouteTables(this ITelemetryLogger telemetryLogger, VpcOpenRouteTables payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6417,6 +7112,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6429,7 +7129,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view VPC Internet Gateway
-        public static void RecordVpcOpenGateways(this ITelemetryLogger telemetryLogger, VpcOpenGateways payload)
+        public static void RecordVpcOpenGateways(this ITelemetryLogger telemetryLogger, VpcOpenGateways payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6461,6 +7161,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6473,7 +7178,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view VPC Network ACLs
-        public static void RecordVpcOpenACLs(this ITelemetryLogger telemetryLogger, VpcOpenACLs payload)
+        public static void RecordVpcOpenACLs(this ITelemetryLogger telemetryLogger, VpcOpenACLs payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6505,6 +7210,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6517,7 +7227,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view VPC Subnets
-        public static void RecordVpcOpenSubnets(this ITelemetryLogger telemetryLogger, VpcOpenSubnets payload)
+        public static void RecordVpcOpenSubnets(this ITelemetryLogger telemetryLogger, VpcOpenSubnets payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6549,6 +7259,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6561,7 +7276,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open a window to view VPC details
-        public static void RecordVpcOpenVPCs(this ITelemetryLogger telemetryLogger, VpcOpenVPCs payload)
+        public static void RecordVpcOpenVPCs(this ITelemetryLogger telemetryLogger, VpcOpenVPCs payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6593,6 +7308,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6605,7 +7325,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open the insights query editor
-        public static void RecordCloudwatchinsightsOpenEditor(this ITelemetryLogger telemetryLogger, CloudwatchinsightsOpenEditor payload)
+        public static void RecordCloudwatchinsightsOpenEditor(this ITelemetryLogger telemetryLogger, CloudwatchinsightsOpenEditor payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6637,6 +7357,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("insightsDialogOpenSource", payload.InsightsDialogOpenSource);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6649,7 +7374,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Start an insights query
-        public static void RecordCloudwatchinsightsExecuteQuery(this ITelemetryLogger telemetryLogger, CloudwatchinsightsExecuteQuery payload)
+        public static void RecordCloudwatchinsightsExecuteQuery(this ITelemetryLogger telemetryLogger, CloudwatchinsightsExecuteQuery payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6685,6 +7410,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("insightsQueryStringType", payload.InsightsQueryStringType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6697,7 +7427,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Save query parameters to AWS
-        public static void RecordCloudwatchinsightsSaveQuery(this ITelemetryLogger telemetryLogger, CloudwatchinsightsSaveQuery payload)
+        public static void RecordCloudwatchinsightsSaveQuery(this ITelemetryLogger telemetryLogger, CloudwatchinsightsSaveQuery payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6729,6 +7459,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6741,7 +7476,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Retrieve list of available saved queries from AWS
-        public static void RecordCloudwatchinsightsRetrieveQuery(this ITelemetryLogger telemetryLogger, CloudwatchinsightsRetrieveQuery payload)
+        public static void RecordCloudwatchinsightsRetrieveQuery(this ITelemetryLogger telemetryLogger, CloudwatchinsightsRetrieveQuery payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6773,6 +7508,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6785,7 +7525,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Get all details for the selected log record
-        public static void RecordCloudwatchinsightsOpenDetailedLogRecord(this ITelemetryLogger telemetryLogger, CloudwatchinsightsOpenDetailedLogRecord payload)
+        public static void RecordCloudwatchinsightsOpenDetailedLogRecord(this ITelemetryLogger telemetryLogger, CloudwatchinsightsOpenDetailedLogRecord payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6817,6 +7557,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6829,7 +7574,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// The toolkit tried to retrieve blob data from a url
-        public static void RecordToolkitGetExternalResource(this ITelemetryLogger telemetryLogger, ToolkitGetExternalResource payload)
+        public static void RecordToolkitGetExternalResource(this ITelemetryLogger telemetryLogger, ToolkitGetExternalResource payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6865,6 +7610,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("reason", payload.Reason);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6877,7 +7627,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Open the dynamic resource model in the IDE
-        public static void RecordDynamicresourceGetResource(this ITelemetryLogger telemetryLogger, DynamicresourceGetResource payload)
+        public static void RecordDynamicresourceGetResource(this ITelemetryLogger telemetryLogger, DynamicresourceGetResource payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6911,6 +7661,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("resourceType", payload.ResourceType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6923,7 +7678,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Expand a Resource Type node
-        public static void RecordDynamicresourceListResource(this ITelemetryLogger telemetryLogger, DynamicresourceListResource payload)
+        public static void RecordDynamicresourceListResource(this ITelemetryLogger telemetryLogger, DynamicresourceListResource payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6957,6 +7712,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("resourceType", payload.ResourceType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -6969,7 +7729,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Change the list of available dynamic resources in the AWS Explorer
-        public static void RecordDynamicresourceSelectResources(this ITelemetryLogger telemetryLogger, DynamicresourceSelectResources payload)
+        public static void RecordDynamicresourceSelectResources(this ITelemetryLogger telemetryLogger, DynamicresourceSelectResources payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -6999,6 +7759,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -7011,7 +7776,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// Copy the dynamic resource identifier
-        public static void RecordDynamicresourceCopyIdentifier(this ITelemetryLogger telemetryLogger, DynamicresourceCopyIdentifier payload)
+        public static void RecordDynamicresourceCopyIdentifier(this ITelemetryLogger telemetryLogger, DynamicresourceCopyIdentifier payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -7043,6 +7808,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("resourceType", payload.ResourceType);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -7055,7 +7825,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// A dynamic resource mutation request completed
-        public static void RecordDynamicresourceMutateResource(this ITelemetryLogger telemetryLogger, DynamicresourceMutateResource payload)
+        public static void RecordDynamicresourceMutateResource(this ITelemetryLogger telemetryLogger, DynamicresourceMutateResource payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -7093,6 +7863,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("duration", payload.Duration);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -7105,7 +7880,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// An experiment was activated or deactivated in the toolkit
-        public static void RecordAwsExperimentActivation(this ITelemetryLogger telemetryLogger, AwsExperimentActivation payload)
+        public static void RecordAwsExperimentActivation(this ITelemetryLogger telemetryLogger, AwsExperimentActivation payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -7139,6 +7914,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("experimentState", payload.ExperimentState);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -7151,7 +7931,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// An external tool was installed automatically
-        public static void RecordAwsToolInstallation(this ITelemetryLogger telemetryLogger, AwsToolInstallation payload)
+        public static void RecordAwsToolInstallation(this ITelemetryLogger telemetryLogger, AwsToolInstallation payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -7185,6 +7965,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -7197,7 +7982,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Records Telemetry Event:
         /// User requested that a resource be opened in the browser using the deeplink service
-        public static void RecordDeeplinkOpen(this ITelemetryLogger telemetryLogger, DeeplinkOpen payload)
+        public static void RecordDeeplinkOpen(this ITelemetryLogger telemetryLogger, DeeplinkOpen payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -7230,6 +8015,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("source", payload.Source);
 
                 datum.AddMetadata("result", payload.Result);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);

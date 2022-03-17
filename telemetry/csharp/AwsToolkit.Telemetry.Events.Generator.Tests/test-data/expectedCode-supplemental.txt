@@ -26,7 +26,7 @@ namespace Test
         
         /// Records Telemetry Event:
         /// Emits milliseconds
-        public static void RecordEmitSomeIntMs(this ITelemetryLogger telemetryLogger, EmitSomeIntMs payload)
+        public static void RecordEmitSomeIntMs(this ITelemetryLogger telemetryLogger, EmitSomeIntMs payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -56,6 +56,11 @@ namespace Test
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -68,7 +73,7 @@ namespace Test
         
         /// Records Telemetry Event:
         /// Emits something without a unit defined
-        public static void RecordEmitNoUnit(this ITelemetryLogger telemetryLogger, EmitNoUnit payload)
+        public static void RecordEmitNoUnit(this ITelemetryLogger telemetryLogger, EmitNoUnit payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -98,6 +103,11 @@ namespace Test
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -110,7 +120,7 @@ namespace Test
         
         /// Records Telemetry Event:
         /// Emits a bunch of metadata varieties
-        public static void RecordEmitSomeBigBlob(this ITelemetryLogger telemetryLogger, EmitSomeBigBlob payload)
+        public static void RecordEmitSomeBigBlob(this ITelemetryLogger telemetryLogger, EmitSomeBigBlob payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -150,6 +160,11 @@ namespace Test
 
                 datum.AddMetadata("runtime", payload.Runtime);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -162,7 +177,7 @@ namespace Test
         
         /// Records Telemetry Event:
         /// Emits a bunch of metadata varieties - required not set
-        public static void RecordEmitSomeBigBlob2(this ITelemetryLogger telemetryLogger, EmitSomeBigBlob2 payload)
+        public static void RecordEmitSomeBigBlob2(this ITelemetryLogger telemetryLogger, EmitSomeBigBlob2 payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -202,6 +217,11 @@ namespace Test
 
                 datum.AddMetadata("runtime", payload.Runtime);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -214,7 +234,7 @@ namespace Test
         
         /// Records Telemetry Event:
         /// Emits a bunch of optional metadata varieties
-        public static void RecordEmitSomeBigOptionalBlob(this ITelemetryLogger telemetryLogger, EmitSomeBigOptionalBlob payload)
+        public static void RecordEmitSomeBigOptionalBlob(this ITelemetryLogger telemetryLogger, EmitSomeBigOptionalBlob payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -266,6 +286,11 @@ namespace Test
                     datum.AddMetadata("runtime", payload.Runtime.Value);
                 }
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -278,7 +303,7 @@ namespace Test
         
         /// Records Telemetry Event:
         /// Emit a passive metric
-        public static void RecordEmitPassive(this ITelemetryLogger telemetryLogger, EmitPassive payload)
+        public static void RecordEmitPassive(this ITelemetryLogger telemetryLogger, EmitPassive payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -307,6 +332,11 @@ namespace Test
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
