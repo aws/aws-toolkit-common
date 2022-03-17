@@ -26,7 +26,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
         
         /// Records Telemetry Event:
         /// Sample event that uses a type from this definition and a type from the common definitions
-        public static void RecordSampleExtendedInvoke(this ITelemetryLogger telemetryLogger, SampleExtendedInvoke payload)
+        public static void RecordSampleExtendedInvoke(this ITelemetryLogger telemetryLogger, SampleExtendedInvoke payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -68,6 +68,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -80,7 +85,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
         
         /// Records Telemetry Event:
         /// Sample event that uses types from this definition only
-        public static void RecordSampleReleaseBees(this ITelemetryLogger telemetryLogger, SampleReleaseBees payload)
+        public static void RecordSampleReleaseBees(this ITelemetryLogger telemetryLogger, SampleReleaseBees payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -112,6 +117,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
 
                 datum.AddMetadata("bees", payload.Bees);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -124,7 +134,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
         
         /// Records Telemetry Event:
         /// Sample event that uses a unit
-        public static void RecordSampleTestRun(this ITelemetryLogger telemetryLogger, SampleTestRun payload)
+        public static void RecordSampleTestRun(this ITelemetryLogger telemetryLogger, SampleTestRun payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -154,6 +164,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -166,7 +181,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
         
         /// Records Telemetry Event:
         /// Sample event that is passive
-        public static void RecordSamplePassive(this ITelemetryLogger telemetryLogger, SamplePassive payload)
+        public static void RecordSamplePassive(this ITelemetryLogger telemetryLogger, SamplePassive payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -195,6 +210,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
