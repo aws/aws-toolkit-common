@@ -433,6 +433,11 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "aws_openUrl",
+            "description": "Opens a url",
+            "metadata": [{ "type": "result" }, { "type": "url", "required": false }]
+        },
+        {
             "name": "aws_saveCredentials",
             "description": "Save credentials"
         },
