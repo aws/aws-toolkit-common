@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net46</TargetFramework>
+		<TargetFramework>net472</TargetFramework>
 		<RootNamespace>Amazon.AwsToolkit.Telemetry.Events</RootNamespace>
 		<AssemblyName>Amazon.AwsToolkit.Telemetry.Events</AssemblyName>
 		<PackageId>AWS.Toolkit.Telemetry.Events</PackageId>

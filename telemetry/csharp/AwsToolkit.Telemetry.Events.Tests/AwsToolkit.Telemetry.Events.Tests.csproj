@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net46</TargetFramework>
+		<TargetFramework>net472</TargetFramework>
 		<RootNamespace>Amazon.AwsToolkit.Telemetry.Events.Tests</RootNamespace>
 		<Optimize>false</Optimize>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
