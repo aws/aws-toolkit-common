@@ -28,7 +28,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("com.github.erosb:everit-json-schema:1.12.2")
+        classpath("com.github.erosb:everit-json-schema:1.14.1")
         classpath(kotlin("gradle-plugin", version = "1.3.20"))
     }
 }
