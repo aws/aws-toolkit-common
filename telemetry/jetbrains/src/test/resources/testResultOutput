@@ -20,7 +20,7 @@ import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
  * The result of the operation
  */
 public enum class Result(
-    private val `value`: String
+    private val `value`: String,
 ) {
     Succeeded("Succeeded"),
     Failed("Failed"),
@@ -47,7 +47,7 @@ public object MetadataTelemetry {
         result: Result,
         passive: Boolean = false,
         `value`: Double = 1.0,
-        createTime: Instant = Instant.now()
+        createTime: Instant = Instant.now(),
     ): Unit {
         TelemetryService.getInstance().record(project) {
             datum("metadata_hasResult") {
@@ -68,7 +68,7 @@ public object MetadataTelemetry {
         result: Result,
         passive: Boolean = false,
         `value`: Double = 1.0,
-        createTime: Instant = Instant.now()
+        createTime: Instant = Instant.now(),
     ): Unit {
         TelemetryService.getInstance().record(connectionSettings) {
             datum("metadata_hasResult") {
@@ -89,7 +89,7 @@ public object MetadataTelemetry {
         result: Result,
         passive: Boolean = false,
         `value`: Double = 1.0,
-        createTime: Instant = Instant.now()
+        createTime: Instant = Instant.now(),
     ): Unit {
         TelemetryService.getInstance().record(metadata) {
             datum("metadata_hasResult") {
@@ -110,7 +110,7 @@ public object MetadataTelemetry {
         success: Boolean,
         passive: Boolean = false,
         `value`: Double = 1.0,
-        createTime: Instant = Instant.now()
+        createTime: Instant = Instant.now(),
     ): Unit {
         hasResult(project, if(success) Result.Succeeded else Result.Failed, passive, value,
                 createTime)
@@ -124,7 +124,7 @@ public object MetadataTelemetry {
         success: Boolean,
         passive: Boolean = false,
         `value`: Double = 1.0,
-        createTime: Instant = Instant.now()
+        createTime: Instant = Instant.now(),
     ): Unit {
         hasResult(connectionSettings, if(success) Result.Succeeded else Result.Failed, passive,
                 value, createTime)
@@ -138,7 +138,7 @@ public object MetadataTelemetry {
         success: Boolean,
         passive: Boolean = false,
         `value`: Double = 1.0,
-        createTime: Instant = Instant.now()
+        createTime: Instant = Instant.now(),
     ): Unit {
         hasResult(metadata, if(success) Result.Succeeded else Result.Failed, passive, value,
                 createTime)

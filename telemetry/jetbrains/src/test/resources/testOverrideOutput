@@ -20,7 +20,7 @@ import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
  * The result of the operation
  */
 public enum class Result(
-    private val `value`: String
+    private val `value`: String,
 ) {
     Succeeded("Succeeded"),
     Unknown("unknown"),
@@ -41,7 +41,7 @@ public object MetadataTelemetry {
         project: Project?,
         passive: Boolean = false,
         `value`: Double = 1.0,
-        createTime: Instant = Instant.now()
+        createTime: Instant = Instant.now(),
     ): Unit {
         TelemetryService.getInstance().record(project) {
             datum("metadata_hasResult") {
@@ -60,7 +60,7 @@ public object MetadataTelemetry {
         connectionSettings: ConnectionSettings? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
-        createTime: Instant = Instant.now()
+        createTime: Instant = Instant.now(),
     ): Unit {
         TelemetryService.getInstance().record(connectionSettings) {
             datum("metadata_hasResult") {
@@ -79,7 +79,7 @@ public object MetadataTelemetry {
         metadata: MetricEventMetadata,
         passive: Boolean = false,
         `value`: Double = 1.0,
-        createTime: Instant = Instant.now()
+        createTime: Instant = Instant.now(),
     ): Unit {
         TelemetryService.getInstance().record(metadata) {
             datum("metadata_hasResult") {
