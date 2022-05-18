@@ -8289,8 +8289,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// dotnet5.0
         public static readonly Runtime Dotnet50 = new Runtime("dotnet5.0");
         
-        /// dotnet6.0
-        public static readonly Runtime Dotnet60 = new Runtime("dotnet6.0");
+        /// dotnet6
+        public static readonly Runtime Dotnet6 = new Runtime("dotnet6");
         
         /// nodejs14.x
         public static readonly Runtime Nodejs14x = new Runtime("nodejs14.x");
