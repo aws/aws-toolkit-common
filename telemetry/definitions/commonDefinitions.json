@@ -96,6 +96,8 @@
                 "dotnetcore2.1",
                 "dotnet5.0",
                 "dotnet6",
+                "nodejs18.x",
+                "nodejs16.x",
                 "nodejs14.x",
                 "nodejs12.x",
                 "nodejs10.x",
@@ -313,7 +315,7 @@
             "name": "toolId",
             "type": "string",
             "description": "The tool being installed",
-            "allowedValues": ["session-manager-plugin", "dotnet-lambda-deploy", "dotnet-deploy-cli"]
+            "allowedValues": ["session-manager-plugin", "dotnet-lambda-deploy", "dotnet-deploy-cli", "aws-cli"]
         },
         {
             "name": "successCount",
