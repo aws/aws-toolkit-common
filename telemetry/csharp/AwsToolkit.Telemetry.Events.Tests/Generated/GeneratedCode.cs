@@ -6981,6 +6981,55 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
+        /// Create an SNS Topic
+        public static void RecordSnsCreateTopic(this ITelemetryLogger telemetryLogger, SnsCreateTopic payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "sns_createTopic";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("result", payload.Result);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
         /// Open a window to view details of SNS Topic
         public static void RecordSnsOpenTopic(this ITelemetryLogger telemetryLogger, SnsOpenTopic payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
@@ -8239,6 +8288,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// dotnet5.0
         public static readonly Runtime Dotnet50 = new Runtime("dotnet5.0");
+        
+        /// dotnet6.0
+        public static readonly Runtime Dotnet60 = new Runtime("dotnet6.0");
         
         /// nodejs14.x
         public static readonly Runtime Nodejs14x = new Runtime("nodejs14.x");
@@ -10771,6 +10823,19 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SqsQueueType SqsQueueType;
         
         public SqsPurgeQueue()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Create an SNS Topic
+    public sealed class SnsCreateTopic : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public SnsCreateTopic()
         {
             this.Passive = false;
         }
