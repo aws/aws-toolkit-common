@@ -3,18 +3,18 @@ import org.everit.json.schema.loader.SchemaLoader
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.json.JSONObject
 
-val jacksonVersion = "2.12.3"
+val jacksonVersion = "2.13.2"
 val junitVersion = "4.13.2"
 val kotlinVersion = "1.3.20"
-val assertjVersion = "3.19.0"
+val assertjVersion = "3.22.0"
 
 plugins {
     java
     `kotlin-dsl`
-    kotlin("jvm") version "1.5.0"
+    kotlin("jvm") version "1.6.21"
     `maven-publish`
     signing
-    id("io.codearte.nexus-staging") version "0.30.0"
+    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
 }
 
 java {
@@ -28,7 +28,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("com.github.erosb:everit-json-schema:1.12.2")
+        classpath("com.github.erosb:everit-json-schema:1.14.1")
         classpath(kotlin("gradle-plugin", version = "1.3.20"))
     }
 }
@@ -41,7 +41,7 @@ group = "software.aws.toolkits"
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("com.squareup:kotlinpoet:1.8.0")
+    implementation("com.squareup:kotlinpoet:1.11.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
     implementation("com.github.erosb:everit-json-schema:1.12.2")
     testImplementation("junit:junit:$junitVersion")
@@ -99,7 +99,7 @@ tasks.withType<Test> {
 
 publishing {
     publications {
-        create<MavenPublication>("maven") {
+        create<MavenPublication>("mavenJava") {
             from(components["java"])
             pom {
                 name.set(project.name)
@@ -126,36 +126,35 @@ publishing {
             }
         }
     }
-    repositories {
-        maven {
-            name = "sonatype"
-            url = if (!version.toString().endsWith("SNAPSHOT")) {
-                uri("https://aws.oss.sonatype.org/service/local/staging/deploy/maven2/")
-            } else {
-                uri("https://aws.oss.sonatype.org/content/repositories/snapshots/")
-            }
-            credentials {
-                username = project.findProperty("ossrhUsername") as? String
-                password = project.findProperty("ossrhPassword") as? String
-            }
-        }
-    }
 }
+
+// Disables the creation of an automatic publishing configuration
+// This is because `kotlin-dsl` pulls in `java-gradle-plugin` which generates a new publication automatically
+// We don't want to do two publications (this will clobber the first)
+gradlePlugin { setAutomatedPublishing(false) }
 
 signing {
     if (project.hasProperty("signing.keyId")
         && project.hasProperty("signing.password")
         && project.hasProperty("signing.secretKeyRingFile")) {
-        sign(publishing.publications["maven"])
+        sign(publishing.publications["mavenJava"])
     }
 }
 
-nexusStaging {
-    packageGroup = "software.aws"
-    serverUrl = "https://aws.oss.sonatype.org/service/local/"
-    // gotten using ./gradlew getStagingProfile
-    stagingProfileId = "29b8dd754a6907"
-    username = project.findProperty("ossrhUsername") as? String
-    password = project.findProperty("ossrhPassword") as? String
-}
+nexusPublishing {
+    // This should ideally be removed and scoped down to our specific group, though it seems to be required for staging.
+    // Originally added in https://github.com/aws/aws-toolkit-common/pull/40/files#diff-348889e112c6981a4641210b8e895e123b131ac6df5cdb7aac0de6d75acfb99eR149
+    packageGroup.set("software.aws")
 
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://aws.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://aws.oss.sonatype.org/content/repositories/snapshots/"))
+            username.set(project.findProperty("ossrhUsername") as? String)
+            password.set(project.findProperty("ossrhPassword") as? String)
+
+            // gotten using ./gradlew getStagingProfile with an older plugin (io.codearte.nexus-staging)
+            stagingProfileId.set("29b8dd754a6907")
+        }
+    }
+}

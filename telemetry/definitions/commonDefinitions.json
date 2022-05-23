@@ -7,6 +7,12 @@
             "description": "The source artifact of an App Runner service"
         },
         {
+            "name": "appRunnerServiceStatus",
+            "type": "string",
+            "allowedValues": ["CREATE_FAILED", "RUNNING", "DELETED", "DELETE_FAILED", "PAUSED", "OPERATION_IN_PROGRESS"],
+            "description": "The current state of the App Runner service"
+        },
+        {
             "name": "duration",
             "type": "double",
             "description": "The duration of the operation in milliseconds"
@@ -17,9 +23,19 @@
             "description": "The result of the operation"
         },
         {
+            "name": "component",
+            "allowedValues": ["editor", "viewer", "filesystem"],
+            "description": "The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...)"
+        },
+        {
             "name": "lambdaPackageType",
             "allowedValues": ["Zip", "Image"],
             "description": "The Lambda Package type of the function"
+        },
+        {
+            "name": "lambdaArchitecture",
+            "allowedValues": ["x86_64", "arm64"],
+            "description": "The Lambda Architecture of the function"
         },
         {
             "name": "serviceType",
@@ -40,6 +56,22 @@
             "name": "version",
             "type": "string",
             "description": "A generic version metadata"
+        },
+        {
+            "name": "variant",
+            "type": "string",
+            "description": "A generic variant metadata"
+        },
+        {
+            "name": "credentialModification",
+            "type": "string",
+            "allowedValues": ["Add", "Edit", "Delete"],
+            "description": "The type of modification performed on the credentials"
+        },
+        {
+            "name": "source",
+            "type": "string",
+            "description": "The source of the operation"
         },
         {
             "name": "reason",
@@ -63,6 +95,9 @@
                 "dotnetcore3.1",
                 "dotnetcore2.1",
                 "dotnet5.0",
+                "dotnet6",
+                "nodejs18.x",
+                "nodejs16.x",
                 "nodejs14.x",
                 "nodejs12.x",
                 "nodejs10.x",
@@ -72,6 +107,7 @@
                 "java8.al2",
                 "java11",
                 "go1.x",
+                "python3.9",
                 "python3.8",
                 "python3.7",
                 "python3.6",
@@ -116,6 +152,11 @@
             "description": "Languages targeted by the schemas service"
         },
         {
+            "name": "language",
+            "type": "string",
+            "description": "Language used for the project"
+        },
+        {
             "name": "workflowToken",
             "type": "string",
             "description": "A token used for flow metrics to link calls together"
@@ -129,7 +170,7 @@
             "name": "credentialSourceId",
             "type": "string",
             "description": "Where credentials are stored or retrieved from",
-            "allowedValues": ["sharedCredentials", "sdkStore", "ec2", "envVars", "other"]
+            "allowedValues": ["sharedCredentials", "sdkStore", "ec2", "ecs", "envVars", "other"]
         },
         {
             "name": "credentialType",
@@ -201,7 +242,7 @@
         },
         {
             "name": "insightsDialogOpenSource",
-            "allowedValues": ["explorer", "resultsWindow"],
+            "allowedValues": ["explorer", "resultsWindow", "logGroup"],
             "description": "Dialog open trigger source location"
         },
         {
@@ -213,6 +254,16 @@
             "name": "insightsQueryStringType",
             "allowedValues": ["insights", "searchTerm"],
             "description": "User-specified search string type while starting an insights query"
+        },
+        {
+            "name": "ec2ConnectionType",
+            "allowedValues": ["remoteDesktop", "ssh"],
+            "description": "Ways to connect to an EC2 Instance"
+        },
+        {
+            "name": "ec2InstanceState",
+            "allowedValues": ["start", "stop", "reboot", "terminate"],
+            "description": "Actions that can affect an EC2 Instance state"
         },
         {
             "name": "ecsLaunchType",
@@ -228,6 +279,53 @@
             "name": "ecrDeploySource",
             "allowedValues": ["dockerfile", "tag"],
             "description": "The source content specified in the ECR deployment request"
+        },
+        {
+            "name": "dynamoDbFetchType",
+            "allowedValues": ["scan", "query"],
+            "description": "The type of fetch being performed"
+        },
+        {
+            "name": "dynamoDbIndexType",
+            "allowedValues": ["primary", "localSecondary", "globalSecondary"],
+            "description": "The type of index being hit for the query/scan operation"
+        },
+        {
+            "name": "resourceType",
+            "type": "string",
+            "description": "The dynamic resource type being interacted with"
+        },
+        {
+            "name": "dynamicResourceOperation",
+            "allowedValues": ["Create", "Update", "Delete"],
+            "description": "The dynamic resource operation being executed"
+        },
+        {
+            "name": "experimentState",
+            "type": "string",
+            "allowedValues": ["activated", "deactivated"],
+            "description": "The experiment action taken action taken"
+        },
+        {
+            "name": "experimentId",
+            "type": "string",
+            "description": "The id of the experiment being activated or deactivated"
+        },
+        {
+            "name": "toolId",
+            "type": "string",
+            "description": "The tool being installed",
+            "allowedValues": ["session-manager-plugin", "dotnet-lambda-deploy", "dotnet-deploy-cli", "aws-cli", "sam-cli"]
+        },
+        {
+            "name": "successCount",
+            "type": "int",
+            "description": "The number of successful operations"
+        },
+        {
+            "name": "failedCount",
+            "type": "int",
+            "description": "The number of failed operations"
         }
     ],
     "metrics": [
@@ -257,6 +355,10 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "apprunner_openServiceUrl",
+            "description": "Open the service URL in a browser"
+        },
+        {
             "name": "apprunner_copyServiceUrl",
             "description": "Copy the service URL"
         },
@@ -265,7 +367,8 @@
             "description": "Create an App Runner service",
             "metadata": [
                 { "type": "result" },
-                { "type": "appRunnerServiceSource" }
+                { "type": "appRunnerServiceSource" },
+                { "type": "reason", "required": false }
             ]
         },
         {
@@ -277,6 +380,14 @@
             "name": "apprunner_resumeService",
             "description": "Resume a paused App Runner service",
             "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "apprunner_deleteService",
+            "description": "Delete an App Runner service",
+            "metadata": [
+                { "type": "result" },
+                { "type": "appRunnerServiceStatus", "required": false }
+            ]
         },
         {
             "name": "apprunner_startDeployment",
@@ -325,6 +436,24 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "aws_openUrl",
+            "description": "Opens a url",
+            "metadata": [{ "type": "result" }, { "type": "url", "required": false }]
+        },
+        {
+            "name": "aws_saveCredentials",
+            "description": "Save credentials"
+        },
+        {
+            "name": "aws_modifyCredentials",
+            "description": "Modify credentials (e.g. Add, Edit, Delete)",
+            "metadata": [
+                { "type": "result" },
+                { "type": "credentialModification" },
+                { "type": "source" }
+            ]
+        },
+        {
             "name": "aws_loadCredentials",
             "description": "Load credentials from a credential source",
             "unit": "Count",
@@ -343,12 +472,17 @@
         {
             "name": "aws_validateCredentials",
             "description": "Validate credentials when selecting new credentials",
-            "metadata": [{ "type": "result" }, { "type": "credentialType", "required": false }],
+            "metadata": [
+                { "type": "result" }, 
+                { "type": "credentialType", "required": false }, 
+                { "type": "credentialSourceId", "required": false }
+            ],
             "passive": true
         },
         {
             "name": "aws_help",
-            "description": "Open docs for the extension"
+            "description": "Open docs for the extension",
+            "metadata": [{ "type": "name", "required": false }]
         },
         {
             "name": "aws_helpQuickstart",
@@ -471,6 +605,14 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "cloudformation_createProject",
+            "description": "Called when creating a CloudFormation project",
+            "metadata": [
+                { "type": "result" },
+                { "type": "templateName" }
+            ]
+        },
+        {
             "name": "cloudformation_deploy",
             "description": "Called when deploying a CloudFormation template",
             "metadata": [{ "type": "result" }, { "type": "initialDeploy" }]
@@ -483,23 +625,57 @@
         {
             "name": "codecommit_cloneRepo",
             "description": "A repo is cloned from CodeCommit",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "reason", "required": false }
+            ]
         },
         {
             "name": "codecommit_createRepo",
             "description": "A repo is created in CodeCommit",
-            "metadata": [{ "type": "result" }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "reason", "required": false }
+            ]
         },
         {
             "name": "codecommit_setCredentials",
             "description": "A connection is established to CodeCommit to perform actions on repos",
-            "metadata": [{ "type": "credentialType", "required": false }],
+            "metadata": [
+                { "type": "result" },
+                { "type": "credentialType", "required": false }
+            ],
             "passive": true
         },
         {
             "name": "dynamodb_openTable",
             "description": "Open a DynamoDB table in the table browser",
             "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "dynamodb_fetchRecords",
+            "description": "Fetch records from a DynamoDB table in the table browser",
+            "metadata": [
+                { "type": "result" },
+                { "type": "dynamoDbFetchType" },
+                { "type": "dynamoDbIndexType", "required": false }
+            ]
+        },
+        {
+            "name": "ec2_changeState",
+            "description": "Change the state of an EC2 Instance",
+            "metadata": [
+                { "type": "result" }, 
+                { "type": "ec2InstanceState" }
+            ]
+        },
+        {
+            "name": "ec2_connectToInstance",
+            "description": "Perform a connection to an EC2 Instance",
+            "metadata": [
+                { "type": "result" }, 
+                { "type": "ec2ConnectionType" }
+            ]
         },
         {
             "name": "ec2_openInstances",
@@ -596,8 +772,18 @@
             "metadata": [{ "type": "result" }, { "type": "ecsLaunchType" }]
         },
         {
+            "name": "ecs_publishWizard",
+            "description": "Called when user completes the ECS publish wizard",
+            "metadata": [{ "type": "result" }, { "type": "duration" }]
+        },
+        {
             "name": "ecs_openRepository",
             "description": "Open to view status of an ECS Repository",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ecs_deleteService",
+            "description": "Called when user deletes an ECS service",
             "metadata": [{ "type": "result" }]
         },
         {
@@ -635,6 +821,16 @@
             "name": "lambda_create",
             "description": "Called when creating lambdas remotely",
             "metadata": [{ "type": "runtime" }]
+        },
+        {
+            "name": "lambda_createProject",
+            "description": "Called when creating a lambda project",
+            "metadata": [
+                { "type": "result" },
+                { "type": "language" },
+                { "type": "templateName" },
+                { "type": "variant", "required": false }
+            ]
         },
         {
             "name": "lambda_goToHandler",
@@ -680,7 +876,10 @@
                 { "type": "result" },
                 { "type": "initialDeploy" },
                 { "type": "runtime", "required": false },
-                { "type": "platform", "required": false }
+                { "type": "platform", "required": false },
+                { "type": "lambdaArchitecture", "required": false },
+                { "type": "language", "required": false },
+                { "type": "xrayEnabled", "required": false }
             ]
         },
         {
@@ -802,8 +1001,12 @@
         },
         {
             "name": "s3_deleteObject",
-            "description": "Delete a single S3 object",
-            "metadata": [{ "type": "result" }]
+            "description": "Delete S3 object(s)",
+            "metadata": [
+                { "type": "result" },
+                { "type": "successCount", "required": false},
+                { "type": "failedCount", "required": false}
+            ]
         },
         {
             "name": "s3_createFolder",
@@ -812,8 +1015,13 @@
         },
         {
             "name": "s3_downloadObject",
-            "description": "Download a single S3 object",
-            "metadata": [{ "type": "result" }]
+            "description": "Download S3 object(s)",
+            "metadata": [
+                { "type": "result" },
+                { "type": "successCount", "required": false},
+                { "type": "failedCount", "required": false},
+                { "type": "component", "required": false}
+            ]
         },
         {
             "name": "s3_downloadObjects",
@@ -823,8 +1031,13 @@
         },
         {
             "name": "s3_uploadObject",
-            "description": "Upload a single S3 object",
-            "metadata": [{ "type": "result" }]
+            "description": "Upload S3 object(s)",
+            "metadata": [
+                { "type": "result" },
+                { "type": "successCount", "required": false},
+                { "type": "failedCount", "required": false},
+                { "type": "component", "required": false}
+            ]
         },
         {
             "name": "s3_renameObject",
@@ -843,6 +1056,15 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "s3_editObject",
+            "description": "Edit or view one or more S3 objects in the IDE",
+            "unit":  "Count",
+            "metadata": [
+                { "type": "result" },
+                { "type": "component", "required": false}
+            ]
+        },
+        {
             "name": "s3_openBucketProperties",
             "description": "Open a window to view S3 bucket properties",
             "metadata": [{ "type": "result" }]
@@ -855,7 +1077,10 @@
         {
             "name": "toolkit_init",
             "description": "The Toolkit has completed initialization",
-            "metadata": [{ "type": "duration" }],
+            "metadata": [
+                { "type": "result", "required": false },
+                { "type": "duration", "required": false }
+            ],
             "passive": true
         },
         {
@@ -898,6 +1123,11 @@
             "name": "sqs_purgeQueue",
             "description": "Purge all messages from the queue",
             "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
+            "name": "sns_createTopic",
+            "description": "Create an SNS Topic",
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "sns_openTopic",
@@ -978,6 +1208,99 @@
                 {
                     "type": "reason",
                     "required": false
+                }
+            ],
+            "passive": true
+        },
+        {
+            "name": "dynamicresource_getResource",
+            "description": "Open the dynamic resource model in the IDE",
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "resourceType"
+                }
+            ]
+        },
+        {
+            "name": "dynamicresource_listResource",
+            "description": "Expand a Resource Type node",
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "resourceType"
+                }
+            ]
+        },
+        {
+            "name": "dynamicresource_selectResources",
+            "description": "Change the list of available dynamic resources in the AWS Explorer"
+        },
+        {
+            "name": "dynamicresource_copyIdentifier",
+            "description": "Copy the dynamic resource identifier",
+            "metadata": [
+                {
+                    "type": "resourceType"
+                }
+            ]
+        },
+        {
+            "name": "dynamicresource_mutateResource",
+            "description": "A dynamic resource mutation request completed",
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "resourceType"
+                },
+                {
+                    "type": "dynamicResourceOperation"
+                },
+                {
+                    "type": "duration"
+                }
+            ]
+        },
+        {
+            "name": "aws_experimentActivation",
+            "description": "An experiment was activated or deactivated in the toolkit",
+            "metadata": [
+                {
+                    "type": "experimentId"
+                },
+                {
+                    "type": "experimentState"
+                }
+            ]
+        },
+        {
+            "name": "aws_toolInstallation",
+            "description": "An external tool was installed automatically",
+            "metadata": [
+                {
+                    "type": "toolId"
+                },
+                {
+                    "type": "result"
+                }
+            ],
+            "passive": true
+        },
+        {
+            "name": "deeplink_open",
+            "description": "User requested that a resource be opened in the browser using the deeplink service",
+            "metadata": [
+                {
+                    "type": "source"
+                },
+                {
+                    "type": "result"
                 }
             ],
             "passive": true

@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net46</TargetFramework>
+		<TargetFramework>net472</TargetFramework>
 		<RootNamespace>Amazon.AwsToolkit.Telemetry.Events</RootNamespace>
 		<AssemblyName>Amazon.AwsToolkit.Telemetry.Events</AssemblyName>
 		<PackageId>AWS.Toolkit.Telemetry.Events</PackageId>
@@ -21,7 +21,7 @@
 		<AssemblyOriginatorKeyFile>..\toolkit-telemetry.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 	<ItemGroup>
-	  <PackageReference Include="log4net" Version="2.0.12" />
+	  <PackageReference Include="log4net" Version="2.0.14" />
 	</ItemGroup>
 	<ItemGroup>
 		<Reference Include="System" />
