@@ -13,6 +13,24 @@
             "description": "The current state of the App Runner service"
         },
         {
+            "name": "awsFiletype",
+            "type": "string",
+            "allowedValues": [
+                "awsCredentials",
+                "cloudformation",
+                "cloudformationSam",
+                "codebuildBuildspec",
+                "ecsTask",
+                "eventbridgeSchema",
+                "iamPolicy",
+                "stepfunctionsAsl",
+                "smithyModel",
+                "ssmDocument",
+                "other"
+            ],
+            "description": "AWS filetype kind"
+        },
+        {
             "name": "duration",
             "type": "double",
             "description": "The duration of the operation in milliseconds"
@@ -46,6 +64,11 @@
             "name": "name",
             "type": "string",
             "description": "A generic name metadata"
+        },
+        {
+            "name": "filenameExt",
+            "type": "string",
+            "description": "Filename extension (examples: .txt, .yml, .yaml, .asl.yaml, ...), or empty string if the filename does not contain dot (.) between two chars."
         },
         {
             "name": "attempts",
@@ -790,6 +813,15 @@
             "name": "feedback_result",
             "description": "Called while submitting in-IDE feedback",
             "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "file_editAwsFile",
+            "description": "Use authoring features such as autocompletion, syntax checking, and highlighting, for AWS filetypes (CFN, SAM, etc.). Emit this _once_ per file-editing session for a given file. Ideally this is emitted only if authoring features are used, rather than merely opening or touching a file.",
+            "metadata": [
+                { "type": "result" },
+                { "type": "awsFiletype", "required": true},
+                { "type": "filenameExt", "required": false}
+            ]
         },
         {
             "name": "iam_openRole",
