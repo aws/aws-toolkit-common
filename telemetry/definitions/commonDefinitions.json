@@ -701,6 +701,13 @@
             ]
         },
         {
+            "name": "ec2_launchInstance",
+            "description": "Launch an EC2 Instance",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
             "name": "ec2_openInstances",
             "description": "Open a window to view EC2 Instances",
             "metadata": [{ "type": "result" }]
