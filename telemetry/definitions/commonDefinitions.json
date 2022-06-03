@@ -66,9 +66,14 @@
             "description": "The Lambda Package type of the function"
         },
         {
+            "name": "architecture",
+            "allowedValues": ["x86_64", "arm64"],
+            "description": "DEPRECATED. Use lambdaArchitecture instead."
+        },
+        {
             "name": "lambdaArchitecture",
             "allowedValues": ["x86_64", "arm64"],
-            "description": "The Lambda Architecture of the function"
+            "description": "Lambda architecture identifier"
         },
         {
             "name": "serviceType",
@@ -379,7 +384,9 @@
                 { "type": "runtime", "required": false },
                 { "type": "httpMethod", "required": false },
                 { "type": "result" },
-                { "type": "debug" }
+                { "type": "debug" },
+                { "type": "architecture", "required": false },
+                { "type": "lambdaArchitecture", "required": false }
             ]
         },
         {
@@ -959,7 +966,9 @@
                 { "type": "version", "required": false },
                 { "type": "lambdaPackageType" },
                 { "type": "result" },
-                { "type": "debug" }
+                { "type": "debug" },
+                { "type": "architecture", "required": false },
+                { "type": "lambdaArchitecture", "required": false }
             ]
         },
         {
@@ -1047,7 +1056,9 @@
                 { "type": "version", "required": false },
                 { "type": "lambdaPackageType", "required": false },
                 { "type": "reason", "required": false },
-                { "type": "eventBridgeSchema", "required": false }
+                { "type": "eventBridgeSchema", "required": false },
+                { "type": "architecture", "required": false },
+                { "type": "lambdaArchitecture", "required": false }
             ]
         },
         {
