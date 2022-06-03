@@ -31,9 +31,24 @@
             "description": "AWS filetype kind"
         },
         {
+            "name": "cloudWatchLogsPresentation",
+            "allowedValues": ["ui", "text"],
+            "description": "Presentation mode used in a CloudWatch Logs operation"
+        },
+        {
+            "name": "cloudWatchResourceType",
+            "allowedValues": ["logGroup", "logGroups", "logStream"],
+            "description": "CloudWatch Logs entity"
+        },
+        {
             "name": "duration",
             "type": "double",
             "description": "The duration of the operation in milliseconds"
+        },
+        {
+            "name": "filterBy",
+            "allowedValues": ["prefix", "time"],
+            "description": "Type of filter applied"
         },
         {
             "name": "result",
@@ -568,19 +583,54 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "cloudwatchlogs_copyArn",
+            "description": "Copy the ARN of a CloudWatch Logs entity",
+            "metadata": [
+                { "type": "result" },
+                { "type": "cloudWatchResourceType" }
+            ]
+        },
+        {
+            "name": "cloudwatchlogs_open",
+            "description": "Open a CloudWatch Logs entity. ServiceType indicates where the request came from (example: while viewing an ECS container)",
+            "metadata": [
+                { "type": "result" },
+                { "type": "cloudWatchResourceType" },
+                { "type": "serviceType", "required": false },
+                { "type": "cloudWatchLogsPresentation", "required": false }
+            ]
+        },
+        {
             "name": "cloudwatchlogs_openGroup",
-            "description": "Open the CloudWatch Logs group window. ServiceType indicates that it was opened from a different service (like directly from an ECS container)",
+            "description": "Open the CloudWatch Logs group window. ServiceType indicates that it was opened from a different service (like directly from an ECS container) (Deprecated - use cloudwatchlogs_open)",
             "metadata": [{ "type": "result" }, { "type": "serviceType", "required": false }]
         },
         {
             "name": "cloudwatchlogs_openStream",
-            "description": "Open a CloudWatch Logs stream in the window. ServiceType indicates that it was opened from a different service (like directly from an ECS container)",
+            "description": "Open a CloudWatch Logs stream in the window. ServiceType indicates that it was opened from a different service (like directly from an ECS container) (Deprecated - use cloudwatchlogs_open)",
             "metadata": [{ "type": "result" }, { "type": "serviceType", "required": false }]
+        },
+        {
+            "name": "cloudwatchlogs_delete",
+            "description": "Delete a CloudWatch Logs entity.",
+            "metadata": [
+                { "type": "result" },
+                { "type": "cloudWatchResourceType" }
+            ]
+        },
+        {
+            "name": "cloudwatchlogs_download",
+            "unit": "Bytes",
+            "description": "Download a CloudWatch Logs entity. Value indicates the final size of the formatted stream in bytes.",
+            "metadata": [
+                { "type": "result" },
+                { "type": "cloudWatchResourceType" }
+            ]
         },
         {
             "name": "cloudwatchlogs_downloadStreamToFile",
             "unit": "Bytes",
-            "description": "Download a stream to a file on disk. Value indicates the final size of the formatted stream.",
+            "description": "Download a stream to a file on disk. Value indicates the final size of the formatted stream. (Deprecated - use cloudwatchlogs_download)",
             "metadata": [{ "type": "result" }]
         },
         {
@@ -604,12 +654,26 @@
             "metadata": [{ "type": "enabled" }]
         },
         {
+            "name": "cloudwatchlogs_refresh",
+            "description": "Refresh a CloudWatch Logs entity",
+            "metadata": [{ "type": "cloudWatchResourceType" }]
+        },
+        {
             "name": "cloudwatchlogs_refreshGroup",
-            "description": "Refresh group is pressed"
+            "description": "Refresh group is pressed (Deprecated, use cloudwatchlogs_refresh)"
         },
         {
             "name": "cloudwatchlogs_refreshStream",
-            "description": "Refresh stream is pressed"
+            "description": "Refresh stream is pressed (Deprecated, use cloudwatchlogs_refresh)"
+        },
+        {
+            "name": "cloudwatchlogs_filter",
+            "description": "Filters a CloudWatch Logs entity.",
+            "metadata": [
+                { "type": "result" },
+                { "type": "filterBy" },
+                { "type": "cloudWatchResourceType" }
+            ]
         },
         {
             "name": "cloudwatchlogs_searchStream",
