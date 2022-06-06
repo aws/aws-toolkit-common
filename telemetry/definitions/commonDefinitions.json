@@ -592,12 +592,13 @@
         },
         {
             "name": "cloudwatchlogs_open",
-            "description": "Open a CloudWatch Logs entity. ServiceType indicates where the request came from (example: while viewing an ECS container)",
+            "description": "Open a CloudWatch Logs entity. ServiceType and source indicate where the request came from (example: while viewing an ECS container)",
             "metadata": [
                 { "type": "result" },
                 { "type": "cloudWatchResourceType" },
+                { "type": "cloudWatchLogsPresentation", "required": false },
                 { "type": "serviceType", "required": false },
-                { "type": "cloudWatchLogsPresentation", "required": false }
+                { "type": "source" }
             ]
         },
         {
