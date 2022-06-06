@@ -37,7 +37,7 @@
         },
         {
             "name": "cloudWatchResourceType",
-            "allowedValues": ["logGroup", "logGroups", "logStream"],
+            "allowedValues": ["logGroup", "logGroupList", "logStream"],
             "description": "CloudWatch Logs entity"
         },
         {
