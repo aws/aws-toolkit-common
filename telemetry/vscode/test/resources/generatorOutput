@@ -5,7 +5,7 @@
 
 import globals from '../extensionGlobals'
 export type LambdaRuntime = 'dotnetcore2.1' | 'nodejs12.x'
-interface LambdaDelete {
+export interface LambdaDelete {
     // The duration of the operation in miliseconds
     duration: number
     // a test boolean type
@@ -39,7 +39,7 @@ export function recordLambdaDelete(args: LambdaDelete) {
         Metadata: metadata,
     })
 }
-interface LambdaCreate {
+export interface LambdaCreate {
     // The lambda runtime
     lambdaRuntime: LambdaRuntime
     // untyped string type
@@ -73,7 +73,7 @@ export function recordLambdaCreate(args: LambdaCreate) {
         Metadata: metadata,
     })
 }
-interface LambdaRemoteinvoke {
+export interface LambdaRemoteinvoke {
     // The lambda runtime
     lambdaRuntime?: LambdaRuntime
     // a test int type
@@ -107,7 +107,7 @@ export function recordLambdaRemoteinvoke(args: LambdaRemoteinvoke) {
         Metadata: metadata,
     })
 }
-interface NoMetadata {
+export interface NoMetadata {
     // The time that the event took place,
     createTime?: Date
     // Value based on unit and call type,
@@ -132,7 +132,7 @@ export function recordNoMetadata(args?: NoMetadata) {
         Metadata: metadata,
     })
 }
-interface PassivePassive {
+export interface PassivePassive {
     // The time that the event took place,
     createTime?: Date
     // Value based on unit and call type,

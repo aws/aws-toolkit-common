@@ -5,7 +5,7 @@
 
 import globals from '../extensionGlobals'
 export type Result = 'Succeeded'
-interface MetadataHasResult {
+export interface MetadataHasResult {
     // The time that the event took place,
     createTime?: Date
     // Value based on unit and call type,

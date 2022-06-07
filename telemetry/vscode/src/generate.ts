@@ -108,7 +108,7 @@ export function generateTelemetry(telemetryJson: MetricDefinitionRoot): string {
             }) ?? []
 
         const name = metricToTypeName(metric)
-        str += `interface ${name} {
+        str += `export interface ${name} {
     ${metadata.map(item => `\n// ${item.description}\n${getArgsFromMetadata(item)}`).join(',')}
     ${globalArgs().join(',\n')}
 }`
