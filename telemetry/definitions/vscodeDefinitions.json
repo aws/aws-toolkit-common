@@ -62,7 +62,6 @@
                 { "type": "runtime" },
                 { "type": "attempts" },
                 { "type": "duration" },
-                { "type": "architecture", "required": false },
                 { "type": "lambdaArchitecture", "required": false }
             ]
         },

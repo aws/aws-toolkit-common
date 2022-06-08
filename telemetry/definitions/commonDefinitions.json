@@ -66,11 +66,6 @@
             "description": "The Lambda Package type of the function"
         },
         {
-            "name": "architecture",
-            "allowedValues": ["x86_64", "arm64"],
-            "description": "DEPRECATED. Use lambdaArchitecture instead."
-        },
-        {
             "name": "lambdaArchitecture",
             "allowedValues": ["x86_64", "arm64"],
             "description": "Lambda architecture identifier"
@@ -385,7 +380,6 @@
                 { "type": "httpMethod", "required": false },
                 { "type": "result" },
                 { "type": "debug" },
-                { "type": "architecture", "required": false },
                 { "type": "lambdaArchitecture", "required": false }
             ]
         },
@@ -967,7 +961,6 @@
                 { "type": "lambdaPackageType" },
                 { "type": "result" },
                 { "type": "debug" },
-                { "type": "architecture", "required": false },
                 { "type": "lambdaArchitecture", "required": false }
             ]
         },
@@ -1057,7 +1050,6 @@
                 { "type": "lambdaPackageType", "required": false },
                 { "type": "reason", "required": false },
                 { "type": "eventBridgeSchema", "required": false },
-                { "type": "architecture", "required": false },
                 { "type": "lambdaArchitecture", "required": false }
             ]
         },
