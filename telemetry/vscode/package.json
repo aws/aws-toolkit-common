@@ -7,7 +7,7 @@
         "build": "ts-node ./scripts/setUpPackage.ts && tsc -p ./",
         "validatePackaged": "ts-node ./scripts/validatePackagedJson.ts",
         "prepack": "npm run build && npm run test && npm run validatePackaged",
-        "test": "jest"
+        "test": "npm run build && jest"
     },
     "repository": {
         "type": "git",
