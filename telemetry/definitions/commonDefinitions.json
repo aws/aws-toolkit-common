@@ -1408,6 +1408,10 @@
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "serviceType",
+                    "required": false
                 }
             ],
             "passive": true
