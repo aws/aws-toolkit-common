@@ -106,7 +106,7 @@ private fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType
             FunSpec.builder("from")
                 .returns(ClassName("", item.name.toTypeFormat()))
                 .addParameter("type", String::class)
-                .addStatement("return values().firstOrNull { it.value == type } ?: $unknownType")
+                .addStatement("return values().firstOrNull·{·it.value·==·type·} ?:·$unknownType")
                 .build()
         )
         .build()

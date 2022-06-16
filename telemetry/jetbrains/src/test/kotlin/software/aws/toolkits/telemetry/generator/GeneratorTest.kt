@@ -40,6 +40,11 @@ class GeneratorTest {
     }
 
     @Test
+    fun longEnum() {
+        testGenerator(defaultDefinitionsFile = "/testLongEnumInput.json", expectedOutputFile = "/testLongEnumOutput")
+    }
+
+    @Test
     fun generateGeneratesWithDefaultDefinitions() {
         generateTelemetryFromFiles(inputFiles = listOf(), outputFolder = folder.root)
         val outputFile = Paths.get(folder.root.absolutePath, "software", "aws", "toolkits", "telemetry", "TelemetryDefinitions.kt")
