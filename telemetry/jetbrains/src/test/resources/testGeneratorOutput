@@ -31,8 +31,8 @@ public enum class LambdaRuntime(
     public override fun toString(): String = value
 
     public companion object {
-        public fun from(type: String): LambdaRuntime = values().firstOrNull { it.value == type } ?:
-                Unknown
+        public fun from(type: String): LambdaRuntime = values().firstOrNull { it.value == type }
+                ?: Unknown
     }
 }
 
