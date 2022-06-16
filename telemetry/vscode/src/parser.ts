@@ -42,7 +42,7 @@ export interface MetricDefinitionRoot {
 
 export function validateInput(fileText: string, fileName: string): MetricDefinitionRoot {
     try {
-        const schemaInput = readFileSync(path.join(__dirname, '../../telemetrySchema.json'), 'utf8')
+        const schemaInput = readFileSync(path.join(__dirname, '../lib/telemetrySchema.json'), 'utf8')
         const schema = JSON.parse(schemaInput)
         const jsonValidator = new Ajv().compile(schema)
         const input = JSON.parse(fileText)
