@@ -56,12 +56,12 @@
             "description": "The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...)"
         },
         {
-            "name": "isTextFilter",
+            "name": "hasTextFilter",
             "type": "boolean",
             "description": "A text based filter was used"
         },
         {
-            "name": "isTimeFilter",
+            "name": "hasTimeFilter",
             "type": "boolean",
             "description": "A time based filter was used"
         },
@@ -679,8 +679,8 @@
             "metadata": [
                 { "type": "result" },
                 { "type": "cloudWatchResourceType" },
-                { "type": "isTextFilter", "required": false },
-                { "type": "isTimeFilter", "required": false }
+                { "type": "hasTextFilter", "required": false },
+                { "type": "hasTimeFilter", "required": false }
             ]
         },
         {
