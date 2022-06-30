@@ -46,11 +46,6 @@
             "description": "The duration of the operation in milliseconds"
         },
         {
-            "name": "filterBy",
-            "allowedValues": ["prefix", "time"],
-            "description": "Type of filter applied"
-        },
-        {
             "name": "result",
             "allowedValues": ["Succeeded", "Failed", "Cancelled"],
             "description": "The result of the operation"
@@ -59,6 +54,16 @@
             "name": "component",
             "allowedValues": ["editor", "viewer", "filesystem"],
             "description": "The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...)"
+        },
+        {
+            "name": "hasTextFilter",
+            "type": "boolean",
+            "description": "A text based filter was used"
+        },
+        {
+            "name": "hasTimeFilter",
+            "type": "boolean",
+            "description": "A time based filter was used"
         },
         {
             "name": "lambdaPackageType",
@@ -673,8 +678,9 @@
             "description": "Filters a CloudWatch Logs entity.",
             "metadata": [
                 { "type": "result" },
-                { "type": "filterBy" },
-                { "type": "cloudWatchResourceType" }
+                { "type": "cloudWatchResourceType" },
+                { "type": "hasTextFilter", "required": false },
+                { "type": "hasTimeFilter", "required": false }
             ]
         },
         {
