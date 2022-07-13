@@ -1,5 +1,6 @@
 ﻿using log4net;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Amazon.AwsToolkit.Telemetry.Events.Core
 {
@@ -22,6 +23,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Core
         /// </summary>
         /// <param name="sentiment">feedback sentiment e.g positive/negative</param>
         /// <param name="comment">feedback comment</param>
-        Task SendFeedback(Sentiment sentiment, string comment);
+        /// <param name="metadata">optional additional feedback metadata</param>
+        Task SendFeedback(Sentiment sentiment, string comment, IDictionary<string, string> metadata = null);
     }
 }
