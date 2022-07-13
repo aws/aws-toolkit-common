@@ -23,7 +23,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Core
         /// </summary>
         /// <param name="sentiment">feedback sentiment e.g positive/negative</param>
         /// <param name="comment">feedback comment</param>
-        /// <param name="metadata">additional feedback metadata</param>
-        Task SendFeedback(Sentiment sentiment, string comment, IDictionary<string, string> metadata);
+        /// <param name="metadata">optional additional feedback metadata</param>
+        Task SendFeedback(Sentiment sentiment, string comment, IDictionary<string, string> metadata = null);
     }
 }
