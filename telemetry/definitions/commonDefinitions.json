@@ -393,9 +393,39 @@
             "description": "How many lines of code being sent for security scan"
         },
         {
-            "name": "codewhispererCodeScanPayloadBytes",
+            "name": "codewhispererCodeScanSrcPayloadBytes",
             "type": "int",
-            "description": "The payload size in bytes of customer project context sent for security scan"
+            "description": "The uncompressed payload size in bytes of the source files in customer project context sent for security scan"
+        },
+        {
+            "name": "codewhispererCodeScanBuildPayloadBytes",
+            "type": "int",
+            "description": "The uncompressed payload size in bytes of the build files in customer project context sent for security scan"
+        },
+        {
+            "name": "codewhispererCodeScanSrcZipFileBytes",
+            "type": "int",
+            "description": "The compressed payload size of source files in bytes of customer project context sent for security scan"
+        },
+        {
+            "name": "codewhispererCodeScanBuildZipFileBytes",
+            "type": "int",
+            "description": "The compressed payload size of built jars in bytes of customer project context sent for security scan. This is only applicable for Java project"
+        },
+        {
+            "name": "contextTruncationDuration",
+            "type": "int",
+            "description": "Time taken for context truncation in milliseconds"
+        },
+        {
+            "name": "artifactsUploadDuration",
+            "type": "int",
+            "description": "Time taken to fetch the upload URL and upload the artifacts in milliseconds"
+        },
+        {
+            "name": "codeScanServiceInvocationsDuration",
+            "type": "int",
+            "description": "Time taken to invoke code scan service APIs in milliseconds"
         },
         {
             "name": "codewhispererCodeScanTotalIssues",
@@ -1591,7 +1621,16 @@
                     "required": false
                 },
                 {
-                    "type": "codewhispererCodeScanPayloadBytes"
+                    "type": "codewhispererCodeScanSrcPayloadBytes"
+                },
+                {
+                    "type": "codewhispererCodeScanBuildPayloadBytes"
+                },
+                {
+                    "type": "codewhispererCodeScanSrcZipFileBytes"
+                },
+                {
+                    "type": "codewhispererCodeScanBuildZipFileBytes"
                 },
                 {
                     "type": "codewhispererCodeScanTotalIssues"
@@ -1601,6 +1640,15 @@
                 },
                 {
                     "type": "duration"
+                },
+                {
+                    "type": "contextTruncationDuration"
+                },
+                {
+                    "type": "artifactsUploadDuration"
+                },
+                {
+                    "type": "codeScanServiceInvocationsDuration"
                 },
                 {
                     "type": "reason",
