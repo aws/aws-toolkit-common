@@ -1624,13 +1624,15 @@
                     "type": "codewhispererCodeScanSrcPayloadBytes"
                 },
                 {
-                    "type": "codewhispererCodeScanBuildPayloadBytes"
+                    "type": "codewhispererCodeScanBuildPayloadBytes",
+                    "required": false
                 },
                 {
                     "type": "codewhispererCodeScanSrcZipFileBytes"
                 },
                 {
-                    "type": "codewhispererCodeScanBuildZipFileBytes"
+                    "type": "codewhispererCodeScanBuildZipFileBytes",
+                    "required": false
                 },
                 {
                     "type": "codewhispererCodeScanTotalIssues"
