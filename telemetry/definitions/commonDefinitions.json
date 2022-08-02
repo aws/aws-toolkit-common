@@ -519,7 +519,7 @@
             "name": "codewhispererSuggestionState",
             "type": "string",
             "description": "User decision of each of the suggestion returned from CodeWhisperer",
-            "allowedValues": ["Accept", "Reject", "Discard", "Ignore", "Filter", "Unseen"]
+            "allowedValues": ["Accept", "Reject", "Discard", "Ignore", "Filter", "Unseen", "Empty"]
         },
         {
             "name": "codewhispererTotalTokens",
