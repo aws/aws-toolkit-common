@@ -376,6 +376,12 @@
             "description": "The metrics accepted on suggested CodeWhisperer code"
         },
         {
+            "name": "codewhispererAutomatedTriggerState",
+            "type": "string",
+            "description": "State of cwspr auto-suggestion",
+            "allowedValues": ["activated", "deactivated"]
+        },
+        {
             "name": "codewhispererAutomatedTriggerType",
             "type": "string",
             "description": "The type of the Automated trigger to send request to CodeWhisperer service",
@@ -1584,6 +1590,15 @@
                 }
             ],
             "passive": true
+        },
+        {
+            "name": "codewhisperer_autoSuggestionActivation",
+            "description": "State of cwspr auto-suggestion",
+            "metadata":  [
+                {
+                    "type": "codewhispererAutomatedTriggerState"
+                }
+            ]
         },
         {
             "name": "codewhisperer_codePercentage",
