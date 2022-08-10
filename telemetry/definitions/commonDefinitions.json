@@ -1593,7 +1593,7 @@
         },
         {
             "name": "codewhisperer_autoSuggestionActivation",
-            "description": "State of cwspr auto-suggestion",
+            "description": "User activate or deactivate automated trigger for CodeWhisperer code suggestion",
             "metadata":  [
                 {
                     "type": "codewhispererAutomatedTriggerState"
