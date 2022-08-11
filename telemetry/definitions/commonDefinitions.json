@@ -355,6 +355,16 @@
             "description": "The id of the experiment being activated or deactivated"
         },
         {
+            "name": "settingId",
+            "type": "string",
+            "description": "The id of the setting being changed"
+        },
+        {
+            "name": "settingState",
+            "type": "string",
+            "description": "The state of the setting being changed to"
+        },
+        {
             "name": "toolId",
             "type": "string",
             "description": "The tool being installed",
@@ -374,12 +384,6 @@
             "name": "codewhispererAcceptedTokens",
             "type": "int",
             "description": "The metrics accepted on suggested CodeWhisperer code"
-        },
-        {
-            "name": "codewhispererAutomatedTriggerState",
-            "type": "string",
-            "description": "State of cwspr auto-suggestion",
-            "allowedValues": ["activated", "deactivated"]
         },
         {
             "name": "codewhispererAutomatedTriggerType",
@@ -1575,6 +1579,19 @@
             "passive": true
         },
         {
+            "name": "aws_modifySetting",
+            "description": "An setting was changed by users in the toolkit",
+            "metadata": [
+                {
+                    "type": "settingId"
+                },
+                {
+                    "type": "settingState",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "deeplink_open",
             "description": "User requested that a resource be opened in the browser using the deeplink service",
             "metadata": [
@@ -1590,15 +1607,6 @@
                 }
             ],
             "passive": true
-        },
-        {
-            "name": "codewhisperer_autoSuggestionActivation",
-            "description": "User activate or deactivate automated trigger for CodeWhisperer code suggestion",
-            "metadata":  [
-                {
-                    "type": "codewhispererAutomatedTriggerState"
-                }
-            ]
         },
         {
             "name": "codewhisperer_codePercentage",
