@@ -7,6 +7,11 @@
             "description": "The lambda runtime"
         },
         {
+            "name": "result",
+            "allowedValues": ["Succeeded"],
+            "description": "The result of the operation"
+        },
+        {
             "name": "duration",
             "type": "double",
             "description": "The duration of the operation in miliseconds"

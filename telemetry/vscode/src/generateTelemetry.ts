@@ -15,8 +15,7 @@ async function parseArguments(): Promise<CommandLineArguments> {
     const args = await argv 
 
     if (!args.output) {
-        console.log("Argument 'output' required")
-        throw undefined
+        throw new TypeError(`Argument 'output' required`)
     }
     if (args.extraInput) {
         input = (args.extraInput as string).split(',').map(item => item.trim())

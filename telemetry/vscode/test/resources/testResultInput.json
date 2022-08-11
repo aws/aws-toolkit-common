@@ -11,6 +11,11 @@
                 "underscore_separated"
             ],
             "description": "The result of the operation"
+        },
+        {
+            "name": "duration",
+            "type": "double",
+            "description": "The duration of the operation in miliseconds"
         }
     ],
     "metrics": [

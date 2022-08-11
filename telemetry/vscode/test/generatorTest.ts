@@ -14,13 +14,7 @@ describe('Generator', () => {
     })
 
     test('Generate fails when validation fails', async () => {
-        try {
-            await testGenerator(['resources/invalidInput.json'], '/invalid/file/path')
-        } catch (e) {
-            expect(e).not.toBeNull
-            return
-        }
-        throw Error('Test did not throw as expected')
+        await expect(testGenerator(['resources/invalidInput.json'], '/invalid/file/path')).rejects.toBeDefined()
     })
 
     test('Generates with normal input', async () => {
