@@ -4,11 +4,15 @@
  */
 export interface MetricBase {
     /** The result of the operation */
-    readonly result: Result
+    readonly result?: Result
+    /** The reason for a metric or exception depending on context */
+    readonly reason?: string
     /** The duration of the operation in miliseconds */
-    readonly duration: number
+    readonly duration?: number
     /** A flag indicating that the metric was not caused by the user. */
-    readonly passive: boolean
+    readonly passive?: boolean
+    /** @deprecated Arbitrary "value" of the metric. */
+    readonly value?: number
 }
 
 export interface MetadataHasResult extends MetricBase {}
@@ -17,30 +21,9 @@ export type Result = 'Succeeded'
 export type LambdaRuntime = 'dotnetcore2.1' | 'nodejs12.x'
 
 export interface MetricDefinition {
+    readonly unit: string
     readonly passive: boolean
     readonly requiredMetadata: readonly string[]
-}
-
-export abstract class Metric<T extends MetricBase = MetricBase> {
-    protected readonly state: Record<string, unknown> = {}
-
-    public constructor(public readonly name: string, public readonly definition: MetricDefinition) {}
-
-    public record(data: Partial<T>): this {
-        Object.assign(this.state, data)
-        return this
-    }
-
-    public abstract submit(): void
-}
-
-export class Telemetry {
-    private constructor(protected readonly getMetric: (name: string, definition: MetricDefinition) => Metric) {}
-
-    /** It does not actually have a result, yep */
-    public usingMetadataHasResult(): Metric<MetadataHasResult> {
-        return this.getMetric('metadata_hasResult', { passive: false, requiredMetadata: [] })
-    }
 }
 
 export interface MetricShapes {
@@ -48,3 +31,33 @@ export interface MetricShapes {
 }
 
 export type MetricName = keyof MetricShapes
+
+const definitions: Record<string, MetricDefinition> = {
+    metadata_hasResult: { unit: 'None', passive: false, requiredMetadata: [] },
+}
+
+export type Metadata<T extends MetricBase> = Partial<Omit<T, keyof MetricBase>>
+
+export abstract class Metric<T extends MetricBase = MetricBase> {
+    protected readonly state: Partial<T> = {}
+    protected readonly definition: MetricDefinition = definitions[this.name] ?? {
+        unit: 'None',
+        passive: true,
+        requiredMetadata: [],
+    }
+
+    public constructor(public readonly name: string) {}
+
+    public abstract record(data: Metadata<T>): this
+
+    public abstract emit(data?: T): void
+}
+
+export abstract class TelemetryBase {
+    /** It does not actually have a result, yep */
+    public get metadata_hasResult(): Metric<MetadataHasResult> {
+        return this.getMetric('metadata_hasResult')
+    }
+
+    protected abstract getMetric(name: string): Metric
+}

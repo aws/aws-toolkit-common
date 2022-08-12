@@ -31,9 +31,9 @@ export interface MetricMetadata {
 export interface Metric {
     readonly name: string
     readonly description: string
-    readonly unit: string
+    readonly unit?: string
     readonly metadata?: MetricMetadata[]
-    readonly passive: boolean
+    readonly passive?: boolean
 }
 
 export interface MetricDefinitionRoot {

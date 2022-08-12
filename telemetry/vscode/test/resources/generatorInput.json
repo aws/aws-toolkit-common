@@ -12,6 +12,11 @@
             "description": "The result of the operation"
         },
         {
+            "name": "reason",
+            "type": "string",
+            "description": "The reason for a metric or exception depending on context"
+        },
+        {
             "name": "duration",
             "type": "double",
             "description": "The duration of the operation in miliseconds"

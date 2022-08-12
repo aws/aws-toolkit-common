@@ -11,6 +11,9 @@ import {
     PropertySignatureStructure,
     TypeAliasDeclarationStructure,
     ClassDeclarationStructure,
+    MethodDeclarationStructure,
+    VariableStatementStructure,
+    VariableDeclarationKind,
 } from 'ts-morph'
 import { readFile, readFileSync, writeFile } from 'fs-extra'
 import _ = require('lodash')
@@ -95,7 +98,7 @@ function getArgsFromMetadata(m: MetadataType): string {
         case 'boolean':
             return 'boolean'
         default: {
-            throw new TypeError(`unkown type ${m?.type} in metadata ${m.name}`)
+            throw new TypeError(`unknown type ${m?.type} in metadata ${m.name}`)
         }
     }
 }
@@ -111,12 +114,22 @@ function getTypeOrThrow(types: MetadataType[] = [], name: string) {
 }
 
 const baseName = 'MetricBase'
-const commonMetadata = ['result', 'duration']
+const commonMetadata = ['result', 'reason', 'duration']
 const passive: PropertySignatureStructure = {
     isReadonly: true,
+    hasQuestionToken: true,
     name: 'passive',
     type: 'boolean',
     docs: ['A flag indicating that the metric was not caused by the user.'],
+    kind: StructureKind.PropertySignature,
+}
+
+const value: PropertySignatureStructure = {
+    isReadonly: true,
+    hasQuestionToken: true,
+    name: 'value',
+    type: 'number',
+    docs: ['@deprecated Arbitrary "value" of the metric.'],
     kind: StructureKind.PropertySignature,
 }
 
@@ -125,6 +138,11 @@ const runtimeMetricDefinition: InterfaceDeclarationStructure = {
     kind: StructureKind.Interface,
     isExported: true,
     properties: [
+        {
+            name: 'unit',
+            type: 'string',
+            isReadonly: true,
+        },
         {
             name: 'passive',
             type: 'boolean',
@@ -161,13 +179,13 @@ function generateMetadataProperty(metadata: MetricMetadataType): PropertySignatu
 }
 
 function generateMetricBase(types: MetadataType[] | undefined): InterfaceDeclarationStructure {
-    const toProp = (name: string) => generateMetadataProperty({ ...getTypeOrThrow(types, name), required: true })
+    const toProp = (name: string) => generateMetadataProperty({ required: false, ...getTypeOrThrow(types, name) })
 
     return {
         name: baseName,
         isExported: true,
         kind: StructureKind.Interface,
-        properties: commonMetadata.map(toProp).concat(passive)
+        properties: commonMetadata.map(toProp).concat(passive, value),
     }    
 }
 
@@ -186,7 +204,10 @@ function generateMetricInterface(metric: Metric, types: MetadataType[] | undefin
 // The following classes are largely generated for documentation rather than a technical
 // requirement. Doing it this way makes things more complex though I think it's worth it
 // for documentation on hover.
-function generateMetricRecorder(): ClassDeclarationStructure {
+function generateMetricRecorder(
+    metadataType: TypeAliasDeclarationStructure,
+    definitions: VariableStatementStructure
+): ClassDeclarationStructure {
     return {
         name: 'Metric',
         isExported: true,
@@ -197,9 +218,16 @@ function generateMetricRecorder(): ClassDeclarationStructure {
             {
                 name: 'state',
                 scope: Scope.Protected,
-                isReadonly: true,
                 initializer: '{}',
-                type: 'Record<string, unknown>',
+                type: 'Partial<T>',
+                isReadonly: true,
+            },
+            {
+                name: 'definition',
+                scope: Scope.Protected,
+                initializer: `${definitions.declarations[0].name}[this.name] ?? { unit: 'None', passive: true, requiredMetadata: [] }`,
+                type: runtimeMetricDefinition.name,
+                isReadonly: true,
             }
         ],
         methods: [
@@ -207,20 +235,22 @@ function generateMetricRecorder(): ClassDeclarationStructure {
                 name: 'record',
                 returnType: 'this',
                 scope: Scope.Public,
-                statements: [
-                    'Object.assign(this.state, data)',
-                    'return this'
-                ],
                 parameters: [{
                     name: 'data',
-                    type: 'Partial<T>',
+                    type: `${metadataType.name}<T>`,
                 }],
+                isAbstract: true,
                 kind: StructureKind.Method,
             },
             {
-                name: 'submit',
+                name: 'emit',
                 returnType: 'void',
                 scope: Scope.Public,
+                parameters: [{
+                    name: 'data',
+                    type: 'T',
+                    hasQuestionToken: true,
+                }],
                 isAbstract: true,
                 kind: StructureKind.Method,
             }
@@ -233,12 +263,6 @@ function generateMetricRecorder(): ClassDeclarationStructure {
                     type: 'string',
                     scope: Scope.Public,
                     isReadonly: true,
-                },
-                {
-                    name: 'definition',
-                    type: runtimeMetricDefinition.name,
-                    scope: Scope.Public,
-                    isReadonly: true,
                 }
             ]
         }]
@@ -246,30 +270,27 @@ function generateMetricRecorder(): ClassDeclarationStructure {
 }
 
 function generateTelemetryHelper(recorder: ClassDeclarationStructure, metrics: Metric[]): ClassDeclarationStructure {
-    const getMetric = {
+    const getMetric: MethodDeclarationStructure = {
         name: 'getMetric',
-        type: `(name: string, definition: ${runtimeMetricDefinition.name}) => ${recorder.name}`,
         scope: Scope.Protected,
-        isReadonly: true,
+        kind: StructureKind.Method,
+        parameters: [{ name: 'name', type: 'string' }],
+        returnType: recorder.name,
+        isAbstract: true,
     }
 
     return {
-        name: 'Telemetry',
+        name: 'TelemetryBase',
         kind: StructureKind.Class,
-        ctors: [{
-            scope: Scope.Private,
-            parameters: [getMetric],
-        }],
-        methods: metrics.map(m => {
-            const metadataTypes = getMetricMetadata(m).filter(m => m.required ?? true).map(m => `'${m.type}'`)
-            const requiredMetadata = `[${metadataTypes.join(', ')}]`
-            
+        isAbstract: true,
+        methods: [getMetric],
+        getAccessors: metrics.map(m => {        
             return {
                 scope: Scope.Public,
-                name: `using${metricToTypeName(m)}`,
+                name: m.name,
                 docs: [m.description],
                 returnType: `${recorder.name}<${metricToTypeName(m)}>`,
-                statements: `return this.${getMetric.name}('${m.name}', { passive: ${m.passive ?? false}, requiredMetadata: ${requiredMetadata} })`,
+                statements: `return this.${getMetric.name}('${m.name}')`,
             }
         }),
         isExported: true,
@@ -291,6 +312,25 @@ function generateMetricShapeMap(metrics: Metric[]): InterfaceDeclarationStructur
     }
 }
 
+function generateDefinitions(metrics: Metric[]): VariableStatementStructure {
+    const fields = metrics.map(m => {
+        const metadataTypes = getMetricMetadata(m).filter(m => m.required ?? true).map(m => `'${m.type}'`)
+        const requiredMetadata = `[${metadataTypes.join(', ')}]`
+        
+        return `${m.name}: { unit: '${m.unit ?? 'None'}', passive: ${m.passive ?? false}, requiredMetadata: ${requiredMetadata} }`
+    })
+
+    return {
+        declarations: [{
+            name: 'definitions',
+            type: `Record<string, ${runtimeMetricDefinition.name}>`,
+            initializer: `{ ${fields.join(',\n')} }`,
+        }],
+        declarationKind: VariableDeclarationKind.Const,
+        kind: StructureKind.VariableStatement,
+    }
+}
+
 function generateFile(telemetryJson: MetricDefinitionRoot, dest: string) {
     const project = new Project({})
     const file = project.createSourceFile(dest, header, { overwrite: true })
@@ -300,17 +340,28 @@ function generateFile(telemetryJson: MetricDefinitionRoot, dest: string) {
     file.addTypeAliases(exportedTypes)
     file.addInterface(runtimeMetricDefinition)
 
-    const recorder = generateMetricRecorder()
-    file.addClass(recorder)
-    file.addClass(generateTelemetryHelper(recorder, telemetryJson.metrics))
-
     const metricsMap = generateMetricShapeMap(telemetryJson.metrics)
     file.addInterface(metricsMap)
     file.addTypeAlias({
+        isExported: true,
         name: 'MetricName',
         type: `keyof ${metricsMap.name}`,
-        isExported: true,
     })
+
+    const metadataType: TypeAliasDeclarationStructure = {
+        isExported: true,
+        name: 'Metadata',
+        typeParameters: [`T extends ${baseName}`],
+        type: `Partial<Omit<T, keyof ${baseName}>>`,
+        kind: StructureKind.TypeAlias,
+    }
+
+    const definitions = generateDefinitions(telemetryJson.metrics)
+    const recorder = generateMetricRecorder(metadataType, definitions)
+    file.addVariableStatement(definitions)
+    file.addTypeAlias(metadataType)
+    file.addClass(recorder)
+    file.addClass(generateTelemetryHelper(recorder, telemetryJson.metrics))
 
     return file
 }
