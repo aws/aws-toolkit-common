@@ -355,6 +355,16 @@
             "description": "The id of the experiment being activated or deactivated"
         },
         {
+            "name": "settingId",
+            "type": "string",
+            "description": "The id of the setting being changed. Consistent namespace should be used for the id, e.g. codewhisperer_autoSuggestionActivation"
+        },
+        {
+            "name": "settingState",
+            "type": "string",
+            "description": "The state of the setting being changed to. This should not be recorded for free-form settings like file-system paths. Instead, stick to things like flags, numbers, and enums."
+        },
+        {
             "name": "toolId",
             "type": "string",
             "description": "The tool being installed",
@@ -1545,7 +1555,7 @@
         },
         {
             "name": "aws_experimentActivation",
-            "description": "An experiment was activated or deactivated in the toolkit",
+            "description": "An experiment was activated or deactivated in the Toolkit",
             "metadata": [
                 {
                     "type": "experimentId"
@@ -1567,6 +1577,19 @@
                 }
             ],
             "passive": true
+        },
+        {
+            "name": "aws_modifySetting",
+            "description": "An setting was changed by users in the Toolkit. This metric can optionally provide the new state of the setting via settingState.",
+            "metadata": [
+                {
+                    "type": "settingId"
+                },
+                {
+                    "type": "settingState",
+                    "required": false
+                }
+            ]
         },
         {
             "name": "deeplink_open",
