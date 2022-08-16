@@ -201,75 +201,51 @@ function generateMetricInterface(metric: Metric, types: MetadataType[] | undefin
     }
 }
 
-// The following classes are largely generated for documentation rather than a technical
-// requirement. Doing it this way makes things more complex though I think it's worth it
-// for documentation on hover.
-function generateMetricRecorder(
-    metadataType: TypeAliasDeclarationStructure,
-    definitions: VariableStatementStructure
-): ClassDeclarationStructure {
+function generateMetricRecorder(metadataType: TypeAliasDeclarationStructure): InterfaceDeclarationStructure {
     return {
         name: 'Metric',
         isExported: true,
-        isAbstract: true,
-        kind: StructureKind.Class,
         typeParameters: [`T extends ${baseName} = ${baseName}`],
         properties: [
             {
-                name: 'state',
-                scope: Scope.Protected,
-                initializer: '{}',
-                type: 'Partial<T>',
-                isReadonly: true,
-            },
-            {
-                name: 'definition',
-                scope: Scope.Protected,
-                initializer: `${definitions.declarations[0].name}[this.name] ?? { unit: 'None', passive: true, requiredMetadata: [] }`,
-                type: runtimeMetricDefinition.name,
+                name: 'name',
+                type: 'string',
                 isReadonly: true,
             }
         ],
         methods: [
             {
                 name: 'record',
-                returnType: 'this',
-                scope: Scope.Public,
+                returnType: 'void',
                 parameters: [{
                     name: 'data',
                     type: `${metadataType.name}<T>`,
                 }],
-                isAbstract: true,
-                kind: StructureKind.Method,
             },
             {
                 name: 'emit',
                 returnType: 'void',
-                scope: Scope.Public,
                 parameters: [{
                     name: 'data',
                     type: 'T',
                     hasQuestionToken: true,
                 }],
-                isAbstract: true,
-                kind: StructureKind.Method,
+            },
+            {
+                name: 'run',
+                typeParameters: ['U'],
+                returnType: 'U',
+                parameters: [{
+                    name: 'fn',
+                    type: `(span: Omit<this, 'run' | 'emit'>) => U`,
+                }],
             }
         ],
-        ctors: [{
-            scope: Scope.Public,
-            parameters: [
-                {
-                    name: 'name',
-                    type: 'string',
-                    scope: Scope.Public,
-                    isReadonly: true,
-                }
-            ]
-        }]
+        kind: StructureKind.Interface,
     }
 }
 
-function generateTelemetryHelper(recorder: ClassDeclarationStructure, metrics: Metric[]): ClassDeclarationStructure {
+function generateTelemetryHelper(recorder: InterfaceDeclarationStructure, metrics: Metric[]): ClassDeclarationStructure {
     const getMetric: MethodDeclarationStructure = {
         name: 'getMetric',
         scope: Scope.Protected,
@@ -321,6 +297,7 @@ function generateDefinitions(metrics: Metric[]): VariableStatementStructure {
     })
 
     return {
+        isExported: true,
         declarations: [{
             name: 'definitions',
             type: `Record<string, ${runtimeMetricDefinition.name}>`,
@@ -357,10 +334,10 @@ function generateFile(telemetryJson: MetricDefinitionRoot, dest: string) {
     }
 
     const definitions = generateDefinitions(telemetryJson.metrics)
-    const recorder = generateMetricRecorder(metadataType, definitions)
+    const recorder = generateMetricRecorder(metadataType)
     file.addVariableStatement(definitions)
     file.addTypeAlias(metadataType)
-    file.addClass(recorder)
+    file.addInterface(recorder)
     file.addClass(generateTelemetryHelper(recorder, telemetryJson.metrics))
 
     return file
