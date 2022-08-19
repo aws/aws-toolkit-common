@@ -57,7 +57,7 @@ export interface MetricShapes {
 
 export type MetricName = keyof MetricShapes
 
-const definitions: Record<string, MetricDefinition> = {
+export const definitions: Record<string, MetricDefinition> = {
     lambda_delete: { unit: 'None', passive: false, requiredMetadata: ['booltype'] },
     lambda_create: { unit: 'None', passive: false, requiredMetadata: ['lambdaRuntime', 'arbitraryString'] },
     lambda_remoteinvoke: { unit: 'None', passive: false, requiredMetadata: ['inttype'] },
@@ -67,19 +67,11 @@ const definitions: Record<string, MetricDefinition> = {
 
 export type Metadata<T extends MetricBase> = Partial<Omit<T, keyof MetricBase>>
 
-export abstract class Metric<T extends MetricBase = MetricBase> {
-    protected readonly state: Partial<T> = {}
-    protected readonly definition: MetricDefinition = definitions[this.name] ?? {
-        unit: 'None',
-        passive: true,
-        requiredMetadata: [],
-    }
-
-    public constructor(public readonly name: string) {}
-
-    public abstract record(data: Metadata<T>): this
-
-    public abstract emit(data?: T): void
+export interface Metric<T extends MetricBase = MetricBase> {
+    readonly name: string
+    record(data: Metadata<T>): void
+    emit(data?: T): void
+    run<U>(fn: (span: Omit<this, 'run' | 'emit'>) => U): U
 }
 
 export abstract class TelemetryBase {
