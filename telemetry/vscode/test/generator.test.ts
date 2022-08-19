@@ -18,13 +18,13 @@ describe('Generator', () => {
     })
 
     test('Generates with normal input', async () => {
-        await testGenerator([`resources/generatorInput.json`], `resources/generatorOutput`)
+        await testGenerator([`resources/generatorInput.json`], `resources/generatorOutput.ts`)
     })
 
     test('Generate overrides', async () => {
         await testGenerator(
             ['resources/testOverrideInput.json', 'resources/testResultInput.json'],
-            'resources/generatorOverrideOutput'
+            'resources/generatorOverrideOutput.ts'
         )
     })
 

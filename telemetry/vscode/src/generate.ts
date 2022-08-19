@@ -237,7 +237,7 @@ function generateMetricRecorder(metadataType: TypeAliasDeclarationStructure): In
                 returnType: 'U',
                 parameters: [{
                     name: 'fn',
-                    type: `(span: Omit<this, 'run' | 'emit'>) => U`,
+                    type: `(span: this) => U`,
                 }],
             }
         ],

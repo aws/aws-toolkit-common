@@ -13,6 +13,11 @@
         "type": "git",
         "url": "git+https://github.com/aws/aws-toolkit-common.git"
     },
+    "jest": {
+        "preset": "ts-jest",
+        "testEnvironment": "node",
+        "testPathIgnorePatterns": ["/node_modules/", "/resources/"]
+    },
     "license": "Apache-2.0",
     "bugs": {
         "url": "https://github.com/aws/aws-toolkit-common/issues"

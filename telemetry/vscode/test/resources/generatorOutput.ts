@@ -71,7 +71,7 @@ export interface Metric<T extends MetricBase = MetricBase> {
     readonly name: string
     record(data: Metadata<T>): void
     emit(data?: T): void
-    run<U>(fn: (span: Omit<this, 'run' | 'emit'>) => U): U
+    run<U>(fn: (span: this) => U): U
 }
 
 export abstract class TelemetryBase {
