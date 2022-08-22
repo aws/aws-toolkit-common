@@ -403,6 +403,11 @@
             "description": "How many lines of code being sent for security scan"
         },
         {
+            "name": "codewhispererCodeScanProjectBytes",
+            "type": "double",
+            "description": "The total size in bytes of customer project to perform security scan on"
+        },
+        {
             "name": "codewhispererCodeScanSrcPayloadBytes",
             "type": "int",
             "description": "The uncompressed payload size in bytes of the source files in customer project context sent for security scan"
@@ -1635,6 +1640,10 @@
                 },
                 {
                     "type": "codewhispererCodeScanJobId",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanProjectBytes",
                     "required": false
                 },
                 {
