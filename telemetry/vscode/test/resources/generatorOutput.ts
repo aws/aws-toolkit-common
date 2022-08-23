@@ -69,8 +69,11 @@ export type Metadata<T extends MetricBase> = Partial<Omit<T, keyof MetricBase>>
 
 export interface Metric<T extends MetricBase = MetricBase> {
     readonly name: string
+    /** Adds data to the metric which is preserved for the remainder of the execution context */
     record(data: Metadata<T>): void
+    /** Sends the metric to the telemetry service */
     emit(data?: T): void
+    /** Executes a callback, automatically sending the metric after completion */
     run<U>(fn: (span: this) => U): U
 }
 
