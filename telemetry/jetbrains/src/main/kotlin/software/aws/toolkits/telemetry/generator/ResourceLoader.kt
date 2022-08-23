@@ -8,7 +8,7 @@ object ResourceLoader {
 
     val SCHEMA_FILE = this.javaClass.getResourceAsStream(schemaPath).use { it.bufferedReader().readText() }
     // TODO add a manifest or something
-    val DEFINITIONS_FILES = listOf("/definitions/clouddebugDefinitions.json", "/definitions/commonDefinitions.json").map {
+    val DEFINITIONS_FILES = listOf("/definitions/commonDefinitions.json").map {
         this.javaClass.getResourceAsStream(it).use {
             it.bufferedReader().readText()
         }
