@@ -403,6 +403,11 @@
             "description": "How many lines of code being sent for security scan"
         },
         {
+            "name": "codewhispererCodeScanProjectBytes",
+            "type": "double",
+            "description": "The total size in bytes of customer project to perform security scan on"
+        },
+        {
             "name": "codewhispererCodeScanSrcPayloadBytes",
             "type": "int",
             "description": "The uncompressed payload size in bytes of the source files in customer project context sent for security scan"
@@ -504,11 +509,6 @@
             "name": "codewhispererSessionId",
             "type": "string",
             "description": "The unique identifier for a CodeWhisperer session(which can contain multiple requests)"
-        },
-        {
-            "name": "codewhispererStartTime",
-            "type": "string",
-            "description": "The start time of user typed code in minutes"
         },
         {
             "name": "codewhispererSuggestionIndex",
@@ -1622,9 +1622,6 @@
                     "type": "codewhispererPercentage"
                 },
                 {
-                    "type": "codewhispererStartTime"
-                },
-                {
                     "type": "codewhispererTotalTokens"
                 },
                 {
@@ -1643,6 +1640,10 @@
                 },
                 {
                     "type": "codewhispererCodeScanJobId",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanProjectBytes",
                     "required": false
                 },
                 {
