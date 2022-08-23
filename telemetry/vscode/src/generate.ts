@@ -215,6 +215,7 @@ function generateMetricRecorder(metadataType: TypeAliasDeclarationStructure): In
         ],
         methods: [
             {
+                docs: ['Adds data to the metric which is preserved for the remainder of the execution context'],
                 name: 'record',
                 returnType: 'void',
                 parameters: [{
@@ -223,6 +224,7 @@ function generateMetricRecorder(metadataType: TypeAliasDeclarationStructure): In
                 }],
             },
             {
+                docs: ['Sends the metric to the telemetry service'],
                 name: 'emit',
                 returnType: 'void',
                 parameters: [{
@@ -232,6 +234,7 @@ function generateMetricRecorder(metadataType: TypeAliasDeclarationStructure): In
                 }],
             },
             {
+                docs: ['Executes a callback, automatically sending the metric after completion'],
                 name: 'run',
                 typeParameters: ['U'],
                 returnType: 'U',
