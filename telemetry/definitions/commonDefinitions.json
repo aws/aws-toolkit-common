@@ -1625,6 +1625,9 @@
                     "type": "codewhispererTotalTokens"
                 },
                 {
+                    "type": "enabled"
+                },
+                {
                     "type": "reason",
                     "required": false
                 }
