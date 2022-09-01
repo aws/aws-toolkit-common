@@ -1,5 +1,170 @@
 {
+    "types": [
+        {
+            "name": "documentFormat",
+            "type": "string",
+            "allowedValues": ["JSON, YAML"],
+            "description": "SSM Create document format selection"
+        },
+        {
+            "name": "ssmOperation",
+            "type": "string",
+            "allowedValues": ["Create", "Update"],
+            "description": "SSM Publish Document operation type"
+        },
+        {
+            "name": "starterTemplate",
+            "type": "string",
+            "description": "Starter template chosen during create document"
+        },
+        {
+            "name": "command",
+            "type": "string",
+            "description": "The id of a VS Code command"
+        },
+        {
+            "name": "debounceCount",
+            "type": "int",
+            "description": "Number of times the telemetry event was debounced before emission"
+        }
+    ],
     "metrics": [
+        {
+            "name": "vscode_executeCommand",
+            "description": "Emitted whenever a registered Toolkit command is executed",
+            "passive": true,
+            "metadata": [
+                { "type": "command" },
+                { "type": "debounceCount" },
+                { "type": "duration" },
+                { "type": "result" },
+                {
+                    "type": "reason",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "aws_refreshCredentials",
+            "description": "Emitted when credentials are automatically refreshed by the AWS SDK",
+            "passive": true,
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "credentialType",
+                    "required": false
+                },
+                {
+                    "type": "credentialSourceId",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "ssm_createDocument",
+            "description": "An SSM Document is created locally",
+            "unit": "None",
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "documentFormat",
+                    "required": false
+                },
+                {
+                    "type": "starterTemplate",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "ssm_deleteDocument",
+            "description": "An SSM Document is deleted",
+            "unit": "None",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "ssm_executeDocument",
+            "description": "An SSM Document is deleted",
+            "unit": "None",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "ssm_openDocument",
+            "description": "An SSM Document is opened locally",
+            "unit": "None",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "ssm_publishDocument",
+            "description": "SSM Document related metrics for create and update",
+            "unit": "None",
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "ssmOperation"
+                }
+            ]
+        },
+        {
+            "name": "ssm_updateDocumentVersion",
+            "description": "SSM Document related metrics for updating document default version",
+            "unit": "None",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "stepfunctions_createStateMachineFromTemplate",
+            "description": ""
+        },
+        {
+            "name": "stepfunctions_downloadStateMachineDefinition",
+            "description": "",
+            "unit": "None",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "stepfunctions_executeStateMachine",
+            "description": "",
+            "unit": "None",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "stepfunctions_executeStateMachineView",
+            "description": ""
+        },
+        {
+            "name": "stepfunctions_previewstatemachine",
+            "description": ""
+        },
         {
             "name": "vscode_activeRegions",
             "description": "Record the number of active regions at startup and when regions are added/removed",
