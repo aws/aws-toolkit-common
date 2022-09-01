@@ -462,7 +462,7 @@
             "name": "codewhispererLanguage",
             "type": "string",
             "description": "Programming language of the CodeWhisperer recommendation",
-            "allowedValues": ["java", "python", "javascript", "plaintext"]
+            "allowedValues": ["java", "python", "javascript", "plaintext", "jsx"]
         },
         {
             "name": "codewhispererLastSuggestionIndex",
