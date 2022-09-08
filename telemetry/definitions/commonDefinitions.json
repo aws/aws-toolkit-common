@@ -543,7 +543,7 @@
             "allowedValues": ["OnDemand", "AutoTrigger"]
         },
         {
-            "name": "codewhispererPerceivedLatency",
+            "name": "codewhispererPerceivedLatencyDuration",
             "type": "int",
             "description": "The duration from user last modification to the first recommendation shown in milliseconds"
         }
@@ -1843,7 +1843,7 @@
                     "required": false
                 },
                 {
-                    "type": "codewhispererPerceivedLatency"
+                    "type": "codewhispererPerceivedLatencyDuration"
                 },
                 {
                     "type": "codewhispererTriggerType"
