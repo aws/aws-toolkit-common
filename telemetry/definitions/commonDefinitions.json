@@ -1825,6 +1825,31 @@
                     "type": "codewhispererTriggerType"
                 }
             ]
+        },
+        {
+            "name": "codewhisperer_perceivedLatency",
+            "description": "The duration from user last modification to the first recommendation shown in milliseconds",
+            "metadata": [
+                {
+                    "type": "codewhispererRequestId"
+                },
+                {
+                    "type": "codewhispererSessionId",
+                    "required": false
+                },
+                {
+                    "type": "duration"
+                },
+                {
+                    "type": "codewhispererTriggerType"
+                },
+                {
+                    "type": "codewhispererCompletionType"
+                },
+                {
+                    "type": "codewhispererLanguage"
+                }
+            ]
         }
     ]
 }
