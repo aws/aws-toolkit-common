@@ -541,11 +541,6 @@
             "type": "string",
             "description": "The type of the user trigger to send request to CodeWhisperer service",
             "allowedValues": ["OnDemand", "AutoTrigger"]
-        },
-        {
-            "name": "codewhispererPerceivedLatencyDuration",
-            "type": "int",
-            "description": "The duration from user last modification to the first recommendation shown in milliseconds"
         }
     ],
     "metrics": [
@@ -1833,7 +1828,7 @@
         },
         {
             "name": "codewhisperer_perceivedLatency",
-            "description": "Latency perceived by user for seeing recommendations from CodeWhisperer",
+            "description": "The duration from user last modification to the first recommendation shown in milliseconds",
             "metadata": [
                 {
                     "type": "codewhispererRequestId"
@@ -1843,7 +1838,7 @@
                     "required": false
                 },
                 {
-                    "type": "codewhispererPerceivedLatencyDuration"
+                    "type": "duration"
                 },
                 {
                     "type": "codewhispererTriggerType"
