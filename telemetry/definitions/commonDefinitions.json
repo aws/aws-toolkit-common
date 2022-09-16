@@ -389,7 +389,7 @@
             "name": "codewhispererAutomatedTriggerType",
             "type": "string",
             "description": "The type of the Automated trigger to send request to CodeWhisperer service",
-            "allowedValues": ["KeyStrokeCount", "SpecialCharacters", "Enter", "IntelliSenseAcceptance"]
+            "allowedValues": ["KeyStrokeCount", "SpecialCharacters", "Enter", "IntelliSenseAcceptance", "IdleTime"]
         },
 
         {
