@@ -23,6 +23,7 @@
                 "ecsTask",
                 "eventbridgeSchema",
                 "iamPolicy",
+                "samconfig",
                 "stepfunctionsAsl",
                 "smithyModel",
                 "ssmDocument",
