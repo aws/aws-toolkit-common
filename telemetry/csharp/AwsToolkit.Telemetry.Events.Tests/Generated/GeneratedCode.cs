@@ -115,6 +115,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("debug", payload.Debug);
 
+                if (payload.LambdaArchitecture.HasValue)
+                {
+                    datum.AddMetadata("lambdaArchitecture", payload.LambdaArchitecture.Value);
+                }
+
                 if ((transformDatum != null))
                 {
                     datum = transformDatum.Invoke(datum);
@@ -1524,6 +1529,55 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
+        /// Expand a service root node in the AWS explorer window
+        public static void RecordAwsExpandExplorerNode(this ITelemetryLogger telemetryLogger, AwsExpandExplorerNode payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "aws_expandExplorerNode";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("serviceType", payload.ServiceType);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
         /// Report an issue with the plugin
         public static void RecordAwsReportPluginIssue(this ITelemetryLogger telemetryLogger, AwsReportPluginIssue payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
@@ -1881,7 +1935,118 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
-        /// Open the CloudWatch Logs group window. ServiceType indicates that it was opened from a different service (like directly from an ECS container)
+        /// Copy the ARN of a CloudWatch Logs entity
+        public static void RecordCloudwatchlogsCopyArn(this ITelemetryLogger telemetryLogger, CloudwatchlogsCopyArn payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "cloudwatchlogs_copyArn";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Open a CloudWatch Logs entity. ServiceType and source indicate where the request came from (example: while viewing an ECS container)
+        public static void RecordCloudwatchlogsOpen(this ITelemetryLogger telemetryLogger, CloudwatchlogsOpen payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "cloudwatchlogs_open";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
+
+                if (payload.CloudWatchLogsPresentation.HasValue)
+                {
+                    datum.AddMetadata("cloudWatchLogsPresentation", payload.CloudWatchLogsPresentation.Value);
+                }
+
+                datum.AddMetadata("serviceType", payload.ServiceType);
+
+                datum.AddMetadata("source", payload.Source);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Open the CloudWatch Logs group window. ServiceType indicates that it was opened from a different service (like directly from an ECS container) (Deprecated - use cloudwatchlogs_open)
         public static void RecordCloudwatchlogsOpenGroup(this ITelemetryLogger telemetryLogger, CloudwatchlogsOpenGroup payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
@@ -1932,7 +2097,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
-        /// Open a CloudWatch Logs stream in the window. ServiceType indicates that it was opened from a different service (like directly from an ECS container)
+        /// Open a CloudWatch Logs stream in the window. ServiceType indicates that it was opened from a different service (like directly from an ECS container) (Deprecated - use cloudwatchlogs_open)
         public static void RecordCloudwatchlogsOpenStream(this ITelemetryLogger telemetryLogger, CloudwatchlogsOpenStream payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
@@ -1983,7 +2148,109 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
-        /// Download a stream to a file on disk. Value indicates the final size of the formatted stream.
+        /// Delete a CloudWatch Logs entity.
+        public static void RecordCloudwatchlogsDelete(this ITelemetryLogger telemetryLogger, CloudwatchlogsDelete payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "cloudwatchlogs_delete";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Download a CloudWatch Logs entity. Value indicates the final size of the formatted stream in bytes.
+        public static void RecordCloudwatchlogsDownload(this ITelemetryLogger telemetryLogger, CloudwatchlogsDownload payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "cloudwatchlogs_download";
+                datum.Unit = Unit.Bytes;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Download a stream to a file on disk. Value indicates the final size of the formatted stream. (Deprecated - use cloudwatchlogs_download)
         public static void RecordCloudwatchlogsDownloadStreamToFile(this ITelemetryLogger telemetryLogger, CloudwatchlogsDownloadStreamToFile payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
@@ -2228,7 +2495,56 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
-        /// Refresh group is pressed
+        /// Refresh a CloudWatch Logs entity
+        public static void RecordCloudwatchlogsRefresh(this ITelemetryLogger telemetryLogger, CloudwatchlogsRefresh payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "cloudwatchlogs_refresh";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Refresh group is pressed (Deprecated, use cloudwatchlogs_refresh)
         public static void RecordCloudwatchlogsRefreshGroup(this ITelemetryLogger telemetryLogger, CloudwatchlogsRefreshGroup payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
@@ -2275,7 +2591,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
-        /// Refresh stream is pressed
+        /// Refresh stream is pressed (Deprecated, use cloudwatchlogs_refresh)
         public static void RecordCloudwatchlogsRefreshStream(this ITelemetryLogger telemetryLogger, CloudwatchlogsRefreshStream payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
@@ -2305,6 +2621,69 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Filters a CloudWatch Logs entity.
+        public static void RecordCloudwatchlogsFilter(this ITelemetryLogger telemetryLogger, CloudwatchlogsFilter payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "cloudwatchlogs_filter";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
+
+                datum.AddMetadata("source", payload.Source);
+
+                if (payload.HasTextFilter.HasValue)
+                {
+                    datum.AddMetadata("hasTextFilter", payload.HasTextFilter.Value);
+                }
+
+                if (payload.HasTimeFilter.HasValue)
+                {
+                    datum.AddMetadata("hasTimeFilter", payload.HasTimeFilter.Value);
+                }
 
                 if ((transformDatum != null))
                 {
@@ -2966,6 +3345,55 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("ec2ConnectionType", payload.Ec2ConnectionType);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Launch an EC2 Instance
+        public static void RecordEc2LaunchInstance(this ITelemetryLogger telemetryLogger, Ec2LaunchInstance payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_launchInstance";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("result", payload.Result);
 
                 if ((transformDatum != null))
                 {
@@ -4121,6 +4549,59 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
+        /// Use authoring features such as autocompletion, syntax checking, and highlighting, for AWS filetypes (CFN, SAM, etc.). Emit this _once_ per file-editing session for a given file. Ideally this is emitted only if authoring features are used, rather than merely opening or touching a file.
+        public static void RecordFileEditAwsFile(this ITelemetryLogger telemetryLogger, FileEditAwsFile payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "file_editAwsFile";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("awsFiletype", payload.AwsFiletype);
+
+                datum.AddMetadata("filenameExt", payload.FilenameExt);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
         /// Open a window to view/edit IAM Role Policy
         public static void RecordIamOpenRole(this ITelemetryLogger telemetryLogger, IamOpenRole payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
@@ -4674,6 +5155,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("debug", payload.Debug);
+
+                if (payload.LambdaArchitecture.HasValue)
+                {
+                    datum.AddMetadata("lambdaArchitecture", payload.LambdaArchitecture.Value);
+                }
 
                 if ((transformDatum != null))
                 {
@@ -5376,6 +5862,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("eventBridgeSchema", payload.EventBridgeSchema);
+
+                if (payload.LambdaArchitecture.HasValue)
+                {
+                    datum.AddMetadata("lambdaArchitecture", payload.LambdaArchitecture.Value);
+                }
 
                 if ((transformDatum != null))
                 {
@@ -7928,7 +8419,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
-        /// An experiment was activated or deactivated in the toolkit
+        /// An experiment was activated or deactivated in the Toolkit
         public static void RecordAwsExperimentActivation(this ITelemetryLogger telemetryLogger, AwsExperimentActivation payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
@@ -8030,6 +8521,57 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
+        /// An setting was changed by users in the Toolkit. This metric can optionally provide the new state of the setting via settingState.
+        public static void RecordAwsModifySetting(this ITelemetryLogger telemetryLogger, AwsModifySetting payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "aws_modifySetting";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("settingId", payload.SettingId);
+
+                datum.AddMetadata("settingState", payload.SettingState);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
         /// User requested that a resource be opened in the browser using the deeplink service
         public static void RecordDeeplinkOpen(this ITelemetryLogger telemetryLogger, DeeplinkOpen payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
@@ -8064,6 +8606,444 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("source", payload.Source);
 
                 datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("serviceType", payload.ServiceType);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Percentage of user tokens against suggestions until 5 mins of time
+        public static void RecordCodewhispererCodePercentage(this ITelemetryLogger telemetryLogger, CodewhispererCodePercentage payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codewhisperer_codePercentage";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("codewhispererAcceptedTokens", payload.CodewhispererAcceptedTokens);
+
+                datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
+
+                datum.AddMetadata("codewhispererPercentage", payload.CodewhispererPercentage);
+
+                datum.AddMetadata("codewhispererTotalTokens", payload.CodewhispererTotalTokens);
+
+                datum.AddMetadata("reason", payload.Reason);
+
+                datum.AddMetadata("successCount", payload.SuccessCount);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Client side invocation of the CodeWhisperer Security Scan
+        public static void RecordCodewhispererSecurityScan(this ITelemetryLogger telemetryLogger, CodewhispererSecurityScan payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codewhisperer_securityScan";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("codewhispererCodeScanLines", payload.CodewhispererCodeScanLines);
+
+                datum.AddMetadata("codewhispererCodeScanJobId", payload.CodewhispererCodeScanJobId);
+
+                if (payload.CodewhispererCodeScanProjectBytes.HasValue)
+                {
+                    datum.AddMetadata("codewhispererCodeScanProjectBytes", payload.CodewhispererCodeScanProjectBytes.Value);
+                }
+
+                datum.AddMetadata("codewhispererCodeScanSrcPayloadBytes", payload.CodewhispererCodeScanSrcPayloadBytes);
+
+                if (payload.CodewhispererCodeScanBuildPayloadBytes.HasValue)
+                {
+                    datum.AddMetadata("codewhispererCodeScanBuildPayloadBytes", payload.CodewhispererCodeScanBuildPayloadBytes.Value);
+                }
+
+                datum.AddMetadata("codewhispererCodeScanSrcZipFileBytes", payload.CodewhispererCodeScanSrcZipFileBytes);
+
+                if (payload.CodewhispererCodeScanBuildZipFileBytes.HasValue)
+                {
+                    datum.AddMetadata("codewhispererCodeScanBuildZipFileBytes", payload.CodewhispererCodeScanBuildZipFileBytes.Value);
+                }
+
+                datum.AddMetadata("codewhispererCodeScanTotalIssues", payload.CodewhispererCodeScanTotalIssues);
+
+                datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
+
+                datum.AddMetadata("duration", payload.Duration);
+
+                datum.AddMetadata("contextTruncationDuration", payload.ContextTruncationDuration);
+
+                datum.AddMetadata("artifactsUploadDuration", payload.ArtifactsUploadDuration);
+
+                datum.AddMetadata("codeScanServiceInvocationsDuration", payload.CodeScanServiceInvocationsDuration);
+
+                datum.AddMetadata("reason", payload.Reason);
+
+                datum.AddMetadata("result", payload.Result);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Client side invocation of the CodeWhisperer service for suggestion
+        public static void RecordCodewhispererServiceInvocation(this ITelemetryLogger telemetryLogger, CodewhispererServiceInvocation payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codewhisperer_serviceInvocation";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                if (payload.CodewhispererAutomatedTriggerType.HasValue)
+                {
+                    datum.AddMetadata("codewhispererAutomatedTriggerType", payload.CodewhispererAutomatedTriggerType.Value);
+                }
+
+                if (payload.CodewhispererCompletionType.HasValue)
+                {
+                    datum.AddMetadata("codewhispererCompletionType", payload.CodewhispererCompletionType.Value);
+                }
+
+                datum.AddMetadata("codewhispererCursorOffset", payload.CodewhispererCursorOffset);
+
+                datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
+
+                if (payload.CodewhispererLastSuggestionIndex.HasValue)
+                {
+                    datum.AddMetadata("codewhispererLastSuggestionIndex", payload.CodewhispererLastSuggestionIndex.Value);
+                }
+
+                datum.AddMetadata("codewhispererLineNumber", payload.CodewhispererLineNumber);
+
+                datum.AddMetadata("codewhispererRequestId", payload.CodewhispererRequestId);
+
+                if (payload.CodewhispererRuntime.HasValue)
+                {
+                    datum.AddMetadata("codewhispererRuntime", payload.CodewhispererRuntime.Value);
+                }
+
+                datum.AddMetadata("codewhispererRuntimeSource", payload.CodewhispererRuntimeSource);
+
+                datum.AddMetadata("codewhispererSessionId", payload.CodewhispererSessionId);
+
+                datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
+
+                datum.AddMetadata("duration", payload.Duration);
+
+                datum.AddMetadata("reason", payload.Reason);
+
+                datum.AddMetadata("result", payload.Result);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// User acceptance or rejection of each suggestion returned by the CodeWhisperer service request
+        public static void RecordCodewhispererUserDecision(this ITelemetryLogger telemetryLogger, CodewhispererUserDecision payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codewhisperer_userDecision";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("codewhispererCompletionType", payload.CodewhispererCompletionType);
+
+                datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
+
+                if (payload.CodewhispererPaginationProgress.HasValue)
+                {
+                    datum.AddMetadata("codewhispererPaginationProgress", payload.CodewhispererPaginationProgress.Value);
+                }
+
+                datum.AddMetadata("codewhispererRequestId", payload.CodewhispererRequestId);
+
+                if (payload.CodewhispererRuntime.HasValue)
+                {
+                    datum.AddMetadata("codewhispererRuntime", payload.CodewhispererRuntime.Value);
+                }
+
+                datum.AddMetadata("codewhispererRuntimeSource", payload.CodewhispererRuntimeSource);
+
+                datum.AddMetadata("codewhispererSessionId", payload.CodewhispererSessionId);
+
+                datum.AddMetadata("codewhispererSuggestionIndex", payload.CodewhispererSuggestionIndex);
+
+                datum.AddMetadata("codewhispererSuggestionReferenceCount", payload.CodewhispererSuggestionReferenceCount);
+
+                datum.AddMetadata("codewhispererSuggestionReferences", payload.CodewhispererSuggestionReferences);
+
+                datum.AddMetadata("codewhispererSuggestionState", payload.CodewhispererSuggestionState);
+
+                datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Percentage of user modifications for the selected suggestion until a fixed period of time
+        public static void RecordCodewhispererUserModification(this ITelemetryLogger telemetryLogger, CodewhispererUserModification payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codewhisperer_userModification";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("codewhispererCompletionType", payload.CodewhispererCompletionType);
+
+                datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
+
+                datum.AddMetadata("codewhispererModificationPercentage", payload.CodewhispererModificationPercentage);
+
+                datum.AddMetadata("codewhispererRequestId", payload.CodewhispererRequestId);
+
+                if (payload.CodewhispererRuntime.HasValue)
+                {
+                    datum.AddMetadata("codewhispererRuntime", payload.CodewhispererRuntime.Value);
+                }
+
+                datum.AddMetadata("codewhispererRuntimeSource", payload.CodewhispererRuntimeSource);
+
+                datum.AddMetadata("codewhispererSessionId", payload.CodewhispererSessionId);
+
+                datum.AddMetadata("codewhispererSuggestionIndex", payload.CodewhispererSuggestionIndex);
+
+                datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
+
+                if ((transformDatum != null))
+                {
+                    datum = transformDatum.Invoke(datum);
+                }
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// The duration from user last modification to the first recommendation shown in milliseconds
+        public static void RecordCodewhispererPerceivedLatency(this ITelemetryLogger telemetryLogger, CodewhispererPerceivedLatency payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codewhisperer_perceivedLatency";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("codewhispererRequestId", payload.CodewhispererRequestId);
+
+                datum.AddMetadata("codewhispererSessionId", payload.CodewhispererSessionId);
+
+                datum.AddMetadata("duration", payload.Duration);
+
+                datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
+
+                datum.AddMetadata("codewhispererCompletionType", payload.CodewhispererCompletionType);
+
+                datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
 
                 if ((transformDatum != null))
                 {
@@ -8134,6 +9114,111 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public static readonly AppRunnerServiceStatus OPERATION_IN_PROGRESS = new AppRunnerServiceStatus("OPERATION_IN_PROGRESS");
         
         public AppRunnerServiceStatus(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// AWS filetype kind
+    public struct AwsFiletype
+    {
+        
+        private string _value;
+        
+        /// awsCredentials
+        public static readonly AwsFiletype AwsCredentials = new AwsFiletype("awsCredentials");
+        
+        /// cloudformation
+        public static readonly AwsFiletype Cloudformation = new AwsFiletype("cloudformation");
+        
+        /// cloudformationSam
+        public static readonly AwsFiletype CloudformationSam = new AwsFiletype("cloudformationSam");
+        
+        /// codebuildBuildspec
+        public static readonly AwsFiletype CodebuildBuildspec = new AwsFiletype("codebuildBuildspec");
+        
+        /// ecsTask
+        public static readonly AwsFiletype EcsTask = new AwsFiletype("ecsTask");
+        
+        /// eventbridgeSchema
+        public static readonly AwsFiletype EventbridgeSchema = new AwsFiletype("eventbridgeSchema");
+        
+        /// iamPolicy
+        public static readonly AwsFiletype IamPolicy = new AwsFiletype("iamPolicy");
+        
+        /// samconfig
+        public static readonly AwsFiletype Samconfig = new AwsFiletype("samconfig");
+        
+        /// stepfunctionsAsl
+        public static readonly AwsFiletype StepfunctionsAsl = new AwsFiletype("stepfunctionsAsl");
+        
+        /// smithyModel
+        public static readonly AwsFiletype SmithyModel = new AwsFiletype("smithyModel");
+        
+        /// ssmDocument
+        public static readonly AwsFiletype SsmDocument = new AwsFiletype("ssmDocument");
+        
+        /// other
+        public static readonly AwsFiletype Other = new AwsFiletype("other");
+        
+        public AwsFiletype(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Presentation mode used in a CloudWatch Logs operation
+    public struct CloudWatchLogsPresentation
+    {
+        
+        private string _value;
+        
+        /// ui
+        public static readonly CloudWatchLogsPresentation Ui = new CloudWatchLogsPresentation("ui");
+        
+        /// text
+        public static readonly CloudWatchLogsPresentation Text = new CloudWatchLogsPresentation("text");
+        
+        public CloudWatchLogsPresentation(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// CloudWatch Logs entity
+    public struct CloudWatchResourceType
+    {
+        
+        private string _value;
+        
+        /// logGroup
+        public static readonly CloudWatchResourceType LogGroup = new CloudWatchResourceType("logGroup");
+        
+        /// logGroupList
+        public static readonly CloudWatchResourceType LogGroupList = new CloudWatchResourceType("logGroupList");
+        
+        /// logStream
+        public static readonly CloudWatchResourceType LogStream = new CloudWatchResourceType("logStream");
+        
+        public CloudWatchResourceType(string value)
         {
             this._value = value;
         }
@@ -8223,7 +9308,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     }
     
     /// Metric field type
-    /// The Lambda Architecture of the function
+    /// Lambda architecture identifier
     public struct LambdaArchitecture
     {
         
@@ -8291,6 +9376,12 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// dotnet6
         public static readonly Runtime Dotnet6 = new Runtime("dotnet6");
+        
+        /// nodejs18.x
+        public static readonly Runtime Nodejs18x = new Runtime("nodejs18.x");
+        
+        /// nodejs16.x
+        public static readonly Runtime Nodejs16x = new Runtime("nodejs16.x");
         
         /// nodejs14.x
         public static readonly Runtime Nodejs14x = new Runtime("nodejs14.x");
@@ -8823,7 +9914,205 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// dotnet-deploy-cli
         public static readonly ToolId Dotnetdeploycli = new ToolId("dotnet-deploy-cli");
         
+        /// aws-cli
+        public static readonly ToolId Awscli = new ToolId("aws-cli");
+        
+        /// sam-cli
+        public static readonly ToolId Samcli = new ToolId("sam-cli");
+        
         public ToolId(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// The type of the Automated trigger to send request to CodeWhisperer service
+    public struct CodewhispererAutomatedTriggerType
+    {
+        
+        private string _value;
+        
+        /// KeyStrokeCount
+        public static readonly CodewhispererAutomatedTriggerType KeyStrokeCount = new CodewhispererAutomatedTriggerType("KeyStrokeCount");
+        
+        /// SpecialCharacters
+        public static readonly CodewhispererAutomatedTriggerType SpecialCharacters = new CodewhispererAutomatedTriggerType("SpecialCharacters");
+        
+        /// Enter
+        public static readonly CodewhispererAutomatedTriggerType Enter = new CodewhispererAutomatedTriggerType("Enter");
+        
+        /// IntelliSenseAcceptance
+        public static readonly CodewhispererAutomatedTriggerType IntelliSenseAcceptance = new CodewhispererAutomatedTriggerType("IntelliSenseAcceptance");
+        
+        /// IdleTime
+        public static readonly CodewhispererAutomatedTriggerType IdleTime = new CodewhispererAutomatedTriggerType("IdleTime");
+        
+        public CodewhispererAutomatedTriggerType(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Completion Type of the inference results returned from CodeWhisperer model layer
+    public struct CodewhispererCompletionType
+    {
+        
+        private string _value;
+        
+        /// Line
+        public static readonly CodewhispererCompletionType Line = new CodewhispererCompletionType("Line");
+        
+        /// Block
+        public static readonly CodewhispererCompletionType Block = new CodewhispererCompletionType("Block");
+        
+        public CodewhispererCompletionType(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Programming language of the CodeWhisperer recommendation
+    public struct CodewhispererLanguage
+    {
+        
+        private string _value;
+        
+        /// java
+        public static readonly CodewhispererLanguage Java = new CodewhispererLanguage("java");
+        
+        /// python
+        public static readonly CodewhispererLanguage Python = new CodewhispererLanguage("python");
+        
+        /// javascript
+        public static readonly CodewhispererLanguage Javascript = new CodewhispererLanguage("javascript");
+        
+        /// plaintext
+        public static readonly CodewhispererLanguage Plaintext = new CodewhispererLanguage("plaintext");
+        
+        /// jsx
+        public static readonly CodewhispererLanguage Jsx = new CodewhispererLanguage("jsx");
+        
+        public CodewhispererLanguage(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// the pre-defined set of values for runtime version of the language of CodeWhisperer recommendation
+    public struct CodewhispererRuntime
+    {
+        
+        private string _value;
+        
+        /// java8
+        public static readonly CodewhispererRuntime Java8 = new CodewhispererRuntime("java8");
+        
+        /// java11
+        public static readonly CodewhispererRuntime Java11 = new CodewhispererRuntime("java11");
+        
+        /// java16
+        public static readonly CodewhispererRuntime Java16 = new CodewhispererRuntime("java16");
+        
+        /// python2
+        public static readonly CodewhispererRuntime Python2 = new CodewhispererRuntime("python2");
+        
+        /// python3
+        public static readonly CodewhispererRuntime Python3 = new CodewhispererRuntime("python3");
+        
+        /// javascript
+        public static readonly CodewhispererRuntime Javascript = new CodewhispererRuntime("javascript");
+        
+        /// unknown
+        public static readonly CodewhispererRuntime Unknown = new CodewhispererRuntime("unknown");
+        
+        public CodewhispererRuntime(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// User decision of each of the suggestion returned from CodeWhisperer
+    public struct CodewhispererSuggestionState
+    {
+        
+        private string _value;
+        
+        /// Accept
+        public static readonly CodewhispererSuggestionState Accept = new CodewhispererSuggestionState("Accept");
+        
+        /// Reject
+        public static readonly CodewhispererSuggestionState Reject = new CodewhispererSuggestionState("Reject");
+        
+        /// Discard
+        public static readonly CodewhispererSuggestionState Discard = new CodewhispererSuggestionState("Discard");
+        
+        /// Ignore
+        public static readonly CodewhispererSuggestionState Ignore = new CodewhispererSuggestionState("Ignore");
+        
+        /// Filter
+        public static readonly CodewhispererSuggestionState Filter = new CodewhispererSuggestionState("Filter");
+        
+        /// Unseen
+        public static readonly CodewhispererSuggestionState Unseen = new CodewhispererSuggestionState("Unseen");
+        
+        /// Empty
+        public static readonly CodewhispererSuggestionState Empty = new CodewhispererSuggestionState("Empty");
+        
+        public CodewhispererSuggestionState(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// The type of the user trigger to send request to CodeWhisperer service
+    public struct CodewhispererTriggerType
+    {
+        
+        private string _value;
+        
+        /// OnDemand
+        public static readonly CodewhispererTriggerType OnDemand = new CodewhispererTriggerType("OnDemand");
+        
+        /// AutoTrigger
+        public static readonly CodewhispererTriggerType AutoTrigger = new CodewhispererTriggerType("AutoTrigger");
+        
+        public CodewhispererTriggerType(string value)
         {
             this._value = value;
         }
@@ -8862,6 +10151,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// If the action was run in debug mode or not
         public bool Debug;
+        
+        /// Optional - Lambda architecture identifier
+        public LambdaArchitecture? LambdaArchitecture;
         
         public ApigatewayInvokeLocal()
         {
@@ -9242,6 +10534,19 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// Expand a service root node in the AWS explorer window
+    public sealed class AwsExpandExplorerNode : BaseTelemetryEvent
+    {
+        
+        /// The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
+        public string ServiceType;
+        
+        public AwsExpandExplorerNode()
+        {
+            this.Passive = false;
+        }
+    }
+    
     /// Report an issue with the plugin
     public sealed class AwsReportPluginIssue : BaseTelemetryEvent
     {
@@ -9345,7 +10650,48 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
-    /// Open the CloudWatch Logs group window. ServiceType indicates that it was opened from a different service (like directly from an ECS container)
+    /// Copy the ARN of a CloudWatch Logs entity
+    public sealed class CloudwatchlogsCopyArn : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// CloudWatch Logs entity
+        public CloudWatchResourceType CloudWatchResourceType;
+        
+        public CloudwatchlogsCopyArn()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Open a CloudWatch Logs entity. ServiceType and source indicate where the request came from (example: while viewing an ECS container)
+    public sealed class CloudwatchlogsOpen : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// CloudWatch Logs entity
+        public CloudWatchResourceType CloudWatchResourceType;
+        
+        /// Optional - Presentation mode used in a CloudWatch Logs operation
+        public CloudWatchLogsPresentation? CloudWatchLogsPresentation;
+        
+        /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
+        public string ServiceType;
+        
+        /// The source of the operation
+        public string Source;
+        
+        public CloudwatchlogsOpen()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Open the CloudWatch Logs group window. ServiceType indicates that it was opened from a different service (like directly from an ECS container) (Deprecated - use cloudwatchlogs_open)
     public sealed class CloudwatchlogsOpenGroup : BaseTelemetryEvent
     {
         
@@ -9361,7 +10707,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
-    /// Open a CloudWatch Logs stream in the window. ServiceType indicates that it was opened from a different service (like directly from an ECS container)
+    /// Open a CloudWatch Logs stream in the window. ServiceType indicates that it was opened from a different service (like directly from an ECS container) (Deprecated - use cloudwatchlogs_open)
     public sealed class CloudwatchlogsOpenStream : BaseTelemetryEvent
     {
         
@@ -9377,7 +10723,39 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
-    /// Download a stream to a file on disk. Value indicates the final size of the formatted stream.
+    /// Delete a CloudWatch Logs entity.
+    public sealed class CloudwatchlogsDelete : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// CloudWatch Logs entity
+        public CloudWatchResourceType CloudWatchResourceType;
+        
+        public CloudwatchlogsDelete()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Download a CloudWatch Logs entity. Value indicates the final size of the formatted stream in bytes.
+    public sealed class CloudwatchlogsDownload : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// CloudWatch Logs entity
+        public CloudWatchResourceType CloudWatchResourceType;
+        
+        public CloudwatchlogsDownload()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Download a stream to a file on disk. Value indicates the final size of the formatted stream. (Deprecated - use cloudwatchlogs_download)
     public sealed class CloudwatchlogsDownloadStreamToFile : BaseTelemetryEvent
     {
         
@@ -9442,7 +10820,20 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
-    /// Refresh group is pressed
+    /// Refresh a CloudWatch Logs entity
+    public sealed class CloudwatchlogsRefresh : BaseTelemetryEvent
+    {
+        
+        /// CloudWatch Logs entity
+        public CloudWatchResourceType CloudWatchResourceType;
+        
+        public CloudwatchlogsRefresh()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Refresh group is pressed (Deprecated, use cloudwatchlogs_refresh)
     public sealed class CloudwatchlogsRefreshGroup : BaseTelemetryEvent
     {
         
@@ -9452,11 +10843,36 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
-    /// Refresh stream is pressed
+    /// Refresh stream is pressed (Deprecated, use cloudwatchlogs_refresh)
     public sealed class CloudwatchlogsRefreshStream : BaseTelemetryEvent
     {
         
         public CloudwatchlogsRefreshStream()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Filters a CloudWatch Logs entity.
+    public sealed class CloudwatchlogsFilter : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// CloudWatch Logs entity
+        public CloudWatchResourceType CloudWatchResourceType;
+        
+        /// Optional - The source of the operation
+        public string Source;
+        
+        /// Optional - A text based filter was used
+        public System.Boolean? HasTextFilter;
+        
+        /// Optional - A time based filter was used
+        public System.Boolean? HasTimeFilter;
+        
+        public CloudwatchlogsFilter()
         {
             this.Passive = false;
         }
@@ -9653,6 +11069,19 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2ConnectionType Ec2ConnectionType;
         
         public Ec2ConnectToInstance()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Launch an EC2 Instance
+    public sealed class Ec2LaunchInstance : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2LaunchInstance()
         {
             this.Passive = false;
         }
@@ -9969,6 +11398,25 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// Use authoring features such as autocompletion, syntax checking, and highlighting, for AWS filetypes (CFN, SAM, etc.). Emit this _once_ per file-editing session for a given file. Ideally this is emitted only if authoring features are used, rather than merely opening or touching a file.
+    public sealed class FileEditAwsFile : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// AWS filetype kind
+        public AwsFiletype AwsFiletype;
+        
+        /// Optional - Filename extension (examples: .txt, .yml, .yaml, .asl.yaml, ...), or empty string if the filename does not contain dot (.) between two chars.
+        public string FilenameExt;
+        
+        public FileEditAwsFile()
+        {
+            this.Passive = false;
+        }
+    }
+    
     /// Open a window to view/edit IAM Role Policy
     public sealed class IamOpenRole : BaseTelemetryEvent
     {
@@ -10139,6 +11587,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// If the action was run in debug mode or not
         public bool Debug;
         
+        /// Optional - Lambda architecture identifier
+        public LambdaArchitecture? LambdaArchitecture;
+        
         public LambdaInvokeLocal()
         {
             this.Passive = false;
@@ -10196,7 +11647,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - Language-specific identification. Examples: v4.6.1, netcoreapp3.1, nodejs12.x. Not AWS Lambda specific. Allows for additional details when other fields are opaque, such as the Lambda runtime value 'provided'.
         public string Platform;
         
-        /// Optional - The Lambda Architecture of the function
+        /// Optional - Lambda architecture identifier
         public LambdaArchitecture? LambdaArchitecture;
         
         /// Optional - Language used for the project
@@ -10373,6 +11824,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The name of the EventBridge Schema used in the operation
         public string EventBridgeSchema;
+        
+        /// Optional - Lambda architecture identifier
+        public LambdaArchitecture? LambdaArchitecture;
         
         public SamInit()
         {
@@ -11099,7 +12553,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
-    /// An experiment was activated or deactivated in the toolkit
+    /// An experiment was activated or deactivated in the Toolkit
     public sealed class AwsExperimentActivation : BaseTelemetryEvent
     {
         
@@ -11131,6 +12585,22 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// An setting was changed by users in the Toolkit. This metric can optionally provide the new state of the setting via settingState.
+    public sealed class AwsModifySetting : BaseTelemetryEvent
+    {
+        
+        /// The id of the setting being changed. Consistent namespace should be used for the id, e.g. codewhisperer_autoSuggestionActivation
+        public string SettingId;
+        
+        /// Optional - The state of the setting being changed to. This should not be recorded for free-form settings like file-system paths. Instead, stick to things like flags, numbers, and enums.
+        public string SettingState;
+        
+        public AwsModifySetting()
+        {
+            this.Passive = false;
+        }
+    }
+    
     /// User requested that a resource be opened in the browser using the deeplink service
     public sealed class DeeplinkOpen : BaseTelemetryEvent
     {
@@ -11141,9 +12611,258 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The result of the operation
         public Result Result;
         
+        /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
+        public string ServiceType;
+        
         public DeeplinkOpen()
         {
             this.Passive = true;
+        }
+    }
+    
+    /// Percentage of user tokens against suggestions until 5 mins of time
+    public sealed class CodewhispererCodePercentage : BaseTelemetryEvent
+    {
+        
+        /// The metrics accepted on suggested CodeWhisperer code
+        public int CodewhispererAcceptedTokens;
+        
+        /// Programming language of the CodeWhisperer recommendation
+        public CodewhispererLanguage CodewhispererLanguage;
+        
+        /// The percentage of acceptance on suggested CodeWhisperer code on the overall code
+        public int CodewhispererPercentage;
+        
+        /// The metrics generated by the user and acceptance of suggested CodeWhisperer code in the language CodeWhisperer supports.
+        public int CodewhispererTotalTokens;
+        
+        /// Optional - The reason for a metric or exception depending on context
+        public string Reason;
+        
+        /// The number of successful operations
+        public int SuccessCount;
+        
+        public CodewhispererCodePercentage()
+        {
+            this.Passive = true;
+        }
+    }
+    
+    /// Client side invocation of the CodeWhisperer Security Scan
+    public sealed class CodewhispererSecurityScan : BaseTelemetryEvent
+    {
+        
+        /// How many lines of code being sent for security scan
+        public int CodewhispererCodeScanLines;
+        
+        /// Optional - The ID of the security scan job
+        public string CodewhispererCodeScanJobId;
+        
+        /// Optional - The total size in bytes of customer project to perform security scan on
+        public System.Double? CodewhispererCodeScanProjectBytes;
+        
+        /// The uncompressed payload size in bytes of the source files in customer project context sent for security scan
+        public int CodewhispererCodeScanSrcPayloadBytes;
+        
+        /// Optional - The uncompressed payload size in bytes of the build files in customer project context sent for security scan
+        public System.Int32? CodewhispererCodeScanBuildPayloadBytes;
+        
+        /// The compressed payload size of source files in bytes of customer project context sent for security scan
+        public int CodewhispererCodeScanSrcZipFileBytes;
+        
+        /// Optional - The compressed payload size of built jars in bytes of customer project context sent for security scan. This is only applicable for Java project
+        public System.Int32? CodewhispererCodeScanBuildZipFileBytes;
+        
+        /// The number of security issues been detected
+        public int CodewhispererCodeScanTotalIssues;
+        
+        /// Programming language of the CodeWhisperer recommendation
+        public CodewhispererLanguage CodewhispererLanguage;
+        
+        /// The duration of the operation in milliseconds
+        public double Duration;
+        
+        /// Time taken for context truncation in milliseconds
+        public int ContextTruncationDuration;
+        
+        /// Time taken to fetch the upload URL and upload the artifacts in milliseconds
+        public int ArtifactsUploadDuration;
+        
+        /// Time taken to invoke code scan service APIs in milliseconds
+        public int CodeScanServiceInvocationsDuration;
+        
+        /// Optional - The reason for a metric or exception depending on context
+        public string Reason;
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public CodewhispererSecurityScan()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Client side invocation of the CodeWhisperer service for suggestion
+    public sealed class CodewhispererServiceInvocation : BaseTelemetryEvent
+    {
+        
+        /// Optional - The type of the Automated trigger to send request to CodeWhisperer service
+        public CodewhispererAutomatedTriggerType? CodewhispererAutomatedTriggerType;
+        
+        /// Optional - Completion Type of the inference results returned from CodeWhisperer model layer
+        public CodewhispererCompletionType? CodewhispererCompletionType;
+        
+        /// cursor location offset in the editor when invoking CodeWhisperer for recommendation
+        public int CodewhispererCursorOffset;
+        
+        /// Programming language of the CodeWhisperer recommendation
+        public CodewhispererLanguage CodewhispererLanguage;
+        
+        /// Optional - The last index of recommendation from a particular response
+        public System.Int32? CodewhispererLastSuggestionIndex;
+        
+        /// The line number of the cursor when the event happens
+        public int CodewhispererLineNumber;
+        
+        /// Optional - The ID of the request to CodeWhisperer service
+        public string CodewhispererRequestId;
+        
+        /// Optional - the pre-defined set of values for runtime version of the language of CodeWhisperer recommendation
+        public CodewhispererRuntime? CodewhispererRuntime;
+        
+        /// Optional - the original (free-text) of the runtime version of the language of CodeWhisperer recommendation
+        public string CodewhispererRuntimeSource;
+        
+        /// Optional - The unique identifier for a CodeWhisperer session(which can contain multiple requests)
+        public string CodewhispererSessionId;
+        
+        /// The type of the user trigger to send request to CodeWhisperer service
+        public CodewhispererTriggerType CodewhispererTriggerType;
+        
+        /// The duration of the operation in milliseconds
+        public double Duration;
+        
+        /// Optional - The reason for a metric or exception depending on context
+        public string Reason;
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public CodewhispererServiceInvocation()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// User acceptance or rejection of each suggestion returned by the CodeWhisperer service request
+    public sealed class CodewhispererUserDecision : BaseTelemetryEvent
+    {
+        
+        /// Completion Type of the inference results returned from CodeWhisperer model layer
+        public CodewhispererCompletionType CodewhispererCompletionType;
+        
+        /// Programming language of the CodeWhisperer recommendation
+        public CodewhispererLanguage CodewhispererLanguage;
+        
+        /// Optional - The number of recommendations received so far when user makes a decision
+        public System.Int32? CodewhispererPaginationProgress;
+        
+        /// The ID of the request to CodeWhisperer service
+        public string CodewhispererRequestId;
+        
+        /// Optional - the pre-defined set of values for runtime version of the language of CodeWhisperer recommendation
+        public CodewhispererRuntime? CodewhispererRuntime;
+        
+        /// Optional - the original (free-text) of the runtime version of the language of CodeWhisperer recommendation
+        public string CodewhispererRuntimeSource;
+        
+        /// Optional - The unique identifier for a CodeWhisperer session(which can contain multiple requests)
+        public string CodewhispererSessionId;
+        
+        /// The index for each suggestion, respectively, in the list of suggestions returned from service invocation
+        public int CodewhispererSuggestionIndex;
+        
+        /// Number of references the particular suggestion is referenced with.
+        public int CodewhispererSuggestionReferenceCount;
+        
+        /// Optional - The list of unique license names for a particular suggestion
+        public string CodewhispererSuggestionReferences;
+        
+        /// User decision of each of the suggestion returned from CodeWhisperer
+        public CodewhispererSuggestionState CodewhispererSuggestionState;
+        
+        /// The type of the user trigger to send request to CodeWhisperer service
+        public CodewhispererTriggerType CodewhispererTriggerType;
+        
+        public CodewhispererUserDecision()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Percentage of user modifications for the selected suggestion until a fixed period of time
+    public sealed class CodewhispererUserModification : BaseTelemetryEvent
+    {
+        
+        /// Completion Type of the inference results returned from CodeWhisperer model layer
+        public CodewhispererCompletionType CodewhispererCompletionType;
+        
+        /// Programming language of the CodeWhisperer recommendation
+        public CodewhispererLanguage CodewhispererLanguage;
+        
+        /// The percentage of user modifications on the suggested code
+        public double CodewhispererModificationPercentage;
+        
+        /// The ID of the request to CodeWhisperer service
+        public string CodewhispererRequestId;
+        
+        /// Optional - the pre-defined set of values for runtime version of the language of CodeWhisperer recommendation
+        public CodewhispererRuntime? CodewhispererRuntime;
+        
+        /// Optional - the original (free-text) of the runtime version of the language of CodeWhisperer recommendation
+        public string CodewhispererRuntimeSource;
+        
+        /// Optional - The unique identifier for a CodeWhisperer session(which can contain multiple requests)
+        public string CodewhispererSessionId;
+        
+        /// The index for each suggestion, respectively, in the list of suggestions returned from service invocation
+        public int CodewhispererSuggestionIndex;
+        
+        /// The type of the user trigger to send request to CodeWhisperer service
+        public CodewhispererTriggerType CodewhispererTriggerType;
+        
+        public CodewhispererUserModification()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// The duration from user last modification to the first recommendation shown in milliseconds
+    public sealed class CodewhispererPerceivedLatency : BaseTelemetryEvent
+    {
+        
+        /// The ID of the request to CodeWhisperer service
+        public string CodewhispererRequestId;
+        
+        /// Optional - The unique identifier for a CodeWhisperer session(which can contain multiple requests)
+        public string CodewhispererSessionId;
+        
+        /// The duration of the operation in milliseconds
+        public double Duration;
+        
+        /// The type of the user trigger to send request to CodeWhisperer service
+        public CodewhispererTriggerType CodewhispererTriggerType;
+        
+        /// Completion Type of the inference results returned from CodeWhisperer model layer
+        public CodewhispererCompletionType CodewhispererCompletionType;
+        
+        /// Programming language of the CodeWhisperer recommendation
+        public CodewhispererLanguage CodewhispererLanguage;
+        
+        public CodewhispererPerceivedLatency()
+        {
+            this.Passive = false;
         }
     }
 }

@@ -4,11 +4,12 @@
 		<BuildRoot Condition="'$(BuildRoot)' == ''">$(MSBuildThisFileDirectory)</BuildRoot>
 
         <BuildTemp>$(BuildRoot)buildtemp\</BuildTemp>
-        <DotNetSdkTag>3.5.43.0</DotNetSdkTag>
+        <DotNetSdkTag>3.7.354.0</DotNetSdkTag>
         <DotNetSdkClone>$(BuildTemp)dotnetsdk\</DotNetSdkClone>
         <SdkGeneratorRoot>$(DotNetSdkClone)generator\</SdkGeneratorRoot>
         <SdkGenerator>$(SdkGeneratorRoot)ServiceClientGenerator\bin\Release\ServiceClientGenerator.exe</SdkGenerator>
         <SdkServiceModel>$(BuildRoot)..\service\service-model.json</SdkServiceModel>
+        <SdkDefaultConfigurationRoot>$(DotNetSdkClone)sdk\src\Core\</SdkDefaultConfigurationRoot>
         <SdkGeneratorModels>$(BuildTemp)client-generator\</SdkGeneratorModels>
         <SdkGeneratorInputs>$(SdkGeneratorModels)inputs\</SdkGeneratorInputs>
         <SdkGeneratorOutput>$(BuildTemp)telemetry-client-raw\</SdkGeneratorOutput>
@@ -63,6 +64,9 @@
 		<Copy
 			SourceFiles="@(GeneratorInputs)"
 			DestinationFolder="$(SdkGeneratorInputs)" />
+		<Copy
+			SourceFiles="$(SdkDefaultConfigurationRoot)sdk-default-configuration.json"
+			DestinationFolder="$(BuildRoot)sdk\src\Core\" />
 
         <!-- Generate the Telemetry Client -->
         <Exec WorkingDirectory="$(SdkGeneratorModels)" Command="$(SdkGenerator) -self.modelpath $(BuildRoot)..\service\service-model.json -servicemodels ToolkitTelemetry -manifest $(SdkGeneratorInputs)\generation-manifest.json -versions $(SdkGeneratorInputs)\sdk-versions.json -self.basename ToolkitTelemetry -modelsfolder $(SdkGeneratorModels) -sdkroot $(SdkGeneratorOutput)" />
@@ -93,6 +97,7 @@
 
     <Target Name="cleanup">
         <RemoveDir Directories="$(BuildTemp)" />
+        <RemoveDir Directories="$(BuildRoot)\sdk" />
     </Target>
 
 </Project>
