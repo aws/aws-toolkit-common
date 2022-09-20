@@ -64,7 +64,7 @@
 		<Copy
 			SourceFiles="@(GeneratorInputs)"
 			DestinationFolder="$(SdkGeneratorInputs)" />
-        <Copy
+		<Copy
 			SourceFiles="$(SdkDefaultConfigurationRoot)sdk-default-configuration.json"
 			DestinationFolder="$(BuildRoot)sdk\src\Core\" />
 
