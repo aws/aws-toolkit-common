@@ -57,9 +57,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -120,9 +128,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("lambdaArchitecture", payload.LambdaArchitecture.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -171,9 +187,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("httpMethod", payload.HttpMethod);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -220,9 +244,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -267,9 +299,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -314,9 +354,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -367,9 +415,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("reason", payload.Reason);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -416,9 +472,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -465,9 +529,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -519,9 +591,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("appRunnerServiceStatus", payload.AppRunnerServiceStatus.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -568,9 +648,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -615,9 +703,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -662,9 +758,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -711,9 +815,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -762,9 +874,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -819,9 +939,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("credentialSourceId", payload.CredentialSourceId.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -866,9 +994,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -915,9 +1051,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("partitionId", payload.PartitionId);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -964,9 +1108,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1015,9 +1167,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("url", payload.Url);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1062,9 +1222,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1115,9 +1283,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("source", payload.Source);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1164,9 +1340,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("credentialSourceId", payload.CredentialSourceId);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1211,9 +1395,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1262,9 +1454,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("runtimeString", payload.RuntimeString);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1321,9 +1521,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("credentialSourceId", payload.CredentialSourceId.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1370,9 +1578,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("name", payload.Name);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1419,9 +1635,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1466,9 +1690,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1513,9 +1745,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1562,9 +1802,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1609,9 +1857,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1674,9 +1930,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("enhancedHealthEnabled", payload.EnhancedHealthEnabled.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1723,9 +1987,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1772,9 +2044,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1821,9 +2101,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1870,9 +2158,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1919,9 +2215,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -1970,9 +2274,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2030,9 +2342,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("source", payload.Source);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2081,9 +2401,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2132,9 +2460,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2183,9 +2519,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2234,9 +2578,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2283,9 +2635,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2332,9 +2692,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2381,9 +2749,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2430,9 +2806,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("enabled", payload.Enabled);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2479,9 +2863,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("enabled", payload.Enabled);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2528,9 +2920,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2575,9 +2975,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2622,9 +3030,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2685,9 +3101,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("hasTimeFilter", payload.HasTimeFilter.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2734,9 +3158,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2783,9 +3215,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2832,9 +3272,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2883,9 +3331,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("templateName", payload.TemplateName);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2934,9 +3390,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("initialDeploy", payload.InitialDeploy);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -2983,9 +3447,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3034,9 +3506,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("reason", payload.Reason);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3085,9 +3565,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("reason", payload.Reason);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3139,9 +3627,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("credentialType", payload.CredentialType.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3188,9 +3684,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3244,9 +3748,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("dynamoDbIndexType", payload.DynamoDbIndexType.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3295,9 +3807,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ec2InstanceState", payload.Ec2InstanceState);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3346,9 +3866,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ec2ConnectionType", payload.Ec2ConnectionType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3395,9 +3923,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3444,9 +3980,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3493,9 +4037,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3542,9 +4094,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3591,9 +4151,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3640,9 +4208,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3689,9 +4265,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3738,9 +4322,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3787,9 +4379,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3836,9 +4436,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3887,9 +4495,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ecsExecuteCommandType", payload.EcsExecuteCommandType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3934,9 +4550,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -3981,9 +4605,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4030,9 +4662,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4079,9 +4719,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4128,9 +4776,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4182,9 +4838,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("ecrDeploySource", payload.EcrDeploySource.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4233,9 +4897,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ecsLaunchType", payload.EcsLaunchType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4284,9 +4956,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ecsLaunchType", payload.EcsLaunchType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4335,9 +5015,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ecsLaunchType", payload.EcsLaunchType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4386,9 +5074,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("duration", payload.Duration);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4435,9 +5131,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4484,9 +5188,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4533,9 +5245,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4586,9 +5306,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("filenameExt", payload.FilenameExt);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4635,9 +5363,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4684,9 +5420,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4733,9 +5477,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4784,9 +5536,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4833,9 +5593,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4882,9 +5650,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("runtime", payload.Runtime);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4937,9 +5713,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("variant", payload.Variant);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -4986,9 +5770,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5042,9 +5834,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5096,9 +5896,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5161,9 +5969,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("lambdaArchitecture", payload.LambdaArchitecture.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5215,9 +6031,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5269,9 +6093,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5341,9 +6173,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("xrayEnabled", payload.XrayEnabled.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5390,9 +6230,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5443,9 +6291,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("databaseEngine", payload.DatabaseEngine);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5492,9 +6348,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5541,9 +6405,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5590,9 +6462,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5643,9 +6523,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("databaseEngine", payload.DatabaseEngine);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5694,9 +6582,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("databaseCredentials", payload.DatabaseCredentials);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5745,9 +6641,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("databaseCredentials", payload.DatabaseCredentials);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5796,9 +6700,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("version", payload.Version);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5868,9 +6780,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("lambdaArchitecture", payload.LambdaArchitecture.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5917,9 +6837,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -5971,9 +6899,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("schemaLanguage", payload.SchemaLanguage.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6020,9 +6956,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6067,9 +7011,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6114,9 +7066,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6161,9 +7121,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6208,9 +7176,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6257,9 +7233,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6308,9 +7292,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("presigned", payload.Presigned);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6357,9 +7349,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6406,9 +7406,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6465,9 +7473,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("failedCount", payload.FailedCount.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6514,9 +7530,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6578,9 +7602,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("component", payload.Component.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6627,9 +7659,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6691,9 +7731,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("component", payload.Component.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6740,9 +7788,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6789,9 +7845,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6838,9 +7902,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6892,9 +7964,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("component", payload.Component.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6941,9 +8021,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -6990,9 +8078,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7047,9 +8143,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7096,9 +8200,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7150,9 +8262,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("sqsQueueType", payload.SqsQueueType.Value);
                 }
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7201,9 +8321,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7252,9 +8380,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7303,9 +8439,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7354,9 +8498,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7405,9 +8557,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7456,9 +8616,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7505,9 +8673,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7554,9 +8730,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7603,9 +8787,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7652,9 +8844,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7701,9 +8901,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7750,9 +8958,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7799,9 +9015,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7848,9 +9072,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7897,9 +9129,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("insightsDialogOpenSource", payload.InsightsDialogOpenSource);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7950,9 +9190,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("insightsQueryStringType", payload.InsightsQueryStringType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -7999,9 +9247,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8048,9 +9304,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8097,9 +9361,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8150,9 +9422,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("reason", payload.Reason);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8201,9 +9481,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("resourceType", payload.ResourceType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8252,9 +9540,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("resourceType", payload.ResourceType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8299,9 +9595,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8348,9 +9652,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("resourceType", payload.ResourceType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8403,9 +9715,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("duration", payload.Duration);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8454,9 +9774,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("experimentState", payload.ExperimentState);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8505,9 +9833,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8556,9 +9892,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("settingState", payload.SettingState);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8609,9 +9953,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8668,9 +10020,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("successCount", payload.SuccessCount);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8754,9 +10114,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8841,9 +10209,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8918,9 +10294,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -8986,9 +10370,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -9045,9 +10437,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);

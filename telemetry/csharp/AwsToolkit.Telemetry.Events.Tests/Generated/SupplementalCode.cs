@@ -68,9 +68,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -117,9 +125,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
 
                 datum.AddMetadata("bees", payload.Bees);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -164,9 +180,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);
@@ -211,9 +235,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                if ((transformDatum != null))
+                try
                 {
-                    datum = transformDatum.Invoke(datum);
+                    if ((transformDatum != null))
+                    {
+                        datum = transformDatum.Invoke(datum);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    telemetryLogger.Logger.Error("Error invoking transform function", e);
+                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
                 }
 
                 metrics.Data.Add(datum);

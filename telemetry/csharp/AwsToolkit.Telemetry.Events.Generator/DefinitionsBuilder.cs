@@ -27,6 +27,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
         private readonly CodeMethodReferenceExpression _debugAssert = 
             new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(System.Diagnostics.Debug)), "Assert");
 
+        private readonly CodeTypeReferenceExpression _debuggerAttached = new CodeTypeReferenceExpression(typeof(System.Diagnostics.Debugger));
+       
         private string _namespace;
 
         // Used for lookup during generation
@@ -430,9 +432,35 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 
             var assignTransform = new CodeAssignStatement(datum, invokeTransform);
 
+            var tryStatementsTransform = new List<CodeStatement>();
+            var catchClausesTransform = new List<CodeCatchClause>();
+
+            tryStatementsTransform.Add(new CodeConditionStatement(transformExistsCheck, assignTransform));
+            var catchClauseTransform = new CodeCatchClause("e", new CodeTypeReference(typeof(Exception)));
+
+            catchClauseTransform.Statements.Add(new CodeExpressionStatement(
+                new CodeMethodInvokeExpression(
+                    new CodeFieldReferenceExpression(new CodeArgumentReferenceExpression("telemetryLogger"), "Logger"),
+                    "Error",
+                    new CodePrimitiveExpression("Error invoking transform function"),
+                    new CodeArgumentReferenceExpression("e"))
+            ));
+
+            // System.Diagnostics.Debug.Assert(!Debugger.IsAttached, "Error invoking transform function");
+            catchClauseTransform.Statements.Add(new CodeExpressionStatement(
+                new CodeMethodInvokeExpression(
+                    _debugAssert,
+                    new CodeBinaryOperatorExpression(new CodeFieldReferenceExpression(_debuggerAttached, "IsAttached"),
+                        CodeBinaryOperatorType.ValueEquality,
+                        new CodePrimitiveExpression(false)),
+                    new CodePrimitiveExpression("Error invoking transform function"))
+            ));
+            catchClausesTransform.Add(catchClauseTransform);
+
+            var tryCatchTransform =
+                new CodeTryCatchFinallyStatement(tryStatementsTransform.ToArray(), catchClausesTransform.ToArray());
             tryStatements.Add(new CodeSnippetStatement());
-            tryStatements.Add(
-                new CodeConditionStatement(transformExistsCheck, assignTransform));
+            tryStatements.Add(tryCatchTransform);
 
             // Generate: metrics.Data.Add(datum);
             tryStatements.Add(new CodeSnippetStatement());
