@@ -19,6 +19,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
         private const string MetadataEntryFullName = "MetadataEntry";
         private const string MetricDatumFullName = "MetricDatum";
         private const string AddMetadataMethodName = "AddMetadata";
+        private const string InvokeTransformMethodName = "InvokeTransform";
 
         private readonly CodeMethodReferenceExpression _invariantCulture =
             new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(CultureInfo)),
@@ -27,8 +28,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
         private readonly CodeMethodReferenceExpression _debugAssert = 
             new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(System.Diagnostics.Debug)), "Assert");
 
-        private readonly CodeTypeReferenceExpression _debuggerAttached = new CodeTypeReferenceExpression(typeof(System.Diagnostics.Debugger));
-       
         private string _namespace;
 
         // Used for lookup during generation
@@ -422,45 +421,16 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
                 }
             });
 
-            // Generate: "If the transform function isn't null, assign datum to its result"
-            // datum = fnTransform(datum)
-            var transformExistsCheck = new CodeBinaryOperatorExpression(transformDatum,
-                CodeBinaryOperatorType.IdentityInequality,
-                new CodePrimitiveExpression(null));
-
-            var invokeTransform = new CodeMethodInvokeExpression(transformDatum, "Invoke", datum);
-
+            // Generate: "InvokeTransform function on datum"
+            // datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum) 
+            var datumInvoke = new CodeMethodReferenceExpression(datum, InvokeTransformMethodName);
+            var logger =
+                new CodeFieldReferenceExpression(new CodeArgumentReferenceExpression("telemetryLogger"), "Logger");
+            var invokeTransform = new CodeMethodInvokeExpression(datumInvoke,
+                logger, transformDatum);
             var assignTransform = new CodeAssignStatement(datum, invokeTransform);
-
-            var tryStatementsTransform = new List<CodeStatement>();
-            var catchClausesTransform = new List<CodeCatchClause>();
-
-            tryStatementsTransform.Add(new CodeConditionStatement(transformExistsCheck, assignTransform));
-            var catchClauseTransform = new CodeCatchClause("e", new CodeTypeReference(typeof(Exception)));
-
-            catchClauseTransform.Statements.Add(new CodeExpressionStatement(
-                new CodeMethodInvokeExpression(
-                    new CodeFieldReferenceExpression(new CodeArgumentReferenceExpression("telemetryLogger"), "Logger"),
-                    "Error",
-                    new CodePrimitiveExpression("Error invoking transform function"),
-                    new CodeArgumentReferenceExpression("e"))
-            ));
-
-            // System.Diagnostics.Debug.Assert(!Debugger.IsAttached, "Error invoking transform function");
-            catchClauseTransform.Statements.Add(new CodeExpressionStatement(
-                new CodeMethodInvokeExpression(
-                    _debugAssert,
-                    new CodeBinaryOperatorExpression(new CodeFieldReferenceExpression(_debuggerAttached, "IsAttached"),
-                        CodeBinaryOperatorType.ValueEquality,
-                        new CodePrimitiveExpression(false)),
-                    new CodePrimitiveExpression("Error invoking transform function"))
-            ));
-            catchClausesTransform.Add(catchClauseTransform);
-
-            var tryCatchTransform =
-                new CodeTryCatchFinallyStatement(tryStatementsTransform.ToArray(), catchClausesTransform.ToArray());
             tryStatements.Add(new CodeSnippetStatement());
-            tryStatements.Add(tryCatchTransform);
+            tryStatements.Add(assignTransform);
 
             // Generate: metrics.Data.Add(datum);
             tryStatements.Add(new CodeSnippetStatement());
@@ -471,9 +441,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 
             var catchClause = new CodeCatchClause("e", new CodeTypeReference(typeof(Exception)));
             catchClause.Statements.Add(new CodeExpressionStatement(
-                new CodeMethodInvokeExpression(
-                    new CodeFieldReferenceExpression(new CodeArgumentReferenceExpression("telemetryLogger"), "Logger"), 
-                    "Error", 
+                new CodeMethodInvokeExpression(logger,
+                    "Error",
                     new CodePrimitiveExpression("Error recording telemetry event"),
                     new CodeArgumentReferenceExpression("e"))
             ));

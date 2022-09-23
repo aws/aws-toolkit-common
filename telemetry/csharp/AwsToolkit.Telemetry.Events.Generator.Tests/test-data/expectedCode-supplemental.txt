@@ -56,18 +56,7 @@ namespace Test
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                try
-                {
-                    if ((transformDatum != null))
-                    {
-                        datum = transformDatum.Invoke(datum);
-                    }
-                }
-                catch (System.Exception e)
-                {
-                    telemetryLogger.Logger.Error("Error invoking transform function", e);
-                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
-                }
+                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -111,18 +100,7 @@ namespace Test
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                try
-                {
-                    if ((transformDatum != null))
-                    {
-                        datum = transformDatum.Invoke(datum);
-                    }
-                }
-                catch (System.Exception e)
-                {
-                    telemetryLogger.Logger.Error("Error invoking transform function", e);
-                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
-                }
+                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -176,18 +154,7 @@ namespace Test
 
                 datum.AddMetadata("runtime", payload.Runtime);
 
-                try
-                {
-                    if ((transformDatum != null))
-                    {
-                        datum = transformDatum.Invoke(datum);
-                    }
-                }
-                catch (System.Exception e)
-                {
-                    telemetryLogger.Logger.Error("Error invoking transform function", e);
-                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
-                }
+                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -241,18 +208,7 @@ namespace Test
 
                 datum.AddMetadata("runtime", payload.Runtime);
 
-                try
-                {
-                    if ((transformDatum != null))
-                    {
-                        datum = transformDatum.Invoke(datum);
-                    }
-                }
-                catch (System.Exception e)
-                {
-                    telemetryLogger.Logger.Error("Error invoking transform function", e);
-                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
-                }
+                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -318,18 +274,7 @@ namespace Test
                     datum.AddMetadata("runtime", payload.Runtime.Value);
                 }
 
-                try
-                {
-                    if ((transformDatum != null))
-                    {
-                        datum = transformDatum.Invoke(datum);
-                    }
-                }
-                catch (System.Exception e)
-                {
-                    telemetryLogger.Logger.Error("Error invoking transform function", e);
-                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
-                }
+                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -373,18 +318,7 @@ namespace Test
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                try
-                {
-                    if ((transformDatum != null))
-                    {
-                        datum = transformDatum.Invoke(datum);
-                    }
-                }
-                catch (System.Exception e)
-                {
-                    telemetryLogger.Logger.Error("Error invoking transform function", e);
-                    System.Diagnostics.Debug.Assert((System.Diagnostics.Debugger.IsAttached == false), "Error invoking transform function");
-                }
+                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);

@@ -1,4 +1,8 @@
-﻿namespace Amazon.AwsToolkit.Telemetry.Events.Core
+﻿using System;
+using System.Diagnostics;
+using log4net;
+
+namespace Amazon.AwsToolkit.Telemetry.Events.Core
 {
     public static class MetricDatumExtensionMethods
     {
@@ -56,6 +60,28 @@
         public static void AddMetadata(this MetricDatum metricDatum, string key, int value)
         {
             metricDatum.AddMetadata(key, value.ToString(System.Globalization.CultureInfo.InvariantCulture));
+        }
+
+        /// <summary>
+        /// If the transform function isn't null, invoke it and assign metric datum to it's result
+        /// </summary>
+        public static MetricDatum InvokeTransform(this MetricDatum metricDatum, ILog logger,
+            Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                if (transformDatum != null)
+                {
+                    metricDatum = transformDatum.Invoke(metricDatum);
+                }
+            }
+            catch (Exception e)
+            {
+                logger.Error("Error invoking transform function", e);
+                Debug.Assert(!Debugger.IsAttached, "Error invoking transform function");
+            }
+
+            return metricDatum;
         }
     }
 }

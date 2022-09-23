@@ -1,4 +1,7 @@
-﻿using Amazon.AwsToolkit.Telemetry.Events.Core;
+﻿using System;
+using Amazon.AwsToolkit.Telemetry.Events.Core;
+using log4net;
+using Moq;
 using Xunit;
 
 namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
@@ -6,6 +9,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
     public class MetricDatumExtensionMethodsTests
     {
         private readonly MetricDatum _sut = new MetricDatum();
+        private readonly Mock<ILog> _logger = new Mock<ILog>();
         private const string Key = "sampleKey";
 
         [Fact]
@@ -44,6 +48,41 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
 
             _sut.AddMetadata(Key, "   ");
             Assert.False(_sut.Metadata.ContainsKey(Key));
+        }
+
+        [Fact]
+        public void InvokeTransform_Null()
+        {
+            var updatedDatum = _sut.InvokeTransform(_logger.Object, null);
+            Assert.Equal(_sut, updatedDatum);
+            _logger.Verify(mock => mock.Error(It.IsAny<object>(), It.IsAny<Exception>()), Times.Never);
+        }
+
+        [Fact]
+        public void InvokeTransform_Throws()
+        {
+            MetricDatum TransformFunction(MetricDatum datum)
+            {
+                throw new ArgumentException("sample transform exception");
+            }
+
+            var updatedDatum = _sut.InvokeTransform(_logger.Object, TransformFunction);
+            Assert.NotNull(updatedDatum);
+            _logger.Verify(mock => mock.Error(It.IsAny<object>(), It.IsAny<Exception>()), Times.Once);
+        }
+
+        [Fact]
+        public void InvokeTransform()
+        {
+            MetricDatum TransformFunction(MetricDatum datum)
+            {
+                datum.AddMetadata(Key, "hello");
+                return datum;
+            }
+
+            var updatedDatum = _sut.InvokeTransform(_logger.Object, TransformFunction);
+            Assert.Equal("hello", updatedDatum.Metadata[Key]);
+            _logger.Verify(mock => mock.Error(It.IsAny<object>(), It.IsAny<Exception>()), Times.Never);
         }
     }
 }
