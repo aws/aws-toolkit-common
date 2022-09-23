@@ -57,7 +57,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -117,7 +117,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("lambdaArchitecture", payload.LambdaArchitecture.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -165,7 +165,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("httpMethod", payload.HttpMethod);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -211,7 +211,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -255,7 +255,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -299,7 +299,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -349,7 +349,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("reason", payload.Reason);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -395,7 +395,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -441,7 +441,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -492,7 +492,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("appRunnerServiceStatus", payload.AppRunnerServiceStatus.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -538,7 +538,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -582,7 +582,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -626,7 +626,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -672,7 +672,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -720,7 +720,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -774,7 +774,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("credentialSourceId", payload.CredentialSourceId.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -818,7 +818,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -864,7 +864,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("partitionId", payload.PartitionId);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -910,7 +910,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -958,7 +958,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("url", payload.Url);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1002,7 +1002,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1052,7 +1052,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("source", payload.Source);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1098,7 +1098,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("credentialSourceId", payload.CredentialSourceId);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1142,7 +1142,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1190,7 +1190,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("runtimeString", payload.RuntimeString);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1246,7 +1246,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("credentialSourceId", payload.CredentialSourceId.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1292,7 +1292,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("name", payload.Name);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1338,7 +1338,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1382,7 +1382,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1426,7 +1426,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1472,7 +1472,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1516,7 +1516,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1578,7 +1578,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("enhancedHealthEnabled", payload.EnhancedHealthEnabled.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1624,7 +1624,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1670,7 +1670,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1716,7 +1716,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1762,7 +1762,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1808,7 +1808,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1856,7 +1856,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1913,7 +1913,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("source", payload.Source);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -1961,7 +1961,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2009,7 +2009,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2057,7 +2057,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2105,7 +2105,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2151,7 +2151,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2197,7 +2197,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2243,7 +2243,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2289,7 +2289,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("enabled", payload.Enabled);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2335,7 +2335,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("enabled", payload.Enabled);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2381,7 +2381,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2425,7 +2425,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2469,7 +2469,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2529,7 +2529,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("hasTimeFilter", payload.HasTimeFilter.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2575,7 +2575,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2621,7 +2621,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2667,7 +2667,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2715,7 +2715,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("templateName", payload.TemplateName);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2763,7 +2763,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("initialDeploy", payload.InitialDeploy);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2809,7 +2809,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2857,7 +2857,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("reason", payload.Reason);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2905,7 +2905,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("reason", payload.Reason);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -2956,7 +2956,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("credentialType", payload.CredentialType.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3002,7 +3002,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3055,7 +3055,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("dynamoDbIndexType", payload.DynamoDbIndexType.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3103,7 +3103,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ec2InstanceState", payload.Ec2InstanceState);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3151,7 +3151,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ec2ConnectionType", payload.Ec2ConnectionType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3197,7 +3197,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3243,7 +3243,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3289,7 +3289,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3335,7 +3335,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3381,7 +3381,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3427,7 +3427,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3473,7 +3473,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3519,7 +3519,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3565,7 +3565,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3611,7 +3611,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3659,7 +3659,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ecsExecuteCommandType", payload.EcsExecuteCommandType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3703,7 +3703,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3747,7 +3747,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3793,7 +3793,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3839,7 +3839,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3885,7 +3885,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3936,7 +3936,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("ecrDeploySource", payload.EcrDeploySource.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -3984,7 +3984,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ecsLaunchType", payload.EcsLaunchType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4032,7 +4032,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ecsLaunchType", payload.EcsLaunchType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4080,7 +4080,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("ecsLaunchType", payload.EcsLaunchType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4128,7 +4128,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("duration", payload.Duration);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4174,7 +4174,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4220,7 +4220,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4266,7 +4266,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4316,7 +4316,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("filenameExt", payload.FilenameExt);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4362,7 +4362,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4408,7 +4408,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4454,7 +4454,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4502,7 +4502,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4548,7 +4548,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4594,7 +4594,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("runtime", payload.Runtime);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4646,7 +4646,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("variant", payload.Variant);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4692,7 +4692,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4745,7 +4745,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4796,7 +4796,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4858,7 +4858,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("lambdaArchitecture", payload.LambdaArchitecture.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4909,7 +4909,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -4960,7 +4960,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5029,7 +5029,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("xrayEnabled", payload.XrayEnabled.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5075,7 +5075,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5125,7 +5125,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("databaseEngine", payload.DatabaseEngine);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5171,7 +5171,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5217,7 +5217,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5263,7 +5263,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5313,7 +5313,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("databaseEngine", payload.DatabaseEngine);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5361,7 +5361,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("databaseCredentials", payload.DatabaseCredentials);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5409,7 +5409,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("databaseCredentials", payload.DatabaseCredentials);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5457,7 +5457,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("version", payload.Version);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5526,7 +5526,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("lambdaArchitecture", payload.LambdaArchitecture.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5572,7 +5572,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5623,7 +5623,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("schemaLanguage", payload.SchemaLanguage.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5669,7 +5669,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5713,7 +5713,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5757,7 +5757,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5801,7 +5801,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5845,7 +5845,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5891,7 +5891,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5939,7 +5939,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("presigned", payload.Presigned);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -5985,7 +5985,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6031,7 +6031,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6087,7 +6087,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("failedCount", payload.FailedCount.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6133,7 +6133,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6194,7 +6194,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("component", payload.Component.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6240,7 +6240,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6301,7 +6301,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("component", payload.Component.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6347,7 +6347,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6393,7 +6393,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6439,7 +6439,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6490,7 +6490,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("component", payload.Component.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6536,7 +6536,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6582,7 +6582,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6636,7 +6636,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6682,7 +6682,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6733,7 +6733,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("sqsQueueType", payload.SqsQueueType.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6781,7 +6781,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6829,7 +6829,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6877,7 +6877,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6925,7 +6925,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -6973,7 +6973,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7021,7 +7021,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7067,7 +7067,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7113,7 +7113,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7159,7 +7159,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7205,7 +7205,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7251,7 +7251,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7297,7 +7297,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7343,7 +7343,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7389,7 +7389,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7435,7 +7435,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("insightsDialogOpenSource", payload.InsightsDialogOpenSource);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7485,7 +7485,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("insightsQueryStringType", payload.InsightsQueryStringType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7531,7 +7531,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7577,7 +7577,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7623,7 +7623,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7673,7 +7673,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("reason", payload.Reason);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7721,7 +7721,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("resourceType", payload.ResourceType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7769,7 +7769,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("resourceType", payload.ResourceType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7813,7 +7813,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7859,7 +7859,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("resourceType", payload.ResourceType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7911,7 +7911,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("duration", payload.Duration);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -7959,7 +7959,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("experimentState", payload.ExperimentState);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -8007,7 +8007,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -8055,7 +8055,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("settingState", payload.SettingState);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -8105,7 +8105,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -8161,7 +8161,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("successCount", payload.SuccessCount);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -8244,7 +8244,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -8328,7 +8328,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -8402,7 +8402,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -8467,7 +8467,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -8523,7 +8523,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);

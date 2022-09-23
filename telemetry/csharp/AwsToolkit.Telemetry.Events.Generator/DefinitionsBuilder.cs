@@ -422,12 +422,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             });
 
             // Generate: "InvokeTransform function on datum"
-            // datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum) 
+            // datum = datum.InvokeTransform(transformDatum) 
             var datumInvoke = new CodeMethodReferenceExpression(datum, InvokeTransformMethodName);
-            var logger =
-                new CodeFieldReferenceExpression(new CodeArgumentReferenceExpression("telemetryLogger"), "Logger");
-            var invokeTransform = new CodeMethodInvokeExpression(datumInvoke,
-                logger, transformDatum);
+            var invokeTransform = new CodeMethodInvokeExpression(datumInvoke, transformDatum);
             var assignTransform = new CodeAssignStatement(datum, invokeTransform);
             tryStatements.Add(new CodeSnippetStatement());
             tryStatements.Add(assignTransform);
@@ -441,7 +438,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 
             var catchClause = new CodeCatchClause("e", new CodeTypeReference(typeof(Exception)));
             catchClause.Statements.Add(new CodeExpressionStatement(
-                new CodeMethodInvokeExpression(logger,
+                new CodeMethodInvokeExpression(new CodeFieldReferenceExpression(new CodeArgumentReferenceExpression("telemetryLogger"), "Logger"),
                     "Error",
                     new CodePrimitiveExpression("Error recording telemetry event"),
                     new CodeArgumentReferenceExpression("e"))

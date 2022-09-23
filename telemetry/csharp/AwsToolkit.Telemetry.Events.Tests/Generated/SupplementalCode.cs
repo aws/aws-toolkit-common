@@ -68,7 +68,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -114,7 +114,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
 
                 datum.AddMetadata("bees", payload.Bees);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -158,7 +158,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -202,7 +202,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);

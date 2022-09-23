@@ -56,7 +56,7 @@ namespace Test
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -100,7 +100,7 @@ namespace Test
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -154,7 +154,7 @@ namespace Test
 
                 datum.AddMetadata("runtime", payload.Runtime);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -208,7 +208,7 @@ namespace Test
 
                 datum.AddMetadata("runtime", payload.Runtime);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -274,7 +274,7 @@ namespace Test
                     datum.AddMetadata("runtime", payload.Runtime.Value);
                 }
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -318,7 +318,7 @@ namespace Test
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
 
-                datum = datum.InvokeTransform(telemetryLogger.Logger, transformDatum);
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);

@@ -6,6 +6,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Core
 {
     public static class MetricDatumExtensionMethods
     {
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(MetricDatumExtensionMethods));
+
         /// <summary>
         /// Add metadata to a metric datum, only if the value is non-blank
         /// </summary>
@@ -65,8 +67,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Core
         /// <summary>
         /// If the transform function isn't null, invoke it and assign metric datum to it's result
         /// </summary>
-        public static MetricDatum InvokeTransform(this MetricDatum metricDatum, ILog logger,
-            Func<MetricDatum, MetricDatum> transformDatum = null)
+        public static MetricDatum InvokeTransform(this MetricDatum metricDatum, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -77,7 +78,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Core
             }
             catch (Exception e)
             {
-                logger.Error("Error invoking transform function", e);
+                Logger.Error("Error invoking transform function", e);
                 Debug.Assert(!Debugger.IsAttached, "Error invoking transform function");
             }
 

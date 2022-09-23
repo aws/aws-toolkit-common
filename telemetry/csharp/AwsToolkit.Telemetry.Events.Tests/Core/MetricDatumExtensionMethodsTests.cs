@@ -1,7 +1,5 @@
 ﻿using System;
 using Amazon.AwsToolkit.Telemetry.Events.Core;
-using log4net;
-using Moq;
 using Xunit;
 
 namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
@@ -9,7 +7,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
     public class MetricDatumExtensionMethodsTests
     {
         private readonly MetricDatum _sut = new MetricDatum();
-        private readonly Mock<ILog> _logger = new Mock<ILog>();
         private const string Key = "sampleKey";
 
         [Fact]
@@ -53,9 +50,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
         [Fact]
         public void InvokeTransform_Null()
         {
-            var updatedDatum = _sut.InvokeTransform(_logger.Object, null);
+            var updatedDatum = _sut.InvokeTransform(null);
             Assert.Equal(_sut, updatedDatum);
-            _logger.Verify(mock => mock.Error(It.IsAny<object>(), It.IsAny<Exception>()), Times.Never);
         }
 
         [Fact]
@@ -66,9 +62,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
                 throw new ArgumentException("sample transform exception");
             }
 
-            var updatedDatum = _sut.InvokeTransform(_logger.Object, TransformFunction);
+            var updatedDatum = _sut.InvokeTransform(TransformFunction);
             Assert.NotNull(updatedDatum);
-            _logger.Verify(mock => mock.Error(It.IsAny<object>(), It.IsAny<Exception>()), Times.Once);
         }
 
         [Fact]
@@ -80,9 +75,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
                 return datum;
             }
 
-            var updatedDatum = _sut.InvokeTransform(_logger.Object, TransformFunction);
+            var updatedDatum = _sut.InvokeTransform(TransformFunction);
             Assert.Equal("hello", updatedDatum.Metadata[Key]);
-            _logger.Verify(mock => mock.Error(It.IsAny<object>(), It.IsAny<Exception>()), Times.Never);
         }
     }
 }
