@@ -1371,6 +1371,10 @@
             "passive": true
         },
         {
+            "name": "toolkit_viewLogs",
+            "description": "View logs for the toolkit"
+        },
+        {
             "name": "sqs_openQueue",
             "description": "Open an SQS queue. Initially opens to either the send message pane or poll messages pane.",
             "metadata": [{ "type": "sqsQueueType" }]
