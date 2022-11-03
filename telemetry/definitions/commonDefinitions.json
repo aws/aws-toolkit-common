@@ -140,6 +140,7 @@
                 "dotnetcore2.1",
                 "dotnet5.0",
                 "dotnet6",
+                "dotnet7",
                 "nodejs18.x",
                 "nodejs16.x",
                 "nodejs14.x",
