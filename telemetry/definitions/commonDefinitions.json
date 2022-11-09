@@ -543,6 +543,12 @@
             "type": "string",
             "description": "The type of the user trigger to send request to CodeWhisperer service",
             "allowedValues": ["OnDemand", "AutoTrigger"]
+        },
+        {
+            "name": "syncedResources",
+            "type": "string",
+            "description": "Describes which parts of an application (that we know of) were synced to the cloud. \"Code\" resources follow the SAM spec: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-sync.html",
+            "allowedValues": ["Everything", "CodeOnly"]
         }
     ],
     "metrics": [
@@ -1217,12 +1223,24 @@
         },
         {
             "name": "sam_deploy",
-            "description": "Called when deploying a sam application",
+            "description": "Called when deploying a SAM application",
             "metadata": [{ "type": "result" }, { "type": "version", "required": false }]
         },
         {
+            "name": "sam_sync",
+            "description": "Called when syncing a SAM application",
+            "metadata": [
+                { "type": "result" }, 
+                { "type": "duration" }, 
+                { "type": "syncedResources" },
+                { "type": "lambdaPackageType" },
+                { "type": "result", "required": false }, 
+                { "type": "version", "required": false }
+            ]
+        },
+        {
             "name": "sam_init",
-            "description": "Called when initing a sam application",
+            "description": "Called when initing a SAM application",
             "metadata": [
                 { "type": "result" },
                 { "type": "runtime", "required": false },
