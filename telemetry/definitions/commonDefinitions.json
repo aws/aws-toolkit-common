@@ -1234,7 +1234,7 @@
                 { "type": "duration" }, 
                 { "type": "syncedResources" },
                 { "type": "lambdaPackageType" },
-                { "type": "result", "required": false }, 
+                { "type": "reason", "required": false }, 
                 { "type": "version", "required": false }
             ]
         },
