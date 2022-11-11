@@ -373,6 +373,11 @@
             "allowedValues": ["session-manager-plugin", "dotnet-lambda-deploy", "dotnet-deploy-cli", "aws-cli", "sam-cli"]
         },
         {
+            "name": "elementId",
+            "type": "string",
+            "description": "An identifier associated with a UI element"
+        },
+        {
             "name": "successCount",
             "type": "int",
             "description": "The number of successful operations"
@@ -1596,6 +1601,11 @@
                     "required": false
                 }
             ]
+        },
+        {
+            "name": "ui_click",
+            "description": "User clicked/activated a UI element. This does not necessarily have to be an explicit mouse click. Any user action that has the same behavior as a mouse click can use this event.",
+            "metadata": [{ "type": "elementId" }]
         },
         {
             "name": "deeplink_open",
