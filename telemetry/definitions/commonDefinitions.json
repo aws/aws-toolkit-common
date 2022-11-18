@@ -373,6 +373,11 @@
             "allowedValues": ["session-manager-plugin", "dotnet-lambda-deploy", "dotnet-deploy-cli", "aws-cli", "sam-cli"]
         },
         {
+            "name": "elementId",
+            "type": "string",
+            "description": "An identifier associated with a UI element"
+        },
+        {
             "name": "successCount",
             "type": "int",
             "description": "The number of successful operations"
@@ -543,6 +548,12 @@
             "type": "string",
             "description": "The type of the user trigger to send request to CodeWhisperer service",
             "allowedValues": ["OnDemand", "AutoTrigger"]
+        },
+        {
+            "name": "syncedResources",
+            "type": "string",
+            "description": "Describes which parts of an application (that we know of) were synced to the cloud. \"Code\" resources follow the SAM spec: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-sync.html",
+            "allowedValues": ["AllResources", "CodeOnly"]
         }
     ],
     "metrics": [
@@ -1217,12 +1228,23 @@
         },
         {
             "name": "sam_deploy",
-            "description": "Called when deploying a sam application",
+            "description": "Called when deploying a SAM application",
             "metadata": [{ "type": "result" }, { "type": "version", "required": false }]
         },
         {
+            "name": "sam_sync",
+            "description": "Called when syncing a SAM application",
+            "metadata": [
+                { "type": "result" }, 
+                { "type": "syncedResources" },
+                { "type": "lambdaPackageType" },
+                { "type": "reason", "required": false }, 
+                { "type": "version", "required": false }
+            ]
+        },
+        {
             "name": "sam_init",
-            "description": "Called when initing a sam application",
+            "description": "Called when initing a SAM application",
             "metadata": [
                 { "type": "result" },
                 { "type": "runtime", "required": false },
@@ -1596,6 +1618,11 @@
                     "required": false
                 }
             ]
+        },
+        {
+            "name": "ui_click",
+            "description": "User clicked/activated a UI element. This does not necessarily have to be an explicit mouse click. Any user action that has the same behavior as a mouse click can use this event.",
+            "metadata": [{ "type": "elementId" }]
         },
         {
             "name": "deeplink_open",
