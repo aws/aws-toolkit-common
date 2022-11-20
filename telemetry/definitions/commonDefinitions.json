@@ -556,9 +556,9 @@
             "allowedValues": ["AllResources", "CodeOnly"]
         },
         {
-            "name": "startUrl",
+            "name": "credentialStartUrl",
             "type": "string",
-            "description": "The startUrl of current SSO connection"
+            "description": "The credentialStartUrl of current SSO connection"
         }
     ],
     "metrics": [
@@ -1727,7 +1727,7 @@
                     "type": "result"
                 },
                 {
-                    "type": "startUrl",
+                    "type": "credentialStartUrl",
                     "required": false
                 }
             ]
@@ -1787,7 +1787,7 @@
                     "type": "result"
                 },
                 {
-                    "type": "startUrl",
+                    "type": "credentialStartUrl",
                     "required": false
                 }
             ]
@@ -1838,7 +1838,7 @@
                     "type": "codewhispererTriggerType"
                 },
                 {
-                    "type": "startUrl",
+                    "type": "credentialStartUrl",
                     "required": false
                 }
             ]
@@ -1878,7 +1878,7 @@
                     "type": "codewhispererTriggerType"
                 },
                 {
-                    "type": "startUrl",
+                    "type": "credentialStartUrl",
                     "required": false
                 }
             ]
@@ -1907,7 +1907,7 @@
                     "type": "codewhispererLanguage"
                 },
                 {
-                    "type": "startUrl",
+                    "type": "credentialStartUrl",
                     "required": false
                 }
             ]
