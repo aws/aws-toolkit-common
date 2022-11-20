@@ -554,6 +554,11 @@
             "type": "string",
             "description": "Describes which parts of an application (that we know of) were synced to the cloud. \"Code\" resources follow the SAM spec: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-sync.html",
             "allowedValues": ["AllResources", "CodeOnly"]
+        },
+        {
+            "name": "credentialStartUrl",
+            "type": "string",
+            "description": "The start URL of current SSO connection"
         }
     ],
     "metrics": [
@@ -1720,6 +1725,10 @@
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
                 }
             ]
         },
@@ -1776,6 +1785,10 @@
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
                 }
             ]
         },
@@ -1823,6 +1836,10 @@
                 },
                 {
                     "type": "codewhispererTriggerType"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
                 }
             ]
         },
@@ -1859,6 +1876,10 @@
                 },
                 {
                     "type": "codewhispererTriggerType"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
                 }
             ]
         },
@@ -1884,6 +1905,10 @@
                 },
                 {
                     "type": "codewhispererLanguage"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
                 }
             ]
         }
