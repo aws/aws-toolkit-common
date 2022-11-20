@@ -558,7 +558,7 @@
         {
             "name": "credentialStartUrl",
             "type": "string",
-            "description": "The credentialStartUrl of current SSO connection"
+            "description": "The start URL of current SSO connection"
         }
     ],
     "metrics": [
