@@ -583,7 +583,7 @@
         {
             "name": "userId",
             "type": "string",
-            "description": "Opaque AWS ID identifier"
+            "description": "Opaque AWS Builder ID identifier"
         },
         {
             "name": "codecatalyst_devEnvironmentWorkflowError",
