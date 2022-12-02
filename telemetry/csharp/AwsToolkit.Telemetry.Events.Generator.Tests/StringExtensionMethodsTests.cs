@@ -14,6 +14,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Tests
         [InlineData("Ab", "Ab")]
         [InlineData("AB", "AB")]
         [InlineData("pascalCase", "PascalCase")]
+        [InlineData("underscore_pascalCase", "UnderscorePascalCase")]
         public void ToPascalCase(string input, string expectedOutput)
         {
             Assert.Equal(expectedOutput, input.ToPascalCase());
