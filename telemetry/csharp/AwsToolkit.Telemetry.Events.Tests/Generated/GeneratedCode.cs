@@ -5422,7 +5422,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
-        /// Called when deploying a sam application
+        /// Called when deploying a SAM application
         public static void RecordSamDeploy(this ITelemetryLogger telemetryLogger, SamDeploy payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
@@ -5470,7 +5470,61 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
-        /// Called when initing a sam application
+        /// Called when syncing a SAM application
+        public static void RecordSamSync(this ITelemetryLogger telemetryLogger, SamSync payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "sam_sync";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("syncedResources", payload.SyncedResources);
+
+                datum.AddMetadata("lambdaPackageType", payload.LambdaPackageType);
+
+                datum.AddMetadata("reason", payload.Reason);
+
+                datum.AddMetadata("version", payload.Version);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when initing a SAM application
         public static void RecordSamInit(this ITelemetryLogger telemetryLogger, SamInit payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
@@ -6635,6 +6689,50 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// View logs for the toolkit
+        public static void RecordToolkitViewLogs(this ITelemetryLogger telemetryLogger, ToolkitViewLogs payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "toolkit_viewLogs";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -8068,6 +8166,52 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
+        /// User clicked/activated a UI element. This does not necessarily have to be an explicit mouse click. Any user action that has the same behavior as a mouse click can use this event.
+        public static void RecordUiClick(this ITelemetryLogger telemetryLogger, UiClick payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ui_click";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("elementId", payload.ElementId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
         /// User requested that a resource be opened in the browser using the deeplink service
         public static void RecordDeeplinkOpen(this ITelemetryLogger telemetryLogger, DeeplinkOpen payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
@@ -8244,6 +8388,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
                 datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
@@ -8328,6 +8474,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
                 datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
@@ -8402,6 +8550,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
 
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
                 datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
@@ -8467,6 +8617,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
 
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
                 datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
@@ -8523,6 +8675,309 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
 
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Create an Amazon CodeCatalyst Dev Environment
+        public static void RecordCodecatalystCreateDevEnvironment(this ITelemetryLogger telemetryLogger, CodecatalystCreateDevEnvironment payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codecatalyst_createDevEnvironment";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("userId", payload.UserId);
+
+                datum.AddMetadata("result", payload.Result);
+
+                if (payload.CodecatalystCreateDevEnvironmentRepoType.HasValue)
+                {
+                    datum.AddMetadata("codecatalyst_createDevEnvironmentRepoType", payload.CodecatalystCreateDevEnvironmentRepoType.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Update properties of a Amazon CodeCatalyst Dev Environment
+        public static void RecordCodecatalystUpdateDevEnvironmentSettings(this ITelemetryLogger telemetryLogger, CodecatalystUpdateDevEnvironmentSettings payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codecatalyst_updateDevEnvironmentSettings";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("userId", payload.UserId);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("codecatalyst_updateDevEnvironmentLocationType", payload.CodecatalystUpdateDevEnvironmentLocationType);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Trigger a devfile update on a Amazon CodeCatalyst dev environment
+        public static void RecordCodecatalystUpdateDevfile(this ITelemetryLogger telemetryLogger, CodecatalystUpdateDevfile payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codecatalyst_updateDevfile";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("userId", payload.UserId);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Clone a Amazon CodeCatalyst code repository locally
+        public static void RecordCodecatalystLocalClone(this ITelemetryLogger telemetryLogger, CodecatalystLocalClone payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codecatalyst_localClone";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("userId", payload.UserId);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Connect to a Amazon CodeCatalyst dev environment
+        public static void RecordCodecatalystConnect(this ITelemetryLogger telemetryLogger, CodecatalystConnect payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codecatalyst_connect";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("userId", payload.UserId);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Workflow statistic for connecting to a dev environment
+        public static void RecordCodecatalystDevEnvironmentWorkflowStatistic(this ITelemetryLogger telemetryLogger, CodecatalystDevEnvironmentWorkflowStatistic payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codecatalyst_devEnvironmentWorkflowStatistic";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+
+                datum.AddMetadata("userId", payload.UserId);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("duration", payload.Duration);
+
+                datum.AddMetadata("codecatalyst_devEnvironmentWorkflowStep", payload.CodecatalystDevEnvironmentWorkflowStep);
+
+                datum.AddMetadata("codecatalyst_devEnvironmentWorkflowError", payload.CodecatalystDevEnvironmentWorkflowError);
+
                 datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
@@ -8571,7 +9026,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         private string _value;
         
         /// CREATE_FAILED
-        public static readonly AppRunnerServiceStatus CREATE_FAILED = new AppRunnerServiceStatus("CREATE_FAILED");
+        public static readonly AppRunnerServiceStatus CREATEFAILED = new AppRunnerServiceStatus("CREATE_FAILED");
         
         /// RUNNING
         public static readonly AppRunnerServiceStatus RUNNING = new AppRunnerServiceStatus("RUNNING");
@@ -8580,13 +9035,13 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public static readonly AppRunnerServiceStatus DELETED = new AppRunnerServiceStatus("DELETED");
         
         /// DELETE_FAILED
-        public static readonly AppRunnerServiceStatus DELETE_FAILED = new AppRunnerServiceStatus("DELETE_FAILED");
+        public static readonly AppRunnerServiceStatus DELETEFAILED = new AppRunnerServiceStatus("DELETE_FAILED");
         
         /// PAUSED
         public static readonly AppRunnerServiceStatus PAUSED = new AppRunnerServiceStatus("PAUSED");
         
         /// OPERATION_IN_PROGRESS
-        public static readonly AppRunnerServiceStatus OPERATION_IN_PROGRESS = new AppRunnerServiceStatus("OPERATION_IN_PROGRESS");
+        public static readonly AppRunnerServiceStatus OPERATIONINPROGRESS = new AppRunnerServiceStatus("OPERATION_IN_PROGRESS");
         
         public AppRunnerServiceStatus(string value)
         {
@@ -8790,7 +9245,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         private string _value;
         
         /// x86_64
-        public static readonly LambdaArchitecture X86_64 = new LambdaArchitecture("x86_64");
+        public static readonly LambdaArchitecture X8664 = new LambdaArchitecture("x86_64");
         
         /// arm64
         public static readonly LambdaArchitecture Arm64 = new LambdaArchitecture("arm64");
@@ -8851,6 +9306,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// dotnet6
         public static readonly Runtime Dotnet6 = new Runtime("dotnet6");
+        
+        /// dotnet7
+        public static readonly Runtime Dotnet7 = new Runtime("dotnet7");
         
         /// nodejs18.x
         public static readonly Runtime Nodejs18x = new Runtime("nodejs18.x");
@@ -8960,6 +9418,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// envVars
         public static readonly CredentialSourceId EnvVars = new CredentialSourceId("envVars");
         
+        /// awsId
+        public static readonly CredentialSourceId AwsId = new CredentialSourceId("awsId");
+        
         /// other
         public static readonly CredentialSourceId Other = new CredentialSourceId("other");
         
@@ -9007,6 +9468,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// ec2Metadata
         public static readonly CredentialType Ec2Metadata = new CredentialType("ec2Metadata");
+        
+        /// bearerToken
+        public static readonly CredentialType BearerToken = new CredentialType("bearerToken");
         
         /// other
         public static readonly CredentialType Other = new CredentialType("other");
@@ -9485,6 +9949,15 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// jsx
         public static readonly CodewhispererLanguage Jsx = new CodewhispererLanguage("jsx");
         
+        /// typescript
+        public static readonly CodewhispererLanguage Typescript = new CodewhispererLanguage("typescript");
+        
+        /// tsx
+        public static readonly CodewhispererLanguage Tsx = new CodewhispererLanguage("tsx");
+        
+        /// csharp
+        public static readonly CodewhispererLanguage Csharp = new CodewhispererLanguage("csharp");
+        
         public CodewhispererLanguage(string value)
         {
             this._value = value;
@@ -9588,6 +10061,81 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public static readonly CodewhispererTriggerType AutoTrigger = new CodewhispererTriggerType("AutoTrigger");
         
         public CodewhispererTriggerType(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Describes which parts of an application (that we know of) were synced to the cloud. "Code" resources follow the SAM spec: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-sync.html
+    public struct SyncedResources
+    {
+        
+        private string _value;
+        
+        /// AllResources
+        public static readonly SyncedResources AllResources = new SyncedResources("AllResources");
+        
+        /// CodeOnly
+        public static readonly SyncedResources CodeOnly = new SyncedResources("CodeOnly");
+        
+        public SyncedResources(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Type of Git repository provided to the Amazon CodeCatalyst dev environment create wizard
+    public struct CodecatalystCreateDevEnvironmentRepoType
+    {
+        
+        private string _value;
+        
+        /// linked
+        public static readonly CodecatalystCreateDevEnvironmentRepoType Linked = new CodecatalystCreateDevEnvironmentRepoType("linked");
+        
+        /// unlinked
+        public static readonly CodecatalystCreateDevEnvironmentRepoType Unlinked = new CodecatalystCreateDevEnvironmentRepoType("unlinked");
+        
+        /// none
+        public static readonly CodecatalystCreateDevEnvironmentRepoType None = new CodecatalystCreateDevEnvironmentRepoType("none");
+        
+        public CodecatalystCreateDevEnvironmentRepoType(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Locality of the Amazon CodeCatalyst update dev environment request (i.e., from the thin client or the local IDE instance)
+    public struct CodecatalystUpdateDevEnvironmentLocationType
+    {
+        
+        private string _value;
+        
+        /// remote
+        public static readonly CodecatalystUpdateDevEnvironmentLocationType Remote = new CodecatalystUpdateDevEnvironmentLocationType("remote");
+        
+        /// local
+        public static readonly CodecatalystUpdateDevEnvironmentLocationType Local = new CodecatalystUpdateDevEnvironmentLocationType("local");
+        
+        public CodecatalystUpdateDevEnvironmentLocationType(string value)
         {
             this._value = value;
         }
@@ -11259,7 +11807,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
-    /// Called when deploying a sam application
+    /// Called when deploying a SAM application
     public sealed class SamDeploy : BaseTelemetryEvent
     {
         
@@ -11275,7 +11823,32 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
-    /// Called when initing a sam application
+    /// Called when syncing a SAM application
+    public sealed class SamSync : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// Describes which parts of an application (that we know of) were synced to the cloud. "Code" resources follow the SAM spec: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-sync.html
+        public SyncedResources SyncedResources;
+        
+        /// The Lambda Package type of the function
+        public LambdaPackageType LambdaPackageType;
+        
+        /// Optional - The reason for a metric or exception depending on context
+        public string Reason;
+        
+        /// Optional - A generic version metadata
+        public string Version;
+        
+        public SamSync()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Called when initing a SAM application
     public sealed class SamInit : BaseTelemetryEvent
     {
         
@@ -11629,6 +12202,16 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ToolkitInit()
         {
             this.Passive = true;
+        }
+    }
+    
+    /// View logs for the toolkit
+    public sealed class ToolkitViewLogs : BaseTelemetryEvent
+    {
+        
+        public ToolkitViewLogs()
+        {
+            this.Passive = false;
         }
     }
     
@@ -12076,6 +12659,19 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// User clicked/activated a UI element. This does not necessarily have to be an explicit mouse click. Any user action that has the same behavior as a mouse click can use this event.
+    public sealed class UiClick : BaseTelemetryEvent
+    {
+        
+        /// An identifier associated with a UI element
+        public string ElementId;
+        
+        public UiClick()
+        {
+            this.Passive = false;
+        }
+    }
+    
     /// User requested that a resource be opened in the browser using the deeplink service
     public sealed class DeeplinkOpen : BaseTelemetryEvent
     {
@@ -12172,6 +12768,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The result of the operation
         public Result Result;
         
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
         public CodewhispererSecurityScan()
         {
             this.Passive = false;
@@ -12224,6 +12823,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The result of the operation
         public Result Result;
         
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
         public CodewhispererServiceInvocation()
         {
             this.Passive = false;
@@ -12270,6 +12872,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The type of the user trigger to send request to CodeWhisperer service
         public CodewhispererTriggerType CodewhispererTriggerType;
         
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
         public CodewhispererUserDecision()
         {
             this.Passive = false;
@@ -12307,6 +12912,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The type of the user trigger to send request to CodeWhisperer service
         public CodewhispererTriggerType CodewhispererTriggerType;
         
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
         public CodewhispererUserModification()
         {
             this.Passive = false;
@@ -12335,9 +12943,123 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Programming language of the CodeWhisperer recommendation
         public CodewhispererLanguage CodewhispererLanguage;
         
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
         public CodewhispererPerceivedLatency()
         {
             this.Passive = false;
+        }
+    }
+    
+    /// Create an Amazon CodeCatalyst Dev Environment
+    public sealed class CodecatalystCreateDevEnvironment : BaseTelemetryEvent
+    {
+        
+        /// Opaque AWS Builder ID identifier
+        public string UserId;
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// Optional - Type of Git repository provided to the Amazon CodeCatalyst dev environment create wizard
+        public CodecatalystCreateDevEnvironmentRepoType? CodecatalystCreateDevEnvironmentRepoType;
+        
+        public CodecatalystCreateDevEnvironment()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Update properties of a Amazon CodeCatalyst Dev Environment
+    public sealed class CodecatalystUpdateDevEnvironmentSettings : BaseTelemetryEvent
+    {
+        
+        /// Opaque AWS Builder ID identifier
+        public string UserId;
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// Locality of the Amazon CodeCatalyst update dev environment request (i.e., from the thin client or the local IDE instance)
+        public CodecatalystUpdateDevEnvironmentLocationType CodecatalystUpdateDevEnvironmentLocationType;
+        
+        public CodecatalystUpdateDevEnvironmentSettings()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Trigger a devfile update on a Amazon CodeCatalyst dev environment
+    public sealed class CodecatalystUpdateDevfile : BaseTelemetryEvent
+    {
+        
+        /// Opaque AWS Builder ID identifier
+        public string UserId;
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public CodecatalystUpdateDevfile()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Clone a Amazon CodeCatalyst code repository locally
+    public sealed class CodecatalystLocalClone : BaseTelemetryEvent
+    {
+        
+        /// Opaque AWS Builder ID identifier
+        public string UserId;
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public CodecatalystLocalClone()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Connect to a Amazon CodeCatalyst dev environment
+    public sealed class CodecatalystConnect : BaseTelemetryEvent
+    {
+        
+        /// Opaque AWS Builder ID identifier
+        public string UserId;
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public CodecatalystConnect()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Workflow statistic for connecting to a dev environment
+    public sealed class CodecatalystDevEnvironmentWorkflowStatistic : BaseTelemetryEvent
+    {
+        
+        /// Opaque AWS Builder ID identifier
+        public string UserId;
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// The duration of the operation in milliseconds
+        public double Duration;
+        
+        /// Workflow step name
+        public string CodecatalystDevEnvironmentWorkflowStep;
+        
+        /// Optional - Workflow error name
+        public string CodecatalystDevEnvironmentWorkflowError;
+        
+        public CodecatalystDevEnvironmentWorkflowStatistic()
+        {
+            this.Passive = true;
         }
     }
 }
