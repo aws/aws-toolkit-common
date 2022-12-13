@@ -11,7 +11,7 @@ val assertjVersion = "3.23.1"
 plugins {
     java
     `kotlin-dsl`
-    kotlin("jvm") version "1.7.21"
+    kotlin("jvm") version "1.7.22"
     `maven-publish`
     signing
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
