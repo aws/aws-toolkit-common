@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>Amazon.AwsToolkit.Telemetry.Events.Generator</RootNamespace>
     <AssemblyName>Amazon.AwsToolkit.Telemetry.Events.Generator</AssemblyName>
     <Authors>Amazon Web Services</Authors>
