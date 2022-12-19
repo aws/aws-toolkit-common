@@ -4,21 +4,11 @@ use tower_lsp::lsp_types::Diagnostic;
 use crate::{utils::tree_sitter::{IRString}, parsers::json_schema::{utils::to_diagnostic, errors::expected_items_error}};
 
 pub fn validate_min_length(node: &IRString, sub_schema: &Value) -> Option<Diagnostic> {
-    let min_length_property = sub_schema.get("minLength");
-    if min_length_property.is_none() {
-        return None;
-    }
-
-    let min_length_value = min_length_property.unwrap().as_i64();
-    if min_length_value.is_none() {
-        return None;
-    }
-
+    let min_length = sub_schema.get("minLength")?.as_i64()?.try_into().ok()?;
     let content_length = node.contents.len();
-    let min_length = min_length_value.unwrap().try_into();
 
-    if min_length.is_ok() && content_length < min_length.unwrap() {
-        return Some(to_diagnostic(node.start, node.end, expected_items_error(content_length, min_length.unwrap())));
+    if content_length < min_length {
+        return Some(to_diagnostic(node.start, node.end, expected_items_error(content_length, min_length)));
     }
 
     return None;

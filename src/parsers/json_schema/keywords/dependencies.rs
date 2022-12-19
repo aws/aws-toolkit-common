@@ -8,13 +8,9 @@ use tree_sitter::Node;
 use crate::{utils::tree_sitter::{start_position, end_position}, parsers::json_schema::{utils::{to_diagnostic, new_schema_ref}}};
 
 pub fn validate_dependencies(available_keys: &HashMap<String, Node>, sub_schema: &Value) -> Option<Vec<Diagnostic>> {
-    let dependencies_property = sub_schema.get("dependencies");
-    if dependencies_property.is_none() || !dependencies_property.unwrap().is_array() {
-        return None;
-    }
+    let dependencies = sub_schema.get("dependencies")?.as_array()?;
 
     let mut errors: Vec<Diagnostic> = Vec::new();
-    let dependencies = dependencies_property.unwrap().as_array().unwrap();
     for (i, dep) in dependencies.iter().enumerate() {
 
         // find the dependency

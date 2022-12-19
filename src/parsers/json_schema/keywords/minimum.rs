@@ -4,26 +4,17 @@ use tower_lsp::lsp_types::Diagnostic;
 use crate::{utils::tree_sitter::IRNumber, parsers::json_schema::{utils::to_diagnostic, num_utils::{get_number, JsonNumbers}, errors::minimum_error}};
 
 pub fn validate_minimum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnostic> {
-    let minimum_property = sub_schema.get("minimum");
-    if minimum_property.is_none() {
-        return None;
-    }
+    let minimum_property = sub_schema.get("minimum")?;
+    let minimum_value = get_number(JsonNumbers::Value(minimum_property))?;
 
-    let minimum_value_option = get_number(JsonNumbers::Value(minimum_property.unwrap()));
-    if minimum_value_option.is_none() {
-        return None;
-    }
+    let exclusive_minimum = sub_schema.get("exclusiveMinimum");
 
-    let minimum_value = minimum_value_option.unwrap();
-
-    let sub = sub_schema.get("exclusiveMinimum");
-
-    match sub {
+    match exclusive_minimum {
         Some(Value::Bool(boo)) => {
-            if boo == &true && node.value <= minimum_value_option.unwrap() {
+            if boo == &true && node.value <= minimum_value {
                 return Some(to_diagnostic(node.start, node.end, minimum_error(node.value, minimum_value)));
             }
-            if boo == &false && node.value < minimum_value_option.unwrap() {
+            if boo == &false && node.value < minimum_value {
                 return Some(to_diagnostic(node.start, node.end, minimum_error(node.value, minimum_value)));
             }
             return None;

@@ -4,21 +4,11 @@ use tower_lsp::lsp_types::Diagnostic;
 use crate::{utils::tree_sitter::{IRString}, parsers::json_schema::{utils::to_diagnostic, errors::expected_items_error}};
 
 pub fn validate_max_length(node: &IRString, sub_schema: &Value) -> Option<Diagnostic> {
-    let max_length_property = sub_schema.get("maxLength");
-    if max_length_property.is_none() {
-        return None;
-    }
-
-    let max_length_value = max_length_property.unwrap().as_i64();
-    if max_length_value.is_none() {
-        return None;
-    }
-
+    let max_length = sub_schema.get("maxLength")?.as_i64()?.try_into().ok()?;
     let content_length = node.contents.len();
-    let max_length = max_length_value.unwrap().try_into();
 
-    if max_length.is_ok() && content_length > max_length.unwrap() {
-        return Some(to_diagnostic(node.start, node.end, expected_items_error(content_length, max_length.unwrap())));
+    if content_length > max_length {
+        return Some(to_diagnostic(node.start, node.end, expected_items_error(content_length, max_length)));
     }
 
     return None;

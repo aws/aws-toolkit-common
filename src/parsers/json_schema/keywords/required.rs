@@ -6,22 +6,13 @@ use itertools::Itertools;
 use crate::{utils::tree_sitter::IRObject, parsers::json_schema::{utils::to_diagnostic, errors::required_error}};
 
 pub fn validate_required(node: &IRObject, sub_schema: &Value) -> Option<Diagnostic> {
-    let required_property = sub_schema.get("required");
-    if required_property.is_none() {
-        return None;
-    }
-
-    let required_values = required_property.unwrap().as_array();
-    if required_values.is_none() {
-        return None;
-    }
+    let required = sub_schema.get("required")?.as_array()?;
 
     // get the hashset of all the requirements
     let mut requirements_hash = HashSet::new();
-    for req in required_values.unwrap() {
+    for req in required {
         let potential_requirement = req.as_str();
         if potential_requirement.is_some() {
-            println!("{}", potential_requirement.unwrap());
             requirements_hash.insert(potential_requirement.unwrap());
         }
     }

@@ -4,21 +4,11 @@ use tower_lsp::lsp_types::Diagnostic;
 use crate::{utils::tree_sitter::IRObject, parsers::json_schema::{utils::to_diagnostic, errors::expected_properties_error}};
 
 pub fn validate_max_properties(node: &IRObject, sub_schema: &Value) -> Option<Diagnostic> {
-    let max_properties_property = sub_schema.get("maxProperties");
-    if max_properties_property.is_none() {
-        return None;
-    }
-
-    let max_properties_value = max_properties_property.unwrap().as_i64();
-    if max_properties_value.is_none() {
-        return None;
-    }
-
+    let max_properties = sub_schema.get("maxProperties")?.as_i64()?.try_into().ok()?;
     let properties_length = node.properties.len();
-    let max_properties = max_properties_value.unwrap().try_into();
 
-    if max_properties.is_ok() && properties_length > max_properties.unwrap() {
-        return Some(to_diagnostic(node.start, node.end, expected_properties_error(properties_length, max_properties.unwrap())));
+    if properties_length > max_properties {
+        return Some(to_diagnostic(node.start, node.end, expected_properties_error(properties_length, max_properties)));
     }
 
     return None;

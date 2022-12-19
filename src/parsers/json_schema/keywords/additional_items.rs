@@ -12,17 +12,14 @@ enum Items {
 }
 
 fn get_items(sub_schema: &Value) -> Option<Items> {
-    let items_property = sub_schema.get("items");
-    if items_property.is_none() {
-        return None;
-    }
+    let items_property = sub_schema.get("items")?;
 
     // TODO schema refs should be checked that the unwrap was successful before continuing
     match items_property {
-        Some(Value::Array(arr)) => {
+        Value::Array(arr) => {
             return Some(Items::Array(arr.iter().filter_map(|f| new_schema_ref(f)).collect_vec()));
         },
-        Some(Value::Object(obj)) => {
+        Value::Object(obj) => {
             return Some(Items::Object(new_schema_ref(&json!(obj)).unwrap()));
         },
         _ => None
@@ -30,13 +27,12 @@ fn get_items(sub_schema: &Value) -> Option<Items> {
 }
 
 fn get_additional_items(sub_schema: &Value) -> Option<Value> {
-    let additional_items_property = sub_schema.get("additionalItems");
-    if additional_items_property.is_none() || (!additional_items_property.unwrap().is_boolean() && !additional_items_property.unwrap().is_object()) {
+    let additional_items = sub_schema.get("additionalItems")?;
+    if !additional_items.is_boolean() && !additional_items.is_object() {
         return None;
     }
 
-    let additional_item_value = additional_items_property.unwrap();
-    let schema_ref = new_schema_ref(additional_item_value);
+    let schema_ref = new_schema_ref(additional_items);
     if schema_ref.is_some() {
         return Some(schema_ref.unwrap());
     }

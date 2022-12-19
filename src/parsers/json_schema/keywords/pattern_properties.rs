@@ -8,21 +8,13 @@ use tree_sitter::Node;
 use crate::parsers::json_schema::json_schema_parser::Validate;
 
 pub fn validate_pattern_properties(validate: &Validate, available_keys: &mut HashMap<String, Node>, sub_schema: &Value) -> Option<Vec<Diagnostic>> {
-    let properties_property = sub_schema.get("patternProperties");
-    if properties_property.is_none() {
-        return None;
-    }
-
-    let properties_value = properties_property.unwrap().as_object();
-    if properties_value.is_none() {
-        return None;
-    }
+    let properties = sub_schema.get("patternProperties")?.as_object()?;
 
     let mut errors = Vec::new();
     let mut processing = HashSet::new();
-    for (regex, schema) in properties_value.unwrap() {
+    for (regex, schema) in properties {
         let property_regex = Regex::new(regex);
-        
+
         if property_regex.is_ok() {
             let reg = property_regex.unwrap();
 

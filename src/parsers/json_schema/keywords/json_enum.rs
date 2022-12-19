@@ -4,12 +4,8 @@ use tower_lsp::lsp_types::Diagnostic;
 use crate::parsers::{json_schema::{utils::{to_diagnostic, is_equal2}}, ir::IR};
 
 pub fn validate_enum(node: &IR, file_contents: &String, sub_schema: &Value) -> Option<Diagnostic> {
-    let enum_property = sub_schema.get("enum");
-    if enum_property.is_none() || !enum_property.unwrap().is_array() {
-        return None;
-    }
+    let enum_value = sub_schema.get("enum")?.as_array()?;
 
-    let enum_value = enum_property.unwrap().as_array().unwrap();
     let mut found_match = false;
     for e in enum_value {
         if is_equal2(node, file_contents, e) {

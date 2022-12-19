@@ -6,13 +6,9 @@ use tower_lsp::lsp_types::Diagnostic;
 use crate::{utils::tree_sitter::IRArray, parsers::{json_schema::{utils::{to_diagnostic, get_value}, errors::unique_items_error}, ir::IR}};
 
 pub fn validate_unique_items(node: &IRArray, file_contents: &String, sub_schema: &Value) -> Option<Vec<Diagnostic>> {
-    let unique_items_property = sub_schema.get("uniqueItems");
-    if unique_items_property.is_none() {
-        return None;
-    }
+    let unique_items = sub_schema.get("uniqueItems")?.as_bool()?;
 
-    let unique_items_value = unique_items_property.unwrap().as_bool();
-    if unique_items_value.is_none() || unique_items_value.unwrap() == false {
+    if unique_items == false {
         return None;
     }
 
