@@ -18,7 +18,7 @@ pub fn validate_min_items(node: &IRArray, sub_schema: &Value) -> Option<Diagnost
     let min_items = min_items_value.unwrap().try_into();
 
     if min_items.is_ok() && items_length < min_items.unwrap() {
-        return Some(to_diagnostic(node.start, node.end, format!("Expected !{:#?} items but found !{:#?}", items_length, min_items.unwrap())));
+        return Some(to_diagnostic(node.start, node.end, format!("Expected {:#?} items but found {:#?}", items_length, min_items.unwrap())));
     }
 
     return None;

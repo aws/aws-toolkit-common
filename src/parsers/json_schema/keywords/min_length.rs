@@ -18,7 +18,7 @@ pub fn validate_min_length(node: &IRString, sub_schema: &Value) -> Option<Diagno
     let min_length = min_length_value.unwrap().try_into();
 
     if min_length.is_ok() && content_length < min_length.unwrap() {
-        return Some(to_diagnostic(node.start, node.end, format!("Expected !{:#?} items but found !{:#?}", content_length, min_length.unwrap())));
+        return Some(to_diagnostic(node.start, node.end, format!("Expected {:#?} items but found {:#?}", content_length, min_length.unwrap())));
     }
 
     return None;
