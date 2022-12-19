@@ -1,7 +1,7 @@
 use serde_json::Value;
 use tower_lsp::lsp_types::Diagnostic;
 
-use crate::{utils::tree_sitter::{IRArray}, parsers::json_schema::utils::to_diagnostic};
+use crate::{utils::tree_sitter::{IRArray}, parsers::json_schema::{utils::to_diagnostic, errors::expected_items_error}};
 
 pub fn validate_max_items(node: &IRArray, sub_schema: &Value) -> Option<Diagnostic> {
     let max_items_property = sub_schema.get("maxItems");
@@ -18,7 +18,7 @@ pub fn validate_max_items(node: &IRArray, sub_schema: &Value) -> Option<Diagnost
     let max_items = max_items_value.unwrap().try_into();
 
     if max_items.is_ok() && items_length > max_items.unwrap() {
-        return Some(to_diagnostic(node.start, node.end, format!("Expected {:#?} items but found {:#?}", items_length, max_items.unwrap())));
+        return Some(to_diagnostic(node.start, node.end, expected_items_error(items_length, max_items.unwrap())));
     }
 
     return None;

@@ -4,7 +4,7 @@ use serde_json::{Value, json};
 use tower_lsp::lsp_types::Diagnostic;
 use tree_sitter::Node;
 
-use crate::{parsers::json_schema::{json_schema_parser::Validate, utils::to_diagnostic}, utils::tree_sitter::{start_position, end_position}};
+use crate::{parsers::json_schema::{json_schema_parser::Validate, utils::to_diagnostic, errors::additional_properties_error}, utils::tree_sitter::{start_position, end_position}};
 
 pub fn validate_additional_properties(validate: &Validate, available_keys: &mut HashMap<String, Node>, sub_schema: &Value) -> Option<Vec<Diagnostic>> {
     let properties_property = sub_schema.get("additionalProperties");
@@ -27,9 +27,9 @@ pub fn validate_additional_properties(validate: &Validate, available_keys: &mut 
 
             } else {
                 // properties/patternProperties have already removed all their matching nodes, these errors shouldn't be here
-                for (key, value) in available_keys.clone() {
-                    available_keys.remove(&key);
-                    errors.push(to_diagnostic(start_position(value), end_position(value), format!("!{:#?} was declared but shouldn't be", key)));
+                for (additional_property, value) in available_keys.clone() {
+                    available_keys.remove(&additional_property);
+                    errors.push(to_diagnostic(start_position(value), end_position(value), additional_properties_error(additional_property)));
                 }    
             }
 

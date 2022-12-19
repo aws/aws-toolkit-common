@@ -1,7 +1,7 @@
 use serde_json::Value;
 use tower_lsp::lsp_types::Diagnostic;
 
-use crate::{utils::tree_sitter::IRNumber, parsers::json_schema::{utils::to_diagnostic, num_utils::{get_number, JsonNumbers}}};
+use crate::{utils::tree_sitter::IRNumber, parsers::json_schema::{utils::to_diagnostic, num_utils::{get_number, JsonNumbers}, errors::exclusive_maximum_error}};
 
 pub fn validate_exclusive_maximum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnostic> {
     let exclusive_maximum_property = sub_schema.get("exclusiveMaximum");
@@ -9,13 +9,14 @@ pub fn validate_exclusive_maximum(node: &IRNumber, sub_schema: &Value) -> Option
         return None;
     }
 
-    let exclusive_maximum_value = get_number(JsonNumbers::Value(exclusive_maximum_property.unwrap()));
-    if exclusive_maximum_value.is_none() {
+    let exclusive_maximum_json_value = get_number(JsonNumbers::Value(exclusive_maximum_property.unwrap()));
+    if exclusive_maximum_json_value.is_none() {
         return None;
     }
 
-    if node.value >= exclusive_maximum_value.unwrap() {
-        return Some(to_diagnostic(node.start, node.end, format!("Value !{:#?} was above the exclusive maximum of !{:#?}", node.value, exclusive_maximum_value.unwrap())));
+    let exclusive_maximum_value = exclusive_maximum_json_value.unwrap();
+    if node.value >= exclusive_maximum_value {
+        return Some(to_diagnostic(node.start, node.end, exclusive_maximum_error(node.value, exclusive_maximum_value)));
     }
 
     return None;

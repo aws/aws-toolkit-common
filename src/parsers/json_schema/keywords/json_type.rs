@@ -1,7 +1,7 @@
 use itertools::Itertools;
 use serde_json::Value;
 use tower_lsp::lsp_types::Diagnostic;
-use crate::{parsers::{json_schema::utils::{matches_type, to_diagnostic}, ir::IR}};
+use crate::{parsers::{json_schema::{utils::{matches_type, to_diagnostic}, errors::type_error}, ir::IR}};
 
 pub fn validate_type(ir_node: &IR, sub_schema: &Value) -> Option<Diagnostic> {
     let type_property = sub_schema.get("type");
@@ -25,12 +25,12 @@ pub fn validate_type(ir_node: &IR, sub_schema: &Value) -> Option<Diagnostic> {
 
         if !type_found {
             let missing_types = types_arr.unwrap().iter().filter(|f| f.as_str().is_some()).map(|f| f.as_str().unwrap()).join(", ");
-            return Some(to_diagnostic(start, end, format!("Incorrect type. Expected !{:#?} but found !{:#?}", kind, missing_types)));
+            return Some(to_diagnostic(start, end, type_error(kind, missing_types)));
         }
     } else {
         let types = type_property.unwrap().as_str();
         if types.is_some() && !matches_type(ir_node, types.unwrap()) {
-            return Some(to_diagnostic(start, end, format!("Incorrect type. Expected !{:#?} but found !{:#?}", kind, types.unwrap())));
+            return Some(to_diagnostic(start, end, type_error(kind, types.unwrap().to_string())));
         }
     }
 

@@ -1,7 +1,7 @@
 use serde_json::Value;
 use tower_lsp::lsp_types::Diagnostic;
 
-use crate::{utils::tree_sitter::{IRObject}, parsers::json_schema::utils::to_diagnostic};
+use crate::{utils::tree_sitter::{IRObject}, parsers::json_schema::{utils::to_diagnostic, errors::expected_properties_error}};
 
 pub fn validate_min_properties(node: &IRObject, sub_schema: &Value) -> Option<Diagnostic> {
     let min_properties_property = sub_schema.get("minProperties");
@@ -18,7 +18,7 @@ pub fn validate_min_properties(node: &IRObject, sub_schema: &Value) -> Option<Di
     let min_properties = min_properties_value.unwrap().try_into();
 
     if min_properties.is_ok() && properties_length < min_properties.unwrap() {
-        return Some(to_diagnostic(node.start, node.end, format!("Expected !{:#?} properties but found !{:#?}", properties_length, min_properties.unwrap())));
+        return Some(to_diagnostic(node.start, node.end, expected_properties_error(properties_length, min_properties.unwrap())));
     }
 
     return None;

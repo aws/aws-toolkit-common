@@ -3,7 +3,7 @@ use serde_json::{Value, json};
 use tower_lsp::lsp_types::Diagnostic;
 use std::cmp;
 
-use crate::{parsers::json_schema::{json_schema_parser::Validate, utils::{to_diagnostic, new_schema_ref}}, utils::tree_sitter::IRArray};
+use crate::{parsers::json_schema::{json_schema_parser::Validate, utils::{to_diagnostic, new_schema_ref}, errors::additional_items_error}, utils::tree_sitter::IRArray};
 
 #[derive(Clone)]
 enum Items {
@@ -106,7 +106,7 @@ pub fn validate_additional_items(validate: &Validate, node: &IRArray, sub_schema
     match additional_items_schema {
         Some(Value::Bool(boo)) => {
             if boo == false {
-                errors.push(to_diagnostic(node.start, node.end, format!("The array should have {:#?} items or less. Found {:#?}", processed_items, node.items.len())));
+                errors.push(to_diagnostic(node.start, node.end, additional_items_error(processed_items, node.items.len())));
             }
             return Some(errors);
         },

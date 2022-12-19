@@ -3,7 +3,7 @@ use std::collections::HashSet;
 use serde_json::Value;
 use tower_lsp::lsp_types::Diagnostic;
 use itertools::Itertools;
-use crate::{utils::tree_sitter::IRObject, parsers::json_schema::utils::to_diagnostic};
+use crate::{utils::tree_sitter::IRObject, parsers::json_schema::{utils::to_diagnostic, errors::required_error}};
 
 pub fn validate_required(node: &IRObject, sub_schema: &Value) -> Option<Diagnostic> {
     let required_property = sub_schema.get("required");
@@ -37,7 +37,7 @@ pub fn validate_required(node: &IRObject, sub_schema: &Value) -> Option<Diagnost
 
     if !requirements_hash.is_empty() {
         let missing_requirements = requirements_hash.into_iter().collect::<Vec<&str>>().iter().join(", ");
-        return Some(to_diagnostic(node.start, node.end, format!("Missing !{:#?}", missing_requirements)));
+        return Some(to_diagnostic(node.start, node.end, required_error(missing_requirements)));
     }
 
     return None;
