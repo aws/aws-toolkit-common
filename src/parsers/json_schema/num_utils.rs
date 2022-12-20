@@ -3,7 +3,7 @@ use serde_json::{Number, Value};
 // TODO rename, replace with trait
 // Make this more secure. Technically this will panic if the i64 cant be converted into the f64
 pub fn convert_i64_to_float(num: i64) -> f64 {
-    return num as f64;
+    num as f64
 }
 
 #[derive(Clone)]
@@ -51,5 +51,5 @@ pub fn get_number(potential_num: JsonNumbers) -> Option<f64> {
         return Some(potential_num.as_f64().unwrap());
     }
 
-    return None;
+    None
 }

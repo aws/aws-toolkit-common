@@ -25,11 +25,11 @@ fn get_items(sub_schema: &Value) -> Option<Items> {
     match items_property {
         Value::Array(arr) => {
             return Some(Items::Array(
-                arr.iter().filter_map(|f| new_schema_ref(f)).collect_vec(),
+                arr.iter().filter_map(new_schema_ref).collect_vec(),
             ));
         }
         Value::Object(obj) => {
-            return Some(Items::Object(new_schema_ref(&json!(obj)).unwrap()));
+            Some(Items::Object(new_schema_ref(&json!(obj)).unwrap()))
         }
         _ => None,
     }
@@ -45,7 +45,7 @@ fn get_additional_items(sub_schema: &Value) -> Option<Value> {
     if schema_ref.is_some() {
         return Some(schema_ref.unwrap());
     }
-    return None;
+    None
 }
 
 fn get_items_schema(items: &Option<Items>) -> Option<Vec<Value>> {
@@ -61,9 +61,9 @@ fn get_additional_items_schema(
 ) -> Option<Value> {
     match items {
         Some(Items::Array(_)) => {
-            return additional_items;
+            additional_items
         }
-        Some(Items::Object(obj)) => return Some(obj.to_owned()),
+        Some(Items::Object(obj)) => Some(obj.to_owned()),
         _ => None,
     }
 }
@@ -92,7 +92,7 @@ pub fn validate_additional_items(
             let node_schema = &items_schema[index];
             let item = node.items.get(index);
             if item.is_some() {
-                errors.extend(validate.validate_root(item.unwrap().walk(), &node_schema));
+                errors.extend(validate.validate_root(item.unwrap().walk(), node_schema));
             }
             index += 1;
         }
@@ -115,14 +115,14 @@ pub fn validate_additional_items(
 
     match additional_items_schema {
         Some(Value::Bool(boo)) => {
-            if boo == false {
+            if !boo {
                 errors.push(to_diagnostic(
                     node.start,
                     node.end,
                     additional_items_error(processed_items, node.items.len()),
                 ));
             }
-            return Some(errors);
+            Some(errors)
         }
         Some(Value::Object(obj)) => {
             let max_length = cmp::max(node.items.len(), processed_items);
@@ -130,10 +130,10 @@ pub fn validate_additional_items(
                 errors.extend(validate.validate_root(node.items[i].walk(), &json!(obj)));
             }
 
-            return Some(errors);
+            Some(errors)
         }
         _ => {
-            return Some(errors);
+            Some(errors)
         }
     }
 }

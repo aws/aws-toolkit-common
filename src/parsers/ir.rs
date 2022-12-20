@@ -59,7 +59,7 @@ impl IR<'_> {
             }
             _ => {
                 println!("{}", node.kind());
-                return None;
+                None
             }
         }
     }
@@ -120,11 +120,11 @@ pub fn convert_pair<'a>(
 
 pub fn convert_string(node: Node, file_contents: String) -> Result<IRString, ConversionError> {
     let contents = node.get_text(&file_contents);
-    return Ok(IRString::new(
+    Ok(IRString::new(
         contents,
         start_position(node),
         end_position(node),
-    ));
+    ))
 }
 
 pub fn convert_boolean(node: Node, file_contents: String) -> Result<IRBoolean, ConversionError> {
@@ -135,11 +135,11 @@ pub fn convert_boolean(node: Node, file_contents: String) -> Result<IRBoolean, C
     }
 
     let value: bool = contents.parse().unwrap();
-    return Ok(IRBoolean::new(
+    Ok(IRBoolean::new(
         value,
         start_position(node),
         end_position(node),
-    ));
+    ))
 }
 
 pub fn convert_number(node: Node, file_contents: String) -> Result<IRNumber, ConversionError> {
@@ -164,7 +164,7 @@ pub fn convert_number(node: Node, file_contents: String) -> Result<IRNumber, Con
         ));
     }
 
-    return Err(ConversionError {});
+    Err(ConversionError {})
 }
 
 pub fn convert_object<'a>(
@@ -203,8 +203,8 @@ pub fn convert_object<'a>(
         }
 
         pairs.push(IRPair::new(
-            IRString::new(String::from(key), start_position(node), end_position(node)),
-            s_child.unwrap().clone(),
+            IRString::new(key, start_position(node), end_position(node)),
+            s_child.unwrap(),
             start_position(node),
             end_position(node),
         ));
@@ -244,7 +244,7 @@ pub fn convert_array<'a>(
             continue;
         }
 
-        items.push(cur_node.clone());
+        items.push(cur_node);
 
         has_siblings = cursor.goto_next_sibling();
         cur_node = cursor.node();

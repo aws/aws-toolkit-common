@@ -44,7 +44,7 @@ pub fn validate_dependencies(
         }
     }
 
-    return Some(errors);
+    Some(errors)
 }
 
 enum Test<'a> {
@@ -67,15 +67,15 @@ fn _validate_dependencies(
                     errors.push(to_diagnostic(
                         start_position(node),
                         end_position(node),
-                        format!("dependencies error"),
+                        "dependencies error".to_string(),
                     ));
                 }
             }
-            return errors;
+            errors
         }
         _ => {
             // Validate the schema
-            return errors;
+            errors
         }
     }
 }

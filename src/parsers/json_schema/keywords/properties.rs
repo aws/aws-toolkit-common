@@ -22,5 +22,5 @@ pub fn validate_properties(
         }
     }
 
-    return Some(errors);
+    Some(errors)
 }

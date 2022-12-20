@@ -22,5 +22,5 @@ pub fn validate_exclusive_minimum(node: &IRNumber, sub_schema: &Value) -> Option
         ));
     }
 
-    return None;
+    None
 }

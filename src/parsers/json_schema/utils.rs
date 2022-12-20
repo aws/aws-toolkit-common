@@ -16,31 +16,31 @@ pub fn new_schema_ref(value: &Value) -> Option<Value> {
 }
 
 pub fn to_diagnostic(start: Position, end: Position, error: String) -> Diagnostic {
-    return Diagnostic::new(Range::new(start, end), None, None, None, error, None, None);
+    Diagnostic::new(Range::new(start, end), None, None, None, error, None, None)
 }
 
 pub fn matches_type(ir_node: &IR, json_type: &str) -> bool {
     match ir_node {
         IR::IRArray(arr) => {
-            return arr.kind == json_type;
+            arr.kind == json_type
         }
         IR::IRBoolean(boo) => {
-            return boo.kind == json_type;
+            boo.kind == json_type
         }
         IR::IRNumber(num) => {
-            return num.kind == json_type || (num.is_integer && json_type == "integer");
+            num.kind == json_type || (num.is_integer && json_type == "integer")
         }
         IR::IRObject(obj) => {
-            return obj.kind == json_type;
+            obj.kind == json_type
         }
         IR::IRPair(pair) => {
-            return pair.kind == json_type;
+            pair.kind == json_type
         }
         IR::IRString(str) => {
-            return str.kind == json_type;
+            str.kind == json_type
         }
         IR::IRNull(null) => {
-            return null.kind == json_type;
+            null.kind == json_type
         }
     }
 }
@@ -96,14 +96,14 @@ pub fn get_value(ir_node: IR, file_contents: &String) -> JSONValues {
                     unique_items.push(get_value(ir_node.unwrap(), file_contents));
                 }
             }
-            return JSONValues::Array(unique_items);
+            JSONValues::Array(unique_items)
         }
         IR::IRBoolean(boo) => {
-            return JSONValues::Boolean(boo.value);
+            JSONValues::Boolean(boo.value)
         }
         IR::IRNumber(num) => {
             // Technically this is kind of a hack, but f64 doesn't support Eq
-            return JSONValues::String(num.value.to_string());
+            JSONValues::String(num.value.to_string())
         }
         IR::IRObject(obj) => {
             let mut unique_objects = HashMap::new();
@@ -116,7 +116,7 @@ pub fn get_value(ir_node: IR, file_contents: &String) -> JSONValues {
                     );
                 }
             }
-            return JSONValues::Object(unique_objects);
+            JSONValues::Object(unique_objects)
         }
         IR::IRPair(pair) => {
             let mut unique_pair = HashMap::new();
@@ -127,13 +127,13 @@ pub fn get_value(ir_node: IR, file_contents: &String) -> JSONValues {
                     get_value(ir_value_node.unwrap(), file_contents),
                 );
             }
-            return JSONValues::Object(unique_pair);
+            JSONValues::Object(unique_pair)
         }
         IR::IRString(str) => {
-            return JSONValues::String(str.contents);
+            JSONValues::String(str.contents)
         }
         IR::IRNull(_) => {
-            return JSONValues::String("null".to_string());
+            JSONValues::String("null".to_string())
         }
     }
 }
@@ -154,10 +154,10 @@ pub fn is_equal(ir_node: &IR, file_contents: &String, value: &Value) -> bool {
                 }
             }
             // TODO check the array length?
-            return true;
+            true
         }
         (IR::IRBoolean(boo), Value::Bool(second_boo)) => {
-            return &boo.value == second_boo;
+            &boo.value == second_boo
         }
         (IR::IRNumber(num), Value::Number(arr)) => {
             if arr.is_i64() {
@@ -167,7 +167,7 @@ pub fn is_equal(ir_node: &IR, file_contents: &String, value: &Value) -> bool {
             if arr.is_f64() {
                 return num.value == arr.as_f64().unwrap();
             }
-            return false;
+            false
         }
         (IR::IRObject(obj), Value::Object(second_obj)) => {
             for pair in &obj.properties {
@@ -184,16 +184,16 @@ pub fn is_equal(ir_node: &IR, file_contents: &String, value: &Value) -> bool {
                     return false;
                 }
             }
-            return true;
+            true
         }
         (IR::IRString(str), Value::String(cmp_val)) => {
-            return &str.contents == cmp_val;
+            &str.contents == cmp_val
         }
         (IR::IRNull(_), Value::Null) => {
-            return true;
+            true
         }
         (_, _) => {
-            return false;
+            false
         }
     }
 }
@@ -203,5 +203,5 @@ pub fn parse(text: String) -> Tree {
     parser
         .set_language(tree_sitter_json::language())
         .expect("Error loading json grammar");
-    return parser.parse(text, None).unwrap();
+    parser.parse(text, None).unwrap()
 }

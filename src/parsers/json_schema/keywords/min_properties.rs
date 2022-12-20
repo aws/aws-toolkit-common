@@ -18,5 +18,5 @@ pub fn validate_min_properties(node: &IRObject, sub_schema: &Value) -> Option<Di
         ));
     }
 
-    return None;
+    None
 }

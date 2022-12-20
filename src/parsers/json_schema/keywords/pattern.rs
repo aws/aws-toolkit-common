@@ -21,5 +21,5 @@ pub fn validate_pattern(node: &IRString, sub_schema: &Value) -> Option<Diagnosti
         ));
     }
 
-    return None;
+    None
 }

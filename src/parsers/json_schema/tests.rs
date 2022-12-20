@@ -33,7 +33,7 @@ fn test_suite(_server_address: &str, test_case: TestCase) {
     let val = Validate::new(parse_result, schema, test_case.instance.to_string());
     let errors = val.validate();
     if test_case.is_valid {
-        if errors.len() > 0 {
+        if !errors.is_empty() {
             panic!(
                 "Test case {} was expected to be valid.\n    Schema={}\n    Instance={}",
                 test_case.name,
@@ -41,14 +41,12 @@ fn test_suite(_server_address: &str, test_case: TestCase) {
                 test_case.instance
             );
         }
-    } else {
-        if errors.len() == 0 {
-            panic!(
-                "Test case {} was expected to be invalid.\n    Schema={}\n    Instance={}",
-                test_case.name,
-                test_case.schema.clone(),
-                test_case.instance
-            );
-        }
+    } else if errors.is_empty() {
+        panic!(
+            "Test case {} was expected to be invalid.\n    Schema={}\n    Instance={}",
+            test_case.name,
+            test_case.schema.clone(),
+            test_case.instance
+        );
     }
 }

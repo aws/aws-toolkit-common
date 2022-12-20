@@ -38,5 +38,5 @@ pub fn validate_pattern_properties(
         available_keys.remove(&property);
     }
 
-    return Some(errors);
+    Some(errors)
 }

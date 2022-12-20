@@ -34,5 +34,5 @@ pub fn validate_enum(node: &IR, file_contents: &String, sub_schema: &Value) -> O
         ));
     }
 
-    return None;
+    None
 }

@@ -18,5 +18,5 @@ pub fn validate_max_items(node: &IRArray, sub_schema: &Value) -> Option<Diagnost
         ));
     }
 
-    return None;
+    None
 }

@@ -31,16 +31,16 @@ pub struct Validate {
 impl Validate {
     pub fn new(tree: Tree, schema: Value, file_contents: String) -> Self {
         // TODO when adding yaml support, make the converter depend on the incoming language
-        return Validate {
+        Validate {
             tree,
             schema,
             contents: file_contents,
-        };
+        }
     }
 
     pub fn validate(&self) -> Vec<Diagnostic> {
         let cursor = self.tree.walk();
-        return self.validate_root(cursor, &self.schema);
+        self.validate_root(cursor, &self.schema)
     }
 
     pub fn validate_root(&self, mut cursor: TreeCursor, sub_schema: &Value) -> Vec<Diagnostic> {
@@ -64,31 +64,31 @@ impl Validate {
         match ir_nodes.unwrap() {
             IR::IRString(key) => {
                 let str_errors = self.validate_string(key, sub_schema);
-                return [node_errors, str_errors].concat();
+                [node_errors, str_errors].concat()
             }
             IR::IRArray(arr) => {
                 let array_errors = self.validate_array(arr, sub_schema);
-                return [node_errors, array_errors].concat();
+                [node_errors, array_errors].concat()
             }
             IR::IRBoolean(_) => {
-                return node_errors;
+                node_errors
             }
             IR::IRObject(obj) => {
                 let obj_errors = self.validate_object(obj, sub_schema);
-                return [node_errors, obj_errors].concat();
+                [node_errors, obj_errors].concat()
             }
             IR::IRPair(pair) => {
                 // TODO handle error on unwrapping the children
                 let key_errors = self.validate_root(node.child(0).unwrap().walk(), sub_schema);
                 let value_errors = self.validate_root(pair.value.walk(), sub_schema);
-                return [node_errors, key_errors, value_errors].concat();
+                [node_errors, key_errors, value_errors].concat()
             }
             IR::IRNumber(num) => {
                 let num_errors = self.validate_number(num, sub_schema);
-                return [node_errors, num_errors].concat();
+                [node_errors, num_errors].concat()
             }
             IR::IRNull(_) => {
-                return node_errors;
+                node_errors
             }
         }
     }
@@ -104,7 +104,7 @@ impl Validate {
             errors.push(error);
         }
 
-        return errors;
+        errors
     }
 
     fn validate_object(&self, obj: IRObject, sub_schema: &Value) -> Vec<Diagnostic> {
@@ -140,7 +140,7 @@ impl Validate {
         if let Some(error) = validate_required(&obj, sub_schema) {
             errors.push(error);
         }
-        return errors;
+        errors
     }
 
     fn validate_array(&self, array: IRArray, sub_schema: &Value) -> Vec<Diagnostic> {
@@ -157,7 +157,7 @@ impl Validate {
         if let Some(error) = validate_unique_items(&array, &self.contents, sub_schema) {
             errors.push(error);
         }
-        return errors;
+        errors
     }
 
     fn validate_string(&self, content: IRString, sub_schema: &Value) -> Vec<Diagnostic> {
@@ -174,7 +174,7 @@ impl Validate {
         if let Some(error) = validate_format(&content, sub_schema) {
             errors.push(error);
         }
-        return errors;
+        errors
     }
 
     fn validate_number(&self, number: IRNumber, sub_schema: &Value) -> Vec<Diagnostic> {
@@ -194,7 +194,7 @@ impl Validate {
         if let Some(error) = validate_maximum(&number, sub_schema) {
             errors.push(error);
         }
-        return errors;
+        errors
     }
 }
 
@@ -210,7 +210,7 @@ mod tests {
     fn validation_test(contents: String, schema: Value) -> Vec<Diagnostic> {
         let parse_result = parse(contents.to_string());
         let val = Validate::new(parse_result, schema, contents);
-        return val.validate();
+        val.validate()
     }
 
     #[test]

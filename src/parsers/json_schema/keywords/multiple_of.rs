@@ -22,5 +22,5 @@ pub fn validate_multiple_of(node: &IRNumber, sub_schema: &Value) -> Option<Diagn
         ));
     }
 
-    return None;
+    None
 }

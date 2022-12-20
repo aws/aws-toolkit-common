@@ -21,10 +21,10 @@ pub fn hover(document: &TextDocument, params: HoverParams) -> Hover {
         )
         .unwrap();
 
-    return Hover {
+    Hover {
         contents: HoverContents::Scalar(MarkedString::String(String::from(""))),
         range: Some(Range {
             ..Default::default()
         }),
-    };
+    }
 }

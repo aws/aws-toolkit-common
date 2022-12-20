@@ -32,7 +32,7 @@ pub fn validate_maximum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnosti
                     maximum_error(expected_maximum, node.value),
                 ));
             }
-            return None;
+            None
         }
         Some(Value::Number(num)) => {
             let largest_maximum = max(expected_maximum, get_number(JsonNumbers::Number(num)));
@@ -44,7 +44,7 @@ pub fn validate_maximum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnosti
                     maximum_error(largest_maximum, node.value),
                 ));
             }
-            return None;
+            None
         }
         _ => {
             if node.value > expected_maximum {
@@ -54,7 +54,7 @@ pub fn validate_maximum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnosti
                     maximum_error(expected_maximum, node.value),
                 ));
             }
-            return None;
+            None
         }
     }
 }
@@ -67,5 +67,5 @@ fn max(maximum_value: f64, exclusive_maximum_value: Option<f64>) -> f64 {
         }
         return emax_val;
     }
-    return maximum_value;
+    maximum_value
 }

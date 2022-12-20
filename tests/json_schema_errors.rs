@@ -7,7 +7,7 @@ use tower_lsp::lsp_types::Diagnostic;
 fn validate(input: &str, schema: Value) -> Vec<Diagnostic> {
     let parse_result = parse(input.to_string());
     let val = Validate::new(parse_result, schema, input.to_string());
-    return val.validate();
+    val.validate()
 }
 
 #[test]

@@ -32,7 +32,7 @@ pub fn validate_minimum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnosti
                     minimum_error(expected_minimum, node.value),
                 ));
             }
-            return None;
+            None
         }
         Some(Value::Number(num)) => {
             let smallest_minimum = min(expected_minimum, get_number(JsonNumbers::Number(num)));
@@ -44,7 +44,7 @@ pub fn validate_minimum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnosti
                     minimum_error(smallest_minimum, node.value),
                 ));
             }
-            return None;
+            None
         }
         _ => {
             if node.value < expected_minimum {
@@ -54,7 +54,7 @@ pub fn validate_minimum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnosti
                     minimum_error(expected_minimum, node.value),
                 ));
             }
-            return None;
+            None
         }
     }
 }
@@ -67,5 +67,5 @@ fn min(minimum_value: f64, exclusive_minimum_value: Option<f64>) -> f64 {
         }
         return emin_val;
     }
-    return minimum_value;
+    minimum_value
 }

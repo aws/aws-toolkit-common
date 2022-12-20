@@ -18,5 +18,5 @@ pub fn validate_min_items(node: &IRArray, sub_schema: &Value) -> Option<Diagnost
         ));
     }
 
-    return None;
+    None
 }

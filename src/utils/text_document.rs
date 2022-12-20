@@ -17,6 +17,6 @@ impl ASTNodeExt for Node<'_> {
         return self
             .utf8_text(contents.as_bytes())
             .unwrap()
-            .replace("\"", "");
+            .replace('\"', "");
     }
 }

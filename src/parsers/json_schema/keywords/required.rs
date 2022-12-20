@@ -43,5 +43,5 @@ pub fn validate_required(node: &IRObject, sub_schema: &Value) -> Option<Diagnost
         ));
     }
 
-    return None;
+    None
 }

@@ -47,5 +47,5 @@ pub fn validate_type(ir_node: &IR, sub_schema: &Value) -> Option<Diagnostic> {
         }
     }
 
-    return None;
+    None
 }

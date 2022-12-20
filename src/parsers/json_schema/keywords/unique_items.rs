@@ -23,7 +23,7 @@ pub fn validate_unique_items(
 ) -> Option<Diagnostic> {
     let unique_items = sub_schema.get("uniqueItems")?.as_bool()?;
 
-    if unique_items == false {
+    if !unique_items {
         return None;
     }
 
@@ -48,7 +48,7 @@ pub fn validate_unique_items(
         // Get all the unique items
         let duplicates = duplicate_items
             .iter()
-            .map(|node| node.get_text(&file_contents))
+            .map(|node| node.get_text(file_contents))
             .join(", ");
         return Some(to_diagnostic(
             node.start,
@@ -57,5 +57,5 @@ pub fn validate_unique_items(
         ));
     }
 
-    return None;
+    None
 }

@@ -2,17 +2,17 @@ use tower_lsp::lsp_types::Position;
 use tree_sitter::Node;
 
 pub fn start_position(node: Node) -> Position {
-    return Position::new(
+    Position::new(
         node.start_position().row.try_into().unwrap(),
         node.start_position().column.try_into().unwrap(),
-    );
+    )
 }
 
 pub fn end_position(node: Node) -> Position {
-    return Position::new(
+    Position::new(
         node.end_position().row.try_into().unwrap(),
         node.end_position().column.try_into().unwrap(),
-    );
+    )
 }
 
 #[derive(Debug, Clone)]
@@ -24,11 +24,11 @@ pub struct IRNull {
 
 impl IRNull {
     pub fn new(start: Position, end: Position) -> IRNull {
-        return IRNull {
+        IRNull {
             kind: String::from("null"),
             start,
             end,
-        };
+        }
     }
 }
 
@@ -42,12 +42,12 @@ pub struct IRString {
 
 impl IRString {
     pub fn new(contents: String, start: Position, end: Position) -> IRString {
-        return IRString {
+        IRString {
             kind: String::from("string"),
             contents,
             start,
             end,
-        };
+        }
     }
 }
 
@@ -61,12 +61,12 @@ pub struct IRBoolean {
 
 impl IRBoolean {
     pub fn new(value: bool, start: Position, end: Position) -> IRBoolean {
-        return IRBoolean {
+        IRBoolean {
             kind: String::from("boolean"),
             value,
             start,
             end,
-        };
+        }
     }
 }
 
@@ -80,12 +80,12 @@ pub struct IRObject<'a> {
 
 impl IRObject<'_> {
     pub fn new(properties: Vec<IRPair>, start: Position, end: Position) -> IRObject {
-        return IRObject {
+        IRObject {
             kind: String::from("object"),
             properties,
             start,
             end,
-        };
+        }
     }
 }
 
@@ -99,12 +99,12 @@ pub struct IRArray<'a> {
 
 impl IRArray<'_> {
     pub fn new(items: Vec<Node>, start: Position, end: Position) -> IRArray {
-        return IRArray {
+        IRArray {
             kind: String::from("array"),
             items,
             start,
             end,
-        };
+        }
     }
 }
 
@@ -119,13 +119,13 @@ pub struct IRNumber {
 
 impl IRNumber {
     pub fn new(value: f64, is_integer: bool, start: Position, end: Position) -> IRNumber {
-        return IRNumber {
+        IRNumber {
             kind: String::from("number"),
             is_integer,
             value,
             start,
             end,
-        };
+        }
     }
 }
 
@@ -140,12 +140,12 @@ pub struct IRPair<'a> {
 
 impl IRPair<'_> {
     pub fn new(key: IRString, value: Node, start: Position, end: Position) -> IRPair {
-        return IRPair {
+        IRPair {
             kind: String::from("pair"),
             key,
             value,
             start,
             end,
-        };
+        }
     }
 }

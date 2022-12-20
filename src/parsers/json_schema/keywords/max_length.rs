@@ -18,5 +18,5 @@ pub fn validate_max_length(node: &IRString, sub_schema: &Value) -> Option<Diagno
         ));
     }
 
-    return None;
+    None
 }

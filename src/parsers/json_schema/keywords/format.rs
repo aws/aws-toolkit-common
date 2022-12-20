@@ -17,7 +17,7 @@ fn _validate_format(node: &IRString, error: &str, pattern: &str) -> Option<Diagn
     if reg.is_match(&node.contents) {
         return Some(to_diagnostic(node.start, node.end, error.to_string()));
     }
-    return None;
+    None
 }
 
 pub fn validate_format(node: &IRString, sub_schema: &Value) -> Option<Diagnostic> {
@@ -33,7 +33,7 @@ pub fn validate_format(node: &IRString, sub_schema: &Value) -> Option<Diagnostic
                     String::from("Not a uri"),
                 ));
             }
-            return None;
+            None
         }
         "date-time" => {
             let parse = OffsetDateTime::parse(
@@ -47,7 +47,7 @@ pub fn validate_format(node: &IRString, sub_schema: &Value) -> Option<Diagnostic
                     String::from("Not a date-time"),
                 ));
             }
-            return None;
+            None
         }
         "email" => {
             let parse = List.parse_email_address(&node.contents);
@@ -58,7 +58,7 @@ pub fn validate_format(node: &IRString, sub_schema: &Value) -> Option<Diagnostic
                     String::from("Not an email address"),
                 ));
             }
-            return None;
+            None
         }
         "hostname" => {
             let parse = List.parse_domain_name(&node.contents);
@@ -69,7 +69,7 @@ pub fn validate_format(node: &IRString, sub_schema: &Value) -> Option<Diagnostic
                     String::from("Not a hostname"),
                 ));
             }
-            return None;
+            None
         }
         "ipv4" => {
             let addr = IpAddr::from_str(&node.contents);
@@ -80,7 +80,7 @@ pub fn validate_format(node: &IRString, sub_schema: &Value) -> Option<Diagnostic
                     String::from("Not an ipv4 address"),
                 ));
             }
-            return None;
+            None
         }
         "ipv6" => {
             let addr = IpAddr::from_str(&node.contents);
@@ -91,10 +91,10 @@ pub fn validate_format(node: &IRString, sub_schema: &Value) -> Option<Diagnostic
                     String::from("Not an ipv6 address"),
                 ));
             }
-            return None;
+            None
         }
         _ => {
-            return None;
+            None
         }
     }
 }

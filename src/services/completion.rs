@@ -44,7 +44,7 @@ pub fn completion(document: &TextDocument, params: CompletionParams) -> Vec<Comp
 
     let node_val = n.get_text(&document.contents);
     rets.push(CompletionItem::new_simple(
-        node_val.to_string(),
+        node_val,
         n.kind().to_string(),
     ));
 
@@ -60,7 +60,7 @@ pub fn completion(document: &TextDocument, params: CompletionParams) -> Vec<Comp
         n.parent().unwrap().child(0).unwrap().kind().to_string(),
     ));
 
-    return rets;
+    rets
 }
 
 // TODO calculate indent sizes so we know how much to indent each bracket
@@ -88,7 +88,7 @@ mod tests {
         parser
             .set_language(tree_sitter_json::language())
             .expect("Error loading json grammar");
-        return parser.parse(text, None).unwrap();
+        parser.parse(text, None).unwrap()
     }
 
     fn completion_test(contents: &str, line: u32, ch: u32) -> Vec<CompletionItem> {
@@ -118,7 +118,7 @@ mod tests {
                 },
             },
         };
-        return completion(&document, params);
+        completion(&document, params)
     }
 
     #[test]

@@ -42,7 +42,7 @@ pub fn validate_additional_properties(
                 }
             }
 
-            return Some(errors);
+            Some(errors)
         }
         Value::Object(obj) => {
             // TODO using clone here is probably an anti-pattern, but we need to remove processed properties. Theoretically we could return Vec<processed properties> in addition to diagnostics
@@ -52,10 +52,10 @@ pub fn validate_additional_properties(
                 errors.extend(validate.validate_root(value.walk(), &json!(obj)));
             }
 
-            return Some(errors);
+            Some(errors)
         }
         _ => {
-            return Some(errors);
+            Some(errors)
         }
     }
 }
