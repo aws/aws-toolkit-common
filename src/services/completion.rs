@@ -1,5 +1,5 @@
 use tower_lsp::{lsp_types::{CompletionParams, CompletionItem}};
-use tree_sitter::{Point};
+use tree_sitter::Point;
 
 use crate::utils::text_document::TextDocument;
 use crate::utils::text_document::ASTNodeExt;
@@ -23,27 +23,11 @@ pub fn completion(document: &TextDocument, params: CompletionParams) -> Vec<Comp
     // If the parent is document? then we at the root level
     
     // When we are autocompleting something in the root level (with nothing pre-typed), that will always be a document
-    let parent = n.parent();
-
+ 
     // notes: When there is currently no items in the document e.g. { } you'll get an object node
     // when you try and auto complete after you have a node in the document e.g. { "AWSTemplateFormatVersion": "2010" } you'll get document node
 
     // we are at the top of the document
-    if (parent.is_some() && parent.unwrap().kind() == "document") || n.kind() == "document" {
-        // if we are a document then we need to get the first object node if one exists
-        // if an object node exists, we can use this as the starting point for getting siblings at that level
-        // also, it will always? be the first node after the document
-        let mut pair_node = Some(n);
-        if n.kind() == "document" {
-            pair_node = n.child(0); // Object node
-            if pair_node.is_none() {
-                return rets;
-            }
-        }
-        pair_node = pair_node.unwrap().child(0); // the actual pair node (hopefully)
-
-        return rets;
-    }
 
     // This is the inside of the where you're autocompleting. e.g. if you are autocompletion "resources": { <- here } the object will be type Object
     // and the parent will be "resources": {} with type pair. The first child of that pair will be "resources"

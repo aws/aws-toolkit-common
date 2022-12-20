@@ -1,6 +1,6 @@
 
 use tower_lsp::lsp_types::Position;
-use tree_sitter::{Node};
+use tree_sitter::Node;
 
 use crate::utils::{tree_sitter::{IRString, IRBoolean, IRObject, IRArray, IRNumber, IRPair, start_position, end_position, IRNull}, text_document::ASTNodeExt};
 
@@ -12,9 +12,7 @@ use super::json_schema::num_utils::convert_i64_to_float;
 // that way we keep the speed of parsing the initial tree, and then we re-compute the results
 
 #[derive(Debug)]
-pub struct ConversionError {
-    msg: String
-}
+pub struct ConversionError {}
 
 #[derive(Debug, Clone)]
 pub enum IR<'a> {
@@ -114,9 +112,7 @@ pub fn convert_boolean(node: Node, file_contents: String) -> Result<IRBoolean, C
     let contents = node.get_text(&file_contents);
 
     if contents != "true" && contents != "false" {
-        return Err(ConversionError{
-            msg: String::from("Could not convert node to boolean")
-        })
+        return Err(ConversionError{});
     }
 
     let value: bool = contents.parse().unwrap();
@@ -135,9 +131,7 @@ pub fn convert_number(node: Node, file_contents: String) -> Result<IRNumber, Con
         return Ok(IRNumber::new(f64_val.ok().unwrap(), false, start_position(node), end_position(node)));
     }
 
-    return Err(ConversionError{
-        msg: String::from("Could not convert node to number")
-    })
+    return Err(ConversionError{});
 }
 
 pub fn convert_object<'a>(node: Node<'a>, file_contents: String) -> Result<IRObject<'a>, ConversionError> {
@@ -162,18 +156,14 @@ pub fn convert_object<'a>(node: Node<'a>, file_contents: String) -> Result<IRObj
 
         let f_child = cur_node.child(0);
         if f_child.is_none() {
-            return Err(ConversionError{
-                msg: String::from("Expected node but found none")
-            })
+            return Err(ConversionError{});
         }
 
         let key = f_child.unwrap().get_text(&file_contents);
         
         let s_child = cur_node.child(2);
         if s_child.is_none() {
-            return Err(ConversionError{
-                msg: String::from("Expected node but found none")
-            })
+            return Err(ConversionError{});
         }
 
         pairs.push(
