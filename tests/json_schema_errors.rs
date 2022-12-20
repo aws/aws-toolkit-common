@@ -229,7 +229,7 @@ fn required_invalid_multiple_items() {
         "required": ["foo", "bar"]
     }));
     assert_eq!(validation_result.len(), 1, "Expected 1 error");
-    assert_eq!(validation_result[0].message, required_error(String::from("foo, bar")));
+    assert_eq!(validation_result[0].message, required_error(String::from("bar, foo")));
 }
 
 #[test]

@@ -27,7 +27,7 @@ pub fn validate_required(node: &IRObject, sub_schema: &Value) -> Option<Diagnost
     }
 
     if !requirements_hash.is_empty() {
-        let missing_requirements = requirements_hash.into_iter().collect::<Vec<&str>>().iter().join(", ");
+        let missing_requirements = requirements_hash.into_iter().collect::<Vec<&str>>().iter().sorted().join(", ");
         return Some(to_diagnostic(node.start, node.end, required_error(missing_requirements)));
     }
 
