@@ -55,7 +55,7 @@ fn max_length_invalid() {
         "maxLength": 2
     }));
     assert_eq!(validation_result.len(), 1, "Expected 1 error");
-    assert_eq!(validation_result[0].message, expected_items_error(2, 4));
+    assert_eq!(validation_result[0].message, expected_length_error(2, 4));
 }
 
 #[test]
@@ -82,7 +82,7 @@ fn min_length_invalid() {
         "minLength": 10
     }));
     assert_eq!(validation_result.len(), 1, "Expected 1 error");
-    assert_eq!(validation_result[0].message, expected_items_error(10, 4));
+    assert_eq!(validation_result[0].message, expected_length_error(10, 4));
 }
 
 #[test]

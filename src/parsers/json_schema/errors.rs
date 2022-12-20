@@ -23,6 +23,10 @@ pub fn expected_items_error(expected: usize, found: usize) -> String {
     return format!("Expected {:#?} items but found {:#?}", expected, found);
 }
 
+pub fn expected_length_error(expected: usize, found: usize) -> String {
+    return format!("Expected an item of length {:#?} but found {:#?}", expected, found);
+}
+
 pub fn expected_properties_error(expected: usize, found: usize) -> String {
     return format!("Expected {:#?} properties but found {:#?}", expected, found);
 }
