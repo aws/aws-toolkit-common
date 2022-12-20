@@ -39,7 +39,7 @@ pub fn validate_minimum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnosti
 fn min(minimum_value: f64, exclusive_minimum_value: Option<f64>) -> f64 {
     if exclusive_minimum_value.is_some() {
         let emin_val = exclusive_minimum_value.unwrap();
-        if minimum_value > emin_val {
+        if minimum_value < emin_val {
             return minimum_value;
         }
         return emin_val;

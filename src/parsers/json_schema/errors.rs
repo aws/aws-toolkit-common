@@ -12,7 +12,7 @@ pub fn exclusive_maximum_error(expected: f64, found: f64) -> String {
 }
 
 pub fn exclusive_minimum_error(expected: f64, found: f64) -> String {
-    return format!("Value {:#?} was above the exclusive minimum of {:#?}", found, expected);
+    return format!("Value {:#?} was below the exclusive minimum of {:#?}", found, expected);
 }
 
 pub fn enum_error(expected: Vec<String>, found: String) -> String {
@@ -40,11 +40,11 @@ pub fn expected_properties_error(expected: usize, found: usize) -> String {
 }
 
 pub fn maximum_error(expected: f64, found: f64) -> String {
-    return format!("Value {:#?} was above the maximum of {:#?}", expected, found);
+    return format!("Value {:#?} was above the maximum of {:#?}", found, expected);
 }
 
 pub fn minimum_error(expected: f64, found: f64) -> String {
-    return format!("Value {:#?} was below the minimum of {:#?}", expected, found);
+    return format!("Value {:#?} was below the minimum of {:#?}", found, expected);
 }
 
 pub fn multiple_of_error(expected: f64, found: f64) -> String {

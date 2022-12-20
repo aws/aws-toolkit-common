@@ -14,7 +14,7 @@ fn exclusive_maximum_invalid() {
         "exclusiveMaximum": 5
     }));
     assert_eq!(validation_result.len(), 1, "Expected 1 error");
-    assert_eq!(validation_result[0].message, exclusive_maximum_error(10.0, 5.0));
+    assert_eq!(validation_result[0].message, exclusive_maximum_error(5.0, 10.0));
 }
 
 #[test]
@@ -23,7 +23,7 @@ fn exclusive_minimum_invalid() {
         "exclusiveMinimum": 5
     }));
     assert_eq!(validation_result.len(), 1, "Expected 1 error");
-    assert_eq!(validation_result[0].message, exclusive_minimum_error(2.0, 5.0));
+    assert_eq!(validation_result[0].message, exclusive_minimum_error(5.0, 2.0));
 }
 
 #[test]
@@ -82,6 +82,46 @@ fn max_properties_invalid() {
 }
 
 #[test]
+fn maximum_invalid() {
+    let validation_result = validate("5", json!({
+        "maximum": 3.0
+    }));
+    assert_eq!(validation_result.len(), 1, "Expected 1 error");
+    assert_eq!(validation_result[0].message, maximum_error(3.0, 5.0));
+}
+
+#[test]
+fn maximum_invalid_with_exclusive_maximum() {
+    let validation_result = validate("5", json!({
+        "maximum": 3.0,
+        "exclusiveMaximum": 4.0
+    }));
+    assert_eq!(validation_result.len(), 2, "Expected 2 errors");
+    assert_eq!(validation_result[0].message, exclusive_maximum_error(4.0, 5.0));
+    assert_eq!(validation_result[1].message, maximum_error(4.0, 5.0));
+}
+
+#[test]
+fn maximum_invalid_with_exclusive_maximum_true() {
+    let validation_result = validate("5", json!({
+        "maximum": 3.0,
+        "exclusiveMaximum": true
+    }));
+    assert_eq!(validation_result.len(), 1, "Expected 1 error");
+    assert_eq!(validation_result[0].message, maximum_error(3.0, 5.0));
+}
+
+#[test]
+fn maximum_invalid_with_exclusive_maximum_false() {
+    let validation_result = validate("5", json!({
+        "maximum": 3.0,
+        "exclusiveMaximum": false
+    }));
+    assert_eq!(validation_result.len(), 1, "Expected 1 error");
+    assert_eq!(validation_result[0].message, maximum_error(3.0, 5.0));
+}
+
+#[test]
 fn min_items_invalid() {
     let validation_result = validate("[1,2,3]", json!({
         "minItems": 5
@@ -106,6 +146,46 @@ fn min_properties_invalid() {
     }));
     assert_eq!(validation_result.len(), 1, "Expected 1 error");
     assert_eq!(validation_result[0].message, expected_properties_error(5, 3));
+}
+
+#[test]
+fn minimum_invalid() {
+    let validation_result = validate("1", json!({
+        "minimum": 3.0
+    }));
+    assert_eq!(validation_result.len(), 1, "Expected 1 error");
+    assert_eq!(validation_result[0].message, minimum_error(3.0, 1.0));
+}
+
+#[test]
+fn minimum_invalid_with_exclusive_minimum() {
+    let validation_result = validate("1", json!({
+        "minimum": 3.0,
+        "exclusiveMinimum": 4.0
+    }));
+    assert_eq!(validation_result.len(), 2, "Expected 2 errors");
+    assert_eq!(validation_result[0].message, exclusive_minimum_error(4.0, 1.0));
+    assert_eq!(validation_result[1].message, minimum_error(3.0, 1.0));
+}
+
+#[test]
+fn minimum_invalid_with_exclusive_minimum_true() {
+    let validation_result = validate("1", json!({
+        "minimum": 3.0,
+        "exclusiveMinimum": true
+    }));
+    assert_eq!(validation_result.len(), 1, "Expected 1 error");
+    assert_eq!(validation_result[0].message, minimum_error(3.0, 1.0));
+}
+
+#[test]
+fn minimum_invalid_with_exclusive_minimum_false() {
+    let validation_result = validate("1", json!({
+        "minimum": 3.0,
+        "exclusiveMinimum": false
+    }));
+    assert_eq!(validation_result.len(), 1, "Expected 1 error");
+    assert_eq!(validation_result[0].message, minimum_error(3.0, 1.0));
 }
 
 #[test]
