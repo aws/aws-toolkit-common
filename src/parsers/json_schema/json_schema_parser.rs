@@ -33,15 +33,12 @@ impl Validate {
         let node = cursor.node();
 
         if node.kind() == "document" || node.kind() == "{" {
-            println!("{}", node.kind());
             let deep = cursor.goto_first_child();
             if !deep {
                 cursor.goto_next_sibling();
             }
             return self.validate_root(cursor, sub_schema);
         }
-
-        println!("{}", node.kind());
     
         let ir_nodes = IR::new(node, self.contents.clone());
         if ir_nodes.is_none() {
@@ -143,13 +140,11 @@ impl Validate {
         if let Some(error) = validate_max_items(&array, sub_schema) {
             errors.push(error);
         }
-
-        // We need to get the indexes of the prefixs
         if let Some(error) = validate_additional_items(self, &array, sub_schema) {
             errors.extend(error);
         }
         if let Some(error) = validate_unique_items(&array, &self.contents, sub_schema) {
-            errors.extend(error);
+            errors.push(error);
         }
         return errors;
     }
