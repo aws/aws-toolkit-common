@@ -15,6 +15,14 @@ pub fn exclusive_minimum_error(expected: f64, found: f64) -> String {
     return format!("Value {:#?} was above the exclusive minimum of {:#?}", found, expected);
 }
 
+pub fn enum_error(expected: Vec<String>, found: String) -> String {
+    if expected.len() > 1 {
+        return format!("{:#?} must be one of {:#?}", found, expected.join(", "));
+    } else {
+        return format!("{:#?} must be {:#?}", found, expected[0]);
+    }
+}
+
 pub fn type_error(expected: String, found: String) -> String {
     return format!("Incorrect type. Expected {:#?} but found {:#?}", expected, found);
 }

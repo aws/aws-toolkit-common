@@ -1,21 +1,27 @@
 use serde_json::Value;
 use tower_lsp::lsp_types::Diagnostic;
 
-use crate::parsers::{json_schema::{utils::{to_diagnostic, is_equal2}}, ir::IR};
+use crate::parsers::{json_schema::{utils::{to_diagnostic, is_equal, get_value}, errors::enum_error}, ir::IR};
 
 pub fn validate_enum(node: &IR, file_contents: &String, sub_schema: &Value) -> Option<Diagnostic> {
-    let enum_value = sub_schema.get("enum")?.as_array()?;
+    let enums = sub_schema.get("enum")?.as_array()?;
 
     let mut found_match = false;
-    for e in enum_value {
-        if is_equal2(node, file_contents, e) {
+    let mut enum_options = Vec::new();
+    for e in enums {
+        if is_equal(node, file_contents, e) {
             found_match = true;
         }
+
+        enum_options.push(e.to_string());
     }
 
     if !found_match {
-        // TODO anti-pattern, we shouldn't be using clone here
-        return Some(to_diagnostic(node.clone().get_start(), node.clone().get_end(), format!("Enum error message was above the exclusive maximum of ")));
+        let value = get_value(node.clone(), file_contents);
+
+        // TODO anti-pattern? we probably shouldn't be using clone here
+        // TODO kinda hacky supporting the debug attribute through JSONValues to get this
+        return Some(to_diagnostic(node.clone().get_start(), node.clone().get_end(), enum_error(enum_options, format!("{:#?}", value))));
     }
 
     return None;

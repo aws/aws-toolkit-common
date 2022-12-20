@@ -27,6 +27,20 @@ fn exclusive_minimum_invalid() {
 }
 
 #[test]
+fn enum_invalid() {
+    let validation_result = validate("10", json!({"enum": [1]}));
+    assert_eq!(validation_result.len(), 1, "Expected 1 error");
+    assert_eq!(validation_result[0].message, enum_error(vec!(String::from("1")), String::from("10")));
+}
+
+#[test]
+fn enum_invalid_multiple() {
+    let validation_result = validate("10", json!({"enum": [1, 2, 3]}));
+    assert_eq!(validation_result.len(), 1, "Expected 1 error");
+    assert_eq!(validation_result[0].message, enum_error(vec!(String::from("1"), String::from("2"), String::from("3")), String::from("10")));
+}
+
+#[test]
 fn type_invalid_type() {
     let validation_result = validate("2", json!({"type": "string"}));
     assert_eq!(validation_result.len(), 1, "Expected 1 error");

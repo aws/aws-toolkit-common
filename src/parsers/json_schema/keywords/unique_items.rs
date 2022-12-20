@@ -33,7 +33,6 @@ pub fn validate_unique_items(node: &IRArray, file_contents: &String, sub_schema:
     if !duplicate_items.is_empty() {
         // Get all the unique items
         let duplicates = duplicate_items.iter().map(|node| node.get_text(&file_contents)).join(", ");
-
         return Some(to_diagnostic(node.start, node.end, unique_items_error(duplicates)));
     }
 

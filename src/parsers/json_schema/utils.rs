@@ -1,8 +1,9 @@
-use std::{collections::HashMap, hash::Hasher};
+use std::{collections::HashMap, hash::Hasher, fmt::Debug};
 use core::hash::Hash;
 use serde_json::{Value, json};
 use tower_lsp::lsp_types::{Diagnostic, Range, Position};
 use tree_sitter::Tree;
+use std::fmt;
 
 use crate::parsers::ir::IR;
 
@@ -68,6 +69,23 @@ impl Hash for JSONValues {
     }
 }
 
+impl Debug for JSONValues {
+    fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            JSONValues::Boolean(boolean) => write!(formatter, "{}", boolean),
+            JSONValues::String(string) => write!(formatter, "{}", string),
+            JSONValues::Array(vec) => {
+                formatter.write_str("Array ")?;
+                Debug::fmt(vec, formatter)
+            }
+            JSONValues::Object(map) => {
+                formatter.write_str("Object ")?;
+                Debug::fmt(map, formatter)
+            }
+        }
+    }
+}
+
 pub fn get_value(ir_node: IR, file_contents: &String) -> JSONValues {
     match ir_node {
         IR::IRArray(arr) => {
@@ -115,13 +133,13 @@ pub fn get_value(ir_node: IR, file_contents: &String) -> JSONValues {
 }
 
 // TODO extract this out into its own file/utils stuff
-pub fn is_equal2(ir_node: &IR, file_contents: &String, value: &Value) -> bool {
+pub fn is_equal(ir_node: &IR, file_contents: &String, value: &Value) -> bool {
     println!("{}, {}", ir_node.clone().get_kind(), value);
     match (ir_node, value) {
         (IR::IRArray(arr), Value::Array(second_arr)) => {
             for (i, node) in arr.items.iter().enumerate() {
                 // TODO fix unsafe unwrap
-                if !is_equal2(&IR::new(*node, file_contents.to_string()).unwrap(), file_contents, second_arr.get(i).unwrap()) {
+                if !is_equal(&IR::new(*node, file_contents.to_string()).unwrap(), file_contents, second_arr.get(i).unwrap()) {
                     return false;
                 }
             }
@@ -152,7 +170,7 @@ pub fn is_equal2(ir_node: &IR, file_contents: &String, value: &Value) -> bool {
 
                 let ir_value_node = IR::new(pair.value, file_contents.to_string()).unwrap();
                 
-                let equal = is_equal2(&ir_value_node, file_contents, second_obj_value);
+                let equal = is_equal(&ir_value_node, file_contents, second_obj_value);
                 if !equal {
                     return false;
                 }
@@ -165,62 +183,6 @@ pub fn is_equal2(ir_node: &IR, file_contents: &String, value: &Value) -> bool {
         },
         (IR::IRNull(_), Value::Null) => {
             return true;
-        },
-        (_, _) => {
-            return false;
-        }
-    }
-}
-
-pub fn is_equal(first: &Value, second: &Value) -> bool {
-    match (first, second) {
-        (Value::Array(first), Value::Array(second)) => {
-            for (i, first_value) in first.iter().enumerate() {
-                // TODO fix unsafe unwrap
-                if !is_equal(first_value, second.get(i).unwrap()) {
-                    return false;
-                }
-            }
-            return true;
-        },
-        (Value::Bool(first), Value::Bool(second)) => {
-            return first == second;
-        },
-        (Value::Null, Value::Null) => {
-            return true;
-        },
-        (Value::Number(first), Value::Number(second)) => {
-            // change these all to macros
-            if first.is_f64() && second.is_f64() {
-                // c
-                let f_test = first.as_f64();
-                let s_test = first.as_f64();
-                if f_test.is_none() || s_test.is_none() {
-                    return false;
-                }
-                return f_test.unwrap() == s_test.unwrap();
-            } else if first.is_i64() && second.is_i64() {
-                let f_test = first.as_i64();
-                let s_test = first.as_i64();
-                if f_test.is_none() || s_test.is_none() {
-                    return false;
-                }
-                return f_test.unwrap() == s_test.unwrap();
-            } else if first.is_u64() && second.is_u64() {
-                let f_test = first.as_u64();
-                let s_test = first.as_u64();
-                if f_test.is_none() || s_test.is_none() {
-                    return false;
-                }
-                return f_test.unwrap() == s_test.unwrap();
-            }
-            return false;
-        },
-        (Value::Object(first), Value::Object(second)) => {
-            return first == second;
-        },
-        (Value::String(first), Value::String(second)) => {
-            return first == second;
         },
         (_, _) => {
             return false;
