@@ -1,5 +1,6 @@
-use services::completion::completion;
-use services::hover::hover;
+use awsdocuments_language_server::services::completion::completion;
+use awsdocuments_language_server::services::hover::hover;
+use awsdocuments_language_server::utils::text_document::TextDocument;
 use dashmap::DashMap;
 use tower_lsp::jsonrpc::Result;
 use tower_lsp::lsp_types::*;
@@ -9,11 +10,6 @@ use log::LevelFilter;
 use log4rs::append::file::FileAppender;
 use log4rs::encode::pattern::PatternEncoder;
 use log4rs::config::{Appender, Config, Root};
-use utils::text_document::TextDocument;
-
-pub mod services;
-pub mod utils;
-pub mod parsers;
 
 #[derive(Debug)]
 struct Backend {
