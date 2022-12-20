@@ -7,12 +7,12 @@ pub fn additional_properties_error(additional_property: String) -> String {
     return format!("!{:#?} was declared but shouldn't be", additional_property);
 }
 
-pub fn exclusive_maximum_error(found_value: f64, max_value: f64) -> String {
-    return format!("Value {:#?} was above the exclusive maximum of {:#?}", found_value, max_value);
+pub fn exclusive_maximum_error(expected: f64, found: f64) -> String {
+    return format!("Value {:#?} was above the exclusive maximum of {:#?}", found, expected);
 }
 
-pub fn exclusive_minimum_error(found_value: f64, min_value: f64) -> String {
-    return format!("Value {:#?} was above the exclusive minimum of {:#?}", found_value, min_value);
+pub fn exclusive_minimum_error(expected: f64, found: f64) -> String {
+    return format!("Value {:#?} was above the exclusive minimum of {:#?}", found, expected);
 }
 
 pub fn type_error(expected: String, found: String) -> String {
@@ -27,15 +27,15 @@ pub fn expected_properties_error(expected: usize, found: usize) -> String {
     return format!("Expected {:#?} properties but found {:#?}", expected, found);
 }
 
-pub fn maximum_error(found: f64, expected: f64) -> String {
+pub fn maximum_error(expected: f64, found: f64) -> String {
     return format!("Value {:#?} was above the maximum of {:#?}", expected, found);
 }
 
-pub fn minimum_error(found: f64, expected: f64) -> String {
+pub fn minimum_error(expected: f64, found: f64) -> String {
     return format!("Value {:#?} was below the minimum of {:#?}", expected, found);
 }
 
-pub fn multiple_of_error(found: f64, expected: f64) -> String {
+pub fn multiple_of_error(expected: f64, found: f64) -> String {
     return format!("{:#?} is not a multiple of {:#?}", found, expected);
 }
 
