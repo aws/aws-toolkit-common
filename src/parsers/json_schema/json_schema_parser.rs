@@ -93,9 +93,6 @@ impl Validate {
         return errors;
     }
 
-    // pair corresponds to a json node such as "a": "test" or "a": {} or "a": [] or "a": false
-    // validate my Pair node from tree_sitter.rs against wherever we are in the smithy document
-    // this is otherwise known as an Object
     fn validate_object(&self, obj: IRObject, sub_schema: &Value) -> Vec<Diagnostic> {
         let mut errors = Vec::new();
 
