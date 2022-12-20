@@ -78,7 +78,7 @@ mod tests {
     use tower_lsp::lsp_types::{CompletionParams, TextDocumentPositionParams, Position, PartialResultParams, WorkDoneProgressParams, CompletionContext, CompletionTriggerKind, TextDocumentIdentifier, CompletionItem};
     use tree_sitter::Tree;
     use url::Url;
-    use crate::{services::{completion::completion}, TextDocument};
+    use crate::{services::{completion::completion}, utils::text_document::TextDocument};
 
     fn parse(text: String) -> Tree {
         let mut parser = tree_sitter::Parser::new();
