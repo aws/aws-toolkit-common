@@ -1,14 +1,21 @@
 use itertools::Itertools;
-use serde_json::{Value, json};
-use tower_lsp::lsp_types::Diagnostic;
+use serde_json::{json, Value};
 use std::cmp;
+use tower_lsp::lsp_types::Diagnostic;
 
-use crate::{parsers::json_schema::{json_schema_parser::Validate, utils::{to_diagnostic, new_schema_ref}, errors::additional_items_error}, utils::tree_sitter::IRArray};
+use crate::{
+    parsers::json_schema::{
+        errors::additional_items_error,
+        json_schema_parser::Validate,
+        utils::{new_schema_ref, to_diagnostic},
+    },
+    utils::tree_sitter::IRArray,
+};
 
 #[derive(Clone)]
 enum Items {
     Array(Vec<Value>),
-    Object(Value)
+    Object(Value),
 }
 
 fn get_items(sub_schema: &Value) -> Option<Items> {
@@ -17,12 +24,14 @@ fn get_items(sub_schema: &Value) -> Option<Items> {
     // TODO schema refs should be checked that the unwrap was successful before continuing
     match items_property {
         Value::Array(arr) => {
-            return Some(Items::Array(arr.iter().filter_map(|f| new_schema_ref(f)).collect_vec()));
-        },
+            return Some(Items::Array(
+                arr.iter().filter_map(|f| new_schema_ref(f)).collect_vec(),
+            ));
+        }
         Value::Object(obj) => {
             return Some(Items::Object(new_schema_ref(&json!(obj)).unwrap()));
-        },
-        _ => None
+        }
+        _ => None,
     }
 }
 
@@ -42,27 +51,33 @@ fn get_additional_items(sub_schema: &Value) -> Option<Value> {
 fn get_items_schema(items: &Option<Items>) -> Option<Vec<Value>> {
     match items {
         Some(Items::Array(arr)) => Some(arr.to_vec()),
-        _ => None
+        _ => None,
     }
 }
 
-fn get_additional_items_schema(items: &Option<Items>, additional_items: Option<Value>) -> Option<Value> {
+fn get_additional_items_schema(
+    items: &Option<Items>,
+    additional_items: Option<Value>,
+) -> Option<Value> {
     match items {
         Some(Items::Array(_)) => {
             return additional_items;
-        },
-        Some(Items::Object(obj)) => {
-            return Some(obj.to_owned())
-        },
-        _ => None
+        }
+        Some(Items::Object(obj)) => return Some(obj.to_owned()),
+        _ => None,
     }
 }
 
-pub fn validate_additional_items(validate: &Validate, node: &IRArray, sub_schema: &Value) -> Option<Vec<Diagnostic>> {
+pub fn validate_additional_items(
+    validate: &Validate,
+    node: &IRArray,
+    sub_schema: &Value,
+) -> Option<Vec<Diagnostic>> {
     let potential_items = &get_items(sub_schema);
     let potential_additional_items = get_additional_items(sub_schema);
     let potential_items_schema = &get_items_schema(potential_items);
-    let additional_items_schema = get_additional_items_schema(potential_items, potential_additional_items);
+    let additional_items_schema =
+        get_additional_items_schema(potential_items, potential_additional_items);
 
     let mut errors = Vec::new();
 
@@ -91,7 +106,6 @@ pub fn validate_additional_items(validate: &Validate, node: &IRArray, sub_schema
     let mut processed_items = 0;
     if potential_items_schema.is_some() {
         processed_items = potential_items_schema.as_ref().unwrap().len();
-
     }
 
     // We've already processed all the nodes against the schemas
@@ -102,10 +116,14 @@ pub fn validate_additional_items(validate: &Validate, node: &IRArray, sub_schema
     match additional_items_schema {
         Some(Value::Bool(boo)) => {
             if boo == false {
-                errors.push(to_diagnostic(node.start, node.end, additional_items_error(processed_items, node.items.len())));
+                errors.push(to_diagnostic(
+                    node.start,
+                    node.end,
+                    additional_items_error(processed_items, node.items.len()),
+                ));
             }
             return Some(errors);
-        },
+        }
         Some(Value::Object(obj)) => {
             let max_length = cmp::max(node.items.len(), processed_items);
             for i in processed_items..max_length {
@@ -113,9 +131,9 @@ pub fn validate_additional_items(validate: &Validate, node: &IRArray, sub_schema
             }
 
             return Some(errors);
-        },
+        }
         _ => {
             return Some(errors);
         }
-    }    
+    }
 }

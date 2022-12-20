@@ -6,7 +6,11 @@ use tree_sitter::Node;
 
 use crate::parsers::json_schema::json_schema_parser::Validate;
 
-pub fn validate_properties(validate: &Validate, available_keys: &mut HashMap<String, Node>, sub_schema: &Value) -> Option<Vec<Diagnostic>> {
+pub fn validate_properties(
+    validate: &Validate,
+    available_keys: &mut HashMap<String, Node>,
+    sub_schema: &Value,
+) -> Option<Vec<Diagnostic>> {
     let properties = sub_schema.get("properties")?.as_object()?;
 
     let mut errors: Vec<Diagnostic> = Vec::new();

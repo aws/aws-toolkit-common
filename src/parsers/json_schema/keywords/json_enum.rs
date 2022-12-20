@@ -1,7 +1,13 @@
 use serde_json::Value;
 use tower_lsp::lsp_types::Diagnostic;
 
-use crate::parsers::{json_schema::{utils::{to_diagnostic, is_equal, get_value}, errors::enum_error}, ir::IR};
+use crate::parsers::{
+    ir::IR,
+    json_schema::{
+        errors::enum_error,
+        utils::{get_value, is_equal, to_diagnostic},
+    },
+};
 
 pub fn validate_enum(node: &IR, file_contents: &String, sub_schema: &Value) -> Option<Diagnostic> {
     let enums = sub_schema.get("enum")?.as_array()?;
@@ -21,7 +27,11 @@ pub fn validate_enum(node: &IR, file_contents: &String, sub_schema: &Value) -> O
 
         // TODO anti-pattern? we probably shouldn't be using clone here
         // TODO kinda hacky supporting the debug attribute through JSONValues to get this
-        return Some(to_diagnostic(node.clone().get_start(), node.clone().get_end(), enum_error(enum_options, format!("{:#?}", value))));
+        return Some(to_diagnostic(
+            node.clone().get_start(),
+            node.clone().get_end(),
+            enum_error(enum_options, format!("{:#?}", value)),
+        ));
     }
 
     return None;

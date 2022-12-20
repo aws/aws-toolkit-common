@@ -1,34 +1,48 @@
 use std::collections::HashMap;
 
+use crate::{
+    parsers::ir::IR,
+    utils::tree_sitter::{IRArray, IRNumber, IRObject, IRString},
+};
 use serde_json::Value;
 use tower_lsp::lsp_types::Diagnostic;
-use tree_sitter::{TreeCursor, Tree};
-use crate::{utils::{tree_sitter::{IRArray, IRString, IRNumber, IRObject}}, parsers::ir::IR};
+use tree_sitter::{Tree, TreeCursor};
 
-use super::{keywords::{min_items::validate_min_items, max_items::validate_max_items, min_length::validate_min_length, max_length::validate_max_length, pattern::validate_pattern, multiple_of::validate_multiple_of, exclusive_minimum::validate_exclusive_minimum, exclusive_maximum::validate_exclusive_maximum, minimum::validate_minimum, maximum::validate_maximum, properties::validate_properties, max_properties::validate_max_properties, min_properties::validate_min_properties, required::validate_required, json_type::validate_type, pattern_properties::validate_pattern_properties, additional_properties::validate_additional_properties, unique_items::validate_unique_items, additional_items::validate_additional_items, json_enum::validate_enum, format::validate_format, dependencies::validate_dependencies}};
+use super::keywords::{
+    additional_items::validate_additional_items,
+    additional_properties::validate_additional_properties, dependencies::validate_dependencies,
+    exclusive_maximum::validate_exclusive_maximum, exclusive_minimum::validate_exclusive_minimum,
+    format::validate_format, json_enum::validate_enum, json_type::validate_type,
+    max_items::validate_max_items, max_length::validate_max_length,
+    max_properties::validate_max_properties, maximum::validate_maximum,
+    min_items::validate_min_items, min_length::validate_min_length,
+    min_properties::validate_min_properties, minimum::validate_minimum,
+    multiple_of::validate_multiple_of, pattern::validate_pattern,
+    pattern_properties::validate_pattern_properties, properties::validate_properties,
+    required::validate_required, unique_items::validate_unique_items,
+};
 
 pub struct Validate {
     tree: Tree,
     schema: Value,
-    contents: String
+    contents: String,
 }
 
 impl Validate {
-
     pub fn new(tree: Tree, schema: Value, file_contents: String) -> Self {
         // TODO when adding yaml support, make the converter depend on the incoming language
-        return Validate { 
+        return Validate {
             tree,
             schema,
             contents: file_contents,
-        }
+        };
     }
 
     pub fn validate(&self) -> Vec<Diagnostic> {
         let cursor = self.tree.walk();
-        return self.validate_root(cursor, &self.schema)
+        return self.validate_root(cursor, &self.schema);
     }
-    
+
     pub fn validate_root(&self, mut cursor: TreeCursor, sub_schema: &Value) -> Vec<Diagnostic> {
         let node = cursor.node();
 
@@ -39,7 +53,7 @@ impl Validate {
             }
             return self.validate_root(cursor, sub_schema);
         }
-    
+
         let ir_nodes = IR::new(node, self.contents.clone());
         if ir_nodes.is_none() {
             return Vec::new();
@@ -51,28 +65,28 @@ impl Validate {
             IR::IRString(key) => {
                 let str_errors = self.validate_string(key, sub_schema);
                 return [node_errors, str_errors].concat();
-            },
+            }
             IR::IRArray(arr) => {
                 let array_errors = self.validate_array(arr, sub_schema);
                 return [node_errors, array_errors].concat();
-            },
+            }
             IR::IRBoolean(_) => {
                 return node_errors;
-            },
+            }
             IR::IRObject(obj) => {
                 let obj_errors = self.validate_object(obj, sub_schema);
                 return [node_errors, obj_errors].concat();
-            },
+            }
             IR::IRPair(pair) => {
                 // TODO handle error on unwrapping the children
                 let key_errors = self.validate_root(node.child(0).unwrap().walk(), sub_schema);
                 let value_errors = self.validate_root(pair.value.walk(), sub_schema);
                 return [node_errors, key_errors, value_errors].concat();
-            },
+            }
             IR::IRNumber(num) => {
                 let num_errors = self.validate_number(num, sub_schema);
                 return [node_errors, num_errors].concat();
-            },
+            }
             IR::IRNull(_) => {
                 return node_errors;
             }
@@ -100,7 +114,7 @@ impl Validate {
         for prop in &obj.properties {
             available_keys.insert(prop.key.contents.to_string(), prop.value);
         }
-    
+
         if let Some(error) = validate_properties(self, &mut available_keys, sub_schema) {
             errors.extend(error);
         }
@@ -116,7 +130,7 @@ impl Validate {
         if let Some(error) = validate_dependencies(&available_keys, sub_schema) {
             errors.extend(error);
         }
-        
+
         if let Some(error) = validate_max_properties(&obj, sub_schema) {
             errors.push(error);
         }
@@ -182,12 +196,11 @@ impl Validate {
         }
         return errors;
     }
-
 }
 
 #[cfg(test)]
 mod tests {
-    use serde_json::{Value, json};
+    use serde_json::{json, Value};
     use tower_lsp::lsp_types::Diagnostic;
 
     use crate::parsers::json_schema::utils::parse;
@@ -205,22 +218,23 @@ mod tests {
         let result = validation_test(
             r#"{
                 "version": "testing"
-            }"#.to_string(), json!({
-                "$schema": "http://json-schema.org/draft-04/schema#",
-                "type": "object",
-                "properties": {
-                  "version": {
-                    "type": "string",
-                    "minLength": 0,
-                    "maxLength": 10
-                  }
-                },
-                "required": [
-                  "version"
-                ]
-              })
+            }"#
+            .to_string(),
+            json!({
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "version": {
+                  "type": "string",
+                  "minLength": 0,
+                  "maxLength": 10
+                }
+              },
+              "required": [
+                "version"
+              ]
+            }),
         );
         assert_eq!(result.len(), 0);
     }
-
 }

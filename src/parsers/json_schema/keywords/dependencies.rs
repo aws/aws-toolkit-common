@@ -5,14 +5,19 @@ use serde_json::Value;
 use tower_lsp::lsp_types::Diagnostic;
 use tree_sitter::Node;
 
-use crate::{utils::tree_sitter::{start_position, end_position}, parsers::json_schema::{utils::{to_diagnostic, new_schema_ref}}};
+use crate::{
+    parsers::json_schema::utils::{new_schema_ref, to_diagnostic},
+    utils::tree_sitter::{end_position, start_position},
+};
 
-pub fn validate_dependencies(available_keys: &HashMap<String, Node>, sub_schema: &Value) -> Option<Vec<Diagnostic>> {
+pub fn validate_dependencies(
+    available_keys: &HashMap<String, Node>,
+    sub_schema: &Value,
+) -> Option<Vec<Diagnostic>> {
     let dependencies = sub_schema.get("dependencies")?.as_array()?;
 
     let mut errors: Vec<Diagnostic> = Vec::new();
     for (i, dep) in dependencies.iter().enumerate() {
-
         // find the dependency
         let dep_string = dep.is_string();
         if !dep_string {
@@ -29,9 +34,9 @@ pub fn validate_dependencies(available_keys: &HashMap<String, Node>, sub_schema:
                     Some(Value::Array(arr)) => {
                         // filter the non strings
                         Test::Array(arr.iter().filter_map(|f| f.as_str()).collect_vec())
-                    },
+                    }
                     Some(val) => Test::Ref(new_schema_ref(val)),
-                    _ => Test::Ref(None)
+                    _ => Test::Ref(None),
                 }
             };
 
@@ -44,22 +49,30 @@ pub fn validate_dependencies(available_keys: &HashMap<String, Node>, sub_schema:
 
 enum Test<'a> {
     Array(Vec<&'a str>),
-    Ref(Option<Value>)
+    Ref(Option<Value>),
 }
 
-fn _validate_dependencies(prop: &String,  available_keys: &HashMap<String, Node>, dependencies: Test) -> Vec<Diagnostic> {
+fn _validate_dependencies(
+    prop: &String,
+    available_keys: &HashMap<String, Node>,
+    dependencies: Test,
+) -> Vec<Diagnostic> {
     let mut errors = Vec::new();
-    
+
     let node = available_keys.get(prop).unwrap().to_owned();
     match dependencies {
         Test::Array(arr) => {
             for req in arr {
                 if available_keys.contains_key(req) {
-                    errors.push(to_diagnostic(start_position(node), end_position(node), format!("dependencies error")));
+                    errors.push(to_diagnostic(
+                        start_position(node),
+                        end_position(node),
+                        format!("dependencies error"),
+                    ));
                 }
             }
             return errors;
-        },
+        }
         _ => {
             // Validate the schema
             return errors;

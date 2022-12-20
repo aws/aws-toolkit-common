@@ -1,7 +1,14 @@
 use serde_json::Value;
 use tower_lsp::lsp_types::Diagnostic;
 
-use crate::{utils::tree_sitter::IRNumber, parsers::json_schema::{utils::to_diagnostic, num_utils::{get_number, JsonNumbers}, errors::minimum_error}};
+use crate::{
+    parsers::json_schema::{
+        errors::minimum_error,
+        num_utils::{get_number, JsonNumbers},
+        utils::to_diagnostic,
+    },
+    utils::tree_sitter::IRNumber,
+};
 
 pub fn validate_minimum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnostic> {
     let minimum_property = sub_schema.get("minimum")?;
@@ -12,24 +19,40 @@ pub fn validate_minimum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnosti
     match exclusive_minimum {
         Some(Value::Bool(boo)) => {
             if boo == &true && node.value <= expected_minimum {
-                return Some(to_diagnostic(node.start, node.end, minimum_error(expected_minimum, node.value)));
+                return Some(to_diagnostic(
+                    node.start,
+                    node.end,
+                    minimum_error(expected_minimum, node.value),
+                ));
             }
             if boo == &false && node.value < expected_minimum {
-                return Some(to_diagnostic(node.start, node.end, minimum_error(expected_minimum, node.value)));
+                return Some(to_diagnostic(
+                    node.start,
+                    node.end,
+                    minimum_error(expected_minimum, node.value),
+                ));
             }
             return None;
-        },
+        }
         Some(Value::Number(num)) => {
             let smallest_minimum = min(expected_minimum, get_number(JsonNumbers::Number(num)));
-        
+
             if node.value < smallest_minimum {
-                return Some(to_diagnostic(node.start, node.end, minimum_error(smallest_minimum, node.value)));
+                return Some(to_diagnostic(
+                    node.start,
+                    node.end,
+                    minimum_error(smallest_minimum, node.value),
+                ));
             }
             return None;
-        },
+        }
         _ => {
             if node.value < expected_minimum {
-                return Some(to_diagnostic(node.start, node.end, minimum_error(expected_minimum, node.value)));
+                return Some(to_diagnostic(
+                    node.start,
+                    node.end,
+                    minimum_error(expected_minimum, node.value),
+                ));
             }
             return None;
         }

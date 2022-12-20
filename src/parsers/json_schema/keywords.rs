@@ -1,10 +1,10 @@
 pub mod additional_items;
 pub mod additional_properties;
 pub mod dependencies;
-pub mod json_enum;
 pub mod exclusive_maximum;
 pub mod exclusive_minimum;
 pub mod format;
+pub mod json_enum;
 pub mod json_type;
 pub mod max_items;
 pub mod max_length;

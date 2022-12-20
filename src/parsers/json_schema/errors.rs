@@ -1,6 +1,8 @@
-
 pub fn additional_items_error(processed_items: usize, node_items: usize) -> String {
-   return format!("The array should have {:#?} items or less. Found {:#?}", processed_items, node_items);
+    return format!(
+        "The array should have {:#?} items or less. Found {:#?}",
+        processed_items, node_items
+    );
 }
 
 pub fn additional_properties_error(additional_property: String) -> String {
@@ -8,11 +10,17 @@ pub fn additional_properties_error(additional_property: String) -> String {
 }
 
 pub fn exclusive_maximum_error(expected: f64, found: f64) -> String {
-    return format!("Value {:#?} was above the exclusive maximum of {:#?}", found, expected);
+    return format!(
+        "Value {:#?} was above the exclusive maximum of {:#?}",
+        found, expected
+    );
 }
 
 pub fn exclusive_minimum_error(expected: f64, found: f64) -> String {
-    return format!("Value {:#?} was below the exclusive minimum of {:#?}", found, expected);
+    return format!(
+        "Value {:#?} was below the exclusive minimum of {:#?}",
+        found, expected
+    );
 }
 
 pub fn enum_error(expected: Vec<String>, found: String) -> String {
@@ -24,7 +32,10 @@ pub fn enum_error(expected: Vec<String>, found: String) -> String {
 }
 
 pub fn type_error(expected: String, found: String) -> String {
-    return format!("Incorrect type. Expected {:#?} but found {:#?}", expected, found);
+    return format!(
+        "Incorrect type. Expected {:#?} but found {:#?}",
+        expected, found
+    );
 }
 
 pub fn expected_items_error(expected: usize, found: usize) -> String {
@@ -32,7 +43,10 @@ pub fn expected_items_error(expected: usize, found: usize) -> String {
 }
 
 pub fn expected_length_error(expected: usize, found: usize) -> String {
-    return format!("Expected an item of length {:#?} but found {:#?}", expected, found);
+    return format!(
+        "Expected an item of length {:#?} but found {:#?}",
+        expected, found
+    );
 }
 
 pub fn expected_properties_error(expected: usize, found: usize) -> String {
@@ -40,11 +54,17 @@ pub fn expected_properties_error(expected: usize, found: usize) -> String {
 }
 
 pub fn maximum_error(expected: f64, found: f64) -> String {
-    return format!("Value {:#?} was above the maximum of {:#?}", found, expected);
+    return format!(
+        "Value {:#?} was above the maximum of {:#?}",
+        found, expected
+    );
 }
 
 pub fn minimum_error(expected: f64, found: f64) -> String {
-    return format!("Value {:#?} was below the minimum of {:#?}", found, expected);
+    return format!(
+        "Value {:#?} was below the minimum of {:#?}",
+        found, expected
+    );
 }
 
 pub fn multiple_of_error(expected: f64, found: f64) -> String {

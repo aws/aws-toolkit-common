@@ -1,9 +1,9 @@
-use tree_sitter::{Tree, Node};
+use tree_sitter::{Node, Tree};
 
 #[derive(Debug)]
 pub struct TextDocument {
     pub tree: Tree,
-    pub contents: String
+    pub contents: String,
 }
 
 // ASTNodes are language dependent functions that can be used for gathering information on a language
@@ -14,6 +14,9 @@ pub trait ASTNodeExt {
 
 impl ASTNodeExt for Node<'_> {
     fn get_text(&self, contents: &str) -> String {
-        return self.utf8_text(contents.as_bytes()).unwrap().replace("\"", "");
+        return self
+            .utf8_text(contents.as_bytes())
+            .unwrap()
+            .replace("\"", "");
     }
 }

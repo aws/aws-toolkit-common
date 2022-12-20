@@ -1,13 +1,17 @@
 use std::collections::{HashMap, HashSet};
 
+use regex::Regex;
 use serde_json::Value;
 use tower_lsp::lsp_types::Diagnostic;
-use regex::Regex;
 use tree_sitter::Node;
 
 use crate::parsers::json_schema::json_schema_parser::Validate;
 
-pub fn validate_pattern_properties(validate: &Validate, available_keys: &mut HashMap<String, Node>, sub_schema: &Value) -> Option<Vec<Diagnostic>> {
+pub fn validate_pattern_properties(
+    validate: &Validate,
+    available_keys: &mut HashMap<String, Node>,
+    sub_schema: &Value,
+) -> Option<Vec<Diagnostic>> {
     let properties = sub_schema.get("patternProperties")?.as_object()?;
 
     let mut errors = Vec::new();
@@ -26,7 +30,7 @@ pub fn validate_pattern_properties(validate: &Validate, available_keys: &mut Has
 
                     processing.insert(property);
                 }
-            }   
+            }
         }
     }
 

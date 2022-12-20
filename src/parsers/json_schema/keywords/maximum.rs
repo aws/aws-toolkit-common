@@ -1,7 +1,14 @@
 use serde_json::Value;
 use tower_lsp::lsp_types::Diagnostic;
 
-use crate::{utils::tree_sitter::IRNumber, parsers::json_schema::{utils::to_diagnostic, num_utils::{get_number, JsonNumbers}, errors::maximum_error}};
+use crate::{
+    parsers::json_schema::{
+        errors::maximum_error,
+        num_utils::{get_number, JsonNumbers},
+        utils::to_diagnostic,
+    },
+    utils::tree_sitter::IRNumber,
+};
 
 pub fn validate_maximum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnostic> {
     let maximum_property = sub_schema.get("maximum")?;
@@ -12,24 +19,40 @@ pub fn validate_maximum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnosti
     match exclusive_maximum {
         Some(Value::Bool(boo)) => {
             if boo == &true && node.value >= expected_maximum {
-                return Some(to_diagnostic(node.start, node.end, maximum_error(expected_maximum, node.value)));
+                return Some(to_diagnostic(
+                    node.start,
+                    node.end,
+                    maximum_error(expected_maximum, node.value),
+                ));
             }
             if boo == &false && node.value > expected_maximum {
-                return Some(to_diagnostic(node.start, node.end, maximum_error(expected_maximum, node.value)));
+                return Some(to_diagnostic(
+                    node.start,
+                    node.end,
+                    maximum_error(expected_maximum, node.value),
+                ));
             }
             return None;
-        },
+        }
         Some(Value::Number(num)) => {
             let largest_maximum = max(expected_maximum, get_number(JsonNumbers::Number(num)));
-        
+
             if node.value > largest_maximum {
-                return Some(to_diagnostic(node.start, node.end, maximum_error(largest_maximum, node.value)));
+                return Some(to_diagnostic(
+                    node.start,
+                    node.end,
+                    maximum_error(largest_maximum, node.value),
+                ));
             }
             return None;
-        },
+        }
         _ => {
             if node.value > expected_maximum {
-                return Some(to_diagnostic(node.start, node.end, maximum_error(expected_maximum, node.value)));
+                return Some(to_diagnostic(
+                    node.start,
+                    node.end,
+                    maximum_error(expected_maximum, node.value),
+                ));
             }
             return None;
         }

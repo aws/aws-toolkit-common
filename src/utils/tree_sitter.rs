@@ -2,18 +2,24 @@ use tower_lsp::lsp_types::Position;
 use tree_sitter::Node;
 
 pub fn start_position(node: Node) -> Position {
-    return Position::new(node.start_position().row.try_into().unwrap(), node.start_position().column.try_into().unwrap());
+    return Position::new(
+        node.start_position().row.try_into().unwrap(),
+        node.start_position().column.try_into().unwrap(),
+    );
 }
 
 pub fn end_position(node: Node) -> Position {
-    return Position::new(node.end_position().row.try_into().unwrap(), node.end_position().column.try_into().unwrap());
+    return Position::new(
+        node.end_position().row.try_into().unwrap(),
+        node.end_position().column.try_into().unwrap(),
+    );
 }
 
 #[derive(Debug, Clone)]
 pub struct IRNull {
     pub kind: String,
     pub start: Position,
-    pub end: Position
+    pub end: Position,
 }
 
 impl IRNull {
@@ -21,8 +27,8 @@ impl IRNull {
         return IRNull {
             kind: String::from("null"),
             start,
-            end
-        }
+            end,
+        };
     }
 }
 
@@ -31,7 +37,7 @@ pub struct IRString {
     pub kind: String,
     pub contents: String,
     pub start: Position,
-    pub end: Position
+    pub end: Position,
 }
 
 impl IRString {
@@ -40,8 +46,8 @@ impl IRString {
             kind: String::from("string"),
             contents,
             start,
-            end
-        }
+            end,
+        };
     }
 }
 
@@ -50,7 +56,7 @@ pub struct IRBoolean {
     pub kind: String,
     pub value: bool,
     pub start: Position,
-    pub end: Position
+    pub end: Position,
 }
 
 impl IRBoolean {
@@ -59,8 +65,8 @@ impl IRBoolean {
             kind: String::from("boolean"),
             value,
             start,
-            end
-        }
+            end,
+        };
     }
 }
 
@@ -69,17 +75,17 @@ pub struct IRObject<'a> {
     pub kind: String,
     pub properties: Vec<IRPair<'a>>,
     pub start: Position,
-    pub end: Position
+    pub end: Position,
 }
 
 impl IRObject<'_> {
     pub fn new(properties: Vec<IRPair>, start: Position, end: Position) -> IRObject {
-        return IRObject { 
+        return IRObject {
             kind: String::from("object"),
             properties,
-            start, 
-            end 
-        }
+            start,
+            end,
+        };
     }
 }
 
@@ -88,7 +94,7 @@ pub struct IRArray<'a> {
     pub kind: String,
     pub items: Vec<Node<'a>>,
     pub start: Position,
-    pub end: Position
+    pub end: Position,
 }
 
 impl IRArray<'_> {
@@ -97,11 +103,10 @@ impl IRArray<'_> {
             kind: String::from("array"),
             items,
             start,
-            end
-        }
+            end,
+        };
     }
 }
-
 
 #[derive(Debug, Clone)]
 pub struct IRNumber {
@@ -109,7 +114,7 @@ pub struct IRNumber {
     pub is_integer: bool, // json schema differenties between integer and number types
     pub value: f64,
     pub start: Position,
-    pub end: Position
+    pub end: Position,
 }
 
 impl IRNumber {
@@ -119,8 +124,8 @@ impl IRNumber {
             is_integer,
             value,
             start,
-            end
-        }
+            end,
+        };
     }
 }
 
@@ -130,17 +135,17 @@ pub struct IRPair<'a> {
     pub key: IRString,
     pub value: Node<'a>,
     pub start: Position,
-    pub end: Position
+    pub end: Position,
 }
 
 impl IRPair<'_> {
     pub fn new(key: IRString, value: Node, start: Position, end: Position) -> IRPair {
-        return IRPair { 
+        return IRPair {
             kind: String::from("pair"),
-            key, 
+            key,
             value,
             start,
-            end
-        }
+            end,
+        };
     }
 }
