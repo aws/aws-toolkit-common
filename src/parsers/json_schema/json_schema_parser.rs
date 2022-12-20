@@ -189,23 +189,14 @@ impl Validate {
 mod tests {
     use serde_json::{Value, json};
     use tower_lsp::lsp_types::Diagnostic;
-    use tree_sitter::Tree;
+
+    use crate::parsers::json_schema::utils::parse;
 
     use super::Validate;
 
-    fn parse(text: String) -> Tree {
-        let mut parser = tree_sitter::Parser::new();
-        parser.set_language(tree_sitter_json::language()).expect("Error loading json grammar");
-        return parser.parse(text, None).unwrap();
-    }
-
     fn validation_test(contents: String, schema: Value) -> Vec<Diagnostic> {
         let parse_result = parse(contents.to_string());
-        let val = Validate {
-            tree: parse_result,
-            contents,
-            schema,
-        };
+        let val = Validate::new(parse_result, schema, contents);
         return val.validate();
     }
 
@@ -213,15 +204,15 @@ mod tests {
     fn basic_validation() {
         let result = validation_test(
             r#"{
-                "version": "1"
+                "version": "testing"
             }"#.to_string(), json!({
                 "$schema": "http://json-schema.org/draft-04/schema#",
                 "type": "object",
                 "properties": {
                   "version": {
                     "type": "string",
-                    "minLength": 5,
-                    "maxLength": 5
+                    "minLength": 0,
+                    "maxLength": 10
                   }
                 },
                 "required": [
