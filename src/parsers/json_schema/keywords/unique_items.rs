@@ -1,11 +1,12 @@
 use std::collections::HashSet;
+use itertools::Itertools;
 
 use serde_json::Value;
 use tower_lsp::lsp_types::Diagnostic;
 
-use crate::{utils::tree_sitter::IRArray, parsers::{json_schema::{utils::{to_diagnostic, get_value}, errors::unique_items_error}, ir::IR}};
+use crate::{utils::tree_sitter::IRArray, parsers::{json_schema::{utils::{to_diagnostic, get_value}, errors::unique_items_error}, ir::IR}, utils::text_document::ASTNodeExt};
 
-pub fn validate_unique_items(node: &IRArray, file_contents: &String, sub_schema: &Value) -> Option<Vec<Diagnostic>> {
+pub fn validate_unique_items(node: &IRArray, file_contents: &String, sub_schema: &Value) -> Option<Diagnostic> {
     let unique_items = sub_schema.get("uniqueItems")?.as_bool()?;
 
     if unique_items == false {
@@ -30,14 +31,10 @@ pub fn validate_unique_items(node: &IRArray, file_contents: &String, sub_schema:
     }
 
     if !duplicate_items.is_empty() {
-        let mut errors = Vec::new();
+        // Get all the unique items
+        let duplicates = duplicate_items.iter().map(|node| node.get_text(&file_contents)).join(", ");
 
-        for item in duplicate_items {
-            // TODO make safe, unwrap shouldn't be there
-            errors.push(to_diagnostic(node.start, node.end, unique_items_error(item.utf8_text(file_contents.as_bytes()).unwrap().to_string())))
-        }
-
-        return Some(errors);
+        return Some(to_diagnostic(node.start, node.end, unique_items_error(duplicates)));
     }
 
     return None;

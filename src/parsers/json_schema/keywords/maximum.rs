@@ -5,31 +5,31 @@ use crate::{utils::tree_sitter::IRNumber, parsers::json_schema::{utils::to_diagn
 
 pub fn validate_maximum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnostic> {
     let maximum_property = sub_schema.get("maximum")?;
-    let maximum_value = get_number(JsonNumbers::Value(maximum_property))?;
+    let expected_maximum = get_number(JsonNumbers::Value(maximum_property))?;
 
     let exclusive_maximum = sub_schema.get("exclusiveMaximum");
 
     match exclusive_maximum {
         Some(Value::Bool(boo)) => {
-            if boo == &true && node.value >= maximum_value {
-                return Some(to_diagnostic(node.start, node.end, maximum_error(node.value, maximum_value)));
+            if boo == &true && node.value >= expected_maximum {
+                return Some(to_diagnostic(node.start, node.end, maximum_error(expected_maximum, node.value)));
             }
-            if boo == &false && node.value > maximum_value {
-                return Some(to_diagnostic(node.start, node.end, maximum_error(node.value, maximum_value)));
+            if boo == &false && node.value > expected_maximum {
+                return Some(to_diagnostic(node.start, node.end, maximum_error(expected_maximum, node.value)));
             }
             return None;
         },
         Some(Value::Number(num)) => {
-            let largest_maximum = max(maximum_value, get_number(JsonNumbers::Number(num)));
+            let largest_maximum = max(expected_maximum, get_number(JsonNumbers::Number(num)));
         
             if node.value > largest_maximum {
-                return Some(to_diagnostic(node.start, node.end, maximum_error(node.value, largest_maximum)));
+                return Some(to_diagnostic(node.start, node.end, maximum_error(largest_maximum, node.value)));
             }
             return None;
         },
         _ => {
-            if node.value > maximum_value {
-                return Some(to_diagnostic(node.start, node.end, maximum_error(node.value, maximum_value)));
+            if node.value > expected_maximum {
+                return Some(to_diagnostic(node.start, node.end, maximum_error(expected_maximum, node.value)));
             }
             return None;
         }
