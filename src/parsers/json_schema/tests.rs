@@ -24,9 +24,7 @@ use super::{utils::parse, json_schema_parser::Validate};
  * type
  */
 
-
-// #[json_schema_test_suite_include("../../test_suite", "draft4", { "minimum" })]
-#[json_schema_test_suite_include("src/parsers/json_schema/test_suite/tests/", "draft4", { "dependencies.*" })]
+#[json_schema_test_suite_include("src/parsers/json_schema/test_suite/tests/", "draft4", { ".*" })]
 // #[json_schema_test_suite("src/parsers/json_schema/test_suite", "draft4", { "**pattern**" })]
 fn test_suite(
     _server_address: &str,
