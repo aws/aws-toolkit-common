@@ -14,9 +14,8 @@ pub fn validate_required(node: &IRObject, sub_schema: &Value) -> Option<Diagnost
     // get the hashset of all the requirements
     let mut requirements_hash = HashSet::new();
     for req in required {
-        let potential_requirement = req.as_str();
-        if potential_requirement.is_some() {
-            requirements_hash.insert(potential_requirement.unwrap());
+        if let Some(requirement) = req.as_str() {
+            requirements_hash.insert(requirement);
         }
     }
 

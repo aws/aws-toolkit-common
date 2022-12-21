@@ -13,28 +13,28 @@ pub enum JsonNumbers<'a> {
 }
 
 impl JsonNumbers<'_> {
-    fn is_i64(self) -> bool {
+    fn is_i64(&self) -> bool {
         match self {
             JsonNumbers::Number(num) => num.is_i64(),
             JsonNumbers::Value(num) => num.is_i64(),
         }
     }
 
-    fn as_i64(self) -> Option<i64> {
+    fn as_i64(&self) -> Option<i64> {
         match self {
             JsonNumbers::Number(num) => num.as_i64(),
             JsonNumbers::Value(num) => num.as_i64(),
         }
     }
 
-    fn is_f64(self) -> bool {
+    fn is_f64(&self) -> bool {
         match self {
             JsonNumbers::Number(num) => num.is_f64(),
             JsonNumbers::Value(num) => num.is_f64(),
         }
     }
 
-    fn as_f64(self) -> Option<f64> {
+    fn as_f64(&self) -> Option<f64> {
         match self {
             JsonNumbers::Number(num) => num.as_f64(),
             JsonNumbers::Value(num) => num.as_f64(),

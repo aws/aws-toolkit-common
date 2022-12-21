@@ -53,6 +53,7 @@ pub enum JSONValues {
     Object(HashMap<String, JSONValues>),
 }
 
+#[allow(clippy::derive_hash_xor_eq)]
 impl Hash for JSONValues {
     fn hash<H: Hasher>(&self, state: &mut H) {
         match self {
@@ -92,8 +93,8 @@ pub fn get_value(ir_node: IR, file_contents: &String) -> JSONValues {
             let mut unique_items = Vec::new();
             for item in arr.items {
                 let ir_node = IR::new(item, file_contents.to_string());
-                if ir_node.is_some() {
-                    unique_items.push(get_value(ir_node.unwrap(), file_contents));
+                if let Some(value) = ir_node {
+                    unique_items.push(get_value(value, file_contents));
                 }
             }
             JSONValues::Array(unique_items)
@@ -109,10 +110,10 @@ pub fn get_value(ir_node: IR, file_contents: &String) -> JSONValues {
             let mut unique_objects = HashMap::new();
             for pair in obj.properties {
                 let ir_value_node = IR::new(pair.value, file_contents.to_string());
-                if ir_value_node.is_some() {
+                if let Some(value_node) = ir_value_node {
                     unique_objects.insert(
                         pair.key.contents,
-                        get_value(ir_value_node.unwrap(), file_contents),
+                        get_value(value_node, file_contents),
                     );
                 }
             }
@@ -121,10 +122,10 @@ pub fn get_value(ir_node: IR, file_contents: &String) -> JSONValues {
         IR::IRPair(pair) => {
             let mut unique_pair = HashMap::new();
             let ir_value_node = IR::new(pair.value, file_contents.to_string());
-            if ir_value_node.is_some() {
+            if let Some(value_node) = ir_value_node {
                 unique_pair.insert(
                     pair.key.contents,
-                    get_value(ir_value_node.unwrap(), file_contents),
+                    get_value(value_node, file_contents),
                 );
             }
             JSONValues::Object(unique_pair)

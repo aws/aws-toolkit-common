@@ -41,11 +41,7 @@ fn get_additional_items(sub_schema: &Value) -> Option<Value> {
         return None;
     }
 
-    let schema_ref = new_schema_ref(additional_items);
-    if schema_ref.is_some() {
-        return Some(schema_ref.unwrap());
-    }
-    None
+    new_schema_ref(additional_items)
 }
 
 fn get_items_schema(items: &Option<Items>) -> Option<Vec<Value>> {
@@ -90,9 +86,9 @@ pub fn validate_additional_items(
         let mut index = 0;
         while index < min {
             let node_schema = &items_schema[index];
-            let item = node.items.get(index);
-            if item.is_some() {
-                errors.extend(validate.validate_root(item.unwrap().walk(), node_schema));
+            let node_item = node.items.get(index);
+            if let Some(n) = node_item {
+                errors.extend(validate.validate_root(n.walk(), node_schema));
             }
             index += 1;
         }

@@ -16,10 +16,9 @@ pub fn validate_type(ir_node: &IR, sub_schema: &Value) -> Option<Diagnostic> {
     let end = ir_node.clone().get_end();
     let kind = ir_node.clone().get_kind();
 
-    let types_arr = type_property.as_array();
-    if types_arr.is_some() {
+    if let Some(types) = type_property.as_array() {
         let mut type_found = false;
-        for types in types_arr.unwrap() {
+        for types in types {
             let json_type = types.as_str();
             if json_type.is_some() && matches_type(ir_node, json_type.unwrap()) {
                 type_found = true;
@@ -28,8 +27,7 @@ pub fn validate_type(ir_node: &IR, sub_schema: &Value) -> Option<Diagnostic> {
 
         if !type_found {
             // Get all the possible types
-            let missing_types = types_arr
-                .unwrap()
+            let missing_types = types
                 .iter()
                 .filter(|f| f.as_str().is_some())
                 .map(|f| f.as_str().unwrap())
@@ -46,6 +44,5 @@ pub fn validate_type(ir_node: &IR, sub_schema: &Value) -> Option<Diagnostic> {
             ));
         }
     }
-
     None
 }

@@ -60,12 +60,11 @@ pub fn validate_maximum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnosti
 }
 
 fn max(maximum_value: f64, exclusive_maximum_value: Option<f64>) -> f64 {
-    if exclusive_maximum_value.is_some() {
-        let emax_val = exclusive_maximum_value.unwrap();
-        if maximum_value > emax_val {
+    if let Some(emax) = exclusive_maximum_value {
+        if maximum_value > emax {
             return maximum_value;
         }
-        return emax_val;
+        return emax;
     }
     maximum_value
 }

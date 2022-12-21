@@ -19,9 +19,7 @@ pub fn validate_pattern_properties(
     for (regex, schema) in properties {
         let property_regex = Regex::new(regex);
 
-        if property_regex.is_ok() {
-            let reg = property_regex.unwrap();
-
+        if let Ok(reg) = property_regex {
             // TODO using clone here is probably an anti-pattern, but we need to remove processed properties. Theoretically we could return Vec<processed properties> in addition to diagnostics
             // and then remove them from the json_schema parser
             for (property, node) in available_keys.clone() {

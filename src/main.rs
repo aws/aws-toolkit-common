@@ -10,6 +10,7 @@ use log::LevelFilter;
 use log4rs::append::file::FileAppender;
 use log4rs::config::{Appender, Config, Root};
 use log4rs::encode::pattern::PatternEncoder;
+use tree_sitter::Tree;
 
 #[derive(Debug)]
 struct Backend {
@@ -24,14 +25,13 @@ impl Backend {
         parser
             .set_language(tree_sitter_json::language())
             .expect("Error loading json grammar");
-        let tree;
 
-        if self.documents.contains_key(&params.uri.to_string()) {
+        let tree: Tree = if self.documents.contains_key(&params.uri.to_string()) {
             let doc = self.documents.get(&params.uri.to_string()).unwrap();
-            tree = parser.parse(&params.text, Some(&doc.tree)).unwrap();
+            parser.parse(&params.text, Some(&doc.tree)).unwrap()
         } else {
-            tree = parser.parse(&params.text, None).unwrap();
-        }
+            parser.parse(&params.text, None).unwrap()
+        };
 
         self.documents.insert(
             params.uri.to_string(),

@@ -11,14 +11,6 @@ use crate::utils::{
 
 use super::json_schema::num_utils::convert_i64_to_float;
 
-// Given a json tree sitter tree, we need to return an intermediate representation that can be processed by the smithy validator
-
-// This isn't going to be walked at parse time, it's going to be done at validation time
-// that way we keep the speed of parsing the initial tree, and then we re-compute the results
-
-#[derive(Debug)]
-pub struct ConversionError {}
-
 #[derive(Debug, Clone)]
 pub enum IR<'a> {
     IRString(IRString),
@@ -101,12 +93,12 @@ impl IR<'_> {
     }
 }
 
-pub fn convert_pair<'a>(
-    root: Node<'a>,
+pub fn convert_pair(
+    root: Node,
     file_contents: String,
-) -> Result<IRPair<'a>, ConversionError> {
+) -> Option<IRPair> {
     let child = root.child(0).unwrap();
-    return Ok(IRPair::new(
+    return Some(IRPair::new(
         IRString::new(
             child.get_text(&file_contents),
             start_position(child),
@@ -118,35 +110,35 @@ pub fn convert_pair<'a>(
     ));
 }
 
-pub fn convert_string(node: Node, file_contents: String) -> Result<IRString, ConversionError> {
+pub fn convert_string(node: Node, file_contents: String) -> Option<IRString> {
     let contents = node.get_text(&file_contents);
-    Ok(IRString::new(
+    Some(IRString::new(
         contents,
         start_position(node),
         end_position(node),
     ))
 }
 
-pub fn convert_boolean(node: Node, file_contents: String) -> Result<IRBoolean, ConversionError> {
+pub fn convert_boolean(node: Node, file_contents: String) -> Option<IRBoolean> {
     let contents = node.get_text(&file_contents);
 
     if contents != "true" && contents != "false" {
-        return Err(ConversionError {});
+        return None;
     }
 
     let value: bool = contents.parse().unwrap();
-    Ok(IRBoolean::new(
+    Some(IRBoolean::new(
         value,
         start_position(node),
         end_position(node),
     ))
 }
 
-pub fn convert_number(node: Node, file_contents: String) -> Result<IRNumber, ConversionError> {
+pub fn convert_number(node: Node, file_contents: String) -> Option<IRNumber> {
     let val = node.get_text(&file_contents);
     let i64_val = val.parse::<i64>();
     if i64_val.is_ok() {
-        return Ok(IRNumber::new(
+        return Some(IRNumber::new(
             convert_i64_to_float(i64_val.ok().unwrap()),
             true,
             start_position(node),
@@ -156,7 +148,7 @@ pub fn convert_number(node: Node, file_contents: String) -> Result<IRNumber, Con
 
     let f64_val = val.parse::<f64>();
     if f64_val.is_ok() {
-        return Ok(IRNumber::new(
+        return Some(IRNumber::new(
             f64_val.ok().unwrap(),
             false,
             start_position(node),
@@ -164,13 +156,13 @@ pub fn convert_number(node: Node, file_contents: String) -> Result<IRNumber, Con
         ));
     }
 
-    Err(ConversionError {})
+    None
 }
 
-pub fn convert_object<'a>(
-    node: Node<'a>,
+pub fn convert_object(
+    node: Node,
     file_contents: String,
-) -> Result<IRObject<'a>, ConversionError> {
+) -> Option<IRObject> {
     let mut cursor = node.walk();
 
     // This moves us from the object node to the first node in the tree which would be {
@@ -190,21 +182,14 @@ pub fn convert_object<'a>(
             continue;
         }
 
-        let f_child = cur_node.child(0);
-        if f_child.is_none() {
-            return Err(ConversionError {});
-        }
+        let f_child = cur_node.child(0)?;
+        let key = f_child.get_text(&file_contents);
 
-        let key = f_child.unwrap().get_text(&file_contents);
-
-        let s_child = cur_node.child(2);
-        if s_child.is_none() {
-            return Err(ConversionError {});
-        }
+        let s_child = cur_node.child(2)?;
 
         pairs.push(IRPair::new(
             IRString::new(key, start_position(node), end_position(node)),
-            s_child.unwrap(),
+            s_child,
             start_position(node),
             end_position(node),
         ));
@@ -213,17 +198,17 @@ pub fn convert_object<'a>(
         cur_node = cursor.node();
     }
 
-    return Ok(IRObject::new(
+    Some(IRObject::new(
         pairs,
         start_position(node),
         end_position(node),
-    ));
+    ))
 }
 
-pub fn convert_array<'a>(
-    node: Node<'a>,
+pub fn convert_array(
+    node: Node,
     file_contents: String,
-) -> Result<IRArray<'a>, ConversionError> {
+) -> Option<IRArray> {
     let mut cursor = node.walk();
 
     // This moves us from the array node to the first node in the tree which would be [
@@ -250,9 +235,9 @@ pub fn convert_array<'a>(
         cur_node = cursor.node();
     }
 
-    return Ok(IRArray::new(
+    Some(IRArray::new(
         items,
         start_position(node),
         end_position(node),
-    ));
+    ))
 }
