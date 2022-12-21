@@ -1,38 +1,36 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 
 use regex::Regex;
 use serde_json::Value;
 use tree_sitter::Node;
 
-use crate::parsers::json_schema::json_schema_parser::{Validate, Validation};
+use crate::parsers::json_schema::{json_schema_parser::Validate, utils::object::Properties};
 
 pub fn validate_pattern_properties(
     validate: &Validate,
-    available_keys: &mut HashMap<String, Node>,
+    available_keys: &HashMap<String, Node>,
     sub_schema: &Value,
-) -> Option<Vec<Validation>> {
+) -> Option<Properties> {
     let properties = sub_schema.get("patternProperties")?.as_object()?;
 
     let mut validations = Vec::new();
-    let mut processing = HashSet::new();
+    let mut keys_used = Vec::new();
+
     for (regex, schema) in properties {
         let property_regex = Regex::new(regex);
 
         if let Ok(reg) = property_regex {
-            // TODO using clone here is probably an anti-pattern, but we need to remove processed properties. Theoretically we could return Vec<processed properties> in addition to diagnostics
-            // and then remove them from the json_schema parser
-            for (property, node) in available_keys.clone() {
-                if reg.is_match(&property) {
+            for (property, node) in available_keys {
+                if reg.is_match(property) {
                     validations.push(validate.validate_root(node.walk(), schema));
-                    processing.insert(property);
+                    keys_used.push(property.to_owned());
                 }
             }
         }
     }
 
-    for property in processing {
-        available_keys.remove(&property);
-    }
-
-    Some(validations)
+    Some(Properties {
+        keys_used,
+        validation: validations,
+    })
 }

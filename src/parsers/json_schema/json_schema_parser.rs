@@ -168,20 +168,25 @@ impl Validate {
             available_keys.insert(prop.key.contents.to_string(), prop.value);
         }
 
-        // TODO get rid of the mutations for available keys and instead remove all the keys after each response here
-        if let Some(validation) = validate_properties(self, &mut available_keys, sub_schema) {
-            validations = validations.merge_all(validation);
+        if let Some(props) = validate_properties(self, &available_keys, sub_schema) {
+            validations = validations.merge_all(props.validation);
+            for key in props.keys_used {
+                available_keys.remove(&key);
+            }
         }
 
-        if let Some(validation) = validate_pattern_properties(self, &mut available_keys, sub_schema)
-        {
-            validations = validations.merge_all(validation);
+        if let Some(props) = validate_pattern_properties(self, &available_keys, sub_schema) {
+            validations = validations.merge_all(props.validation);
+            for key in props.keys_used {
+                available_keys.remove(&key);
+            }
         }
 
-        if let Some(validation) =
-            validate_additional_properties(self, &mut available_keys, sub_schema)
-        {
-            validations = validations.merge_all(validation);
+        if let Some(props) = validate_additional_properties(self, &available_keys, sub_schema) {
+            validations = validations.merge_all(props.validation);
+            for key in props.keys_used {
+                available_keys.remove(&key);
+            }
         }
 
         if let Some(error) = validate_dependencies(&available_keys, sub_schema) {
