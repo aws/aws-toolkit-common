@@ -1,5 +1,5 @@
 use awsdocuments_language_server::parsers::json_schema::{
-    errors::*, json_schema_parser::Validate, utils::parse,
+    errors::*, json_schema_parser::Validate, utils::ir::parse,
 };
 use serde_json::{json, Value};
 use tower_lsp::lsp_types::Diagnostic;
@@ -7,7 +7,7 @@ use tower_lsp::lsp_types::Diagnostic;
 fn validate(input: &str, schema: Value) -> Vec<Diagnostic> {
     let parse_result = parse(input.to_string());
     let val = Validate::new(parse_result, schema, input.to_string());
-    val.validate()
+    val.validate().errors
 }
 
 #[test]
