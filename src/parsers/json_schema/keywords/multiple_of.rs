@@ -4,8 +4,10 @@ use tower_lsp::lsp_types::Diagnostic;
 use crate::{
     parsers::json_schema::{
         errors::multiple_of_error,
-        num_utils::{get_number, JsonNumbers},
-        utils::to_diagnostic,
+        utils::{
+            ir::to_diagnostic,
+            num::{get_number, JsonNumbers},
+        },
     },
     utils::tree_sitter::IRNumber,
 };

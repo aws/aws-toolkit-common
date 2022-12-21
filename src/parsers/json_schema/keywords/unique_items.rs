@@ -9,7 +9,7 @@ use crate::{
         ir::IR,
         json_schema::{
             errors::unique_items_error,
-            utils::{get_value, to_diagnostic},
+            utils::ir::{get_value, to_diagnostic},
         },
     },
     utils::text_document::ASTNodeExt,

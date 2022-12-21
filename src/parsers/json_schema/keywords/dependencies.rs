@@ -6,7 +6,7 @@ use tower_lsp::lsp_types::Diagnostic;
 use tree_sitter::Node;
 
 use crate::{
-    parsers::json_schema::utils::{new_schema_ref, to_diagnostic},
+    parsers::json_schema::utils::ir::{new_schema_ref, to_diagnostic},
     utils::tree_sitter::{end_position, start_position},
 };
 

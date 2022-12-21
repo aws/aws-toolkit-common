@@ -5,7 +5,7 @@ use crate::parsers::{
     ir::IR,
     json_schema::{
         errors::enum_error,
-        utils::{get_value, is_equal, to_diagnostic},
+        utils::ir::{get_value, is_equal, to_diagnostic},
     },
 };
 

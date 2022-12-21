@@ -9,7 +9,7 @@ use crate::utils::{
     },
 };
 
-use super::json_schema::num_utils::convert_i64_to_float;
+use super::json_schema::utils::num::convert_i64_to_float;
 
 #[derive(Debug, Clone)]
 pub enum IR<'a> {
@@ -93,10 +93,7 @@ impl IR<'_> {
     }
 }
 
-pub fn convert_pair(
-    root: Node,
-    file_contents: String,
-) -> Option<IRPair> {
+pub fn convert_pair(root: Node, file_contents: String) -> Option<IRPair> {
     let child = root.child(0).unwrap();
     return Some(IRPair::new(
         IRString::new(
@@ -159,10 +156,7 @@ pub fn convert_number(node: Node, file_contents: String) -> Option<IRNumber> {
     None
 }
 
-pub fn convert_object(
-    node: Node,
-    file_contents: String,
-) -> Option<IRObject> {
+pub fn convert_object(node: Node, file_contents: String) -> Option<IRObject> {
     let mut cursor = node.walk();
 
     // This moves us from the object node to the first node in the tree which would be {
@@ -205,10 +199,7 @@ pub fn convert_object(
     ))
 }
 
-pub fn convert_array(
-    node: Node,
-    file_contents: String,
-) -> Option<IRArray> {
+pub fn convert_array(node: Node, file_contents: String) -> Option<IRArray> {
     let mut cursor = node.walk();
 
     // This moves us from the array node to the first node in the tree which would be [

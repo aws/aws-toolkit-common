@@ -1,4 +1,4 @@
-use super::{json_schema_parser::Validate, utils::parse};
+use super::{json_schema_parser::Validate, utils::ir::parse};
 #[cfg(test)]
 use awsdocuments_language_server_derive::json_schema_test_suite_include;
 use json_schema_test_suite::{json_schema_test_suite, TestCase};

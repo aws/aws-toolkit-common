@@ -6,7 +6,7 @@ use crate::{
     parsers::json_schema::{
         errors::additional_items_error,
         json_schema_parser::{Validate, Validation},
-        utils::{new_schema_ref, to_diagnostic},
+        utils::ir::{new_schema_ref, to_diagnostic},
     },
     utils::tree_sitter::IRArray,
 };
@@ -27,9 +27,7 @@ fn get_items(sub_schema: &Value) -> Option<Items> {
                 arr.iter().filter_map(new_schema_ref).collect_vec(),
             ));
         }
-        Value::Object(obj) => {
-            Some(Items::Object(new_schema_ref(&json!(obj)).unwrap()))
-        }
+        Value::Object(obj) => Some(Items::Object(new_schema_ref(&json!(obj)).unwrap())),
         _ => None,
     }
 }
@@ -55,9 +53,7 @@ fn get_additional_items_schema(
     additional_items: Option<Value>,
 ) -> Option<Value> {
     match items {
-        Some(Items::Array(_)) => {
-            additional_items
-        }
+        Some(Items::Array(_)) => additional_items,
         Some(Items::Object(obj)) => Some(obj.to_owned()),
         _ => None,
     }
@@ -127,8 +123,6 @@ pub fn validate_additional_items(
 
             Some(validations)
         }
-        _ => {
-            Some(validations)
-        }
+        _ => Some(validations),
     }
 }

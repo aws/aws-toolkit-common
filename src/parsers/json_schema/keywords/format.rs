@@ -9,7 +9,7 @@ use time::OffsetDateTime;
 use tower_lsp::lsp_types::Diagnostic;
 use url::Url;
 
-use crate::{parsers::json_schema::utils::to_diagnostic, utils::tree_sitter::IRString};
+use crate::{parsers::json_schema::utils::ir::to_diagnostic, utils::tree_sitter::IRString};
 
 fn _validate_format(node: &IRString, error: &str, pattern: &str) -> Option<Diagnostic> {
     // TODO fix unsafe unwrap
@@ -93,8 +93,6 @@ pub fn validate_format(node: &IRString, sub_schema: &Value) -> Option<Diagnostic
             }
             None
         }
-        _ => {
-            None
-        }
+        _ => None,
     }
 }

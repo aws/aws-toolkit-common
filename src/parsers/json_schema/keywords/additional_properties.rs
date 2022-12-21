@@ -5,7 +5,9 @@ use tree_sitter::Node;
 
 use crate::{
     parsers::json_schema::{
-        errors::additional_properties_error, json_schema_parser::{Validate, Validation}, utils::to_diagnostic,
+        errors::additional_properties_error,
+        json_schema_parser::{Validate, Validation},
+        utils::ir::to_diagnostic,
     },
     utils::tree_sitter::{end_position, start_position},
 };
@@ -55,8 +57,6 @@ pub fn validate_additional_properties(
 
             Some(validations)
         }
-        _ => {
-            Some(validations)
-        }
+        _ => Some(validations),
     }
 }

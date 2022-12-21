@@ -2,7 +2,7 @@ use crate::parsers::{
     ir::IR,
     json_schema::{
         errors::type_error,
-        utils::{matches_type, to_diagnostic},
+        utils::ir::{matches_type, to_diagnostic},
     },
 };
 use itertools::Itertools;

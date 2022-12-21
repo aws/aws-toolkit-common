@@ -31,7 +31,7 @@ pub struct Validate {
 #[derive(Clone, Debug)]
 pub struct Validation {
     pub errors: Vec<Diagnostic>,
-    pub schema_matches: Vec<Box<Value>>
+    pub schema_matches: Vec<Box<Value>>,
 }
 
 impl Default for Validation {
@@ -44,14 +44,14 @@ impl Validation {
     pub fn new() -> Self {
         Validation {
             errors: Vec::new(),
-            schema_matches: Vec::new()
+            schema_matches: Vec::new(),
         }
     }
 
     pub fn merge(self, val: Validation) -> Self {
         Validation {
             errors: [self.errors, val.errors].concat(),
-            schema_matches: [self.schema_matches, val.schema_matches].concat()
+            schema_matches: [self.schema_matches, val.schema_matches].concat(),
         }
     }
 
@@ -64,7 +64,7 @@ impl Validation {
         }
         Validation {
             errors: [self.errors, errors].concat(),
-            schema_matches: [self.schema_matches, schemas].concat()
+            schema_matches: [self.schema_matches, schemas].concat(),
         }
     }
 }
@@ -104,7 +104,9 @@ impl Validate {
 
         // TODO I don't think we should be boxing then cloneing here. We technically need this to last
         // the lifetime of Validate but we don't want _all_ values to last the lifetime so it's used in the meantime
-        node_validation.schema_matches.push(Box::new(sub_schema.clone()));
+        node_validation
+            .schema_matches
+            .push(Box::new(sub_schema.clone()));
 
         match ir_nodes.unwrap() {
             IR::IRString(key) => {
@@ -116,9 +118,7 @@ impl Validate {
                 let array_errors = self.validate_array(arr, sub_schema);
                 node_validation.merge(array_errors)
             }
-            IR::IRBoolean(_) => {
-                node_validation
-            }
+            IR::IRBoolean(_) => node_validation,
             IR::IRObject(obj) => {
                 let obj_validation = self.validate_object(obj, sub_schema);
                 node_validation.merge(obj_validation)
@@ -135,9 +135,7 @@ impl Validate {
                 node_validation.errors = [node_validation.errors, num_errors].concat();
                 node_validation
             }
-            IR::IRNull(_) => {
-                node_validation
-            }
+            IR::IRNull(_) => node_validation,
         }
     }
 
@@ -154,7 +152,9 @@ impl Validate {
             errors.push(error);
         }
         validations.errors = errors;
-        validations.schema_matches.push(Box::new(sub_schema.to_owned()));
+        validations
+            .schema_matches
+            .push(Box::new(sub_schema.to_owned()));
         validations
     }
 
@@ -173,11 +173,14 @@ impl Validate {
             validations = validations.merge_all(validation);
         }
 
-        if let Some(validation) = validate_pattern_properties(self, &mut available_keys, sub_schema) {
+        if let Some(validation) = validate_pattern_properties(self, &mut available_keys, sub_schema)
+        {
             validations = validations.merge_all(validation);
         }
 
-        if let Some(validation) = validate_additional_properties(self, &mut available_keys, sub_schema) {
+        if let Some(validation) =
+            validate_additional_properties(self, &mut available_keys, sub_schema)
+        {
             validations = validations.merge_all(validation);
         }
 
@@ -262,7 +265,7 @@ mod tests {
     use serde_json::{json, Value};
     use tower_lsp::lsp_types::Diagnostic;
 
-    use crate::parsers::json_schema::utils::parse;
+    use crate::parsers::json_schema::utils::ir::parse;
 
     use super::Validate;
 

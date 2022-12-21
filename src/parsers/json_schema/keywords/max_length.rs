@@ -2,7 +2,7 @@ use serde_json::Value;
 use tower_lsp::lsp_types::Diagnostic;
 
 use crate::{
-    parsers::json_schema::{errors::expected_length_error, utils::to_diagnostic},
+    parsers::json_schema::{errors::expected_length_error, utils::ir::to_diagnostic},
     utils::tree_sitter::IRString,
 };
 

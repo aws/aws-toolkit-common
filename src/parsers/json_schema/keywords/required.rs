@@ -1,7 +1,7 @@
 use std::collections::HashSet;
 
 use crate::{
-    parsers::json_schema::{errors::required_error, utils::to_diagnostic},
+    parsers::json_schema::{errors::required_error, utils::ir::to_diagnostic},
     utils::tree_sitter::IRObject,
 };
 use itertools::Itertools;
