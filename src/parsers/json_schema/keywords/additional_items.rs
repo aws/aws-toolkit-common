@@ -110,11 +110,12 @@ pub fn validate_additional_items(
     match additional_items_schema {
         Some(Value::Bool(boo)) => {
             if !boo {
-                validations.push(Validation::new(vec![to_diagnostic(
+                let mut validation = Validation::new();
+                validation.errors.push(to_diagnostic(
                     node.start,
                     node.end,
                     additional_items_error(processed_items, node.items.len()),
-                )], vec![Box::new(sub_schema.to_owned())]));
+                ));
             }
             Some(validations)
         }

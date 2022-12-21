@@ -34,11 +34,17 @@ pub struct Validation {
     pub schema_matches: Vec<Box<Value>>
 }
 
+impl Default for Validation {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl Validation {
-    pub fn new(errors: Vec<Diagnostic>, relevant_schemas: Vec<Box<Value>>) -> Self {
+    pub fn new() -> Self {
         Validation {
-            errors,
-            schema_matches: relevant_schemas
+            errors: Vec::new(),
+            schema_matches: Vec::new()
         }
     }
 
@@ -52,9 +58,9 @@ impl Validation {
     pub fn merge_all(self, val: Vec<Validation>) -> Self {
         let mut errors = Vec::new();
         let mut schemas = Vec::new();
-        for v in val {
-            errors.extend(v.errors);
-            schemas.extend(v.schema_matches);
+        for mut v in val {
+            errors.append(&mut v.errors);
+            schemas.append(&mut v.schema_matches);
         }
         Validation {
             errors: [self.errors, errors].concat(),
@@ -91,10 +97,14 @@ impl Validate {
 
         let ir_nodes = IR::new(node, self.contents.clone());
         if ir_nodes.is_none() {
-            return Validation::new(vec![], vec![Box::new(sub_schema.to_owned())]);
+            return Validation::new();
         }
 
         let mut node_validation = self.validate_node(ir_nodes.clone().unwrap(), sub_schema);
+
+        // TODO I don't think we should be boxing then cloneing here. We technically need this to last
+        // the lifetime of Validate but we don't want _all_ values to last the lifetime so it's used in the meantime
+        node_validation.schema_matches.push(Box::new(sub_schema.clone()));
 
         match ir_nodes.unwrap() {
             IR::IRString(key) => {
@@ -132,7 +142,7 @@ impl Validate {
     }
 
     fn validate_node(&self, ir_node: IR, sub_schema: &Value) -> Validation {
-        let mut validations = Validation::new(vec![], vec![]);
+        let mut validations = Validation::new();
 
         let mut errors = Vec::new();
 
@@ -149,7 +159,7 @@ impl Validate {
     }
 
     fn validate_object(&self, obj: IRObject, sub_schema: &Value) -> Validation {
-        let mut validations = Validation::new(vec![], vec![]);
+        let mut validations = Validation::new();
 
         let mut errors = Vec::new();
 
@@ -158,6 +168,7 @@ impl Validate {
             available_keys.insert(prop.key.contents.to_string(), prop.value);
         }
 
+        // TODO get rid of the mutations for available keys and instead remove all the keys after each response here
         if let Some(validation) = validate_properties(self, &mut available_keys, sub_schema) {
             validations = validations.merge_all(validation);
         }
@@ -188,7 +199,7 @@ impl Validate {
     }
 
     fn validate_array(&self, array: IRArray, sub_schema: &Value) -> Validation {
-        let mut validations = Validation::new(vec![], vec![]);
+        let mut validations = Validation::new();
 
         let mut errors: Vec<Diagnostic> = Vec::new();
         if let Some(error) = validate_min_items(&array, sub_schema) {

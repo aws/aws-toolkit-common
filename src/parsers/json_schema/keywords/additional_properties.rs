@@ -18,7 +18,6 @@ pub fn validate_additional_properties(
     let properties = sub_schema.get("additionalProperties")?;
 
     let mut validations: Vec<Validation> = Vec::new();
-    let mut errors = Vec::new();
     match properties {
         Value::Bool(boo) => {
             if boo == &true {
@@ -31,16 +30,17 @@ pub fn validate_additional_properties(
                     validations.push(validate.validate_root(value.walk(), sub_schema));
                 }
             } else {
+                let mut validation = Validation::new();
                 // properties/patternProperties have already removed all their matching nodes, these errors shouldn't be here
                 for (additional_property, value) in available_keys.clone() {
                     available_keys.remove(&additional_property);
-                    errors.push(to_diagnostic(
+                    validation.errors.push(to_diagnostic(
                         start_position(value),
                         end_position(value),
                         additional_properties_error(additional_property),
                     ));
                 }
-                validations.push(Validation::new(errors, vec![Box::new(sub_schema.to_owned())]));
+                validations.push(validation);
             }
 
             Some(validations)
