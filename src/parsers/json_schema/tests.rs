@@ -31,7 +31,7 @@ fn test_suite(_server_address: &str, test_case: TestCase) {
 
     let schema = test_case.schema.clone();
     let val = Validate::new(parse_result, schema, test_case.instance.to_string());
-    let errors = val.validate();
+    let errors = val.validate().errors;
     if test_case.is_valid {
         if !errors.is_empty() {
             panic!(

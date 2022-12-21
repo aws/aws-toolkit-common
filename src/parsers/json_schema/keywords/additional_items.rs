@@ -1,12 +1,11 @@
 use itertools::Itertools;
 use serde_json::{json, Value};
 use std::cmp;
-use tower_lsp::lsp_types::Diagnostic;
 
 use crate::{
     parsers::json_schema::{
         errors::additional_items_error,
-        json_schema_parser::Validate,
+        json_schema_parser::{Validate, Validation},
         utils::{new_schema_ref, to_diagnostic},
     },
     utils::tree_sitter::IRArray,
@@ -68,14 +67,14 @@ pub fn validate_additional_items(
     validate: &Validate,
     node: &IRArray,
     sub_schema: &Value,
-) -> Option<Vec<Diagnostic>> {
+) -> Option<Vec<Validation>> {
     let potential_items = &get_items(sub_schema);
     let potential_additional_items = get_additional_items(sub_schema);
     let potential_items_schema = &get_items_schema(potential_items);
     let additional_items_schema =
         get_additional_items_schema(potential_items, potential_additional_items);
 
-    let mut errors = Vec::new();
+    let mut validations = Vec::new();
 
     if potential_items_schema.is_some() {
         let items_schema = potential_items_schema.as_ref().unwrap();
@@ -88,14 +87,14 @@ pub fn validate_additional_items(
             let node_schema = &items_schema[index];
             let node_item = node.items.get(index);
             if let Some(n) = node_item {
-                errors.extend(validate.validate_root(n.walk(), node_schema));
+                validations.push(validate.validate_root(n.walk(), node_schema));
             }
             index += 1;
         }
     }
 
     if additional_items_schema.is_none() {
-        return Some(errors);
+        return Some(validations);
     }
 
     // Keep track of how many items have been processed, either 0 or the total number of items in the schema
@@ -106,30 +105,29 @@ pub fn validate_additional_items(
 
     // We've already processed all the nodes against the schemas
     if processed_items >= node.items.len() {
-        return Some(errors);
+        return Some(validations);
     }
-
     match additional_items_schema {
         Some(Value::Bool(boo)) => {
             if !boo {
-                errors.push(to_diagnostic(
+                validations.push(Validation::new(vec![to_diagnostic(
                     node.start,
                     node.end,
                     additional_items_error(processed_items, node.items.len()),
-                ));
+                )], vec![Box::new(sub_schema.to_owned())]));
             }
-            Some(errors)
+            Some(validations)
         }
         Some(Value::Object(obj)) => {
             let max_length = cmp::max(node.items.len(), processed_items);
             for i in processed_items..max_length {
-                errors.extend(validate.validate_root(node.items[i].walk(), &json!(obj)));
+                validations.push(validate.validate_root(node.items[i].walk(), &json!(obj)));
             }
 
-            Some(errors)
+            Some(validations)
         }
         _ => {
-            Some(errors)
+            Some(validations)
         }
     }
 }
