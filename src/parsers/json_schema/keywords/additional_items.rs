@@ -3,10 +3,13 @@ use serde_json::{json, Value};
 use std::cmp;
 
 use crate::{
-    parsers::json_schema::{
-        errors::additional_items_error,
-        json_schema_parser::{Validate, Validation},
-        utils::ir::{new_schema_ref, to_diagnostic},
+    parsers::{
+        json_schema::{
+            errors::additional_items_error,
+            json_schema_parser::JSONSchemaValidator,
+            utils::ir::{new_schema_ref, to_diagnostic},
+        },
+        parser::ParseResult,
     },
     utils::tree_sitter::IRArray,
 };
@@ -60,10 +63,10 @@ fn get_additional_items_schema(
 }
 
 pub fn validate_additional_items(
-    validate: &Validate,
+    validate: &JSONSchemaValidator,
     node: &IRArray,
     sub_schema: &Value,
-) -> Option<Vec<Validation>> {
+) -> Option<Vec<ParseResult>> {
     let potential_items = &get_items(sub_schema);
     let potential_additional_items = get_additional_items(sub_schema);
     let potential_items_schema = &get_items_schema(potential_items);
@@ -106,11 +109,13 @@ pub fn validate_additional_items(
     match additional_items_schema {
         Some(Value::Bool(boo)) => {
             if !boo {
-                let mut validation = Validation::new();
-                validation.errors.push(to_diagnostic(
-                    node.start,
-                    node.end,
-                    additional_items_error(processed_items, node.items.len()),
+                validations.push(ParseResult::new(
+                    vec![to_diagnostic(
+                        node.start,
+                        node.end,
+                        additional_items_error(processed_items, node.items.len()),
+                    )],
+                    vec![],
                 ));
             }
             Some(validations)

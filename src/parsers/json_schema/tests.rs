@@ -1,4 +1,6 @@
-use super::{json_schema_parser::Validate, utils::ir::parse};
+use crate::parsers::parser::Parser;
+
+use super::{json_schema_parser::JSONSchemaValidator, utils::ir::parse};
 #[cfg(test)]
 use awsdocuments_language_server_derive::json_schema_test_suite_include;
 use json_schema_test_suite::{json_schema_test_suite, TestCase};
@@ -30,8 +32,8 @@ fn test_suite(_server_address: &str, test_case: TestCase) {
     let parse_result = parse(test_case.instance.to_string());
 
     let schema = test_case.schema.clone();
-    let val = Validate::new(parse_result, schema, test_case.instance.to_string());
-    let errors = val.validate().errors;
+    let val = JSONSchemaValidator::new(parse_result, schema, test_case.instance.to_string());
+    let errors = val.parse().errors;
     if test_case.is_valid {
         if !errors.is_empty() {
             panic!(

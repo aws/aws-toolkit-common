@@ -1,7 +1,10 @@
 use std::collections::HashMap;
 
 use crate::{
-    parsers::ir::IR,
+    parsers::{
+        ir::IR,
+        parser::{ParseResult, Parser},
+    },
     utils::tree_sitter::{IRArray, IRNumber, IRObject, IRString},
 };
 use serde_json::Value;
@@ -22,69 +25,30 @@ use super::keywords::{
     required::validate_required, unique_items::validate_unique_items,
 };
 
-pub struct Validate {
+pub struct JSONSchemaValidator {
     tree: Tree,
     schema: Value,
     contents: String,
 }
 
-#[derive(Clone, Debug)]
-pub struct Validation {
-    pub errors: Vec<Diagnostic>,
-    pub schema_matches: Vec<Box<Value>>,
-}
-
-impl Default for Validation {
-    fn default() -> Self {
-        Self::new()
+impl Parser for JSONSchemaValidator {
+    fn parse(&self) -> ParseResult {
+        let cursor = self.tree.walk();
+        self.validate_root(cursor, &self.schema)
     }
 }
 
-impl Validation {
-    pub fn new() -> Self {
-        Validation {
-            errors: Vec::new(),
-            schema_matches: Vec::new(),
-        }
-    }
-
-    pub fn merge(self, val: Validation) -> Self {
-        Validation {
-            errors: [self.errors, val.errors].concat(),
-            schema_matches: [self.schema_matches, val.schema_matches].concat(),
-        }
-    }
-
-    pub fn merge_all(self, val: Vec<Validation>) -> Self {
-        let mut errors = Vec::new();
-        let mut schemas = Vec::new();
-        for mut v in val {
-            errors.append(&mut v.errors);
-            schemas.append(&mut v.schema_matches);
-        }
-        Validation {
-            errors: [self.errors, errors].concat(),
-            schema_matches: [self.schema_matches, schemas].concat(),
-        }
-    }
-}
-
-impl Validate {
+impl JSONSchemaValidator {
     pub fn new(tree: Tree, schema: Value, file_contents: String) -> Self {
         // TODO when adding yaml support, make the converter depend on the incoming language
-        Validate {
+        JSONSchemaValidator {
             tree,
             schema,
             contents: file_contents,
         }
     }
 
-    pub fn validate(&self) -> Validation {
-        let cursor = self.tree.walk();
-        self.validate_root(cursor, &self.schema)
-    }
-
-    pub fn validate_root(&self, mut cursor: TreeCursor, sub_schema: &Value) -> Validation {
+    pub fn validate_root(&self, mut cursor: TreeCursor, sub_schema: &Value) -> ParseResult {
         let node = cursor.node();
 
         if node.kind() == "document" || node.kind() == "{" {
@@ -97,7 +61,7 @@ impl Validate {
 
         let ir_nodes = IR::new(node, self.contents.clone());
         if ir_nodes.is_none() {
-            return Validation::new();
+            return ParseResult::default();
         }
 
         let mut node_validation = self.validate_node(ir_nodes.clone().unwrap(), sub_schema);
@@ -139,8 +103,8 @@ impl Validate {
         }
     }
 
-    fn validate_node(&self, ir_node: IR, sub_schema: &Value) -> Validation {
-        let mut validations = Validation::new();
+    fn validate_node(&self, ir_node: IR, sub_schema: &Value) -> ParseResult {
+        let mut validations = ParseResult::default();
 
         let mut errors = Vec::new();
 
@@ -158,8 +122,8 @@ impl Validate {
         validations
     }
 
-    fn validate_object(&self, obj: IRObject, sub_schema: &Value) -> Validation {
-        let mut validations = Validation::new();
+    fn validate_object(&self, obj: IRObject, sub_schema: &Value) -> ParseResult {
+        let mut validations = ParseResult::default();
 
         let mut errors = Vec::new();
 
@@ -206,8 +170,8 @@ impl Validate {
         validations
     }
 
-    fn validate_array(&self, array: IRArray, sub_schema: &Value) -> Validation {
-        let mut validations = Validation::new();
+    fn validate_array(&self, array: IRArray, sub_schema: &Value) -> ParseResult {
+        let mut validations = ParseResult::default();
 
         let mut errors: Vec<Diagnostic> = Vec::new();
         if let Some(error) = validate_min_items(&array, sub_schema) {
@@ -270,15 +234,14 @@ mod tests {
     use serde_json::{json, Value};
     use tower_lsp::lsp_types::Diagnostic;
 
-    use crate::parsers::json_schema::utils::ir::parse;
+    use crate::parsers::{json_schema::utils::ir::parse, parser::Parser};
 
-    use super::Validate;
+    use super::JSONSchemaValidator;
 
     fn validation_test(contents: String, schema: Value) -> Vec<Diagnostic> {
         let parse_result = parse(contents.to_string());
-        let val = Validate::new(parse_result, schema, contents);
-        let validation = val.validate();
-        println!("{:?}", validation.schema_matches);
+        let val = JSONSchemaValidator::new(parse_result, schema, contents);
+        let validation = val.parse();
         validation.errors
     }
 

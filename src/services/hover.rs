@@ -21,6 +21,10 @@ pub fn hover(document: &TextDocument, params: HoverParams) -> Hover {
         )
         .unwrap();
 
+    if let Some(matches) = &document.parse_result {
+        if !matches.schema_matches.is_empty() {}
+    }
+
     Hover {
         contents: HoverContents::Scalar(MarkedString::String(String::from(""))),
         range: Some(Range {

@@ -1,6 +1,6 @@
-use crate::parsers::json_schema::json_schema_parser::Validation;
+use crate::parsers::parser::ParseResult;
 
 pub struct Properties {
     pub keys_used: Vec<String>,
-    pub validation: Vec<Validation>,
+    pub validation: Vec<ParseResult>,
 }

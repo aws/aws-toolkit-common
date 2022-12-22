@@ -43,10 +43,7 @@ pub fn completion(document: &TextDocument, params: CompletionParams) -> Vec<Comp
     // e.g. aws.documents#dynamic="file??"
 
     let node_val = n.get_text(&document.contents);
-    rets.push(CompletionItem::new_simple(
-        node_val,
-        n.kind().to_string(),
-    ));
+    rets.push(CompletionItem::new_simple(node_val, n.kind().to_string()));
 
     let node_val2 = n
         .parent()
@@ -96,6 +93,7 @@ mod tests {
         let document = TextDocument {
             tree: parse_result,
             contents: contents.to_string(),
+            parse_result: None,
         };
         let params = CompletionParams {
             context: Some(CompletionContext {
@@ -136,7 +134,7 @@ mod tests {
         let result = completion_test(
             "{
     \"AWSTemplateFormatVersion\": \"2010-09-09\",
-    
+
 }",
             2,
             4,
@@ -151,12 +149,12 @@ mod tests {
     \"AWSTemplateFormatVersion\": \"2010-09-09\",
     \"Description\": \"0.2.0\",
     \"Mappings\": {
-    
+
     },
     \"Resources\": {
-    
+
     },
-    
+
 }",
             9,
             4,
@@ -171,10 +169,10 @@ mod tests {
     \"AWSTemplateFormatVersion\": \"2010-09-09\",
     \"Description\": \"0.2.0\",
     \"Mappings\": {
-    
+
     },
     \"Resources\": {
-        
+
     }
 }",
             7,

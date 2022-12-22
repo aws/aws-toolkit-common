@@ -1,3 +1,5 @@
+use awsdocuments_language_server::build_registry;
+use awsdocuments_language_server::registry::parser_registry::Registry;
 use awsdocuments_language_server::services::completion::completion;
 use awsdocuments_language_server::services::hover::hover;
 use awsdocuments_language_server::utils::text_document::TextDocument;
@@ -12,9 +14,9 @@ use log4rs::config::{Appender, Config, Root};
 use log4rs::encode::pattern::PatternEncoder;
 use tree_sitter::Tree;
 
-#[derive(Debug)]
 struct Backend {
     client: Client,
+    registry: Registry,
     documents: DashMap<String, TextDocument>,
 }
 
@@ -33,11 +35,16 @@ impl Backend {
             parser.parse(&params.text, None).unwrap()
         };
 
+        let parse_result =
+            self.registry
+                .parse(params.uri.to_string(), tree.clone(), params.text.clone());
+
         self.documents.insert(
             params.uri.to_string(),
             TextDocument {
                 tree,
                 contents: params.text.clone(),
+                parse_result,
             },
         );
     }
@@ -160,6 +167,7 @@ async fn main() {
     let (service, socket) = LspService::new(|client| Backend {
         client,
         documents: DashMap::new(),
+        registry: build_registry(),
     });
 
     log::debug!("Starting the language server");

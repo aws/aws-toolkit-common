@@ -3,19 +3,19 @@ use std::collections::HashMap;
 use serde_json::Value;
 use tree_sitter::Node;
 
-use crate::parsers::json_schema::{
-    json_schema_parser::{Validate, Validation},
-    utils::object::Properties,
+use crate::parsers::{
+    json_schema::{json_schema_parser::JSONSchemaValidator, utils::object::Properties},
+    parser::ParseResult,
 };
 
 pub fn validate_properties(
-    validate: &Validate,
+    validate: &JSONSchemaValidator,
     available_keys: &HashMap<String, Node>,
     sub_schema: &Value,
 ) -> Option<Properties> {
     let properties = sub_schema.get("properties")?.as_object()?;
 
-    let mut validations: Vec<Validation> = Vec::new();
+    let mut validations: Vec<ParseResult> = Vec::new();
     let mut keys_used = Vec::new();
 
     for (key, value) in properties {

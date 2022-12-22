@@ -1,9 +1,11 @@
+use crate::parsers::parser::ParseResult;
 use tree_sitter::{Node, Tree};
 
 #[derive(Debug)]
 pub struct TextDocument {
     pub tree: Tree,
     pub contents: String,
+    pub parse_result: Option<ParseResult>,
 }
 
 // ASTNodes are language dependent functions that can be used for gathering information on a language

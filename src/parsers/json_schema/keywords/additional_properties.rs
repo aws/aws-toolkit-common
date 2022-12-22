@@ -4,22 +4,25 @@ use serde_json::{json, Value};
 use tree_sitter::Node;
 
 use crate::{
-    parsers::json_schema::{
-        errors::additional_properties_error,
-        json_schema_parser::{Validate, Validation},
-        utils::{ir::to_diagnostic, object::Properties},
+    parsers::{
+        json_schema::{
+            errors::additional_properties_error,
+            json_schema_parser::JSONSchemaValidator,
+            utils::{ir::to_diagnostic, object::Properties},
+        },
+        parser::ParseResult,
     },
     utils::tree_sitter::{end_position, start_position},
 };
 
 pub fn validate_additional_properties(
-    validate: &Validate,
+    validate: &JSONSchemaValidator,
     available_keys: &HashMap<String, Node>,
     sub_schema: &Value,
 ) -> Option<Properties> {
     let properties = sub_schema.get("additionalProperties")?;
 
-    let mut validations: Vec<Validation> = Vec::new();
+    let mut validations: Vec<ParseResult> = Vec::new();
     let mut keys_used = Vec::new();
 
     match properties {
@@ -32,7 +35,7 @@ pub fn validate_additional_properties(
                     validations.push(validate.validate_root(value.walk(), sub_schema));
                 }
             } else {
-                let mut validation = Validation::new();
+                let mut validation = ParseResult::default();
                 // properties/patternProperties have already removed all their matching nodes, these are additional properties that shouldn't be here
                 for (additional_property, value) in available_keys {
                     keys_used.push(additional_property.to_owned());

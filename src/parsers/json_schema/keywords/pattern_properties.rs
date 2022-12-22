@@ -4,10 +4,12 @@ use regex::Regex;
 use serde_json::Value;
 use tree_sitter::Node;
 
-use crate::parsers::json_schema::{json_schema_parser::Validate, utils::object::Properties};
+use crate::parsers::json_schema::{
+    json_schema_parser::JSONSchemaValidator, utils::object::Properties,
+};
 
 pub fn validate_pattern_properties(
-    validate: &Validate,
+    validate: &JSONSchemaValidator,
     available_keys: &HashMap<String, Node>,
     sub_schema: &Value,
 ) -> Option<Properties> {
