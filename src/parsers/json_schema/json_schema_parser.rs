@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use crate::{
     parsers::{
         ir::IR,
-        parser::{ParseResult, Parser},
+        parser::{ParseResult, Parser, SchemaMatches},
     },
     utils::tree_sitter::{IRArray, IRNumber, IRObject, IRString},
 };
@@ -11,18 +11,21 @@ use serde_json::Value;
 use tower_lsp::lsp_types::Diagnostic;
 use tree_sitter::{Tree, TreeCursor};
 
-use super::keywords::{
-    additional_items::validate_additional_items,
-    additional_properties::validate_additional_properties, dependencies::validate_dependencies,
-    exclusive_maximum::validate_exclusive_maximum, exclusive_minimum::validate_exclusive_minimum,
-    format::validate_format, json_enum::validate_enum, json_type::validate_type,
-    max_items::validate_max_items, max_length::validate_max_length,
-    max_properties::validate_max_properties, maximum::validate_maximum,
-    min_items::validate_min_items, min_length::validate_min_length,
-    min_properties::validate_min_properties, minimum::validate_minimum,
-    multiple_of::validate_multiple_of, pattern::validate_pattern,
-    pattern_properties::validate_pattern_properties, properties::validate_properties,
-    required::validate_required, unique_items::validate_unique_items,
+use super::{
+    keywords::{
+        additional_items::validate_additional_items,
+        additional_properties::validate_additional_properties, dependencies::validate_dependencies,
+        exclusive_maximum::validate_exclusive_maximum,
+        exclusive_minimum::validate_exclusive_minimum, format::validate_format,
+        json_enum::validate_enum, json_type::validate_type, max_items::validate_max_items,
+        max_length::validate_max_length, max_properties::validate_max_properties,
+        maximum::validate_maximum, min_items::validate_min_items, min_length::validate_min_length,
+        min_properties::validate_min_properties, minimum::validate_minimum,
+        multiple_of::validate_multiple_of, pattern::validate_pattern,
+        pattern_properties::validate_pattern_properties, properties::validate_properties,
+        required::validate_required, unique_items::validate_unique_items,
+    },
+    utils::object::NodeIdentifier,
 };
 
 pub struct JSONSchemaValidator {
@@ -66,11 +69,11 @@ impl JSONSchemaValidator {
 
         let mut node_validation = self.validate_node(ir_nodes.clone().unwrap(), sub_schema);
 
-        // TODO I don't think we should be boxing then cloneing here. We technically need this to last
-        // the lifetime of Validate but we don't want _all_ values to last the lifetime so it's used in the meantime
-        node_validation
-            .schema_matches
-            .push(Box::new(sub_schema.clone()));
+        // Clone the schema here instead of dealing with lifetimes (if that would even be possible)
+        node_validation.schema_matches.push(SchemaMatches {
+            node: NodeIdentifier::new(node, &self.contents),
+            schema: sub_schema.clone(),
+        });
 
         match ir_nodes.unwrap() {
             IR::IRString(key) => {
@@ -116,9 +119,6 @@ impl JSONSchemaValidator {
             errors.push(error);
         }
         validations.errors = errors;
-        validations
-            .schema_matches
-            .push(Box::new(sub_schema.to_owned()));
         validations
     }
 

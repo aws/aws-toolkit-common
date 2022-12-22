@@ -1,6 +1,8 @@
 use serde_json::Value;
 use tower_lsp::lsp_types::Diagnostic;
 
+use super::json_schema::utils::object::NodeIdentifier;
+
 pub trait Parser {
     fn parse(&self) -> ParseResult;
 }
@@ -8,7 +10,13 @@ pub trait Parser {
 #[derive(Clone, Debug)]
 pub struct ParseResult {
     pub errors: Vec<Diagnostic>,
-    pub schema_matches: Vec<Box<Value>>,
+    pub schema_matches: Vec<SchemaMatches>,
+}
+
+#[derive(Clone, Debug)]
+pub struct SchemaMatches {
+    pub node: NodeIdentifier,
+    pub schema: Value,
 }
 
 impl Default for ParseResult {
@@ -18,7 +26,7 @@ impl Default for ParseResult {
 }
 
 impl ParseResult {
-    pub fn new(errors: Vec<Diagnostic>, schema_matches: Vec<Box<Value>>) -> Self {
+    pub fn new(errors: Vec<Diagnostic>, schema_matches: Vec<SchemaMatches>) -> Self {
         ParseResult {
             errors,
             schema_matches,
