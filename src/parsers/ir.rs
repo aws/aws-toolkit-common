@@ -26,19 +26,24 @@ impl IR<'_> {
     pub fn new(node: Node, file_contents: String) -> Option<IR> {
         match node.kind() {
             "pair" => {
-                return Some(IR::IRPair(convert_pair(node, file_contents).unwrap()));
+                let pair = convert_pair(node, file_contents)?;
+                return Some(IR::IRPair(pair));
             }
             "array" => {
-                return Some(IR::IRArray(convert_array(node, file_contents).unwrap()));
+                let arr = convert_array(node, file_contents)?;
+                return Some(IR::IRArray(arr));
             }
             "number" => {
-                return Some(IR::IRNumber(convert_number(node, file_contents).unwrap()));
+                let num = convert_number(node, file_contents)?;
+                return Some(IR::IRNumber(num));
             }
             "string" => {
-                return Some(IR::IRString(convert_string(node, file_contents).unwrap()));
+                let str = convert_string(node, file_contents)?;
+                return Some(IR::IRString(str));
             }
             "object" => {
-                return Some(IR::IRObject(convert_object(node, file_contents).unwrap()));
+                let obj = convert_object(node, file_contents)?;
+                return Some(IR::IRObject(obj));
             }
             "null" => {
                 return Some(IR::IRNull(IRNull::new(
@@ -47,7 +52,8 @@ impl IR<'_> {
                 )));
             }
             "true" | "false" => {
-                return Some(IR::IRBoolean(convert_boolean(node, file_contents).unwrap()));
+                let boo = convert_boolean(node, file_contents)?;
+                return Some(IR::IRBoolean(boo));
             }
             _ => None,
         }
