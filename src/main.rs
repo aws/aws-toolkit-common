@@ -23,12 +23,7 @@ impl Backend {
             .set_language(tree_sitter_json::language())
             .expect("Error loading json grammar");
 
-        let tree: Tree = if self.documents.contains_key(&params.uri.to_string()) {
-            let doc = self.documents.get(&params.uri.to_string()).unwrap();
-            parser.parse(&params.text, Some(&doc.tree)).unwrap()
-        } else {
-            parser.parse(&params.text, None).unwrap()
-        };
+        let tree: Tree = parser.parse(&params.text, None).unwrap();
 
         let parse = self
             .registry
