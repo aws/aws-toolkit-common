@@ -5,7 +5,7 @@ use tree_sitter::{Node, Tree};
 pub struct TextDocument {
     pub tree: Tree,
     pub contents: String,
-    pub parse_result: Option<ParseResult>,
+    pub parse_result: ParseResult,
 }
 
 // ASTNodes are language dependent functions that can be used for gathering information on a language

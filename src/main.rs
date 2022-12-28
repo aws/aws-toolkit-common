@@ -7,11 +7,6 @@ use dashmap::DashMap;
 use tower_lsp::jsonrpc::Result;
 use tower_lsp::lsp_types::*;
 use tower_lsp::{Client, LanguageServer, LspService, Server};
-
-use log::LevelFilter;
-use log4rs::append::file::FileAppender;
-use log4rs::config::{Appender, Config, Root};
-use log4rs::encode::pattern::PatternEncoder;
 use tree_sitter::Tree;
 
 struct Backend {
@@ -35,18 +30,28 @@ impl Backend {
             parser.parse(&params.text, None).unwrap()
         };
 
-        let parse_result =
-            self.registry
-                .parse(params.uri.to_string(), tree.clone(), params.text.clone());
+        let parse = self
+            .registry
+            .parse(params.uri.to_string(), tree.clone(), params.text.clone());
 
-        self.documents.insert(
-            params.uri.to_string(),
-            TextDocument {
-                tree,
-                contents: params.text.clone(),
-                parse_result,
-            },
-        );
+        if let Some(parse_result) = parse {
+            self.client
+                .publish_diagnostics(
+                    params.uri.clone(),
+                    parse_result.errors.clone(),
+                    Some(params.version),
+                )
+                .await;
+
+            self.documents.insert(
+                params.uri.to_string(),
+                TextDocument {
+                    tree,
+                    contents: params.text.clone(),
+                    parse_result,
+                },
+            );
+        }
     }
 }
 
@@ -59,12 +64,7 @@ impl LanguageServer for Backend {
                 text_document_sync: Some(TextDocumentSyncCapability::Kind(
                     TextDocumentSyncKind::FULL, // TODO we probably want to change this to incremental once we can easily support that
                 )),
-                completion_provider: Some(CompletionOptions {
-                    resolve_provider: Some(false),
-                    trigger_characters: None,
-                    work_done_progress_options: Default::default(),
-                    all_commit_characters: None,
-                }),
+                completion_provider: None,
                 hover_provider: Some(HoverProviderCapability::Simple(true)),
                 ..ServerCapabilities::default() // currently don't support workspace folders but those could be added later
             },
@@ -144,23 +144,6 @@ impl LanguageServer for Backend {
 
 #[tokio::main]
 async fn main() {
-    let logfile = FileAppender::builder()
-        .encoder(Box::new(PatternEncoder::new("{l} - {m}\n")))
-        .append(false)
-        .build("log/output.log")
-        .unwrap();
-
-    let config = Config::builder()
-        .appender(Appender::builder().build("logfile", Box::new(logfile)))
-        .build(
-            Root::builder()
-                .appender("logfile")
-                .build(LevelFilter::Trace),
-        )
-        .unwrap();
-
-    let _handle = log4rs::init_config(config);
-
     let stdin = tokio::io::stdin();
     let stdout = tokio::io::stdout();
 
@@ -169,8 +152,6 @@ async fn main() {
         documents: DashMap::new(),
         registry: build_registry(),
     });
-
-    log::debug!("Starting the language server");
 
     Server::new(stdin, stdout, socket).serve(service).await
 }
