@@ -17,7 +17,7 @@ pub struct Properties {
 // Used for uniquely identifying a node without having a store an entire node on the heap
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct NodeIdentifier {
-    parent: Option<String>,
+    pub closest_pair: Option<String>,
     text: String,
     start: Position,
     end: Position,
@@ -25,16 +25,33 @@ pub struct NodeIdentifier {
 
 impl NodeIdentifier {
     pub fn new(node: Node, file_contents: &str) -> Self {
-        let parent = node.parent().unwrap().kind();
         let text = node.get_text(file_contents);
         let start = start_position(node);
         let end = end_position(node);
 
         NodeIdentifier {
+            closest_pair: find_pair(node, file_contents),
             text,
-            parent: Some(parent.to_string()),
             start,
             end,
         }
     }
+}
+
+fn find_pair(node: Node, file_contents: &str) -> Option<String> {
+    let parent = node.parent()?;
+    if node.kind() == "string_content" {
+        let grandparent = parent.parent()?;
+        return Some(grandparent.get_text(file_contents));
+    }
+
+    if parent.kind() == "pair" {
+        return Some(parent.get_text(file_contents));
+    }
+
+    if node.kind() == "pair" {
+        return Some(node.get_text(file_contents));
+    }
+
+    None
 }
