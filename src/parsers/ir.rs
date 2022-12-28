@@ -49,10 +49,7 @@ impl IR<'_> {
             "true" | "false" => {
                 return Some(IR::IRBoolean(convert_boolean(node, file_contents).unwrap()));
             }
-            _ => {
-                println!("{}", node.kind());
-                None
-            }
+            _ => None,
         }
     }
 

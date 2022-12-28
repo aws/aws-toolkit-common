@@ -115,7 +115,6 @@ pub fn get_value(ir_node: IR, file_contents: &String) -> JSONValues {
 
 // TODO extract this out into its own file/utils stuff
 pub fn is_equal(ir_node: &IR, file_contents: &String, value: &Value) -> bool {
-    println!("{}, {}", ir_node.clone().get_kind(), value);
     match (ir_node, value) {
         (IR::IRArray(arr), Value::Array(second_arr)) => {
             for (i, node) in arr.items.iter().enumerate() {
