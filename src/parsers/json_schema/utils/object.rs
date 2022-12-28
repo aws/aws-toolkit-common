@@ -19,8 +19,8 @@ pub struct Properties {
 pub struct NodeIdentifier {
     pub closest_pair: Option<String>,
     text: String,
-    start: Position,
-    end: Position,
+    pub start: Position,
+    pub end: Position,
 }
 
 impl NodeIdentifier {

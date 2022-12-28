@@ -24,26 +24,26 @@ pub fn hover(document: &TextDocument, params: HoverParams) -> Hover {
         .unwrap();
 
     let ident = NodeIdentifier::new(_n, &document.contents);
-    if let Some(matches) = &document.parse_result {
-        if !matches.schema_matches.is_empty() {
-            for schema_match in &matches.schema_matches {
-                if schema_match.node.closest_pair == ident.closest_pair
-                    && schema_match.schema.is_object()
-                    && schema_match
-                        .schema
-                        .as_object()
-                        .unwrap()
-                        .contains_key("description")
-                {
-                    return Hover {
-                        contents: HoverContents::Scalar(MarkedString::String(String::from(
-                            schema_match.schema["description"].as_str().unwrap(),
-                        ))),
-                        range: Some(Range {
-                            ..Default::default()
-                        }),
-                    };
-                }
+    let matches = &document.parse_result.schema_matches;
+    if !matches.is_empty() {
+        for schema_match in matches {
+            if schema_match.node.closest_pair == ident.closest_pair
+                && schema_match.schema.is_object()
+                && schema_match
+                    .schema
+                    .as_object()
+                    .unwrap()
+                    .contains_key("description")
+            {
+                return Hover {
+                    contents: HoverContents::Scalar(MarkedString::String(String::from(
+                        schema_match.schema["description"].as_str().unwrap(),
+                    ))),
+                    range: Some(Range {
+                        start: ident.start,
+                        end: ident.end,
+                    }),
+                };
             }
         }
     }
@@ -51,7 +51,8 @@ pub fn hover(document: &TextDocument, params: HoverParams) -> Hover {
     Hover {
         contents: HoverContents::Scalar(MarkedString::String(String::from(""))),
         range: Some(Range {
-            ..Default::default()
+            start: ident.start,
+            end: ident.end,
         }),
     }
 }
@@ -84,9 +85,8 @@ mod tests {
 
     fn hover_test(contents: &str, schema: &Value, line: u32, character: u32) -> Hover {
         let tree = parse(contents.to_string());
-        let parse_result = Some(
-            JSONSchemaValidator::new(tree.clone(), schema.clone(), contents.to_string()).parse(),
-        );
+        let parse_result =
+            JSONSchemaValidator::new(tree.clone(), schema.clone(), contents.to_string()).parse();
         let document = TextDocument {
             tree,
             contents: contents.to_string(),

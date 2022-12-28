@@ -69,115 +69,115 @@ pub fn completion(document: &TextDocument, params: CompletionParams) -> Vec<Comp
 //     }
 // }
 
-#[cfg(test)]
-mod tests {
-    use crate::{services::completion::completion, utils::text_document::TextDocument};
-    use tower_lsp::lsp_types::{
-        CompletionContext, CompletionItem, CompletionParams, CompletionTriggerKind,
-        PartialResultParams, Position, TextDocumentIdentifier, TextDocumentPositionParams,
-        WorkDoneProgressParams,
-    };
-    use tree_sitter::Tree;
-    use url::Url;
+// #[cfg(test)]
+// mod tests {
+//     use crate::{services::completion::completion, utils::text_document::TextDocument};
+//     use tower_lsp::lsp_types::{
+//         CompletionContext, CompletionItem, CompletionParams, CompletionTriggerKind,
+//         PartialResultParams, Position, TextDocumentIdentifier, TextDocumentPositionParams,
+//         WorkDoneProgressParams,
+//     };
+//     use tree_sitter::Tree;
+//     use url::Url;
 
-    fn parse(text: String) -> Tree {
-        let mut parser = tree_sitter::Parser::new();
-        parser
-            .set_language(tree_sitter_json::language())
-            .expect("Error loading json grammar");
-        parser.parse(text, None).unwrap()
-    }
+//     fn parse(text: String) -> Tree {
+//         let mut parser = tree_sitter::Parser::new();
+//         parser
+//             .set_language(tree_sitter_json::language())
+//             .expect("Error loading json grammar");
+//         parser.parse(text, None).unwrap()
+//     }
 
-    fn completion_test(contents: &str, line: u32, ch: u32) -> Vec<CompletionItem> {
-        let parse_result = parse(contents.to_string());
-        let document = TextDocument {
-            tree: parse_result,
-            contents: contents.to_string(),
-            parse_result: None,
-        };
-        let params = CompletionParams {
-            context: Some(CompletionContext {
-                trigger_kind: CompletionTriggerKind::INVOKED,
-                trigger_character: Some("".to_string()),
-            }),
-            partial_result_params: PartialResultParams {
-                ..Default::default()
-            },
-            work_done_progress_params: WorkDoneProgressParams {
-                ..Default::default()
-            },
-            text_document_position: TextDocumentPositionParams {
-                text_document: TextDocumentIdentifier {
-                    uri: Url::parse("languageserver://test").unwrap(),
-                },
-                position: Position {
-                    line,
-                    character: ch,
-                },
-            },
-        };
-        completion(&document, params)
-    }
+//     fn completion_test(contents: &str, line: u32, ch: u32) -> Vec<CompletionItem> {
+//         let parse_result = parse(contents.to_string());
+//         let document = TextDocument {
+//             tree: parse_result,
+//             contents: contents.to_string(),
+//             parse_result: None,
+//         };
+//         let params = CompletionParams {
+//             context: Some(CompletionContext {
+//                 trigger_kind: CompletionTriggerKind::INVOKED,
+//                 trigger_character: Some("".to_string()),
+//             }),
+//             partial_result_params: PartialResultParams {
+//                 ..Default::default()
+//             },
+//             work_done_progress_params: WorkDoneProgressParams {
+//                 ..Default::default()
+//             },
+//             text_document_position: TextDocumentPositionParams {
+//                 text_document: TextDocumentIdentifier {
+//                     uri: Url::parse("languageserver://test").unwrap(),
+//                 },
+//                 position: Position {
+//                     line,
+//                     character: ch,
+//                 },
+//             },
+//         };
+//         completion(&document, params)
+//     }
 
-    #[test]
-    fn root_completion() {
-        let result = completion_test(
-            "{
+//     #[test]
+//     fn root_completion() {
+//         let result = completion_test(
+//             "{
 
-}", 1, 4,
-        );
-        assert_eq!(result.len(), 9);
-    }
+// }", 1, 4,
+//         );
+//         assert_eq!(result.len(), 9);
+//     }
 
-    #[test]
-    fn root_completion_no_duplicates_1() {
-        let result = completion_test(
-            "{
-    \"AWSTemplateFormatVersion\": \"2010-09-09\",
+//     #[test]
+//     fn root_completion_no_duplicates_1() {
+//         let result = completion_test(
+//             "{
+//     \"AWSTemplateFormatVersion\": \"2010-09-09\",
 
-}",
-            2,
-            4,
-        );
-        assert_eq!(result.len(), 8);
-    }
+// }",
+//             2,
+//             4,
+//         );
+//         assert_eq!(result.len(), 8);
+//     }
 
-    #[test]
-    fn root_completion_no_duplicates() {
-        let result = completion_test(
-            "{
-    \"AWSTemplateFormatVersion\": \"2010-09-09\",
-    \"Description\": \"0.2.0\",
-    \"Mappings\": {
+//     #[test]
+//     fn root_completion_no_duplicates() {
+//         let result = completion_test(
+//             "{
+//     \"AWSTemplateFormatVersion\": \"2010-09-09\",
+//     \"Description\": \"0.2.0\",
+//     \"Mappings\": {
 
-    },
-    \"Resources\": {
+//     },
+//     \"Resources\": {
 
-    },
+//     },
 
-}",
-            9,
-            4,
-        );
-        assert_eq!(result.len(), 5);
-    }
+// }",
+//             9,
+//             4,
+//         );
+//         assert_eq!(result.len(), 5);
+//     }
 
-    #[test]
-    fn resource_completion() {
-        let result = completion_test(
-            "{
-    \"AWSTemplateFormatVersion\": \"2010-09-09\",
-    \"Description\": \"0.2.0\",
-    \"Mappings\": {
+//     #[test]
+//     fn resource_completion() {
+//         let result = completion_test(
+//             "{
+//     \"AWSTemplateFormatVersion\": \"2010-09-09\",
+//     \"Description\": \"0.2.0\",
+//     \"Mappings\": {
 
-    },
-    \"Resources\": {
+//     },
+//     \"Resources\": {
 
-    }
-}",
-            7,
-            8,
-        );
-        assert_eq!(result.len(), 5);
-    }
-}
+//     }
+// }",
+//             7,
+//             8,
+//         );
+//         assert_eq!(result.len(), 5);
+//     }
+// }
