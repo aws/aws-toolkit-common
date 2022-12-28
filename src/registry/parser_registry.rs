@@ -5,13 +5,14 @@ use tree_sitter::Tree;
 
 use crate::parsers::parser::{ParseResult, Parser};
 
+#[derive(Default)]
 pub struct Registry {
     registry_items: Vec<RegistryItem>,
 }
 
 impl Registry {
-    pub fn new(registry_items: Vec<RegistryItem>) -> Self {
-        Registry { registry_items }
+    pub fn add(&mut self, item: RegistryItem) {
+        self.registry_items.push(item);
     }
 
     pub fn parse(

@@ -1,4 +1,4 @@
-use awsdocuments_language_server::build_registry;
+use awsdocuments_language_server::activate;
 use awsdocuments_language_server::registry::parser_registry::Registry;
 use awsdocuments_language_server::services::completion::completion;
 use awsdocuments_language_server::services::hover::hover;
@@ -147,10 +147,12 @@ async fn main() {
     let stdin = tokio::io::stdin();
     let stdout = tokio::io::stdout();
 
+    let registry = activate().await;
+
     let (service, socket) = LspService::new(|client| Backend {
         client,
         documents: DashMap::new(),
-        registry: build_registry(),
+        registry,
     });
 
     Server::new(stdin, stdout, socket).serve(service).await
