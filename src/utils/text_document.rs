@@ -16,9 +16,10 @@ pub trait ASTNodeExt {
 
 impl ASTNodeExt for Node<'_> {
     fn get_text(&self, contents: &str) -> String {
-        return self
-            .utf8_text(contents.as_bytes())
-            .unwrap()
-            .replace('\"', "");
+        let content = self.utf8_text(contents.as_bytes());
+        if let Ok(cont) = content {
+            return cont.replace('\"', "");
+        }
+        String::from("")
     }
 }
