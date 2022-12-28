@@ -97,14 +97,14 @@ impl IR<'_> {
 }
 
 pub fn convert_pair(root: Node, file_contents: String) -> Option<IRPair> {
-    let child = root.child(0).unwrap();
+    let child = root.child(0)?;
     return Some(IRPair::new(
         IRString::new(
             child.get_text(&file_contents),
             start_position(child),
             start_position(child),
         ),
-        root.child(2).unwrap(),
+        root.child(2)?,
         start_position(root),
         end_position(root),
     ));
@@ -139,7 +139,7 @@ pub fn convert_number(node: Node, file_contents: String) -> Option<IRNumber> {
     let i64_val = val.parse::<i64>();
     if i64_val.is_ok() {
         return Some(IRNumber::new(
-            convert_i64_to_float(i64_val.ok().unwrap()),
+            convert_i64_to_float(i64_val.ok()?),
             true,
             start_position(node),
             end_position(node),
@@ -149,7 +149,7 @@ pub fn convert_number(node: Node, file_contents: String) -> Option<IRNumber> {
     let f64_val = val.parse::<f64>();
     if f64_val.is_ok() {
         return Some(IRNumber::new(
-            f64_val.ok().unwrap(),
+            f64_val.ok()?,
             false,
             start_position(node),
             end_position(node),
