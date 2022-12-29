@@ -59,29 +59,21 @@ pub fn hover(document: &TextDocument, params: HoverParams) -> Hover {
 
 #[cfg(test)]
 mod tests {
-    // TODO test that the correct range is returned from these tests. Will be easier when we hook this up to VSCode
-
     use crate::{
-        parsers::{json_schema::json_schema_parser::JSONSchemaValidator, parser::Parser},
+        parsers::{
+            json_schema::{json_schema_parser::JSONSchemaValidator, utils::ir::parse},
+            parser::Parser,
+        },
         utils::text_document::TextDocument,
     };
     use serde_json::{json, Value};
     use tower_lsp::lsp_types::{
-        Hover, HoverContents, HoverParams, MarkedString, Position, TextDocumentIdentifier,
+        Hover, HoverContents, HoverParams, MarkedString, Position, Range, TextDocumentIdentifier,
         TextDocumentPositionParams, WorkDoneProgressParams,
     };
-    use tree_sitter::Tree;
     use url::Url;
 
     use super::hover;
-
-    fn parse(text: &str) -> Tree {
-        let mut parser = tree_sitter::Parser::new();
-        parser
-            .set_language(tree_sitter_json::language())
-            .expect("Error loading json grammar");
-        parser.parse(text, None).unwrap()
-    }
 
     fn hover_test(contents: &str, schema: &Value, line: u32, character: u32) -> Hover {
         let tree = parse(contents);
@@ -108,10 +100,13 @@ mod tests {
     }
 
     #[allow(clippy::collapsible_match, clippy::assertions_on_constants)]
-    fn test_hover_contents(contents: HoverContents, description: &str) {
-        if let HoverContents::Scalar(marked_str) = contents {
+    fn test_hover_contents(hover: Hover, expected_range: Range, description: &str) {
+        if let HoverContents::Scalar(marked_str) = hover.contents {
             if let MarkedString::String(str) = marked_str {
                 assert_eq!(str, description);
+                if let Some(found_range) = hover.range {
+                    assert_eq!(expected_range, found_range);
+                }
                 return;
             }
         }
@@ -133,10 +128,18 @@ mod tests {
     }
 }"#;
         let hovers_on_key = hover_test(contents, schema, 1, 9);
-        test_hover_contents(hovers_on_key.contents, "");
+        test_hover_contents(
+            hovers_on_key,
+            Range::new(Position::new(1, 4), Position::new(3, 5)),
+            "",
+        );
 
         let hovers_on_parenthesis = hover_test(contents, schema, 1, 12);
-        test_hover_contents(hovers_on_parenthesis.contents, "");
+        test_hover_contents(
+            hovers_on_parenthesis,
+            Range::new(Position::new(1, 11), Position::new(3, 5)),
+            "",
+        );
     }
 
     #[test]
@@ -155,10 +158,18 @@ mod tests {
     }
 }"#;
         let hovers_on_key = hover_test(contents, schema, 1, 9);
-        test_hover_contents(hovers_on_key.contents, "test");
+        test_hover_contents(
+            hovers_on_key,
+            Range::new(Position::new(1, 4), Position::new(3, 5)),
+            "test",
+        );
 
         let hovers_on_parenthesis = hover_test(contents, schema, 1, 12);
-        test_hover_contents(hovers_on_parenthesis.contents, "test");
+        test_hover_contents(
+            hovers_on_parenthesis,
+            Range::new(Position::new(1, 11), Position::new(3, 5)),
+            "test",
+        );
     }
 
     #[test]
@@ -177,10 +188,18 @@ mod tests {
     ]
 }"#;
         let hovers_on_key = hover_test(contents, schema, 1, 9);
-        test_hover_contents(hovers_on_key.contents, "my test description");
+        test_hover_contents(
+            hovers_on_key,
+            Range::new(Position::new(1, 4), Position::new(3, 5)),
+            "my test description",
+        );
 
         let hovers_on_square_bracket = hover_test(contents, schema, 1, 12);
-        test_hover_contents(hovers_on_square_bracket.contents, "my test description");
+        test_hover_contents(
+            hovers_on_square_bracket,
+            Range::new(Position::new(1, 11), Position::new(3, 5)),
+            "my test description",
+        );
     }
 
     #[test]
@@ -197,13 +216,25 @@ mod tests {
     "foo": 5
 }"#;
         let hovers_on_integer_key = hover_test(contents, schema, 1, 5);
-        test_hover_contents(hovers_on_integer_key.contents, "my foo test description");
+        test_hover_contents(
+            hovers_on_integer_key,
+            Range::new(Position::new(1, 5), Position::new(1, 8)),
+            "my foo test description",
+        );
 
         let hovers_on_integer_value = hover_test(contents, schema, 1, 11);
-        test_hover_contents(hovers_on_integer_value.contents, "my foo test description");
+        test_hover_contents(
+            hovers_on_integer_value,
+            Range::new(Position::new(1, 11), Position::new(1, 12)),
+            "my foo test description",
+        );
 
         let hovers_on_integer_pair = hover_test(contents, schema, 1, 4);
-        test_hover_contents(hovers_on_integer_pair.contents, "my foo test description");
+        test_hover_contents(
+            hovers_on_integer_pair,
+            Range::new(Position::new(1, 4), Position::new(1, 9)),
+            "my foo test description",
+        );
     }
 
     #[test]
@@ -220,16 +251,25 @@ mod tests {
     "bar": "bar"
 }"#;
         let hovers_on_string_key = hover_test(contents, schema, 1, 7);
-        test_hover_contents(hovers_on_string_key.contents, "my string test description");
+        test_hover_contents(
+            hovers_on_string_key,
+            Range::new(Position::new(1, 5), Position::new(1, 8)),
+            "my string test description",
+        );
 
         let hovers_on_string_value = hover_test(contents, schema, 1, 13);
         test_hover_contents(
-            hovers_on_string_value.contents,
+            hovers_on_string_value,
+            Range::new(Position::new(1, 12), Position::new(1, 15)),
             "my string test description",
         );
 
         let hovers_on_number_pair = hover_test(contents, schema, 1, 4);
-        test_hover_contents(hovers_on_number_pair.contents, "my string test description");
+        test_hover_contents(
+            hovers_on_number_pair,
+            Range::new(Position::new(1, 4), Position::new(1, 9)),
+            "my string test description",
+        );
     }
 
     #[test]
@@ -247,19 +287,22 @@ mod tests {
 }"#;
         let hovers_on_boolean_key = hover_test(contents, schema, 1, 7);
         test_hover_contents(
-            hovers_on_boolean_key.contents,
+            hovers_on_boolean_key,
+            Range::new(Position::new(1, 5), Position::new(1, 8)),
             "my boolean test description",
         );
 
         let hovers_on_boolean_value = hover_test(contents, schema, 1, 13);
         test_hover_contents(
-            hovers_on_boolean_value.contents,
+            hovers_on_boolean_value,
+            Range::new(Position::new(1, 11), Position::new(1, 16)),
             "my boolean test description",
         );
 
         let hovers_on_boolean_pair = hover_test(contents, schema, 1, 4);
         test_hover_contents(
-            hovers_on_boolean_pair.contents,
+            hovers_on_boolean_pair,
+            Range::new(Position::new(1, 4), Position::new(1, 9)),
             "my boolean test description",
         );
     }
@@ -277,13 +320,25 @@ mod tests {
         let contents = r#"{
     "foo": null
 }"#;
-        let hovers_on_string_key = hover_test(contents, &schema, 1, 7);
-        test_hover_contents(hovers_on_string_key.contents, "my null test description");
+        let hovers_on_string_key = hover_test(contents, schema, 1, 7);
+        test_hover_contents(
+            hovers_on_string_key,
+            Range::new(Position::new(1, 5), Position::new(1, 8)),
+            "my null test description",
+        );
 
-        let hovers_on_string_value = hover_test(contents, &schema, 1, 13);
-        test_hover_contents(hovers_on_string_value.contents, "my null test description");
+        let hovers_on_string_value = hover_test(contents, schema, 1, 13);
+        test_hover_contents(
+            hovers_on_string_value,
+            Range::new(Position::new(1, 11), Position::new(1, 15)),
+            "my null test description",
+        );
 
-        let hovers_on_number_pair = hover_test(contents, &schema, 1, 4);
-        test_hover_contents(hovers_on_number_pair.contents, "my null test description");
+        let hovers_on_number_pair = hover_test(contents, schema, 1, 4);
+        test_hover_contents(
+            hovers_on_number_pair,
+            Range::new(Position::new(1, 4), Position::new(1, 9)),
+            "my null test description",
+        );
     }
 }
