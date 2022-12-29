@@ -32,16 +32,12 @@ pub fn validate_type(ir_node: &IR, sub_schema: &Value) -> Option<Diagnostic> {
                 .filter(|f| f.as_str().is_some())
                 .map(|f| f.as_str().unwrap())
                 .join(", ");
-            return Some(to_diagnostic(start, end, type_error(missing_types, kind)));
+            return Some(to_diagnostic(start, end, type_error(&missing_types, kind)));
         }
     } else {
         let types = type_property.as_str()?;
         if !matches_type(ir_node, types) {
-            return Some(to_diagnostic(
-                start,
-                end,
-                type_error(types.to_string(), kind),
-            ));
+            return Some(to_diagnostic(start, end, type_error(types, kind)));
         }
     }
     None

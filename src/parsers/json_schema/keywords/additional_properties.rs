@@ -15,11 +15,11 @@ use crate::{
     utils::tree_sitter::{end_position, start_position},
 };
 
-pub fn validate_additional_properties(
-    validate: &JSONSchemaValidator,
-    available_keys: &HashMap<String, Node>,
+pub fn validate_additional_properties<'a>(
+    validate: &'a JSONSchemaValidator,
+    available_keys: &HashMap<&'a str, Node>,
     sub_schema: &Value,
-) -> Option<Properties> {
+) -> Option<Properties<'a>> {
     let properties = sub_schema.get("additionalProperties")?;
 
     let mut validations: Vec<ParseResult> = Vec::new();
@@ -40,9 +40,9 @@ pub fn validate_additional_properties(
                 for (additional_property, value) in available_keys {
                     keys_used.push(additional_property.to_owned());
                     validation.errors.push(to_diagnostic(
-                        start_position(*value),
-                        end_position(*value),
-                        additional_properties_error(additional_property.to_string()),
+                        start_position(value),
+                        end_position(value),
+                        additional_properties_error(additional_property),
                     ));
                 }
                 validations.push(validation);

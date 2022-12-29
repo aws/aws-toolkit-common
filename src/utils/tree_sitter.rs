@@ -1,14 +1,14 @@
 use tower_lsp::lsp_types::Position;
 use tree_sitter::Node;
 
-pub fn start_position(node: Node) -> Position {
+pub fn start_position(node: &Node) -> Position {
     Position::new(
         node.start_position().row.try_into().unwrap(),
         node.start_position().column.try_into().unwrap(),
     )
 }
 
-pub fn end_position(node: Node) -> Position {
+pub fn end_position(node: &Node) -> Position {
     Position::new(
         node.end_position().row.try_into().unwrap(),
         node.end_position().column.try_into().unwrap(),
@@ -16,16 +16,16 @@ pub fn end_position(node: Node) -> Position {
 }
 
 #[derive(Debug, Clone)]
-pub struct IRNull {
-    pub kind: String,
+pub struct IRNull<'a> {
+    pub kind: &'a str,
     pub start: Position,
     pub end: Position,
 }
 
-impl IRNull {
-    pub fn new(start: Position, end: Position) -> IRNull {
+impl<'a> IRNull<'a> {
+    pub fn new(start: Position, end: Position) -> IRNull<'a> {
         IRNull {
-            kind: String::from("null"),
+            kind: "null",
             start,
             end,
         }
@@ -33,17 +33,17 @@ impl IRNull {
 }
 
 #[derive(Debug, Clone)]
-pub struct IRString {
-    pub kind: String,
+pub struct IRString<'a> {
+    pub kind: &'a str,
     pub contents: String,
     pub start: Position,
     pub end: Position,
 }
 
-impl IRString {
-    pub fn new(contents: String, start: Position, end: Position) -> IRString {
+impl<'a> IRString<'a> {
+    pub fn new(contents: String, start: Position, end: Position) -> IRString<'a> {
         IRString {
-            kind: String::from("string"),
+            kind: "string",
             contents,
             start,
             end,
@@ -52,17 +52,17 @@ impl IRString {
 }
 
 #[derive(Debug, Clone)]
-pub struct IRBoolean {
-    pub kind: String,
+pub struct IRBoolean<'a> {
+    pub kind: &'a str,
     pub value: bool,
     pub start: Position,
     pub end: Position,
 }
 
-impl IRBoolean {
-    pub fn new(value: bool, start: Position, end: Position) -> IRBoolean {
+impl<'a> IRBoolean<'a> {
+    pub fn new(value: bool, start: Position, end: Position) -> IRBoolean<'a> {
         IRBoolean {
-            kind: String::from("boolean"),
+            kind: "boolean",
             value,
             start,
             end,
@@ -72,7 +72,7 @@ impl IRBoolean {
 
 #[derive(Debug, Clone)]
 pub struct IRObject<'a> {
-    pub kind: String,
+    pub kind: &'a str,
     pub properties: Vec<IRPair<'a>>,
     pub start: Position,
     pub end: Position,
@@ -81,7 +81,7 @@ pub struct IRObject<'a> {
 impl IRObject<'_> {
     pub fn new(properties: Vec<IRPair>, start: Position, end: Position) -> IRObject {
         IRObject {
-            kind: String::from("object"),
+            kind: "object",
             properties,
             start,
             end,
@@ -91,7 +91,7 @@ impl IRObject<'_> {
 
 #[derive(Debug, Clone)]
 pub struct IRArray<'a> {
-    pub kind: String,
+    pub kind: &'a str,
     pub items: Vec<Node<'a>>,
     pub start: Position,
     pub end: Position,
@@ -100,7 +100,7 @@ pub struct IRArray<'a> {
 impl IRArray<'_> {
     pub fn new(items: Vec<Node>, start: Position, end: Position) -> IRArray {
         IRArray {
-            kind: String::from("array"),
+            kind: "array",
             items,
             start,
             end,
@@ -109,18 +109,18 @@ impl IRArray<'_> {
 }
 
 #[derive(Debug, Clone)]
-pub struct IRNumber {
-    pub kind: String,
+pub struct IRNumber<'a> {
+    pub kind: &'a str,
     pub is_integer: bool, // json schema differenties between integer and number types
     pub value: f64,
     pub start: Position,
     pub end: Position,
 }
 
-impl IRNumber {
-    pub fn new(value: f64, is_integer: bool, start: Position, end: Position) -> IRNumber {
+impl<'a> IRNumber<'a> {
+    pub fn new(value: f64, is_integer: bool, start: Position, end: Position) -> IRNumber<'a> {
         IRNumber {
-            kind: String::from("number"),
+            kind: "number",
             is_integer,
             value,
             start,
@@ -131,17 +131,17 @@ impl IRNumber {
 
 #[derive(Debug, Clone)]
 pub struct IRPair<'a> {
-    pub kind: String,
-    pub key: IRString,
+    pub kind: &'a str,
+    pub key: IRString<'a>,
     pub value: Node<'a>,
     pub start: Position,
     pub end: Position,
 }
 
-impl IRPair<'_> {
-    pub fn new(key: IRString, value: Node, start: Position, end: Position) -> IRPair {
+impl<'a> IRPair<'a> {
+    pub fn new(key: IRString<'a>, value: Node<'a>, start: Position, end: Position) -> IRPair<'a> {
         IRPair {
-            kind: String::from("pair"),
+            kind: "pair",
             key,
             value,
             start,

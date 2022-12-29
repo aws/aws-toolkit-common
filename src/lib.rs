@@ -8,7 +8,7 @@ pub mod services;
 pub mod utils;
 
 // Activate any external modules
-pub async fn activate() -> Registry {
+pub async fn activate() -> Registry<'static> {
     let mut registry = Registry::default();
 
     // TODO figure out a way for this to lazily complete. Technically, we don't need to block language server start until all of these are done
@@ -26,7 +26,7 @@ mod tests {
 
     use crate::activate;
 
-    fn parse(text: String) -> Tree {
+    fn parse(text: &str) -> Tree {
         let mut parser = tree_sitter::Parser::new();
         parser
             .set_language(tree_sitter_json::language())
@@ -39,10 +39,10 @@ mod tests {
         let contents = r#"{
     "version": "2.0"
 }"#;
-        let tree = parse(contents.to_string());
+        let tree = parse(contents);
         let res = activate()
             .await
-            .parse("build.json".to_string(), tree, contents.to_string());
+            .parse("build.json", tree, contents.to_string());
         if let Some(r) = res {
             assert_eq!(r.schema_matches.len(), 2);
         }

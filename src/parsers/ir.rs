@@ -13,17 +13,17 @@ use super::json_schema::utils::num::convert_i64_to_float;
 
 #[derive(Debug, Clone)]
 pub enum IR<'a> {
-    IRString(IRString),
+    IRString(IRString<'a>),
     IRArray(IRArray<'a>),
-    IRBoolean(IRBoolean),
+    IRBoolean(IRBoolean<'a>),
     IRObject(IRObject<'a>),
     IRPair(IRPair<'a>),
-    IRNumber(IRNumber),
-    IRNull(IRNull),
+    IRNumber(IRNumber<'a>),
+    IRNull(IRNull<'a>),
 }
 
-impl IR<'_> {
-    pub fn new(node: Node, file_contents: String) -> Option<IR> {
+impl<'a> IR<'a> {
+    pub fn new(node: &'a Node, file_contents: &'a str) -> Option<IR<'a>> {
         match node.kind() {
             "pair" => {
                 let pair = convert_pair(node, file_contents)?;
@@ -83,7 +83,7 @@ impl IR<'_> {
         }
     }
 
-    pub fn get_kind(self) -> String {
+    pub fn get_kind(self) -> &'a str {
         match self {
             IR::IRArray(arr) => arr.kind,
             IR::IRBoolean(boo) => boo.kind,
@@ -96,11 +96,11 @@ impl IR<'_> {
     }
 }
 
-pub fn convert_pair(root: Node, file_contents: String) -> Option<IRPair> {
-    let child = root.child(0)?;
+pub fn convert_pair<'a>(root: &'a Node, file_contents: &'a str) -> Option<IRPair<'a>> {
+    let child = &root.child(0)?;
     return Some(IRPair::new(
         IRString::new(
-            child.get_text(&file_contents),
+            child.get_text(file_contents),
             start_position(child),
             start_position(child),
         ),
@@ -110,8 +110,8 @@ pub fn convert_pair(root: Node, file_contents: String) -> Option<IRPair> {
     ));
 }
 
-pub fn convert_string(node: Node, file_contents: String) -> Option<IRString> {
-    let contents = node.get_text(&file_contents);
+pub fn convert_string<'a>(node: &Node, file_contents: &'a str) -> Option<IRString<'a>> {
+    let contents = node.get_text(file_contents);
     Some(IRString::new(
         contents,
         start_position(node),
@@ -119,8 +119,8 @@ pub fn convert_string(node: Node, file_contents: String) -> Option<IRString> {
     ))
 }
 
-pub fn convert_boolean(node: Node, file_contents: String) -> Option<IRBoolean> {
-    let contents = node.get_text(&file_contents);
+pub fn convert_boolean<'a>(node: &Node, file_contents: &'a str) -> Option<IRBoolean<'a>> {
+    let contents = node.get_text(file_contents);
 
     if contents != "true" && contents != "false" {
         return None;
@@ -134,8 +134,8 @@ pub fn convert_boolean(node: Node, file_contents: String) -> Option<IRBoolean> {
     ))
 }
 
-pub fn convert_number(node: Node, file_contents: String) -> Option<IRNumber> {
-    let val = node.get_text(&file_contents);
+pub fn convert_number<'a>(node: &Node, file_contents: &'a str) -> Option<IRNumber<'a>> {
+    let val = node.get_text(file_contents);
     let i64_val = val.parse::<i64>();
     if i64_val.is_ok() {
         return Some(IRNumber::new(
@@ -159,7 +159,7 @@ pub fn convert_number(node: Node, file_contents: String) -> Option<IRNumber> {
     None
 }
 
-pub fn convert_object(node: Node, file_contents: String) -> Option<IRObject> {
+pub fn convert_object<'a>(node: &'a Node, file_contents: &'a str) -> Option<IRObject<'a>> {
     let mut cursor = node.walk();
 
     // This moves us from the object node to the first node in the tree which would be {
@@ -170,7 +170,7 @@ pub fn convert_object(node: Node, file_contents: String) -> Option<IRObject> {
     let mut has_child = cursor.goto_next_sibling();
     let mut cur_node = cursor.node();
     while has_child {
-        let contents = cur_node.get_text(&file_contents);
+        let contents = cur_node.get_text(file_contents);
 
         // Skip commas
         if contents == "," || contents == "{" || contents == "}" {
@@ -180,7 +180,7 @@ pub fn convert_object(node: Node, file_contents: String) -> Option<IRObject> {
         }
 
         let f_child = cur_node.child(0)?;
-        let key = f_child.get_text(&file_contents);
+        let key = f_child.get_text(file_contents);
 
         let s_child = cur_node.child(2)?;
 
@@ -202,7 +202,7 @@ pub fn convert_object(node: Node, file_contents: String) -> Option<IRObject> {
     ))
 }
 
-pub fn convert_array(node: Node, file_contents: String) -> Option<IRArray> {
+pub fn convert_array<'a>(node: &'a Node, file_contents: &'a str) -> Option<IRArray<'a>> {
     let mut cursor = node.walk();
 
     // This moves us from the array node to the first node in the tree which would be [
@@ -214,7 +214,7 @@ pub fn convert_array(node: Node, file_contents: String) -> Option<IRArray> {
     let mut cur_node = cursor.node();
 
     while has_siblings {
-        let contents = cur_node.get_text(&file_contents);
+        let contents = cur_node.get_text(file_contents);
 
         // Skip commas
         if contents == "," || contents == "[" || contents == "]" {

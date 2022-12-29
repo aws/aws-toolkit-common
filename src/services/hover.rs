@@ -8,7 +8,7 @@ use crate::{
 pub fn hover(document: &TextDocument, params: HoverParams) -> Hover {
     let col = usize::try_from(params.text_document_position_params.position.character).unwrap();
     let line = usize::try_from(params.text_document_position_params.position.line).unwrap();
-    let _n = document
+    let n = document
         .tree
         .root_node()
         .named_descendant_for_point_range(
@@ -23,7 +23,7 @@ pub fn hover(document: &TextDocument, params: HoverParams) -> Hover {
         )
         .unwrap();
 
-    let ident = NodeIdentifier::new(_n, &document.contents);
+    let ident = NodeIdentifier::new(&n, &document.contents);
     let matches = &document.parse_result.schema_matches;
     if !matches.is_empty() {
         for schema_match in matches {
@@ -75,7 +75,7 @@ mod tests {
 
     use super::hover;
 
-    fn parse(text: String) -> Tree {
+    fn parse(text: &str) -> Tree {
         let mut parser = tree_sitter::Parser::new();
         parser
             .set_language(tree_sitter_json::language())
@@ -84,7 +84,7 @@ mod tests {
     }
 
     fn hover_test(contents: &str, schema: &Value, line: u32, character: u32) -> Hover {
-        let tree = parse(contents.to_string());
+        let tree = parse(contents);
         let parse_result =
             JSONSchemaValidator::new(tree.clone(), schema.clone(), contents.to_string()).parse();
         let document = TextDocument {

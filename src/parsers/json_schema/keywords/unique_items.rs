@@ -18,7 +18,7 @@ use crate::{
 
 pub fn validate_unique_items(
     node: &IRArray,
-    file_contents: &String,
+    file_contents: &str,
     sub_schema: &Value,
 ) -> Option<Diagnostic> {
     let unique_items = sub_schema.get("uniqueItems")?.as_bool()?;
@@ -31,7 +31,7 @@ pub fn validate_unique_items(
     let mut found_items = HashSet::new();
 
     for item in &node.items {
-        let ir_node = IR::new(item.to_owned(), file_contents.to_string());
+        let ir_node = IR::new(item, file_contents);
         if ir_node.is_none() {
             continue;
         }
@@ -53,7 +53,7 @@ pub fn validate_unique_items(
         return Some(to_diagnostic(
             node.start,
             node.end,
-            unique_items_error(duplicates),
+            unique_items_error(&duplicates),
         ));
     }
 

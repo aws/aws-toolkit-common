@@ -42,12 +42,12 @@ impl Parser for JSONSchemaValidator {
 }
 
 impl JSONSchemaValidator {
-    pub fn new(tree: Tree, schema: Value, file_contents: String) -> Self {
+    pub fn new(tree: Tree, schema: Value, contents: String) -> Self {
         // TODO when adding yaml support, make the converter depend on the incoming language
         JSONSchemaValidator {
             tree,
             schema,
-            contents: file_contents,
+            contents,
         }
     }
 
@@ -62,7 +62,7 @@ impl JSONSchemaValidator {
             return self.validate_root(cursor, sub_schema);
         }
 
-        let ir_nodes = IR::new(node, self.contents.clone());
+        let ir_nodes = IR::new(&node, &self.contents);
         if ir_nodes.is_none() {
             return ParseResult::default();
         }
@@ -71,7 +71,7 @@ impl JSONSchemaValidator {
 
         // Clone the schema here instead of dealing with lifetimes (if that would even be possible)
         node_validation.schema_matches.push(SchemaMatches {
-            node: NodeIdentifier::new(node, &self.contents),
+            node: NodeIdentifier::new(&node, &self.contents),
             schema: sub_schema.clone(),
         });
 
@@ -129,27 +129,27 @@ impl JSONSchemaValidator {
 
         let mut available_keys = HashMap::new();
         for prop in &obj.properties {
-            available_keys.insert(prop.key.contents.to_string(), prop.value);
+            available_keys.insert(prop.key.contents.as_str(), prop.value);
         }
 
         if let Some(props) = validate_properties(self, &available_keys, sub_schema) {
             validations = validations.merge_all(props.validation);
             for key in props.keys_used {
-                available_keys.remove(&key);
+                available_keys.remove(key);
             }
         }
 
         if let Some(props) = validate_pattern_properties(self, &available_keys, sub_schema) {
             validations = validations.merge_all(props.validation);
             for key in props.keys_used {
-                available_keys.remove(&key);
+                available_keys.remove(key);
             }
         }
 
         if let Some(props) = validate_additional_properties(self, &available_keys, sub_schema) {
             validations = validations.merge_all(props.validation);
             for key in props.keys_used {
-                available_keys.remove(&key);
+                available_keys.remove(key);
             }
         }
 
@@ -238,9 +238,9 @@ mod tests {
 
     use super::JSONSchemaValidator;
 
-    fn validation_test(contents: String, schema: Value) -> Vec<Diagnostic> {
-        let parse_result = parse(contents.to_string());
-        let val = JSONSchemaValidator::new(parse_result, schema, contents);
+    fn validation_test(contents: &str, schema: Value) -> Vec<Diagnostic> {
+        let parse_result = parse(contents);
+        let val = JSONSchemaValidator::new(parse_result, schema, contents.to_string());
         let validation = val.parse();
         validation.errors
     }
@@ -250,8 +250,7 @@ mod tests {
         let result = validation_test(
             r#"{
                 "version": "testing"
-            }"#
-            .to_string(),
+            }"#,
             json!({
               "$schema": "http://json-schema.org/draft-04/schema#",
               "type": "object",

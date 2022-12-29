@@ -9,15 +9,15 @@ use tower_lsp::lsp_types::*;
 use tower_lsp::{Client, LanguageServer, LspService, Server};
 use tree_sitter::Tree;
 
-struct Backend {
+struct Backend<'a> {
     client: Client,
-    registry: Registry,
+    registry: Registry<'a>,
     documents: DashMap<String, TextDocument>,
 }
 
-impl Backend {
+impl<'a> Backend<'a> {
     // Called when the document is opened and the document is
-    async fn on_change(&self, params: &TextDocumentItem) {
+    async fn on_change(&self, params: TextDocumentItem) {
         let mut parser = tree_sitter::Parser::new();
         parser
             .set_language(tree_sitter_json::language())
@@ -27,7 +27,7 @@ impl Backend {
 
         let parse = self
             .registry
-            .parse(params.uri.to_string(), tree.clone(), params.text.clone());
+            .parse(params.uri.as_str(), tree.clone(), params.text.clone());
 
         if let Some(parse_result) = parse {
             self.client
@@ -42,7 +42,7 @@ impl Backend {
                 params.uri.to_string(),
                 TextDocument {
                     tree,
-                    contents: params.text.clone(),
+                    contents: params.text,
                     parse_result,
                 },
             );
@@ -51,7 +51,7 @@ impl Backend {
 }
 
 #[tower_lsp::async_trait]
-impl LanguageServer for Backend {
+impl LanguageServer for Backend<'static> {
     async fn initialize(&self, _: InitializeParams) -> Result<InitializeResult> {
         Ok(InitializeResult {
             server_info: None, // TODO if we want to make the server version easily identifiable on the client side
@@ -80,7 +80,7 @@ impl LanguageServer for Backend {
 
     async fn did_open(&self, params: DidOpenTextDocumentParams) {
         self.client.log_message(MessageType::INFO, "did_open").await;
-        self.on_change(&TextDocumentItem {
+        self.on_change(TextDocumentItem {
             uri: params.text_document.uri,
             text: params.text_document.text,
             version: params.text_document.version,
@@ -94,7 +94,7 @@ impl LanguageServer for Backend {
             .log_message(MessageType::INFO, "did_change")
             .await;
         let test = std::mem::take(&mut params.content_changes[0].text); // We currently only support full document syncing so the entire document gets sent each time
-        self.on_change(&TextDocumentItem {
+        self.on_change(TextDocumentItem {
             uri: params.text_document.uri,
             text: test, // TODO file cache of all the items
             version: params.text_document.version,

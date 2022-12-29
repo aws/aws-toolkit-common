@@ -9,8 +9,8 @@ use crate::{
     },
 };
 
-pub struct Properties {
-    pub keys_used: Vec<String>,
+pub struct Properties<'a> {
+    pub keys_used: Vec<&'a str>,
     pub validation: Vec<ParseResult>,
 }
 
@@ -18,27 +18,24 @@ pub struct Properties {
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct NodeIdentifier {
     pub closest_pair: Option<String>,
-    text: String,
     pub start: Position,
     pub end: Position,
 }
 
 impl NodeIdentifier {
-    pub fn new(node: Node, file_contents: &str) -> Self {
-        let text = node.get_text(file_contents);
+    pub fn new(node: &Node, file_contents: &str) -> Self {
         let start = start_position(node);
         let end = end_position(node);
 
         NodeIdentifier {
             closest_pair: find_pair(node, file_contents),
-            text,
             start,
             end,
         }
     }
 }
 
-fn find_pair(node: Node, file_contents: &str) -> Option<String> {
+fn find_pair(node: &Node, file_contents: &str) -> Option<String> {
     let parent = node.parent()?;
     if node.kind() == "string_content" {
         let grandparent = parent.parent()?;

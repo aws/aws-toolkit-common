@@ -9,7 +9,7 @@ use crate::parsers::{
     },
 };
 
-pub fn validate_enum(node: &IR, file_contents: &String, sub_schema: &Value) -> Option<Diagnostic> {
+pub fn validate_enum(node: &IR, file_contents: &str, sub_schema: &Value) -> Option<Diagnostic> {
     let enums = sub_schema.get("enum")?.as_array()?;
 
     let mut found_match = false;

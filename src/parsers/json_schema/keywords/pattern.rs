@@ -13,11 +13,11 @@ pub fn validate_pattern(node: &IRString, sub_schema: &Value) -> Option<Diagnosti
     let pattern = sub_schema.get("pattern")?.as_str()?;
 
     let re = Regex::new(pattern).unwrap();
-    if !re.is_match(node.contents.as_str()) {
+    if !re.is_match(&node.contents) {
         return Some(to_diagnostic(
             node.start,
             node.end,
-            pattern_error(pattern.to_string(), node.contents.to_string()),
+            pattern_error(pattern, &node.contents),
         ));
     }
 

@@ -11,7 +11,7 @@ use crate::{
 };
 
 pub fn validate_dependencies(
-    available_keys: &HashMap<String, Node>,
+    available_keys: &HashMap<&str, Node>,
     sub_schema: &Value,
 ) -> Option<Vec<Diagnostic>> {
     let dependencies = sub_schema.get("dependencies")?.as_array()?;
@@ -24,7 +24,7 @@ pub fn validate_dependencies(
             continue;
         }
 
-        let dep_val = dep.as_str().unwrap().to_string();
+        let dep_val = dep.as_str().unwrap();
         if available_keys.contains_key(&dep_val) {
             // available_keys are keys that haven't been processed yet
             // key is the name of the node and value is the value node
@@ -40,7 +40,7 @@ pub fn validate_dependencies(
                 }
             };
 
-            errors.extend(_validate_dependencies(&dep_val, available_keys, c));
+            errors.extend(_validate_dependencies(dep_val, available_keys, c));
         }
     }
 
@@ -53,13 +53,13 @@ enum Test<'a> {
 }
 
 fn _validate_dependencies(
-    prop: &String,
-    available_keys: &HashMap<String, Node>,
+    prop: &str,
+    available_keys: &HashMap<&str, Node>,
     dependencies: Test,
 ) -> Vec<Diagnostic> {
     let mut errors = Vec::new();
 
-    let node = available_keys.get(prop).unwrap().to_owned();
+    let node = available_keys.get(prop).unwrap();
     match dependencies {
         Test::Array(arr) => {
             for req in arr {

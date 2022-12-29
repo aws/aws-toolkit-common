@@ -6,7 +6,7 @@ use serde_json::{json, Value};
 use tower_lsp::lsp_types::Diagnostic;
 
 fn validate(input: &str, schema: Value) -> Vec<Diagnostic> {
-    let parse_result = parse(input.to_string());
+    let parse_result = parse(input);
     let val = JSONSchemaValidator::new(parse_result, schema, input.to_string());
     val.parse().errors
 }
@@ -68,10 +68,7 @@ fn enum_invalid_multiple() {
 fn type_invalid_type() {
     let validation_result = validate("2", json!({"type": "string"}));
     assert_eq!(validation_result.len(), 1, "Expected 1 error");
-    assert_eq!(
-        validation_result[0].message,
-        type_error(String::from("string"), String::from("number"))
-    );
+    assert_eq!(validation_result[0].message, type_error("string", "number"));
 }
 
 #[test]
@@ -80,7 +77,7 @@ fn type_invalid_types_array() {
     assert_eq!(validation_result.len(), 1, "Expected 1 error");
     assert_eq!(
         validation_result[0].message,
-        type_error(String::from("string, boolean"), String::from("number"))
+        type_error("string, boolean", "number")
     );
 }
 
@@ -293,10 +290,7 @@ fn pattern_invalid() {
         }),
     );
     assert_eq!(validation_result.len(), 1, "Expected 1 error");
-    assert_eq!(
-        validation_result[0].message,
-        pattern_error(String::from("^a*$"), String::from("abc"))
-    );
+    assert_eq!(validation_result[0].message, pattern_error("^a*$", "abc"));
 }
 
 #[test]
@@ -312,10 +306,7 @@ fn required_invalid() {
         }),
     );
     assert_eq!(validation_result.len(), 1, "Expected 1 error");
-    assert_eq!(
-        validation_result[0].message,
-        required_error(String::from("foo"))
-    );
+    assert_eq!(validation_result[0].message, required_error("foo"));
 }
 
 #[test]
@@ -331,10 +322,7 @@ fn required_invalid_multiple_items() {
         }),
     );
     assert_eq!(validation_result.len(), 1, "Expected 1 error");
-    assert_eq!(
-        validation_result[0].message,
-        required_error(String::from("bar, foo"))
-    );
+    assert_eq!(validation_result[0].message, required_error("bar, foo"));
 }
 
 #[test]
@@ -346,8 +334,5 @@ fn unique_items_invalid() {
         }),
     );
     assert_eq!(validation_result.len(), 1, "Expected 1 error");
-    assert_eq!(
-        validation_result[0].message,
-        unique_items_error(String::from("1"))
-    );
+    assert_eq!(validation_result[0].message, unique_items_error("1"));
 }

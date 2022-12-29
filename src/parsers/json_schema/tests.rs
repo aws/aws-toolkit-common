@@ -25,11 +25,10 @@ use json_schema_test_suite::{json_schema_test_suite, TestCase};
  * additionalProperties
  * type
  */
-
 #[json_schema_test_suite_include("src/parsers/json_schema/test_suite/tests/", "draft4", { ".*" })]
 // #[json_schema_test_suite("src/parsers/json_schema/test_suite", "draft4", { "**pattern**" })]
 fn test_suite(_server_address: &str, test_case: TestCase) {
-    let parse_result = parse(test_case.instance.to_string());
+    let parse_result = parse(test_case.instance.to_string().as_str());
 
     let schema = test_case.schema.clone();
     let val = JSONSchemaValidator::new(parse_result, schema, test_case.instance.to_string());

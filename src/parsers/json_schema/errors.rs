@@ -5,7 +5,7 @@ pub fn additional_items_error(processed_items: usize, node_items: usize) -> Stri
     )
 }
 
-pub fn additional_properties_error(additional_property: String) -> String {
+pub fn additional_properties_error(additional_property: &str) -> String {
     format!("!{:#?} was declared but shouldn't be", additional_property)
 }
 
@@ -31,7 +31,7 @@ pub fn enum_error(expected: Vec<String>, found: String) -> String {
     }
 }
 
-pub fn type_error(expected: String, found: String) -> String {
+pub fn type_error(expected: &str, found: &str) -> String {
     format!(
         "Incorrect type. Expected {:#?} but found {:#?}",
         expected, found
@@ -71,14 +71,14 @@ pub fn multiple_of_error(expected: f64, found: f64) -> String {
     format!("{:#?} is not a multiple of {:#?}", found, expected)
 }
 
-pub fn pattern_error(expected: String, found: String) -> String {
+pub fn pattern_error(expected: &str, found: &str) -> String {
     format!("Expected {:#?} to match {:#?}", expected, found)
 }
 
-pub fn required_error(requirements: String) -> String {
+pub fn required_error(requirements: &str) -> String {
     format!("Missing the following requirements: {:#?}", requirements)
 }
 
-pub fn unique_items_error(duplicate_items: String) -> String {
+pub fn unique_items_error(duplicate_items: &str) -> String {
     format!("Found duplicate items: !{:#?}", duplicate_items)
 }

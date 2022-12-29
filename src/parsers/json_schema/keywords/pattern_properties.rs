@@ -8,11 +8,11 @@ use crate::parsers::json_schema::{
     json_schema_parser::JSONSchemaValidator, utils::object::Properties,
 };
 
-pub fn validate_pattern_properties(
-    validate: &JSONSchemaValidator,
-    available_keys: &HashMap<String, Node>,
-    sub_schema: &Value,
-) -> Option<Properties> {
+pub fn validate_pattern_properties<'a>(
+    validate: &'a JSONSchemaValidator,
+    available_keys: &HashMap<&'a str, Node>,
+    sub_schema: &'a Value,
+) -> Option<Properties<'a>> {
     let properties = sub_schema.get("patternProperties")?.as_object()?;
 
     let mut validations = Vec::new();

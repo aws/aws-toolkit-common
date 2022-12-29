@@ -73,12 +73,12 @@ impl Debug for JSONValues {
     }
 }
 
-pub fn get_value(ir_node: IR, file_contents: &String) -> JSONValues {
+pub fn get_value<'a>(ir_node: IR<'a>, file_contents: &'a str) -> JSONValues {
     match ir_node {
         IR::IRArray(arr) => {
             let mut unique_items = Vec::new();
             for item in arr.items {
-                let ir_node = IR::new(item, file_contents.to_string());
+                let ir_node = IR::new(&item, file_contents);
                 if let Some(value) = ir_node {
                     unique_items.push(get_value(value, file_contents));
                 }
@@ -93,7 +93,7 @@ pub fn get_value(ir_node: IR, file_contents: &String) -> JSONValues {
         IR::IRObject(obj) => {
             let mut unique_objects = HashMap::new();
             for pair in obj.properties {
-                let ir_value_node = IR::new(pair.value, file_contents.to_string());
+                let ir_value_node = IR::new(&pair.value, file_contents);
                 if let Some(value_node) = ir_value_node {
                     unique_objects.insert(pair.key.contents, get_value(value_node, file_contents));
                 }
@@ -102,7 +102,7 @@ pub fn get_value(ir_node: IR, file_contents: &String) -> JSONValues {
         }
         IR::IRPair(pair) => {
             let mut unique_pair = HashMap::new();
-            let ir_value_node = IR::new(pair.value, file_contents.to_string());
+            let ir_value_node = IR::new(&pair.value, file_contents);
             if let Some(value_node) = ir_value_node {
                 unique_pair.insert(pair.key.contents, get_value(value_node, file_contents));
             }
@@ -114,13 +114,13 @@ pub fn get_value(ir_node: IR, file_contents: &String) -> JSONValues {
 }
 
 // TODO extract this out into its own file/utils stuff
-pub fn is_equal(ir_node: &IR, file_contents: &String, value: &Value) -> bool {
+pub fn is_equal(ir_node: &IR, file_contents: &str, value: &Value) -> bool {
     match (ir_node, value) {
         (IR::IRArray(arr), Value::Array(second_arr)) => {
             for (i, node) in arr.items.iter().enumerate() {
                 // TODO fix unsafe unwrap
                 if !is_equal(
-                    &IR::new(*node, file_contents.to_string()).unwrap(),
+                    &IR::new(node, file_contents).unwrap(),
                     file_contents,
                     second_arr.get(i).unwrap(),
                 ) {
@@ -149,7 +149,7 @@ pub fn is_equal(ir_node: &IR, file_contents: &String, value: &Value) -> bool {
 
                 let second_obj_value = second_obj.get(&pair.key.contents).unwrap();
 
-                let ir_value_node = IR::new(pair.value, file_contents.to_string()).unwrap();
+                let ir_value_node = IR::new(&pair.value, file_contents).unwrap();
 
                 let equal = is_equal(&ir_value_node, file_contents, second_obj_value);
                 if !equal {
@@ -164,7 +164,7 @@ pub fn is_equal(ir_node: &IR, file_contents: &String, value: &Value) -> bool {
     }
 }
 
-pub fn parse(text: String) -> Tree {
+pub fn parse(text: &str) -> Tree {
     let mut parser = tree_sitter::Parser::new();
     parser
         .set_language(tree_sitter_json::language())
