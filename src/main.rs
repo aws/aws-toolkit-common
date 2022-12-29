@@ -93,12 +93,12 @@ impl LanguageServer for Backend<'static> {
         self.client
             .log_message(MessageType::INFO, "did_change")
             .await;
-        let test = std::mem::take(&mut params.content_changes[0].text); // We currently only support full document syncing so the entire document gets sent each time
+        let contents = std::mem::take(&mut params.content_changes[0].text);
         self.on_change(TextDocumentItem {
             uri: params.text_document.uri,
-            text: test, // TODO file cache of all the items
+            text: contents,
             version: params.text_document.version,
-            language_id: String::new(), // TODO language id
+            language_id: String::new(), // TODO language id yaml/json/toml, etc
         })
         .await;
     }

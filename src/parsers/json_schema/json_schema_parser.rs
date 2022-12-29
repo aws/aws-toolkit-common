@@ -91,8 +91,12 @@ impl JSONSchemaValidator {
                 node_validation.merge(obj_validation)
             }
             IR::IRPair(pair) => {
-                // TODO handle error on unwrapping the children
-                let key_errors = self.validate_root(node.child(0).unwrap().walk(), sub_schema);
+                let first_child = node.child(0);
+                if first_child.is_none() {
+                    return node_validation;
+                }
+
+                let key_errors = self.validate_root(first_child.unwrap().walk(), sub_schema);
                 let value_errors = self.validate_root(pair.value.walk(), sub_schema);
                 let key_merge = node_validation.merge(key_errors);
                 key_merge.merge(value_errors)

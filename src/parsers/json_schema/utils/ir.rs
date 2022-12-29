@@ -119,21 +119,28 @@ pub fn get_value<'a>(ir_node: &IR<'a>, file_contents: &'a str) -> JSONValues {
     }
 }
 
-// TODO extract this out into its own file/utils stuff
+// Check if the ir_node is equal to the value
 pub fn is_equal(ir_node: &IR, file_contents: &str, value: &Value) -> bool {
     match (ir_node, value) {
         (IR::IRArray(arr), Value::Array(second_arr)) => {
             for (i, node) in arr.items.iter().enumerate() {
-                // TODO fix unsafe unwrap
-                if !is_equal(
-                    &IR::new(node, file_contents).unwrap(),
-                    file_contents,
-                    second_arr.get(i).unwrap(),
-                ) {
+                let node = IR::new(node, file_contents);
+                if node.is_none() {
+                    return false;
+                }
+
+                let other_node = second_arr.get(i);
+                if other_node.is_none() {
+                    return false;
+                }
+
+                if !is_equal(&node.unwrap(), file_contents, other_node.unwrap()) {
                     return false;
                 }
             }
-            // TODO check the array length?
+            if arr.items.len() != second_arr.len() {
+                return false;
+            }
             true
         }
         (IR::IRBoolean(boo), Value::Bool(second_boo)) => &boo.value == second_boo,

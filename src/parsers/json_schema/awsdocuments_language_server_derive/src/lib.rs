@@ -1,28 +1,26 @@
 extern crate proc_macro;
 
-use std::{fs, str::FromStr};
-use quote::quote;
 use glob::glob;
 use proc_macro2::TokenStream;
+use quote::quote;
 use regex::Regex;
+use std::{fs, str::FromStr};
 use syn::{
     braced,
-    parse_macro_input,
-    Token,
-    LitStr,
-    parse::{Parse, ParseStream}, ItemFn
+    parse::{Parse, ParseStream},
+    parse_macro_input, ItemFn, LitStr, Token,
 };
 
 struct JsonTestSuiteWrapperInput {
     json_schema_test_suite_path: String,
     draft: String,
-    include_tests_regex: Vec<Regex>
+    include_tests_regex: Vec<Regex>,
 }
 
 impl Parse for JsonTestSuiteWrapperInput {
     fn parse(input: ParseStream) -> Result<Self, syn::Error> {
         let json_schema_test_suite_path: String = input.parse::<LitStr>()?.value();
-        
+
         // Consume the comma
         let _: syn::token::Comma = input.parse()?;
 
@@ -35,7 +33,8 @@ impl Parse for JsonTestSuiteWrapperInput {
             let included_tests = {
                 let braced_content;
                 braced!(braced_content in input);
-                let res: syn::punctuated::Punctuated<LitStr, Token![,]> = braced_content.parse_terminated(|v| v.parse())?;
+                let res: syn::punctuated::Punctuated<LitStr, Token![,]> =
+                    braced_content.parse_terminated(|v| v.parse())?;
                 res
             };
             included_tests
@@ -47,7 +46,7 @@ impl Parse for JsonTestSuiteWrapperInput {
         return Ok(JsonTestSuiteWrapperInput {
             json_schema_test_suite_path,
             draft,
-            include_tests_regex
+            include_tests_regex,
         });
     }
 }
@@ -65,12 +64,16 @@ fn get_test_paths(input: JsonTestSuiteWrapperInput) -> Vec<TokenStream> {
     let test_path = root_path.to_string() + "/**/*.json";
     let paths = glob(&test_path).expect("Failed to read glob pattern");
     let mut test_suite_paths = Vec::new();
-  
+
     for path in paths {
         if path.is_ok() {
+            let path_buf = path.unwrap();
+            let path_str = path_buf.to_str();
+            if path_str.is_none() {
+                continue;
+            }
 
-            // TODO make these calls safer
-            let file_path = &path.unwrap().to_str().unwrap().to_string();
+            let file_path = &path_str.unwrap().to_string();
             let contents = fs::read_to_string(file_path).expect("file was not found");
             let json = json::parse(&contents).unwrap();
 
@@ -78,7 +81,11 @@ fn get_test_paths(input: JsonTestSuiteWrapperInput) -> Vec<TokenStream> {
                 let tests = el["tests"].members();
                 for (test_num, _) in tests.into_iter().enumerate() {
                     let path_dir = root_path.to_string() + "/";
-                    let test_name = file_path.replace(&path_dir, "").replace(".json", "").replace("/", "_").replace("-", "_");
+                    let test_name = file_path
+                        .replace(&path_dir, "")
+                        .replace(".json", "")
+                        .replace("/", "_")
+                        .replace("-", "_");
 
                     let final_test_name = format!("{}_{}_{}", test_name, suite_num, test_num);
 
@@ -90,7 +97,9 @@ fn get_test_paths(input: JsonTestSuiteWrapperInput) -> Vec<TokenStream> {
                     }
 
                     if !found {
-                        test_suite_paths.push(TokenStream::from_str(&format!("\"{}\"", final_test_name)).unwrap());
+                        test_suite_paths.push(
+                            TokenStream::from_str(&format!("\"{}\"", final_test_name)).unwrap(),
+                        );
                         continue;
                     }
                 }
@@ -101,12 +110,15 @@ fn get_test_paths(input: JsonTestSuiteWrapperInput) -> Vec<TokenStream> {
 }
 
 #[proc_macro_attribute]
-pub fn json_schema_test_suite_include(attr: proc_macro::TokenStream, item: proc_macro::TokenStream) -> proc_macro::TokenStream {
+pub fn json_schema_test_suite_include(
+    attr: proc_macro::TokenStream,
+    item: proc_macro::TokenStream,
+) -> proc_macro::TokenStream {
     let input = parse_macro_input!(attr as JsonTestSuiteWrapperInput);
     let item_fn = parse_macro_input!(item as ItemFn);
 
     let paths = get_test_paths(input);
-    
+
     let gen = quote! {
         #[json_schema_test_suite(
             "src/parsers/json_schema/test_suite",

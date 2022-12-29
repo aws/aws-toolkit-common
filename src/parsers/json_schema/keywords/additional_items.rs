@@ -23,14 +23,13 @@ enum Items {
 fn get_items(sub_schema: &Value) -> Option<Items> {
     let items_property = sub_schema.get("items")?;
 
-    // TODO schema refs should be checked that the unwrap was successful before continuing
     match items_property {
         Value::Array(arr) => {
             return Some(Items::Array(
                 arr.iter().filter_map(new_schema_ref).collect_vec(),
             ));
         }
-        Value::Object(obj) => Some(Items::Object(new_schema_ref(&json!(obj)).unwrap())),
+        Value::Object(obj) => Some(Items::Object(new_schema_ref(&json!(obj))?)),
         _ => None,
     }
 }

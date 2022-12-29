@@ -12,9 +12,11 @@ use url::Url;
 use crate::{parsers::json_schema::utils::ir::to_diagnostic, utils::tree_sitter::IRString};
 
 fn _validate_format(node: &IRString, error: &str, pattern: &str) -> Option<Diagnostic> {
-    // TODO fix unsafe unwrap
-    let reg = Regex::new(pattern).unwrap();
-    if reg.is_match(&node.contents) {
+    let reg = Regex::new(pattern);
+    if reg.is_err() {
+        return None;
+    }
+    if reg.unwrap().is_match(&node.contents) {
         return Some(to_diagnostic(node.start, node.end, error.to_string()));
     }
     None
