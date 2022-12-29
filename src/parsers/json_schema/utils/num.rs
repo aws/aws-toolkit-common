@@ -40,16 +40,16 @@ impl JsonNumbers<'_> {
             JsonNumbers::Value(num) => num.as_f64(),
         }
     }
-}
 
-pub fn get_number(potential_num: &JsonNumbers) -> Option<f64> {
-    if potential_num.is_i64() {
-        return Some(convert_i64_to_float(potential_num.as_i64().unwrap()));
+    pub fn get_number(&self) -> Option<f64> {
+        if self.is_i64() {
+            return Some(convert_i64_to_float(self.as_i64()?));
+        }
+
+        if self.is_f64() {
+            return self.as_f64();
+        }
+
+        None
     }
-
-    if potential_num.is_f64() {
-        return Some(potential_num.as_f64().unwrap());
-    }
-
-    None
 }

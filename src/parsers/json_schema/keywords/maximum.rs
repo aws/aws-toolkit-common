@@ -4,17 +4,14 @@ use tower_lsp::lsp_types::Diagnostic;
 use crate::{
     parsers::json_schema::{
         errors::maximum_error,
-        utils::{
-            ir::to_diagnostic,
-            num::{get_number, JsonNumbers},
-        },
+        utils::{ir::to_diagnostic, num::JsonNumbers},
     },
     utils::tree_sitter::IRNumber,
 };
 
 pub fn validate_maximum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnostic> {
     let maximum_property = sub_schema.get("maximum")?;
-    let expected_maximum = get_number(&JsonNumbers::Value(maximum_property))?;
+    let expected_maximum = JsonNumbers::Value(maximum_property).get_number()?;
 
     let exclusive_maximum = sub_schema.get("exclusiveMaximum");
 
@@ -37,7 +34,7 @@ pub fn validate_maximum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnosti
             None
         }
         Some(Value::Number(num)) => {
-            let largest_maximum = max(expected_maximum, get_number(&JsonNumbers::Number(num)));
+            let largest_maximum = max(expected_maximum, JsonNumbers::Number(num).get_number());
 
             if node.value > largest_maximum {
                 return Some(to_diagnostic(
