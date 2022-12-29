@@ -9,7 +9,7 @@ use crate::parsers::ir::IR;
 
 pub fn new_schema_ref(value: &Value) -> Option<Value> {
     match value {
-        Value::Bool(_) => Some(value.clone()),
+        Value::Bool(_) => Some(value.to_owned()),
         Value::Object(obj) => Some(json!(obj)),
         _ => None,
     }
@@ -73,14 +73,14 @@ impl Debug for JSONValues {
     }
 }
 
-pub fn get_value<'a>(ir_node: IR<'a>, file_contents: &'a str) -> JSONValues {
+pub fn get_value<'a>(ir_node: &IR<'a>, file_contents: &'a str) -> JSONValues {
     match ir_node {
         IR::IRArray(arr) => {
             let mut unique_items = Vec::new();
-            for item in arr.items {
-                let ir_node = IR::new(&item, file_contents);
+            for item in &arr.items {
+                let ir_node = IR::new(item, file_contents);
                 if let Some(value) = ir_node {
-                    unique_items.push(get_value(value, file_contents));
+                    unique_items.push(get_value(&value, file_contents));
                 }
             }
             JSONValues::Array(unique_items)
@@ -92,10 +92,13 @@ pub fn get_value<'a>(ir_node: IR<'a>, file_contents: &'a str) -> JSONValues {
         }
         IR::IRObject(obj) => {
             let mut unique_objects = HashMap::new();
-            for pair in obj.properties {
+            for pair in &obj.properties {
                 let ir_value_node = IR::new(&pair.value, file_contents);
                 if let Some(value_node) = ir_value_node {
-                    unique_objects.insert(pair.key.contents, get_value(value_node, file_contents));
+                    unique_objects.insert(
+                        pair.key.contents.to_owned(),
+                        get_value(&value_node, file_contents),
+                    );
                 }
             }
             JSONValues::Object(unique_objects)
@@ -104,11 +107,14 @@ pub fn get_value<'a>(ir_node: IR<'a>, file_contents: &'a str) -> JSONValues {
             let mut unique_pair = HashMap::new();
             let ir_value_node = IR::new(&pair.value, file_contents);
             if let Some(value_node) = ir_value_node {
-                unique_pair.insert(pair.key.contents, get_value(value_node, file_contents));
+                unique_pair.insert(
+                    pair.key.contents.to_owned(),
+                    get_value(&value_node, file_contents),
+                );
             }
             JSONValues::Object(unique_pair)
         }
-        IR::IRString(str) => JSONValues::String(str.contents),
+        IR::IRString(str) => JSONValues::String(str.contents.to_owned()),
         IR::IRNull(_) => JSONValues::String("null".to_string()),
     }
 }

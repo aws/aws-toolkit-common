@@ -14,7 +14,7 @@ use crate::{
 
 pub fn validate_maximum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnostic> {
     let maximum_property = sub_schema.get("maximum")?;
-    let expected_maximum = get_number(JsonNumbers::Value(maximum_property))?;
+    let expected_maximum = get_number(&JsonNumbers::Value(maximum_property))?;
 
     let exclusive_maximum = sub_schema.get("exclusiveMaximum");
 
@@ -37,7 +37,7 @@ pub fn validate_maximum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnosti
             None
         }
         Some(Value::Number(num)) => {
-            let largest_maximum = max(expected_maximum, get_number(JsonNumbers::Number(num)));
+            let largest_maximum = max(expected_maximum, get_number(&JsonNumbers::Number(num)));
 
             if node.value > largest_maximum {
                 return Some(to_diagnostic(

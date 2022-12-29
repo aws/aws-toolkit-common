@@ -36,7 +36,7 @@ pub fn validate_unique_items(
             continue;
         }
 
-        let val = get_value(ir_node.unwrap(), file_contents);
+        let val = get_value(&ir_node.unwrap(), file_contents);
         if found_items.contains(&val) {
             duplicate_items.insert(item);
         }

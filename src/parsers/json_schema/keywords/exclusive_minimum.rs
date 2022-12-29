@@ -14,7 +14,7 @@ use crate::{
 
 pub fn validate_exclusive_minimum(node: &IRNumber, sub_schema: &Value) -> Option<Diagnostic> {
     let exclusive_minimum_property = sub_schema.get("exclusiveMinimum")?;
-    let expected_minimum = get_number(JsonNumbers::Value(exclusive_minimum_property))?;
+    let expected_minimum = get_number(&JsonNumbers::Value(exclusive_minimum_property))?;
 
     if node.value <= expected_minimum {
         return Some(to_diagnostic(

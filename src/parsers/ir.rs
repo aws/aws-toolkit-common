@@ -59,7 +59,7 @@ impl<'a> IR<'a> {
         }
     }
 
-    pub fn get_start(self) -> Position {
+    pub fn get_start(&self) -> Position {
         match self {
             IR::IRArray(arr) => arr.start,
             IR::IRBoolean(boo) => boo.start,
@@ -71,7 +71,7 @@ impl<'a> IR<'a> {
         }
     }
 
-    pub fn get_end(self) -> Position {
+    pub fn get_end(&self) -> Position {
         match self {
             IR::IRArray(arr) => arr.end,
             IR::IRBoolean(boo) => boo.end,
@@ -83,7 +83,7 @@ impl<'a> IR<'a> {
         }
     }
 
-    pub fn get_kind(self) -> &'a str {
+    pub fn get_kind(&self) -> &'a str {
         match self {
             IR::IRArray(arr) => arr.kind,
             IR::IRBoolean(boo) => boo.kind,

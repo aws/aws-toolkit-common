@@ -42,12 +42,12 @@ impl JsonNumbers<'_> {
     }
 }
 
-pub fn get_number(potential_num: JsonNumbers) -> Option<f64> {
-    if potential_num.clone().is_i64() {
+pub fn get_number(potential_num: &JsonNumbers) -> Option<f64> {
+    if potential_num.is_i64() {
         return Some(convert_i64_to_float(potential_num.as_i64().unwrap()));
     }
 
-    if potential_num.clone().is_f64() {
+    if potential_num.is_f64() {
         return Some(potential_num.as_f64().unwrap());
     }
 

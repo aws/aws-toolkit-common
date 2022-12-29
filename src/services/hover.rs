@@ -86,7 +86,8 @@ mod tests {
     fn hover_test(contents: &str, schema: &Value, line: u32, character: u32) -> Hover {
         let tree = parse(contents);
         let parse_result =
-            JSONSchemaValidator::new(tree.clone(), schema.clone(), contents.to_string()).parse();
+            JSONSchemaValidator::new(tree.to_owned(), schema.to_owned(), contents.to_string())
+                .parse();
         let document = TextDocument {
             tree,
             contents: contents.to_string(),
@@ -276,13 +277,13 @@ mod tests {
         let contents = r#"{
     "foo": null
 }"#;
-        let hovers_on_string_key = hover_test(contents, schema, 1, 7);
+        let hovers_on_string_key = hover_test(contents, &schema, 1, 7);
         test_hover_contents(hovers_on_string_key.contents, "my null test description");
 
-        let hovers_on_string_value = hover_test(contents, schema, 1, 13);
+        let hovers_on_string_value = hover_test(contents, &schema, 1, 13);
         test_hover_contents(hovers_on_string_value.contents, "my null test description");
 
-        let hovers_on_number_pair = hover_test(contents, schema, 1, 4);
+        let hovers_on_number_pair = hover_test(contents, &schema, 1, 4);
         test_hover_contents(hovers_on_number_pair.contents, "my null test description");
     }
 }

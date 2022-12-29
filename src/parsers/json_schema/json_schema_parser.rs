@@ -67,27 +67,27 @@ impl JSONSchemaValidator {
             return ParseResult::default();
         }
 
-        let mut node_validation = self.validate_node(ir_nodes.clone().unwrap(), sub_schema);
+        let mut node_validation = self.validate_node(ir_nodes.as_ref().unwrap(), sub_schema);
 
         // Clone the schema here instead of dealing with lifetimes (if that would even be possible)
         node_validation.schema_matches.push(SchemaMatches {
             node: NodeIdentifier::new(&node, &self.contents),
-            schema: sub_schema.clone(),
+            schema: sub_schema.to_owned(),
         });
 
         match ir_nodes.unwrap() {
             IR::IRString(key) => {
-                let str_errors = self.validate_string(key, sub_schema);
+                let str_errors = self.validate_string(&key, sub_schema);
                 node_validation.errors = [node_validation.errors, str_errors].concat();
                 node_validation
             }
             IR::IRArray(arr) => {
-                let array_errors = self.validate_array(arr, sub_schema);
+                let array_errors = self.validate_array(&arr, sub_schema);
                 node_validation.merge(array_errors)
             }
             IR::IRBoolean(_) => node_validation,
             IR::IRObject(obj) => {
-                let obj_validation = self.validate_object(obj, sub_schema);
+                let obj_validation = self.validate_object(&obj, sub_schema);
                 node_validation.merge(obj_validation)
             }
             IR::IRPair(pair) => {
@@ -98,7 +98,7 @@ impl JSONSchemaValidator {
                 key_merge.merge(value_errors)
             }
             IR::IRNumber(num) => {
-                let num_errors = self.validate_number(num, sub_schema);
+                let num_errors = self.validate_number(&num, sub_schema);
                 node_validation.errors = [node_validation.errors, num_errors].concat();
                 node_validation
             }
@@ -106,23 +106,23 @@ impl JSONSchemaValidator {
         }
     }
 
-    fn validate_node(&self, ir_node: IR, sub_schema: &Value) -> ParseResult {
+    fn validate_node(&self, ir_node: &IR, sub_schema: &Value) -> ParseResult {
         let mut validations = ParseResult::default();
 
         let mut errors = Vec::new();
 
-        if let Some(error) = validate_type(&ir_node, sub_schema) {
+        if let Some(error) = validate_type(ir_node, sub_schema) {
             errors.push(error);
         }
 
-        if let Some(error) = validate_enum(&ir_node, &self.contents, sub_schema) {
+        if let Some(error) = validate_enum(ir_node, &self.contents, sub_schema) {
             errors.push(error);
         }
         validations.errors = errors;
         validations
     }
 
-    fn validate_object(&self, obj: IRObject, sub_schema: &Value) -> ParseResult {
+    fn validate_object(&self, obj: &IRObject, sub_schema: &Value) -> ParseResult {
         let mut validations = ParseResult::default();
 
         let mut errors = Vec::new();
@@ -157,33 +157,33 @@ impl JSONSchemaValidator {
             errors.extend(error);
         }
 
-        if let Some(error) = validate_max_properties(&obj, sub_schema) {
+        if let Some(error) = validate_max_properties(obj, sub_schema) {
             errors.push(error);
         }
-        if let Some(error) = validate_min_properties(&obj, sub_schema) {
+        if let Some(error) = validate_min_properties(obj, sub_schema) {
             errors.push(error);
         }
-        if let Some(error) = validate_required(&obj, sub_schema) {
+        if let Some(error) = validate_required(obj, sub_schema) {
             errors.push(error);
         }
         validations.errors = [validations.errors, errors].concat();
         validations
     }
 
-    fn validate_array(&self, array: IRArray, sub_schema: &Value) -> ParseResult {
+    fn validate_array(&self, array: &IRArray, sub_schema: &Value) -> ParseResult {
         let mut validations = ParseResult::default();
 
         let mut errors: Vec<Diagnostic> = Vec::new();
-        if let Some(error) = validate_min_items(&array, sub_schema) {
+        if let Some(error) = validate_min_items(array, sub_schema) {
             errors.push(error);
         }
-        if let Some(error) = validate_max_items(&array, sub_schema) {
+        if let Some(error) = validate_max_items(array, sub_schema) {
             errors.push(error);
         }
-        if let Some(validation) = validate_additional_items(self, &array, sub_schema) {
+        if let Some(validation) = validate_additional_items(self, array, sub_schema) {
             validations = validations.merge_all(validation);
         }
-        if let Some(error) = validate_unique_items(&array, &self.contents, sub_schema) {
+        if let Some(error) = validate_unique_items(array, &self.contents, sub_schema) {
             errors.push(error);
         }
 
@@ -191,38 +191,38 @@ impl JSONSchemaValidator {
         validations
     }
 
-    fn validate_string(&self, content: IRString, sub_schema: &Value) -> Vec<Diagnostic> {
+    fn validate_string(&self, content: &IRString, sub_schema: &Value) -> Vec<Diagnostic> {
         let mut errors: Vec<Diagnostic> = Vec::new();
-        if let Some(error) = validate_min_length(&content, sub_schema) {
+        if let Some(error) = validate_min_length(content, sub_schema) {
             errors.push(error);
         }
-        if let Some(error) = validate_max_length(&content, sub_schema) {
+        if let Some(error) = validate_max_length(content, sub_schema) {
             errors.push(error);
         }
-        if let Some(error) = validate_pattern(&content, sub_schema) {
+        if let Some(error) = validate_pattern(content, sub_schema) {
             errors.push(error);
         }
-        if let Some(error) = validate_format(&content, sub_schema) {
+        if let Some(error) = validate_format(content, sub_schema) {
             errors.push(error);
         }
         errors
     }
 
-    fn validate_number(&self, number: IRNumber, sub_schema: &Value) -> Vec<Diagnostic> {
+    fn validate_number(&self, number: &IRNumber, sub_schema: &Value) -> Vec<Diagnostic> {
         let mut errors: Vec<Diagnostic> = Vec::new();
-        if let Some(error) = validate_multiple_of(&number, sub_schema) {
+        if let Some(error) = validate_multiple_of(number, sub_schema) {
             errors.push(error);
         }
-        if let Some(error) = validate_exclusive_minimum(&number, sub_schema) {
+        if let Some(error) = validate_exclusive_minimum(number, sub_schema) {
             errors.push(error);
         }
-        if let Some(error) = validate_exclusive_maximum(&number, sub_schema) {
+        if let Some(error) = validate_exclusive_maximum(number, sub_schema) {
             errors.push(error);
         }
-        if let Some(error) = validate_minimum(&number, sub_schema) {
+        if let Some(error) = validate_minimum(number, sub_schema) {
             errors.push(error);
         }
-        if let Some(error) = validate_maximum(&number, sub_schema) {
+        if let Some(error) = validate_maximum(number, sub_schema) {
             errors.push(error);
         }
         errors

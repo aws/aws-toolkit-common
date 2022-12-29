@@ -12,9 +12,9 @@ use tower_lsp::lsp_types::Diagnostic;
 pub fn validate_type(ir_node: &IR, sub_schema: &Value) -> Option<Diagnostic> {
     let type_property = sub_schema.get("type")?;
 
-    let start = ir_node.clone().get_start();
-    let end = ir_node.clone().get_end();
-    let kind = ir_node.clone().get_kind();
+    let start = ir_node.get_start();
+    let end = ir_node.get_end();
+    let kind = ir_node.get_kind();
 
     if let Some(types) = type_property.as_array() {
         let mut type_found = false;

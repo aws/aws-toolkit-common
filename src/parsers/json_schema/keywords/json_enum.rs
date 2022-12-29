@@ -23,13 +23,10 @@ pub fn validate_enum(node: &IR, file_contents: &str, sub_schema: &Value) -> Opti
     }
 
     if !found_match {
-        let value = get_value(node.clone(), file_contents);
-
-        // TODO anti-pattern? we probably shouldn't be using clone here
-        // TODO kinda hacky supporting the debug attribute through JSONValues to get this
+        let value = get_value(node, file_contents);
         return Some(to_diagnostic(
-            node.clone().get_start(),
-            node.clone().get_end(),
+            node.get_start(),
+            node.get_end(),
             enum_error(enum_options, format!("{:#?}", value)),
         ));
     }

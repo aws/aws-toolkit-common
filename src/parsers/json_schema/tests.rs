@@ -30,24 +30,23 @@ use json_schema_test_suite::{json_schema_test_suite, TestCase};
 fn test_suite(_server_address: &str, test_case: TestCase) {
     let parse_result = parse(test_case.instance.to_string().as_str());
 
-    let schema = test_case.schema.clone();
-    let val = JSONSchemaValidator::new(parse_result, schema, test_case.instance.to_string());
+    let val = JSONSchemaValidator::new(
+        parse_result,
+        test_case.schema.to_owned(),
+        test_case.instance.to_string(),
+    );
     let errors = val.parse().errors;
     if test_case.is_valid {
         if !errors.is_empty() {
             panic!(
                 "Test case {} was expected to be valid.\n    Schema={}\n    Instance={}",
-                test_case.name,
-                test_case.schema.clone(),
-                test_case.instance
+                test_case.name, test_case.schema, test_case.instance
             );
         }
     } else if errors.is_empty() {
         panic!(
             "Test case {} was expected to be invalid.\n    Schema={}\n    Instance={}",
-            test_case.name,
-            test_case.schema.clone(),
-            test_case.instance
+            test_case.name, test_case.schema, test_case.instance
         );
     }
 }
