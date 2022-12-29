@@ -1,5 +1,6 @@
 use awsdocuments_language_server::activate;
 use awsdocuments_language_server::registry::parser_registry::Registry;
+use awsdocuments_language_server::services::codeaction::create_codeactions;
 use awsdocuments_language_server::services::completion::completion;
 use awsdocuments_language_server::services::hover::hover;
 use awsdocuments_language_server::utils::text_document::TextDocument;
@@ -61,6 +62,7 @@ impl LanguageServer for Backend<'static> {
                 )),
                 completion_provider: None,
                 hover_provider: Some(HoverProviderCapability::Simple(true)),
+                code_action_provider: Some(CodeActionProviderCapability::Simple(true)),
                 ..ServerCapabilities::default() // currently don't support workspace folders but those could be added later
             },
         })
@@ -130,6 +132,10 @@ impl LanguageServer for Backend<'static> {
             .unwrap();
         let hover_result = hover(tree.value(), params);
         return Ok(Some(hover_result));
+    }
+
+    async fn code_action(&self, params: CodeActionParams) -> Result<Option<CodeActionResponse>> {
+        return Ok(create_codeactions(params));
     }
 
     async fn shutdown(&self) -> Result<()> {

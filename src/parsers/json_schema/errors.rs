@@ -23,7 +23,7 @@ pub fn exclusive_minimum_error(expected: f64, found: f64) -> String {
     )
 }
 
-pub fn enum_error(expected: Vec<String>, found: String) -> String {
+pub fn enum_error(expected: &Vec<String>, found: String) -> String {
     if expected.len() > 1 {
         format!("{:#?} must be one of {:#?}", found, expected.join(", "))
     } else {

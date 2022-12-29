@@ -1,5 +1,5 @@
 use serde_json::Value;
-use tower_lsp::lsp_types::Diagnostic;
+use tower_lsp::lsp_types::{Diagnostic, NumberOrString};
 
 use crate::parsers::{
     ir::IR,
@@ -8,6 +8,9 @@ use crate::parsers::{
         utils::ir::{get_value, is_equal, to_diagnostic},
     },
 };
+
+// TODO eventually extract this out so other backends can have use code action
+pub const ENUM_CODE: &str = "ENUM_ACTION";
 
 pub fn validate_enum(node: &IR, file_contents: &str, sub_schema: &Value) -> Option<Diagnostic> {
     let enums = sub_schema.get("enum")?.as_array()?;
@@ -24,11 +27,15 @@ pub fn validate_enum(node: &IR, file_contents: &str, sub_schema: &Value) -> Opti
 
     if !found_match {
         let value = get_value(node, file_contents);
-        return Some(to_diagnostic(
+        let mut diag = to_diagnostic(
             node.get_start(),
             node.get_end(),
-            enum_error(enum_options, format!("{:#?}", value)),
-        ));
+            enum_error(&enum_options, format!("{:#?}", value)),
+        );
+        if enum_options.len() == 1 {
+            diag.code = Some(NumberOrString::String(ENUM_CODE.to_string()));
+        }
+        return Some(diag);
     }
 
     None

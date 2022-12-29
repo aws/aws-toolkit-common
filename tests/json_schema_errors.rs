@@ -47,7 +47,7 @@ fn enum_invalid() {
     assert_eq!(validation_result.len(), 1, "Expected 1 error");
     assert_eq!(
         validation_result[0].message,
-        enum_error(vec!(String::from("1")), String::from("10"))
+        enum_error(&vec!(String::from("1")), String::from("10"))
     );
 }
 
@@ -58,7 +58,7 @@ fn enum_invalid_multiple() {
     assert_eq!(
         validation_result[0].message,
         enum_error(
-            vec!(String::from("1"), String::from("2"), String::from("3")),
+            &vec!(String::from("1"), String::from("2"), String::from("3")),
             String::from("10")
         )
     );
