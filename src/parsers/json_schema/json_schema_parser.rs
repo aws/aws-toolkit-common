@@ -69,7 +69,6 @@ impl JSONSchemaValidator {
 
         let mut node_validation = self.validate_node(ir_nodes.as_ref().unwrap(), sub_schema);
 
-        // Clone the schema here instead of dealing with lifetimes (if that would even be possible)
         node_validation.schema_matches.push(SchemaMatches {
             node: NodeIdentifier::new(&node, &self.contents),
             schema: sub_schema.to_owned(),
