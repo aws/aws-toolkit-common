@@ -969,6 +969,22 @@
             "passive": true
         },
         {
+            "name": "dynamodb_createTable",
+            "description": "Create a DynamoDB table",
+            "metadata": [
+                { "type": "result" },
+                { "type": "reason", "required": false }
+            ]
+        },
+        {
+            "name": "dynamodb_deleteTable",
+            "description": "Delete a DynamoDB table",
+            "metadata": [
+                { "type": "result" },
+                { "type": "reason", "required": false }
+            ]
+        },
+        {
             "name": "dynamodb_openTable",
             "description": "Open a DynamoDB table in the table browser",
             "metadata": [{ "type": "result" }]
