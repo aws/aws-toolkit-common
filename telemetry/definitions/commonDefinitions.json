@@ -553,32 +553,32 @@
         {
             "name": "codewhispererFirstCompletionLatency",
             "type": "double",
-            "description": "The latency from user performs the triggering CW action to plugin call GenerateCompletions API for the first recommendation"
+            "description": "The time it takes for the response to be received after the plugin makes a first GenerateCompletions API call."
         },
         {
             "name": "codewhispererEndToEndLatency",
             "type": "double",
-            "description": "The latency from plugin start invocation to plugin call GenerateCompletions API to first completion shown in the IDE"
+            "description": "The time it takes for the first completion to be shown in the IDE after the user performs the CW trigger action."
         },
         {
             "name": "codewhispererAllCompletionsLatency",
             "type": "double",
-            "description": "The latency from plugin makes a first call to GenerateCompletions API to receiving the response for the last call to the GenerateCompletions API."
+            "description": "The time it takes for the last GenerateCompletions response to be received after plugin makes a first call to GenerateCompletions API."
         },
         {
             "name": "codewhispererPostprocessingLatency",
             "type": "double",
-            "description": "The latency from plugin gets Completions object to completion shown in the IDE for the first completion."
+            "description": "The time it takes for the first completions to be displayed in the IDE after the plugin receives the initial Completions object."
         },
         {
             "name": "codewhispererPreprocessingLatency",
             "type": "double",
-            "description": "The latency from user performs the triggering CodeWhisperer action to plugin call GenerateCompletions API for the first recommendation"
+            "description": "The time it takes for the plugin to make the first GenerateCompletions API call after the user performs the CW trigger action."
         },
         {
             "name": "codewhispererCredentialFetchingLatency",
             "type": "double",
-            "description": "The latency to get the SSO credential within the invocation."
+            "description": "The time it takes to get the Sono/SSO credential for the invocation."
         },
         {
             "name": "syncedResources",
