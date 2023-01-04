@@ -551,6 +551,36 @@
             "allowedValues": ["OnDemand", "AutoTrigger"]
         },
         {
+            "name": "codewhispererFirstCompletionLatency",
+            "type": "double",
+            "description": "The latency from user performs the triggering CW action to plugin call GenerateCompletions API for the first recommendation"
+        },
+        {
+            "name": "codewhispererEndToEndLatency",
+            "type": "double",
+            "description": "The latency from plugin start invocation to plugin call GenerateCompletions API to first completion shown in the IDE"
+        },
+        {
+            "name": "codewhispererAllCompletionsLatency",
+            "type": "double",
+            "description": "The latency from plugin makes a first call to GenerateCompletions API to receiving the response for the last call to the GenerateCompletions API."
+        },
+        {
+            "name": "codewhispererPostprocessingLatency",
+            "type": "double",
+            "description": "The latency from plugin gets Completions object to completion shown in the IDE for the first completion."
+        },
+        {
+            "name": "codewhispererPreprocessingLatency",
+            "type": "double",
+            "description": "The latency from user performs the triggering CodeWhisperer action to plugin call GenerateCompletions API for the first recommendation"
+        },
+        {
+            "name": "codewhispererCredentialFetchingLatency",
+            "type": "double",
+            "description": "The latency to get the SSO credential within the invocation."
+        },
+        {
             "name": "syncedResources",
             "type": "string",
             "description": "Describes which parts of an application (that we know of) were synced to the cloud. \"Code\" resources follow the SAM spec: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-sync.html",
@@ -1953,6 +1983,49 @@
                 },
                 {
                     "type": "codewhispererCompletionType"
+                },
+                {
+                    "type": "codewhispererLanguage"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_clientComponentLatency",
+            "description": "The duration from user last modification to the first recommendation shown in milliseconds",
+            "metadata": [
+                {
+                    "type": "codewhispererRequestId"
+                },
+                {
+                    "type": "codewhispererSessionId"
+                },
+                {
+                    "type": "codewhispererPreprocessingLatency"
+                },
+                {
+                    "type": "codewhispererCredentialFetchingLatency"
+                },
+                {
+                    "type": "codewhispererPostprocessingLatency"
+                },
+                {
+                    "type": "codewhispererFirstCompletionLatency"
+                },
+                {
+                    "type": "codewhispererEndToEndLatency"
+                },
+                {
+                    "type": "codewhispererAllCompletionsLatency"
+                },
+                {
+                    "type": "codewhispererCompletionType"
+                },
+                {
+                    "type": "codewhispererTriggerType"
                 },
                 {
                     "type": "codewhispererLanguage"
