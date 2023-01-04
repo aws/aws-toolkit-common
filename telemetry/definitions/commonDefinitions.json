@@ -1995,7 +1995,7 @@
         },
         {
             "name": "codewhisperer_clientComponentLatency",
-            "description": "The duration from user last modification to the first recommendation shown in milliseconds",
+            "description": "The latency from each CodeWhisperer components in milliseconds",
             "metadata": [
                 {
                     "type": "codewhispererRequestId"
