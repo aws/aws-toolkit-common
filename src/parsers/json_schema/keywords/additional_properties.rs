@@ -19,6 +19,7 @@ pub fn validate_additional_properties<'a>(
     validate: &'a JSONSchemaValidator,
     available_keys: &HashMap<&'a str, Node>,
     sub_schema: &Value,
+    contents: &String,
 ) -> Option<Properties<'a>> {
     let properties = sub_schema.get("additionalProperties")?;
 
@@ -32,7 +33,7 @@ pub fn validate_additional_properties<'a>(
 
                 for (key, value) in available_keys {
                     keys_used.push(key.to_owned());
-                    validations.push(validate.validate_root(value.walk(), sub_schema));
+                    validations.push(validate.validate_root(value.walk(), sub_schema, contents));
                 }
             } else {
                 let mut validation = ParseResult::default();
@@ -56,7 +57,7 @@ pub fn validate_additional_properties<'a>(
         Value::Object(obj) => {
             for (key, value) in available_keys {
                 keys_used.push(key.to_owned());
-                validations.push(validate.validate_root(value.walk(), &json!(obj)));
+                validations.push(validate.validate_root(value.walk(), &json!(obj), contents));
             }
 
             Some(Properties {

@@ -65,6 +65,7 @@ pub fn validate_additional_items(
     validate: &JSONSchemaValidator,
     node: &IRArray,
     sub_schema: &Value,
+    contents: &String,
 ) -> Option<Vec<ParseResult>> {
     let potential_items = &get_items(sub_schema);
     let potential_additional_items = get_additional_items(sub_schema);
@@ -85,7 +86,7 @@ pub fn validate_additional_items(
             let node_schema = &items_schema[index];
             let node_item = node.items.get(index);
             if let Some(n) = node_item {
-                validations.push(validate.validate_root(n.walk(), node_schema));
+                validations.push(validate.validate_root(n.walk(), node_schema, contents));
             }
             index += 1;
         }
@@ -122,7 +123,11 @@ pub fn validate_additional_items(
         Some(Value::Object(obj)) => {
             let max_length = cmp::max(node.items.len(), processed_items);
             for i in processed_items..max_length {
-                validations.push(validate.validate_root(node.items[i].walk(), &json!(obj)));
+                validations.push(validate.validate_root(
+                    node.items[i].walk(),
+                    &json!(obj),
+                    contents,
+                ));
             }
 
             Some(validations)

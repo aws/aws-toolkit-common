@@ -13,7 +13,7 @@ const SCHEMA_URL: &str =
 
 const SCHEMA_PATH: &str = "buildspec.schema.json";
 
-pub async fn activate(registry: &mut Registry<'static>) {
+pub async fn activate(registry: &mut Registry) {
     // Download the schema if its not downloaded
 
     // TODO make this a path that can be configurable by the language client
@@ -30,15 +30,16 @@ pub async fn activate(registry: &mut Registry<'static>) {
             .expect("Unable to download buildspec schema");
     }
 
+    let schema_file = fs::read_to_string(SCHEMA_PATH).expect("Could not read file");
+    let schema: Value =
+        serde_json::from_str(&schema_file).expect("Should have been able to read the string");
+
+    let val = JSONSchemaValidator::new(schema);
+
     // TODO make this read the schema in once
     let buildspec_registry = RegistryItem::new(
-        "build.json",
-        Arc::new(|tree, file_contents| {
-            let schema_file = fs::read_to_string(SCHEMA_PATH).expect("Could not read file");
-            let schema: Value = serde_json::from_str(&schema_file)
-                .expect("Should have been able to read the string");
-            Arc::new(JSONSchemaValidator::new(tree, schema, file_contents))
-        }),
+        "build.json".to_string(),
+        Arc::new(move |tree, file_contents| val.validate(tree, file_contents)),
     );
 
     registry.add(buildspec_registry);

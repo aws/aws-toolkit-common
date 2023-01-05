@@ -12,6 +12,7 @@ pub fn validate_properties<'a>(
     validate: &'a JSONSchemaValidator,
     available_keys: &HashMap<&'a str, Node>,
     sub_schema: &'a Value,
+    contents: &String,
 ) -> Option<Properties<'a>> {
     let properties = sub_schema.get("properties")?.as_object()?;
 
@@ -21,7 +22,7 @@ pub fn validate_properties<'a>(
     for (key, value) in properties {
         if available_keys.contains_key(key.as_str()) {
             let node = available_keys.get(key.as_str()).unwrap();
-            validations.push(validate.validate_root(node.walk(), value));
+            validations.push(validate.validate_root(node.walk(), value, contents));
             keys_used.push(key.as_str());
         }
     }

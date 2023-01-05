@@ -1,5 +1,3 @@
-use crate::parsers::parser::Parser;
-
 use super::{json_schema_parser::JSONSchemaValidator, utils::ir::parse};
 #[cfg(test)]
 use awsdocuments_language_server_derive::json_schema_test_suite_include;
@@ -30,12 +28,10 @@ use json_schema_test_suite::{json_schema_test_suite, TestCase};
 fn test_suite(_server_address: &str, test_case: TestCase) {
     let parse_result = parse(test_case.instance.to_string().as_str());
 
-    let val = JSONSchemaValidator::new(
-        parse_result,
-        test_case.schema.to_owned(),
-        test_case.instance.to_string(),
-    );
-    let errors = val.parse().errors;
+    let val = JSONSchemaValidator::new(test_case.schema.clone());
+    let errors = val
+        .validate(parse_result, test_case.instance.to_string())
+        .errors;
     if test_case.is_valid {
         if !errors.is_empty() {
             panic!(

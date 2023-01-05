@@ -3,29 +3,29 @@ use std::sync::Arc;
 use regex::Regex;
 use tree_sitter::Tree;
 
-use crate::parsers::parser::{ParseResult, Parser};
+use crate::parsers::parser::ParseResult;
 
 #[derive(Default)]
-pub struct Registry<'a> {
-    registry_items: Vec<RegistryItem<'a>>,
+pub struct Registry {
+    registry_items: Vec<RegistryItem>,
 }
 
-impl<'a> Registry<'a> {
-    pub fn add(&mut self, item: RegistryItem<'a>) {
+impl Registry {
+    pub fn add(&mut self, item: RegistryItem) {
         self.registry_items.push(item);
     }
 
     pub fn parse(
         &self,
-        incoming_file_path: &str,
+        incoming_file_path: String,
         tree: Tree,
         file_contents: String,
     ) -> Option<ParseResult> {
         for item in &self.registry_items {
-            let pattern = Regex::new(item.file_match_pattern);
+            let pattern = Regex::new(item.file_match_pattern.as_str());
             if let Ok(reg) = pattern {
-                if reg.is_match(incoming_file_path) {
-                    return Some((item.parse)(tree, file_contents).parse());
+                if reg.is_match(incoming_file_path.as_str()) {
+                    return Some((item.parse)(tree, file_contents));
                 }
             }
         }
@@ -34,15 +34,15 @@ impl<'a> Registry<'a> {
 }
 
 // Added by external projects e.g. buildspec, ecs tasks, etc to denote what incoming files should match and their backend
-pub struct RegistryItem<'a> {
-    file_match_pattern: &'a str,
+pub struct RegistryItem {
+    file_match_pattern: String,
     parse: Parse,
 }
 
-type Parse = Arc<dyn Fn(Tree, String) -> Arc<dyn Parser> + Send + Sync>;
+type Parse = Arc<dyn Fn(Tree, String) -> ParseResult + Send + Sync>;
 
-impl<'a> RegistryItem<'a> {
-    pub fn new(file_match_pattern: &'a str, parse: Parse) -> Self {
+impl RegistryItem {
+    pub fn new(file_match_pattern: String, parse: Parse) -> Self {
         RegistryItem {
             file_match_pattern,
             parse,

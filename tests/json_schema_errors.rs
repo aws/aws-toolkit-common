@@ -1,14 +1,13 @@
-use awsdocuments_language_server::parsers::{
-    json_schema::{errors::*, json_schema_parser::JSONSchemaValidator, utils::ir::parse},
-    parser::Parser,
+use awsdocuments_language_server::parsers::json_schema::{
+    errors::*, json_schema_parser::JSONSchemaValidator, utils::ir::parse,
 };
 use serde_json::{json, Value};
 use tower_lsp::lsp_types::Diagnostic;
 
 fn validate(input: &str, schema: Value) -> Vec<Diagnostic> {
     let parse_result = parse(input);
-    let val = JSONSchemaValidator::new(parse_result, schema, input.to_string());
-    val.parse().errors
+    let validator = JSONSchemaValidator::new(schema);
+    validator.validate(parse_result, input.to_string()).errors
 }
 
 #[test]

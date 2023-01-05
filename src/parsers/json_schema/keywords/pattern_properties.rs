@@ -12,6 +12,7 @@ pub fn validate_pattern_properties<'a>(
     validate: &'a JSONSchemaValidator,
     available_keys: &HashMap<&'a str, Node>,
     sub_schema: &'a Value,
+    contents: &String,
 ) -> Option<Properties<'a>> {
     let properties = sub_schema.get("patternProperties")?.as_object()?;
 
@@ -24,7 +25,7 @@ pub fn validate_pattern_properties<'a>(
         if let Ok(reg) = property_regex {
             for (property, node) in available_keys {
                 if reg.is_match(property) {
-                    validations.push(validate.validate_root(node.walk(), schema));
+                    validations.push(validate.validate_root(node.walk(), schema, contents));
                     keys_used.push(property.to_owned());
                 }
             }

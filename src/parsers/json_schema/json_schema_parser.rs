@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use crate::{
     parsers::{
         ir::IR,
-        parser::{ParseResult, Parser, SchemaMatches},
+        parser::{ParseResult, SchemaMatches},
     },
     utils::tree_sitter::{IRArray, IRNumber, IRObject, IRString},
 };
@@ -29,29 +29,26 @@ use super::{
 };
 
 pub struct JSONSchemaValidator {
-    tree: Tree,
     schema: Value,
-    contents: String,
-}
-
-impl Parser for JSONSchemaValidator {
-    fn parse(&self) -> ParseResult {
-        let cursor = self.tree.walk();
-        self.validate_root(cursor, &self.schema)
-    }
 }
 
 impl JSONSchemaValidator {
-    pub fn new(tree: Tree, schema: Value, contents: String) -> Self {
+    pub fn new(schema: Value) -> Self {
         // TODO when adding yaml support, make the converter depend on the incoming language
-        JSONSchemaValidator {
-            tree,
-            schema,
-            contents,
-        }
+        JSONSchemaValidator { schema }
     }
 
-    pub fn validate_root(&self, mut cursor: TreeCursor, sub_schema: &Value) -> ParseResult {
+    pub fn validate(&self, tree: Tree, contents: String) -> ParseResult {
+        let cursor = tree.walk();
+        self.validate_root(cursor, &self.schema, &contents)
+    }
+
+    pub fn validate_root(
+        &self,
+        mut cursor: TreeCursor,
+        sub_schema: &Value,
+        contents: &String,
+    ) -> ParseResult {
         let node = cursor.node();
 
         if node.kind() == "document" || node.kind() == "{" {
@@ -59,18 +56,19 @@ impl JSONSchemaValidator {
             if !deep {
                 cursor.goto_next_sibling();
             }
-            return self.validate_root(cursor, sub_schema);
+            return self.validate_root(cursor, sub_schema, contents);
         }
 
-        let ir_nodes = IR::new(&node, &self.contents);
+        let ir_nodes = IR::new(&node, contents);
         if ir_nodes.is_none() {
             return ParseResult::default();
         }
 
-        let mut node_validation = self.validate_node(ir_nodes.as_ref().unwrap(), sub_schema);
+        let mut node_validation =
+            self.validate_node(ir_nodes.as_ref().unwrap(), sub_schema, contents);
 
         node_validation.schema_matches.push(SchemaMatches {
-            node: NodeIdentifier::new(&node, &self.contents),
+            node: NodeIdentifier::new(&node, contents),
             schema: sub_schema.to_owned(),
         });
 
@@ -81,12 +79,12 @@ impl JSONSchemaValidator {
                 node_validation
             }
             IR::IRArray(arr) => {
-                let array_errors = self.validate_array(&arr, sub_schema);
+                let array_errors = self.validate_array(&arr, sub_schema, contents);
                 node_validation.merge(array_errors)
             }
             IR::IRBoolean(_) => node_validation,
             IR::IRObject(obj) => {
-                let obj_validation = self.validate_object(&obj, sub_schema);
+                let obj_validation = self.validate_object(&obj, sub_schema, contents);
                 node_validation.merge(obj_validation)
             }
             IR::IRPair(pair) => {
@@ -95,8 +93,9 @@ impl JSONSchemaValidator {
                     return node_validation;
                 }
 
-                let key_errors = self.validate_root(first_child.unwrap().walk(), sub_schema);
-                let value_errors = self.validate_root(pair.value.walk(), sub_schema);
+                let key_errors =
+                    self.validate_root(first_child.unwrap().walk(), sub_schema, contents);
+                let value_errors = self.validate_root(pair.value.walk(), sub_schema, contents);
                 let key_merge = node_validation.merge(key_errors);
                 key_merge.merge(value_errors)
             }
@@ -109,7 +108,7 @@ impl JSONSchemaValidator {
         }
     }
 
-    fn validate_node(&self, ir_node: &IR, sub_schema: &Value) -> ParseResult {
+    fn validate_node(&self, ir_node: &IR, sub_schema: &Value, contents: &String) -> ParseResult {
         let mut validations = ParseResult::default();
 
         let mut errors = Vec::new();
@@ -118,14 +117,19 @@ impl JSONSchemaValidator {
             errors.push(error);
         }
 
-        if let Some(error) = validate_enum(ir_node, &self.contents, sub_schema) {
+        if let Some(error) = validate_enum(ir_node, contents, sub_schema) {
             errors.push(error);
         }
         validations.errors = errors;
         validations
     }
 
-    fn validate_object(&self, obj: &IRObject, sub_schema: &Value) -> ParseResult {
+    fn validate_object(
+        &self,
+        obj: &IRObject,
+        sub_schema: &Value,
+        contents: &String,
+    ) -> ParseResult {
         let mut validations = ParseResult::default();
 
         let mut errors = Vec::new();
@@ -135,21 +139,25 @@ impl JSONSchemaValidator {
             available_keys.insert(prop.key.contents.as_str(), prop.value);
         }
 
-        if let Some(props) = validate_properties(self, &available_keys, sub_schema) {
+        if let Some(props) = validate_properties(self, &available_keys, sub_schema, contents) {
             validations = validations.merge_all(props.validation);
             for key in props.keys_used {
                 available_keys.remove(key);
             }
         }
 
-        if let Some(props) = validate_pattern_properties(self, &available_keys, sub_schema) {
+        if let Some(props) =
+            validate_pattern_properties(self, &available_keys, sub_schema, contents)
+        {
             validations = validations.merge_all(props.validation);
             for key in props.keys_used {
                 available_keys.remove(key);
             }
         }
 
-        if let Some(props) = validate_additional_properties(self, &available_keys, sub_schema) {
+        if let Some(props) =
+            validate_additional_properties(self, &available_keys, sub_schema, contents)
+        {
             validations = validations.merge_all(props.validation);
             for key in props.keys_used {
                 available_keys.remove(key);
@@ -173,7 +181,12 @@ impl JSONSchemaValidator {
         validations
     }
 
-    fn validate_array(&self, array: &IRArray, sub_schema: &Value) -> ParseResult {
+    fn validate_array(
+        &self,
+        array: &IRArray,
+        sub_schema: &Value,
+        contents: &String,
+    ) -> ParseResult {
         let mut validations = ParseResult::default();
 
         let mut errors: Vec<Diagnostic> = Vec::new();
@@ -183,10 +196,10 @@ impl JSONSchemaValidator {
         if let Some(error) = validate_max_items(array, sub_schema) {
             errors.push(error);
         }
-        if let Some(validation) = validate_additional_items(self, array, sub_schema) {
+        if let Some(validation) = validate_additional_items(self, array, sub_schema, contents) {
             validations = validations.merge_all(validation);
         }
-        if let Some(error) = validate_unique_items(array, &self.contents, sub_schema) {
+        if let Some(error) = validate_unique_items(array, contents, sub_schema) {
             errors.push(error);
         }
 
@@ -237,15 +250,15 @@ mod tests {
     use serde_json::{json, Value};
     use tower_lsp::lsp_types::Diagnostic;
 
-    use crate::parsers::{json_schema::utils::ir::parse, parser::Parser};
+    use crate::parsers::json_schema::utils::ir::parse;
 
     use super::JSONSchemaValidator;
 
     fn validation_test(contents: &str, schema: Value) -> Vec<Diagnostic> {
         let parse_result = parse(contents);
-        let val = JSONSchemaValidator::new(parse_result, schema, contents.to_string());
-        let validation = val.parse();
-        validation.errors
+        let validator = JSONSchemaValidator::new(schema);
+        let val = validator.validate(parse_result, contents.to_string());
+        val.errors
     }
 
     #[test]

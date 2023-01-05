@@ -10,13 +10,13 @@ use tower_lsp::lsp_types::*;
 use tower_lsp::{Client, LanguageServer, LspService, Server};
 use tree_sitter::Tree;
 
-struct Backend<'a> {
+struct Backend {
     client: Client,
-    registry: Registry<'a>,
+    registry: Registry,
     documents: DashMap<String, TextDocument>,
 }
 
-impl<'a> Backend<'a> {
+impl Backend {
     // Called when the document is opened and the document is
     async fn on_change(&self, params: TextDocumentItem) {
         let mut parser = tree_sitter::Parser::new();
@@ -28,7 +28,7 @@ impl<'a> Backend<'a> {
 
         let parse = self
             .registry
-            .parse(params.uri.as_str(), tree.clone(), params.text.clone());
+            .parse(params.uri.to_string(), tree.clone(), params.text.clone());
 
         if let Some(parse_result) = parse {
             self.client
@@ -52,7 +52,7 @@ impl<'a> Backend<'a> {
 }
 
 #[tower_lsp::async_trait]
-impl LanguageServer for Backend<'static> {
+impl LanguageServer for Backend {
     async fn initialize(&self, _: InitializeParams) -> Result<InitializeResult> {
         Ok(InitializeResult {
             server_info: None, // TODO if we want to make the server version easily identifiable on the client side

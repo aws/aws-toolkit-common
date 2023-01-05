@@ -8,7 +8,7 @@ pub mod services;
 pub mod utils;
 
 // Activate any external modules
-pub async fn activate() -> Registry<'static> {
+pub async fn activate() -> Registry {
     let mut registry = Registry::default();
 
     // TODO figure out a way for this to lazily complete. Technically, we don't need to block language server start until all of these are done
@@ -42,7 +42,7 @@ mod tests {
         let tree = parse(contents);
         let res = activate()
             .await
-            .parse("build.json", tree, contents.to_string());
+            .parse("build.json".to_string(), tree, contents.to_string());
         if let Some(r) = res {
             assert_eq!(r.schema_matches.len(), 2);
         }

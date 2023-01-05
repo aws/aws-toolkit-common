@@ -3,10 +3,6 @@ use tower_lsp::lsp_types::Diagnostic;
 
 use super::json_schema::utils::object::NodeIdentifier;
 
-pub trait Parser {
-    fn parse(&self) -> ParseResult;
-}
-
 #[derive(Clone, Debug)]
 pub struct ParseResult {
     pub errors: Vec<Diagnostic>,

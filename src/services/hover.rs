@@ -60,10 +60,7 @@ pub fn hover(document: &TextDocument, params: HoverParams) -> Hover {
 #[cfg(test)]
 mod tests {
     use crate::{
-        parsers::{
-            json_schema::{json_schema_parser::JSONSchemaValidator, utils::ir::parse},
-            parser::Parser,
-        },
+        parsers::json_schema::{json_schema_parser::JSONSchemaValidator, utils::ir::parse},
         utils::text_document::TextDocument,
     };
     use serde_json::{json, Value};
@@ -77,9 +74,8 @@ mod tests {
 
     fn hover_test(contents: &str, schema: &Value, line: u32, character: u32) -> Hover {
         let tree = parse(contents);
-        let parse_result =
-            JSONSchemaValidator::new(tree.to_owned(), schema.to_owned(), contents.to_string())
-                .parse();
+        let validator = JSONSchemaValidator::new(schema.to_owned());
+        let parse_result = validator.validate(tree.clone(), contents.to_string());
         let document = TextDocument {
             tree,
             contents: contents.to_string(),
