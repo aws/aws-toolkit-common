@@ -339,7 +339,7 @@
         {
             "name": "dynamoDbTarget",
             "allowedValues": ["table", "tableProperties", "tableStream"],
-            "description": "The type of entity referenced by a metric or operation"
+            "description": "The type of DynamoDB entity referenced by a metric or operation"
         },
         {
             "name": "resourceType",
