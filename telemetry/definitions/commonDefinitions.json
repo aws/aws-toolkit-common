@@ -337,6 +337,11 @@
             "description": "The type of index being hit for the query/scan operation"
         },
         {
+            "name": "dynamoDbTarget",
+            "allowedValues": ["table", "tableProperties", "tableStream"],
+            "description": "The type of DynamoDB entity referenced by a metric or operation"
+        },
+        {
             "name": "resourceType",
             "type": "string",
             "description": "The dynamic resource type being interacted with"
@@ -985,9 +990,13 @@
             ]
         },
         {
-            "name": "dynamodb_openTable",
-            "description": "Open a DynamoDB table in the table browser",
-            "metadata": [{ "type": "result" }]
+            "name": "dynamodb_edit",
+            "description": "Modify a DynamoDB entity",
+            "metadata": [
+                { "type": "result" },
+                { "type": "dynamoDbTarget" },
+                { "type": "reason", "required": false }
+            ]
         },
         {
             "name": "dynamodb_fetchRecords",
@@ -996,6 +1005,20 @@
                 { "type": "result" },
                 { "type": "dynamoDbFetchType" },
                 { "type": "dynamoDbIndexType", "required": false }
+            ]
+        },
+        {
+            "name": "dynamodb_openTable",
+            "description": "Open a DynamoDB table in the table browser",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "dynamodb_view",
+            "description": "View a DynamoDB entity",
+            "metadata": [
+                { "type": "result" },
+                { "type": "dynamoDbTarget" },
+                { "type": "reason", "required": false }
             ]
         },
         {
