@@ -1996,6 +1996,7 @@
         {
             "name": "codewhisperer_clientComponentLatency",
             "description": "The latency from each CodeWhisperer components in milliseconds",
+             "passive": true,
             "metadata": [
                 {
                     "type": "codewhispererRequestId"
