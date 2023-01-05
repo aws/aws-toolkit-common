@@ -21,7 +21,7 @@ impl Registry {
         file_contents: &str,
     ) -> Option<ParseResult> {
         for item in &self.registry_items {
-            if (item.matches)(incoming_file_path) {
+            if (item.matches)(incoming_file_path, tree) {
                 return Some((item.parse)(tree, file_contents));
             }
         }
@@ -35,7 +35,7 @@ pub struct RegistryItem {
     parse: Parse,
 }
 
-type Matcher = Arc<dyn Fn(&str) -> bool + Send + Sync>;
+type Matcher = Arc<dyn Fn(&str, &Tree) -> bool + Send + Sync>;
 
 type Parse = Arc<dyn Fn(&Tree, &str) -> ParseResult + Send + Sync>;
 

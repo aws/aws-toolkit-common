@@ -40,12 +40,12 @@ pub async fn activate(registry: &mut Registry) {
 
     // TODO make this read the schema in once
     let buildspec_registry = RegistryItem::new(
-        Arc::new(|_file_name| {
+        Arc::new(|file_name, _tree| {
             let reg = Regex::new(BUILDSPEC_FILE_NAME);
             if reg.is_err() {
                 return false;
             }
-            reg.unwrap().is_match(_file_name)
+            reg.unwrap().is_match(file_name)
         }),
         Arc::new(move |tree, file_contents| val.validate(tree, file_contents)),
     );
