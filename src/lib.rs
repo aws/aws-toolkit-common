@@ -40,9 +40,7 @@ mod tests {
     "version": "2.0"
 }"#;
         let tree = parse(contents);
-        let res = activate()
-            .await
-            .parse("build.json".to_string(), tree, contents.to_string());
+        let res = activate().await.parse("build.json", &tree, contents);
         if let Some(r) = res {
             assert_eq!(r.schema_matches.len(), 2);
         }

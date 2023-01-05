@@ -28,7 +28,7 @@ impl Backend {
 
         let parse = self
             .registry
-            .parse(params.uri.to_string(), tree.clone(), params.text.clone());
+            .parse(params.uri.as_str(), &tree, &params.text);
 
         if let Some(parse_result) = parse {
             self.client

@@ -30,7 +30,7 @@ fn test_suite(_server_address: &str, test_case: TestCase) {
 
     let val = JSONSchemaValidator::new(test_case.schema.clone());
     let errors = val
-        .validate(parse_result, test_case.instance.to_string())
+        .validate(&parse_result, test_case.instance.to_string().as_str())
         .errors;
     if test_case.is_valid {
         if !errors.is_empty() {

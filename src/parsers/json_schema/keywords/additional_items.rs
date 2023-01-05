@@ -65,7 +65,7 @@ pub fn validate_additional_items(
     validate: &JSONSchemaValidator,
     node: &IRArray,
     sub_schema: &Value,
-    contents: &String,
+    contents: &str,
 ) -> Option<Vec<ParseResult>> {
     let potential_items = &get_items(sub_schema);
     let potential_additional_items = get_additional_items(sub_schema);

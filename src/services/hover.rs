@@ -75,7 +75,7 @@ mod tests {
     fn hover_test(contents: &str, schema: &Value, line: u32, character: u32) -> Hover {
         let tree = parse(contents);
         let validator = JSONSchemaValidator::new(schema.to_owned());
-        let parse_result = validator.validate(tree.clone(), contents.to_string());
+        let parse_result = validator.validate(&tree, contents);
         let document = TextDocument {
             tree,
             contents: contents.to_string(),

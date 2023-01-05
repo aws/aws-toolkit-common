@@ -7,7 +7,7 @@ use tower_lsp::lsp_types::Diagnostic;
 fn validate(input: &str, schema: Value) -> Vec<Diagnostic> {
     let parse_result = parse(input);
     let validator = JSONSchemaValidator::new(schema);
-    validator.validate(parse_result, input.to_string()).errors
+    validator.validate(&parse_result, input).errors
 }
 
 #[test]

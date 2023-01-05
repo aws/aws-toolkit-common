@@ -38,7 +38,7 @@ impl JSONSchemaValidator {
         JSONSchemaValidator { schema }
     }
 
-    pub fn validate(&self, tree: Tree, contents: String) -> ParseResult {
+    pub fn validate(&self, tree: &Tree, contents: &str) -> ParseResult {
         let cursor = tree.walk();
         self.validate_root(cursor, &self.schema, &contents)
     }
@@ -47,7 +47,7 @@ impl JSONSchemaValidator {
         &self,
         mut cursor: TreeCursor,
         sub_schema: &Value,
-        contents: &String,
+        contents: &str,
     ) -> ParseResult {
         let node = cursor.node();
 
@@ -108,7 +108,7 @@ impl JSONSchemaValidator {
         }
     }
 
-    fn validate_node(&self, ir_node: &IR, sub_schema: &Value, contents: &String) -> ParseResult {
+    fn validate_node(&self, ir_node: &IR, sub_schema: &Value, contents: &str) -> ParseResult {
         let mut validations = ParseResult::default();
 
         let mut errors = Vec::new();
@@ -124,12 +124,7 @@ impl JSONSchemaValidator {
         validations
     }
 
-    fn validate_object(
-        &self,
-        obj: &IRObject,
-        sub_schema: &Value,
-        contents: &String,
-    ) -> ParseResult {
+    fn validate_object(&self, obj: &IRObject, sub_schema: &Value, contents: &str) -> ParseResult {
         let mut validations = ParseResult::default();
 
         let mut errors = Vec::new();
@@ -181,12 +176,7 @@ impl JSONSchemaValidator {
         validations
     }
 
-    fn validate_array(
-        &self,
-        array: &IRArray,
-        sub_schema: &Value,
-        contents: &String,
-    ) -> ParseResult {
+    fn validate_array(&self, array: &IRArray, sub_schema: &Value, contents: &str) -> ParseResult {
         let mut validations = ParseResult::default();
 
         let mut errors: Vec<Diagnostic> = Vec::new();
@@ -257,7 +247,7 @@ mod tests {
     fn validation_test(contents: &str, schema: Value) -> Vec<Diagnostic> {
         let parse_result = parse(contents);
         let validator = JSONSchemaValidator::new(schema);
-        let val = validator.validate(parse_result, contents.to_string());
+        let val = validator.validate(&parse_result, contents);
         val.errors
     }
 

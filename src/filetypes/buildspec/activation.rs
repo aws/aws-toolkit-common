@@ -1,5 +1,6 @@
 use std::{env, fs, sync::Arc};
 
+use regex::Regex;
 use serde_json::Value;
 
 use crate::{
@@ -12,6 +13,7 @@ const SCHEMA_URL: &str =
     "http://d2t8thmxo9c3sa.cloudfront.net/CodeBuild/buildspec/buildspec-v2.schema.json";
 
 const SCHEMA_PATH: &str = "buildspec.schema.json";
+const BUILDSPEC_FILE_NAME: &str = "build.json";
 
 pub async fn activate(registry: &mut Registry) {
     // Download the schema if its not downloaded
@@ -38,7 +40,13 @@ pub async fn activate(registry: &mut Registry) {
 
     // TODO make this read the schema in once
     let buildspec_registry = RegistryItem::new(
-        "build.json".to_string(),
+        Arc::new(|_file_name| {
+            let reg = Regex::new(BUILDSPEC_FILE_NAME);
+            if reg.is_err() {
+                return false;
+            }
+            reg.unwrap().is_match(_file_name)
+        }),
         Arc::new(move |tree, file_contents| val.validate(tree, file_contents)),
     );
 
