@@ -55,6 +55,7 @@ namespace Test
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -99,6 +100,7 @@ namespace Test
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -143,6 +145,7 @@ namespace Test
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("duration", payload.Duration);
 
@@ -197,6 +200,7 @@ namespace Test
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("duration", payload.Duration);
 
@@ -251,6 +255,7 @@ namespace Test
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 if (payload.Duration.HasValue)
                 {
@@ -317,6 +322,7 @@ namespace Test
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 

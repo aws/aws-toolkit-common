@@ -17,6 +17,12 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Core
         /// </summary>
         public bool Passive = false;
 
+        /// <summary>
+        /// Optional - The reason for a metric or exception depending on context
+        /// This is often used in failure scenarios to provide additional details about why something failed.
+        /// </summary>
+        public string Reason;
+
         public DateTime? CreatedOn;
         public double? Value;
         public string AwsAccount;

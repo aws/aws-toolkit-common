@@ -65,6 +65,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             var payload = new SampleReleaseBees()
             {
                 Bees = 123,
+                Reason = "sample-reason",
             };
 
             _telemetryLogger.Object.RecordSampleReleaseBees(payload);
@@ -80,6 +81,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.Equal("sample_releaseBees", datum.MetricName);
             Assert.Equal(Unit.None, datum.Unit);
             Assert.Equal(payload.Bees.ToString(), datum.Metadata["bees"]);
+            Assert.Equal(payload.Reason, datum.Metadata["reason"]);
         }
 
         /// <summary>
