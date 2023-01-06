@@ -303,7 +303,7 @@
         },
         {
             "name": "ec2ConnectionType",
-            "allowedValues": ["remoteDesktop", "ssh"],
+            "allowedValues": ["remoteDesktop", "ssh", "scp"],
             "description": "Ways to connect to an EC2 Instance"
         },
         {
