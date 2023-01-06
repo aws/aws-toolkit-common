@@ -21,6 +21,13 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
         private const string AddMetadataMethodName = "AddMetadata";
         private const string InvokeTransformMethodName = "InvokeTransform";
 
+        // contains metadata fields that should be skipped when generating code.
+        // These fields are covered by the class BaseTelemetryEvent
+        private static readonly string[] ImplicitFields = 
+        {
+            "reason",
+        };
+
         private readonly CodeMethodReferenceExpression _invariantCulture =
             new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(CultureInfo)),
                 nameof(CultureInfo.InvariantCulture));
@@ -274,6 +281,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 
             // Generate the class members
             metric.metadata?
+                .Where(metadata => !ImplicitFields.Contains(metadata.type))
                 .ToList().ForEach(metadata =>
                 {
                     var metricType = GetMetricType(metadata.type);
@@ -391,9 +399,15 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
                 new CodePrimitiveExpression("awsRegion"), payloadAwsRegion)));
 
+            // Generate: datum.AddMetadata("reason", payload.Reason);
+            var payloadReason = new CodeFieldReferenceExpression(payload, "Reason");
+            tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
+                new CodePrimitiveExpression("reason"), payloadReason)));
 
             // Set MetricDatum Metadata values
-            metric.metadata?.ToList().ForEach(metadata =>
+            metric.metadata?
+                .Where(metadata => !ImplicitFields.Contains(metadata.type))
+                .ToList().ForEach(metadata =>
             {
                 tryStatements.Add(new CodeSnippetStatement());
 
