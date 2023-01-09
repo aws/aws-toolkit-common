@@ -1068,6 +1068,50 @@
             ]
         },
         {
+            "name": "ec2_createAmi",
+            "description": "Create an image from an EC2 Instance",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
+            "name": "ec2_editInstanceElasticIp",
+            "description": "Associate or disassociate an Elastic IP with an EC2 Instance",
+            "metadata": [
+                { "type": "result" }, 
+                { "type": "enabled", "required": false}
+            ]
+        },
+        {
+            "name": "ec2_editInstanceShutdownBehavior",
+            "description": "Adjust the shutdown behavior of an EC2 Instance",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
+            "name": "ec2_editInstanceTerminationProtection",
+            "description": "Adjust the termination protection of an EC2 Instance",
+            "metadata": [
+                { "type": "result" }, 
+                { "type": "enabled", "required": false}
+            ]
+        },
+        {
+            "name": "ec2_editInstanceType",
+            "description": "Adjust the instance type of an EC2 Instance",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
+            "name": "ec2_editInstanceUserData",
+            "description": "Adjust an EC2 Instance's user data",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
             "name": "ec2_launchInstance",
             "description": "Launch an EC2 Instance",
             "metadata": [
@@ -1105,9 +1149,21 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "ec2_viewInstanceSystemLog",
+            "description": "View the system log of an EC2 Instance",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "ecs_openCluster",
             "description": "Open to view status of an ECS Cluster",
             "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ec2_viewInstanceUserData",
+            "description": "View an EC2 Instance's user data",
+            "metadata": [
+                { "type": "result" }
+            ]
         },
         {
             "name": "ecs_enableExecuteCommand",
