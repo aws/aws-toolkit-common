@@ -6,12 +6,12 @@ import org.json.JSONObject
 val jacksonVersion = "2.14.1"
 val junitVersion = "4.13.2"
 val kotlinVersion = "1.3.20"
-val assertjVersion = "3.23.1"
+val assertjVersion = "3.24.1"
 
 plugins {
     java
     `kotlin-dsl`
-    kotlin("jvm") version "1.7.21"
+    kotlin("jvm") version "1.8.0"
     `maven-publish`
     signing
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
