@@ -54,6 +54,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -100,6 +101,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 if (payload.Runtime.HasValue)
                 {
@@ -160,6 +162,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -208,6 +211,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -254,6 +258,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -298,6 +303,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -342,12 +348,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("appRunnerServiceSource", payload.AppRunnerServiceSource);
-
-                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -392,6 +397,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -438,6 +444,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -484,6 +491,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -535,6 +543,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -581,6 +590,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -625,6 +635,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -669,6 +680,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
@@ -715,6 +727,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
@@ -763,6 +776,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 if (payload.CredentialType.HasValue)
                 {
@@ -817,6 +831,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -861,6 +876,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("partitionId", payload.PartitionId);
 
@@ -907,6 +923,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -953,6 +970,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1001,6 +1019,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1045,6 +1064,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1095,6 +1115,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("credentialSourceId", payload.CredentialSourceId);
 
@@ -1141,6 +1162,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1185,6 +1207,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1233,6 +1256,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1289,6 +1313,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("name", payload.Name);
 
@@ -1335,6 +1360,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1381,6 +1407,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1425,6 +1452,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1469,6 +1497,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
@@ -1515,6 +1544,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1559,6 +1589,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1621,6 +1652,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1667,6 +1699,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1713,6 +1746,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1759,6 +1793,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1805,6 +1840,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1851,6 +1887,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1899,6 +1936,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1956,6 +1994,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2004,6 +2043,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2052,6 +2092,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2100,6 +2141,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2148,6 +2190,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2194,6 +2237,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2240,6 +2284,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2286,6 +2331,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("enabled", payload.Enabled);
 
@@ -2332,6 +2378,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("enabled", payload.Enabled);
 
@@ -2378,6 +2425,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
 
@@ -2424,6 +2472,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -2468,6 +2517,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -2512,6 +2562,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2572,6 +2623,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2618,6 +2670,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2664,6 +2717,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2710,6 +2764,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2758,6 +2813,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2806,6 +2862,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2852,10 +2909,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -2900,10 +2956,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -2948,12 +3003,210 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
                 if (payload.CredentialType.HasValue)
                 {
                     datum.AddMetadata("credentialType", payload.CredentialType.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Create a DynamoDB table
+        public static void RecordDynamodbCreateTable(this ITelemetryLogger telemetryLogger, DynamodbCreateTable payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "dynamodb_createTable";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Delete a DynamoDB table
+        public static void RecordDynamodbDeleteTable(this ITelemetryLogger telemetryLogger, DynamodbDeleteTable payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "dynamodb_deleteTable";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Modify a DynamoDB entity
+        public static void RecordDynamodbEdit(this ITelemetryLogger telemetryLogger, DynamodbEdit payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "dynamodb_edit";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("dynamoDbTarget", payload.DynamoDbTarget);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Fetch records from a DynamoDB table in the table browser
+        public static void RecordDynamodbFetchRecords(this ITelemetryLogger telemetryLogger, DynamodbFetchRecords payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "dynamodb_fetchRecords";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("dynamoDbFetchType", payload.DynamoDbFetchType);
+
+                if (payload.DynamoDbIndexType.HasValue)
+                {
+                    datum.AddMetadata("dynamoDbIndexType", payload.DynamoDbIndexType.Value);
                 }
 
                 datum = datum.InvokeTransform(transformDatum);
@@ -2999,6 +3252,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3015,8 +3269,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
-        /// Fetch records from a DynamoDB table in the table browser
-        public static void RecordDynamodbFetchRecords(this ITelemetryLogger telemetryLogger, DynamodbFetchRecords payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        /// View a DynamoDB entity
+        public static void RecordDynamodbView(this ITelemetryLogger telemetryLogger, DynamodbView payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -3032,7 +3286,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 metrics.Data = new List<MetricDatum>();
 
                 var datum = new MetricDatum();
-                datum.MetricName = "dynamodb_fetchRecords";
+                datum.MetricName = "dynamodb_view";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
                 if (payload.Value.HasValue)
@@ -3045,15 +3299,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum.AddMetadata("dynamoDbFetchType", payload.DynamoDbFetchType);
-
-                if (payload.DynamoDbIndexType.HasValue)
-                {
-                    datum.AddMetadata("dynamoDbIndexType", payload.DynamoDbIndexType.Value);
-                }
+                datum.AddMetadata("dynamoDbTarget", payload.DynamoDbTarget);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -3098,6 +3348,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3146,6 +3397,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3194,6 +3446,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3240,6 +3493,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3286,6 +3540,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3332,6 +3587,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3378,6 +3634,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3424,6 +3681,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3470,6 +3728,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3516,6 +3775,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3562,6 +3822,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3608,6 +3869,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3654,6 +3916,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3702,6 +3965,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -3746,6 +4010,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -3790,6 +4055,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3836,6 +4102,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3882,6 +4149,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3928,6 +4196,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3979,6 +4248,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4027,6 +4297,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4075,6 +4346,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4123,6 +4395,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4171,6 +4444,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4217,6 +4491,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4263,6 +4538,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4309,6 +4585,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4359,6 +4636,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4405,6 +4683,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4451,6 +4730,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4497,6 +4777,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("duration", payload.Duration);
 
@@ -4545,6 +4826,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4591,6 +4873,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("runtime", payload.Runtime);
 
@@ -4637,6 +4920,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4689,6 +4973,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4735,6 +5020,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 if (payload.Update.HasValue)
                 {
@@ -4788,6 +5074,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 if (payload.Runtime.HasValue)
                 {
@@ -4839,6 +5126,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 if (payload.Runtime.HasValue)
                 {
@@ -4901,6 +5189,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 if (payload.Runtime.HasValue)
                 {
@@ -4952,6 +5241,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 if (payload.Runtime.HasValue)
                 {
@@ -5003,6 +5293,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("lambdaPackageType", payload.LambdaPackageType);
 
@@ -5072,6 +5363,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5118,6 +5410,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5168,6 +5461,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5214,6 +5508,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5260,6 +5555,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5306,6 +5602,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5356,6 +5653,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5404,6 +5702,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5452,6 +5751,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5500,14 +5800,13 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("syncedResources", payload.SyncedResources);
 
                 datum.AddMetadata("lambdaPackageType", payload.LambdaPackageType);
-
-                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("version", payload.Version);
 
@@ -5554,6 +5853,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5570,8 +5870,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("lambdaPackageType", payload.LambdaPackageType.Value);
                 }
-
-                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("eventBridgeSchema", payload.EventBridgeSchema);
 
@@ -5623,6 +5921,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5669,6 +5968,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5720,6 +6020,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5766,6 +6067,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -5810,6 +6112,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -5854,6 +6157,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -5898,6 +6202,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -5942,6 +6247,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5988,6 +6294,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6036,6 +6343,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6082,6 +6390,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6128,6 +6437,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6184,6 +6494,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6230,6 +6541,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6291,6 +6603,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6337,6 +6650,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6398,6 +6712,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6444,6 +6759,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6490,6 +6806,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6536,6 +6853,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6587,6 +6905,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6633,6 +6952,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6679,6 +6999,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 if (payload.Result.HasValue)
                 {
@@ -6733,6 +7054,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -6777,6 +7099,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
@@ -6823,6 +7146,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6874,6 +7198,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6922,6 +7247,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6970,6 +7296,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7018,6 +7345,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7066,6 +7394,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7114,6 +7443,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7162,6 +7492,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7208,6 +7539,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7254,6 +7586,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7300,6 +7633,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7346,6 +7680,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7392,6 +7727,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7438,6 +7774,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7484,6 +7821,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7530,6 +7868,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("insightsDialogOpenSource", payload.InsightsDialogOpenSource);
 
@@ -7576,6 +7915,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7626,6 +7966,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7672,6 +8013,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7718,6 +8060,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7764,12 +8107,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("url", payload.Url);
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -7814,6 +8156,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7862,6 +8205,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7910,6 +8254,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -7954,6 +8299,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("resourceType", payload.ResourceType);
 
@@ -8000,6 +8346,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8052,6 +8399,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("experimentId", payload.ExperimentId);
 
@@ -8100,6 +8448,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("toolId", payload.ToolId);
 
@@ -8148,6 +8497,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("settingId", payload.SettingId);
 
@@ -8196,6 +8546,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("elementId", payload.ElementId);
 
@@ -8242,6 +8593,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("source", payload.Source);
 
@@ -8292,6 +8644,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("codewhispererAcceptedTokens", payload.CodewhispererAcceptedTokens);
 
@@ -8300,8 +8653,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("codewhispererPercentage", payload.CodewhispererPercentage);
 
                 datum.AddMetadata("codewhispererTotalTokens", payload.CodewhispererTotalTokens);
-
-                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("successCount", payload.SuccessCount);
 
@@ -8348,6 +8699,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("codewhispererCodeScanLines", payload.CodewhispererCodeScanLines);
 
@@ -8383,8 +8735,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("artifactsUploadDuration", payload.ArtifactsUploadDuration);
 
                 datum.AddMetadata("codeScanServiceInvocationsDuration", payload.CodeScanServiceInvocationsDuration);
-
-                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8433,6 +8783,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 if (payload.CodewhispererAutomatedTriggerType.HasValue)
                 {
@@ -8469,8 +8820,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
 
                 datum.AddMetadata("duration", payload.Duration);
-
-                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8519,6 +8868,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("codewhispererCompletionType", payload.CodewhispererCompletionType);
 
@@ -8595,6 +8945,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("codewhispererCompletionType", payload.CodewhispererCompletionType);
 
@@ -8662,6 +9013,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("codewhispererRequestId", payload.CodewhispererRequestId);
 
@@ -8672,6 +9024,75 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
 
                 datum.AddMetadata("codewhispererCompletionType", payload.CodewhispererCompletionType);
+
+                datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
+
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// The latency from each CodeWhisperer components in milliseconds
+        public static void RecordCodewhispererClientComponentLatency(this ITelemetryLogger telemetryLogger, CodewhispererClientComponentLatency payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codewhisperer_clientComponentLatency";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+
+                datum.AddMetadata("codewhispererRequestId", payload.CodewhispererRequestId);
+
+                datum.AddMetadata("codewhispererSessionId", payload.CodewhispererSessionId);
+
+                datum.AddMetadata("codewhispererPreprocessingLatency", payload.CodewhispererPreprocessingLatency);
+
+                datum.AddMetadata("codewhispererCredentialFetchingLatency", payload.CodewhispererCredentialFetchingLatency);
+
+                datum.AddMetadata("codewhispererPostprocessingLatency", payload.CodewhispererPostprocessingLatency);
+
+                datum.AddMetadata("codewhispererFirstCompletionLatency", payload.CodewhispererFirstCompletionLatency);
+
+                datum.AddMetadata("codewhispererEndToEndLatency", payload.CodewhispererEndToEndLatency);
+
+                datum.AddMetadata("codewhispererAllCompletionsLatency", payload.CodewhispererAllCompletionsLatency);
+
+                datum.AddMetadata("codewhispererCompletionType", payload.CodewhispererCompletionType);
+
+                datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
 
                 datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
 
@@ -8720,6 +9141,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -8773,6 +9195,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -8823,6 +9246,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -8871,6 +9295,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -8919,6 +9344,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -8967,6 +9393,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -9787,6 +10214,33 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     }
     
     /// Metric field type
+    /// The type of DynamoDB entity referenced by a metric or operation
+    public struct DynamoDbTarget
+    {
+        
+        private string _value;
+        
+        /// table
+        public static readonly DynamoDbTarget Table = new DynamoDbTarget("table");
+        
+        /// tableProperties
+        public static readonly DynamoDbTarget TableProperties = new DynamoDbTarget("tableProperties");
+        
+        /// tableStream
+        public static readonly DynamoDbTarget TableStream = new DynamoDbTarget("tableStream");
+        
+        public DynamoDbTarget(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
     /// The dynamic resource operation being executed
     public struct DynamicResourceOperation
     {
@@ -10242,9 +10696,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The source artifact of an App Runner service
         public AppRunnerServiceSource AppRunnerServiceSource;
-        
-        /// Optional - The reason for a metric or exception depending on context
-        public string Reason;
         
         public ApprunnerCreateService()
         {
@@ -10992,9 +11443,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The result of the operation
         public Result Result;
         
-        /// Optional - The reason for a metric or exception depending on context
-        public string Reason;
-        
         public CodecommitCloneRepo()
         {
             this.Passive = false;
@@ -11007,9 +11455,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
-        
-        /// Optional - The reason for a metric or exception depending on context
-        public string Reason;
         
         public CodecommitCreateRepo()
         {
@@ -11033,14 +11478,43 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
-    /// Open a DynamoDB table in the table browser
-    public sealed class DynamodbOpenTable : BaseTelemetryEvent
+    /// Create a DynamoDB table
+    public sealed class DynamodbCreateTable : BaseTelemetryEvent
     {
         
         /// The result of the operation
         public Result Result;
         
-        public DynamodbOpenTable()
+        public DynamodbCreateTable()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Delete a DynamoDB table
+    public sealed class DynamodbDeleteTable : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public DynamodbDeleteTable()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Modify a DynamoDB entity
+    public sealed class DynamodbEdit : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// The type of DynamoDB entity referenced by a metric or operation
+        public DynamoDbTarget DynamoDbTarget;
+        
+        public DynamodbEdit()
         {
             this.Passive = false;
         }
@@ -11060,6 +11534,35 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public DynamoDbIndexType? DynamoDbIndexType;
         
         public DynamodbFetchRecords()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Open a DynamoDB table in the table browser
+    public sealed class DynamodbOpenTable : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public DynamodbOpenTable()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// View a DynamoDB entity
+    public sealed class DynamodbView : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// The type of DynamoDB entity referenced by a metric or operation
+        public DynamoDbTarget DynamoDbTarget;
+        
+        public DynamodbView()
         {
             this.Passive = false;
         }
@@ -11836,9 +12339,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The Lambda Package type of the function
         public LambdaPackageType LambdaPackageType;
         
-        /// Optional - The reason for a metric or exception depending on context
-        public string Reason;
-        
         /// Optional - A generic version metadata
         public string Version;
         
@@ -11866,9 +12366,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The Lambda Package type of the function
         public LambdaPackageType? LambdaPackageType;
-        
-        /// Optional - The reason for a metric or exception depending on context
-        public string Reason;
         
         /// Optional - The name of the EventBridge Schema used in the operation
         public string EventBridgeSchema;
@@ -12525,9 +13022,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The result of the operation
         public Result Result;
         
-        /// Optional - The reason for a metric or exception depending on context
-        public string Reason;
-        
         public ToolkitGetExternalResource()
         {
             this.Passive = true;
@@ -12707,9 +13201,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The metrics generated by the user and acceptance of suggested CodeWhisperer code in the language CodeWhisperer supports.
         public int CodewhispererTotalTokens;
         
-        /// Optional - The reason for a metric or exception depending on context
-        public string Reason;
-        
         /// The number of successful operations
         public int SuccessCount;
         
@@ -12762,9 +13253,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Time taken to invoke code scan service APIs in milliseconds
         public int CodeScanServiceInvocationsDuration;
         
-        /// Optional - The reason for a metric or exception depending on context
-        public string Reason;
-        
         /// The result of the operation
         public Result Result;
         
@@ -12816,9 +13304,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The duration of the operation in milliseconds
         public double Duration;
-        
-        /// Optional - The reason for a metric or exception depending on context
-        public string Reason;
         
         /// The result of the operation
         public Result Result;
@@ -12949,6 +13434,52 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodewhispererPerceivedLatency()
         {
             this.Passive = false;
+        }
+    }
+    
+    /// The latency from each CodeWhisperer components in milliseconds
+    public sealed class CodewhispererClientComponentLatency : BaseTelemetryEvent
+    {
+        
+        /// The ID of the request to CodeWhisperer service
+        public string CodewhispererRequestId;
+        
+        /// The unique identifier for a CodeWhisperer session(which can contain multiple requests)
+        public string CodewhispererSessionId;
+        
+        /// The time it takes for the plugin to make the first GenerateCompletions API call after the user performs the CW trigger action.
+        public double CodewhispererPreprocessingLatency;
+        
+        /// The time it takes to get the Sono/SSO credential for the invocation.
+        public double CodewhispererCredentialFetchingLatency;
+        
+        /// The time it takes for the first completions to be displayed in the IDE after the plugin receives the initial Completions object.
+        public double CodewhispererPostprocessingLatency;
+        
+        /// The time it takes for the response to be received after the plugin makes a first GenerateCompletions API call.
+        public double CodewhispererFirstCompletionLatency;
+        
+        /// The time it takes for the first completion to be shown in the IDE after the user performs the CW trigger action.
+        public double CodewhispererEndToEndLatency;
+        
+        /// The time it takes for the last GenerateCompletions response to be received after plugin makes a first call to GenerateCompletions API.
+        public double CodewhispererAllCompletionsLatency;
+        
+        /// Completion Type of the inference results returned from CodeWhisperer model layer
+        public CodewhispererCompletionType CodewhispererCompletionType;
+        
+        /// The type of the user trigger to send request to CodeWhisperer service
+        public CodewhispererTriggerType CodewhispererTriggerType;
+        
+        /// Programming language of the CodeWhisperer recommendation
+        public CodewhispererLanguage CodewhispererLanguage;
+        
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
+        public CodewhispererClientComponentLatency()
+        {
+            this.Passive = true;
         }
     }
     
