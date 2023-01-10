@@ -1075,6 +1075,20 @@
             ]
         },
         {
+            "name": "ec2_createElasticIp",
+            "description": "Create (allocate) an Elastic IP address",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
+            "name": "ec2_deleteElasticIp",
+            "description": "Delete (release) an Elastic IP address",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
             "name": "ec2_editInstanceElasticIp",
             "description": "Associate or disassociate an Elastic IP with an EC2 Instance",
             "metadata": [
