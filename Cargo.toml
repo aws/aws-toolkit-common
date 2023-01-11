@@ -1,0 +1,28 @@
+[package]
+name = "awsdocuments_language_server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+addr = "0.15.6"
+async-compression = "0.3.14"
+dashmap = "5.4.0"
+itertools = "0.10.5"
+regex = "1.7.0"
+reqwest = { version = "0.11.11", features = ["gzip"] }
+serde_json = "1.0.87"
+time = { version = "0.3.17", features = ["parsing"] }
+tokio = { version = "1.21.1", features = ["full"] }
+tower-lsp = "0.17.0"
+tree-sitter = "0.20.9"
+tree-sitter-json = "0.19.0"
+url = "2.3.1"
+
+[build-dependencies]
+cc="*"
+
+[dev-dependencies]
+json_schema_test_suite = "0.3.0"
+lazy_static = "1.4.0"
+mockito = "0.31.1"
+awsdocuments_language_server_derive = { path = "src/parsers/json_schema/awsdocuments_language_server_derive" }

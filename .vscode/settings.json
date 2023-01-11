@@ -4,5 +4,9 @@
             "fileMatch": ["*Definitions.json"],
             "url": "./telemetry/telemetrySchema.json"
         }
-    ]
+    ],
+    "rust-analyzer.checkOnSave.command": "clippy",
+    "[rust]": {
+        "editor.formatOnSave": true
+    },
 }

@@ -16,3 +16,9 @@ build
 telemetry/csharp/buildtemp/**
 telemetry/csharp/AwsToolkit.Telemetry.SDK/Generated/**
 telemetry/csharp/client-generator-inputs/telemetry-2017-07-25.normal.json
+
+# AWS Documents language server related
+lsp/target/
+lsp/src/parsers/json_schema/test_suite/
+lsp/awsdocuments_language_server
+lsp/src/filetypes/buildspec/*.schema.json

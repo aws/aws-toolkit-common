@@ -1,0 +1,18 @@
+[package]
+name = "awsdocuments_language_server_derive"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = { version = "1.0", features = ["full"] }
+quote = "1.0"
+regex = "1.7.0"
+glob = "0.3.0"
+json = "0.12.4"
+proc-macro2 = "1.0.47"
+# json_schema_test_suite = "0.3.0"
+# lazy_static = "1.4.0"
+# mockito = "0.31.1"
