@@ -109,29 +109,35 @@ impl LanguageServer for Backend {
         self.client
             .log_message(MessageType::INFO, "completion")
             .await;
-        let tree = self
+        let text_document = self
             .documents
-            .get(&params.text_document_position.text_document.uri.to_string())
-            .unwrap();
-        let completion_result = completion(tree.value(), params);
-        let result = Some(CompletionResponse::Array(completion_result));
-        return Ok(result);
+            .get(&params.text_document_position.text_document.uri.to_string());
+
+        if let Some(text_doc) = text_document {
+            let completion_result = completion(&text_doc, params);
+            let result = Some(CompletionResponse::Array(completion_result));
+            return Ok(result);
+        }
+
+        Ok(None)
     }
 
     async fn hover(&self, params: HoverParams) -> Result<Option<Hover>> {
         self.client.log_message(MessageType::INFO, "hover").await;
-        let tree = self
-            .documents
-            .get(
-                &params
-                    .text_document_position_params
-                    .text_document
-                    .uri
-                    .to_string(),
-            )
-            .unwrap();
-        let hover_result = hover(tree.value(), params);
-        return Ok(Some(hover_result));
+        let text_document = self.documents.get(
+            &params
+                .text_document_position_params
+                .text_document
+                .uri
+                .to_string(),
+        );
+
+        if let Some(text_doc) = text_document {
+            let hover_result = hover(&text_doc, params);
+            return Ok(Some(hover_result));
+        }
+
+        return Ok(None);
     }
 
     async fn code_action(&self, params: CodeActionParams) -> Result<Option<CodeActionResponse>> {
