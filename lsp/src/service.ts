@@ -13,16 +13,18 @@ import {
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import {
     getLanguageService as getYamlLanguageService,
+    SchemaRequestService,
+    WorkspaceContextService,
     LanguageService as YamlLanguageService
 } from 'yaml-language-server'
 
 export interface LanguageService {
-    completion?: (
+    completion: (
         textDocument: TextDocument,
         textDocumentPosition: TextDocumentPositionParams
     ) => Promise<CompletionItem[] | CompletionList>
-    diagnostics?: () => Diagnostic[]
-    hover?: (textDocument: TextDocument, params: HoverParams) => Promise<Hover>
+    diagnostics: () => Diagnostic[]
+    hover: (textDocument: TextDocument, params: HoverParams) => Promise<Hover | undefined>
 }
 
 export interface BackendServices {
