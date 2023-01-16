@@ -13,6 +13,8 @@ import {
 import {
     TextDocument
 } from 'vscode-languageserver-textdocument';
+import { Registry } from './registry';
+import { activate as BuildSpecActivation } from './buildspec/activation'; 
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -20,6 +22,9 @@ const connection = createConnection(ProposedFeatures.all);
 
 // Create a simple text document manager.
 const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
+
+const fileRegistry = Registry.getInstance();
+fileRegistry.addRegistryItem(BuildSpecActivation());
 
 let hasConfigurationCapability = false;
 let hasWorkspaceFolderCapability = false;
