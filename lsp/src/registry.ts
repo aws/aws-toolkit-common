@@ -11,6 +11,10 @@ export class Registry {
     private static instance: Registry
     private items: RegistryItem[]
 
+    constructor() {
+        this.items = []
+    }
+
     public static getInstance(): Registry {
         if (!this.instance) {
             Registry.instance = new Registry()
