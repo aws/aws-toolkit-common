@@ -1,4 +1,5 @@
-import got from 'got'
+import { xhr } from 'request-light'
+
 import * as fs from 'fs'
 
 /**
@@ -11,7 +12,6 @@ export async function downloadSchema(url: string, path: string): Promise<void> {
     if (fs.existsSync(path)) {
         return
     }
-
-    const schema: string = await got(url).json()
-    fs.writeFileSync(path, schema)
+    const schema = await xhr({ url })
+    fs.writeFileSync(path, schema.responseText)
 }
