@@ -1,23 +1,26 @@
+import { URI } from 'vscode-languageserver'
+import { TextDocument } from 'vscode-languageserver-textdocument'
+
 export interface RegistryItem {
-    matches(): boolean;
+    matches(uri: URI, contents: TextDocument): boolean;
     onMatch(): void;
 }
 
 export class Registry {
 
-    private static instance: Registry;
-    private items: RegistryItem[];
+    private static instance: Registry
+    private items: RegistryItem[]
 
     public static getInstance(): Registry {
         if (!this.instance) {
-            Registry.instance = new Registry();
+            Registry.instance = new Registry()
         }
 
-        return Registry.instance;
+        return Registry.instance
     }
 
     public addRegistryItem(item: RegistryItem) {
-        this.items.push(item);
+        this.items.push(item)
     }
 
 }
