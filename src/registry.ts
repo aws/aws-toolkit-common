@@ -1,9 +1,10 @@
 import { URI } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
+import { LanguageService } from './service'
 
 export interface RegistryItem {
-    matches(uri: URI, contents: TextDocument): boolean;
-    onMatch(): void;
+    matches(uri: URI, contents: TextDocument): boolean
+    onMatch(): LanguageService
 }
 
 export class Registry {
@@ -21,6 +22,15 @@ export class Registry {
 
     public addRegistryItem(item: RegistryItem) {
         this.items.push(item)
+    }
+
+    public getMatch(uri: URI, contents: TextDocument): LanguageService | undefined {
+        for (const item of this.items) {
+            if (item.matches(uri, contents)) {
+                return item.onMatch()
+            }
+        }
+        return undefined
     }
 
 }

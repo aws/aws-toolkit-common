@@ -1,20 +1,12 @@
 import {
-    createConnection,
-    TextDocuments,
-    ProposedFeatures,
-    InitializeParams,
-    DidChangeConfigurationNotification,
-    CompletionItem,
-    TextDocumentPositionParams,
-    TextDocumentSyncKind,
-    InitializeResult
+    CompletionItem, CompletionList, createConnection, DidChangeConfigurationNotification, Hover, HoverParams, InitializeParams, InitializeResult, ProposedFeatures, TextDocumentPositionParams, TextDocuments, TextDocumentSyncKind
 } from 'vscode-languageserver/node'
 
 import {
     TextDocument
 } from 'vscode-languageserver-textdocument'
+import { activate as BuildspecActivation } from './filetypes/buildspec/activation'
 import { Registry } from './registry'
-import { activate as BuildSpecActivation } from './filetypes/buildspec/activation' 
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -24,7 +16,7 @@ const connection = createConnection(ProposedFeatures.all)
 const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument)
 
 const fileRegistry = Registry.getInstance()
-fileRegistry.addRegistryItem(BuildSpecActivation())
+fileRegistry.addRegistryItem(BuildspecActivation())
 
 let hasConfigurationCapability = false
 let hasWorkspaceFolderCapability = false
@@ -102,11 +94,18 @@ connection.onDidChangeWatchedFiles(_change => {
 })
 
 connection.onCompletion(
-    (_textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
-        // TODO show buildspec completions
-        return []
+    (textDocumentPosition: TextDocumentPositionParams): Promise<CompletionItem[] | CompletionList> => {
+        const textDoc = documents.get(textDocumentPosition.textDocument.uri)
+        const service = fileRegistry.getMatch(textDocumentPosition.textDocument.uri, textDoc)
+        return service.completion(textDoc, textDocumentPosition)
     }
 )
+
+connection.onHover((params: HoverParams): Promise<Hover> => {
+    const textDoc = documents.get(params.textDocument.uri)
+    const service = fileRegistry.getMatch(params.textDocument.uri, textDoc)
+    return service.hover(textDoc, params)
+})
 
 // Make the text document manager listen on the connection
 // for open, change and close text document events
