@@ -16,7 +16,6 @@ import {
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import { activate as BuildspecActivation } from './filetypes/buildspec/activation'
 import { Registry } from './registry'
-import { LanguageService } from 'yaml-language-server'
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -102,9 +101,13 @@ connection.onDidChangeWatchedFiles(_change => {
 connection.onCompletion(
     async (textDocumentPosition: TextDocumentPositionParams): Promise<CompletionItem[] | CompletionList> => {
         const textDoc = documents.get(textDocumentPosition.textDocument.uri)
-        if (textDoc === undefined) { return [] }
+        if (textDoc === undefined) {
+            return []
+        }
         const service = fileRegistry.getMatch(textDocumentPosition.textDocument.uri, textDoc)
-        if (service === undefined) { return [] }
+        if (service === undefined) {
+            return []
+        }
         return service.completion(textDoc, textDocumentPosition)
     }
 )
@@ -112,9 +115,13 @@ connection.onCompletion(
 connection.onHover(
     async (params: HoverParams): Promise<Hover | undefined> => {
         const textDoc = documents.get(params.textDocument.uri)
-        if (textDoc === undefined) { return undefined }
+        if (textDoc === undefined) {
+            return undefined
+        }
         const service = fileRegistry.getMatch(params.textDocument.uri, textDoc)
-        if (service === undefined) { return undefined }
+        if (service === undefined) {
+            return undefined
+        }
         return service.hover(textDoc, params)
     }
 )

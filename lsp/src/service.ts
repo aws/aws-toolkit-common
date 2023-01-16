@@ -13,8 +13,6 @@ import {
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import {
     getLanguageService as getYamlLanguageService,
-    SchemaRequestService,
-    WorkspaceContextService,
     LanguageService as YamlLanguageService
 } from 'yaml-language-server'
 

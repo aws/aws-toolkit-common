@@ -5,6 +5,7 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     plugins: [
         '@typescript-eslint',
+        'unused-imports'
     ],
     extends: [
         'eslint:recommended',
@@ -16,5 +17,6 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 0,
         '@typescript-eslint/explicit-module-boundary-types': 0,
         '@typescript-eslint/no-non-null-assertion': 0,
+        'unused-imports/no-unused-imports': 'error',
     }
 }
