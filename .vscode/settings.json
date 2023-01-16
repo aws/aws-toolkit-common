@@ -2,6 +2,8 @@
     "editor.insertSpaces": true,
     "typescript.preferences.quoteStyle": "single",
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    }
+        "source.fixAll.eslint": true,
+        "source.organizeImports": true,
+        "source.sortMembers": true
+    },
 }
