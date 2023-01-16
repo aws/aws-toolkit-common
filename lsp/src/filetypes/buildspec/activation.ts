@@ -7,7 +7,6 @@ import { service } from './service'
 const SCHEMA_URL = 'https://d3rrggjwfhwld2.cloudfront.net/CodeBuild/buildspec/buildspec-standalone.schema.json'
 
 export function activate(): RegistryItem {
-
     try {
         downloadSchema(SCHEMA_URL, '/tmp/buildspec.txt')
     } catch {
@@ -20,6 +19,6 @@ export function activate(): RegistryItem {
         },
         onMatch() {
             return service()
-        },
+        }
     }
 }

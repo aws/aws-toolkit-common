@@ -8,7 +8,6 @@ export interface RegistryItem {
 }
 
 export class Registry {
-
     private static instance: Registry
     private items: RegistryItem[]
 
@@ -32,5 +31,4 @@ export class Registry {
         }
         return undefined
     }
-
 }

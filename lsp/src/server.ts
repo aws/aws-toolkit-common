@@ -1,10 +1,19 @@
 import {
-    CompletionItem, CompletionList, createConnection, DidChangeConfigurationNotification, Hover, HoverParams, InitializeParams, InitializeResult, ProposedFeatures, TextDocumentPositionParams, TextDocuments, TextDocumentSyncKind
+    CompletionItem,
+    CompletionList,
+    createConnection,
+    DidChangeConfigurationNotification,
+    Hover,
+    HoverParams,
+    InitializeParams,
+    InitializeResult,
+    ProposedFeatures,
+    TextDocumentPositionParams,
+    TextDocuments,
+    TextDocumentSyncKind
 } from 'vscode-languageserver/node'
 
-import {
-    TextDocument
-} from 'vscode-languageserver-textdocument'
+import { TextDocument } from 'vscode-languageserver-textdocument'
 import { activate as BuildspecActivation } from './filetypes/buildspec/activation'
 import { Registry } from './registry'
 
@@ -27,12 +36,8 @@ connection.onInitialize((params: InitializeParams) => {
 
     // Does the client support the `workspace/configuration` request?
     // If not, we fall back using global settings.
-    hasConfigurationCapability = !!(
-        capabilities.workspace && !!capabilities.workspace.configuration
-    )
-    hasWorkspaceFolderCapability = !!(
-        capabilities.workspace && !!capabilities.workspace.workspaceFolders
-    )
+    hasConfigurationCapability = !!(capabilities.workspace && !!capabilities.workspace.configuration)
+    hasWorkspaceFolderCapability = !!(capabilities.workspace && !!capabilities.workspace.workspaceFolders)
     hasDiagnosticRelatedInformationCapability = !!(
         capabilities.textDocument &&
         capabilities.textDocument.publishDiagnostics &&
@@ -77,7 +82,7 @@ connection.onDidChangeConfiguration(change => {
 
 // Only keep settings for open documents
 // eslint-disable-next-line @typescript-eslint/no-empty-function
-documents.onDidClose(e => { })
+documents.onDidClose(e => {})
 
 // The content of a text document has changed. This event is emitted
 // when the text document first opened or when its content has changed.
@@ -101,11 +106,13 @@ connection.onCompletion(
     }
 )
 
-connection.onHover((params: HoverParams): Promise<Hover> => {
-    const textDoc = documents.get(params.textDocument.uri)
-    const service = fileRegistry.getMatch(params.textDocument.uri, textDoc)
-    return service.hover(textDoc, params)
-})
+connection.onHover(
+    (params: HoverParams): Promise<Hover> => {
+        const textDoc = documents.get(params.textDocument.uri)
+        const service = fileRegistry.getMatch(params.textDocument.uri, textDoc)
+        return service.hover(textDoc, params)
+    }
+)
 
 // Make the text document manager listen on the connection
 // for open, change and close text document events

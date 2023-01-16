@@ -12,6 +12,6 @@ export async function downloadSchema(url: string, path: string): Promise<void> {
         return
     }
 
-    const schema: string = await (got(url).json())
+    const schema: string = await got(url).json()
     fs.writeFileSync(path, schema)
 }
