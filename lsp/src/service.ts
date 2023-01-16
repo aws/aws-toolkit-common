@@ -14,7 +14,7 @@ export interface LanguageService {
         textDocument: TextDocument,
         textDocumentPosition: TextDocumentPositionParams
     ) => Promise<CompletionItem[] | CompletionList>
-    hover: (textDocument: TextDocument, params: HoverParams) => Promise<Hover | undefined>
+    hover: (textDocument: TextDocument, params: HoverParams) => Promise<Hover | null>
 }
 
 export interface BackendServices {
