@@ -88,11 +88,28 @@ documents.onDidClose(e => {})
 // The content of a text document has changed. This event is emitted
 // when the text document first opened or when its content has changed.
 documents.onDidChangeContent(change => {
+    const textDoc = documents.get(change.document.uri)
+    if (textDoc === undefined) {
+        return
+    }
+    const service = fileRegistry.getMatch(change.document.uri, textDoc)
+    if (service === undefined) {
+        return
+    }
     validateTextDocument(change.document)
 })
 
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
-    connection.sendDiagnostics({ uri: textDocument.uri, diagnostics: [] })
+    const textDoc = documents.get(textDocument.uri)
+    if (textDoc === undefined) {
+        return
+    }
+    const service = fileRegistry.getMatch(textDocument.uri, textDoc)
+    if (service === undefined) {
+        return
+    }
+    const diagnostics = await service.diagnostic(textDoc)
+    connection.sendDiagnostics({ uri: textDocument.uri, diagnostics })
 }
 
 connection.onDidChangeWatchedFiles(_change => {

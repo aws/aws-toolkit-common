@@ -4,15 +4,14 @@ import { BackendService, LanguageService } from '../../service'
 
 export function service(): LanguageService {
     return {
-        completion: (textDocument: TextDocument, textDocumentPositionParams: TextDocumentPositionParams) => {
-            return BackendService.getInstance().yaml.doComplete(
-                textDocument,
-                textDocumentPositionParams.position,
-                false
-            )
+        completion: (document: TextDocument, textDocumentPositionParams: TextDocumentPositionParams) => {
+            return BackendService.getInstance().yaml.doComplete(document, textDocumentPositionParams.position, false)
         },
-        hover: (textDocument: TextDocument, params: HoverParams) => {
-            return BackendService.getInstance().yaml.doHover(textDocument, params.position)
+        diagnostic: (document: TextDocument) => {
+            return BackendService.getInstance().yaml.doValidation(document, false)
+        },
+        hover: (document: TextDocument, params: HoverParams) => {
+            return BackendService.getInstance().yaml.doHover(document, params.position)
         }
     }
 }

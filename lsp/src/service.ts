@@ -2,7 +2,14 @@ import {
     getLanguageService as getJsonLanguageService,
     LanguageService as JsonLanguageService
 } from 'vscode-json-languageservice'
-import { CompletionItem, CompletionList, Hover, HoverParams, TextDocumentPositionParams } from 'vscode-languageserver'
+import {
+    CompletionItem,
+    CompletionList,
+    Diagnostic,
+    Hover,
+    HoverParams,
+    TextDocumentPositionParams
+} from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import {
     getLanguageService as getYamlLanguageService,
@@ -11,10 +18,11 @@ import {
 
 export interface LanguageService {
     completion: (
-        textDocument: TextDocument,
+        document: TextDocument,
         textDocumentPosition: TextDocumentPositionParams
     ) => Promise<CompletionItem[] | CompletionList>
-    hover: (textDocument: TextDocument, params: HoverParams) => Promise<Hover | null>
+    diagnostic: (document: TextDocument) => Promise<Diagnostic[]>
+    hover: (document: TextDocument, params: HoverParams) => Promise<Hover | null>
 }
 
 export interface BackendServices {
