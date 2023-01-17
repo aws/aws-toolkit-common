@@ -83,7 +83,7 @@ connection.onDidChangeConfiguration(change => {
 
 // Only keep settings for open documents
 // eslint-disable-next-line @typescript-eslint/no-empty-function
-documents.onDidClose(e => {})
+documents.onDidClose(e => { })
 
 // The content of a text document has changed. This event is emitted
 // when the text document first opened or when its content has changed.
@@ -143,6 +143,11 @@ connection.onHover(
         return service.hover(textDoc, params)
     }
 )
+
+connection.onShutdown(async () => { return undefined })
+
+connection.console.info("Connected to Documents LS!")
+console.log("Connected to Documents LS!!")
 
 // Make the text document manager listen on the connection
 // for open, change and close text document events
