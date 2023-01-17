@@ -1337,8 +1337,7 @@
             "description": "Create an IAM resource",
             "metadata": [
                 { "type": "result" },
-                { "type": "iamResourceType" },
-                { "type": "reason", "required": false }
+                { "type": "iamResourceType" }
             ]
         },
         {
@@ -1346,8 +1345,7 @@
             "description": "Delete an IAM resource",
             "metadata": [
                 { "type": "result" },
-                { "type": "iamResourceType" },
-                { "type": "reason", "required": false }
+                { "type": "iamResourceType" }
             ]
         },
         {
