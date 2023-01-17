@@ -1060,6 +1060,14 @@
             ]
         },
         {
+            "name": "ec2_clearPrivateKey",
+            "unit": "Count",
+            "description": "Remove the private key of an EC2 Key Pair from internal storage",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
             "name": "ec2_connectToInstance",
             "description": "Perform a connection to an EC2 Instance",
             "metadata": [
@@ -1082,8 +1090,23 @@
             ]
         },
         {
+            "name": "ec2_createKeyPair",
+            "description": "Create an EC2 Key Pair",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
             "name": "ec2_deleteElasticIp",
             "description": "Delete (release) an Elastic IP address",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
+            "name": "ec2_deleteKeyPair",
+            "unit": "Count",
+            "description": "Delete an EC2 Key Pair",
             "metadata": [
                 { "type": "result" }
             ]
@@ -1121,6 +1144,20 @@
         {
             "name": "ec2_editInstanceUserData",
             "description": "Adjust an EC2 Instance's user data",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
+            "name": "ec2_exportPrivateKey",
+            "description": "Save the private key of an EC2 Key Pair out to disk",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
+            "name": "ec2_importPrivateKey",
+            "description": "Store the private key of an EC2 Key Pair in internal storage",
             "metadata": [
                 { "type": "result" }
             ]
