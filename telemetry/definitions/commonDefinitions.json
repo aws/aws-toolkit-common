@@ -67,6 +67,11 @@
             "description": "A time based filter was used"
         },
         {
+            "name": "iamResourceType",
+            "allowedValues": ["group", "role", "user"],
+            "description": "The type of IAM resource referenced by a metric or operation"
+        },
+        {
             "name": "lambdaPackageType",
             "allowedValues": ["Zip", "Image"],
             "description": "The Lambda Package type of the function"
@@ -1281,6 +1286,32 @@
             "name": "iam_openUser",
             "description": "Open a window to view/edit IAM User Configuration",
             "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "iam_open",
+            "description": "Open a window to view/edit an IAM resource",
+            "metadata": [
+                { "type": "result" },
+                { "type": "iamResourceType" }
+            ]
+        },
+        {
+            "name": "iam_create",
+            "description": "Create an IAM resource",
+            "metadata": [
+                { "type": "result" },
+                { "type": "iamResourceType" },
+                { "type": "reason", "required": false }
+            ]
+        },
+        {
+            "name": "iam_delete",
+            "description": "Delete an IAM resource",
+            "metadata": [
+                { "type": "result" },
+                { "type": "iamResourceType" },
+                { "type": "reason", "required": false }
+            ]
         },
         {
             "name": "lambda_delete",
