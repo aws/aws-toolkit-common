@@ -1,3 +1,4 @@
+import { xhr } from 'request-light'
 import {
     getLanguageService as getJsonLanguageService,
     LanguageService as JsonLanguageService
@@ -37,8 +38,15 @@ export class BackendService implements BackendServices {
 
     public static getInstance(): BackendServices {
         if (!this.instance) {
-            // TODO fill out the params for yaml language service
-            const yaml = getYamlLanguageService(undefined, undefined, undefined, undefined, undefined, undefined)
+            const schemaResolver = async (url: string): Promise<string> => {
+                return (await xhr({ url })).responseText
+            }
+            const workspaceContext = {
+                resolveRelativePath(relativePath: string, resource: string) {
+                    return new URL(relativePath, resource).href
+                }
+            }
+            const yaml = getYamlLanguageService(schemaResolver, workspaceContext, null as any, null as any, null as any)
 
             // TODO check if we need to pass any args
             const json = getJsonLanguageService({})
