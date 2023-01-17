@@ -12,6 +12,7 @@ import {
     TextDocumentPositionParams
 } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
+import { createConnection } from 'vscode-languageserver/node'
 import {
     getLanguageService as getYamlLanguageService,
     LanguageService as YamlLanguageService
@@ -46,7 +47,13 @@ export class BackendService implements BackendServices {
                     return new URL(relativePath, resource).href
                 }
             }
-            const yaml = getYamlLanguageService(schemaResolver, workspaceContext, null as any, null as any, null as any)
+            const connection = createConnection()
+            const yaml = getYamlLanguageService(schemaResolver, workspaceContext, connection, null as any, null as any)
+            yaml.configure({
+                hover: true,
+                completion: true,
+                validate: true
+            })
 
             // TODO check if we need to pass any args
             const json = getJsonLanguageService({})
