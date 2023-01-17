@@ -113,7 +113,7 @@ connection.onCompletion(
 )
 
 connection.onHover(
-    async (params: HoverParams): Promise<Hover | undefined> => {
+    async (params: HoverParams): Promise<Hover | null | undefined> => {
         const textDoc = documents.get(params.textDocument.uri)
         if (textDoc === undefined) {
             return undefined
