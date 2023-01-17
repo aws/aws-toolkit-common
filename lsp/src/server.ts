@@ -50,7 +50,8 @@ connection.onInitialize((params: InitializeParams) => {
             // Tell the client that this server supports code completion.
             completionProvider: {
                 resolveProvider: false
-            }
+            },
+            hoverProvider: true
         }
     }
     if (hasWorkspaceFolderCapability) {
