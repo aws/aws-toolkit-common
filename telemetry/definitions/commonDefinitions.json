@@ -1081,6 +1081,13 @@
             ]
         },
         {
+            "name": "ec2_copyAmiToRegion",
+            "description": "Copy AMI image to another region",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
             "name": "ec2_createAmi",
             "description": "Create an image from an EC2 Instance",
             "metadata": [
@@ -1102,6 +1109,35 @@
             ]
         },
         {
+            "name": "ec2_createSecurityGroup",
+            "description": "Create an EC2 security group",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
+            "name": "ec2_createSnapshot",
+            "description": "Create an EC2 volume snapshot",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
+            "name": "ec2_createVolume",
+            "description": "Create an EC2 volume",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
+            "name": "ec2_deleteAmi",
+            "unit": "Count",
+            "description": "Delete (de-register) an AMI image",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
             "name": "ec2_deleteElasticIp",
             "description": "Delete (release) an Elastic IP address",
             "metadata": [
@@ -1112,6 +1148,37 @@
             "name": "ec2_deleteKeyPair",
             "unit": "Count",
             "description": "Delete an EC2 Key Pair",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
+            "name": "ec2_deleteSecurityGroup",
+            "unit": "Count",
+            "description": "Delete an EC2 security group",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
+            "name": "ec2_deleteSnapshot",
+            "unit": "Count",
+            "description": "Delete an EC2 Volume Snapshot",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
+            "name": "ec2_deleteVolume",
+            "unit": "Count",
+            "description": "Delete an EC2 Volume",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
+            "name": "ec2_editAmiPermission",
+            "description": "Edit AMI image permissions",
             "metadata": [
                 { "type": "result" }
             ]
@@ -1151,6 +1218,21 @@
             "description": "Adjust an EC2 Instance's user data",
             "metadata": [
                 { "type": "result" }
+            ]
+        },
+        {
+            "name": "ec2_editSecurityGroupPermission",
+            "description": "Alter an EC2 security group permission",
+            "metadata": [
+                { "type": "result" }
+            ]
+        },
+        {
+            "name": "ec2_editVolumeAttachment",
+            "description": "Attach (enabled = true) or detach a volume",
+            "metadata": [
+                { "type": "result" },
+                { "type": "enabled" }
             ]
         },
         {
