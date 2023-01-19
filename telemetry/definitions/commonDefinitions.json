@@ -1431,6 +1431,14 @@
             ]
         },
         {
+            "name": "iam_editPolicy",
+            "description": "Edits policy associated with an IAM resource",
+            "metadata": [
+                { "type": "result" },
+                { "type": "iamResourceType" }
+            ]
+        },
+        {
             "name": "lambda_delete",
             "description": "called when deleting lambdas remotely",
             "unit": "None",
