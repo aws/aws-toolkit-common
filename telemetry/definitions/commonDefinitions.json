@@ -1431,12 +1431,22 @@
             ]
         },
         {
-            "name": "iam_editPolicy",
-            "description": "Edits policy associated with an IAM resource",
+            "name": "iam_edit",
+            "description": "Edits policy/configuration associated with an IAM resource",
             "metadata": [
                 { "type": "result" },
                 { "type": "iamResourceType" }
             ]
+        },
+        {
+            "name": "iam_createUserAccessKey",
+            "description": "Create Access Key for an IAM user",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "iam_deleteUserAccessKey",
+            "description": "Delete Access Key for an IAM user",
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "lambda_delete",
