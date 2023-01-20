@@ -1378,6 +1378,28 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "ecs_editService",
+            "description": "Edit configuration of an ECS service",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ecs_deleteCluster",
+            "description": "Delete an ECS cluster",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ecs_stopTask",
+            "unit": "Count",
+            "description": "Stop ECS task(s)",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "ecs_deleteScheduledTask",
+            "unit": "Count",
+            "description": "Delete ECS Scheduled task(s)",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "feedback_result",
             "description": "Called while submitting in-IDE feedback",
             "metadata": [{ "type": "result" }]
