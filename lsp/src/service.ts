@@ -1,7 +1,6 @@
-import { xhr } from 'request-light'
 import {
-    getLanguageService as getJsonLanguageService,
-    LanguageService as JsonLanguageService
+    LanguageService as JsonLanguageService,
+    getLanguageService as getJsonLanguageService
 } from 'vscode-json-languageservice'
 import {
     CompletionItem,
@@ -15,9 +14,11 @@ import {
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import { createConnection } from 'vscode-languageserver/node'
 import {
+    LanguageService as YamlLanguageService,
     getLanguageService as getYamlLanguageService,
-    LanguageService as YamlLanguageService
 } from 'yaml-language-server'
+
+import { UriCacheManager } from './utils/uri/cache'
 
 export interface LanguageService {
     completion: (
@@ -72,13 +73,13 @@ class YAMLTelemetry implements Telemetry {
 export class BackendService implements BackendServices {
     public static instance: BackendServices
 
-    private constructor(public yaml: YamlLanguageService, public json: JsonLanguageService) {}
+    private constructor(public yaml: YamlLanguageService, public json: JsonLanguageService) { }
 
     public static getInstance(): BackendServices {
         if (!this.instance) {
-            const schemaResolver = async (url: string): Promise<string> => {
-                return (await xhr({ url })).responseText
-            }
+            const uriResolver = new UriCacheManager()
+            const schemaResolver = uriResolver.getContentFromString.bind(uriResolver)
+
             const workspaceContext = {
                 resolveRelativePath(relativePath: string, resource: string) {
                     return new URL(relativePath, resource).href

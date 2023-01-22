@@ -30,16 +30,23 @@
         "request-light": "^0.6.0",
         "vscode-languageserver": "^7.0.0",
         "vscode-languageserver-textdocument": "^1.0.4",
+        "vscode-uri": "^3.0.7",
         "yaml-language-server": "^1.11.0"
     },
     "devDependencies": {
+        "@types/chai": "^4.3.4",
         "@types/mocha": "^9.1.0",
         "@types/node": "^16.11.7",
+        "@types/sinon": "^10.0.13",
         "@typescript-eslint/eslint-plugin": "^5.42.0",
         "@typescript-eslint/parser": "^5.42.0",
+        "chai": "^4.3.7",
+        "create-temp-directory": "^2.2.0",
         "eslint": "^8.26.0",
         "eslint-plugin-unused-imports": "^2.0.0",
-        "mocha": "^9.2.1",
+        "mocha": "^10.2.0",
+        "sinon": "^15.0.1",
+        "ts-sinon": "^2.0.2",
         "typescript": "^4.8.4"
     }
 }

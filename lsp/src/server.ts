@@ -16,6 +16,7 @@ import {
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import { activate as BuildspecActivation } from './filetypes/buildspec/activation'
 import { Registry } from './registry'
+import { LanguageServerCacheDir } from './utils/extensionConfigDir'
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -26,6 +27,10 @@ const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument)
 
 const fileRegistry = Registry.getInstance()
 fileRegistry.addRegistryItem(BuildspecActivation())
+
+// Setup the local directory that will hold extension
+// related resources.
+LanguageServerCacheDir.setup()
 
 let hasConfigurationCapability = false
 let hasWorkspaceFolderCapability = false
