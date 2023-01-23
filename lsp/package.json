@@ -24,7 +24,8 @@
         "compile": "tsc -b",
         "watch": "tsc -b -w",
         "lint": "eslint src --ext .ts,.tsx",
-        "test": "sh ./scripts/e2e.sh"
+        "test": "mocha out/test/unit/**/*.js",
+        "testInt": "mocha out/test/integration/**/*.js"
     },
     "dependencies": {
         "request-light": "^0.6.0",
