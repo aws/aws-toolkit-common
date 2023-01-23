@@ -21,7 +21,8 @@ export function activate(): RegistryItem {
                 ],
                 hover: true,
                 completion: true,
-                validate: true
+                validate: true,
+                customTags: []
             })
             return service()
         }

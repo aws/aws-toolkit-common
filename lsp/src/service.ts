@@ -52,7 +52,8 @@ export class BackendService implements BackendServices {
             yaml.configure({
                 hover: true,
                 completion: true,
-                validate: true
+                validate: true,
+                customTags: []
             })
 
             // TODO check if we need to pass any args
