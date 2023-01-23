@@ -151,12 +151,11 @@ connection.onHover(
 
 connection.onShutdown(async () => { return undefined })
 
-connection.console.info("Connected to Documents LS!")
-console.log("Connected to Documents LS!!")
-
 // Make the text document manager listen on the connection
 // for open, change and close text document events
 documents.listen(connection)
 
 // Listen on the connection
 connection.listen()
+
+connection.console.info("AWS Documents LS started!")
