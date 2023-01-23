@@ -15,9 +15,9 @@
         "vscode": "^1.74.0"
     },
     "bin": {
-        "awsdocuments-language-server": "./bin/awsdocuments-language-server.js"
+        "awsdocuments-language-server": "./out/src/server.js"
     },
-    "main": "./out/server.js",
+    "main": "./out/src/server.js",
     "activationEvents": [],
     "scripts": {
         "vscode:prepublish": "npm run compile",
