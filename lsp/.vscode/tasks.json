@@ -29,6 +29,12 @@
             "problemMatcher": [
                 "$tsc-watch"
             ]
+        },
+        {
+            "label": "pkgCompress",
+            "type": "shell",
+            "command": "pkg --compress GZip --no-bytecode --out-path dist .",
+            "problemMatcher": []
         }
     ]
 }
