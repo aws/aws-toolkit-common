@@ -34,6 +34,51 @@ to ensure the standalone language server is compressed even more you can do:
 pkg --compress GZip .
 ```
 
+## Running + Debugging
+
+### With Minimal VSCode Client
+
+### With VSCode Toolkit Extension
+
+> **NOTE**: The cloned git repos must be adjacent to each other in the filesystem since commands are currently using relative paths.
+
+1. Clone the [`aws-toolkit-vscode`](https://github.com/aws/aws-toolkit-vscode) repo:
+    ```
+    git clone git@github.com:aws/aws-toolkit-vscode.git
+
+    cd aws-toolkit-vscode && \
+
+    git fetch origin jpinkney-aws/lsp && git checkout jpinkney-aws/lsp && \
+
+    cd ..
+    ```
+
+2. Clone the [`aws-toolkit-common`](https://github.com/aws/aws-toolkit-common) repo:
+    ```console
+    git clone git@github.com:aws/aws-toolkit-common.git && \
+
+    cd aws-toolkit-common && \
+
+    git fetch origin test-typescript-lsp && git checkout test-typescript-lsp && \
+
+    cd ..
+    ```
+
+3. Open each project in their own VSCode window.
+
+4. In `aws-toolkit-common` run:
+    ```console
+    npm run watch
+    ```
+
+5. In `aws-toolkit-vscode` start the extesion in `Run & Debug` using the `"Extension"` launch config.
+A new window will open.
+
+6. In the new window enable the language server in the VSCode settings under `aws.experiments` and check `lsp`. This will start the language server using the output you generated in step `4`.
+
+7. In the `aws-toolkit-common` VSCode window connect the debugger in `Run & Debug` using the `"Attach to AWS Documents Language Server"` launch config. Set breakpoints where needed.
+
+
 ## Testing
 ---
 ### Running Tests

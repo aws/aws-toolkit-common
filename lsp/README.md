@@ -32,3 +32,6 @@ This Language Server currently supports completion, hover, diagnostics for the f
 
 ## How To Contribute
 [How to contribute to the language server.](CONTRIBUTING.md#contributing)
+
+## How to Run + Debug
+[How to run + debug the language server.](CONTRIBUTING.md#running--debugging)
