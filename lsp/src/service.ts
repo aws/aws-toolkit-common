@@ -6,6 +6,7 @@ import {
 import {
     CompletionItem,
     CompletionList,
+    Connection,
     Diagnostic,
     Hover,
     HoverParams,
@@ -32,6 +33,42 @@ export interface BackendServices {
     json: JsonLanguageService
 }
 
+// This interface is from the yaml-language-server. We should get them to export it
+interface TelemetryEvent {
+    name: string
+    type?: string
+    properties?: unknown
+    measures?: unknown
+    traits?: unknown
+    context?: unknown
+}
+
+// This interface is from the yaml-language-server. We should get them to export it
+interface Telemetry {
+    send(event: TelemetryEvent): void
+    sendError(name: string, properties: unknown): void
+    sendTrack(name: string, properties: unknown): void
+}
+
+class YAMLTelemetry implements Telemetry {
+    constructor(private connection: Connection) {}
+
+    send(event: TelemetryEvent): void {
+        // stub implementation
+    }
+
+    // The YAML language server sends error events in the form of:
+    // yaml.${service}.error, { error: "the error message" }
+    // e.g. yaml.documentSymbols.error, { error: "Could not get documents cache" }
+    sendError(name: string, properties: unknown): void {
+        this.connection.window.showErrorMessage(`${name}: ${properties}`)
+    }
+
+    sendTrack(name: string, properties: unknown): void {
+        // stub implementation
+    }
+}
+
 export class BackendService implements BackendServices {
     public static instance: BackendServices
 
@@ -48,7 +85,14 @@ export class BackendService implements BackendServices {
                 }
             }
             const connection = createConnection()
-            const yaml = getYamlLanguageService(schemaResolver, workspaceContext, connection, null as any, null as any)
+            const yamlTelemetry = new YAMLTelemetry(connection)
+            const yaml = getYamlLanguageService(
+                schemaResolver,
+                workspaceContext,
+                connection,
+                yamlTelemetry,
+                null as any
+            )
             yaml.configure({
                 hover: true,
                 completion: true,
