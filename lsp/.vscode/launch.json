@@ -3,10 +3,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Attach",
-            "port": 6009,
+            "name": "Attach to AWS Documents Language Server",
+            "type": "node",
             "request": "attach",
-            "type": "node"
+            "port": 6012,
+            "outFiles": ["./lsp/out/**/*.js"],
+            "restart": {
+                "maxAttempts": 10,
+                "delay": 1000
+            }
         },
         {
             "type": "node",
