@@ -2,11 +2,22 @@
 
 How to contribute.
 
-## Pre-Requisites
----
-Run: `npm install`
+## Pre-Requisites + Initial Setup
 
----
+* `node` version 18+
+* `npm`
+* VSCode (recommended)
+
+Run:
+```
+git clone git@github.com:aws/aws-toolkit-common.git && \
+
+cd aws-toolkit-common && \
+
+git fetch origin test-typescript-lsp && git checkout test-typescript-lsp && \
+
+npm install
+```
 
 ## Building The Language Server
 
@@ -35,6 +46,8 @@ pkg --compress GZip .
 ```
 
 ## Running + Debugging
+
+> **NOTE**: Ensure your VSCode workspace is `aws-toolkit-common/lsp` or else certain functionality may not work.
 
 ### With Minimal VSCode Client
 
@@ -90,7 +103,6 @@ A new window will open.
 
 
 ## Testing
----
 ### Running Tests
 **In VSCode**
 
