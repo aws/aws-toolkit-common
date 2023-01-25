@@ -38,7 +38,17 @@ pkg --compress GZip .
 
 ### With Minimal VSCode Client
 
+This repo contains a minimal vscode client that can be used to easily run and
+debug changes to this language server.
+
+1. In the `Run & Debug` menu, run `"Launch as VSCode Extension + Debugging"`
+2. Set breakpoints in `src` where needed.
+
 ### With VSCode Toolkit Extension
+
+The VSCode Toolkit Extension can start the AWS Documents Language Server itself.
+This will explain how to setup the extension to run with the language server
+and be able to debug it all.
 
 > **NOTE**: The cloned git repos must be adjacent to each other in the filesystem since commands are currently using relative paths.
 

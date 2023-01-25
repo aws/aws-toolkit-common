@@ -6,20 +6,21 @@
             "name": "Attach to AWS Documents Language Server",
             "type": "node",
             "request": "attach",
-            "port": 6012,
-            "outFiles": ["./lsp/out/**/*.js"],
+            "port": 6012, // Hard defined in the vscode client activation.ts
+            "outFiles": ["${workspaceFolder}/out/src/server/**/*.js"],
             "restart": {
                 "maxAttempts": 10,
                 "delay": 1000
             }
         },
         {
-            "name": "VSCode Extension",
+            "name": "Launch as VSCode Extension",
             "type": "extensionHost",
             "request": "launch",
             "runtimeExecutable": "${execPath}",
-            "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
+            "args": ["--extensionDevelopmentPath=${workspaceFolder}/src/client/vscode"],
             "outFiles": ["${workspaceFolder}/out/src/client/vscode/**/*.js"],
+            "preLaunchTask": "npm: compile"
         },
         {
             "type": "node",
@@ -55,5 +56,11 @@
             "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
             "args": ["${workspaceRoot}/out/test/integration/**/${fileBasenameNoExtension}.js"],
         },
+    ],
+    "compounds": [
+        {
+            "name": "Launch as VSCode Extension + Debugging",
+            "configurations": ["Launch as VSCode Extension", "Attach to AWS Documents Language Server"]
+        }
     ]
 }
