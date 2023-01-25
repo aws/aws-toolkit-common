@@ -14,6 +14,14 @@
             }
         },
         {
+            "name": "VSCode Extension",
+            "type": "extensionHost",
+            "request": "launch",
+            "runtimeExecutable": "${execPath}",
+            "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
+            "outFiles": ["${workspaceFolder}/out/src/client/vscode/**/*.js"],
+        },
+        {
             "type": "node",
             "request": "launch",
             "preLaunchTask": "watch",

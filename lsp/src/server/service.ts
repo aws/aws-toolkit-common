@@ -11,7 +11,7 @@ import {
     TextDocumentPositionParams
 } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { createConnection } from 'vscode-languageserver/node'
+import { createConnection } from 'vscode-languageserver/lib/node/main'
 import {
     getLanguageService as getYamlLanguageService, LanguageService as YamlLanguageService
 } from 'yaml-language-server'

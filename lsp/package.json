@@ -17,8 +17,8 @@
     "bin": {
         "awsdocuments-language-server": "./out/src/server.js"
     },
-    "main": "./out/src/server.js",
-    "activationEvents": [],
+    "main": "./out/src/client/vscode/extension.js",
+    "activationEvents": ["onLanguage:yaml"],
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -b",
@@ -48,6 +48,8 @@
         "mocha": "^10.2.0",
         "sinon": "^15.0.1",
         "ts-sinon": "^2.0.2",
-        "typescript": "^4.8.4"
+        "typescript": "^4.8.4",
+        "vscode": "^1.1.37",
+        "vscode-languageclient": "^7.0.0"
     }
 }
