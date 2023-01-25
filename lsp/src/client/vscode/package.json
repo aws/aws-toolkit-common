@@ -18,33 +18,29 @@
     "activationEvents": [
         "onLanguage:yaml"
     ],
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -b",
-        "watch": "tsc -b -w",
-        "lint": "eslint src --ext .ts,.tsx",
-        "test": "mocha out/test/unit/**/*.js",
-        "testInt": "mocha out/test/integration/**/*.js"
-    },
-    "dependencies": {
-        "request-light": "^0.6.0",
-        "vscode-languageserver": "^7.0.0",
-        "vscode-languageserver-textdocument": "^1.0.4",
-        "vscode-uri": "^3.0.7",
-        "yaml-language-server": "^1.11.0"
-    },
-    "devDependencies": {
-        "@types/node": "^16.11.7",
-        "@types/vscode": "^1.74.0",
-        "@typescript-eslint/eslint-plugin": "^5.42.0",
-        "@typescript-eslint/parser": "^5.42.0",
-        "@vscode/test-electron": "^2.2.2",
-        "eslint": "^8.26.0",
-        "eslint-plugin-unused-imports": "^2.0.0",
-        "mocha": "^10.2.0",
-        "sinon": "^15.0.1",
-        "ts-sinon": "^2.0.2",
-        "typescript": "^4.8.4",
-        "vscode-languageclient": "^7.0.0"
-    }
+    "contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "AWS Documents Language Server",
+			"properties": {
+				"awsDocuments.maxNumberOfProblems": {
+					"scope": "resource",
+					"type": "number",
+					"default": 100,
+					"description": "Controls the maximum number of problems produced by the server."
+				},
+				"awsDocuments.trace.server": {
+					"scope": "window",
+					"type": "string",
+					"enum": [
+						"off",
+						"messages",
+						"verbose"
+					],
+					"default": "off",
+					"description": "Traces the communication between VS Code and the language server."
+				}
+			}
+		}
+	}
 }

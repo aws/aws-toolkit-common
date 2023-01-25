@@ -217,3 +217,11 @@ myStubbedFunc.resetBehaviour()
 myStubbedFunc.returns()
 ```
 ---
+
+## Troubleshooting
+
+### Viewing Logs in VSCode
+
+* Change the setting `awsDocuments.trace.server` to `"verbose"`. This shows all communication between the client and server.
+* In the top left menu bar: `View > Output`
+* Select `"AWS Documents Language Server"` from the dropdown menu in the topright.

@@ -32,3 +32,7 @@ This Language Server currently supports completion, hover, diagnostics for the f
 
 ## Building The Language Server
 [How to build the language server.](CONTRIBUTING.md#building-the-language-server)
+
+
+## Troubleshooting
+[Troubleshooting information.](CONTRIBUTING.md#troubleshooting)

@@ -49,7 +49,7 @@ export async function activateDocumentsLanguageServer(extensionContext: Extensio
 
     // Create the language client and start the client.
     const client = new LanguageClient(
-        'documents',
+        'awsDocuments',
         'AWS Documents Language Server',
         serverOptions,
         clientOptions
