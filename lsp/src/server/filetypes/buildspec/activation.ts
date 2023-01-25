@@ -1,7 +1,7 @@
 import { URI } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { RegistryItem } from '../../registry'
 import { BackendService } from '../../service'
+import { RegistryItem } from '../../registry'
 import { service } from './service'
 
 const SCHEMA_URL = 'https://d3rrggjwfhwld2.cloudfront.net/CodeBuild/buildspec/buildspec-standalone.schema.json'

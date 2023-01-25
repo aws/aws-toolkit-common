@@ -14,8 +14,8 @@ import {
 } from 'vscode-languageserver/node'
 
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { activate as BuildspecActivation } from './filetypes/buildspec/activation'
 import { Registry } from './registry'
+import { activate as BuildspecActivation } from './filetypes/buildspec/activation'
 import { LanguageServerCacheDir } from './utils/extensionConfigDir'
 
 // Create a connection for the server, using Node's IPC as a transport.

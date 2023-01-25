@@ -1,6 +1,5 @@
 import {
-    LanguageService as JsonLanguageService,
-    getLanguageService as getJsonLanguageService
+    getLanguageService as getJsonLanguageService, LanguageService as JsonLanguageService
 } from 'vscode-json-languageservice'
 import {
     CompletionItem,
@@ -14,8 +13,7 @@ import {
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import { createConnection } from 'vscode-languageserver/node'
 import {
-    LanguageService as YamlLanguageService,
-    getLanguageService as getYamlLanguageService,
+    getLanguageService as getYamlLanguageService, LanguageService as YamlLanguageService
 } from 'yaml-language-server'
 
 import { UriCacheManager } from './utils/uri/cache'
@@ -52,7 +50,7 @@ interface Telemetry {
 }
 
 class YAMLTelemetry implements Telemetry {
-    constructor(private connection: Connection) {}
+    constructor(private connection: Connection) { }
 
     send(event: TelemetryEvent): void {
         // stub implementation
