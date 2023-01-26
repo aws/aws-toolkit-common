@@ -1,7 +1,7 @@
 import { URI } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { BackendService } from '../../service'
 import { RegistryItem } from '../../registry'
+import { BackendService } from '../../service'
 import { service } from './service'
 
 const SCHEMA_URL = 'https://d3rrggjwfhwld2.cloudfront.net/CodeBuild/buildspec/buildspec-standalone.schema.json'
@@ -12,11 +12,11 @@ export function activate(): RegistryItem {
         matches(uri: URI, contents: TextDocument) {
             return BUILDSPEC_FILE_NAMES.some(accepted => uri.endsWith(accepted))
         },
-        onMatch() {
+        onMatch(uri: URI) {
             BackendService.getInstance().yaml.configure({
                 schemas: [
                     {
-                        fileMatch: BUILDSPEC_FILE_NAMES,
+                        fileMatch: [uri],
                         uri: SCHEMA_URL
                     }
                 ],

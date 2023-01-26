@@ -4,7 +4,7 @@ import { LanguageService } from './service'
 
 export interface RegistryItem {
     matches(uri: URI, contents: TextDocument): boolean
-    onMatch(): LanguageService
+    onMatch(uri: URI): LanguageService
 }
 
 export class Registry {
@@ -30,7 +30,7 @@ export class Registry {
     public getMatch(uri: URI, contents: TextDocument): LanguageService | undefined {
         for (const item of this.items) {
             if (item.matches(uri, contents)) {
-                return item.onMatch()
+                return item.onMatch(uri)
             }
         }
         return undefined
