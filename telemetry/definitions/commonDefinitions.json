@@ -839,6 +839,31 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "beanstalk_deleteApplication",
+            "description": "Called when user deletes a Beanstalk application",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "beanstalk_deleteEnvironment",
+            "description": "Called when user deletes a Beanstalk environment",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "beanstalk_restartApplication",
+            "description": "Restart application server for a Beanstalk environment",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "beanstalk_rebuildEnvironment",
+            "description": "Rebuild a Beanstalk environment",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "beanstalk_editEnvironment",
+            "description": "Edit configuration of a Beanstalk environment",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "cloudfront_openDistribution",
             "description": "Open a window to view the status of the CloudFront Distribution",
             "metadata": [{ "type": "result" }]
