@@ -879,6 +879,26 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "cloudfront_deleteDistribution",
+            "description": "Called when user deletes a CloudFront Distribution",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "cloudfront_deleteStreamingDistribution",
+            "description": "Called when user deletes a CloudFront Streaming Distribution",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "cloudfront_createDistribution",
+            "description": "Create a CloudFront Distribution",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "cloudfront_createStreamingDistribution",
+            "description": "Create a CloudFront Streaming Distribution",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "cloudwatchlogs_copyArn",
             "description": "Copy the ARN of a CloudWatch Logs entity",
             "metadata": [
@@ -1831,6 +1851,11 @@
             "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
         },
         {
+            "name": "sqs_deleteQueue",
+            "description": "Called when user deletes a SQS queue",
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+        },
+        {
             "name": "sns_createTopic",
             "description": "Create an SNS Topic",
             "metadata": [{ "type": "result" }]
@@ -1843,6 +1868,11 @@
         {
             "name": "sns_openSubscriptions",
             "description": "Open a window to view SNS Subscriptions",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "sns_deleteTopic",
+            "description": "Called when user deletes a SNS Topic",
             "metadata": [{ "type": "result" }]
         },
         {
