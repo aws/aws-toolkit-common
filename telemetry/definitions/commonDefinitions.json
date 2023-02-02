@@ -792,6 +792,7 @@
             "name": "aws_loginWithBrowser",
             "description": "Called when a connection requires login using the browser",
             "metadata": [
+                { "type": "result" }, 
                 { "type": "credentialType", "required": false }, 
                 { "type": "credentialSourceId", "required": false }
             ]
@@ -1861,7 +1862,7 @@
         {
             "name": "sqs_deleteQueue",
             "description": "Called when user deletes a SQS queue",
-            "metadata": [{ "type": "result" }, { "type": "sqsQueueType" }]
+            "metadata": [{ "type": "result" }, { "type": "sqsQueueType", "required": false }]
         },
         {
             "name": "sns_createTopic",
