@@ -1628,6 +1628,38 @@
             "metadata": [{ "type": "result" }]
         },
         {
+            "name": "rds_launchInstance",
+            "description": "Launch a RDS DB instance",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "rds_createSecurityGroup",
+            "description": "Create a RDS security group",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "rds_createSubnetGroup",
+            "description": "Create a RDS subnet group",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "rds_deleteInstance",
+            "description": "Delete a RDS DB instance",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "rds_deleteSecurityGroup",
+            "unit": "Count",
+            "description": "Delete RDS security group(s)",
+            "metadata": [{ "type": "result" }]
+        },
+        {
+            "name": "rds_deleteSubnetGroup",
+            "unit": "Count",
+            "description": "Delete RDS subnet group(s)",
+            "metadata": [{ "type": "result" }]
+        },
+        {
             "name": "rds_createConnectionConfiguration",
             "description": "Called when creating a new database connection configuration to for a RDS database. In Datagrip we do not get this infromation if it is created directly, so this is only counts actions.",
             "metadata": [
