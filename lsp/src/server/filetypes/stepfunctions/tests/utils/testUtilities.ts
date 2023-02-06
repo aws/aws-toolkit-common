@@ -3,8 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { getLanguageService, JSONDocument } from 'vscode-json-languageservice'
+import { JSONDocument } from 'vscode-json-languageservice'
 import { TextDocument } from 'vscode-languageserver-textdocument'
+import { forceServiceConnection } from '../../../../../../test/utils/service'
+import { BackendService } from '../../../../service'
 import { FILE_EXTENSIONS, LANGUAGE_IDS } from '../../constants/constants'
 
 export function toDocument(text: string, isYaml?: boolean): { textDoc: TextDocument; jsonDoc: JSONDocument } {
@@ -15,9 +17,7 @@ export function toDocument(text: string, isYaml?: boolean): { textDoc: TextDocum
         text
     )
 
-    const ls = getLanguageService({})
-    // tslint:disable-next-line: no-inferred-empty-object-type
-    const jsonDoc = ls.parseJSONDocument(textDoc) as JSONDocument
-
+    forceServiceConnection()
+    const jsonDoc = BackendService.getInstance().json.parseJSONDocument(textDoc) as JSONDocument
     return { textDoc, jsonDoc }
 }

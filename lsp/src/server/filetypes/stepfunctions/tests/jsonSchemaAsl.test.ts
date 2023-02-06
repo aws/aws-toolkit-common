@@ -4,15 +4,14 @@
  */
 
 import * as assert from 'assert'
-import { getLanguageService } from 'vscode-json-languageservice'
+import { service as JsonService } from '../json'
 import { toDocument } from './utils/testUtilities'
 
 suite('JSON Schema Validation for ASL', () => {
     test('JSON Schema Validation works', async () => {
-        const { textDoc, jsonDoc } = toDocument('{}')
+        const { textDoc } = toDocument('{}')
 
-        const ls = getLanguageService({})
-        const res = await ls.doValidation(textDoc, jsonDoc)
+        const res = await JsonService(textDoc.uri).diagnostic(textDoc)
         assert.strictEqual(res.length, 2)
         assert.ok(res.some(item => item.message === 'Missing property "States".'))
         assert.ok(res.some(item => item.message === 'Missing property "StartAt".'))

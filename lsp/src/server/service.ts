@@ -1,5 +1,6 @@
 import {
-    getLanguageService as getJsonLanguageService, LanguageService as JsonLanguageService
+    getLanguageService as getJsonLanguageService,
+    LanguageService as JsonLanguageService
 } from 'vscode-json-languageservice'
 import {
     CompletionItem,
@@ -13,7 +14,8 @@ import {
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import { createConnection } from 'vscode-languageserver/lib/node/main'
 import {
-    getLanguageService as getYamlLanguageService, LanguageService as YamlLanguageService
+    getLanguageService as getYamlLanguageService,
+    LanguageService as YamlLanguageService
 } from 'yaml-language-server'
 
 import { UriCacheManager } from './utils/uri/cache'
@@ -50,7 +52,7 @@ interface Telemetry {
 }
 
 class YAMLTelemetry implements Telemetry {
-    constructor(private connection: Connection) { }
+    constructor(private connection: Connection) {}
 
     send(event: TelemetryEvent): void {
         // stub implementation
@@ -71,7 +73,7 @@ class YAMLTelemetry implements Telemetry {
 export class BackendService implements BackendServices {
     public static instance: BackendServices
 
-    private constructor(public yaml: YamlLanguageService, public json: JsonLanguageService) { }
+    private constructor(public yaml: YamlLanguageService, public json: JsonLanguageService) {}
 
     public static getInstance(): BackendServices {
         if (!this.instance) {
@@ -99,8 +101,10 @@ export class BackendService implements BackendServices {
                 customTags: []
             })
 
-            // TODO check if we need to pass any args
-            const json = getJsonLanguageService({})
+            const json = getJsonLanguageService({
+                schemaRequestService: schemaResolver,
+                workspaceContext
+            })
             BackendService.instance = new BackendService(yaml, json)
         }
 

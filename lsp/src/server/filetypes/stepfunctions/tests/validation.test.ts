@@ -4,10 +4,9 @@
  */
 
 import * as assert from 'assert'
-import { getLanguageService } from 'vscode-json-languageservice'
 import { Diagnostic, DiagnosticSeverity, Position, Range } from 'vscode-languageserver'
 import { MESSAGES } from '../constants/diagnosticStrings'
-
+import { service as JsonService } from '../json'
 import {
     documentChoiceDefaultBeforeChoice,
     documentChoiceInvalidDefault,
@@ -66,10 +65,8 @@ export interface TestValidationOptions {
 }
 
 async function getValidations(json: string) {
-    const { textDoc, jsonDoc } = toDocument(json)
-    const ls = getLanguageService({})
-
-    return await ls.doValidation(textDoc, jsonDoc)
+    const { textDoc } = toDocument(json)
+    return JsonService(textDoc.uri).diagnostic(textDoc)
 }
 
 async function testValidations(options: TestValidationOptions) {

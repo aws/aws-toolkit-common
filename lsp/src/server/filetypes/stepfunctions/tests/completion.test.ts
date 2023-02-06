@@ -6,9 +6,11 @@
 // tslint:disable:no-floating-promises
 
 import * as assert from 'assert'
-import { CompletionItemKind, getLanguageService } from 'vscode-json-languageservice'
-import { Position, Range, TextEdit } from 'vscode-languageserver'
+import { CompletionItemKind } from 'vscode-json-languageservice'
+import { CompletionList, Position, Range, TextDocumentPositionParams, TextEdit } from 'vscode-languageserver'
+import { forceServiceConnection } from '../../../../../test/utils/service'
 import { errorHandlingSnippets, stateSnippets } from '../completion/completeSnippets'
+import { service as JsonService } from '../json'
 import { toDocument } from './utils/testUtilities'
 
 const document1 = `
@@ -231,11 +233,14 @@ interface TestScenario {
 }
 
 async function getCompletions(json: string, position: [number, number]) {
-    const { textDoc, jsonDoc } = toDocument(json)
+    const { textDoc } = toDocument(json)
     const pos = Position.create(...position)
-    const ls = getLanguageService({})
-
-    return await ls.doComplete(textDoc, pos, jsonDoc)
+    const params = {
+        textDocument: textDoc,
+        position: pos
+    } as TextDocumentPositionParams
+    forceServiceConnection()
+    return JsonService(textDoc.uri).completion(textDoc, params) as Promise<CompletionList>
 }
 
 async function testCompletions(options: TestCompletionOptions) {
@@ -275,14 +280,16 @@ function getArrayIntersection(arrayOne: string[] | undefined, arrayTwo: string[]
 }
 
 async function getSuggestedSnippets(options: TestScenario) {
-    const { json, position, start, end } = options
-    const { textDoc, jsonDoc } = toDocument(json)
+    const { json, position } = options
+    const { textDoc } = toDocument(json)
 
     const pos = Position.create(...position)
-
-    const ls = getLanguageService({})
-
-    const res = await ls.doComplete(textDoc, pos, jsonDoc)
+    const params = {
+        textDocument: textDoc,
+        position: pos
+    } as TextDocumentPositionParams
+    forceServiceConnection()
+    const res = (await JsonService(textDoc.uri).completion(textDoc, params)) as CompletionList
 
     const suggestedSnippetLabels = res?.items
         .filter(item => item.kind === CompletionItemKind.Snippet)
