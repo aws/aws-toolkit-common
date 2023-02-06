@@ -1,4 +1,3 @@
-
 import { createHash } from 'crypto'
 import * as fs from 'fs'
 import * as path from 'path'
@@ -24,27 +23,27 @@ interface UriCacheMetadataEntry {
  * Provides functionality to retrieve the content
  * of a URI. Content is cached locally for efficient
  * repeated reads.
- * 
+ *
  * Cache is considered stale after {@link thirtyMinutesInMillis}
  * and is refreshed.
- * 
- * The structure of the cache directory looks as follows: 
- * 
+ *
+ * The structure of the cache directory looks as follows:
+ *
  * {@link cachedUrisDirPath}/
  * └── cachedUris/
  *     ├── metadata
  *     ├── d8e3b6aadda6a6e9e <- Hashed uri for unique name, holds the actual data
  *     ├── 6a6e9ec3c66bf70fb
  *     └── bd37ce0972ac0351f
- * 
+ *
  * `metadata` has information about all cached uris.
- * 
+ *
  * Every other file with a hashed name represents the
  * latest content of a specific uri.
- * 
+ *
  * `metadata` contains a json entry for each uri that
  * will have information about that uri, including the
- * hashed file name that contains the cached content.  
+ * hashed file name that contains the cached content.
  */
 export class UriCacheManager {
     private static readonly thirtyMinutesInMillis = 60 * 30 * 1000
@@ -55,11 +54,7 @@ export class UriCacheManager {
     private httpContentDownloader: HttpUriContentDownloader
     private time: Time
 
-    constructor(
-        cacheDirRoot?: string,
-        httpContentDownloader?: HttpUriContentDownloader,
-        time?: Time
-    ) {
+    constructor(cacheDirRoot?: string, httpContentDownloader?: HttpUriContentDownloader, time?: Time) {
         // Setup uri cache directory
         this.cachedUrisDirPath = cacheDirRoot ?? path.join(LanguageServerCacheDir.path, 'cachedUris')
         fs.mkdirSync(this.cachedUrisDirPath, { recursive: true })
@@ -67,7 +62,7 @@ export class UriCacheManager {
         // Setup cache metadata file
         this.cacheMetadataPath = path.join(this.cachedUrisDirPath, 'metadata')
         if (!fs.existsSync(this.cacheMetadataPath)) {
-            fs.writeFileSync(this.cacheMetadataPath, "{}")
+            fs.writeFileSync(this.cacheMetadataPath, '{}')
         }
         const tt = new Date()
 
@@ -81,8 +76,14 @@ export class UriCacheManager {
     }
 
     async getContent(uri: URI): Promise<string> {
+        if (uri.scheme.startsWith('file')) {
+            return fs.readFileSync(uri.fsPath, {
+                encoding: 'utf-8'
+            })
+        }
+
         if (!uri.scheme.startsWith('http')) {
-            throw Error(`Non-http schemed URIs not supported: ${uri.toString()}`)
+            throw Error(`Only http and file schemed URIs are supported: ${uri.toString()}`)
         }
 
         const uriAsString = uri.toString()
@@ -112,8 +113,7 @@ export class UriCacheManager {
         let response: HttpResponse
         try {
             response = await this.httpContentDownloader.sendRequest(uri, headers)
-        }
-        catch (err) {
+        } catch (err) {
             if ((err as HttpResponse).status == 304 && cachedContent !== undefined) {
                 // The current http request library throws an error on,
                 // I'm assuming non 200 status codes, so we need to catch this
@@ -165,7 +165,7 @@ export class UriCacheManager {
         }
 
         const diff = this.time.inMilliseconds() - lastUpdated
-        return (diff) > UriCacheManager.thirtyMinutesInMillis
+        return diff > UriCacheManager.thirtyMinutesInMillis
     }
 
     /** Updates the 'metadata' file with the given input */
@@ -184,7 +184,7 @@ export class UriCacheManager {
             return
         }
 
-        return fs.readFileSync(absolutePath, { encoding: "utf8" })
+        return fs.readFileSync(absolutePath, { encoding: 'utf8' })
     }
 
     private writeContentFileText(contentFileName: string, text: string): void {
