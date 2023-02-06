@@ -1,0 +1,73 @@
+{
+    "definitions": {
+        "mapState": {
+            "description": "The Map state can be used to run a set of steps for each element of an input array. While the Parallel state executes multiple branches of steps using the same input, a Map state will execute the same steps for multiple entries of an array in the state input.",
+            "allOf": [
+                {
+                    "$ref": "common.json#/definitions/basics"
+                },
+                {
+                    "$ref": "common.json#/definitions/inputOutputResult"
+                },
+                {
+                    "$ref": "common.json#/definitions/endOrTransition"
+                },
+                {
+                    "properties": {
+                        "Type": {
+                            "enum": [
+                                "Map"
+                            ]
+                        },
+                        "Parameters": {
+                            "$ref": "common.json#/definitions/parameters",
+                            "description": "Used to pass information to the API actions of connected resources. The Parameters can use a mix of static JSON, JsonPath and intrinsic functions."
+                        },
+                        "ResultSelector": {
+                            "$ref": "common.json#/definitions/resultSelector",
+                            "description": "Used to transform the result. The ResultSelector can use a mix of static JSON, JsonPath and intrinsic functions."
+                        },
+                        "ItemsPath": {
+                            "$ref": "common.json#/definitions/referencePath",
+                            "description": "Reference path identifying where in the effective input the array field is found."
+                        },
+                        "Iterator": {
+                            "type": "object",
+                            "description": "A state machine which will process each element of the array.",
+                            "properties": {
+                                "StartAt": {
+                                    "type": "string",
+                                    "description": "A string that must exactly match (is case sensitive) the name of one of the state objects.",
+                                    "minLength": 1
+                                },
+                                "States": {
+                                    "$ref": "states.json#/definitions/states"
+                                }
+                            },
+                            "required": [
+                                "StartAt",
+                                "States"
+                            ]
+                        },
+                        "MaxConcurrency": {
+                            "type": "integer",
+                            "description": "Provides an upper bound on how many invocations of the Iterator may run in parallel.\n\nThe default value is 0, which places no limit on parallelism and iterations are invoked as concurrently as possible.",
+                            "minimum": 0
+                        },
+                        "Retry": {
+                            "$ref": "common.json#/definitions/retry",
+                            "description": "Contains an array of objects, called Retriers, that define a retry policy if the state encounters runtime errors."
+                        },
+                        "Catch": {
+                            "$ref": "common.json#/definitions/catch",
+                            "description": "Contains an array of objects, called Catchers, that define a fallback state. This state is executed if the state encounters runtime errors and its retry policy is exhausted or isn't defined."
+                        }
+                    },
+                    "required": [
+                        "Iterator"
+                    ]
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "definitions": {
+        "states": {
+            "type": "object",
+            "description": "An object containing a comma-delimited set of states.",
+            "additionalProperties": {
+                "oneOf": [
+                    {
+                        "$ref": "pass_state.json#/definitions/passState"
+                    },
+                    {
+                        "$ref": "succeed_state.json#/definitions/succeedState"
+                    },
+                    {
+                        "$ref": "fail_state.json#/definitions/failState"
+                    },
+                    {
+                        "$ref": "task_state.json#/definitions/taskState"
+                    },
+                    {
+                        "$ref": "choice_state.json#/definitions/choiceState"
+                    },
+                    {
+                        "$ref": "wait_state.json#/definitions/waitState"
+                    },
+                    {
+                        "$ref": "parallel_state.json#/definitions/parallelState"
+                    },
+                    {
+                        "$ref": "map_state.json#/definitions/mapState"
+                    }
+                ]
+            }
+        }
+    }
+}

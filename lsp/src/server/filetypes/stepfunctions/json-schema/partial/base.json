@@ -1,0 +1,31 @@
+{
+    "type": "object",
+    "properties": {
+        "Version": {
+            "type": "string",
+            "description": "The version of the Amazon States Language used in the state machine.",
+            "enum": [
+                "1.0"
+            ]
+        },
+        "Comment": {
+            "$ref": "common.json#/definitions/comment"
+        },
+        "TimeoutSeconds": {
+            "$ref": "common.json#/definitions/seconds",
+            "description": "The maximum number of seconds an execution of the state machine can run. If it runs longer than the specified time, the execution fails with a States.Timeout error."
+        },
+        "StartAt": {
+            "type": "string",
+            "description": "A string that must exactly match (is case sensitive) the name of a state.",
+            "minLength": 1
+        },
+        "States": {
+            "$ref": "states.json#/definitions/states"
+        }
+    },
+    "required": [
+        "States",
+        "StartAt"
+    ]
+}

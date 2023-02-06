@@ -1,0 +1,2302 @@
+{
+	"type": "object",
+	"properties": {
+		"Version": {
+			"type": "string",
+			"description": "The version of the Amazon States Language used in the state machine.",
+			"enum": [
+				"1.0"
+			]
+		},
+		"Comment": {
+			"type": "string",
+			"description": "A human-readable comment or description.",
+			"minLength": 1
+		},
+		"TimeoutSeconds": {
+			"description": "The maximum number of seconds an execution of the state machine can run. If it runs longer than the specified time, the execution fails with a States.Timeout error.",
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 99999999
+		},
+		"StartAt": {
+			"type": "string",
+			"description": "A string that must exactly match (is case sensitive) the name of a state.",
+			"minLength": 1
+		},
+		"States": {
+			"type": "object",
+			"description": "An object containing a comma-delimited set of states.",
+			"additionalProperties": {
+				"oneOf": [
+					{
+						"description": "A Pass state passes its input to its output, without performing work. Pass states are useful when constructing and debugging state machines.",
+						"allOf": [
+							{
+								"type": "object",
+								"properties": {
+									"Type": {
+										"type": "string",
+										"description": "The state's type.",
+										"minLength": 1,
+										"enum": [
+											"Pass",
+											"Succeed",
+											"Fail",
+											"Task",
+											"Choice",
+											"Wait",
+											"Parallel",
+											"Map"
+										]
+									},
+									"Comment": {
+										"$ref": "#/properties/Comment"
+									}
+								},
+								"required": [
+									"Type"
+								]
+							},
+							{
+								"properties": {
+									"InputPath": {
+										"description": "A path that selects a portion of the state's input to be passed to the state's task for processing. If omitted, it has the value $ which designates the entire input.",
+										"oneOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "null"
+											}
+										]
+									},
+									"ResultPath": {
+										"description": "A path that specifies where to place the Result, relative to the raw input. If the raw input has a field at the location addressed by the ResultPath value then in the output that field is discarded and overwritten by the state's result. Otherwise, a new field is created in the state output, with intervening fields constructed as necessary.",
+										"oneOf": [
+											{
+												"type": "string",
+												"minLength": 1
+											},
+											{
+												"type": "null"
+											}
+										]
+									},
+									"OutputPath": {
+										"description": "A path that selects a portion of the state's input to be passed to the state's output. If omitted, it has the value $ which designates the entire input.",
+										"oneOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "null"
+											}
+										]
+									}
+								}
+							},
+							{
+								"oneOf": [
+									{
+										"required": [
+											"Next"
+										]
+									},
+									{
+										"required": [
+											"End"
+										]
+									}
+								],
+								"properties": {
+									"Next": {
+										"type": "string",
+										"description": "The name of the next state that is run when the current state finishes.",
+										"minLength": 1
+									},
+									"End": {
+										"type": "boolean",
+										"description": "Designates this state as a terminal state (ends the execution) if set to true. There can be any number of terminal states per state machine."
+									}
+								}
+							},
+							{
+								"properties": {
+									"Type": {
+										"enum": [
+											"Pass"
+										]
+									},
+									"Parameters": {
+										"description": "Used to pass information to the API actions of connected resources. The Parameters can use a mix of static JSON, JsonPath and intrinsic functions.",
+										"type": [
+											"number",
+											"string",
+											"boolean",
+											"object",
+											"array",
+											"null"
+										]
+									}
+								}
+							}
+						]
+					},
+					{
+						"description": "A Succeed state stops an execution successfully. The Succeed state is a useful target for Choice state branches that don't do anything but stop the execution.",
+						"allOf": [
+							{
+								"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/0"
+							},
+							{
+								"properties": {
+									"InputPath": {
+										"description": "A path that selects a portion of the state's input to be passed to the state's task for processing. If omitted, it has the value $ which designates the entire input.",
+										"oneOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "null"
+											}
+										]
+									},
+									"OutputPath": {
+										"description": "A path that selects a portion of the state's input to be passed to the state's output. If omitted, it has the value $ which designates the entire input.",
+										"oneOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "null"
+											}
+										]
+									}
+								}
+							},
+							{
+								"properties": {
+									"Type": {
+										"enum": [
+											"Succeed"
+										]
+									}
+								}
+							}
+						]
+					},
+					{
+						"description": "A Fail state stops the execution of the state machine and marks it as a failure.",
+						"allOf": [
+							{
+								"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/0"
+							},
+							{
+								"properties": {
+									"Type": {
+										"enum": [
+											"Fail"
+										]
+									},
+									"Comment": {
+										"$ref": "#/properties/Comment"
+									},
+									"Error": {
+										"type": "string",
+										"description": "Provides an error name that can be used for error handling (Retry/Catch), operational, or diagnostic purposes.",
+										"minLength": 1
+									},
+									"Cause": {
+										"type": "string",
+										"description": "Provides a custom failure string that can be used for operational or diagnostic purposes.",
+										"minLength": 1
+									}
+								}
+							}
+						]
+					},
+					{
+						"description": "A Task state represents a single unit of work performed by a state machine.\nAll work in your state machine is done by tasks. A task performs work identified by the state’s Resource field, which is often an AWS Lambda function or other Step Functions service integrations.",
+						"allOf": [
+							{
+								"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/0"
+							},
+							{
+								"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1"
+							},
+							{
+								"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/2"
+							},
+							{
+								"properties": {
+									"Type": {
+										"enum": [
+											"Task"
+										]
+									},
+									"Resource": {
+										"type": "string",
+										"description": "A URI, especially an ARN that uniquely identifies the specific task to execute.",
+										"examples": [
+											"arn:aws:states:::batch:submitJob",
+											"arn:aws:states:::batch:submitJob.sync",
+											"arn:aws:states:::dynamodb:deleteItem",
+											"arn:aws:states:::dynamodb:getItem",
+											"arn:aws:states:::dynamodb:putItem",
+											"arn:aws:states:::dynamodb:updateItem",
+											"arn:aws:states:::ecs:runTask",
+											"arn:aws:states:::ecs:runTask.sync",
+											"arn:aws:states:::ecs:runTask.waitForTaskToken",
+											"arn:aws:states:::elasticmapreduce:addStep",
+											"arn:aws:states:::elasticmapreduce:addStep.sync",
+											"arn:aws:states:::elasticmapreduce:cancelStep",
+											"arn:aws:states:::elasticmapreduce:createCluster",
+											"arn:aws:states:::elasticmapreduce:createCluster.sync",
+											"arn:aws:states:::elasticmapreduce:modifyInstanceFleetByName",
+											"arn:aws:states:::elasticmapreduce:modifyInstanceGroupByName",
+											"arn:aws:states:::elasticmapreduce:setClusterTerminationProtection",
+											"arn:aws:states:::elasticmapreduce:terminateCluster",
+											"arn:aws:states:::elasticmapreduce:terminateCluster.sync",
+											"arn:aws:states:::events:putEvents",
+											"arn:aws:states:::events:putEvents.waitForTaskToken",
+											"arn:aws:states:::glue:startJobRun",
+											"arn:aws:states:::glue:startJobRun.sync",
+											"arn:aws:states:::lambda:invoke",
+											"arn:aws:states:::lambda:invoke.waitForTaskToken",
+											"arn:aws:states:::sagemaker:createEndpoint",
+											"arn:aws:states:::sagemaker:createEndpointConfig",
+											"arn:aws:states:::sagemaker:createHyperParameterTuningJob",
+											"arn:aws:states:::sagemaker:createHyperParameterTuningJob.sync",
+											"arn:aws:states:::sagemaker:createLabelingJob",
+											"arn:aws:states:::sagemaker:createLabelingJob.sync",
+											"arn:aws:states:::sagemaker:createModel",
+											"arn:aws:states:::sagemaker:createTrainingJob",
+											"arn:aws:states:::sagemaker:createTrainingJob.sync",
+											"arn:aws:states:::sagemaker:createTransformJob",
+											"arn:aws:states:::sagemaker:createTransformJob.sync",
+											"arn:aws:states:::sagemaker:updateEndpoint",
+											"arn:aws:states:::sns:publish",
+											"arn:aws:states:::sns:publish.waitForTaskToken",
+											"arn:aws:states:::sqs:sendMessage",
+											"arn:aws:states:::sqs:sendMessage.waitForTaskToken",
+											"arn:aws:states:::states:startExecution",
+											"arn:aws:states:::states:startExecution.sync",
+											"arn:aws:states:::states:startExecution.waitForTaskToken"
+										]
+									},
+									"Parameters": {
+										"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/3/properties/Parameters",
+										"description": "Used to pass information to the API actions of connected resources. The Parameters can use a mix of static JSON, JsonPath and intrinsic functions."
+									},
+									"ResultSelector": {
+										"description": "Used to transform the result. The ResultSelector can use a mix of static JSON, JsonPath and intrinsic functions.",
+										"type": "object"
+									},
+									"TimeoutSeconds": {
+										"$ref": "#/properties/TimeoutSeconds",
+										"description": "If the task runs longer than the specified seconds, this state fails with a States.Timeout error name. Must be a positive, non-zero integer. If not provided, the default value is 99999999. The count begins after the task has been started, for example, when ActivityStarted or LambdaFunctionStarted are logged in the Execution event history."
+									},
+									"TimeoutSecondsPath": {
+										"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath",
+										"description": "If the task runs longer than the specified seconds, this state fails with a States.Timeout error. Specified using JsonPath syntax, to select the value from the state's input data."
+									},
+									"HeartbeatSeconds": {
+										"$ref": "#/properties/TimeoutSeconds",
+										"description": "If more time than the specified seconds elapses between heartbeats from the task, this state fails with a States.Timeout error name. Must be a positive, non-zero integer less than the number of seconds specified in the TimeoutSeconds field. If not provided, the default value is 99999999. For Activities, the count begins when GetActivityTask receives a token and ActivityStarted is logged in the Execution event history."
+									},
+									"HeartbeatSecondsPath": {
+										"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath",
+										"description": "If more time than the specified seconds elapses between heartbeats from the task, this state fails with a States.Timeout error. Specified using JsonPath syntax, to select the value from the state's input data."
+									},
+									"Retry": {
+										"description": "An array of objects, called Retriers, that define a retry policy if the state encounters runtime errors.",
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"ErrorEquals": {
+													"description": "A non-empty array of Error Names. The retry policy for this Retrier is implemented if the reported error matches one of the Error Names.",
+													"type": "array",
+													"minItems": 1,
+													"items": {
+														"type": "string"
+													}
+												},
+												"IntervalSeconds": {
+													"$ref": "#/properties/TimeoutSeconds",
+													"description": "A positive integer representing the number of seconds before the first retry attempt. (Default: 1, Maximum: 99999999)"
+												},
+												"MaxAttempts": {
+													"type": "integer",
+													"description": "A non-negative integer representing the maximum number of retry attempts. (Default: 3, Maximum: 99999999)",
+													"minimum": 0,
+													"maximum": 99999999
+												},
+												"BackoffRate": {
+													"type": "number",
+													"description": "A number (>= 1) which is the multiplier that increases the retry interval on each attempt. (Default: 2.0)",
+													"minimum": 1
+												},
+												"Comment": {
+													"$ref": "#/properties/Comment"
+												}
+											},
+											"required": [
+												"ErrorEquals"
+											]
+										}
+									},
+									"Catch": {
+										"description": "An array of objects, called Catchers, that define a fallback state. This state is executed if the state encounters runtime errors and its retry policy is exhausted or isn't defined.",
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"ErrorEquals": {
+													"$ref": "#/properties/States/additionalProperties/oneOf/3/allOf/3/properties/Retry/items/properties/ErrorEquals",
+													"description": "A non-empty array of Error Names. The state machine transitions to this Catcher's fallback state if the reported error matches one of the Error Names."
+												},
+												"Next": {
+													"type": "string",
+													"description": "The state to transition to on Error Name match.",
+													"minLength": 1
+												},
+												"ResultPath": {
+													"oneOf": [
+														{
+															"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0",
+															"description": "A path that specifies where to place the Result, relative to the raw input. If the raw input has a field at the location addressed by the ResultPath value then in the output that field is discarded and overwritten by the state's result. Otherwise, a new field is created in the state output, with intervening fields constructed as necessary."
+														},
+														{
+															"type": "null"
+														}
+													]
+												},
+												"Comment": {
+													"$ref": "#/properties/Comment"
+												}
+											},
+											"required": [
+												"ErrorEquals",
+												"Next"
+											]
+										}
+									}
+								},
+								"required": [
+									"Resource"
+								]
+							}
+						]
+					},
+					{
+						"description": "A Choice state adds branching logic to a state machine.",
+						"allOf": [
+							{
+								"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/0"
+							},
+							{
+								"$ref": "#/properties/States/additionalProperties/oneOf/1/allOf/1"
+							},
+							{
+								"properties": {
+									"Type": {
+										"enum": [
+											"Choice"
+										]
+									},
+									"Choices": {
+										"type": "array",
+										"description": "An array of Choice Rules that determines which state the state machine transitions to next.",
+										"minItems": 1,
+										"items": {
+											"oneOf": [
+												{
+													"type": "object",
+													"properties": {
+														"StringEquals": {
+															"type": "string"
+														},
+														"Variable": {
+															"type": "string",
+															"description": "A reference path specifying the input value to apply the comparison operator to.",
+															"minLength": 1
+														},
+														"Next": {
+															"type": "string",
+															"description": "The state to transition to if there is an exact match between the input value and the comparison operator for this Choice Rule.",
+															"minLength": 1
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"StringEquals",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"StringGreaterThan": {
+															"type": "string"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"StringGreaterThan",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"StringGreaterThanEquals": {
+															"type": "string"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"StringGreaterThanEquals",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"StringLessThan": {
+															"type": "string"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"StringLessThan",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"StringLessThanEquals": {
+															"type": "string"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"StringLessThanEquals",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"NumericEquals": {
+															"type": "number"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"NumericEquals",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"NumericGreaterThan": {
+															"type": "number"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"NumericGreaterThan",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"NumericGreaterThanEquals": {
+															"type": "number"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"NumericGreaterThanEquals",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"NumericLessThan": {
+															"type": "number"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"NumericLessThan",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"NumericLessThanEquals": {
+															"type": "number"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"NumericLessThanEquals",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"BooleanEquals": {
+															"type": "boolean"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"BooleanEquals",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"TimestampEquals": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"TimestampEquals",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"TimestampGreaterThan": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/11/properties/TimestampEquals"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"TimestampGreaterThan",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"TimestampGreaterThanEquals": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/11/properties/TimestampEquals"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"TimestampGreaterThanEquals",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"TimestampLessThan": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/11/properties/TimestampEquals"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"TimestampLessThan",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"TimestampLessThanEquals": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/11/properties/TimestampEquals"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"TimestampLessThanEquals",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"And": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/17/properties/Or"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"And",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"Or": {
+															"type": "array",
+															"minItems": 1,
+															"items": {
+																"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/18/properties/Not"
+															}
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"Or",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"Not": {
+															"oneOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"StringEquals": {
+																			"type": "string"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"StringEquals",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"StringLessThan": {
+																			"type": "string"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"StringLessThan",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"StringGreaterThan": {
+																			"type": "string"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"StringGreaterThan",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"StringLessThanEquals": {
+																			"type": "string"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"StringLessThanEquals",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"StringGreaterThanEquals": {
+																			"type": "string"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"StringGreaterThanEquals",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"NumericEquals": {
+																			"type": "number"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"NumericEquals",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"NumericLessThan": {
+																			"type": "number"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"NumericLessThan",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"NumericGreaterThan": {
+																			"type": "number"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"NumericGreaterThan",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"NumericLessThanEquals": {
+																			"type": "number"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"NumericLessThanEquals",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"NumericGreaterThanEquals": {
+																			"type": "number"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"NumericGreaterThanEquals",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"BooleanEquals": {
+																			"type": "boolean"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"BooleanEquals",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"TimestampEquals": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/11/properties/TimestampEquals"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"TimestampEquals",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"TimestampLessThan": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/11/properties/TimestampEquals"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"TimestampLessThan",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"TimestampGreaterThan": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/11/properties/TimestampEquals"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"TimestampGreaterThan",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"TimestampLessThanEquals": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/11/properties/TimestampEquals"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"TimestampLessThanEquals",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"TimestampGreaterThanEquals": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/11/properties/TimestampEquals"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"TimestampGreaterThanEquals",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"And": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/17/properties/Or"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"And"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"Or": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/17/properties/Or"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"Or"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"Not": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/18/properties/Not"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"Not"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"StringEqualsPath": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"StringEqualsPath",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"StringLessThanPath": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"StringLessThanPath",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"StringGreaterThanPath": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"StringGreaterThanPath",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"StringLessThanEqualsPath": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"StringLessThanEqualsPath",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"StringGreaterThanEqualsPath": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"StringGreaterThanEqualsPath",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"NumericEqualsPath": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"NumericEqualsPath",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"NumericLessThanPath": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"NumericLessThanPath",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"NumericGreaterThanPath": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"NumericGreaterThanPath",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"NumericLessThanEqualsPath": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"NumericLessThanEqualsPath",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"NumericGreaterThanEqualsPath": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"NumericGreaterThanEqualsPath",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"BooleanEqualsPath": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"BooleanEqualsPath",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"TimestampEqualsPath": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"TimestampEqualsPath",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"TimestampLessThanPath": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"TimestampLessThanPath",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"TimestampGreaterThanPath": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"TimestampGreaterThanPath",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"TimestampLessThanEqualsPath": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"TimestampLessThanEqualsPath",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"TimestampGreaterThanEqualsPath": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"TimestampGreaterThanEqualsPath",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"IsNull": {
+																			"type": "boolean"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"IsNull",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"IsPresent": {
+																			"type": "boolean"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"IsPresent",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"IsNumeric": {
+																			"type": "boolean"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"IsNumeric",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"IsString": {
+																			"type": "boolean"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"IsString",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"IsBoolean": {
+																			"type": "boolean"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"IsBoolean",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"IsTimestamp": {
+																			"type": "boolean"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"IsTimestamp",
+																		"Variable"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"StringMatches": {
+																			"type": "string"
+																		},
+																		"Variable": {
+																			"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+																		},
+																		"Comment": {
+																			"$ref": "#/properties/Comment"
+																		}
+																	},
+																	"required": [
+																		"StringMatches",
+																		"Variable"
+																	]
+																}
+															]
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"Not",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"StringEqualsPath": {
+															"type": "string",
+															"pattern": "\\$.*"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"StringEqualsPath",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"StringGreaterThanPath": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"StringGreaterThanPath",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"StringGreaterThanEqualsPath": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"StringGreaterThanEqualsPath",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"StringLessThanPath": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"StringLessThanPath",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"StringLessThanEqualsPath": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"StringLessThanEqualsPath",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"NumericEqualsPath": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"NumericEqualsPath",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"NumericGreaterThanPath": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"NumericGreaterThanPath",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"NumericGreaterThanEqualsPath": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"NumericGreaterThanEqualsPath",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"NumericLessThanPath": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"NumericLessThanPath",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"NumericLessThanEqualsPath": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"NumericLessThanEqualsPath",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"BooleanEqualsPath": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"BooleanEqualsPath",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"TimestampEqualsPath": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"TimestampEqualsPath",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"TimestampGreaterThanPath": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"TimestampGreaterThanPath",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"TimestampGreaterThanEqualsPath": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"TimestampGreaterThanEqualsPath",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"TimestampLessThanPath": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"TimestampLessThanPath",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"TimestampLessThanEqualsPath": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/19/properties/StringEqualsPath"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Variable"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"TimestampLessThanEqualsPath",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"IsNull": {
+															"type": "boolean"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"IsNull",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"IsPresent": {
+															"type": "boolean"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"IsPresent",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"IsNumeric": {
+															"type": "boolean"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"IsNumeric",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"IsString": {
+															"type": "boolean"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"IsString",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"IsBoolean": {
+															"type": "boolean"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"IsBoolean",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"IsTimestamp": {
+															"type": "boolean"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"IsTimestamp",
+														"Variable",
+														"Next"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"StringMatches": {
+															"type": "string"
+														},
+														"Variable": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0"
+														},
+														"Next": {
+															"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/0/properties/Next"
+														},
+														"Comment": {
+															"$ref": "#/properties/Comment"
+														}
+													},
+													"required": [
+														"StringMatches",
+														"Variable",
+														"Next"
+													]
+												}
+											]
+										},
+										"additionalItems": false
+									},
+									"Default": {
+										"type": "string",
+										"description": "The name of the state to transition to if none of the Choice Rules match."
+									}
+								},
+								"required": [
+									"Choices"
+								]
+							}
+						]
+					},
+					{
+						"description": "A Wait state delays the state machine from continuing for a specified time. You can choose either a relative time, specified in seconds from when the state begins, or an absolute end time, specified as a timestamp.",
+						"allOf": [
+							{
+								"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/0"
+							},
+							{
+								"$ref": "#/properties/States/additionalProperties/oneOf/1/allOf/1"
+							},
+							{
+								"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/2"
+							},
+							{
+								"properties": {
+									"Type": {
+										"enum": [
+											"Wait"
+										]
+									},
+									"Seconds": {
+										"$ref": "#/properties/TimeoutSeconds",
+										"description": "A time, in seconds, to wait before beginning the state specified in the \"Next\" field."
+									},
+									"Timestamp": {
+										"$ref": "#/properties/States/additionalProperties/oneOf/4/allOf/2/properties/Choices/items/oneOf/11/properties/TimestampEquals",
+										"description": "An absolute time to wait until beginning the state specified in the \"Next\" field.\n\nTimestamps must conform to the RFC3339 profile of ISO 8601, with the further restrictions that an uppercase T must separate the date and time portions, and an uppercase Z must denote that a numeric time zone offset is not present, for example, 2016-08-18T17:33:00Z."
+									},
+									"SecondsPath": {
+										"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0",
+										"description": "A time, in seconds, to wait before beginning the state specified in the \"Next\" field, specified using a path from the state's input data."
+									},
+									"TimestampPath": {
+										"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0",
+										"description": "An absolute time to wait until beginning the state specified in the \"Next\" field, specified using a path from the state's input data."
+									}
+								},
+								"oneOf": [
+									{
+										"required": [
+											"Type",
+											"Seconds"
+										]
+									},
+									{
+										"required": [
+											"Type",
+											"Timestamp"
+										]
+									},
+									{
+										"required": [
+											"Type",
+											"SecondsPath"
+										]
+									},
+									{
+										"required": [
+											"Type",
+											"TimestampPath"
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"description": "The Parallel state can be used to create parallel branches of execution in your state machine.",
+						"allOf": [
+							{
+								"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/0"
+							},
+							{
+								"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1"
+							},
+							{
+								"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/2"
+							},
+							{
+								"properties": {
+									"Type": {
+										"enum": [
+											"Parallel"
+										]
+									},
+									"Parameters": {
+										"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/3/properties/Parameters",
+										"description": "Used to pass information to the API actions of connected resources. The Parameters can use a mix of static JSON, JsonPath and intrinsic functions."
+									},
+									"ResultSelector": {
+										"$ref": "#/properties/States/additionalProperties/oneOf/3/allOf/3/properties/ResultSelector",
+										"description": "Used to transform the result. The ResultSelector can use a mix of static JSON, JsonPath and intrinsic functions."
+									},
+									"Branches": {
+										"type": "array",
+										"description": "An array of objects that specifies state machines to execute in parallel.",
+										"minItems": 1,
+										"items": {
+											"type": "object",
+											"properties": {
+												"StartAt": {
+													"type": "string",
+													"description": "A string that must exactly match (is case sensitive) the name of one of the state objects."
+												},
+												"States": {
+													"$ref": "#/properties/States"
+												}
+											},
+											"required": [
+												"StartAt",
+												"States"
+											]
+										}
+									},
+									"Retry": {
+										"$ref": "#/properties/States/additionalProperties/oneOf/3/allOf/3/properties/Retry",
+										"description": "Contains an array of objects, called Retriers, that define a retry policy if the state encounters runtime errors."
+									},
+									"Catch": {
+										"$ref": "#/properties/States/additionalProperties/oneOf/3/allOf/3/properties/Catch",
+										"description": "Contains an array of objects, called Catchers, that define a fallback state. This state is executed if the state encounters runtime errors and its retry policy is exhausted or isn't defined."
+									}
+								},
+								"required": [
+									"Branches"
+								]
+							}
+						]
+					},
+					{
+						"description": "The Map state can be used to run a set of steps for each element of an input array. While the Parallel state executes multiple branches of steps using the same input, a Map state will execute the same steps for multiple entries of an array in the state input.",
+						"allOf": [
+							{
+								"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/0"
+							},
+							{
+								"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1"
+							},
+							{
+								"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/2"
+							},
+							{
+								"properties": {
+									"Type": {
+										"enum": [
+											"Map"
+										]
+									},
+									"Parameters": {
+										"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/3/properties/Parameters",
+										"description": "Used to pass information to the API actions of connected resources. The Parameters can use a mix of static JSON, JsonPath and intrinsic functions."
+									},
+									"ResultSelector": {
+										"$ref": "#/properties/States/additionalProperties/oneOf/3/allOf/3/properties/ResultSelector",
+										"description": "Used to transform the result. The ResultSelector can use a mix of static JSON, JsonPath and intrinsic functions."
+									},
+									"ItemsPath": {
+										"$ref": "#/properties/States/additionalProperties/oneOf/0/allOf/1/properties/ResultPath/oneOf/0",
+										"description": "Reference path identifying where in the effective input the array field is found."
+									},
+									"Iterator": {
+										"type": "object",
+										"description": "A state machine which will process each element of the array.",
+										"properties": {
+											"StartAt": {
+												"type": "string",
+												"description": "A string that must exactly match (is case sensitive) the name of one of the state objects.",
+												"minLength": 1
+											},
+											"States": {
+												"$ref": "#/properties/States"
+											}
+										},
+										"required": [
+											"StartAt",
+											"States"
+										]
+									},
+									"MaxConcurrency": {
+										"type": "integer",
+										"description": "Provides an upper bound on how many invocations of the Iterator may run in parallel.\n\nThe default value is 0, which places no limit on parallelism and iterations are invoked as concurrently as possible.",
+										"minimum": 0
+									},
+									"Retry": {
+										"$ref": "#/properties/States/additionalProperties/oneOf/3/allOf/3/properties/Retry",
+										"description": "Contains an array of objects, called Retriers, that define a retry policy if the state encounters runtime errors."
+									},
+									"Catch": {
+										"$ref": "#/properties/States/additionalProperties/oneOf/3/allOf/3/properties/Catch",
+										"description": "Contains an array of objects, called Catchers, that define a fallback state. This state is executed if the state encounters runtime errors and its retry policy is exhausted or isn't defined."
+									}
+								},
+								"required": [
+									"Iterator"
+								]
+							}
+						]
+					}
+				]
+			}
+		}
+	},
+	"required": [
+		"States",
+		"StartAt"
+	]
+}

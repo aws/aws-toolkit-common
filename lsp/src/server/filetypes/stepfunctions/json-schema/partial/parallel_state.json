@@ -1,0 +1,67 @@
+{
+    "definitions": {
+        "parallelState": {
+            "description": "The Parallel state can be used to create parallel branches of execution in your state machine.",
+            "allOf": [
+                {
+                    "$ref": "common.json#/definitions/basics"
+                },
+                {
+                    "$ref": "common.json#/definitions/inputOutputResult"
+                },
+                {
+                    "$ref": "common.json#/definitions/endOrTransition"
+                },
+                {
+                    "properties": {
+                        "Type": {
+                            "enum": [
+                                "Parallel"
+                            ]
+                        },
+                        "Parameters": {
+                            "$ref": "common.json#/definitions/parameters",
+                            "description": "Used to pass information to the API actions of connected resources. The Parameters can use a mix of static JSON, JsonPath and intrinsic functions."
+                        },
+                        "ResultSelector": {
+                            "$ref": "common.json#/definitions/resultSelector",
+                            "description": "Used to transform the result. The ResultSelector can use a mix of static JSON, JsonPath and intrinsic functions."
+                        },
+                        "Branches": {
+                            "type": "array",
+                            "description": "An array of objects that specifies state machines to execute in parallel.",
+                            "minItems": 1,
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "StartAt": {
+                                        "type": "string",
+                                        "description": "A string that must exactly match (is case sensitive) the name of one of the state objects."
+                                    },
+                                    "States": {
+                                        "$ref": "states.json#/definitions/states"
+                                    }
+                                },
+                                "required": [
+                                    "StartAt",
+                                    "States"
+                                ]
+                            }
+                        },
+                        "Retry": {
+                            "$ref": "common.json#/definitions/retry",
+                            "description": "Contains an array of objects, called Retriers, that define a retry policy if the state encounters runtime errors."
+                        },
+                        "Catch": {
+                            "$ref": "common.json#/definitions/catch",
+                            "description": "Contains an array of objects, called Catchers, that define a fallback state. This state is executed if the state encounters runtime errors and its retry policy is exhausted or isn't defined."
+                        }
+                    },
+                    "required": [
+                        "Branches"
+                    ]
+                }
+            ]
+        }
+    }
+}

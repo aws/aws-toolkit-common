@@ -1,0 +1,34 @@
+{
+    "definitions": {
+        "failState": {
+            "description": "A Fail state stops the execution of the state machine and marks it as a failure.",
+            "allOf": [
+                {
+                    "$ref": "common.json#/definitions/basics"
+                },
+                {
+                    "properties": {
+                        "Type": {
+                            "enum": [
+                                "Fail"
+                            ]
+                        },
+                        "Comment": {
+                            "$ref": "common.json#/definitions/comment"
+                        },
+                        "Error": {
+                            "type": "string",
+                            "description": "Provides an error name that can be used for error handling (Retry/Catch), operational, or diagnostic purposes.",
+                            "minLength": 1
+                        },
+                        "Cause": {
+                            "type": "string",
+                            "description": "Provides a custom failure string that can be used for operational or diagnostic purposes.",
+                            "minLength": 1
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

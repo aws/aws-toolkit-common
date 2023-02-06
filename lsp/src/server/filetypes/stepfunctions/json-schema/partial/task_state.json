@@ -1,0 +1,112 @@
+{
+    "definitions": {
+        "taskState": {
+            "description": "A Task state represents a single unit of work performed by a state machine.\nAll work in your state machine is done by tasks. A task performs work identified by the state’s Resource field, which is often an AWS Lambda function or other Step Functions service integrations.",
+            "allOf": [
+                {
+                    "$ref": "common.json#/definitions/basics"
+                },
+                {
+                    "$ref": "common.json#/definitions/inputOutputResult"
+                },
+                {
+                    "$ref": "common.json#/definitions/endOrTransition"
+                },
+                {
+                    "properties": {
+                        "Type": {
+                            "enum": [
+                                "Task"
+                            ]
+                        },
+                        "Resource": {
+                            "type": "string",
+                            "description": "A URI, especially an ARN that uniquely identifies the specific task to execute.",
+                            "examples": [
+                                "arn:aws:states:::batch:submitJob",
+                                "arn:aws:states:::batch:submitJob.sync",
+                                "arn:aws:states:::dynamodb:deleteItem",
+                                "arn:aws:states:::dynamodb:getItem",
+                                "arn:aws:states:::dynamodb:putItem",
+                                "arn:aws:states:::dynamodb:updateItem",
+                                "arn:aws:states:::ecs:runTask",
+                                "arn:aws:states:::ecs:runTask.sync",
+                                "arn:aws:states:::ecs:runTask.waitForTaskToken",
+                                "arn:aws:states:::elasticmapreduce:addStep",
+                                "arn:aws:states:::elasticmapreduce:addStep.sync",
+                                "arn:aws:states:::elasticmapreduce:cancelStep",
+                                "arn:aws:states:::elasticmapreduce:createCluster",
+                                "arn:aws:states:::elasticmapreduce:createCluster.sync",
+                                "arn:aws:states:::elasticmapreduce:modifyInstanceFleetByName",
+                                "arn:aws:states:::elasticmapreduce:modifyInstanceGroupByName",
+                                "arn:aws:states:::elasticmapreduce:setClusterTerminationProtection",
+                                "arn:aws:states:::elasticmapreduce:terminateCluster",
+                                "arn:aws:states:::elasticmapreduce:terminateCluster.sync",
+                                "arn:aws:states:::events:putEvents",
+                                "arn:aws:states:::events:putEvents.waitForTaskToken",
+                                "arn:aws:states:::glue:startJobRun",
+                                "arn:aws:states:::glue:startJobRun.sync",
+                                "arn:aws:states:::lambda:invoke",
+                                "arn:aws:states:::lambda:invoke.waitForTaskToken",
+                                "arn:aws:states:::sagemaker:createEndpoint",
+                                "arn:aws:states:::sagemaker:createEndpointConfig",
+                                "arn:aws:states:::sagemaker:createHyperParameterTuningJob",
+                                "arn:aws:states:::sagemaker:createHyperParameterTuningJob.sync",
+                                "arn:aws:states:::sagemaker:createLabelingJob",
+                                "arn:aws:states:::sagemaker:createLabelingJob.sync",
+                                "arn:aws:states:::sagemaker:createModel",
+                                "arn:aws:states:::sagemaker:createTrainingJob",
+                                "arn:aws:states:::sagemaker:createTrainingJob.sync",
+                                "arn:aws:states:::sagemaker:createTransformJob",
+                                "arn:aws:states:::sagemaker:createTransformJob.sync",
+                                "arn:aws:states:::sagemaker:updateEndpoint",
+                                "arn:aws:states:::sns:publish",
+                                "arn:aws:states:::sns:publish.waitForTaskToken",
+                                "arn:aws:states:::sqs:sendMessage",
+                                "arn:aws:states:::sqs:sendMessage.waitForTaskToken",
+                                "arn:aws:states:::states:startExecution",
+                                "arn:aws:states:::states:startExecution.sync",
+                                "arn:aws:states:::states:startExecution.waitForTaskToken"
+                            ]
+                        },
+                        "Parameters": {
+                            "$ref": "common.json#/definitions/parameters",
+                            "description": "Used to pass information to the API actions of connected resources. The Parameters can use a mix of static JSON, JsonPath and intrinsic functions."
+                        },
+                        "ResultSelector": {
+                            "$ref": "common.json#/definitions/resultSelector",
+                            "description": "Used to transform the result. The ResultSelector can use a mix of static JSON, JsonPath and intrinsic functions."
+                        },
+                        "TimeoutSeconds": {
+                            "$ref": "common.json#/definitions/seconds",
+                            "description": "If the task runs longer than the specified seconds, this state fails with a States.Timeout error name. Must be a positive, non-zero integer. If not provided, the default value is 99999999. The count begins after the task has been started, for example, when ActivityStarted or LambdaFunctionStarted are logged in the Execution event history."
+                        },
+                        "TimeoutSecondsPath": {
+                            "$ref": "common.json#/definitions/path",
+                            "description": "If the task runs longer than the specified seconds, this state fails with a States.Timeout error. Specified using JsonPath syntax, to select the value from the state's input data."
+                        },
+                        "HeartbeatSeconds": {
+                            "$ref": "common.json#/definitions/seconds",
+                            "description": "If more time than the specified seconds elapses between heartbeats from the task, this state fails with a States.Timeout error name. Must be a positive, non-zero integer less than the number of seconds specified in the TimeoutSeconds field. If not provided, the default value is 99999999. For Activities, the count begins when GetActivityTask receives a token and ActivityStarted is logged in the Execution event history."
+                        },
+                        "HeartbeatSecondsPath": {
+                            "$ref": "common.json#/definitions/path",
+                            "description": "If more time than the specified seconds elapses between heartbeats from the task, this state fails with a States.Timeout error. Specified using JsonPath syntax, to select the value from the state's input data."
+                        },
+                        "Retry": {
+                            "$ref": "common.json#/definitions/retry",
+                            "description": "An array of objects, called Retriers, that define a retry policy if the state encounters runtime errors."
+                        },
+                        "Catch": {
+                            "$ref": "common.json#/definitions/catch",
+                            "description": "An array of objects, called Catchers, that define a fallback state. This state is executed if the state encounters runtime errors and its retry policy is exhausted or isn't defined."
+                        }
+                    },
+                    "required": [
+                        "Resource"
+                    ]
+                }
+            ]
+        }
+    }
+}

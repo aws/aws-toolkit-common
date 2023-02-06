@@ -1,0 +1,69 @@
+{
+    "definitions": {
+        "waitState": {
+            "description": "A Wait state delays the state machine from continuing for a specified time. You can choose either a relative time, specified in seconds from when the state begins, or an absolute end time, specified as a timestamp.",
+            "allOf": [
+                {
+                    "$ref": "common.json#/definitions/basics"
+                },
+                {
+                    "$ref": "common.json#/definitions/inputOutput"
+                },
+                {
+                    "$ref": "common.json#/definitions/endOrTransition"
+                },
+                {
+                    "properties": {
+                        "Type": {
+                            "enum": [
+                                "Wait"
+                            ]
+                        },
+                        "Seconds": {
+                            "$ref": "common.json#/definitions/seconds",
+                            "description": "A time, in seconds, to wait before beginning the state specified in the \"Next\" field."
+                        },
+                        "Timestamp": {
+                            "$ref": "common.json#/definitions/timestamp",
+                            "description": "An absolute time to wait until beginning the state specified in the \"Next\" field.\n\nTimestamps must conform to the RFC3339 profile of ISO 8601, with the further restrictions that an uppercase T must separate the date and time portions, and an uppercase Z must denote that a numeric time zone offset is not present, for example, 2016-08-18T17:33:00Z."
+                        },
+                        "SecondsPath": {
+                            "$ref": "common.json#/definitions/referencePath",
+                            "description": "A time, in seconds, to wait before beginning the state specified in the \"Next\" field, specified using a path from the state's input data."
+                        },
+                        "TimestampPath": {
+                            "$ref": "common.json#/definitions/referencePath",
+                            "description": "An absolute time to wait until beginning the state specified in the \"Next\" field, specified using a path from the state's input data."
+                        }
+                    },
+                    "oneOf": [
+                        {
+                            "required": [
+                                "Type",
+                                "Seconds"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "Type",
+                                "Timestamp"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "Type",
+                                "SecondsPath"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "Type",
+                                "TimestampPath"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,1975 @@
+{
+    "definitions": {
+        "choiceState": {
+            "description": "A Choice state adds branching logic to a state machine.",
+            "allOf": [
+                {
+                    "$ref": "common.json#/definitions/basics"
+                },
+                {
+                    "$ref": "common.json#/definitions/inputOutput"
+                },
+                {
+                    "properties": {
+                        "Type": {
+                            "enum": [
+                                "Choice"
+                            ]
+                        },
+                        "Choices": {
+                            "type": "array",
+                            "description": "An array of Choice Rules that determines which state the state machine transitions to next.",
+                            "minItems": 1,
+                            "items": {
+                                "oneOf": [
+                                    {
+                                        "$ref": "#/definitions/topStringEquals"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topStringGreaterThan"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topStringGreaterThanEquals"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topStringLessThan"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topStringLessThanEquals"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topNumericEquals"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topNumericGreaterThan"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topNumericGreaterThanEquals"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topNumericLessThan"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topNumericLessThanEquals"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topBooleanEquals"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topTimestampEquals"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topTimestampGreaterThan"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topTimestampGreaterThanEquals"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topTimestampLessThan"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topTimestampLessThanEquals"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topAnd"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topOr"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topNot"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topStringEqualsPath"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topStringGreaterThanPath"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topStringGreaterThanEqualsPath"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topStringLessThanPath"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topStringLessThanEqualsPath"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topNumericEqualsPath"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topNumericGreaterThanPath"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topNumericGreaterThanEqualsPath"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topNumericLessThanPath"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topNumericLessThanEqualsPath"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topBooleanEqualsPath"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topTimestampEqualsPath"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topTimestampGreaterThanPath"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topTimestampGreaterThanEqualsPath"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topTimestampLessThanPath"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topTimestampLessThanEqualsPath"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topIsNull"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topIsPresent"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topIsNumeric"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topIsString"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topIsBoolean"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topIsTimestamp"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/topStringMatches"
+                                    }
+                                ]
+                            },
+                            "additionalItems": false
+                        },
+                        "Default": {
+                            "type": "string",
+                            "description": "The name of the state to transition to if none of the Choice Rules match."
+                        }
+                    },
+                    "required": [
+                        "Choices"
+                    ]
+                }
+            ]
+        },
+        "variable": {
+            "type": "string",
+            "description": "A reference path specifying the input value to apply the comparison operator to.",
+            "minLength": 1
+        },
+        "next": {
+            "type": "string",
+            "description": "The state to transition to if there is an exact match between the input value and the comparison operator for this Choice Rule.",
+            "minLength": 1
+        },
+        "topStringEquals": {
+            "type": "object",
+            "properties": {
+                "StringEquals": {
+                    "type": "string"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringEquals",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topStringLessThan": {
+            "type": "object",
+            "properties": {
+                "StringLessThan": {
+                    "type": "string"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringLessThan",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topStringGreaterThan": {
+            "type": "object",
+            "properties": {
+                "StringGreaterThan": {
+                    "type": "string"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringGreaterThan",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topStringLessThanEquals": {
+            "type": "object",
+            "properties": {
+                "StringLessThanEquals": {
+                    "type": "string"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringLessThanEquals",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topStringGreaterThanEquals": {
+            "type": "object",
+            "properties": {
+                "StringGreaterThanEquals": {
+                    "type": "string"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringGreaterThanEquals",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topNumericEquals": {
+            "type": "object",
+            "properties": {
+                "NumericEquals": {
+                    "type": "number"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericEquals",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topNumericLessThan": {
+            "type": "object",
+            "properties": {
+                "NumericLessThan": {
+                    "type": "number"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericLessThan",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topNumericGreaterThan": {
+            "type": "object",
+            "properties": {
+                "NumericGreaterThan": {
+                    "type": "number"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericGreaterThan",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topNumericLessThanEquals": {
+            "type": "object",
+            "properties": {
+                "NumericLessThanEquals": {
+                    "type": "number"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericLessThanEquals",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topNumericGreaterThanEquals": {
+            "type": "object",
+            "properties": {
+                "NumericGreaterThanEquals": {
+                    "type": "number"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericGreaterThanEquals",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topBooleanEquals": {
+            "type": "object",
+            "properties": {
+                "BooleanEquals": {
+                    "type": "boolean"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "BooleanEquals",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topTimestampEquals": {
+            "type": "object",
+            "properties": {
+                "TimestampEquals": {
+                    "$ref": "common.json#/definitions/timestamp"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampEquals",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topTimestampLessThan": {
+            "type": "object",
+            "properties": {
+                "TimestampLessThan": {
+                    "$ref": "common.json#/definitions/timestamp"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampLessThan",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topTimestampGreaterThan": {
+            "type": "object",
+            "properties": {
+                "TimestampGreaterThan": {
+                    "$ref": "common.json#/definitions/timestamp"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampGreaterThan",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topTimestampLessThanEquals": {
+            "type": "object",
+            "properties": {
+                "TimestampLessThanEquals": {
+                    "$ref": "common.json#/definitions/timestamp"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampLessThanEquals",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topTimestampGreaterThanEquals": {
+            "type": "object",
+            "properties": {
+                "TimestampGreaterThanEquals": {
+                    "$ref": "common.json#/definitions/timestamp"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampGreaterThanEquals",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topAnd": {
+            "type": "object",
+            "properties": {
+                "And": {
+                    "$ref": "#/definitions/lowerConditions"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "And",
+                "Next"
+            ]
+        },
+        "topOr": {
+            "type": "object",
+            "properties": {
+                "Or": {
+                    "$ref": "#/definitions/lowerConditions"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "Or",
+                "Next"
+            ]
+        },
+        "topNot": {
+            "type": "object",
+            "properties": {
+                "Not": {
+                    "$ref": "#/definitions/lowerCondition"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "Not",
+                "Next"
+            ]
+        },
+        "topStringEqualsPath": {
+            "type": "object",
+            "properties": {
+                "StringEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringEqualsPath",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topStringLessThanPath": {
+            "type": "object",
+            "properties": {
+                "StringLessThanPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringLessThanPath",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topStringGreaterThanPath": {
+            "type": "object",
+            "properties": {
+                "StringGreaterThanPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringGreaterThanPath",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topStringLessThanEqualsPath": {
+            "type": "object",
+            "properties": {
+                "StringLessThanEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringLessThanEqualsPath",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topStringGreaterThanEqualsPath": {
+            "type": "object",
+            "properties": {
+                "StringGreaterThanEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringGreaterThanEqualsPath",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topNumericEqualsPath": {
+            "type": "object",
+            "properties": {
+                "NumericEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericEqualsPath",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topNumericLessThanPath": {
+            "type": "object",
+            "properties": {
+                "NumericLessThanPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericLessThanPath",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topNumericGreaterThanPath": {
+            "type": "object",
+            "properties": {
+                "NumericGreaterThanPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericGreaterThanPath",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topNumericLessThanEqualsPath": {
+            "type": "object",
+            "properties": {
+                "NumericLessThanEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericLessThanEqualsPath",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topNumericGreaterThanEqualsPath": {
+            "type": "object",
+            "properties": {
+                "NumericGreaterThanEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericGreaterThanEqualsPath",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topBooleanEqualsPath": {
+            "type": "object",
+            "properties": {
+                "BooleanEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "BooleanEqualsPath",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topTimestampEqualsPath": {
+            "type": "object",
+            "properties": {
+                "TimestampEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampEqualsPath",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topTimestampLessThanPath": {
+            "type": "object",
+            "properties": {
+                "TimestampLessThanPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampLessThanPath",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topTimestampGreaterThanPath": {
+            "type": "object",
+            "properties": {
+                "TimestampGreaterThanPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampGreaterThanPath",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topTimestampLessThanEqualsPath": {
+            "type": "object",
+            "properties": {
+                "TimestampLessThanEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampLessThanEqualsPath",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topTimestampGreaterThanEqualsPath": {
+            "type": "object",
+            "properties": {
+                "TimestampGreaterThanEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampGreaterThanEqualsPath",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topIsNull": {
+            "type": "object",
+            "properties": {
+                "IsNull": {
+                    "type": "boolean"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "IsNull",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topIsPresent": {
+            "type": "object",
+            "properties": {
+                "IsPresent": {
+                    "type": "boolean"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "IsPresent",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topIsNumeric": {
+            "type": "object",
+            "properties": {
+                "IsNumeric": {
+                    "type": "boolean"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "IsNumeric",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topIsString": {
+            "type": "object",
+            "properties": {
+                "IsString": {
+                    "type": "boolean"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "IsString",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topIsBoolean": {
+            "type": "object",
+            "properties": {
+                "IsBoolean": {
+                    "type": "boolean"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "IsBoolean",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topIsTimestamp": {
+            "type": "object",
+            "properties": {
+                "IsTimestamp": {
+                    "type": "boolean"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "IsTimestamp",
+                "Variable",
+                "Next"
+            ]
+        },
+        "topStringMatches": {
+            "type": "object",
+            "properties": {
+                "StringMatches": {
+                    "type": "string"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Next": {
+                    "$ref": "#/definitions/next"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringMatches",
+                "Variable",
+                "Next"
+            ]
+        },
+
+        "lowerConditions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/definitions/lowerCondition"
+            }
+        },
+        "lowerCondition": {
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/nestedStringEquals"
+                },
+                {
+                    "$ref": "#/definitions/nestedStringLessThan"
+                },
+                {
+                    "$ref": "#/definitions/nestedStringGreaterThan"
+                },
+                {
+                    "$ref": "#/definitions/nestedStringLessThanEquals"
+                },
+                {
+                    "$ref": "#/definitions/nestedStringGreaterThanEquals"
+                },
+                {
+                    "$ref": "#/definitions/nestedNumericEquals"
+                },
+                {
+                    "$ref": "#/definitions/nestedNumericLessThan"
+                },
+                {
+                    "$ref": "#/definitions/nestedNumericGreaterThan"
+                },
+                {
+                    "$ref": "#/definitions/nestedNumericLessThanEquals"
+                },
+                {
+                    "$ref": "#/definitions/nestedNumericGreaterThanEquals"
+                },
+                {
+                    "$ref": "#/definitions/nestedBooleanEquals"
+                },
+                {
+                    "$ref": "#/definitions/nestedTimestampEquals"
+                },
+                {
+                    "$ref": "#/definitions/nestedTimestampLessThan"
+                },
+                {
+                    "$ref": "#/definitions/nestedTimestampGreaterThan"
+                },
+                {
+                    "$ref": "#/definitions/nestedTimestampLessThanEquals"
+                },
+                {
+                    "$ref": "#/definitions/nestedTimestampGreaterThanEquals"
+                },
+                {
+                    "$ref": "#/definitions/nestedAnd"
+                },
+                {
+                    "$ref": "#/definitions/nestedOr"
+                },
+                {
+                    "$ref": "#/definitions/nestedNot"
+                },
+                {
+                    "$ref": "#/definitions/nestedStringEqualsPath"
+                },
+                {
+                    "$ref": "#/definitions/nestedStringLessThanPath"
+                },
+                {
+                    "$ref": "#/definitions/nestedStringGreaterThanPath"
+                },
+                {
+                    "$ref": "#/definitions/nestedStringLessThanEqualsPath"
+                },
+                {
+                    "$ref": "#/definitions/nestedStringGreaterThanEqualsPath"
+                },
+                {
+                    "$ref": "#/definitions/nestedNumericEqualsPath"
+                },
+                {
+                    "$ref": "#/definitions/nestedNumericLessThanPath"
+                },
+                {
+                    "$ref": "#/definitions/nestedNumericGreaterThanPath"
+                },
+                {
+                    "$ref": "#/definitions/nestedNumericLessThanEqualsPath"
+                },
+                {
+                    "$ref": "#/definitions/nestedNumericGreaterThanEqualsPath"
+                },
+                {
+                    "$ref": "#/definitions/nestedBooleanEqualsPath"
+                },
+                {
+                    "$ref": "#/definitions/nestedTimestampEqualsPath"
+                },
+                {
+                    "$ref": "#/definitions/nestedTimestampLessThanPath"
+                },
+                {
+                    "$ref": "#/definitions/nestedTimestampGreaterThanPath"
+                },
+                {
+                    "$ref": "#/definitions/nestedTimestampLessThanEqualsPath"
+                },
+                {
+                    "$ref": "#/definitions/nestedTimestampGreaterThanEqualsPath"
+                },
+                {
+                    "$ref": "#/definitions/nestedIsNull"
+                },
+                {
+                    "$ref": "#/definitions/nestedIsPresent"
+                },
+                {
+                    "$ref": "#/definitions/nestedIsNumeric"
+                },
+                {
+                    "$ref": "#/definitions/nestedIsString"
+                },
+                {
+                    "$ref": "#/definitions/nestedIsBoolean"
+                },
+                {
+                    "$ref": "#/definitions/nestedIsTimestamp"
+                },
+                {
+                    "$ref": "#/definitions/nestedStringMatches"
+                }
+            ]
+        },
+        "nestedStringEquals": {
+            "type": "object",
+            "properties": {
+                "StringEquals": {
+                    "type": "string"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringEquals",
+                "Variable"
+            ]
+        },
+        "nestedStringLessThan": {
+            "type": "object",
+            "properties": {
+                "StringLessThan": {
+                    "type": "string"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringLessThan",
+                "Variable"
+            ]
+        },
+        "nestedStringGreaterThan": {
+            "type": "object",
+            "properties": {
+                "StringGreaterThan": {
+                    "type": "string"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringGreaterThan",
+                "Variable"
+            ]
+        },
+        "nestedStringLessThanEquals": {
+            "type": "object",
+            "properties": {
+                "StringLessThanEquals": {
+                    "type": "string"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringLessThanEquals",
+                "Variable"
+            ]
+        },
+        "nestedStringGreaterThanEquals": {
+            "type": "object",
+            "properties": {
+                "StringGreaterThanEquals": {
+                    "type": "string"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringGreaterThanEquals",
+                "Variable"
+            ]
+        },
+        "nestedNumericEquals": {
+            "type": "object",
+            "properties": {
+                "NumericEquals": {
+                    "type": "number"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericEquals",
+                "Variable"
+            ]
+        },
+        "nestedNumericLessThan": {
+            "type": "object",
+            "properties": {
+                "NumericLessThan": {
+                    "type": "number"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericLessThan",
+                "Variable"
+            ]
+        },
+        "nestedNumericGreaterThan": {
+            "type": "object",
+            "properties": {
+                "NumericGreaterThan": {
+                    "type": "number"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericGreaterThan",
+                "Variable"
+            ]
+        },
+        "nestedNumericLessThanEquals": {
+            "type": "object",
+            "properties": {
+                "NumericLessThanEquals": {
+                    "type": "number"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericLessThanEquals",
+                "Variable"
+            ]
+        },
+        "nestedNumericGreaterThanEquals": {
+            "type": "object",
+            "properties": {
+                "NumericGreaterThanEquals": {
+                    "type": "number"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericGreaterThanEquals",
+                "Variable"
+            ]
+        },
+        "nestedBooleanEquals": {
+            "type": "object",
+            "properties": {
+                "BooleanEquals": {
+                    "type": "boolean"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "BooleanEquals",
+                "Variable"
+            ]
+        },
+        "nestedTimestampEquals": {
+            "type": "object",
+            "properties": {
+                "TimestampEquals": {
+                    "$ref": "common.json#/definitions/timestamp"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampEquals",
+                "Variable"
+            ]
+        },
+        "nestedTimestampLessThan": {
+            "type": "object",
+            "properties": {
+                "TimestampLessThan": {
+                    "$ref": "common.json#/definitions/timestamp"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampLessThan",
+                "Variable"
+            ]
+        },
+        "nestedTimestampGreaterThan": {
+            "type": "object",
+            "properties": {
+                "TimestampGreaterThan": {
+                    "$ref": "common.json#/definitions/timestamp"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampGreaterThan",
+                "Variable"
+            ]
+        },
+        "nestedTimestampLessThanEquals": {
+            "type": "object",
+            "properties": {
+                "TimestampLessThanEquals": {
+                    "$ref": "common.json#/definitions/timestamp"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampLessThanEquals",
+                "Variable"
+            ]
+        },
+        "nestedTimestampGreaterThanEquals": {
+            "type": "object",
+            "properties": {
+                "TimestampGreaterThanEquals": {
+                    "$ref": "common.json#/definitions/timestamp"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampGreaterThanEquals",
+                "Variable"
+            ]
+        },
+        "nestedAnd": {
+            "type": "object",
+            "properties": {
+                "And": {
+                    "$ref": "#/definitions/lowerConditions"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "And"
+            ]
+        },
+        "nestedOr": {
+            "type": "object",
+            "properties": {
+                "Or": {
+                    "$ref": "#/definitions/lowerConditions"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "Or"
+            ]
+        },
+        "nestedNot": {
+            "type": "object",
+            "properties": {
+                "Not": {
+                    "$ref": "#/definitions/lowerCondition"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "Not"
+            ]
+        },
+
+
+
+
+        "nestedStringEqualsPath": {
+            "type": "object",
+            "properties": {
+                "StringEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringEqualsPath",
+                "Variable"
+            ]
+        },
+        "nestedStringLessThanPath": {
+            "type": "object",
+            "properties": {
+                "StringLessThanPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringLessThanPath",
+                "Variable"
+            ]
+        },
+        "nestedStringGreaterThanPath": {
+            "type": "object",
+            "properties": {
+                "StringGreaterThanPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringGreaterThanPath",
+                "Variable"
+            ]
+        },
+        "nestedStringLessThanEqualsPath": {
+            "type": "object",
+            "properties": {
+                "StringLessThanEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringLessThanEqualsPath",
+                "Variable"
+            ]
+        },
+        "nestedStringGreaterThanEqualsPath": {
+            "type": "object",
+            "properties": {
+                "StringGreaterThanEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringGreaterThanEqualsPath",
+                "Variable"
+            ]
+        },
+        "nestedNumericEqualsPath": {
+            "type": "object",
+            "properties": {
+                "NumericEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericEqualsPath",
+                "Variable"
+            ]
+        },
+        "nestedNumericLessThanPath": {
+            "type": "object",
+            "properties": {
+                "NumericLessThanPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericLessThanPath",
+                "Variable"
+            ]
+        },
+        "nestedNumericGreaterThanPath": {
+            "type": "object",
+            "properties": {
+                "NumericGreaterThanPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericGreaterThanPath",
+                "Variable"
+            ]
+        },
+        "nestedNumericLessThanEqualsPath": {
+            "type": "object",
+            "properties": {
+                "NumericLessThanEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericLessThanEqualsPath",
+                "Variable"
+            ]
+        },
+        "nestedNumericGreaterThanEqualsPath": {
+            "type": "object",
+            "properties": {
+                "NumericGreaterThanEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "#/definitions/variable"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "NumericGreaterThanEqualsPath",
+                "Variable"
+            ]
+        },
+        "nestedBooleanEqualsPath": {
+            "type": "object",
+            "properties": {
+                "BooleanEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "BooleanEqualsPath",
+                "Variable"
+            ]
+        },
+        "nestedTimestampEqualsPath": {
+            "type": "object",
+            "properties": {
+                "TimestampEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampEqualsPath",
+                "Variable"
+            ]
+        },
+        "nestedTimestampLessThanPath": {
+            "type": "object",
+            "properties": {
+                "TimestampLessThanPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampLessThanPath",
+                "Variable"
+            ]
+        },
+        "nestedTimestampGreaterThanPath": {
+            "type": "object",
+            "properties": {
+                "TimestampGreaterThanPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampGreaterThanPath",
+                "Variable"
+            ]
+        },
+        "nestedTimestampLessThanEqualsPath": {
+            "type": "object",
+            "properties": {
+                "TimestampLessThanEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampLessThanEqualsPath",
+                "Variable"
+            ]
+        },
+        "nestedTimestampGreaterThanEqualsPath": {
+            "type": "object",
+            "properties": {
+                "TimestampGreaterThanEqualsPath": {
+                    "$ref": "common.json#/definitions/path"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "TimestampGreaterThanEqualsPath",
+                "Variable"
+            ]
+        },
+        "nestedIsNull": {
+            "type": "object",
+            "properties": {
+                "IsNull": {
+                    "type": "boolean"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "IsNull",
+                "Variable"
+            ]
+        },
+        "nestedIsPresent": {
+            "type": "object",
+            "properties": {
+                "IsPresent": {
+                    "type": "boolean"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "IsPresent",
+                "Variable"
+            ]
+        },
+        "nestedIsNumeric": {
+            "type": "object",
+            "properties": {
+                "IsNumeric": {
+                    "type": "boolean"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "IsNumeric",
+                "Variable"
+            ]
+        },
+        "nestedIsString": {
+            "type": "object",
+            "properties": {
+                "IsString": {
+                    "type": "boolean"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "IsString",
+                "Variable"
+            ]
+        },
+        "nestedIsBoolean": {
+            "type": "object",
+            "properties": {
+                "IsBoolean": {
+                    "type": "boolean"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "IsBoolean",
+                "Variable"
+            ]
+        },
+        "nestedIsTimestamp": {
+            "type": "object",
+            "properties": {
+                "IsTimestamp": {
+                    "type": "boolean"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "IsTimestamp",
+                "Variable"
+            ]
+        },
+        "nestedStringMatches": {
+            "type": "object",
+            "properties": {
+                "StringMatches": {
+                    "type": "string"
+                },
+                "Variable": {
+                    "$ref": "common.json#/definitions/referencePath"
+                },
+                "Comment": {
+                    "$ref": "common.json#/definitions/comment"
+                }
+            },
+            "required": [
+                "StringMatches",
+                "Variable"
+            ]
+        }
+    }
+}

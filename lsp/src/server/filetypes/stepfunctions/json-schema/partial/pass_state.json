@@ -1,0 +1,31 @@
+{
+    "definitions": {
+        "passState": {
+            "description": "A Pass state passes its input to its output, without performing work. Pass states are useful when constructing and debugging state machines.",
+            "allOf": [
+                {
+                    "$ref": "common.json#/definitions/basics"
+                },
+                {
+                    "$ref": "common.json#/definitions/inputOutputResult"
+                },
+                {
+                    "$ref": "common.json#/definitions/endOrTransition"
+                },
+                {
+                    "properties": {
+                        "Type": {
+                            "enum": [
+                                "Pass"
+                            ]
+                        },
+                        "Parameters": {
+                            "$ref": "common.json#/definitions/parameters",
+                            "description": "Used to pass information to the API actions of connected resources. The Parameters can use a mix of static JSON, JsonPath and intrinsic functions."
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
