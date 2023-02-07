@@ -20,14 +20,17 @@
     "main": "./out/src/server/server.js",
     "scripts": {
         "vscode:prepublish": "npm run compile",
-        "compile": "tsc -b",
-        "watch": "tsc -b -w",
+        "compile": "npm run copyFiles && tsc -b",
+        "watch": "npm run copyFiles && tsc -b -w",
         "lint": "eslint src --ext .ts,.tsx",
+        "copyFiles": "ts-node ./scripts/copyFiles.ts",
         "test": "mocha out/test/unit/**/*.js",
         "testInt": "mocha out/test/integration/**/*.js"
     },
     "dependencies": {
+        "js-yaml": "^4.1.0",
         "request-light": "^0.6.0",
+        "ts-node": "^10.9.1",
         "vscode-languageserver": "^7.0.0",
         "vscode-languageserver-textdocument": "^1.0.4",
         "vscode-uri": "^3.0.7",
@@ -35,6 +38,8 @@
     },
     "devDependencies": {
         "@types/chai": "^4.3.4",
+        "@types/fs-extra": "^11.0.1",
+        "@types/js-yaml": "^4.0.5",
         "@types/mocha": "^9.1.0",
         "@types/node": "^16.11.7",
         "@types/sinon": "^10.0.13",
@@ -45,6 +50,7 @@
         "create-temp-directory": "^2.2.0",
         "eslint": "^8.26.0",
         "eslint-plugin-unused-imports": "^2.0.0",
+        "fs-extra": "^11.1.0",
         "mocha": "^10.2.0",
         "sinon": "^15.0.1",
         "ts-sinon": "^2.0.2",
