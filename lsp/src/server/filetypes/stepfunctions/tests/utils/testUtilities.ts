@@ -12,7 +12,7 @@ import { FILE_EXTENSIONS, LANGUAGE_IDS } from '../../constants/constants'
 export function toDocument(text: string, isYaml?: boolean): { textDoc: TextDocument; jsonDoc: JSONDocument } {
     const textDoc = TextDocument.create(
         `foo://bar/file.${isYaml ? FILE_EXTENSIONS.YAML : FILE_EXTENSIONS.JSON}`,
-        isYaml ? LANGUAGE_IDS.YAML : LANGUAGE_IDS.JSON,
+        isYaml ? LANGUAGE_IDS.ASL_YAML : LANGUAGE_IDS.ASL_JSON,
         0,
         text
     )

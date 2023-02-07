@@ -4,11 +4,21 @@
  */
 
 export const LANGUAGE_IDS = {
-    YAML: 'asl-yaml',
-    JSON: 'asl'
+    ASL_YAML: 'asl-yaml',
+    ASL_JSON: 'asl',
+    YAML: 'yaml',
+    JSON: 'json'
 } as const
 
 export const FILE_EXTENSIONS = {
     YAML: 'asl.yaml',
     JSON: 'asl'
 } as const
+
+export function isYAML(languageId: string) {
+    return languageId === LANGUAGE_IDS.ASL_YAML || languageId === LANGUAGE_IDS.YAML
+}
+
+export function isJSON(languageId: string) {
+    return languageId === LANGUAGE_IDS.ASL_JSON || languageId === LANGUAGE_IDS.JSON
+}
