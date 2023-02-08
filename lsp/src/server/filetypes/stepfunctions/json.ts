@@ -1,9 +1,10 @@
 import { resolve } from 'path'
-import { HoverParams, TextDocumentPositionParams, URI } from 'vscode-languageserver'
+import { DiagnosticSeverity, HoverParams, TextDocumentPositionParams, URI } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import { BackendService, LanguageService } from '../../service'
 import completeAsl from './completion/completeAsl'
-import { getDiagnostics } from './validation/diagnostics'
+import { LANGUAGE_IDS } from './constants/constants'
+import { getASLDiagnostics } from './validation/diagnostics'
 
 export function service(uri: URI): LanguageService {
     BackendService.getInstance().json.configure({
@@ -27,9 +28,22 @@ export function service(uri: URI): LanguageService {
 
             return completeAsl(document, textDocumentPositionParams.position, parsedDocument, jsonCompletions)
         },
-        diagnostic: (document: TextDocument) => {
+        diagnostic: async (document: TextDocument) => {
             const jsonDocument = BackendService.getInstance().json.parseJSONDocument(document)
-            return getDiagnostics(document, jsonDocument)
+
+            // vscode-json-languageservice will always set severity as warning for JSONSchema validation
+            // there is no option to configure this behavior so severity needs to be overwritten as error
+            const diagnostics = await (
+                await BackendService.getInstance().json.doValidation(document, jsonDocument)
+            ).map(diagnostic => {
+                // Non JSON Schema validation will have source: 'asl'
+                if (diagnostic.source !== LANGUAGE_IDS.ASL_JSON) {
+                    return { ...diagnostic, severity: DiagnosticSeverity.Error }
+                }
+                return diagnostic
+            })
+
+            return diagnostics.concat(getASLDiagnostics(document, jsonDocument))
         },
         hover: (document: TextDocument, params: HoverParams) => {
             const jsonDocument = BackendService.getInstance().json.parseJSONDocument(document)

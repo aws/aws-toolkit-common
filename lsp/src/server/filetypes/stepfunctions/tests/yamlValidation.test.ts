@@ -4,8 +4,12 @@
  */
 
 import * as assert from 'assert'
-import { MESSAGES, YAML_PARSER_MESSAGES } from '../constants/diagnosticStrings'
 
+import { Diagnostic, DiagnosticSeverity, Position, Range } from 'vscode-languageserver'
+import { forceServiceConnection } from '../../../../../test/utils/service'
+import { MESSAGES, YAML_PARSER_MESSAGES } from '../constants/diagnosticStrings'
+import { service as yamlService } from '../yaml'
+import { textDocumentVersionGenerator, toDocument } from './utils/testUtilities'
 import {
     documentChoiceDefaultBeforeChoice,
     documentChoiceInvalidDefault,
@@ -54,31 +58,34 @@ import {
     documentValidResultSelectorJsonPath
 } from './yasl-strings/validationStrings'
 
-import { Diagnostic, DiagnosticSeverity, Position, Range } from 'vscode-languageserver'
-import { service as yamlService } from '../yaml'
-import { toDocument } from './utils/testUtilities'
-
 const JSON_SCHEMA_MULTIPLE_SCHEMAS_MSG = 'Matches multiple schemas when only one must validate.'
 
 export interface TestValidationOptions {
-    json: string
+    yaml: string
     diagnostics: {
         message: string
         start: [number, number]
         end: [number, number]
+        code?: number
+        source?: string
     }[]
     filterMessages?: string[]
 }
 
-async function getValidations(json: string) {
-    const { textDoc } = toDocument(json, true)
-    return await yamlService().diagnostic(textDoc)
+const generator = textDocumentVersionGenerator()
+
+async function getValidations(yaml: string): Promise<Diagnostic[]> {
+    // the problem is that textDoc returns the same version every time. So once it's used the version
+    // never updates so the internal cache doesn't change
+    const { textDoc } = toDocument(yaml, true, generator.next().value)
+    forceServiceConnection()
+    return yamlService(textDoc.uri).diagnostic(textDoc)
 }
 
 async function testValidations(options: TestValidationOptions) {
-    const { json, diagnostics, filterMessages } = options
+    const { yaml, diagnostics, filterMessages } = options
 
-    let res = await getValidations(json)
+    let res = await getValidations(yaml)
     res = res.filter((diagnostic: Diagnostic) => {
         if (filterMessages && filterMessages.find(message => message === diagnostic.message)) {
             return false
@@ -93,10 +100,13 @@ async function testValidations(options: TestValidationOptions) {
         const leftPos = Position.create(...diagnostics[index].start)
         const rightPos = Position.create(...diagnostics[index].end)
 
+        const currDiag = diagnostics[index]
         const diagnostic = Diagnostic.create(
             Range.create(leftPos, rightPos),
-            diagnostics[index].message,
-            DiagnosticSeverity.Error
+            currDiag.message,
+            DiagnosticSeverity.Error,
+            currDiag.code,
+            currDiag.source
         )
 
         assert.deepStrictEqual(diagnostic, item)
@@ -117,27 +127,21 @@ suite('ASL YAML context-aware validation', () => {
             const message = YAML_PARSER_MESSAGES.DUPLICATE_KEY
 
             await testValidations({
-                json: documentDuplicateKey,
+                yaml: documentDuplicateKey,
                 diagnostics: [
                     {
                         message,
                         start: [3, 2],
-                        end: [3, 9]
-                    },
-                    {
-                        message,
-                        start: [1, 2],
-                        end: [1, 9]
+                        end: [3, 17],
+                        code: 0,
+                        source: 'YAML'
                     },
                     {
                         message,
                         start: [12, 4],
-                        end: [12, 9]
-                    },
-                    {
-                        message,
-                        start: [9, 4],
-                        end: [9, 9]
+                        end: [12, 11],
+                        code: 0,
+                        source: 'YAML'
                     }
                 ]
             })
@@ -147,7 +151,7 @@ suite('ASL YAML context-aware validation', () => {
     suite('Default of Choice state', () => {
         test('Shows diagnostic for invalid state name', async () => {
             await testValidations({
-                json: documentChoiceInvalidDefault,
+                yaml: documentChoiceInvalidDefault,
                 diagnostics: [
                     {
                         message: MESSAGES.INVALID_DEFAULT,
@@ -165,21 +169,21 @@ suite('ASL YAML context-aware validation', () => {
 
         test("Doesn't show Diagnostic for valid state name", async () => {
             await testValidations({
-                json: documentChoiceValidDefault,
+                yaml: documentChoiceValidDefault,
                 diagnostics: []
             })
         })
 
         test("Doesn't show Diagnostic when default property is absent", async () => {
             await testValidations({
-                json: documentChoiceNoDefault,
+                yaml: documentChoiceNoDefault,
                 diagnostics: []
             })
         })
 
         test("Doesn't show Diagnostic for valid state name when default state is declared before Choice state", async () => {
             await testValidations({
-                json: documentChoiceDefaultBeforeChoice,
+                yaml: documentChoiceDefaultBeforeChoice,
                 diagnostics: []
             })
         })
@@ -188,7 +192,7 @@ suite('ASL YAML context-aware validation', () => {
     suite('StartAt', () => {
         test("Shows Diagnostic for state name that doesn't exist", async () => {
             await testValidations({
-                json: documentStartAtInvalid,
+                yaml: documentStartAtInvalid,
                 diagnostics: [
                     {
                         message: MESSAGES.INVALID_START_AT,
@@ -202,14 +206,14 @@ suite('ASL YAML context-aware validation', () => {
 
         test("Doesn't show Diagnostic for valid state name", async () => {
             await testValidations({
-                json: documentStartAtValid,
+                yaml: documentStartAtValid,
                 diagnostics: []
             })
         })
 
         test("Shows Diagnostic for state name that doesn't exist in nested StartAt property", async () => {
             await testValidations({
-                json: documentStartAtNestedInvalid,
+                yaml: documentStartAtNestedInvalid,
                 diagnostics: [
                     {
                         message: MESSAGES.INVALID_START_AT,
@@ -230,7 +234,7 @@ suite('ASL YAML context-aware validation', () => {
     suite('Next', () => {
         test("Shows Diagnostic for state name that doesn't exist", async () => {
             await testValidations({
-                json: documentInvalidNext,
+                yaml: documentInvalidNext,
                 diagnostics: [
                     {
                         message: MESSAGES.INVALID_NEXT,
@@ -244,7 +248,7 @@ suite('ASL YAML context-aware validation', () => {
 
         test("Doesn't show Diagnostic for valid state name", async () => {
             await testValidations({
-                json: documentValidNext,
+                yaml: documentValidNext,
                 diagnostics: [],
                 filterMessages: [MESSAGES.UNREACHABLE_STATE, MESSAGES.NO_TERMINAL_STATE]
             })
@@ -252,7 +256,7 @@ suite('ASL YAML context-aware validation', () => {
 
         test("Shows Diagnostic for state name that doesn't exist in nested Next property", async () => {
             await testValidations({
-                json: documentInvalidNextNested,
+                yaml: documentInvalidNextNested,
                 diagnostics: [
                     {
                         message: MESSAGES.INVALID_NEXT,
@@ -271,7 +275,7 @@ suite('ASL YAML context-aware validation', () => {
 
         test('Validates next property of the Choice state', async () => {
             await testValidations({
-                json: documentChoiceInvalidNext,
+                yaml: documentChoiceInvalidNext,
                 diagnostics: [
                     {
                         message: MESSAGES.INVALID_NEXT,
@@ -287,7 +291,7 @@ suite('ASL YAML context-aware validation', () => {
     suite('Unreachable State', () => {
         test('Shows diagnostic for an unreachable state', async () => {
             await testValidations({
-                json: documentUnreachableState,
+                yaml: documentUnreachableState,
                 diagnostics: [
                     {
                         message: MESSAGES.UNREACHABLE_STATE,
@@ -311,7 +315,7 @@ suite('ASL YAML context-aware validation', () => {
 
         test('Shows diagnostic for an unreachable state in nested list of states', async () => {
             await testValidations({
-                json: documentNestedUnreachableState,
+                yaml: documentNestedUnreachableState,
                 diagnostics: [
                     {
                         message: MESSAGES.UNREACHABLE_STATE,
@@ -332,7 +336,7 @@ suite('ASL YAML context-aware validation', () => {
     suite('Terminal State', () => {
         test('Shows diagnostic for lack of terminal state', async () => {
             await testValidations({
-                json: documentNoTerminalState,
+                yaml: documentNoTerminalState,
                 diagnostics: [
                     {
                         message: MESSAGES.NO_TERMINAL_STATE,
@@ -345,7 +349,7 @@ suite('ASL YAML context-aware validation', () => {
 
         test('Shows diagnostic for lack of terminal state in nested list of states', async () => {
             await testValidations({
-                json: documentNestedNoTerminalState,
+                yaml: documentNestedNoTerminalState,
                 diagnostics: [
                     {
                         message: MESSAGES.NO_TERMINAL_STATE,
@@ -364,14 +368,14 @@ suite('ASL YAML context-aware validation', () => {
 
         test('Accepts "Succeed" and "Fail" state as terminal states', async () => {
             await testValidations({
-                json: documentSucceedFailTerminalState,
+                yaml: documentSucceedFailTerminalState,
                 diagnostics: []
             })
         })
 
         test('No terminal state error when state referenced from next property of Choice state within Parallel state', async () => {
             await testValidations({
-                json: documentChoiceValidNext,
+                yaml: documentChoiceValidNext,
                 diagnostics: []
             })
         })
@@ -380,28 +384,28 @@ suite('ASL YAML context-aware validation', () => {
     suite('Catch property of "Parallel" and "Task" state', async () => {
         test('Does not show diagnostic on valid next property within Catch block of Task state', async () => {
             await testValidations({
-                json: documentTaskCatchTemplate,
+                yaml: documentTaskCatchTemplate,
                 diagnostics: []
             })
         })
 
         test('Does not show diagnostic on valid next property within Catch block of Parallel state', async () => {
             await testValidations({
-                json: documentParallelCatchTemplate,
+                yaml: documentParallelCatchTemplate,
                 diagnostics: []
             })
         })
 
         test('Does not show diagnostic on valid next property within Catch block of Map state', async () => {
             await testValidations({
-                json: documentMapCatchTemplate,
+                yaml: documentMapCatchTemplate,
                 diagnostics: []
             })
         })
 
         test('Shows diagnostics on invalid next property within Catch block of Task state', async () => {
             await testValidations({
-                json: documentTaskCatchTemplateInvalidNext,
+                yaml: documentTaskCatchTemplateInvalidNext,
                 diagnostics: [
                     {
                         message: MESSAGES.INVALID_NEXT,
@@ -420,7 +424,7 @@ suite('ASL YAML context-aware validation', () => {
 
         test('Shows diagnostics on invalid next property within Catch block of Parallel', async () => {
             await testValidations({
-                json: documentParallelCatchTemplateInvalidNext,
+                yaml: documentParallelCatchTemplateInvalidNext,
                 diagnostics: [
                     {
                         message: MESSAGES.INVALID_NEXT,
@@ -434,7 +438,7 @@ suite('ASL YAML context-aware validation', () => {
 
         test('Shows diagnostics on invalid next property within Catch block of Map', async () => {
             await testValidations({
-                json: documentMapCatchTemplateInvalidNext,
+                yaml: documentMapCatchTemplateInvalidNext,
                 diagnostics: [
                     {
                         message: MESSAGES.INVALID_NEXT,
@@ -455,7 +459,7 @@ suite('ASL YAML context-aware validation', () => {
     suite('Additional properties that are not valid', async () => {
         test('Shows diagnostics for additional invalid properties of a given state', async () => {
             await testValidations({
-                json: documentInvalidPropertiesState,
+                yaml: documentInvalidPropertiesState,
                 diagnostics: [
                     {
                         message: MESSAGES.INVALID_PROPERTY_NAME,
@@ -474,7 +478,7 @@ suite('ASL YAML context-aware validation', () => {
 
         test('Shows diagnostics for additional invalid properties within Catch block', async () => {
             await testValidations({
-                json: documentInvalidPropertiesCatch,
+                yaml: documentInvalidPropertiesCatch,
                 diagnostics: [
                     {
                         message: MESSAGES.INVALID_PROPERTY_NAME,
@@ -498,7 +502,7 @@ suite('ASL YAML context-aware validation', () => {
 
         test('Shows diagnostics for additional invalid properties within Choice state', async () => {
             await testValidations({
-                json: documentInvalidPropertiesChoices,
+                yaml: documentInvalidPropertiesChoices,
                 diagnostics: [
                     {
                         message: MESSAGES.INVALID_PROPERTY_NAME,
@@ -547,7 +551,7 @@ suite('ASL YAML context-aware validation', () => {
 
         test('Shows diagnostics for additional invalid properties within root of state machine', async () => {
             await testValidations({
-                json: documentInvalidPropertiesRoot,
+                yaml: documentInvalidPropertiesRoot,
                 diagnostics: [
                     {
                         message: MESSAGES.INVALID_PROPERTY_NAME,
@@ -560,7 +564,7 @@ suite('ASL YAML context-aware validation', () => {
 
         test('Shows diagnostics for additional invalid properties within root of nested state machine', async () => {
             await testValidations({
-                json: documentInvalidPropertiesRootNested,
+                yaml: documentInvalidPropertiesRootNested,
                 diagnostics: [
                     {
                         message: MESSAGES.INVALID_PROPERTY_NAME,
@@ -575,14 +579,14 @@ suite('ASL YAML context-aware validation', () => {
     suite('Test validation of Resource arn for Task State', async () => {
         test('Does not show diagnostic on invalid arn', async () => {
             await testValidations({
-                json: documentTaskInvalidArn,
+                yaml: documentTaskInvalidArn,
                 diagnostics: []
             })
         })
 
         test('Does not show diagnostic on valid variable substitution', async () => {
             await testValidations({
-                json: documentTaskValidVariableSubstitution,
+                yaml: documentTaskValidVariableSubstitution,
                 diagnostics: []
             })
         })
@@ -591,56 +595,56 @@ suite('ASL YAML context-aware validation', () => {
     suite('Test validation of Properties field', async () => {
         test('Does not show diagnostics for valid JSON paths', async () => {
             await testValidations({
-                json: documentValidParametersJsonPath,
+                yaml: documentValidParametersJsonPath,
                 diagnostics: []
             })
         })
 
         test('Does not show diagnostics for valid Intrinsic Functions', async () => {
             await testValidations({
-                json: documentValidParametersIntrinsicFunction,
+                yaml: documentValidParametersIntrinsicFunction,
                 diagnostics: []
             })
         })
 
         test('Does not show diagnostics for Parameters array', async () => {
             await testValidations({
-                json: documentParametersArray,
+                yaml: documentParametersArray,
                 diagnostics: []
             })
         })
 
         test('Does not show diagnostics for Parameters boolean', async () => {
             await testValidations({
-                json: documentParametersBoolean,
+                yaml: documentParametersBoolean,
                 diagnostics: []
             })
         })
 
         test('Does not show diagnostics for Parameters null', async () => {
             await testValidations({
-                json: documentParametersNull,
+                yaml: documentParametersNull,
                 diagnostics: []
             })
         })
 
         test('Does not show diagnostics for Parameters number', async () => {
             await testValidations({
-                json: documentParametersNumber,
+                yaml: documentParametersNumber,
                 diagnostics: []
             })
         })
 
         test('Does not show diagnostics for Parameters string', async () => {
             await testValidations({
-                json: documentParametersString,
+                yaml: documentParametersString,
                 diagnostics: []
             })
         })
 
         test('Shows diagnostics for invalid JSON paths', async () => {
             await testValidations({
-                json: documentInvalidParametersJsonPath,
+                yaml: documentInvalidParametersJsonPath,
                 diagnostics: [
                     {
                         message: MESSAGES.INVALID_JSON_PATH_OR_INTRINSIC,
@@ -668,7 +672,7 @@ suite('ASL YAML context-aware validation', () => {
 
         test('Shows diagnostics for invalid Intrinsic Functions', async () => {
             await testValidations({
-                json: documentInvalidParametersIntrinsicFunction,
+                yaml: documentInvalidParametersIntrinsicFunction,
                 diagnostics: [
                     {
                         message: MESSAGES.INVALID_JSON_PATH_OR_INTRINSIC,
@@ -708,7 +712,7 @@ suite('ASL YAML context-aware validation', () => {
     suite('ASL Improvements', async () => {
         test('Does not show diagnostics for valid document containing ASL Improvements', async () => {
             await testValidations({
-                json: documentValidAslImprovements,
+                yaml: documentValidAslImprovements,
                 diagnostics: []
             })
         })
@@ -716,21 +720,21 @@ suite('ASL YAML context-aware validation', () => {
         suite('Test validation of ResultSelector field', async () => {
             test('Does not show diagnostics for valid JSON paths', async () => {
                 await testValidations({
-                    json: documentValidResultSelectorJsonPath,
+                    yaml: documentValidResultSelectorJsonPath,
                     diagnostics: []
                 })
             })
 
             test('Does not show diagnostics for valid Intrinsic Functions', async () => {
                 await testValidations({
-                    json: documentValidResultSelectorIntrinsicFunction,
+                    yaml: documentValidResultSelectorIntrinsicFunction,
                     diagnostics: []
                 })
             })
 
             test('Shows diagnostics for invalid JSON paths', async () => {
                 await testValidations({
-                    json: documentInvalidResultSelectorJsonPath,
+                    yaml: documentInvalidResultSelectorJsonPath,
                     diagnostics: [
                         {
                             message: MESSAGES.INVALID_JSON_PATH_OR_INTRINSIC,
@@ -758,7 +762,7 @@ suite('ASL YAML context-aware validation', () => {
 
             test('Shows diagnostics for invalid Intrinsic Functions', async () => {
                 await testValidations({
-                    json: documentInvalidResultSelectorIntrinsicFunction,
+                    yaml: documentInvalidResultSelectorIntrinsicFunction,
                     diagnostics: [
                         {
                             message: MESSAGES.INVALID_JSON_PATH_OR_INTRINSIC,

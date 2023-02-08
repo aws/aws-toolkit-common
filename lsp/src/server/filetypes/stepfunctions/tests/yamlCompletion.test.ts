@@ -10,7 +10,7 @@ import { TextEdit } from 'vscode-languageserver-textdocument'
 import { forceServiceConnection } from '../../../../../test/utils/service'
 import { stateSnippets } from '../completion/completeSnippets'
 import { service as yamlService } from '../yaml'
-import { toDocument } from './utils/testUtilities'
+import { textDocumentVersionGenerator, toDocument } from './utils/testUtilities'
 
 const emptyDocument = ''
 
@@ -19,9 +19,7 @@ St
 `
 
 const documentWithStates = `
-
 StartAt:
-
 States:
 \u0020\u0020
 `
@@ -298,7 +296,8 @@ States:
     End: true
 `
 
-const topLevelLabels = ['Version', 'Comment', 'TimeoutSeconds', 'StartAt', 'States']
+const topLevelLabels = ['Version', 'Comment', 'TimeoutSeconds', 'StartAt', 'object', 'States']
+const topLevelInsertText = ['Version', 'Comment', 'TimeoutSeconds', 'StartAt', 'StartAt', 'States']
 const stateSnippetLabels = [
     'Pass State',
     'Lambda Task State',
@@ -341,12 +340,15 @@ interface TestCompletionOptions {
 
 interface TestPropertyCompletionOptions {
     labels: string[]
+    insertText?: string[] // If insertText isn't defined it uses labels
     yaml: string
     position: [number, number]
 }
 
+const generator = textDocumentVersionGenerator()
+
 async function getCompletions(yaml: string, position: [number, number]): Promise<CompletionList> {
-    const { textDoc } = toDocument(yaml, true)
+    const { textDoc } = toDocument(yaml, true, generator.next().value)
     const pos = Position.create(...position)
 
     const params = {
@@ -354,7 +356,7 @@ async function getCompletions(yaml: string, position: [number, number]): Promise
         position: pos
     } as TextDocumentPositionParams
     forceServiceConnection()
-    return (await yamlService().completion(textDoc, params)) as CompletionList
+    return yamlService(textDoc.uri).completion(textDoc, params) as Promise<CompletionList>
 }
 
 async function testCompletions(options: TestCompletionOptions) {
@@ -386,7 +388,7 @@ async function testCompletions(options: TestCompletionOptions) {
 
 // Validate completions that include a full property (key-val pair)
 async function testPropertyCompletions(options: TestPropertyCompletionOptions) {
-    const { labels, yaml, position } = options
+    const { labels, insertText, yaml, position } = options
 
     const res = await getCompletions(yaml, position)
 
@@ -397,7 +399,7 @@ async function testPropertyCompletions(options: TestPropertyCompletionOptions) {
 
     // Test property keys match labels.
     const itemInsertTextKeys = res?.items.map(item => item.insertText?.split(':')[0])
-    assert.deepEqual(itemInsertTextKeys, labels)
+    assert.deepEqual(itemInsertTextKeys, insertText ? insertText : labels)
 
     // Test textEdit newText matches the insertText
     const itemInsertTexts = res?.items.map(item => item.insertText)
@@ -428,7 +430,7 @@ export async function getSuggestedSnippets(options: TestScenario) {
         position: pos
     } as TextDocumentPositionParams
     forceServiceConnection()
-    const res = (await yamlService().completion(textDoc, params)) as CompletionList
+    const res = (await yamlService(textDoc.uri).completion(textDoc, params)) as CompletionList
     const suggestedSnippetLabels = res?.items
         .filter(item => item.kind === CompletionItemKind.Snippet)
         .map(item => item.label)
@@ -441,6 +443,7 @@ suite('ASL YAML context-aware completion', () => {
         test('Empty document', async () => {
             await testPropertyCompletions({
                 labels: topLevelLabels,
+                insertText: topLevelInsertText,
                 yaml: emptyDocument,
                 position: [0, 0]
             })
@@ -449,6 +452,7 @@ suite('ASL YAML context-aware completion', () => {
         test('Partially defined property, cursor in front of first letter', async () => {
             await testPropertyCompletions({
                 labels: topLevelLabels,
+                insertText: topLevelInsertText,
                 yaml: documentWithPartialTopLevel,
                 position: [1, 0]
             })
@@ -457,6 +461,7 @@ suite('ASL YAML context-aware completion', () => {
         test('Partially defined property, cursor in middle', async () => {
             await testPropertyCompletions({
                 labels: topLevelLabels,
+                insertText: topLevelInsertText,
                 yaml: documentWithPartialTopLevel,
                 position: [1, 1]
             })
@@ -465,6 +470,7 @@ suite('ASL YAML context-aware completion', () => {
         test('Partially defined property, cursor after final letter', async () => {
             await testPropertyCompletions({
                 labels: topLevelLabels,
+                insertText: topLevelInsertText,
                 yaml: documentWithPartialTopLevel,
                 position: [1, 2]
             })
@@ -474,7 +480,7 @@ suite('ASL YAML context-aware completion', () => {
             const labels = stateSnippetLabels
             const yaml = documentWithStates
 
-            const res = await getCompletions(yaml, [5, 2])
+            const res = await getCompletions(yaml, [3, 2])
 
             assert.strictEqual(res?.items.length, labels.length)
 
@@ -710,7 +716,7 @@ suite('ASL YAML context-aware completion', () => {
                     position: pos
                 } as TextDocumentPositionParams
                 forceServiceConnection()
-                const res = (await yamlService().completion(textDoc, params)) as CompletionList
+                const res = (await yamlService(textDoc.uri).completion(textDoc, params)) as CompletionList
 
                 assert.ok(res?.items.find(item => item.insertText === passSnippetYaml))
             })

@@ -17,5 +17,5 @@ export const MESSAGES = {
 } as const
 
 export const YAML_PARSER_MESSAGES = {
-    DUPLICATE_KEY: 'duplicate key'
+    DUPLICATE_KEY: 'Map keys must be unique'
 } as const
