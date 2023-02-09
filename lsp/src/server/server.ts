@@ -15,7 +15,10 @@ import {
 
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import { activate as BuildspecActivation } from './filetypes/buildspec/activation'
-import { activateYAML as StepfunctionsYAMLActivation } from './filetypes/stepfunctions/activation'
+import {
+    activateJSON as StepfunctionsJsonActivation,
+    activateYAML as StepfunctionsYAMLActivation
+} from './filetypes/stepfunctions/activation'
 import { Registry } from './registry'
 import { LanguageServerCacheDir } from './utils/extensionConfigDir'
 
@@ -28,6 +31,7 @@ const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument)
 
 const fileRegistry = Registry.getInstance()
 fileRegistry.addRegistryItem(BuildspecActivation())
+fileRegistry.addRegistryItem(StepfunctionsJsonActivation())
 fileRegistry.addRegistryItem(StepfunctionsYAMLActivation())
 
 // Setup the local directory that will hold extension
