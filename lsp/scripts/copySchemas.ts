@@ -50,7 +50,7 @@ async function copy(task: CopyTask): Promise<void> {
     try {
         await Promise.all(tasks.map(copy))
     } catch (error) {
-        console.error('`copyFiles.ts` failed')
+        console.error('`copySchemas.ts` failed')
         console.error(error)
         process.exit(1)
     }

@@ -20,10 +20,10 @@
     "main": "./out/src/server/server.js",
     "scripts": {
         "vscode:prepublish": "npm run compile",
-        "compile": "npm run copyFiles && tsc -b",
-        "watch": "npm run copyFiles && tsc -b -w",
+        "compile": "npm run copySchemas && tsc -b",
+        "watch": "npm run copySchemas && tsc -b -w",
         "lint": "eslint src --ext .ts,.tsx",
-        "copyFiles": "ts-node ./scripts/copyFiles.ts",
+        "copySchemas": "ts-node ./scripts/copySchemas.ts",
         "test": "mocha out/test/unit/**/*.js",
         "testInt": "mocha out/test/integration/**/*.js"
     },
