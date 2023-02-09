@@ -14,9 +14,9 @@ import {
 } from 'vscode-languageserver/node'
 
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { Registry } from './registry'
-import { activate as BuildspecActivation } from './filetypes/buildspec/activation'
-import { LanguageServerCacheDir } from './utils/extensionConfigDir'
+import { activate as BuildspecActivation } from '../service/filetypes/buildspec/activation'
+import { Registry } from '../service/registry'
+import { LanguageServerCacheDir } from '../utils/configurationDirectory'
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.

@@ -3,10 +3,10 @@ import { createHash } from 'crypto'
 import * as fs from 'fs'
 import * as path from 'path'
 import { URI } from 'vscode-uri'
+import { LanguageServerCacheDir } from '../configurationDirectory'
 import { Time } from '../datetime'
-import { LanguageServerCacheDir } from '../extensionConfigDir'
 import { HttpRequestHeaders, HttpResponse } from '../http/request'
-import { HttpUriContentDownloader } from './download'
+import { HttpUriContentDownloader } from './http'
 
 /** Represents the `metadata` file structure */
 interface UriCacheMetadata {

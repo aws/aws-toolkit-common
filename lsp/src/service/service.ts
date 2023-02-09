@@ -16,7 +16,7 @@ import {
     getLanguageService as getYamlLanguageService, LanguageService as YamlLanguageService
 } from 'yaml-language-server'
 
-import { UriCacheManager } from './utils/uri/cache'
+import { UriCacheManager } from '../utils/uri/cache'
 
 export interface LanguageService {
     completion: (

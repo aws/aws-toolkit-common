@@ -2,8 +2,8 @@ import { assert } from 'chai'
 import { createStubInstance, SinonStubbedInstance } from 'sinon'
 import { stubInterface } from 'ts-sinon'
 import { URI } from 'vscode-uri'
-import { HttpRequester, HttpRequestHeaders, HttpResponse } from '../../../../../src/server/utils/http/request'
-import { HttpUriContentDownloader } from '../../../../../src/server/utils/uri/download'
+import { HttpRequester, HttpRequestHeaders, HttpResponse } from '../../../../src/utils/http/request'
+import { HttpUriContentDownloader } from '../../../../src/utils/uri/http'
 
 describe('Test class HttpUriContentDownloader', async () => {
     describe('Test sendRequest()', async () => {

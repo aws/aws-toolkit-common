@@ -3,10 +3,10 @@ import { createTempDirectorySync, ITempDirectorySync } from 'create-temp-directo
 import { SinonStubbedInstance, stub } from 'sinon'
 import { } from 'ts-sinon'
 import { URI } from 'vscode-uri'
-import { Time } from '../../../../../src/server/utils/datetime'
-import { HttpRequester } from '../../../../../src/server/utils/http/request'
-import { UriCacheManager } from '../../../../../src/server/utils/uri/cache'
-import { HttpUriContentDownloader } from '../../../../../src/server/utils/uri/download'
+import { Time } from '../../../../src/utils/datetime'
+import { HttpRequester } from '../../../../src/utils/http/request'
+import { UriCacheManager } from '../../../../src/utils/uri/cache'
+import { HttpUriContentDownloader } from '../../../../src/utils/uri/http'
 
 describe(`Test ${UriCacheManager.name}`, async () => {
     describe(`Test getContent()`, async () => {
