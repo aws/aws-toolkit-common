@@ -15,6 +15,7 @@ import {
 
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import { activate as BuildspecActivation } from './filetypes/buildspec/activation'
+import { activateJSON as SSMJSONActivation, activateYAML as SSMYAMLActivation } from './filetypes/ssm/activation'
 import {
     activateJSON as StepfunctionsJsonActivation,
     activateYAML as StepfunctionsYAMLActivation
@@ -33,6 +34,8 @@ const fileRegistry = Registry.getInstance()
 fileRegistry.addRegistryItem(BuildspecActivation())
 fileRegistry.addRegistryItem(StepfunctionsJsonActivation())
 fileRegistry.addRegistryItem(StepfunctionsYAMLActivation())
+fileRegistry.addRegistryItem(SSMJSONActivation())
+fileRegistry.addRegistryItem(SSMYAMLActivation())
 
 // Setup the local directory that will hold extension
 // related resources.

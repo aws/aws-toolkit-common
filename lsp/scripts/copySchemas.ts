@@ -22,6 +22,9 @@ interface CopyTask {
 const tasks: CopyTask[] = [
     {
         target: path.join('src', 'server', 'filetypes', 'stepfunctions', 'json-schema', 'bundled.json')
+    },
+    {
+        target: path.join('src', 'server', 'filetypes', 'ssm', 'schema', 'ssmSchema.json')
     }
 ]
 

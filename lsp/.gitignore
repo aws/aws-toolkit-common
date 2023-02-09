@@ -2,3 +2,4 @@ dist/
 node_modules/
 **/node_modules/
 out/
+src/server/filetypes/ssm/schema/ssmSchema.json
