@@ -27,6 +27,7 @@
         "testInt": "mocha out/test/integration/**/*.js"
     },
     "dependencies": {
+        "amazon-states-language-service": "^1.7.3",
         "request-light": "^0.6.0",
         "vscode-languageserver": "^7.0.0",
         "vscode-languageserver-textdocument": "^1.0.4",

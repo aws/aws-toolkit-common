@@ -14,8 +14,12 @@ import {
 } from 'vscode-languageserver/node'
 
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { Registry } from './registry'
 import { activate as BuildspecActivation } from './filetypes/buildspec/activation'
+import {
+    activateJson as StepfunctionsJsonActivation,
+    activateYAML as StepfunctionsYAMLActivation
+} from './filetypes/stepfunctions/activation'
+import { Registry } from './registry'
 import { LanguageServerCacheDir } from './utils/extensionConfigDir'
 
 // Create a connection for the server, using Node's IPC as a transport.
@@ -27,6 +31,8 @@ const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument)
 
 const fileRegistry = Registry.getInstance()
 fileRegistry.addRegistryItem(BuildspecActivation())
+fileRegistry.addRegistryItem(StepfunctionsJsonActivation())
+fileRegistry.addRegistryItem(StepfunctionsYAMLActivation())
 
 // Setup the local directory that will hold extension
 // related resources.
@@ -88,7 +94,7 @@ connection.onDidChangeConfiguration(change => {
 
 // Only keep settings for open documents
 // eslint-disable-next-line @typescript-eslint/no-empty-function
-documents.onDidClose(e => { })
+documents.onDidClose(e => {})
 
 // The content of a text document has changed. This event is emitted
 // when the text document first opened or when its content has changed.
@@ -149,7 +155,9 @@ connection.onHover(
     }
 )
 
-connection.onShutdown(async () => { return undefined })
+connection.onShutdown(async () => {
+    return undefined
+})
 
 // Make the text document manager listen on the connection
 // for open, change and close text document events
@@ -158,4 +166,4 @@ documents.listen(connection)
 // Listen on the connection
 connection.listen()
 
-connection.console.info("AWS Documents LS started!")
+connection.console.info('AWS Documents LS started!')
