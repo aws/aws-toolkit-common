@@ -56,6 +56,24 @@
             "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
             "args": ["${workspaceRoot}/out/test/integration/**/${fileBasenameNoExtension}.js"],
         },
+        {
+            "type": "node",
+            "request": "launch",
+            "preLaunchTask": "watch",
+            "name": "Test Step functions (Current File)",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+            "args": ["--ui", "tdd", "--timeout", "999999", "--colors", "-r", "ts-node/register", "${workspaceRoot}/${relativeFile}"],
+            "sourceMaps": true
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "preLaunchTask": "watch",
+            "name": "Test Step functions",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+            "args": ["--ui", "tdd", "--timeout", "999999", "--colors", "-r", "ts-node/register", "${workspaceRoot}/src/server/filetypes/stepfunctions/tests/**/*.test.ts"],
+            "sourceMaps": true
+        },
     ],
     "compounds": [
         {
