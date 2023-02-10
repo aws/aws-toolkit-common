@@ -4,16 +4,16 @@ import {
 
     CompletionItem,
     CompletionList,
-    Connection, Diagnostic, Hover, HoverParams, TextDocumentPositionParams
+    Diagnostic, Hover, HoverParams, TextDocumentPositionParams
 } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import { createConnection } from 'vscode-languageserver/lib/node/main'
 import {
     getLanguageService as getYamlLanguageService, LanguageService as OriginalYamlLanguageService, LanguageSettings, SchemasSettings
 } from 'yaml-language-server'
-import { TelemetryEvent } from 'yaml-language-server/out/server/src/languageservice/telemetry'
 import { LanguageService } from '../../service/service'
 import { UriCacheManager } from '../uri/cache'
+import { YAMLTelemetry } from './telemetry'
 
 
 /**
@@ -108,29 +108,4 @@ export class YamlLanguageServiceBuilder {
     }
 }
 
-// This interface is from the yaml-language-server. We should get them to export it
-interface Telemetry {
-    send(event: TelemetryEvent): void
-    sendError(name: string, properties: unknown): void
-    sendTrack(name: string, properties: unknown): void
-}
-
-class YAMLTelemetry implements Telemetry {
-    constructor(private connection: Connection) { }
-
-    send(event: TelemetryEvent): void {
-        // stub implementation
-    }
-
-    // The YAML language server sends error events in the form of:
-    // yaml.${service}.error, { error: "the error message" }
-    // e.g. yaml.documentSymbols.error, { error: "Could not get documents cache" }
-    sendError(name: string, properties: unknown): void {
-        this.connection.window.showErrorMessage(`${name}: ${properties}`)
-    }
-
-    sendTrack(name: string, properties: unknown): void {
-        // stub implementation
-    }
-}
 
