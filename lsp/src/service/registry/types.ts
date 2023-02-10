@@ -14,7 +14,7 @@ export interface LanguageServiceStrategy {
      * strategy should be used.
      */
     isMatch(textDocument: TextDocument): boolean
-    getLanguageService(textDocument: TextDocument): LanguageService
+    getLanguageService(): LanguageService
 }
 
 /**

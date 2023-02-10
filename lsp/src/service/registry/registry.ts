@@ -22,7 +22,7 @@ export class LanguageServiceRegistry implements LanguageServiceContext {
      */
     public getLanguageService(textDocument: TextDocument): LanguageService | undefined {
         const strategy = this.getMatchingStrategy(textDocument)
-        return strategy?.getLanguageService(textDocument)
+        return strategy?.getLanguageService()
     }
 
     private getMatchingStrategy(textDocument: TextDocument): LanguageServiceStrategy | undefined {
