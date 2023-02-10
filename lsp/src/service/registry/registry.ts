@@ -1,5 +1,5 @@
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { LanguageService } from '../service'
+import { LanguageService } from '../types'
 import { LanguageServiceContext, LanguageServiceStrategy } from './types'
 
 /**

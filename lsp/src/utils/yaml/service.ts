@@ -11,7 +11,7 @@ import { createConnection } from 'vscode-languageserver/lib/node/main'
 import {
     getLanguageService as getYamlLanguageService, LanguageService as OriginalYamlLanguageService, LanguageSettings, SchemasSettings
 } from 'yaml-language-server'
-import { LanguageService } from '../../service/service'
+import { LanguageService } from '../../service/types'
 import { UriCacheManager } from '../uri/cache'
 import { YAMLTelemetry } from './telemetry'
 
@@ -47,7 +47,7 @@ import { YAMLTelemetry } from './telemetry'
 export class YamlLanguageService implements LanguageService {
     private _instance = new YamlLanguageServiceBuilder().instance()
 
-    constructor(private readonly schemaUri: string) {}
+    constructor(private readonly schemaUri: string) { }
 
     completion(document: TextDocument, textDocumentPosition: TextDocumentPositionParams): Promise<CompletionItem[] | CompletionList> {
         this.updateSchemaMapping(document.uri)
@@ -63,7 +63,7 @@ export class YamlLanguageService implements LanguageService {
     }
 
     private updateSchemaMapping(documentUri: string): void {
-        this._instance.configure({schemas: [{fileMatch: [documentUri], uri: this.schemaUri}]})
+        this._instance.configure({ schemas: [{ fileMatch: [documentUri], uri: this.schemaUri }] })
     }
 }
 
