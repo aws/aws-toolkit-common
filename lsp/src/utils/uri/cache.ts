@@ -51,12 +51,11 @@ export class UriCacheManager {
 
     private cachedUrisDirPath: string
     private cacheMetadataPath: string
-    private time: Time
 
     constructor(
         cacheDirRoot: string = LanguageServerCacheDir.path,
         private readonly httpContentDownloader: HttpRequesterI = new HttpRequester(),
-        time?: Time
+        private readonly time: Time = new Time()
     ) {
         // Setup uri cache directory
         this.cachedUrisDirPath =  path.join(cacheDirRoot, 'cachedUris')
@@ -67,8 +66,6 @@ export class UriCacheManager {
         if (!fs.existsSync(this.cacheMetadataPath)) {
             fs.writeFileSync(this.cacheMetadataPath, "{}")
         }
-        const tt = new Date()
-        this.time = time ?? new Time()
     }
 
     getContentFromString(uri: string): Promise<string> {
