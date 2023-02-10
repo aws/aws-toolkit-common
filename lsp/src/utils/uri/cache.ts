@@ -29,7 +29,7 @@ interface UriCacheMetadataEntry {
  * 
  * The structure of the cache directory looks as follows: 
  * 
- * {@link cachedUrisDirPath}/
+ * {@link cacheDirRoot}/
  * └── cachedUris/
  *     ├── metadata
  *     ├── d8e3b6aadda6a6e9e <- Hashed uri for unique name, holds the actual data
@@ -54,12 +54,12 @@ export class UriCacheManager {
     private time: Time
 
     constructor(
-        cacheDirRoot?: string,
+        cacheDirRoot: string = LanguageServerCacheDir.path,
         private readonly httpContentDownloader: HttpRequesterI = new HttpRequester(),
         time?: Time
     ) {
         // Setup uri cache directory
-        this.cachedUrisDirPath = cacheDirRoot ?? path.join(LanguageServerCacheDir.path, 'cachedUris')
+        this.cachedUrisDirPath =  path.join(cacheDirRoot, 'cachedUris')
         fs.mkdirSync(this.cachedUrisDirPath, { recursive: true })
 
         // Setup cache metadata file
