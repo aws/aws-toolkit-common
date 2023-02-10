@@ -4,29 +4,32 @@ import { SinonSpiedInstance, SinonStubbedInstance, spy, stub } from 'sinon'
 import { URI } from 'vscode-uri'
 import { Time } from '../../../../src/utils/datetime'
 import { HttpRequester } from '../../../../src/utils/http/request'
-import { CachedUriContentResolver } from '../../../../src/utils/uri/resolve'
+import { CachedUriContentResolver, HttpUriContentResolver } from '../../../../src/utils/uri/resolve'
 
 describe(`Test ${CachedUriContentResolver.name}`, async () => {
     describe(`Test getContent()`, async () => {
         const realHttpUri = URI.parse("https://json.schemastore.org/mocharc.json")
-        let actualUriContent: string
+        let expectedUriContent: string
         let tmpDir: ITempDirectorySync
-        let httpRequesterSpy: SinonSpiedInstance<HttpRequester>
+        let httpDownloaderSpy: SinonSpiedInstance<HttpUriContentResolver>
         let instance: CachedUriContentResolver
         let timeStub: SinonStubbedInstance<Time>
+
+        before(async () => {
+            // Download actual content to verify against in tests
+            expectedUriContent = (await new HttpRequester().request(realHttpUri.toString())).responseText
+        })
 
 
         beforeEach(async () => {
             tmpDir = createTempDirectorySync()
 
-            const httpRequester = new HttpRequester()
-            actualUriContent = (await httpRequester.request(realHttpUri.toString())).responseText
-            httpRequesterSpy = spy(httpRequester)
+            httpDownloaderSpy = spy(new HttpUriContentResolver())
 
             timeStub = stub(new Time())
             timeStub.inMilliseconds.callThrough()
 
-            instance = new CachedUriContentResolver(tmpDir.path, httpRequesterSpy, timeStub)
+            instance = new CachedUriContentResolver(tmpDir.path, httpDownloaderSpy, timeStub)
         })
 
         afterEach(async () => {
@@ -35,26 +38,26 @@ describe(`Test ${CachedUriContentResolver.name}`, async () => {
 
         it('gets uri content from server on initial request.', async () => {
             const result = await instance.getContent(realHttpUri)
-            assert.strictEqual(result, actualUriContent)
-            assert(httpRequesterSpy.request.calledOnce)
+            assert.strictEqual(result, expectedUriContent)
+            assert(httpDownloaderSpy.getContent.calledOnce)
         })
 
         it('gets uri content from cache on second request.', async () => {
             // First request will download
             let result = await instance.getContent(realHttpUri)
-            assert.strictEqual(result, actualUriContent)
-            assert(httpRequesterSpy.request.calledOnce)
+            assert.strictEqual(result, expectedUriContent)
+            assert(httpDownloaderSpy.getContent.calledOnce)
 
             // Second request returns same content without download
             result = await instance.getContent(realHttpUri)
-            assert(httpRequesterSpy.request.calledOnce)
-            assert.strictEqual(result, actualUriContent)
+            assert(httpDownloaderSpy.getContent.calledOnce)
+            assert.strictEqual(result, expectedUriContent)
         })
 
         it('sends request with etag if cache is timed out.', async () => {
             // First request will download
             let result = await instance.getContent(realHttpUri)
-            assert.strictEqual(result, actualUriContent)
+            assert.strictEqual(result, expectedUriContent)
 
             // Stub the timer to be timed out
             timeStub.inMilliseconds.resetBehavior()
@@ -63,12 +66,12 @@ describe(`Test ${CachedUriContentResolver.name}`, async () => {
 
             // Second request will download, but with eTag
             result = await instance.getContent(realHttpUri)
-            assert.strictEqual(result, actualUriContent)
+            assert.strictEqual(result, expectedUriContent)
             // Assert second request uses eTag
-            assert(httpRequesterSpy.request.calledTwice)
+            assert(httpDownloaderSpy.getContent.calledTwice)
             assert.deepStrictEqual(
-                httpRequesterSpy.request.secondCall.args[1],
-                { headers: { 'If-None-Match': instance.getETag(realHttpUri) } }
+                httpDownloaderSpy.getContent.secondCall.args[1],
+                instance.getETag(realHttpUri)
             )
         })
     })

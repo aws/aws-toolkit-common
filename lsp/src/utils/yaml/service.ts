@@ -8,11 +8,12 @@ import {
 } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import { createConnection } from 'vscode-languageserver/lib/node/main'
+import { URI } from 'vscode-uri'
 import {
-    getLanguageService as getYamlLanguageService, LanguageService as OriginalYamlLanguageService, LanguageSettings, SchemasSettings
+    getLanguageService as getYamlLanguageService, LanguageService as OriginalYamlLanguageService, LanguageSettings, SchemaRequestService, SchemasSettings
 } from 'yaml-language-server'
 import { LanguageService } from '../../service/types'
-import { CachedUriContentResolver } from '../uri/resolve'
+import { UriContentResolver } from '../uri/resolve'
 import { YAMLTelemetry } from './telemetry'
 
 
@@ -63,14 +64,17 @@ export class YamlLanguageService implements LanguageService {
     }
 
     private updateSchemaMapping(documentUri: string): void {
-        this._instance.configure({ schemas: [{ fileMatch: [documentUri], uri: this.schemaUri }] })
+        const languageSettings = YamlLanguageServiceBuilder.createLanguageSettings({ fileMatch: [documentUri], uri: this.schemaUri })
+        this._instance.configure(languageSettings)
     }
 }
 
 export class YamlLanguageServiceBuilder {
     instance(languageSettings?: LanguageSettings): OriginalYamlLanguageService {
-        const uriResolver = new CachedUriContentResolver()
-        const schemaResolver = uriResolver.getContentFromString.bind(uriResolver)
+        const uriResolver = new UriContentResolver()
+        const schemaResolver: SchemaRequestService = (uri: string) => {
+            return uriResolver.getContent(URI.parse(uri))
+        }
 
         const workspaceContext = {
             resolveRelativePath(relativePath: string, resource: string) {

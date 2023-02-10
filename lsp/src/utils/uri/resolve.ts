@@ -5,11 +5,8 @@ import * as path from 'path'
 import { URI } from 'vscode-uri'
 import { LanguageServerCacheDir } from '../configurationDirectory'
 import { Time } from '../datetime'
-import { HttpRequester, HttpRequesterI, HttpRequestHeaders, HttpResponse } from '../http/request'
+import { getETag, HttpRequester, HttpRequesterI, HttpRequestHeaders, HttpResponse } from '../http/request'
 
-interface UriContentResolver {
-    getContent(uri: URI): Promise<string>
-}
 
 /** Represents the `metadata` file structure */
 interface UriCacheMetadata {
@@ -21,6 +18,42 @@ interface UriCacheMetadataEntry {
     lastUpdated?: number
     contentFileName?: string
     eTag?: string
+}
+
+export class UriContentResolver {
+    constructor(private readonly fileUriContentResolver = new FileUriContentResolver(),
+    private readonly cachedUriContentResolver = new CachedUriContentResolver(),
+    private readonly httpUriContentResolver = new HttpUriContentResolver()) {}
+
+    async getContent(uri: URI, useCache = true) {
+        let content: string | undefined
+        if (uri.scheme.startsWith('file')) {
+            content = this.fileUriContentResolver.getContent(uri)
+        }
+        else if (uri.scheme.startsWith('http')) {
+            if (useCache) {
+                content = await this.cachedUriContentResolver.getContent(uri)
+            }
+            else {
+                content = (await this.httpUriContentResolver.getContent(uri)).content
+            }
+        }
+        
+        if (content === undefined) {
+            throw new Error(`Could not resolve content for: ${uri.toString()}`)
+        }
+
+        return content
+    }
+}
+
+class FileUriContentResolver {
+    getContent(uri: URI): string | undefined {
+        if (!(uri.scheme == 'file')) {
+            return undefined
+        }
+        return fs.readFileSync(uri.fsPath, { encoding: "utf8" })
+    }
 }
 
 /**
@@ -49,7 +82,7 @@ interface UriCacheMetadataEntry {
  * will have information about that uri, including the
  * hashed file name that contains the cached content.  
  */
-export class CachedUriContentResolver implements UriContentResolver {
+export class CachedUriContentResolver {
     private static readonly thirtyMinutesInMillis = 60 * 30 * 1000
     static readonly timeoutPeriodInMillis = CachedUriContentResolver.thirtyMinutesInMillis
 
@@ -58,7 +91,7 @@ export class CachedUriContentResolver implements UriContentResolver {
 
     constructor(
         cacheDirRoot: string = LanguageServerCacheDir.path,
-        private readonly httpContentDownloader: HttpRequesterI = new HttpRequester(),
+        private readonly httpContentDownloader: HttpUriContentResolver = new HttpUriContentResolver(),
         private readonly time: Time = new Time()
     ) {
         // Setup uri cache directory
@@ -72,76 +105,69 @@ export class CachedUriContentResolver implements UriContentResolver {
         }
     }
 
-    getContentFromString(uri: string): Promise<string> {
-        const actualUri = URI.parse(uri)
-        return this.getContent(actualUri)
-    }
-
     async getContent(uri: URI): Promise<string> {
         if (!uri.scheme.startsWith('http')) {
             throw Error(`Non-http schemed URIs not supported: ${uri.toString()}`)
         }
 
         const uriAsString = uri.toString()
-        const allMetadata: UriCacheMetadata = JSON.parse(fs.readFileSync(this.cacheMetadataPath, { encoding: 'utf-8' }))
+        const allMetadata: UriCacheMetadata = this.getAllMetadata()
 
         // Get cached data for current URI
         const cachedMetadataEntry: UriCacheMetadataEntry | undefined = allMetadata[uriAsString]
         const cachedContentFileName = cachedMetadataEntry?.contentFileName
         const cachedContent = this.getContentFileText(cachedContentFileName)
-        const cachedETag: string | string[] | undefined = cachedMetadataEntry?.eTag
+        const cachedETag = cachedMetadataEntry?.eTag
         const cachedLastUpdated = cachedMetadataEntry?.lastUpdated
 
-        let headers: HttpRequestHeaders = {}
+        let eTagToRequest: string | undefined = undefined
 
-        if (cachedETag !== undefined && cachedContent !== undefined) {
-            // We have valid cached content at this point
+        if (cachedContent !== undefined) {
             if (!this.isCacheTimeout(cachedLastUpdated)) {
                 // We have valid cached content that has not timed out yet.
                 return cachedContent
             }
-            // 'If-None-Match' Header induces 304 status if ETag value matches the remote's.
-            // See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag
-            headers = { 'If-None-Match': cachedETag }
+            eTagToRequest = cachedETag 
         }
 
-        // Request uri data
-        let response: HttpResponse
-        try {
-            response = await this.httpContentDownloader.request(uri.toString(), { headers })
-        }
-        catch (err) {
-            if ((err as HttpResponse).status == 304 && cachedContent !== undefined) {
-                // The current http request library throws an error on,
-                // I'm assuming non 200 status codes, so we need to catch this
-                // case. If we can disable the exception this try/catch can be removed.
-
-                // Requested data matches our cache.
-                this.updateLastUpdatedTime(allMetadata, uri)
-                return cachedContent
-            }
-            throw err
-        }
+        const response = await this.httpContentDownloader.getContent(uri, eTagToRequest)
 
         // Collect required data from response
-        const latestContent = response.responseText
-        let latestETag = response.headers.etag
-        if (Array.isArray(latestETag)) {
-            latestETag = undefined
+        const responseContent = response.content
+        const responseETag = response.eTag
+
+        // ETag request cache hit, use our existing cache.
+        if (responseContent === undefined) {
+            this.updateLastUpdatedTime(allMetadata, uri)
+
+            if (cachedContent === undefined) {
+                throw new Error(`ETag match, but no cached content: ${uriAsString}`)
+            }
+            return cachedContent
         }
+        
+        this.cacheContent(uri, responseContent, responseETag)    
+
+        return responseContent
+    }
+
+    private getAllMetadata(): UriCacheMetadata {
+        return JSON.parse(fs.readFileSync(this.cacheMetadataPath, { encoding: 'utf-8' }))
+    }
+
+    private cacheContent(uri: URI, content: string, eTag?: string): void {
         const contentFileName = this.hashUri(uri)
         const metadataEntry: UriCacheMetadataEntry = {
             contentFileName: contentFileName,
-            eTag: latestETag,
+            eTag,
             lastUpdated: this.time.inMilliseconds()
         }
 
+        const allMetadata = this.getAllMetadata()
         // Update URI cache with response data
-        allMetadata[uriAsString] = metadataEntry
+        allMetadata[uri.toString()] = metadataEntry
         this.writeMetadata(allMetadata)
-        this.writeContentFileText(contentFileName, latestContent)
-
-        return latestContent
+        this.writeContentFileText(contentFileName, content)
     }
 
     getETag(uri: URI): string | undefined {
@@ -193,4 +219,58 @@ export class CachedUriContentResolver implements UriContentResolver {
     private hashUri(uri: URI): string {
         return createHash('sha256').update(uri.toString()).digest('hex')
     }
+}
+
+export class HttpUriContentResolver {
+
+    constructor(
+        readonly httpContentDownloader: HttpRequesterI = new HttpRequester(),
+    ) {}
+
+    /**
+     * Downloads the content of a HTTP uri.
+     * 
+     * Additionally if an eTag is provided it will use it in the request.
+     * In the scenario the eTag matches the destinations, the content
+     * returned will be undefined.
+     * 
+     * In any other scenario an error will be thrown.
+     * @param uri 
+     * @param eTag 
+     * @returns text content and eTag if it exists, on undefined content it is an eTag match
+     */
+    async getContent(uri: URI, eTag?: string): Promise<{content: string | undefined, eTag: string | undefined}> {
+        if (!uri.scheme.startsWith('http')) {
+            throw new Error(`Only uri with http(s) scheme is supported, but was: ${uri.toString()}`)
+        }
+        
+        let headers: HttpRequestHeaders = {}
+
+        if (eTag !== undefined) {
+            // 'If-None-Match' Header induces 304 status if ETag value matches the remote's.
+            // See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag
+            headers = { 'If-None-Match': eTag }
+        }
+
+        // Request uri data
+        let response: HttpResponse
+        let latestETag: string
+        try {
+            response = await this.httpContentDownloader.request(uri.toString(), { headers })
+            latestETag = getETag(response.headers)
+        }
+        catch (err) {
+            if ((err as HttpResponse).status == 304) {
+                // The current http request library throws an error on,
+                // I'm assuming non 200 status codes, so we need to catch this
+                // case. If we can disable the exception this try/catch can be removed.
+
+                // Requested data matches our cache.
+                return {content: undefined, eTag}
+            }
+            throw err
+        }
+        return {content: response.responseText, eTag: latestETag}
+    }
+    
 }

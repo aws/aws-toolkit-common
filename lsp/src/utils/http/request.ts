@@ -26,3 +26,7 @@ export class HttpRequester implements HttpRequesterI {
         return this.requestImpl({ url, ...options })
     }
 }
+
+export function getETag(headers: HttpRequestHeaders): string {
+    return headers.eTag as string
+}
