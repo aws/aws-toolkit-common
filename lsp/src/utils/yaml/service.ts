@@ -12,7 +12,7 @@ import {
     getLanguageService as getYamlLanguageService, LanguageService as OriginalYamlLanguageService, LanguageSettings, SchemasSettings
 } from 'yaml-language-server'
 import { LanguageService } from '../../service/types'
-import { UriCacheManager } from '../uri/cache'
+import { CachedUriContentResolver } from '../uri/resolve'
 import { YAMLTelemetry } from './telemetry'
 
 
@@ -69,7 +69,7 @@ export class YamlLanguageService implements LanguageService {
 
 export class YamlLanguageServiceBuilder {
     instance(languageSettings?: LanguageSettings): OriginalYamlLanguageService {
-        const uriResolver = new UriCacheManager()
+        const uriResolver = new CachedUriContentResolver()
         const schemaResolver = uriResolver.getContentFromString.bind(uriResolver)
 
         const workspaceContext = {

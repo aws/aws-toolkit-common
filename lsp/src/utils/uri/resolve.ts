@@ -7,6 +7,10 @@ import { LanguageServerCacheDir } from '../configurationDirectory'
 import { Time } from '../datetime'
 import { HttpRequester, HttpRequesterI, HttpRequestHeaders, HttpResponse } from '../http/request'
 
+interface UriContentResolver {
+    getContent(uri: URI): Promise<string>
+}
+
 /** Represents the `metadata` file structure */
 interface UriCacheMetadata {
     [uri: string]: UriCacheMetadataEntry
@@ -45,9 +49,9 @@ interface UriCacheMetadataEntry {
  * will have information about that uri, including the
  * hashed file name that contains the cached content.  
  */
-export class UriCacheManager {
+export class CachedUriContentResolver implements UriContentResolver {
     private static readonly thirtyMinutesInMillis = 60 * 30 * 1000
-    static readonly timeoutPeriodInMillis = UriCacheManager.thirtyMinutesInMillis
+    static readonly timeoutPeriodInMillis = CachedUriContentResolver.thirtyMinutesInMillis
 
     private cachedUrisDirPath: string
     private cacheMetadataPath: string
@@ -58,7 +62,7 @@ export class UriCacheManager {
         private readonly time: Time = new Time()
     ) {
         // Setup uri cache directory
-        this.cachedUrisDirPath =  path.join(cacheDirRoot, 'cachedUris')
+        this.cachedUrisDirPath = path.join(cacheDirRoot, 'cachedUris')
         fs.mkdirSync(this.cachedUrisDirPath, { recursive: true })
 
         // Setup cache metadata file
@@ -158,7 +162,7 @@ export class UriCacheManager {
         }
 
         const diff = this.time.inMilliseconds() - lastUpdated
-        return (diff) > UriCacheManager.thirtyMinutesInMillis
+        return (diff) > CachedUriContentResolver.thirtyMinutesInMillis
     }
 
     /** Updates the 'metadata' file with the given input */

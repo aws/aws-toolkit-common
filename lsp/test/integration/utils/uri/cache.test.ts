@@ -4,15 +4,15 @@ import { SinonSpiedInstance, SinonStubbedInstance, spy, stub } from 'sinon'
 import { URI } from 'vscode-uri'
 import { Time } from '../../../../src/utils/datetime'
 import { HttpRequester } from '../../../../src/utils/http/request'
-import { UriCacheManager } from '../../../../src/utils/uri/cache'
+import { CachedUriContentResolver } from '../../../../src/utils/uri/resolve'
 
-describe(`Test ${UriCacheManager.name}`, async () => {
+describe(`Test ${CachedUriContentResolver.name}`, async () => {
     describe(`Test getContent()`, async () => {
         const realHttpUri = URI.parse("https://json.schemastore.org/mocharc.json")
         let actualUriContent: string
         let tmpDir: ITempDirectorySync
         let httpRequesterSpy: SinonSpiedInstance<HttpRequester>
-        let instance: UriCacheManager
+        let instance: CachedUriContentResolver
         let timeStub: SinonStubbedInstance<Time>
 
 
@@ -26,7 +26,7 @@ describe(`Test ${UriCacheManager.name}`, async () => {
             timeStub = stub(new Time())
             timeStub.inMilliseconds.callThrough()
 
-            instance = new UriCacheManager(tmpDir.path, httpRequesterSpy, timeStub)
+            instance = new CachedUriContentResolver(tmpDir.path, httpRequesterSpy, timeStub)
         })
 
         afterEach(async () => {
@@ -58,7 +58,7 @@ describe(`Test ${UriCacheManager.name}`, async () => {
 
             // Stub the timer to be timed out
             timeStub.inMilliseconds.resetBehavior()
-            const millisecondAfterTimeoutPeriod = new Time().inMilliseconds() + UriCacheManager.timeoutPeriodInMillis + 1
+            const millisecondAfterTimeoutPeriod = new Time().inMilliseconds() + CachedUriContentResolver.timeoutPeriodInMillis + 1
             timeStub.inMilliseconds.returns(millisecondAfterTimeoutPeriod)
 
             // Second request will download, but with eTag
@@ -68,7 +68,7 @@ describe(`Test ${UriCacheManager.name}`, async () => {
             assert(httpRequesterSpy.request.calledTwice)
             assert.deepStrictEqual(
                 httpRequesterSpy.request.secondCall.args[1],
-                { headers: { 'If-None-Match': instance.getETag(realHttpUri) }}
+                { headers: { 'If-None-Match': instance.getETag(realHttpUri) } }
             )
         })
     })
