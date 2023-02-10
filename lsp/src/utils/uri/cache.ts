@@ -5,8 +5,7 @@ import * as path from 'path'
 import { URI } from 'vscode-uri'
 import { LanguageServerCacheDir } from '../configurationDirectory'
 import { Time } from '../datetime'
-import { HttpRequestHeaders, HttpResponse } from '../http/request'
-import { HttpUriContentDownloader } from './http'
+import { HttpRequester, HttpRequesterI, HttpRequestHeaders, HttpResponse } from '../http/request'
 
 /** Represents the `metadata` file structure */
 interface UriCacheMetadata {
@@ -52,12 +51,11 @@ export class UriCacheManager {
 
     private cachedUrisDirPath: string
     private cacheMetadataPath: string
-    private httpContentDownloader: HttpUriContentDownloader
     private time: Time
 
     constructor(
         cacheDirRoot?: string,
-        httpContentDownloader?: HttpUriContentDownloader,
+        private readonly httpContentDownloader: HttpRequesterI = new HttpRequester(),
         time?: Time
     ) {
         // Setup uri cache directory
@@ -70,8 +68,6 @@ export class UriCacheManager {
             fs.writeFileSync(this.cacheMetadataPath, "{}")
         }
         const tt = new Date()
-
-        this.httpContentDownloader = httpContentDownloader ?? new HttpUriContentDownloader()
         this.time = time ?? new Time()
     }
 
@@ -111,7 +107,7 @@ export class UriCacheManager {
         // Request uri data
         let response: HttpResponse
         try {
-            response = await this.httpContentDownloader.sendRequest(uri, headers)
+            response = await this.httpContentDownloader.request(uri.toString(), { headers })
         }
         catch (err) {
             if ((err as HttpResponse).status == 304 && cachedContent !== undefined) {

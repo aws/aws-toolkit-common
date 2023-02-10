@@ -1,35 +1,32 @@
 import { assert } from 'chai'
 import { createTempDirectorySync, ITempDirectorySync } from 'create-temp-directory'
-import { SinonStubbedInstance, stub } from 'sinon'
-import { } from 'ts-sinon'
+import { SinonSpiedInstance, SinonStubbedInstance, spy, stub } from 'sinon'
 import { URI } from 'vscode-uri'
 import { Time } from '../../../../src/utils/datetime'
 import { HttpRequester } from '../../../../src/utils/http/request'
 import { UriCacheManager } from '../../../../src/utils/uri/cache'
-import { HttpUriContentDownloader } from '../../../../src/utils/uri/http'
 
 describe(`Test ${UriCacheManager.name}`, async () => {
     describe(`Test getContent()`, async () => {
         const realHttpUri = URI.parse("https://json.schemastore.org/mocharc.json")
         let actualUriContent: string
         let tmpDir: ITempDirectorySync
-        let stubbedDownloader: SinonStubbedInstance<HttpUriContentDownloader>
+        let httpRequesterSpy: SinonSpiedInstance<HttpRequester>
         let instance: UriCacheManager
         let timeStub: SinonStubbedInstance<Time>
 
 
         beforeEach(async () => {
-            actualUriContent = (await new HttpRequester().request(realHttpUri.toString())).responseText
-
             tmpDir = createTempDirectorySync()
 
-            stubbedDownloader = stub(new HttpUriContentDownloader())
-            stubbedDownloader.sendRequest.callThrough()
+            const httpRequester = new HttpRequester()
+            actualUriContent = (await httpRequester.request(realHttpUri.toString())).responseText
+            httpRequesterSpy = spy(httpRequester)
 
             timeStub = stub(new Time())
             timeStub.inMilliseconds.callThrough()
 
-            instance = new UriCacheManager(tmpDir.path, stubbedDownloader, timeStub)
+            instance = new UriCacheManager(tmpDir.path, httpRequesterSpy, timeStub)
         })
 
         afterEach(async () => {
@@ -39,18 +36,18 @@ describe(`Test ${UriCacheManager.name}`, async () => {
         it('gets uri content from server on initial request.', async () => {
             const result = await instance.getContent(realHttpUri)
             assert.strictEqual(result, actualUriContent)
+            assert(httpRequesterSpy.request.calledOnce)
         })
 
         it('gets uri content from cache on second request.', async () => {
             // First request will download
             let result = await instance.getContent(realHttpUri)
             assert.strictEqual(result, actualUriContent)
-
-            // Set error to be thrown on download attempt
-            stubbedDownloader.sendRequest.throws()
+            assert(httpRequesterSpy.request.calledOnce)
 
             // Second request returns same content without download
             result = await instance.getContent(realHttpUri)
+            assert(httpRequesterSpy.request.calledOnce)
             assert.strictEqual(result, actualUriContent)
         })
 
@@ -67,11 +64,12 @@ describe(`Test ${UriCacheManager.name}`, async () => {
             // Second request will download, but with eTag
             result = await instance.getContent(realHttpUri)
             assert.strictEqual(result, actualUriContent)
-            assert.strictEqual(stubbedDownloader.sendRequest.callCount, 2)
-            // Assert second requests uses eTag
-            const sendRequestSecondArgs = stubbedDownloader.sendRequest.secondCall.args
-            const actualHeaders = sendRequestSecondArgs[1]
-            assert.deepStrictEqual(actualHeaders, { 'If-None-Match': instance.getETag(realHttpUri) })
+            // Assert second request uses eTag
+            assert(httpRequesterSpy.request.calledTwice)
+            assert.deepStrictEqual(
+                httpRequesterSpy.request.secondCall.args[1],
+                { headers: { 'If-None-Match': instance.getETag(realHttpUri) }}
+            )
         })
     })
 })

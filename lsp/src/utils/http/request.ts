@@ -1,5 +1,5 @@
 
-import { Headers, XHROptions, XHRRequest, XHRResponse, xhr } from 'request-light'
+import { Headers, XHROptions, XHRResponse, xhr } from 'request-light'
 
 
 
@@ -18,17 +18,11 @@ export interface HttpRequesterI {
  * http request implementation.
  */
 export class HttpRequester implements HttpRequesterI {
-    private requestImpl: XHRRequest
-
-    constructor(requestImpl = xhr) {
-        this.requestImpl = requestImpl
-    }
+    
+    constructor(private readonly requestImpl = xhr) {}
 
     /** Sends a http request */
-    request(url: string, options?: HttpRequestOptions): Promise<HttpResponse> {
-        if (options === undefined) {
-            return this.requestImpl({ url })
-        }
+    request(url: string, options: HttpRequestOptions = {}): Promise<HttpResponse> {
         return this.requestImpl({ url, ...options })
     }
 }
