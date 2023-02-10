@@ -14,8 +14,8 @@ import {
 } from 'vscode-languageserver/node'
 
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { activate as BuildspecActivation } from '../service/filetypes/buildspec/activation'
-import { Registry } from '../service/registry'
+import { BuildspecServiceStrategy } from '../service/filetypes/buildspec/activation'
+import { LanguageServiceRegistry } from '../service/registry/registry'
 import { LanguageServerCacheDir } from '../utils/configurationDirectory'
 
 // Create a connection for the server, using Node's IPC as a transport.
@@ -25,8 +25,8 @@ const connection = createConnection(ProposedFeatures.all)
 // Create a simple text document manager.
 const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument)
 
-const fileRegistry = Registry.getInstance()
-fileRegistry.addRegistryItem(BuildspecActivation())
+const fileRegistry = new LanguageServiceRegistry()
+fileRegistry.addStrategy(new BuildspecServiceStrategy())
 
 // Setup the local directory that will hold extension
 // related resources.
@@ -97,7 +97,7 @@ documents.onDidChangeContent(change => {
     if (textDoc === undefined) {
         return
     }
-    const service = fileRegistry.getMatch(change.document.uri, textDoc)
+    const service = fileRegistry.getLanguageService(textDoc)
     if (service === undefined) {
         return
     }
@@ -109,7 +109,7 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
     if (textDoc === undefined) {
         return
     }
-    const service = fileRegistry.getMatch(textDocument.uri, textDoc)
+    const service = fileRegistry.getLanguageService(textDoc)
     if (service === undefined) {
         return
     }
@@ -127,7 +127,7 @@ connection.onCompletion(
         if (textDoc === undefined) {
             return []
         }
-        const service = fileRegistry.getMatch(textDocumentPosition.textDocument.uri, textDoc)
+        const service = fileRegistry.getLanguageService(textDoc)
         if (service === undefined) {
             return []
         }
@@ -141,7 +141,7 @@ connection.onHover(
         if (textDoc === undefined) {
             return undefined
         }
-        const service = fileRegistry.getMatch(params.textDocument.uri, textDoc)
+        const service = fileRegistry.getLanguageService(textDoc)
         if (service === undefined) {
             return undefined
         }
