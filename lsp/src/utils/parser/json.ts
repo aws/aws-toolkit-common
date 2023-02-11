@@ -1,7 +1,7 @@
 import { JSONDocument, TextDocument } from 'vscode-json-languageservice'
-import { createLanguageService } from '../json/service'
+import { createJsonLanguageService } from '../json/service'
 
-const jsonService = createLanguageService()
+const jsonService = createJsonLanguageService()
 
 export function parseJson(td: TextDocument): JSONDocument {
     return jsonService.parseJSONDocument(td)

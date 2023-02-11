@@ -3,6 +3,6 @@ import {
 } from 'vscode-json-languageservice'
 
 export type JsonLanguageService = LanguageService
-export function createLanguageService(): JsonLanguageService {
-    return getJsonLanguageService({}) 
+export function createJsonLanguageService(): JsonLanguageService {
+    return getJsonLanguageService({})
 }
