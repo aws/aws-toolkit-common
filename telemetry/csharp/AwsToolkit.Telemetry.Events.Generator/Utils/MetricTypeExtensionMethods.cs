@@ -8,7 +8,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Utils
     {
         static readonly Dictionary<string, System.Type> AliasedTypes = new Dictionary<string, System.Type>()
         {
-            // See https://github.com/aws/aws-toolkit-common/blob/master/telemetry/telemetrySchema.json
+            // See https://github.com/aws/aws-toolkit-common/blob/main/telemetry/telemetrySchema.json
             // properties/types/items/properties/type
             {"int", typeof(int) },
             {"double", typeof(double) },
