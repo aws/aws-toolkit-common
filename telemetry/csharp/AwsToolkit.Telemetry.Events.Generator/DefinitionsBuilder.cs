@@ -97,7 +97,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 
             // Add a top level comment
             blankNamespace.Comments.Add(new CodeCommentStatement("--------------------------------------------------------------------------------", true));
-            blankNamespace.Comments.Add(new CodeCommentStatement("This file is generated from https://github.com/aws/aws-toolkit-common/tree/master/telemetry", true));
+            blankNamespace.Comments.Add(new CodeCommentStatement("This file is generated from https://github.com/aws/aws-toolkit-common/tree/main/telemetry", true));
             blankNamespace.Comments.Add(new CodeCommentStatement("--------------------------------------------------------------------------------", true));
 
             // Set up top level using statements
