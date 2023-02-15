@@ -30,9 +30,18 @@ npm install pkg -g
 
 Now you have the ability to create standalone language server executables depending on the arguments you pass into pkg.
 
+For reference, see [pkg usage](https://github.com/vercel/pkg#usage).
+
+### pkg Examples
+
 If you want to create windows-x64, macos-x64, linux-x64 binaries you can use:
 ```bash
 pkg .
+```
+
+if you have a different node version installed (eg: node19) from your target package (eg: node18) you can do:
+```bash
+pkg --targets node18 .
 ```
 
 to create a standalone executable for node16 for windows on arm you can do
