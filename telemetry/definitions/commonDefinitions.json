@@ -831,10 +831,23 @@
             "metadata": [
                 { "type": "result" },
                 { "type": "initialDeploy" },
+                { "type": "duration" },
                 { "type": "name", "required": false },
                 { "type": "framework", "required": false },
                 { "type": "xrayEnabled", "required": false },
-                { "type": "enhancedHealthEnabled", "required": false }
+                { "type": "enhancedHealthEnabled", "required": false },
+                { "type": "serviceType", "required": false },
+                { "type": "source" , "required": false}
+            ]
+        },
+        {
+            "name": "beanstalk_publishWizard",
+            "description": "Called when user completes the Elastic Beanstalk publish wizard",
+            "metadata": [
+                { "type": "result" },
+                { "type": "duration" },
+                { "type": "serviceType", "required": false },
+                { "type": "source" , "required": false}
             ]
         },
         {
@@ -1030,7 +1043,23 @@
         {
             "name": "cloudformation_deploy",
             "description": "Called when deploying a CloudFormation template",
-            "metadata": [{ "type": "result" }, { "type": "initialDeploy" }]
+            "metadata": [
+                { "type": "result" }, 
+                { "type": "initialDeploy" },
+                { "type": "duration" },
+                { "type": "serviceType", "required": false },
+                { "type": "source" , "required": false}
+            ]
+        },
+        {
+            "name": "cloudformation_publishWizard",
+            "description": "Called when user completes the CloudFormation template publish wizard",
+            "metadata": [
+                { "type": "result" },
+                { "type": "duration" },
+                { "type": "serviceType", "required": false },
+                { "type": "source" , "required": false}
+            ]
         },
         {
             "name": "cloudformation_open",
@@ -1399,27 +1428,46 @@
         {
             "name": "ecr_deployImage",
             "description": "Called when deploying an image to ECR",
-            "metadata": [{ "type": "result" }, { "type": "ecrDeploySource", "required": false }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "ecrDeploySource", "required": false },
+                { "type": "duration" }
+            ]
         },
         {
             "name": "ecs_deployScheduledTask",
             "description": "Called when deploying a scheduled task to an ECS cluster",
-            "metadata": [{ "type": "result" }, { "type": "ecsLaunchType" }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "ecsLaunchType" },
+                { "type": "duration" }
+            ]
         },
         {
             "name": "ecs_deployService",
             "description": "Called when deploying a service to an ECS cluster",
-            "metadata": [{ "type": "result" }, { "type": "ecsLaunchType" }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "ecsLaunchType" },
+                { "type": "duration" }
+            ]
         },
         {
             "name": "ecs_deployTask",
             "description": "Called when deploying a task to an ECS cluster",
-            "metadata": [{ "type": "result" }, { "type": "ecsLaunchType" }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "ecsLaunchType" },
+                { "type": "duration" }
+            ]
         },
         {
             "name": "ecs_publishWizard",
             "description": "Called when user completes the ECS publish wizard",
-            "metadata": [{ "type": "result" }, { "type": "duration" }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "duration" }
+            ]
         },
         {
             "name": "ecs_openRepository",
@@ -1594,11 +1642,24 @@
                 { "type": "lambdaPackageType" },
                 { "type": "result" },
                 { "type": "initialDeploy" },
+                { "type": "duration" },
                 { "type": "runtime", "required": false },
                 { "type": "platform", "required": false },
                 { "type": "lambdaArchitecture", "required": false },
                 { "type": "language", "required": false },
-                { "type": "xrayEnabled", "required": false }
+                { "type": "xrayEnabled", "required": false },
+                { "type": "serviceType", "required": false },
+                { "type": "source" , "required": false}
+            ]
+        },
+        {
+            "name": "lambda_publishWizard",
+            "description": "Called when user completes the Lambda publish wizard",
+            "metadata": [
+                { "type": "result" },
+                { "type": "duration" },
+                { "type": "serviceType", "required": false },
+                { "type": "source" , "required": false}
             ]
         },
         {
