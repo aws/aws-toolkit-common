@@ -20,17 +20,12 @@ export class LanguageServiceRegistry implements LanguageServiceContext {
      * Returns the {@link LanguageService} of the strategy
      * the matches the given input.
      */
-    public getLanguageService(textDocument: TextDocument): LanguageService | undefined {
-        const strategy = this.getMatchingStrategy(textDocument)
+    public async getLanguageService(textDocument: TextDocument): Promise<LanguageService | undefined> {
+        const strategy = await this.getMatchingStrategy(textDocument)
         return strategy?.getLanguageService()
     }
 
-    private getMatchingStrategy(textDocument: TextDocument): LanguageServiceStrategy | undefined {
-        for (const strategy of this.strategies) {
-            if (strategy.isMatch(textDocument)) {
-                return strategy
-            }
-        }
-        return undefined
+    private async getMatchingStrategy(textDocument: TextDocument): Promise<LanguageServiceStrategy | undefined> {
+        return Promise.any(this.strategies.filter(strategy => strategy.isMatch(textDocument)))
     }
 }

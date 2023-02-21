@@ -17,7 +17,7 @@ export class BoilerplateServiceStrategy implements LanguageServiceStrategy {
         this.parser = parser
     }
 
-    isMatch(textDocument: TextDocument): boolean {
+    async isMatch(textDocument: TextDocument): Promise<boolean> {
         return true
     }
     getLanguageService(): BoilerplateService {

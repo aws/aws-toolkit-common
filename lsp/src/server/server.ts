@@ -109,7 +109,7 @@ async function validateTextDocument(textDocumentUri: TextDocument['uri']): Promi
     if (textDoc === undefined) {
         return
     }
-    const service = fileRegistry.getLanguageService(textDoc)
+    const service = await fileRegistry.getLanguageService(textDoc)
     if (service === undefined) {
         return
     }
@@ -127,7 +127,7 @@ connection.onCompletion(
         if (textDoc === undefined) {
             return []
         }
-        const service = fileRegistry.getLanguageService(textDoc)
+        const service = await fileRegistry.getLanguageService(textDoc)
         if (service === undefined) {
             return []
         }
@@ -141,7 +141,7 @@ connection.onHover(
         if (textDoc === undefined) {
             return undefined
         }
-        const service = fileRegistry.getLanguageService(textDoc)
+        const service = await fileRegistry.getLanguageService(textDoc)
         if (service === undefined) {
             return undefined
         }

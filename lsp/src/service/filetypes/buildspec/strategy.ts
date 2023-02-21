@@ -7,7 +7,7 @@ import { BuildspecService } from './service'
 const BUILDSPEC_FILE_NAMES = ['build', 'buildspec'].map(name => [`${name}.yml`, `${name}.yaml`]).flat()
 
 export class BuildspecServiceStrategy implements LanguageServiceStrategy {
-    isMatch(textDocument: TextDocument): boolean {
+    async isMatch(textDocument: TextDocument): Promise<boolean> {
         return BUILDSPEC_FILE_NAMES.some(accepted => textDocument.uri.endsWith(accepted))
     }
     getLanguageService(): BuildspecService {

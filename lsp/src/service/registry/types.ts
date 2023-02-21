@@ -13,7 +13,7 @@ export interface LanguageServiceStrategy {
      * True if the {@link LanguageService} from this
      * strategy should be used.
      */
-    isMatch(textDocument: TextDocument): boolean
+    isMatch(textDocument: TextDocument): Promise<boolean>
     getLanguageService(): LanguageService
 }
 
@@ -24,5 +24,5 @@ export interface LanguageServiceStrategy {
  * {@link LanguageService} instance if it can be resolved.
  */
 export interface LanguageServiceContext {
-    getLanguageService(textDocument: TextDocument): LanguageService | undefined
+    getLanguageService(textDocument: TextDocument): Promise<LanguageService | undefined>
 }
