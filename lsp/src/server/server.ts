@@ -14,7 +14,7 @@ import {
 } from 'vscode-languageserver/node'
 
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { BuildspecServiceStrategy } from '../service/filetypes/buildspec/activation'
+import { BuildspecServiceStrategy } from '../service/filetypes/buildspec/strategy'
 import { LanguageServiceRegistry } from '../service/registry/registry'
 import { LanguageServerCacheDir } from '../utils/configurationDirectory'
 
