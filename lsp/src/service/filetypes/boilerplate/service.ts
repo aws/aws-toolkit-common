@@ -6,7 +6,7 @@ import { DocumentParserVisitor } from '../../../utils/parser/types'
 import { YamlLanguageService } from '../../../utils/yaml/service'
 import { LanguageService } from '../../types'
 
-const SCHEMA_URL = 'https://d3rrggjwfhwld2.cloudfront.net/CodeBuild/buildspec/buildspec-standalone.schema.json'
+const SCHEMA_URL = 'https://my.website.com/schema.js'
 
 export class BoilerplateService implements LanguageService {
 
