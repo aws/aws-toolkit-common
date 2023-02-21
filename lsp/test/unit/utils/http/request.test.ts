@@ -2,21 +2,21 @@ import { assert } from 'chai'
 import { XHRRequest } from 'request-light'
 import { SinonStubbedInstance, SinonStubbedMember, stub } from 'sinon'
 import { stubInterface } from 'ts-sinon'
-import { HttpRequester, HttpRequestHeaders, HttpResponse } from '../../../../src/utils/http/request'
+import { DefaultHttpRequester, HttpRequestHeaders, HttpResponse } from '../../../../src/utils/http/request'
 
 describe('Test HttpRequest class', async () => {
     describe('Test request()', async () => {
         const url = "https://my.url.com/some/path"
         const implReturnObj: SinonStubbedInstance<HttpResponse> = stubInterface()
 
-        let instance: HttpRequester
+        let instance: DefaultHttpRequester
         let requestImpl: SinonStubbedMember<XHRRequest>
 
         beforeEach(async () => {
             requestImpl = stub()
             requestImpl.resolves(implReturnObj)
 
-            instance = new HttpRequester(requestImpl)
+            instance = new DefaultHttpRequester(requestImpl)
         })
 
         it('calls the impl with no options', async () => {

@@ -5,7 +5,7 @@ import * as path from 'path'
 import { URI } from 'vscode-uri'
 import { LanguageServerCacheDir } from '../configurationDirectory'
 import { Time } from '../datetime'
-import { getETag, HttpRequester, HttpRequesterI, HttpRequestHeaders, HttpResponse } from '../http/request'
+import { DefaultHttpRequester, getETag, HttpRequester, HttpRequestHeaders, HttpResponse } from '../http/request'
 
 
 /** Represents the `metadata` file structure */
@@ -22,8 +22,8 @@ interface UriCacheMetadataEntry {
 
 export class UriContentResolver {
     constructor(private readonly fileUriContentResolver = new FileUriContentResolver(),
-    private readonly cachedUriContentResolver = new CachedUriContentResolver(),
-    private readonly httpUriContentResolver = new HttpUriContentResolver()) {}
+        private readonly cachedUriContentResolver = new CachedUriContentResolver(),
+        private readonly httpUriContentResolver = new HttpUriContentResolver()) { }
 
     async getContent(uri: URI, useCache = true) {
         let content: string | undefined
@@ -38,7 +38,7 @@ export class UriContentResolver {
                 content = (await this.httpUriContentResolver.getContent(uri)).content
             }
         }
-        
+
         if (content === undefined) {
             throw new Error(`Could not resolve content for: ${uri.toString()}`)
         }
@@ -127,7 +127,7 @@ export class CachedUriContentResolver {
                 // We have valid cached content that has not timed out yet.
                 return cachedContent
             }
-            eTagToRequest = cachedETag 
+            eTagToRequest = cachedETag
         }
 
         const response = await this.httpContentDownloader.getContent(uri, eTagToRequest)
@@ -145,8 +145,8 @@ export class CachedUriContentResolver {
             }
             return cachedContent
         }
-        
-        this.cacheContent(uri, responseContent, responseETag)    
+
+        this.cacheContent(uri, responseContent, responseETag)
 
         return responseContent
     }
@@ -224,8 +224,8 @@ export class CachedUriContentResolver {
 export class HttpUriContentResolver {
 
     constructor(
-        readonly httpContentDownloader: HttpRequesterI = new HttpRequester(),
-    ) {}
+        readonly httpContentDownloader: HttpRequester = new DefaultHttpRequester(),
+    ) { }
 
     /**
      * Downloads the content of a HTTP uri.
@@ -239,11 +239,11 @@ export class HttpUriContentResolver {
      * @param eTag 
      * @returns text content and eTag if it exists, on undefined content it is an eTag match
      */
-    async getContent(uri: URI, eTag?: string): Promise<{content: string | undefined, eTag: string | undefined}> {
+    async getContent(uri: URI, eTag?: string): Promise<{ content: string | undefined, eTag: string | undefined }> {
         if (!uri.scheme.startsWith('http')) {
             throw new Error(`Only uri with http(s) scheme is supported, but was: ${uri.toString()}`)
         }
-        
+
         let headers: HttpRequestHeaders = {}
 
         if (eTag !== undefined) {
@@ -266,11 +266,11 @@ export class HttpUriContentResolver {
                 // case. If we can disable the exception this try/catch can be removed.
 
                 // Requested data matches our cache.
-                return {content: undefined, eTag}
+                return { content: undefined, eTag }
             }
             throw err
         }
-        return {content: response.responseText, eTag: latestETag}
+        return { content: response.responseText, eTag: latestETag }
     }
-    
+
 }

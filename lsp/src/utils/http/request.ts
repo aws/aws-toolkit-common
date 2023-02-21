@@ -1,5 +1,5 @@
 
-import { Headers, XHROptions, XHRResponse, xhr } from 'request-light'
+import { Headers, xhr, XHROptions, XHRResponse } from 'request-light'
 
 
 
@@ -8,7 +8,7 @@ export type HttpRequestOptions = Pick<XHROptions, 'headers'>
 export type HttpRequestHeaders = Headers
 export type HttpResponse = XHRResponse
 
-export interface HttpRequesterI {
+export interface HttpRequester {
     request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>
 }
 /**
@@ -17,9 +17,9 @@ export interface HttpRequesterI {
  * This will ensure we are not locked in to a specific
  * http request implementation.
  */
-export class HttpRequester implements HttpRequesterI {
-    
-    constructor(private readonly requestImpl = xhr) {}
+export class DefaultHttpRequester implements HttpRequester {
+
+    constructor(private readonly requestImpl = xhr) { }
 
     /** Sends a http request */
     request(url: string, options: HttpRequestOptions = {}): Promise<HttpResponse> {

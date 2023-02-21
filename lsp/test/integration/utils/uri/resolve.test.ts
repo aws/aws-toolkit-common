@@ -3,7 +3,7 @@ import { createTempDirectorySync, ITempDirectorySync } from 'create-temp-directo
 import { SinonSpiedInstance, SinonStubbedInstance, spy, stub } from 'sinon'
 import { URI } from 'vscode-uri'
 import { Time } from '../../../../src/utils/datetime'
-import { HttpRequester } from '../../../../src/utils/http/request'
+import { DefaultHttpRequester } from '../../../../src/utils/http/request'
 import { CachedUriContentResolver, HttpUriContentResolver } from '../../../../src/utils/uri/resolve'
 
 describe(`Test ${CachedUriContentResolver.name}`, async () => {
@@ -17,7 +17,7 @@ describe(`Test ${CachedUriContentResolver.name}`, async () => {
 
         before(async () => {
             // Download actual content to verify against in tests
-            expectedUriContent = (await new HttpRequester().request(realHttpUri.toString())).responseText
+            expectedUriContent = (await new DefaultHttpRequester().request(realHttpUri.toString())).responseText
         })
 
 
