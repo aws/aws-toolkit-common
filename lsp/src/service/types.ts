@@ -21,11 +21,33 @@ export class BaseLanguageService implements LanguageService{
 }
 
 
+/**
+ * This is the core interface of the Language Service.
+ * It defines all the functionalities that a Language Service
+ * can support.
+ * 
+ * These will closely map to the [Language Features defined
+ * by the LSP](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#languageFeatures),
+ * though the parameters may vary.
+ */
 export interface LanguageService {
+
+    /**
+     * Given a position in a text document, provide a suggestion(s)
+     * which the user can eventually select to be autocompleted in their
+     * document.
+     * 
+     * In some IDEs this functionality can be triggered by
+     * doing Ctrl + Space
+     */
     completion: (
         document: TextDocument,
         textDocumentPosition: TextDocumentPositionParams
     ) => Promise<CompletionItem[] | CompletionList>
+
+    /** Given a text document, provide diagnostic information (errors, warnings, ...) about it. */
     diagnostic: (document: TextDocument) => Promise<Diagnostic[]>
+
+    /** When a user hovers their mouse over text, provide them with information. */
     hover: (document: TextDocument, params: HoverParams) => Promise<Hover | null>
 }
