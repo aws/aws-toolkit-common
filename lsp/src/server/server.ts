@@ -83,7 +83,7 @@ connection.onInitialized(() => {
 
 connection.onDidChangeConfiguration(change => {
     // Revalidate all open text documents
-    documents.all().forEach(validateTextDocument)
+    documents.all().forEach(td => validateTextDocument(td.uri))
 })
 
 // Only keep settings for open documents
@@ -101,11 +101,11 @@ documents.onDidChangeContent(change => {
     if (service === undefined) {
         return
     }
-    validateTextDocument(change.document)
+    validateTextDocument(textDoc.uri)
 })
 
-async function validateTextDocument(textDocument: TextDocument): Promise<void> {
-    const textDoc = documents.get(textDocument.uri)
+async function validateTextDocument(textDocumentUri: TextDocument['uri']): Promise<void> {
+    const textDoc = documents.get(textDocumentUri)
     if (textDoc === undefined) {
         return
     }
@@ -114,7 +114,7 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
         return
     }
     const diagnostics = await service.diagnostic(textDoc)
-    connection.sendDiagnostics({ uri: textDocument.uri, diagnostics })
+    connection.sendDiagnostics({ uri: textDocumentUri, diagnostics })
 }
 
 connection.onDidChangeWatchedFiles(_change => {
