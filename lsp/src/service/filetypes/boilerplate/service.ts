@@ -4,11 +4,11 @@ import { createJsonLanguageService, JsonLanguageService } from '../../../utils/j
 import { DocumentParser } from '../../../utils/parser/document'
 import { DocumentParserVisitor } from '../../../utils/parser/types'
 import { YamlLanguageService } from '../../../utils/yaml/service'
-import { LanguageService } from '../../types'
+import { BaseLanguageService } from '../../types'
 
 const SCHEMA_URL = 'https://my.website.com/schema.js'
 
-export class BoilerplateService implements LanguageService {
+export class BoilerplateService extends BaseLanguageService {
 
     private parser: DocumentParserVisitor
     private yaml: YamlLanguageService
@@ -19,6 +19,8 @@ export class BoilerplateService implements LanguageService {
         yaml: YamlLanguageService = new YamlLanguageService(SCHEMA_URL),
         json: JsonLanguageService = createJsonLanguageService()
     ) { 
+        super()
+
         // Use this if you need an AST
         this.parser = parser
 
