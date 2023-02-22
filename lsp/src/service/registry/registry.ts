@@ -26,6 +26,13 @@ export class LanguageServiceRegistry implements LanguageServiceContext {
     }
 
     private async getMatchingStrategy(textDocument: TextDocument): Promise<LanguageServiceStrategy | undefined> {
-        return Promise.any(this.strategies.filter(strategy => strategy.isMatch(textDocument)))
+        // Get all strategies that successfully 'match'
+        const matchingStrategies = this.strategies.map(async strat => {
+            if (await strat.isMatch(textDocument)) {
+                return strat
+            }
+            return Promise.reject()
+        })
+        return Promise.any(matchingStrategies).catch(() => undefined)
     }
 }
