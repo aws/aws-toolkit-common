@@ -44,6 +44,17 @@
             "type": "node",
             "request": "launch",
             "preLaunchTask": "watch",
+            "name": "Service Tests (Current File)",
+            "runtimeArgs": [
+                "${workspaceFolder}/node_modules/ts-mocha/bin/ts-mocha",
+                "-p", "${workspaceFolder}/tsconfig.json",
+                "${file}"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "preLaunchTask": "watch",
             "name": "Integration Tests",
             "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
             "args": ["${workspaceRoot}/out/test/integration/**/*.js"]

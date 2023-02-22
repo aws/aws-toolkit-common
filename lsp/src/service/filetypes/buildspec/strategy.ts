@@ -3,7 +3,7 @@ import { LanguageServiceStrategy } from '../../registry/types'
 
 import { BuildspecService } from './service'
 
-const BUILDSPEC_FILE_NAMES = ['build', 'buildspec'].map(name => [`${name}.yml`, `${name}.yaml`]).flat()
+export const BUILDSPEC_FILE_NAMES = ['build', 'buildspec'].map(name => [`${name}.yml`, `${name}.yaml`]).flat()
 
 export class BuildspecServiceStrategy implements LanguageServiceStrategy {
     async isMatch(textDocument: TextDocument): Promise<boolean> {
