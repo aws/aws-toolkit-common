@@ -759,7 +759,8 @@
             "metadata": [
                 { "type": "result" },
                 { "type": "credentialModification" },
-                { "type": "source" }
+                { "type": "source" },
+                { "type": "serviceType", "required": false }
             ]
         },
         {
