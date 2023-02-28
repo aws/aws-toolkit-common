@@ -24,6 +24,7 @@
                 "eventbridgeSchema",
                 "iamPolicy",
                 "samconfig",
+                "serverless",
                 "stepfunctionsAsl",
                 "smithyModel",
                 "ssmDocument",
