@@ -834,7 +834,7 @@
             "metadata": [
                 { "type": "result" },
                 { "type": "initialDeploy" },
-                { "type": "duration" },
+                { "type": "duration", "required": false },
                 { "type": "name", "required": false },
                 { "type": "framework", "required": false },
                 { "type": "xrayEnabled", "required": false },
@@ -848,7 +848,7 @@
             "description": "Called when user completes the Elastic Beanstalk publish wizard",
             "metadata": [
                 { "type": "result" },
-                { "type": "duration" },
+                { "type": "duration", "required": false },
                 { "type": "serviceType", "required": false },
                 { "type": "source" , "required": false}
             ]
@@ -1049,7 +1049,7 @@
             "metadata": [
                 { "type": "result" }, 
                 { "type": "initialDeploy" },
-                { "type": "duration" },
+                { "type": "duration", "required": false },
                 { "type": "serviceType", "required": false },
                 { "type": "source" , "required": false}
             ]
@@ -1059,7 +1059,7 @@
             "description": "Called when user completes the CloudFormation template publish wizard",
             "metadata": [
                 { "type": "result" },
-                { "type": "duration" },
+                { "type": "duration", "required": false },
                 { "type": "serviceType", "required": false },
                 { "type": "source" , "required": false}
             ]
@@ -1434,7 +1434,7 @@
             "metadata": [
                 { "type": "result" },
                 { "type": "ecrDeploySource", "required": false },
-                { "type": "duration" }
+                { "type": "duration", "required": false }
             ]
         },
         {
@@ -1443,7 +1443,7 @@
             "metadata": [
                 { "type": "result" },
                 { "type": "ecsLaunchType" },
-                { "type": "duration" }
+                { "type": "duration", "required": false }
             ]
         },
         {
@@ -1452,7 +1452,7 @@
             "metadata": [
                 { "type": "result" },
                 { "type": "ecsLaunchType" },
-                { "type": "duration" }
+                { "type": "duration", "required": false }
             ]
         },
         {
@@ -1461,7 +1461,7 @@
             "metadata": [
                 { "type": "result" },
                 { "type": "ecsLaunchType" },
-                { "type": "duration" }
+                { "type": "duration", "required": false }
             ]
         },
         {
@@ -1469,7 +1469,7 @@
             "description": "Called when user completes the ECS publish wizard",
             "metadata": [
                 { "type": "result" },
-                { "type": "duration" }
+                { "type": "duration", "required": false }
             ]
         },
         {
@@ -1645,7 +1645,7 @@
                 { "type": "lambdaPackageType" },
                 { "type": "result" },
                 { "type": "initialDeploy" },
-                { "type": "duration" },
+                { "type": "duration", "required": false },
                 { "type": "runtime", "required": false },
                 { "type": "platform", "required": false },
                 { "type": "lambdaArchitecture", "required": false },
@@ -1660,7 +1660,7 @@
             "description": "Called when user completes the Lambda publish wizard",
             "metadata": [
                 { "type": "result" },
-                { "type": "duration" },
+                { "type": "duration", "required": false },
                 { "type": "serviceType", "required": false },
                 { "type": "source" , "required": false}
             ]
