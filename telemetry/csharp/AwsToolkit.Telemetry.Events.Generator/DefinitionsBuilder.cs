@@ -26,6 +26,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
         private static readonly string[] ImplicitFields = 
         {
             "reason",
+            "duration"
         };
 
         private readonly CodeMethodReferenceExpression _invariantCulture =
@@ -403,6 +404,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             var payloadReason = new CodeFieldReferenceExpression(payload, "Reason");
             tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
                 new CodePrimitiveExpression("reason"), payloadReason)));
+
+            // Generate: datum.AddMetadata("duration", payload.Duration);
+            var payloadDuration = new CodeFieldReferenceExpression(payload, "Duration");
+            tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
+                new CodePrimitiveExpression("duration"), payloadDuration)));    
 
             // Set MetricDatum Metadata values
             metric.metadata?
