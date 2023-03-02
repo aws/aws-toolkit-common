@@ -27,7 +27,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Core
         /// Optional - The duration for the workflow associated with the metric 
         /// This is often used in multi-step workflows to provide additional details about how long did the action take
         /// </summary>
-        public double Duration;
+        public double? Duration;
 
         public DateTime? CreatedOn;
         public double? Value;

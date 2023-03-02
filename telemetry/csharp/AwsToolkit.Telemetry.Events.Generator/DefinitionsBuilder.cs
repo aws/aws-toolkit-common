@@ -405,10 +405,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
                 new CodePrimitiveExpression("reason"), payloadReason)));
 
-            // Generate: datum.AddMetadata("duration", payload.Duration);
-            var payloadDuration = new CodeFieldReferenceExpression(payload, "Duration");
-            tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
-                new CodePrimitiveExpression("duration"), payloadDuration)));    
+            // Generate: 
+            // if (payload.Duration.HasValue)
+            // {
+            //     datum.AddMetadata("duration", payload.Duration.Value);
+            // }
+            var payloadDuration= new CodeFieldReferenceExpression(payload, "Duration");
+            var hasValueDuration = new CodeFieldReferenceExpression(payloadDuration, "HasValue");
+            var durationMetadata = new CodeMethodInvokeExpression(datumAddData,
+                        new CodePrimitiveExpression("duration"), new CodeFieldReferenceExpression(payloadDuration, "Value"));
+
+            tryStatements.Add(new CodeConditionStatement(hasValueDuration, new CodeExpressionStatement(durationMetadata)));
 
             // Set MetricDatum Metadata values
             metric.metadata?
