@@ -56,6 +56,10 @@ namespace Test
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -101,6 +105,10 @@ namespace Test
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -146,8 +154,10 @@ namespace Test
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
-
-                datum.AddMetadata("duration", payload.Duration);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("attempts", payload.Attempts);
 
@@ -201,8 +211,10 @@ namespace Test
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
-
-                datum.AddMetadata("duration", payload.Duration);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("attempts", payload.Attempts);
 
@@ -256,7 +268,6 @@ namespace Test
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
-
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -323,6 +334,10 @@ namespace Test
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -385,9 +400,6 @@ namespace Test
     public sealed class EmitSomeBigBlob : BaseTelemetryEvent
     {
         
-        /// The duration of the operation in milliseconds
-        public double Duration;
-        
         /// A generic number of attempts
         public int Attempts;
         
@@ -410,9 +422,6 @@ namespace Test
     public sealed class EmitSomeBigBlob2 : BaseTelemetryEvent
     {
         
-        /// The duration of the operation in milliseconds
-        public double Duration;
-        
         /// A generic number of attempts
         public int Attempts;
         
@@ -434,9 +443,6 @@ namespace Test
     /// Emits a bunch of optional metadata varieties
     public sealed class EmitSomeBigOptionalBlob : BaseTelemetryEvent
     {
-        
-        /// Optional - The duration of the operation in milliseconds
-        public System.Double? Duration;
         
         /// Optional - A generic number of attempts
         public System.Int32? Attempts;

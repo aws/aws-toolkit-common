@@ -55,6 +55,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -102,6 +106,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 if (payload.Runtime.HasValue)
                 {
@@ -163,6 +171,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -212,6 +224,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -259,6 +275,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -304,6 +324,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -349,6 +373,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -398,6 +426,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -445,6 +477,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -492,6 +528,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -544,6 +584,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -591,6 +635,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -636,6 +684,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -681,6 +733,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
@@ -728,6 +784,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
@@ -777,6 +837,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 if (payload.CredentialType.HasValue)
                 {
@@ -832,6 +896,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -877,6 +945,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("partitionId", payload.PartitionId);
 
@@ -924,6 +996,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -971,6 +1047,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1020,6 +1100,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1065,12 +1149,18 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("credentialModification", payload.CredentialModification);
 
                 datum.AddMetadata("source", payload.Source);
+
+                datum.AddMetadata("serviceType", payload.ServiceType);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1116,6 +1206,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("credentialSourceId", payload.CredentialSourceId);
 
@@ -1163,6 +1257,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1208,6 +1306,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1257,6 +1359,71 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                if (payload.CredentialType.HasValue)
+                {
+                    datum.AddMetadata("credentialType", payload.CredentialType.Value);
+                }
+
+                if (payload.CredentialSourceId.HasValue)
+                {
+                    datum.AddMetadata("credentialSourceId", payload.CredentialSourceId.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when a connection requires login using the browser
+        public static void RecordAwsLoginWithBrowser(this ITelemetryLogger telemetryLogger, AwsLoginWithBrowser payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "aws_loginWithBrowser";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1314,6 +1481,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("name", payload.Name);
 
@@ -1361,6 +1532,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1408,6 +1583,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1453,6 +1632,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1498,6 +1681,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
@@ -1545,6 +1732,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1590,6 +1781,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1608,6 +1803,65 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("enhancedHealthEnabled", payload.EnhancedHealthEnabled.Value);
                 }
+
+                datum.AddMetadata("serviceType", payload.ServiceType);
+
+                datum.AddMetadata("source", payload.Source);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when user completes the Elastic Beanstalk publish wizard
+        public static void RecordBeanstalkPublishWizard(this ITelemetryLogger telemetryLogger, BeanstalkPublishWizard payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "beanstalk_publishWizard";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("serviceType", payload.ServiceType);
+
+                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1653,6 +1907,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1700,6 +1958,265 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when user deletes a Beanstalk application
+        public static void RecordBeanstalkDeleteApplication(this ITelemetryLogger telemetryLogger, BeanstalkDeleteApplication payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "beanstalk_deleteApplication";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when user deletes a Beanstalk environment
+        public static void RecordBeanstalkDeleteEnvironment(this ITelemetryLogger telemetryLogger, BeanstalkDeleteEnvironment payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "beanstalk_deleteEnvironment";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Restart application server for a Beanstalk environment
+        public static void RecordBeanstalkRestartApplication(this ITelemetryLogger telemetryLogger, BeanstalkRestartApplication payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "beanstalk_restartApplication";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Rebuild a Beanstalk environment
+        public static void RecordBeanstalkRebuildEnvironment(this ITelemetryLogger telemetryLogger, BeanstalkRebuildEnvironment payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "beanstalk_rebuildEnvironment";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Edit configuration of a Beanstalk environment
+        public static void RecordBeanstalkEditEnvironment(this ITelemetryLogger telemetryLogger, BeanstalkEditEnvironment payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "beanstalk_editEnvironment";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1747,6 +2264,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1794,6 +2315,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1841,6 +2366,214 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when user deletes a CloudFront Distribution
+        public static void RecordCloudfrontDeleteDistribution(this ITelemetryLogger telemetryLogger, CloudfrontDeleteDistribution payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "cloudfront_deleteDistribution";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when user deletes a CloudFront Streaming Distribution
+        public static void RecordCloudfrontDeleteStreamingDistribution(this ITelemetryLogger telemetryLogger, CloudfrontDeleteStreamingDistribution payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "cloudfront_deleteStreamingDistribution";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Create a CloudFront Distribution
+        public static void RecordCloudfrontCreateDistribution(this ITelemetryLogger telemetryLogger, CloudfrontCreateDistribution payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "cloudfront_createDistribution";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Create a CloudFront Streaming Distribution
+        public static void RecordCloudfrontCreateStreamingDistribution(this ITelemetryLogger telemetryLogger, CloudfrontCreateStreamingDistribution payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "cloudfront_createStreamingDistribution";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1888,6 +2621,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1937,6 +2674,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1995,6 +2736,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2044,6 +2789,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2093,6 +2842,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2142,6 +2895,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2191,6 +2948,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2238,6 +2999,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2285,6 +3050,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2332,6 +3101,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("enabled", payload.Enabled);
 
@@ -2379,6 +3152,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("enabled", payload.Enabled);
 
@@ -2426,6 +3203,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
 
@@ -2473,6 +3254,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -2518,6 +3303,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -2563,6 +3352,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2624,6 +3417,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2671,6 +3468,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2718,6 +3519,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2765,6 +3570,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2814,10 +3623,73 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("initialDeploy", payload.InitialDeploy);
+
+                datum.AddMetadata("serviceType", payload.ServiceType);
+
+                datum.AddMetadata("source", payload.Source);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when user completes the CloudFormation template publish wizard
+        public static void RecordCloudformationPublishWizard(this ITelemetryLogger telemetryLogger, CloudformationPublishWizard payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "cloudformation_publishWizard";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("serviceType", payload.ServiceType);
+
+                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -2863,6 +3735,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2910,6 +3786,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2957,6 +3837,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3004,6 +3888,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3056,6 +3944,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3103,6 +3995,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3150,6 +4046,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3199,6 +4099,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3253,6 +4157,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3300,6 +4208,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3349,10 +4261,65 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("ec2InstanceState", payload.Ec2InstanceState);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Remove the private key of an EC2 Key Pair from internal storage
+        public static void RecordEc2ClearPrivateKey(this ITelemetryLogger telemetryLogger, Ec2ClearPrivateKey payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_clearPrivateKey";
+                datum.Unit = Unit.Count;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -3398,10 +4365,1199 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("ec2ConnectionType", payload.Ec2ConnectionType);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Copy AMI image to another region
+        public static void RecordEc2CopyAmiToRegion(this ITelemetryLogger telemetryLogger, Ec2CopyAmiToRegion payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_copyAmiToRegion";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Create an image from an EC2 Instance
+        public static void RecordEc2CreateAmi(this ITelemetryLogger telemetryLogger, Ec2CreateAmi payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_createAmi";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Create (allocate) an Elastic IP address
+        public static void RecordEc2CreateElasticIp(this ITelemetryLogger telemetryLogger, Ec2CreateElasticIp payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_createElasticIp";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Create an EC2 Key Pair
+        public static void RecordEc2CreateKeyPair(this ITelemetryLogger telemetryLogger, Ec2CreateKeyPair payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_createKeyPair";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Create an EC2 security group
+        public static void RecordEc2CreateSecurityGroup(this ITelemetryLogger telemetryLogger, Ec2CreateSecurityGroup payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_createSecurityGroup";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Create an EC2 volume snapshot
+        public static void RecordEc2CreateSnapshot(this ITelemetryLogger telemetryLogger, Ec2CreateSnapshot payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_createSnapshot";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Create an EC2 volume
+        public static void RecordEc2CreateVolume(this ITelemetryLogger telemetryLogger, Ec2CreateVolume payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_createVolume";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Delete (de-register) an AMI image
+        public static void RecordEc2DeleteAmi(this ITelemetryLogger telemetryLogger, Ec2DeleteAmi payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_deleteAmi";
+                datum.Unit = Unit.Count;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Delete (release) an Elastic IP address
+        public static void RecordEc2DeleteElasticIp(this ITelemetryLogger telemetryLogger, Ec2DeleteElasticIp payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_deleteElasticIp";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Delete an EC2 Key Pair
+        public static void RecordEc2DeleteKeyPair(this ITelemetryLogger telemetryLogger, Ec2DeleteKeyPair payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_deleteKeyPair";
+                datum.Unit = Unit.Count;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Delete an EC2 security group
+        public static void RecordEc2DeleteSecurityGroup(this ITelemetryLogger telemetryLogger, Ec2DeleteSecurityGroup payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_deleteSecurityGroup";
+                datum.Unit = Unit.Count;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Delete an EC2 Volume Snapshot
+        public static void RecordEc2DeleteSnapshot(this ITelemetryLogger telemetryLogger, Ec2DeleteSnapshot payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_deleteSnapshot";
+                datum.Unit = Unit.Count;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Delete an EC2 Volume
+        public static void RecordEc2DeleteVolume(this ITelemetryLogger telemetryLogger, Ec2DeleteVolume payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_deleteVolume";
+                datum.Unit = Unit.Count;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Edit AMI image permissions
+        public static void RecordEc2EditAmiPermission(this ITelemetryLogger telemetryLogger, Ec2EditAmiPermission payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_editAmiPermission";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Associate or disassociate an Elastic IP with an EC2 Instance
+        public static void RecordEc2EditInstanceElasticIp(this ITelemetryLogger telemetryLogger, Ec2EditInstanceElasticIp payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_editInstanceElasticIp";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                if (payload.Enabled.HasValue)
+                {
+                    datum.AddMetadata("enabled", payload.Enabled.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Adjust the shutdown behavior of an EC2 Instance
+        public static void RecordEc2EditInstanceShutdownBehavior(this ITelemetryLogger telemetryLogger, Ec2EditInstanceShutdownBehavior payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_editInstanceShutdownBehavior";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Adjust the termination protection of an EC2 Instance
+        public static void RecordEc2EditInstanceTerminationProtection(this ITelemetryLogger telemetryLogger, Ec2EditInstanceTerminationProtection payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_editInstanceTerminationProtection";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                if (payload.Enabled.HasValue)
+                {
+                    datum.AddMetadata("enabled", payload.Enabled.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Adjust the instance type of an EC2 Instance
+        public static void RecordEc2EditInstanceType(this ITelemetryLogger telemetryLogger, Ec2EditInstanceType payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_editInstanceType";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Adjust an EC2 Instance's user data
+        public static void RecordEc2EditInstanceUserData(this ITelemetryLogger telemetryLogger, Ec2EditInstanceUserData payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_editInstanceUserData";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Alter an EC2 security group permission
+        public static void RecordEc2EditSecurityGroupPermission(this ITelemetryLogger telemetryLogger, Ec2EditSecurityGroupPermission payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_editSecurityGroupPermission";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Attach (enabled = true) or detach a volume
+        public static void RecordEc2EditVolumeAttachment(this ITelemetryLogger telemetryLogger, Ec2EditVolumeAttachment payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_editVolumeAttachment";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("enabled", payload.Enabled);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Save the private key of an EC2 Key Pair out to disk
+        public static void RecordEc2ExportPrivateKey(this ITelemetryLogger telemetryLogger, Ec2ExportPrivateKey payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_exportPrivateKey";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Store the private key of an EC2 Key Pair in internal storage
+        public static void RecordEc2ImportPrivateKey(this ITelemetryLogger telemetryLogger, Ec2ImportPrivateKey payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_importPrivateKey";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -3447,6 +5603,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3494,6 +5654,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3541,6 +5705,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3588,6 +5756,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3635,6 +5807,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3682,6 +5858,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3729,6 +5909,61 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// View the system log of an EC2 Instance
+        public static void RecordEc2ViewInstanceSystemLog(this ITelemetryLogger telemetryLogger, Ec2ViewInstanceSystemLog payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_viewInstanceSystemLog";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3776,6 +6011,61 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// View an EC2 Instance's user data
+        public static void RecordEc2ViewInstanceUserData(this ITelemetryLogger telemetryLogger, Ec2ViewInstanceUserData payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ec2_viewInstanceUserData";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3823,6 +6113,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3870,6 +6164,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3917,6 +6215,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3966,6 +6268,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -4011,6 +6317,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -4056,6 +6366,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4103,6 +6417,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4150,6 +6468,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4197,6 +6519,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4249,6 +6575,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4298,6 +6628,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4347,6 +6681,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4396,10 +6734,12 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("duration", payload.Duration);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -4445,6 +6785,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4492,6 +6836,214 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Edit configuration of an ECS service
+        public static void RecordEcsEditService(this ITelemetryLogger telemetryLogger, EcsEditService payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ecs_editService";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Delete an ECS cluster
+        public static void RecordEcsDeleteCluster(this ITelemetryLogger telemetryLogger, EcsDeleteCluster payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ecs_deleteCluster";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Stop ECS task(s)
+        public static void RecordEcsStopTask(this ITelemetryLogger telemetryLogger, EcsStopTask payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ecs_stopTask";
+                datum.Unit = Unit.Count;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Delete ECS Scheduled task(s)
+        public static void RecordEcsDeleteScheduledTask(this ITelemetryLogger telemetryLogger, EcsDeleteScheduledTask payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "ecs_deleteScheduledTask";
+                datum.Unit = Unit.Count;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4539,6 +7091,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4586,6 +7142,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4637,6 +7197,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4684,6 +7248,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4731,6 +7299,324 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Open a window to view/edit an IAM resource
+        public static void RecordIamOpen(this ITelemetryLogger telemetryLogger, IamOpen payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "iam_open";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("iamResourceType", payload.IamResourceType);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Create an IAM resource
+        public static void RecordIamCreate(this ITelemetryLogger telemetryLogger, IamCreate payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "iam_create";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("iamResourceType", payload.IamResourceType);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Delete an IAM resource
+        public static void RecordIamDelete(this ITelemetryLogger telemetryLogger, IamDelete payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "iam_delete";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("iamResourceType", payload.IamResourceType);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Edits policy/configuration associated with an IAM resource
+        public static void RecordIamEdit(this ITelemetryLogger telemetryLogger, IamEdit payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "iam_edit";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("iamResourceType", payload.IamResourceType);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Create Access Key for an IAM user
+        public static void RecordIamCreateUserAccessKey(this ITelemetryLogger telemetryLogger, IamCreateUserAccessKey payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "iam_createUserAccessKey";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Delete Access Key for an IAM user
+        public static void RecordIamDeleteUserAccessKey(this ITelemetryLogger telemetryLogger, IamDeleteUserAccessKey payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "iam_deleteUserAccessKey";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4778,8 +7664,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
-
-                datum.AddMetadata("duration", payload.Duration);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4827,6 +7715,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4874,6 +7766,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("runtime", payload.Runtime);
 
@@ -4921,6 +7817,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4974,6 +7874,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5021,6 +7925,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 if (payload.Update.HasValue)
                 {
@@ -5075,6 +7983,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 if (payload.Runtime.HasValue)
                 {
@@ -5127,6 +8039,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 if (payload.Runtime.HasValue)
                 {
@@ -5190,6 +8106,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 if (payload.Runtime.HasValue)
                 {
@@ -5242,6 +8162,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 if (payload.Runtime.HasValue)
                 {
@@ -5294,6 +8218,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("lambdaPackageType", payload.LambdaPackageType);
 
@@ -5319,6 +8247,65 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("xrayEnabled", payload.XrayEnabled.Value);
                 }
+
+                datum.AddMetadata("serviceType", payload.ServiceType);
+
+                datum.AddMetadata("source", payload.Source);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when user completes the Lambda publish wizard
+        public static void RecordLambdaPublishWizard(this ITelemetryLogger telemetryLogger, LambdaPublishWizard payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "lambda_publishWizard";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("serviceType", payload.ServiceType);
+
+                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -5364,6 +8351,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5411,6 +8402,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5462,6 +8457,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5509,6 +8508,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5556,6 +8559,316 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Launch a RDS DB instance
+        public static void RecordRdsLaunchInstance(this ITelemetryLogger telemetryLogger, RdsLaunchInstance payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "rds_launchInstance";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Create a RDS security group
+        public static void RecordRdsCreateSecurityGroup(this ITelemetryLogger telemetryLogger, RdsCreateSecurityGroup payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "rds_createSecurityGroup";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Create a RDS subnet group
+        public static void RecordRdsCreateSubnetGroup(this ITelemetryLogger telemetryLogger, RdsCreateSubnetGroup payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "rds_createSubnetGroup";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Delete a RDS DB instance
+        public static void RecordRdsDeleteInstance(this ITelemetryLogger telemetryLogger, RdsDeleteInstance payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "rds_deleteInstance";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Delete RDS security group(s)
+        public static void RecordRdsDeleteSecurityGroup(this ITelemetryLogger telemetryLogger, RdsDeleteSecurityGroup payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "rds_deleteSecurityGroup";
+                datum.Unit = Unit.Count;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Delete RDS subnet group(s)
+        public static void RecordRdsDeleteSubnetGroup(this ITelemetryLogger telemetryLogger, RdsDeleteSubnetGroup payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "rds_deleteSubnetGroup";
+                datum.Unit = Unit.Count;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5603,6 +8916,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5654,6 +8971,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5703,6 +9024,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5752,6 +9077,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5801,6 +9130,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5854,6 +9187,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5922,6 +9259,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5969,6 +9310,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6021,6 +9366,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6068,6 +9417,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -6113,6 +9466,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -6158,6 +9515,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -6203,6 +9564,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -6248,6 +9613,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6295,6 +9664,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6344,6 +9717,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6391,6 +9768,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6438,6 +9819,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6495,6 +9880,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6542,6 +9931,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6604,6 +9997,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6651,6 +10048,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6713,6 +10114,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6760,6 +10165,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6807,6 +10216,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6854,6 +10267,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6906,6 +10323,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6953,6 +10374,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7000,15 +10425,14 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 if (payload.Result.HasValue)
                 {
                     datum.AddMetadata("result", payload.Result.Value);
-                }
-
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
                 }
 
                 datum = datum.InvokeTransform(transformDatum);
@@ -7055,6 +10479,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -7100,6 +10528,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
@@ -7147,6 +10579,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7199,6 +10635,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7248,6 +10688,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7297,6 +10741,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7346,6 +10794,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7395,6 +10847,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7444,6 +10900,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7462,7 +10922,63 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
-        /// Create an SNS Topic
+        /// Called when user deletes a SQS queue
+        public static void RecordSqsDeleteQueue(this ITelemetryLogger telemetryLogger, SqsDeleteQueue payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "sqs_deleteQueue";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                if (payload.SqsQueueType.HasValue)
+                {
+                    datum.AddMetadata("sqsQueueType", payload.SqsQueueType.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Create a SNS Topic
         public static void RecordSnsCreateTopic(this ITelemetryLogger telemetryLogger, SnsCreateTopic payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
@@ -7493,6 +11009,61 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Create a SNS Subscription
+        public static void RecordSnsCreateSubscription(this ITelemetryLogger telemetryLogger, SnsCreateSubscription payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "sns_createSubscription";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7540,6 +11111,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7587,6 +11162,163 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when user deletes a SNS Topic
+        public static void RecordSnsDeleteTopic(this ITelemetryLogger telemetryLogger, SnsDeleteTopic payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "sns_deleteTopic";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when user deletes SNS subscription(s)
+        public static void RecordSnsDeleteSubscription(this ITelemetryLogger telemetryLogger, SnsDeleteSubscription payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "sns_deleteSubscription";
+                datum.Unit = Unit.Count;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Publish message to a SNS topic
+        public static void RecordSnsPublishMessage(this ITelemetryLogger telemetryLogger, SnsPublishMessage payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "sns_publishMessage";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7634,6 +11366,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7681,6 +11417,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7728,6 +11468,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7775,6 +11519,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7822,6 +11570,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7869,6 +11621,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("insightsDialogOpenSource", payload.InsightsDialogOpenSource);
 
@@ -7916,6 +11672,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7967,6 +11727,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8014,6 +11778,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8061,6 +11829,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8108,6 +11880,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("url", payload.Url);
 
@@ -8157,6 +11933,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8206,6 +11986,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8255,6 +12039,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -8300,6 +12088,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("resourceType", payload.ResourceType);
 
@@ -8347,14 +12139,16 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("resourceType", payload.ResourceType);
 
                 datum.AddMetadata("dynamicResourceOperation", payload.DynamicResourceOperation);
-
-                datum.AddMetadata("duration", payload.Duration);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -8400,6 +12194,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("experimentId", payload.ExperimentId);
 
@@ -8449,6 +12247,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("toolId", payload.ToolId);
 
@@ -8498,6 +12300,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("settingId", payload.SettingId);
 
@@ -8547,6 +12353,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("elementId", payload.ElementId);
 
@@ -8594,6 +12404,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("source", payload.Source);
 
@@ -8645,6 +12459,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("codewhispererAcceptedTokens", payload.CodewhispererAcceptedTokens);
 
@@ -8700,6 +12518,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("codewhispererCodeScanLines", payload.CodewhispererCodeScanLines);
 
@@ -8727,8 +12549,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("codewhispererCodeScanTotalIssues", payload.CodewhispererCodeScanTotalIssues);
 
                 datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
-
-                datum.AddMetadata("duration", payload.Duration);
 
                 datum.AddMetadata("contextTruncationDuration", payload.ContextTruncationDuration);
 
@@ -8784,6 +12604,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 if (payload.CodewhispererAutomatedTriggerType.HasValue)
                 {
@@ -8818,8 +12642,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("codewhispererSessionId", payload.CodewhispererSessionId);
 
                 datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
-
-                datum.AddMetadata("duration", payload.Duration);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8869,6 +12691,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("codewhispererCompletionType", payload.CodewhispererCompletionType);
 
@@ -8946,6 +12772,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("codewhispererCompletionType", payload.CodewhispererCompletionType);
 
@@ -9014,12 +12844,14 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("codewhispererRequestId", payload.CodewhispererRequestId);
 
                 datum.AddMetadata("codewhispererSessionId", payload.CodewhispererSessionId);
-
-                datum.AddMetadata("duration", payload.Duration);
 
                 datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
 
@@ -9073,6 +12905,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("codewhispererRequestId", payload.CodewhispererRequestId);
 
@@ -9142,6 +12978,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -9196,6 +13036,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -9247,6 +13091,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -9296,6 +13144,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -9345,6 +13197,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -9394,12 +13250,14 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("userId", payload.UserId);
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("duration", payload.Duration);
 
                 datum.AddMetadata("codecatalyst_devEnvironmentWorkflowStep", payload.CodecatalystDevEnvironmentWorkflowStep);
 
@@ -9511,6 +13369,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// samconfig
         public static readonly AwsFiletype Samconfig = new AwsFiletype("samconfig");
+        
+        /// serverless
+        public static readonly AwsFiletype Serverless = new AwsFiletype("serverless");
         
         /// stepfunctionsAsl
         public static readonly AwsFiletype StepfunctionsAsl = new AwsFiletype("stepfunctionsAsl");
@@ -9630,6 +13491,33 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public static readonly Component Filesystem = new Component("filesystem");
         
         public Component(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// The type of IAM resource referenced by a metric or operation
+    public struct IamResourceType
+    {
+        
+        private string _value;
+        
+        /// group
+        public static readonly IamResourceType Group = new IamResourceType("group");
+        
+        /// role
+        public static readonly IamResourceType Role = new IamResourceType("role");
+        
+        /// user
+        public static readonly IamResourceType User = new IamResourceType("user");
+        
+        public IamResourceType(string value)
         {
             this._value = value;
         }
@@ -10049,6 +13937,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// ssh
         public static readonly Ec2ConnectionType Ssh = new Ec2ConnectionType("ssh");
         
+        /// scp
+        public static readonly Ec2ConnectionType Scp = new Ec2ConnectionType("scp");
+        
         public Ec2ConnectionType(string value)
         {
             this._value = value;
@@ -10411,6 +14302,36 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// csharp
         public static readonly CodewhispererLanguage Csharp = new CodewhispererLanguage("csharp");
+        
+        /// c
+        public static readonly CodewhispererLanguage C = new CodewhispererLanguage("c");
+        
+        /// cpp
+        public static readonly CodewhispererLanguage Cpp = new CodewhispererLanguage("cpp");
+        
+        /// go
+        public static readonly CodewhispererLanguage Go = new CodewhispererLanguage("go");
+        
+        /// kotlin
+        public static readonly CodewhispererLanguage Kotlin = new CodewhispererLanguage("kotlin");
+        
+        /// php
+        public static readonly CodewhispererLanguage Php = new CodewhispererLanguage("php");
+        
+        /// ruby
+        public static readonly CodewhispererLanguage Ruby = new CodewhispererLanguage("ruby");
+        
+        /// rust
+        public static readonly CodewhispererLanguage Rust = new CodewhispererLanguage("rust");
+        
+        /// scala
+        public static readonly CodewhispererLanguage Scala = new CodewhispererLanguage("scala");
+        
+        /// shell
+        public static readonly CodewhispererLanguage Shell = new CodewhispererLanguage("shell");
+        
+        /// sql
+        public static readonly CodewhispererLanguage Sql = new CodewhispererLanguage("sql");
         
         public CodewhispererLanguage(string value)
         {
@@ -10898,6 +14819,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The source of the operation
         public string Source;
         
+        /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
+        public string ServiceType;
+        
         public AwsModifyCredentials()
         {
             this.Passive = false;
@@ -10959,6 +14883,25 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsValidateCredentials()
         {
             this.Passive = true;
+        }
+    }
+    
+    /// Called when a connection requires login using the browser
+    public sealed class AwsLoginWithBrowser : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// Optional - The type of credential that was selected
+        public CredentialType? CredentialType;
+        
+        /// Optional - Where credentials are stored or retrieved from
+        public CredentialSourceId? CredentialSourceId;
+        
+        public AwsLoginWithBrowser()
+        {
+            this.Passive = false;
         }
     }
     
@@ -11053,7 +14996,32 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - Whether or not Elastic Beanstalk enhanced health reporting and monitoring is being used
         public System.Boolean? EnhancedHealthEnabled;
         
+        /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
+        public string ServiceType;
+        
+        /// Optional - The source of the operation
+        public string Source;
+        
         public BeanstalkDeploy()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Called when user completes the Elastic Beanstalk publish wizard
+    public sealed class BeanstalkPublishWizard : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
+        public string ServiceType;
+        
+        /// Optional - The source of the operation
+        public string Source;
+        
+        public BeanstalkPublishWizard()
         {
             this.Passive = false;
         }
@@ -11080,6 +15048,71 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Result Result;
         
         public BeanstalkOpenEnvironment()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Called when user deletes a Beanstalk application
+    public sealed class BeanstalkDeleteApplication : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public BeanstalkDeleteApplication()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Called when user deletes a Beanstalk environment
+    public sealed class BeanstalkDeleteEnvironment : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public BeanstalkDeleteEnvironment()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Restart application server for a Beanstalk environment
+    public sealed class BeanstalkRestartApplication : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public BeanstalkRestartApplication()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Rebuild a Beanstalk environment
+    public sealed class BeanstalkRebuildEnvironment : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public BeanstalkRebuildEnvironment()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Edit configuration of a Beanstalk environment
+    public sealed class BeanstalkEditEnvironment : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public BeanstalkEditEnvironment()
         {
             this.Passive = false;
         }
@@ -11119,6 +15152,58 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Result Result;
         
         public CloudfrontOpenInvalidationRequest()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Called when user deletes a CloudFront Distribution
+    public sealed class CloudfrontDeleteDistribution : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public CloudfrontDeleteDistribution()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Called when user deletes a CloudFront Streaming Distribution
+    public sealed class CloudfrontDeleteStreamingDistribution : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public CloudfrontDeleteStreamingDistribution()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Create a CloudFront Distribution
+    public sealed class CloudfrontCreateDistribution : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public CloudfrontCreateDistribution()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Create a CloudFront Streaming Distribution
+    public sealed class CloudfrontCreateStreamingDistribution : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public CloudfrontCreateStreamingDistribution()
         {
             this.Passive = false;
         }
@@ -11417,7 +15502,32 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Whether or not the deploy targets a new destination (true) or an existing destination (false)
         public bool InitialDeploy;
         
+        /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
+        public string ServiceType;
+        
+        /// Optional - The source of the operation
+        public string Source;
+        
         public CloudformationDeploy()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Called when user completes the CloudFormation template publish wizard
+    public sealed class CloudformationPublishWizard : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
+        public string ServiceType;
+        
+        /// Optional - The source of the operation
+        public string Source;
+        
+        public CloudformationPublishWizard()
         {
             this.Passive = false;
         }
@@ -11584,6 +15694,19 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// Remove the private key of an EC2 Key Pair from internal storage
+    public sealed class Ec2ClearPrivateKey : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2ClearPrivateKey()
+        {
+            this.Passive = false;
+        }
+    }
+    
     /// Perform a connection to an EC2 Instance
     public sealed class Ec2ConnectToInstance : BaseTelemetryEvent
     {
@@ -11595,6 +15718,314 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2ConnectionType Ec2ConnectionType;
         
         public Ec2ConnectToInstance()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Copy AMI image to another region
+    public sealed class Ec2CopyAmiToRegion : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2CopyAmiToRegion()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Create an image from an EC2 Instance
+    public sealed class Ec2CreateAmi : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2CreateAmi()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Create (allocate) an Elastic IP address
+    public sealed class Ec2CreateElasticIp : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2CreateElasticIp()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Create an EC2 Key Pair
+    public sealed class Ec2CreateKeyPair : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2CreateKeyPair()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Create an EC2 security group
+    public sealed class Ec2CreateSecurityGroup : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2CreateSecurityGroup()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Create an EC2 volume snapshot
+    public sealed class Ec2CreateSnapshot : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2CreateSnapshot()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Create an EC2 volume
+    public sealed class Ec2CreateVolume : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2CreateVolume()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Delete (de-register) an AMI image
+    public sealed class Ec2DeleteAmi : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2DeleteAmi()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Delete (release) an Elastic IP address
+    public sealed class Ec2DeleteElasticIp : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2DeleteElasticIp()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Delete an EC2 Key Pair
+    public sealed class Ec2DeleteKeyPair : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2DeleteKeyPair()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Delete an EC2 security group
+    public sealed class Ec2DeleteSecurityGroup : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2DeleteSecurityGroup()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Delete an EC2 Volume Snapshot
+    public sealed class Ec2DeleteSnapshot : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2DeleteSnapshot()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Delete an EC2 Volume
+    public sealed class Ec2DeleteVolume : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2DeleteVolume()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Edit AMI image permissions
+    public sealed class Ec2EditAmiPermission : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2EditAmiPermission()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Associate or disassociate an Elastic IP with an EC2 Instance
+    public sealed class Ec2EditInstanceElasticIp : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// Optional - True if turned on, false if turned off
+        public System.Boolean? Enabled;
+        
+        public Ec2EditInstanceElasticIp()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Adjust the shutdown behavior of an EC2 Instance
+    public sealed class Ec2EditInstanceShutdownBehavior : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2EditInstanceShutdownBehavior()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Adjust the termination protection of an EC2 Instance
+    public sealed class Ec2EditInstanceTerminationProtection : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// Optional - True if turned on, false if turned off
+        public System.Boolean? Enabled;
+        
+        public Ec2EditInstanceTerminationProtection()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Adjust the instance type of an EC2 Instance
+    public sealed class Ec2EditInstanceType : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2EditInstanceType()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Adjust an EC2 Instance's user data
+    public sealed class Ec2EditInstanceUserData : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2EditInstanceUserData()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Alter an EC2 security group permission
+    public sealed class Ec2EditSecurityGroupPermission : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2EditSecurityGroupPermission()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Attach (enabled = true) or detach a volume
+    public sealed class Ec2EditVolumeAttachment : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// True if turned on, false if turned off
+        public bool Enabled;
+        
+        public Ec2EditVolumeAttachment()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Save the private key of an EC2 Key Pair out to disk
+    public sealed class Ec2ExportPrivateKey : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2ExportPrivateKey()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Store the private key of an EC2 Key Pair in internal storage
+    public sealed class Ec2ImportPrivateKey : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2ImportPrivateKey()
         {
             this.Passive = false;
         }
@@ -11691,6 +16122,19 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// View the system log of an EC2 Instance
+    public sealed class Ec2ViewInstanceSystemLog : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2ViewInstanceSystemLog()
+        {
+            this.Passive = false;
+        }
+    }
+    
     /// Open to view status of an ECS Cluster
     public sealed class EcsOpenCluster : BaseTelemetryEvent
     {
@@ -11699,6 +16143,19 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Result Result;
         
         public EcsOpenCluster()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// View an EC2 Instance's user data
+    public sealed class Ec2ViewInstanceUserData : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public Ec2ViewInstanceUserData()
         {
             this.Passive = false;
         }
@@ -11876,9 +16333,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The result of the operation
         public Result Result;
         
-        /// The duration of the operation in milliseconds
-        public double Duration;
-        
         public EcsPublishWizard()
         {
             this.Passive = false;
@@ -11906,6 +16360,58 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Result Result;
         
         public EcsDeleteService()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Edit configuration of an ECS service
+    public sealed class EcsEditService : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public EcsEditService()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Delete an ECS cluster
+    public sealed class EcsDeleteCluster : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public EcsDeleteCluster()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Stop ECS task(s)
+    public sealed class EcsStopTask : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public EcsStopTask()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Delete ECS Scheduled task(s)
+    public sealed class EcsDeleteScheduledTask : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public EcsDeleteScheduledTask()
         {
             this.Passive = false;
         }
@@ -11982,12 +16488,99 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// Open a window to view/edit an IAM resource
+    public sealed class IamOpen : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// The type of IAM resource referenced by a metric or operation
+        public IamResourceType IamResourceType;
+        
+        public IamOpen()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Create an IAM resource
+    public sealed class IamCreate : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// The type of IAM resource referenced by a metric or operation
+        public IamResourceType IamResourceType;
+        
+        public IamCreate()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Delete an IAM resource
+    public sealed class IamDelete : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// The type of IAM resource referenced by a metric or operation
+        public IamResourceType IamResourceType;
+        
+        public IamDelete()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Edits policy/configuration associated with an IAM resource
+    public sealed class IamEdit : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// The type of IAM resource referenced by a metric or operation
+        public IamResourceType IamResourceType;
+        
+        public IamEdit()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Create Access Key for an IAM user
+    public sealed class IamCreateUserAccessKey : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public IamCreateUserAccessKey()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Delete Access Key for an IAM user
+    public sealed class IamDeleteUserAccessKey : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public IamDeleteUserAccessKey()
+        {
+            this.Passive = false;
+        }
+    }
+    
     /// called when deleting lambdas remotely
     public sealed class LambdaDelete : BaseTelemetryEvent
     {
-        
-        /// The duration of the operation in milliseconds
-        public double Duration;
         
         /// The result of the operation
         public Result Result;
@@ -12182,7 +16775,32 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - Whether or not AWS X-Ray is enabled
         public System.Boolean? XrayEnabled;
         
+        /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
+        public string ServiceType;
+        
+        /// Optional - The source of the operation
+        public string Source;
+        
         public LambdaDeploy()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Called when user completes the Lambda publish wizard
+    public sealed class LambdaPublishWizard : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
+        public string ServiceType;
+        
+        /// Optional - The source of the operation
+        public string Source;
+        
+        public LambdaPublishWizard()
         {
             this.Passive = false;
         }
@@ -12254,6 +16872,84 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Result Result;
         
         public RdsOpenSubnets()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Launch a RDS DB instance
+    public sealed class RdsLaunchInstance : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public RdsLaunchInstance()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Create a RDS security group
+    public sealed class RdsCreateSecurityGroup : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public RdsCreateSecurityGroup()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Create a RDS subnet group
+    public sealed class RdsCreateSubnetGroup : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public RdsCreateSubnetGroup()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Delete a RDS DB instance
+    public sealed class RdsDeleteInstance : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public RdsDeleteInstance()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Delete RDS security group(s)
+    public sealed class RdsDeleteSecurityGroup : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public RdsDeleteSecurityGroup()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Delete RDS subnet group(s)
+    public sealed class RdsDeleteSubnetGroup : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public RdsDeleteSubnetGroup()
         {
             this.Passive = false;
         }
@@ -12693,9 +17389,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The result of the operation
         public Result? Result;
         
-        /// Optional - The duration of the operation in milliseconds
-        public System.Double? Duration;
-        
         public ToolkitInit()
         {
             this.Passive = true;
@@ -12837,7 +17530,23 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
-    /// Create an SNS Topic
+    /// Called when user deletes a SQS queue
+    public sealed class SqsDeleteQueue : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// Optional - The type of an SQS Queue
+        public SqsQueueType? SqsQueueType;
+        
+        public SqsDeleteQueue()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Create a SNS Topic
     public sealed class SnsCreateTopic : BaseTelemetryEvent
     {
         
@@ -12845,6 +17554,19 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Result Result;
         
         public SnsCreateTopic()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Create a SNS Subscription
+    public sealed class SnsCreateSubscription : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public SnsCreateSubscription()
         {
             this.Passive = false;
         }
@@ -12871,6 +17593,45 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Result Result;
         
         public SnsOpenSubscriptions()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Called when user deletes a SNS Topic
+    public sealed class SnsDeleteTopic : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public SnsDeleteTopic()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Called when user deletes SNS subscription(s)
+    public sealed class SnsDeleteSubscription : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public SnsDeleteSubscription()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Publish message to a SNS topic
+    public sealed class SnsPublishMessage : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public SnsPublishMessage()
         {
             this.Passive = false;
         }
@@ -13096,9 +17857,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The dynamic resource operation being executed
         public DynamicResourceOperation DynamicResourceOperation;
         
-        /// The duration of the operation in milliseconds
-        public double Duration;
-        
         public DynamicresourceMutateResource()
         {
             this.Passive = false;
@@ -13241,9 +17999,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Programming language of the CodeWhisperer recommendation
         public CodewhispererLanguage CodewhispererLanguage;
         
-        /// The duration of the operation in milliseconds
-        public double Duration;
-        
         /// Time taken for context truncation in milliseconds
         public int ContextTruncationDuration;
         
@@ -13301,9 +18056,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The type of the user trigger to send request to CodeWhisperer service
         public CodewhispererTriggerType CodewhispererTriggerType;
-        
-        /// The duration of the operation in milliseconds
-        public double Duration;
         
         /// The result of the operation
         public Result Result;
@@ -13415,9 +18167,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The unique identifier for a CodeWhisperer session(which can contain multiple requests)
         public string CodewhispererSessionId;
-        
-        /// The duration of the operation in milliseconds
-        public double Duration;
         
         /// The type of the user trigger to send request to CodeWhisperer service
         public CodewhispererTriggerType CodewhispererTriggerType;
@@ -13578,9 +18327,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
-        
-        /// The duration of the operation in milliseconds
-        public double Duration;
         
         /// Workflow step name
         public string CodecatalystDevEnvironmentWorkflowStep;
