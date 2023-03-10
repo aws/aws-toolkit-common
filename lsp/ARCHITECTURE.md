@@ -1,4 +1,4 @@
-# Architechture
+# Architecture
 
 The application consists of two components: the language server, and the language services.
 
