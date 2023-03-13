@@ -614,15 +614,6 @@
             "description": "The number of characters originally recommended to the user in partial acceptance scenario."
         },
         {
-            "name": "codewhispererDiscardReason",
-            "type": "string",
-            "description": "The reason of recommendations being discarded.",
-            "allowedValues": [
-                "Typeahead",
-                "Display"
-            ]
-        },
-        {
             "name": "codewhispererFirstRequestId",
             "type": "string",
             "description": "The request id of the first request in a paginated session."
@@ -672,6 +663,11 @@
                 "Discard",
                 "Empty"
             ]
+        },
+        {
+            "name": "codewhispererSuggestionImportCount",
+            "type": "int",
+            "description": "The number of import statements included with recommendation. "
         },
         {
             "name": "syncedResources",
@@ -2520,7 +2516,7 @@
                     "required": false
                 },
                 {
-                    "type": "codewhispererDiscardReason",
+                    "type": "reason",
                     "required": false
                 },
                 {
@@ -2544,6 +2540,9 @@
                 },
                 {
                     "type": "codewhispererSuggestionCount"
+                },
+                {
+                    "type": "codewhispererSuggestionImportCount"
                 },
                 {
                     "type": "codewhispererTotalShownTime",
