@@ -556,7 +556,7 @@
             "description": "Number of import statements the particular suggestion contains."
         },
         {
-            "name": "codewhispererSuggestionImportRecommendationEnabled",
+            "name": "codewhispererImportRecommendationEnabled",
             "type": "boolean",
             "description": "Whether Import Recommendation is enabled."
         },
@@ -2389,7 +2389,8 @@
                     "required": false
                 },
                 {
-                    "type": "codewhispererSuggestionImportCount"
+                    "type": "codewhispererSuggestionImportCount",
+                    "required": false
                 },
                 {
                     "type": "codewhispererSuggestionImports",
