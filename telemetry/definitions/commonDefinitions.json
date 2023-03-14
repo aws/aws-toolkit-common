@@ -546,6 +546,21 @@
             "description": "Number of references the particular suggestion is referenced with."
         },
         {
+            "name": "codewhispererSuggestionImports",
+            "type": "string",
+            "description": "The list of import statement for a particular suggestion"
+        },
+        {
+            "name": "codewhispererSuggestionImportCount",
+            "type": "int",
+            "description": "Number of import statements the particular suggestion contains."
+        },
+        {
+            "name": "codewhispererImportRecommendationEnabled",
+            "type": "boolean",
+            "description": "Whether Import Recommendation is enabled."
+        },
+        {
             "name": "codewhispererSuggestionState",
             "type": "string",
             "description": "User decision of each of the suggestion returned from CodeWhisperer",
@@ -2404,6 +2419,10 @@
                 {
                     "type": "credentialStartUrl",
                     "required": false
+                },
+                {
+                    "type": "codewhispererImportRecommendationEnabled",
+                    "required": false
                 }
             ]
         },
@@ -2470,6 +2489,14 @@
                 },
                 {
                     "type": "codewhispererSuggestionReferences",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererSuggestionImportCount",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererSuggestionImports",
                     "required": false
                 },
                 {
