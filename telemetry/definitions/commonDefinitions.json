@@ -553,7 +553,7 @@
         {
             "name": "codewhispererSuggestionImportCount",
             "type": "int",
-            "description": "Number of import statements the particular suggestion contains."
+            "description": "The number of import statements included with recommendation."
         },
         {
             "name": "codewhispererImportRecommendationEnabled",
@@ -678,11 +678,6 @@
                 "Discard",
                 "Empty"
             ]
-        },
-        {
-            "name": "codewhispererSuggestionImportCount",
-            "type": "int",
-            "description": "The number of import statements included with recommendation. "
         },
         {
             "name": "syncedResources",
