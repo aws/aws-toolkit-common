@@ -592,6 +592,83 @@
             "type": "double",
             "description": "The time it takes to get the Sono/SSO credential for the invocation."
         },
+
+        {
+            "name": "codewhispererIsPartialAcceptance",
+            "type": "boolean",
+            "description": "If user has accepted only part of the recommendation or not."
+        },
+        {
+            "name": "codewhispererPartialAcceptanceCount",
+            "type": "int",
+            "description": "The number of times the user accept part of the recommendations."
+        },
+        {
+            "name": "codewhispererCharactersAccepted",
+            "type": "int",
+            "description": "The number of characters user has accepted through partial acceptance."
+        },
+        {
+            "name": "codewhispererCharactersRecommended",
+            "type": "int",
+            "description": "The number of characters originally recommended to the user in partial acceptance scenario."
+        },
+        {
+            "name": "codewhispererFirstRequestId",
+            "type": "string",
+            "description": "The request id of the first request in a paginated session."
+        },
+        {
+            "name": "codewhispererSuggestionCount",
+            "type": "int",
+            "description": "The total number of code suggestions in a paginated session."
+        },
+        {
+            "name": "codewhispererTotalShownTime",
+            "type": "double",
+            "description": "The time that recommendations are shown to the user in a paginated session."
+        },
+        {
+            "name": "codewhispererTriggerCharacter",
+            "type": "string",
+            "description": "The character that triggered recommendation for special characters trigger."
+        },
+        {
+            "name": "codewhispererTypeaheadLength",
+            "type": "int",
+            "description": "The length of additional characters inputted by the user since the invocation. "
+        },
+        {
+            "name": "codewhispererTimeSinceLastDocumentChange",
+            "type": "double",
+            "description": "The time from last document change to the current document change. "
+        },
+        {
+            "name": "codewhispererTimeSinceLastUserDecision",
+            "type": "double",
+            "description": "The time from last user decision to current invocation. "
+        },
+        {
+            "name": "codewhispererTimeToFirstRecommendation",
+            "type": "double",
+            "description": "The time from user trigger to the first recommendation is received. "
+        },
+        {
+            "name": "codewhispererPreviousSuggestionState",
+            "type": "string",
+            "description": "The aggregated user decision from previous trigger. ",
+            "allowedValues": [
+                "Accept",
+                "Reject",
+                "Discard",
+                "Empty"
+            ]
+        },
+        {
+            "name": "codewhispererSuggestionImportCount",
+            "type": "int",
+            "description": "The number of import statements included with recommendation. "
+        },
         {
             "name": "syncedResources",
             "type": "string",
@@ -2331,6 +2408,32 @@
             ]
         },
         {
+            "name": "codewhisperer_blockedInvocation",
+            "description": "Client side invocation blocked by another invocation in progress",
+            "metadata": [
+                {
+                    "type": "codewhispererAutomatedTriggerType",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCursorOffset"
+                },
+                {
+                    "type": "codewhispererLanguage"
+                },
+                {
+                    "type": "codewhispererLineNumber"
+                },
+                {
+                    "type": "codewhispererTriggerType"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "codewhisperer_userDecision",
             "description": "User acceptance or rejection of each suggestion returned by the CodeWhisperer service request",
             "metadata": [
@@ -2377,6 +2480,93 @@
                 },
                 {
                     "type": "credentialStartUrl",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_userTriggerDecision",
+            "description": "User decision aggregated at trigger level",
+            "metadata": [
+                {
+                    "type": "codewhispererSessionId",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererFirstRequestId"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererIsPartialAcceptance",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererPartialAcceptanceCount",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCharactersAccepted",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCharactersRecommended",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCompletionType"
+                },
+                {
+                    "type": "codewhispererLanguage"
+                },
+                {
+                    "type": "codewhispererTriggerType"
+                },
+                {
+                    "type": "codewhispererAutomatedTriggerType",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererLineNumber"
+                },
+                {
+                    "type": "codewhispererCursorOffset"
+                },
+                {
+                    "type": "codewhispererSuggestionCount"
+                },
+                {
+                    "type": "codewhispererSuggestionImportCount"
+                },
+                {
+                    "type": "codewhispererTotalShownTime",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererTriggerCharacter"
+                },
+                {
+                    "type": "codewhispererTypeaheadLength"
+                },
+                {
+                    "type": "codewhispererTimeSinceLastDocumentChange",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererTimeSinceLastUserDecision",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererTimeToFirstRecommendation"
+                },
+                {
+                    "type": "codewhispererPreviousSuggestionState",
                     "required": false
                 }
             ]
