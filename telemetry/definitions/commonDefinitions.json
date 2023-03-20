@@ -408,7 +408,7 @@
             "name": "codewhispererAutomatedTriggerType",
             "type": "string",
             "description": "The type of the Automated trigger to send request to CodeWhisperer service",
-            "allowedValues": ["KeyStrokeCount", "SpecialCharacters", "Enter", "IntelliSenseAcceptance", "IdleTime"]
+            "allowedValues": ["KeyStrokeCount", "SpecialCharacters", "Enter", "IntelliSenseAcceptance", "IdleTime", "Classifier"]
         },
 
         {
@@ -673,6 +673,11 @@
                 "Discard",
                 "Empty"
             ]
+        },
+        {
+            "name": "codewhispererClassifierResult",
+            "type": "double",
+            "description": "The result from Classifier trigger."
         },
         {
             "name": "syncedResources",
@@ -2562,7 +2567,8 @@
                     "required": false
                 },
                 {
-                    "type": "codewhispererTriggerCharacter"
+                    "type": "codewhispererTriggerCharacter",
+                    "required": false
                 },
                 {
                     "type": "codewhispererTypeaheadLength"
@@ -2576,10 +2582,18 @@
                     "required": false
                 },
                 {
-                    "type": "codewhispererTimeToFirstRecommendation"
+                    "type": "codewhispererTimeToFirstRecommendation",
+                    "required": false
                 },
                 {
                     "type": "codewhispererPreviousSuggestionState",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererSuggestionState"
+                },
+                {
+                    "type": "codewhispererClassifierResult",
                     "required": false
                 }
             ]
