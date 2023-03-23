@@ -203,6 +203,11 @@
             "description": "Languages targeted by the schemas service"
         },
         {
+            "name": "sessionDuration",
+            "type": "int",
+            "description": "Length of time, in milliseconds, that an authentication session has lived for. Useful for determining how frequently a user has to reauthenticate."
+        },
+        {
             "name": "language",
             "type": "string",
             "description": "Language used for the project"
@@ -221,7 +226,7 @@
             "name": "credentialSourceId",
             "type": "string",
             "description": "Where credentials are stored or retrieved from",
-            "allowedValues": ["sharedCredentials", "sdkStore", "ec2", "ecs", "envVars", "awsId", "other"]
+            "allowedValues": ["sharedCredentials", "sdkStore", "ec2", "ecs", "envVars", "awsId", "iamIdentityCenter", "other"]
         },
         {
             "name": "credentialType",
@@ -877,6 +882,18 @@
                 { "type": "credentialSourceId", "required": false }
             ],
             "passive": true
+        },
+        {
+            "name": "aws_refreshCredentials",
+            "description": "Emitted when credentials are automatically refreshed by the AWS SDK or Toolkit",
+            "passive": true,
+            "metadata": [
+                { "type": "result" },
+                { "type": "reason", "required": false },
+                { "type": "credentialType", "required": false },
+                { "type": "credentialSourceId", "required": false },
+                { "type": "sessionDuration", "required": false }
+            ]
         },
         {
             "name": "aws_loginWithBrowser",
