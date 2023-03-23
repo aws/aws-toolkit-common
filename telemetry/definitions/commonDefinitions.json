@@ -226,7 +226,7 @@
             "name": "credentialSourceId",
             "type": "string",
             "description": "Where credentials are stored or retrieved from",
-            "allowedValues": ["sharedCredentials", "sdkStore", "ec2", "ecs", "envVars", "awsId", "other"]
+            "allowedValues": ["sharedCredentials", "sdkStore", "ec2", "ecs", "envVars", "awsId", "iamIdentityCenter", "other"]
         },
         {
             "name": "credentialType",
