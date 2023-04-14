@@ -841,7 +841,11 @@
         {
             "name": "aws_openUrl",
             "description": "Opens a url",
-            "metadata": [{ "type": "result" }, { "type": "url", "required": false }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "url", "required": false },
+                { "type": "source", "required": false }
+            ]
         },
         {
             "name": "aws_saveCredentials",
