@@ -313,6 +313,11 @@
             "name": "failedCount",
             "type": "int",
             "description": "The number of failed operations"
+        },
+        {
+            "name": "notificationId",
+            "type": "string",
+            "description": "The ID of the notification being shown"
         }
     ],
     "metrics": [
@@ -1167,6 +1172,28 @@
                 }
             ],
             "passive": true
+        },
+        {
+            "name": "toolkit_showNotification",
+            "description": "The toolkit tried to retrieve and show notification message",
+            "metadata": [
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "notificationId",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "url",
+                    "required": false
+                }
+            ]
         },
         {
             "name": "dynamicresource_getResource",
