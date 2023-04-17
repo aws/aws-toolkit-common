@@ -8,36 +8,37 @@ import * as Ajv from 'ajv'
 import * as path from 'path'
 
 export interface CommandLineArguments {
-    inputFiles: string[]
-    outputFile: string
+    readonly inputFiles: string[]
+    readonly outputFile: string
 }
 
 export interface MetadataType {
-    name: string
-    type?: string
-    allowedValues?: string[] | number[]
-    description: string
+    readonly name: string
+    readonly type?: string
+    readonly allowedValues?: string[] | number[]
+    readonly description: string
 }
 
 export interface MetricMetadataType extends MetadataType {
-    required: boolean
+    readonly required: boolean
 }
 
 export interface MetricMetadata {
-    type: string
-    required?: boolean
+    readonly type: string
+    readonly required?: boolean
 }
 
 export interface Metric {
-    name: string
-    description: string
-    unit: string
-    metadata: MetricMetadata[]
-    passive: boolean
+    readonly name: string
+    readonly description: string
+    readonly unit?: string
+    readonly metadata?: MetricMetadata[]
+    readonly passive?: boolean
 }
+
 export interface MetricDefinitionRoot {
-    types?: MetadataType[]
-    metrics: Metric[]
+    readonly types?: MetadataType[]
+    readonly metrics: Metric[]
 }
 
 export function validateInput(fileText: string, fileName: string): MetricDefinitionRoot {
@@ -54,6 +55,6 @@ export function validateInput(fileText: string, fileName: string): MetricDefinit
         return input as MetricDefinitionRoot
     } catch (errors) {
         console.error(`Error while trying to parse the definitions file ${fileName}: ${JSON.stringify(errors)}`)
-        throw Error('Failed to parse')
+        throw new Error('Failed to parse')
     }
 }

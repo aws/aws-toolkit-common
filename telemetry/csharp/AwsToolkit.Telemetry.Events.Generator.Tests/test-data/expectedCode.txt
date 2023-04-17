@@ -13,7 +13,7 @@ using System;
 using System.Collections.Generic;
 
 /// --------------------------------------------------------------------------------
-/// This file is generated from https://github.com/aws/aws-toolkit-common/tree/master/telemetry
+/// This file is generated from https://github.com/aws/aws-toolkit-common/tree/main/telemetry
 /// --------------------------------------------------------------------------------
 
 namespace Test
@@ -26,7 +26,7 @@ namespace Test
         
         /// Records Telemetry Event:
         /// Emits milliseconds
-        public static void RecordEmitSomeIntMs(this ITelemetryLogger telemetryLogger, EmitSomeIntMs payload)
+        public static void RecordEmitSomeIntMs(this ITelemetryLogger telemetryLogger, EmitSomeIntMs payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -55,6 +55,13 @@ namespace Test
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -68,7 +75,7 @@ namespace Test
         
         /// Records Telemetry Event:
         /// Emits something without a unit defined
-        public static void RecordEmitNoUnit(this ITelemetryLogger telemetryLogger, EmitNoUnit payload)
+        public static void RecordEmitNoUnit(this ITelemetryLogger telemetryLogger, EmitNoUnit payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -97,6 +104,13 @@ namespace Test
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -110,7 +124,7 @@ namespace Test
         
         /// Records Telemetry Event:
         /// Emits a bunch of metadata varieties
-        public static void RecordEmitSomeBigBlob(this ITelemetryLogger telemetryLogger, EmitSomeBigBlob payload)
+        public static void RecordEmitSomeBigBlob(this ITelemetryLogger telemetryLogger, EmitSomeBigBlob payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -139,8 +153,11 @@ namespace Test
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
-
-                datum.AddMetadata("duration", payload.Duration);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("attempts", payload.Attempts);
 
@@ -149,6 +166,8 @@ namespace Test
                 datum.AddMetadata("name", payload.Name);
 
                 datum.AddMetadata("runtime", payload.Runtime);
+
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -162,7 +181,7 @@ namespace Test
         
         /// Records Telemetry Event:
         /// Emits a bunch of metadata varieties - required not set
-        public static void RecordEmitSomeBigBlob2(this ITelemetryLogger telemetryLogger, EmitSomeBigBlob2 payload)
+        public static void RecordEmitSomeBigBlob2(this ITelemetryLogger telemetryLogger, EmitSomeBigBlob2 payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -191,8 +210,11 @@ namespace Test
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
-
-                datum.AddMetadata("duration", payload.Duration);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
 
                 datum.AddMetadata("attempts", payload.Attempts);
 
@@ -201,6 +223,8 @@ namespace Test
                 datum.AddMetadata("name", payload.Name);
 
                 datum.AddMetadata("runtime", payload.Runtime);
+
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -214,7 +238,7 @@ namespace Test
         
         /// Records Telemetry Event:
         /// Emits a bunch of optional metadata varieties
-        public static void RecordEmitSomeBigOptionalBlob(this ITelemetryLogger telemetryLogger, EmitSomeBigOptionalBlob payload)
+        public static void RecordEmitSomeBigOptionalBlob(this ITelemetryLogger telemetryLogger, EmitSomeBigOptionalBlob payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -243,7 +267,7 @@ namespace Test
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
-
+                datum.AddMetadata("reason", payload.Reason);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -266,6 +290,8 @@ namespace Test
                     datum.AddMetadata("runtime", payload.Runtime.Value);
                 }
 
+                datum = datum.InvokeTransform(transformDatum);
+
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
             }
@@ -278,7 +304,7 @@ namespace Test
         
         /// Records Telemetry Event:
         /// Emit a passive metric
-        public static void RecordEmitPassive(this ITelemetryLogger telemetryLogger, EmitPassive payload)
+        public static void RecordEmitPassive(this ITelemetryLogger telemetryLogger, EmitPassive payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -307,6 +333,13 @@ namespace Test
                 }
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
                 telemetryLogger.Record(metrics);
@@ -367,9 +400,6 @@ namespace Test
     public sealed class EmitSomeBigBlob : BaseTelemetryEvent
     {
         
-        /// The duration of the operation in milliseconds
-        public double Duration;
-        
         /// A generic number of attempts
         public int Attempts;
         
@@ -392,9 +422,6 @@ namespace Test
     public sealed class EmitSomeBigBlob2 : BaseTelemetryEvent
     {
         
-        /// The duration of the operation in milliseconds
-        public double Duration;
-        
         /// A generic number of attempts
         public int Attempts;
         
@@ -416,9 +443,6 @@ namespace Test
     /// Emits a bunch of optional metadata varieties
     public sealed class EmitSomeBigOptionalBlob : BaseTelemetryEvent
     {
-        
-        /// Optional - The duration of the operation in milliseconds
-        public System.Double? Duration;
         
         /// Optional - A generic number of attempts
         public System.Int32? Attempts;

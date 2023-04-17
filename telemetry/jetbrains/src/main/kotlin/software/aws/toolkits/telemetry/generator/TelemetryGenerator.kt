@@ -52,9 +52,9 @@ fun generateTelemetryFromFiles(
 }
 
 private fun FileSpec.Builder.generateHeader(): FileSpec.Builder {
-    addComment("Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.\n")
-    addComment("SPDX-License-Identifier: Apache-2.0\n")
-    addComment("THIS FILE IS GENERATED! DO NOT EDIT BY HAND!")
+    addFileComment("Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.\n")
+    addFileComment("SPDX-License-Identifier: Apache-2.0\n")
+    addFileComment("THIS FILE IS GENERATED! DO NOT EDIT BY HAND!")
     addAnnotation(AnnotationSpec.builder(Suppress::class).addMember("\"unused\", \"MemberVisibilityCanBePrivate\"").build())
 
     return this
@@ -76,10 +76,10 @@ private fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType
     val enum = TypeSpec.enumBuilder(item.name.toTypeFormat())
         .primaryConstructor(
             FunSpec.constructorBuilder()
-                .addParameter("value", String::class, KModifier.PRIVATE)
+                .addParameter("value", String::class)
                 .build()
         )
-        .addProperty(PropertySpec.builder("value", String::class).initializer("value").build())
+        .addProperty(PropertySpec.builder("value", String::class, KModifier.PRIVATE).initializer("value").build())
         .addFunction(FunSpec.builder("toString").addModifiers(KModifier.OVERRIDE).returns(String::class).addStatement("return value").build())
         .addKdoc(item.description)
 
@@ -106,7 +106,7 @@ private fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType
             FunSpec.builder("from")
                 .returns(ClassName("", item.name.toTypeFormat()))
                 .addParameter("type", String::class)
-                .addStatement("return values().firstOrNull { it.value == type } ?: $unknownType")
+                .addStatement("return values().firstOrNull·{·it.value·==·type·} ?:·$unknownType")
                 .build()
         )
         .build()

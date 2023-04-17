@@ -54,7 +54,7 @@
     },
     "ClientID":{
       "type":"string",
-      "pattern":"^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$"
+      "pattern":"^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$"
     },
     "Command":{
       "type":"string",
@@ -189,6 +189,7 @@
         "AWSProductVersion":{"shape":"AWSProductVersion"},
         "ClientID":{"shape":"ClientID"},
         "OS":{"shape":"Value"},
+        "OSArchitecture":{"shape":"Value"},
         "OSVersion":{"shape":"Value"},
         "ParentProduct":{"shape":"Value"},
         "ParentProductVersion":{"shape":"Value"},
@@ -229,8 +230,7 @@
     },
     "Value":{
       "type":"string",
-      "max":200,
-      "min":1
+      "max":65536
     }
   }
 }

@@ -19,6 +19,15 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
         private const string MetadataEntryFullName = "MetadataEntry";
         private const string MetricDatumFullName = "MetricDatum";
         private const string AddMetadataMethodName = "AddMetadata";
+        private const string InvokeTransformMethodName = "InvokeTransform";
+
+        // contains metadata fields that should be skipped when generating code.
+        // These fields are covered by the class BaseTelemetryEvent
+        private static readonly string[] ImplicitFields = 
+        {
+            "reason",
+            "duration"
+        };
 
         private readonly CodeMethodReferenceExpression _invariantCulture =
             new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(CultureInfo)),
@@ -89,7 +98,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 
             // Add a top level comment
             blankNamespace.Comments.Add(new CodeCommentStatement("--------------------------------------------------------------------------------", true));
-            blankNamespace.Comments.Add(new CodeCommentStatement("This file is generated from https://github.com/aws/aws-toolkit-common/tree/master/telemetry", true));
+            blankNamespace.Comments.Add(new CodeCommentStatement("This file is generated from https://github.com/aws/aws-toolkit-common/tree/main/telemetry", true));
             blankNamespace.Comments.Add(new CodeCommentStatement("--------------------------------------------------------------------------------", true));
 
             // Set up top level using statements
@@ -273,6 +282,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 
             // Generate the class members
             metric.metadata?
+                .Where(metadata => !ImplicitFields.Contains(metadata.type))
                 .ToList().ForEach(metadata =>
                 {
                     var metricType = GetMetricType(metadata.type);
@@ -331,6 +341,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             var telemetryLogger = new CodeParameterDeclarationExpression("this ITelemetryLogger", "telemetryLogger");
             recordMethod.Parameters.Add(telemetryLogger);
             recordMethod.Parameters.Add(new CodeParameterDeclarationExpression(SanitizeName(metric.name), "payload"));
+            recordMethod.Parameters.Add(new CodeParameterDeclarationExpression("Func<MetricDatum, MetricDatum>", "transformDatum = null"));
 
             // Generate method body
             var tryStatements = new List<CodeStatement>();
@@ -341,6 +352,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             var metrics = new CodeVariableReferenceExpression("metrics");
             var metricsDataField = new CodeFieldReferenceExpression(metrics, "Data");
             var payload = new CodeArgumentReferenceExpression("payload");
+            var transformDatum = new CodeArgumentReferenceExpression("transformDatum");
             var datum = new CodeVariableReferenceExpression("datum");
             var datumAddData = new CodeMethodReferenceExpression(datum, AddMetadataMethodName);
             var datetimeNow = new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(DateTime)), nameof(DateTime.Now));
@@ -388,9 +400,27 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
                 new CodePrimitiveExpression("awsRegion"), payloadAwsRegion)));
 
+            // Generate: datum.AddMetadata("reason", payload.Reason);
+            var payloadReason = new CodeFieldReferenceExpression(payload, "Reason");
+            tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
+                new CodePrimitiveExpression("reason"), payloadReason)));
+
+            // Generate: 
+            // if (payload.Duration.HasValue)
+            // {
+            //     datum.AddMetadata("duration", payload.Duration.Value);
+            // }
+            var payloadDuration= new CodeFieldReferenceExpression(payload, "Duration");
+            var hasValueDuration = new CodeFieldReferenceExpression(payloadDuration, "HasValue");
+            var durationMetadata = new CodeMethodInvokeExpression(datumAddData,
+                        new CodePrimitiveExpression("duration"), new CodeFieldReferenceExpression(payloadDuration, "Value"));
+
+            tryStatements.Add(new CodeConditionStatement(hasValueDuration, new CodeExpressionStatement(durationMetadata)));
 
             // Set MetricDatum Metadata values
-            metric.metadata?.ToList().ForEach(metadata =>
+            metric.metadata?
+                .Where(metadata => !ImplicitFields.Contains(metadata.type))
+                .ToList().ForEach(metadata =>
             {
                 tryStatements.Add(new CodeSnippetStatement());
 
@@ -418,6 +448,14 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
                 }
             });
 
+            // Generate: "InvokeTransform function on datum"
+            // datum = datum.InvokeTransform(transformDatum) 
+            var datumInvoke = new CodeMethodReferenceExpression(datum, InvokeTransformMethodName);
+            var invokeTransform = new CodeMethodInvokeExpression(datumInvoke, transformDatum);
+            var assignTransform = new CodeAssignStatement(datum, invokeTransform);
+            tryStatements.Add(new CodeSnippetStatement());
+            tryStatements.Add(assignTransform);
+
             // Generate: metrics.Data.Add(datum);
             tryStatements.Add(new CodeSnippetStatement());
             tryStatements.Add(new CodeExpressionStatement (new CodeMethodInvokeExpression(metricsDataField, "Add", datum)));
@@ -428,8 +466,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             var catchClause = new CodeCatchClause("e", new CodeTypeReference(typeof(Exception)));
             catchClause.Statements.Add(new CodeExpressionStatement(
                 new CodeMethodInvokeExpression(
-                    new CodeFieldReferenceExpression(new CodeArgumentReferenceExpression("telemetryLogger"), "Logger"), 
-                    "Error", 
+                    new CodeFieldReferenceExpression(new CodeArgumentReferenceExpression("telemetryLogger"), "Logger"),
+                    "Error",
                     new CodePrimitiveExpression("Error recording telemetry event"),
                     new CodeArgumentReferenceExpression("e"))
             ));

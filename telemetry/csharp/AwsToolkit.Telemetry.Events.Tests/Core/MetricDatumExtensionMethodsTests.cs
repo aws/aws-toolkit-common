@@ -1,4 +1,5 @@
-﻿using Amazon.AwsToolkit.Telemetry.Events.Core;
+﻿using System;
+using Amazon.AwsToolkit.Telemetry.Events.Core;
 using Xunit;
 
 namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
@@ -44,6 +45,38 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
 
             _sut.AddMetadata(Key, "   ");
             Assert.False(_sut.Metadata.ContainsKey(Key));
+        }
+
+        [Fact]
+        public void InvokeTransform_Null()
+        {
+            var updatedDatum = _sut.InvokeTransform(null);
+            Assert.Equal(_sut, updatedDatum);
+        }
+
+        [Fact]
+        public void InvokeTransform_Throws()
+        {
+            MetricDatum TransformFunction(MetricDatum datum)
+            {
+                throw new ArgumentException("sample transform exception");
+            }
+
+            var updatedDatum = _sut.InvokeTransform(TransformFunction);
+            Assert.NotNull(updatedDatum);
+        }
+
+        [Fact]
+        public void InvokeTransform()
+        {
+            MetricDatum TransformFunction(MetricDatum datum)
+            {
+                datum.AddMetadata(Key, "hello");
+                return datum;
+            }
+
+            var updatedDatum = _sut.InvokeTransform(TransformFunction);
+            Assert.Equal("hello", updatedDatum.Metadata[Key]);
         }
     }
 }

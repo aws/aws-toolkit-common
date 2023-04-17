@@ -1,0 +1,10 @@
+{
+    "types": [
+        {
+            "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "allowedValues": ["A", "B", "C", "D"],
+            "description": "an enum"
+        }
+    ],
+    "metrics": []
+}
