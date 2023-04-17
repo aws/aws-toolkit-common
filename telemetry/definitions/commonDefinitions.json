@@ -313,11 +313,6 @@
             "name": "failedCount",
             "type": "int",
             "description": "The number of failed operations"
-        },
-        {
-            "name": "notificationId",
-            "type": "string",
-            "description": "The ID of the notification being shown"
         }
     ],
     "metrics": [
@@ -1182,15 +1177,11 @@
                     "required": true
                 },
                 {
-                    "type": "notificationId",
+                    "type": "source",
                     "required": true
                 },
                 {
                     "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "url",
                     "required": false
                 }
             ]
