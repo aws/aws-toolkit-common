@@ -48,6 +48,11 @@
             "description": "A generic name metadata"
         },
         {
+            "name": "id",
+            "type": "string",
+            "description": "A generic ID metadata"
+        },
+        {
             "name": "attempts",
             "type": "int",
             "description": "A generic number of attempts"
@@ -1177,7 +1182,7 @@
                     "required": true
                 },
                 {
-                    "type": "source",
+                    "type": "id",
                     "required": true
                 },
                 {
