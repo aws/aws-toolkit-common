@@ -93,6 +93,11 @@
             "description": "A generic name metadata"
         },
         {
+            "name": "id",
+            "type": "string",
+            "description": "A generic ID metadata"
+        },
+        {
             "name": "filenameExt",
             "type": "string",
             "description": "Filename extension (examples: .txt, .yml, .yaml, .asl.yaml, ...), or empty string if the filename does not contain dot (.) between two chars."
@@ -2176,6 +2181,24 @@
                 }
             ],
             "passive": true
+        },
+        {
+            "name": "toolkit_showNotification",
+            "description": "The toolkit tried to show a notification message",
+            "metadata": [
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "id",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                }
+            ]
         },
         {
             "name": "dynamicresource_getResource",
