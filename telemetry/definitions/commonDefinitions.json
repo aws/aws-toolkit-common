@@ -2184,7 +2184,7 @@
         },
         {
             "name": "toolkit_showNotification",
-            "description": "The toolkit tried to retrieve and show notification message",
+            "description": "The toolkit tried to show a notification message",
             "metadata": [
                 {
                     "type": "result",
