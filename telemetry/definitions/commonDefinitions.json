@@ -54,7 +54,7 @@
         },
         {
             "name": "component",
-            "allowedValues": ["editor", "viewer", "filesystem"],
+            "allowedValues": ["editor", "viewer", "filesystem", "explorer", "infobar"],
             "description": "The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...)"
         },
         {
@@ -2195,7 +2195,7 @@
                     "required": true
                 },
                 {
-                    "type": "source",
+                    "type": "component",
                     "required": true
                 },
                 {
