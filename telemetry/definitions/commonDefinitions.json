@@ -2195,6 +2195,10 @@
                     "required": true
                 },
                 {
+                    "type": "source",
+                    "required": true
+                },
+                {
                     "type": "reason",
                     "required": false
                 }
