@@ -1052,6 +1052,8 @@
                 { "type": "cloudWatchResourceType" },
                 { "type": "cloudWatchLogsPresentation", "required": false },
                 { "type": "serviceType", "required": false },
+                { "type": "hasTextFilter", "required": false },
+                { "type": "hasTimeFilter", "required": false },
                 { "type": "source" }
             ]
         },
@@ -1123,7 +1125,7 @@
         },
         {
             "name": "cloudwatchlogs_filter",
-            "description": "Filters a CloudWatch Logs entity.",
+            "description": "Filters a CloudWatch Logs entity. Deprecated: use cloudwatchlogs_open instead.",
             "metadata": [
                 { "type": "result" },
                 { "type": "cloudWatchResourceType" },
