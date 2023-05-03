@@ -90,7 +90,7 @@
         {
             "name": "requestServiceType",
             "type": "string",
-            "description": "The service identifier associated with a request. Values should have the same shape as `serviceType`. This is distinct from `serviceType` which describes the originator of the request rather than the request itself."
+            "description": "Per-request service identifier. Unlike `serviceType` (which describes the originator of the request), this describes the request itself."
         },
         {
             "name": "requestId",
