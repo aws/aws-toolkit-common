@@ -90,7 +90,7 @@
         {
             "name": "requestServiceId",
             "type": "string",
-            "description": "The service identifier associated with a request. This is distinct from `serviceType` which describes the originator of the request rather than the reqeust itself."
+            "description": "The service identifier associated with a request. Values should have the same shape as `serviceType`. This is distinct from `serviceType` which describes the originator of the request rather than the reqeust itself."
         },
         {
             "name": "requestId",
