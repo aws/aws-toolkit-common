@@ -690,6 +690,11 @@
             "description": "The result from Classifier trigger."
         },
         {
+            "name": "codewhispererClassifierThreshold",
+            "type": "double",
+            "description": "The threshold of Classifier trigger."
+        },
+        {
             "name": "syncedResources",
             "type": "string",
             "description": "Describes which parts of an application (that we know of) were synced to the cloud. \"Code\" resources follow the SAM spec: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-sync.html",
@@ -2642,6 +2647,10 @@
                 },
                 {
                     "type": "codewhispererClassifierResult",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererClassifierThreshold",
                     "required": false
                 }
             ]
