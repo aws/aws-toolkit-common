@@ -1125,7 +1125,7 @@
         },
         {
             "name": "cloudwatchlogs_filter",
-            "description": "Filters a CloudWatch Logs entity. Deprecated: use cloudwatchlogs_open instead.",
+            "description": "Filters a CloudWatch Logs entity. (Essentially a subset of cloudwatchlogs_open)",
             "metadata": [
                 { "type": "result" },
                 { "type": "cloudWatchResourceType" },
