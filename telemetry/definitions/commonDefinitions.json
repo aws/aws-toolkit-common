@@ -88,6 +88,16 @@
             "description": "The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json"
         },
         {
+            "name": "requestServiceType",
+            "type": "string",
+            "description": "Per-request service identifier. Unlike `serviceType` (which describes the originator of the request), this describes the request itself."
+        },
+        {
+            "name": "requestId",
+            "type": "string",
+            "description": "A generic request ID field. The semantics are contextual based off of other fields (e.g. `requestServiceType`). For example, an event with `requestServiceType: s3` means that the request ID is associated with an S3 API call. Events that cover mutliple API calls should use the request ID of the most recent call."
+        },
+        {
             "name": "name",
             "type": "string",
             "description": "A generic name metadata"
