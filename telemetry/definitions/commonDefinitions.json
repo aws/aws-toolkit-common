@@ -582,7 +582,7 @@
         },
         {
             "name": "codewhispererSupplementalContextLatency",
-            "type": "int",
+            "type": "double",
             "description": "Latency to obtain supplemental context"
         },
         {
