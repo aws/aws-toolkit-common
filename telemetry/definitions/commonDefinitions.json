@@ -571,6 +571,26 @@
             "description": "The number of import statements included with recommendation."
         },
         {
+            "name": "codewhispererSupplementalContextTimeout",
+            "type": "boolean",
+            "description": "If the supplemental context fetching timeout or not"
+        },
+        {
+            "name": "codewhispererSupplementalContextIsUtg",
+            "type": "boolean",
+            "description": "If the supplemental context is for test file(UTG) or src file"
+        },
+        {
+            "name": "codewhispererSupplementalContextLatency",
+            "type": "int",
+            "description": "Latency to obtain supplemental context"
+        },
+        {
+            "name": "codewhispererSupplementalContextLength",
+            "type": "int",
+            "description": "Length of codewhisperer supplemental context extracted from files"
+        },
+        {
             "name": "codewhispererImportRecommendationEnabled",
             "type": "boolean",
             "description": "Whether Import Recommendation is enabled."
@@ -2461,6 +2481,22 @@
                 },
                 {
                     "type": "codewhispererSessionId",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererSupplementalContextTimeout",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererSupplementalContextIsUtg",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererSupplementalContextLatency",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererSupplementalContextLength",
                     "required": false
                 },
                 {
