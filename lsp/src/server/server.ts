@@ -15,6 +15,7 @@ import {
 
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import { BuildspecServiceStrategy } from '../service/filetypes/buildspec/strategy'
+import { Cc2ServiceStrategy } from '../service/filetypes/cc2/strategy'
 import { LanguageServiceRegistry } from '../service/registry/registry'
 import { LanguageServerCacheDir } from '../utils/configurationDirectory'
 
@@ -26,7 +27,11 @@ const connection = createConnection(ProposedFeatures.all)
 const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument)
 
 const fileRegistry = new LanguageServiceRegistry()
+connection.console.info('Adding buildspec service')
 fileRegistry.addStrategy(new BuildspecServiceStrategy())
+connection.console.info('Adding cc2 service')
+fileRegistry.addStrategy(new Cc2ServiceStrategy())
+connection.console.info('Done adding services')
 
 // Setup the local directory that will hold extension
 // related resources.
@@ -113,7 +118,7 @@ async function validateTextDocument(textDocumentUri: TextDocument['uri']): Promi
     if (service === undefined) {
         return
     }
-    const diagnostics = await service.diagnostic(textDoc)
+    const diagnostics = await service.diagnostic(textDoc, connection)
     connection.sendDiagnostics({ uri: textDocumentUri, diagnostics })
 }
 

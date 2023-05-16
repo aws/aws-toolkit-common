@@ -1,6 +1,7 @@
 import {
     CompletionItem,
     CompletionList,
+    Connection,
     Diagnostic,
     Hover,
     HoverParams,
@@ -24,8 +25,8 @@ export class BuildspecService extends BaseLanguageService {
         return this.yaml.completion(document, textDocumentPositionParams)
     }
 
-    diagnostic(document: TextDocument): Promise<Diagnostic[]> {
-        return this.yaml.diagnostic(document)
+    diagnostic(document: TextDocument, connection: Connection): Promise<Diagnostic[]> {
+        return this.yaml.diagnostic(document, connection)
     }
 
     hover(document: TextDocument, params: HoverParams): Promise<Hover | null> {

@@ -1,13 +1,14 @@
 import {
     CompletionItem,
     CompletionList,
+    Connection,
     Diagnostic,
     Hover,
     HoverParams,
     TextDocumentPositionParams,
 } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { createJsonLanguageService, JsonLanguageService } from '../../../utils/json/service'
+import { JsonLanguageService, createJsonLanguageService } from '../../../utils/json/service'
 import { DocumentParser } from '../../../utils/parser/document'
 import { DocumentParserVisitor } from '../../../utils/parser/types'
 import { YamlLanguageService } from '../../../utils/yaml/service'
@@ -44,7 +45,7 @@ export class BoilerplateService extends BaseLanguageService {
         return Promise.resolve([])
     }
 
-    diagnostic(document: TextDocument): Promise<Diagnostic[]> {
+    diagnostic(document: TextDocument, connection: Connection): Promise<Diagnostic[]> {
         return Promise.resolve([])
     }
 

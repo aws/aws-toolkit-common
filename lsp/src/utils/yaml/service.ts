@@ -1,6 +1,7 @@
 import {
     CompletionItem,
     CompletionList,
+    Connection,
     Diagnostic,
     Hover,
     HoverParams,
@@ -10,11 +11,11 @@ import { TextDocument } from 'vscode-languageserver-textdocument'
 import { createConnection } from 'vscode-languageserver/lib/node/main'
 import { URI } from 'vscode-uri'
 import {
-    getLanguageService as getYamlLanguageService,
-    LanguageService as OriginalYamlLanguageService,
     LanguageSettings,
+    LanguageService as OriginalYamlLanguageService,
     SchemaRequestService,
     SchemasSettings,
+    getLanguageService as getYamlLanguageService,
 } from 'yaml-language-server'
 import { LanguageService } from '../../service/types'
 import { UriContentResolver } from '../uri/resolve'
@@ -60,7 +61,7 @@ export class YamlLanguageService implements LanguageService {
         this.updateSchemaMapping(document.uri)
         return this._instance.doComplete(document, textDocumentPosition.position, false)
     }
-    diagnostic(document: TextDocument): Promise<Diagnostic[]> {
+    diagnostic(document: TextDocument, connection: Connection): Promise<Diagnostic[]> {
         this.updateSchemaMapping(document.uri)
         return this._instance.doValidation(document, false)
     }
