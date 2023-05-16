@@ -2242,6 +2242,58 @@
             ]
         },
         {
+            "name": "toolkit_showAction",
+            "description": "The toolkit tried to show an action. Source represents the notification that produced the action",
+            "metadata": [
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "id",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
+                },
+                {
+                    "type": "component",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "toolkit_invokeAction",
+            "description": "A user invoked an action. Source represents the notification that produced the action",
+            "metadata": [
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "id",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
+                },
+                {
+                    "type": "component",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "dynamicresource_getResource",
             "description": "Open the dynamic resource model in the IDE",
             "metadata": [
