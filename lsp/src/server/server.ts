@@ -16,21 +16,25 @@ import {
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import { BuildspecServiceStrategy } from '../service/filetypes/buildspec/strategy'
 import { Cc2ServiceStrategy } from '../service/filetypes/cc2/strategy'
-import { LanguageServiceRegistry } from '../service/registry/registry'
 import { LanguageServerCacheDir } from '../utils/configurationDirectory'
+import { Context0 } from './context'
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
 const connection = createConnection(ProposedFeatures.all)
 
+var context = new Context0(connection)
+
 // Create a simple text document manager.
 const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument)
 
-const fileRegistry = new LanguageServiceRegistry()
+// const fileRegistry = new LanguageServiceRegistry()
 connection.console.info('Adding buildspec service')
-fileRegistry.addStrategy(new BuildspecServiceStrategy())
+// fileRegistry.addStrategy(new BuildspecServiceStrategy(context))
+new BuildspecServiceStrategy(context)
 connection.console.info('Adding cc2 service')
-fileRegistry.addStrategy(new Cc2ServiceStrategy())
+// fileRegistry.addStrategy(new Cc2ServiceStrategy(context))
+new Cc2ServiceStrategy(context)
 connection.console.info('Done adding services')
 
 // Setup the local directory that will hold extension
@@ -102,7 +106,7 @@ documents.onDidChangeContent(change => {
     if (textDoc === undefined) {
         return
     }
-    const service = fileRegistry.getLanguageService(textDoc)
+    const service = context.getLanguageService(textDoc)
     if (service === undefined) {
         return
     }
@@ -114,7 +118,7 @@ async function validateTextDocument(textDocumentUri: TextDocument['uri']): Promi
     if (textDoc === undefined) {
         return
     }
-    const service = await fileRegistry.getLanguageService(textDoc)
+    const service = await context.getLanguageService(textDoc)
     if (service === undefined) {
         return
     }
@@ -132,7 +136,7 @@ connection.onCompletion(
         if (textDoc === undefined) {
             return []
         }
-        const service = await fileRegistry.getLanguageService(textDoc)
+        const service = await context.getLanguageService(textDoc)
         if (service === undefined) {
             return []
         }
@@ -140,12 +144,19 @@ connection.onCompletion(
     }
 )
 
+// connection.onCompletion(
+//     async (textDocumentPosition: TextDocumentPositionParams): Promise<CompletionItem[] | CompletionList> => {
+//         const res: CompletionItem[] = []
+//         return res
+//     }
+// )
+
 connection.onHover(async (params: HoverParams): Promise<Hover | null | undefined> => {
     const textDoc = documents.get(params.textDocument.uri)
     if (textDoc === undefined) {
         return undefined
     }
-    const service = await fileRegistry.getLanguageService(textDoc)
+    const service = await context.getLanguageService(textDoc)
     if (service === undefined) {
         return undefined
     }

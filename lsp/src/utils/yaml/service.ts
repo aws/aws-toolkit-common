@@ -50,9 +50,10 @@ import { YAMLTelemetry } from './telemetry'
  * calls. Then this class will not be necessary anymore.
  */
 export class YamlLanguageService implements LanguageService {
-    private _instance = new YamlLanguageServiceBuilder().instance()
-
-    constructor(private readonly schemaUri: string) {}
+    constructor(
+        private readonly schemaUri: string,
+        readonly _instance: OriginalYamlLanguageService = YamlLanguageServiceBuilder.createInnerLanguageService()
+    ) {}
 
     completion(
         document: TextDocument,
@@ -80,12 +81,19 @@ export class YamlLanguageService implements LanguageService {
 }
 
 export class YamlLanguageServiceBuilder {
-    instance(languageSettings?: LanguageSettings): OriginalYamlLanguageService {
+    private static defaultSchemaRequestService(): SchemaRequestService {
         const uriResolver = new UriContentResolver()
         const schemaResolver: SchemaRequestService = (uri: string) => {
             return uriResolver.getContent(URI.parse(uri))
         }
 
+        return schemaResolver
+    }
+
+    public static createInnerLanguageService(
+        languageSettings?: LanguageSettings,
+        schemaRequestService: SchemaRequestService = this.defaultSchemaRequestService()
+    ): OriginalYamlLanguageService {
         const workspaceContext = {
             resolveRelativePath(relativePath: string, resource: string) {
                 return new URL(relativePath, resource).href
@@ -93,7 +101,13 @@ export class YamlLanguageServiceBuilder {
         }
         const connection = createConnection()
         const yamlTelemetry = new YAMLTelemetry(connection)
-        const yaml = getYamlLanguageService(schemaResolver, workspaceContext, connection, yamlTelemetry, null as any)
+        const yaml = getYamlLanguageService(
+            schemaRequestService,
+            workspaceContext,
+            connection,
+            yamlTelemetry,
+            null as any
+        )
 
         if (languageSettings) {
             yaml.configure(languageSettings)

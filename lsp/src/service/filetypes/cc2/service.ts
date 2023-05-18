@@ -10,6 +10,7 @@ import {
     TextDocumentPositionParams,
 } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
+import { LanguageContext } from '../../../server/context'
 import { BaseLanguageService } from '../../types'
 import { cfn_guard_run_checks } from './cfn_guard_wasm'
 import path = require('path')
@@ -19,7 +20,7 @@ import path = require('path')
 export class Cc2Service extends BaseLanguageService {
     private _init: boolean
     // constructor(private readonly yaml: YamlLanguageService = new YamlLanguageService(SCHEMA_URL)) {
-    constructor() {
+    constructor(readonly context: LanguageContext) {
         super()
         this._init = false
     }
@@ -40,7 +41,7 @@ export class Cc2Service extends BaseLanguageService {
     }
 
     async diagnostic(document: TextDocument, connection: Connection): Promise<Diagnostic[]> {
-        connection.console.info('Cc2 Diag')
+        this.context.lspConnection.console.info('Cc2 Diag')
 
         const diags: Diagnostic[] = []
 
@@ -64,7 +65,7 @@ export class Cc2Service extends BaseLanguageService {
 
             try {
                 const json = JSON.parse(resp)
-                // connection.console.info(resp)
+                // this.context.lspConnection.console.info(resp)
                 const docStatus = json.container.FileCheck.status
                 if (docStatus == 'PASS') {
                     const diag: Diagnostic = {
@@ -117,7 +118,7 @@ export class Cc2Service extends BaseLanguageService {
                 }
             } catch (err) {}
         } catch (err) {
-            connection.console.info(`Cc2 Diag error: ${err}`)
+            this.context.lspConnection.console.info(`Cc2 Diag error: ${err}`)
         }
 
         // todo : WASM it up here

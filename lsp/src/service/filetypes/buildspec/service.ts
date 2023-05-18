@@ -8,14 +8,18 @@ import {
     TextDocumentPositionParams,
 } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { YamlLanguageService } from '../../../utils/yaml/service'
-import { BaseLanguageService } from '../../types'
+import { LanguageContext } from '../../../server/context'
+import { BaseLanguageService, LanguageService } from '../../types'
 
 const SCHEMA_URL = 'https://d3rrggjwfhwld2.cloudfront.net/CodeBuild/buildspec/buildspec-standalone.schema.json'
 
 export class BuildspecService extends BaseLanguageService {
-    constructor(private readonly yaml: YamlLanguageService = new YamlLanguageService(SCHEMA_URL)) {
+    private readonly yaml: LanguageService
+
+    constructor(private readonly context: LanguageContext) {
         super()
+
+        this.yaml = context.createYamlService(SCHEMA_URL)
     }
 
     completion(
