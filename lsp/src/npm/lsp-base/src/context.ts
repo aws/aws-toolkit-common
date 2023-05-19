@@ -7,6 +7,7 @@ export interface FileIo {
     readFile(path: string): string
 }
 
+// TODO : This belongs in the Toolkit lib
 export class FileSystemIo implements FileIo {
     public readFile(path: string): string {
         return 'file contents'
