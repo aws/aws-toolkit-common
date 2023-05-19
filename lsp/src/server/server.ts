@@ -16,8 +16,8 @@ import {
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import { BuildspecServiceStrategy } from '../service/filetypes/buildspec/strategy'
 import { Cc2ServiceStrategy } from '../service/filetypes/cc2/strategy'
+import { Context0 } from '../service/toolkitContext'
 import { LanguageServerCacheDir } from '../utils/configurationDirectory'
-import { Context0 } from './context'
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.

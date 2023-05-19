@@ -1,3 +1,4 @@
+import { BaseLanguageService, LanguageContext, LanguageService } from 'lsp-base'
 import {
     CompletionItem,
     CompletionList,
@@ -8,34 +9,28 @@ import {
     TextDocumentPositionParams,
 } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { JsonLanguageService, createJsonLanguageService } from '../../../utils/json/service'
+import { JsonLanguageService } from '../../../utils/json/service'
 import { DocumentParser } from '../../../utils/parser/document'
 import { DocumentParserVisitor } from '../../../utils/parser/types'
-import { YamlLanguageService } from '../../../utils/yaml/service'
-import { BaseLanguageService } from '../../types'
 
 const SCHEMA_URL = 'https://my.website.com/schema.js'
 
 export class BoilerplateService extends BaseLanguageService {
     private parser: DocumentParserVisitor
-    private yaml: YamlLanguageService
+    private readonly yaml: LanguageService
     private json: JsonLanguageService
 
-    constructor(
-        parser: DocumentParserVisitor = new DocumentParser(),
-        yaml: YamlLanguageService = new YamlLanguageService(SCHEMA_URL),
-        json: JsonLanguageService = createJsonLanguageService()
-    ) {
+    constructor(private readonly context: LanguageContext, parser: DocumentParserVisitor = new DocumentParser()) {
         super()
 
         // Use this if you need an AST
         this.parser = parser
 
         // Use this if you need to access the YAML Language Service
-        this.yaml = yaml
+        this.yaml = this.context.createYamlService(SCHEMA_URL)
 
         // Use this if you need to access the JSON Language Service
-        this.json = json
+        this.json = this.context.createJsonService()
     }
 
     completion(

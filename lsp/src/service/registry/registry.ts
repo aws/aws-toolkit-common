@@ -1,6 +1,5 @@
+import { LanguageService, LanguageServiceContext, LanguageServiceStrategy } from 'lsp-base'
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { LanguageService } from '../types'
-import { LanguageServiceContext, LanguageServiceStrategy } from './types'
 
 /**
  * Resolves the correct {@link LanguageService} implementation

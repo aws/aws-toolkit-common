@@ -32,6 +32,7 @@
         "testInt": "mocha out/test/integration/**/*.js"
     },
     "dependencies": {
+        "lsp-base": "file:src/npm/lsp-base",
         "request-light": "^0.6.0",
         "vscode-languageserver": "^7.0.0",
         "vscode-languageserver-textdocument": "^1.0.4",

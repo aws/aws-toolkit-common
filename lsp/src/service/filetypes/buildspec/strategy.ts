@@ -1,7 +1,5 @@
+import { LanguageContext, LanguageServiceStrategy } from 'lsp-base'
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { LanguageServiceStrategy } from '../../registry/types'
-
-import { LanguageContext } from '../../../server/context'
 import { BuildspecService } from './service'
 
 const BUILDSPEC_FILE_NAMES = ['build', 'buildspec'].map(name => [`${name}.yml`, `${name}.yaml`]).flat()

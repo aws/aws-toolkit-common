@@ -1,3 +1,4 @@
+import { BaseLanguageService, LanguageContext } from 'lsp-base'
 import {
     CompletionItem,
     CompletionList,
@@ -10,8 +11,6 @@ import {
     TextDocumentPositionParams,
 } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { LanguageContext } from '../../../server/context'
-import { BaseLanguageService } from '../../types'
 import { cfn_guard_run_checks } from './cfn_guard_wasm'
 import path = require('path')
 

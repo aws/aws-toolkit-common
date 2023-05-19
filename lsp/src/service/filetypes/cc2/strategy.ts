@@ -1,7 +1,5 @@
+import { LanguageContext, LanguageServiceStrategy } from 'lsp-base'
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { LanguageServiceStrategy } from '../../registry/types'
-
-import { LanguageContext } from '../../../server/context'
 import { Cc2Service } from './service'
 
 const CC2_FILE_NAMES = ['cc2'].map(name => [`${name}.yml`, `${name}.yaml`]).flat()

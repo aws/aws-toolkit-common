@@ -1,3 +1,4 @@
+import { BaseLanguageService, LanguageContext, LanguageService } from 'lsp-base'
 import {
     CompletionItem,
     CompletionList,
@@ -8,8 +9,6 @@ import {
     TextDocumentPositionParams,
 } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { LanguageContext } from '../../../server/context'
-import { BaseLanguageService, LanguageService } from '../../types'
 
 const SCHEMA_URL = 'https://d3rrggjwfhwld2.cloudfront.net/CodeBuild/buildspec/buildspec-standalone.schema.json'
 

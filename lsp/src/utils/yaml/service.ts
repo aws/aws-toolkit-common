@@ -1,3 +1,4 @@
+import { LanguageService } from 'lsp-base'
 import {
     CompletionItem,
     CompletionList,
@@ -9,7 +10,6 @@ import {
 } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
 import { createConnection } from 'vscode-languageserver/lib/node/main'
-import { URI } from 'vscode-uri'
 import {
     LanguageSettings,
     LanguageService as OriginalYamlLanguageService,
@@ -17,8 +17,6 @@ import {
     SchemasSettings,
     getLanguageService as getYamlLanguageService,
 } from 'yaml-language-server'
-import { LanguageService } from '../../service/types'
-import { UriContentResolver } from '../uri/resolve'
 import { YAMLTelemetry } from './telemetry'
 
 /**
@@ -50,10 +48,7 @@ import { YAMLTelemetry } from './telemetry'
  * calls. Then this class will not be necessary anymore.
  */
 export class YamlLanguageService implements LanguageService {
-    constructor(
-        private readonly schemaUri: string,
-        readonly _instance: OriginalYamlLanguageService = YamlLanguageServiceBuilder.createInnerLanguageService()
-    ) {}
+    constructor(private readonly schemaUri: string, readonly _instance: OriginalYamlLanguageService) {}
 
     completion(
         document: TextDocument,
@@ -81,18 +76,18 @@ export class YamlLanguageService implements LanguageService {
 }
 
 export class YamlLanguageServiceBuilder {
-    private static defaultSchemaRequestService(): SchemaRequestService {
-        const uriResolver = new UriContentResolver()
-        const schemaResolver: SchemaRequestService = (uri: string) => {
-            return uriResolver.getContent(URI.parse(uri))
-        }
+    // private static defaultSchemaRequestService(): SchemaRequestService {
+    //     const uriResolver = new UriContentResolver()
+    //     const schemaResolver: SchemaRequestService = (uri: string) => {
+    //         return uriResolver.getContent(URI.parse(uri))
+    //     }
 
-        return schemaResolver
-    }
+    //     return schemaResolver
+    // }
 
     public static createInnerLanguageService(
-        languageSettings?: LanguageSettings,
-        schemaRequestService: SchemaRequestService = this.defaultSchemaRequestService()
+        schemaRequestService: SchemaRequestService,
+        languageSettings?: LanguageSettings
     ): OriginalYamlLanguageService {
         const workspaceContext = {
             resolveRelativePath(relativePath: string, resource: string) {
