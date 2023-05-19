@@ -15,13 +15,3 @@ export interface LanguageServiceStrategy {
     isMatch(textDocument: TextDocument): Promise<boolean>
     getLanguageService(): LanguageService
 }
-
-/**
- * This is the 'Context' of the Strategy design pattern.
- *
- * It will decide which strategy to use and return a
- * {@link LanguageService} instance if it can be resolved.
- */
-export interface LanguageServiceContext {
-    getLanguageService(textDocument: TextDocument): Promise<LanguageService | undefined>
-}
