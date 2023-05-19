@@ -33,6 +33,7 @@
     },
     "dependencies": {
         "lsp-base": "file:src/npm/lsp-base",
+        "lsp-buildspec": "file:src/npm/lsp-buildspec",
         "request-light": "^0.6.0",
         "vscode-languageserver": "^7.0.0",
         "vscode-languageserver-textdocument": "^1.0.4",

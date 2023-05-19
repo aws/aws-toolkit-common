@@ -13,8 +13,8 @@ import {
     TextDocumentSyncKind,
 } from 'vscode-languageserver/node'
 
+import { BuildspecServiceStrategy } from 'lsp-buildspec'
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { BuildspecServiceStrategy } from '../service/filetypes/buildspec/strategy'
 import { Cc2ServiceStrategy } from '../service/filetypes/cc2/strategy'
 import { Context0 } from '../service/toolkitContext'
 import { LanguageServerCacheDir } from '../utils/configurationDirectory'

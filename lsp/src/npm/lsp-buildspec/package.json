@@ -1,0 +1,20 @@
+{
+    "name": "lsp-buildspec",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./out/index.js",
+    "types": "./out/index.d.js",
+    "files": [
+        "/out"
+    ],
+    "scripts": {
+        "compile": "tsc -b",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "lsp-base": "file:../lsp-base",
+        "typescript": "^4.8.4"
+    }
+}
