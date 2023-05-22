@@ -2,7 +2,6 @@ import { LanguageService } from 'lsp-base'
 import {
     CompletionItem,
     CompletionList,
-    Connection,
     Diagnostic,
     Hover,
     HoverParams,
@@ -57,7 +56,7 @@ export class YamlLanguageService implements LanguageService {
         this.updateSchemaMapping(document.uri)
         return this._instance.doComplete(document, textDocumentPosition.position, false)
     }
-    diagnostic(document: TextDocument, connection: Connection): Promise<Diagnostic[]> {
+    diagnostic(document: TextDocument): Promise<Diagnostic[]> {
         this.updateSchemaMapping(document.uri)
         return this._instance.doValidation(document, false)
     }

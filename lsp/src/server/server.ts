@@ -122,7 +122,7 @@ async function validateTextDocument(textDocumentUri: TextDocument['uri']): Promi
     if (service === undefined) {
         return
     }
-    const diagnostics = await service.diagnostic(textDoc, connection)
+    const diagnostics = await service.diagnostic(textDoc)
     connection.sendDiagnostics({ uri: textDocumentUri, diagnostics })
 }
 

@@ -2,7 +2,6 @@ import { BaseLanguageService, LanguageContext } from 'lsp-base'
 import {
     CompletionItem,
     CompletionList,
-    Connection,
     Diagnostic,
     DiagnosticSeverity,
     Hover,
@@ -39,7 +38,7 @@ export class Cc2Service extends BaseLanguageService {
         return Promise.resolve(x)
     }
 
-    async diagnostic(document: TextDocument, connection: Connection): Promise<Diagnostic[]> {
+    async diagnostic(document: TextDocument): Promise<Diagnostic[]> {
         this.context.lspConnection.console.info('Cc2 Diag')
 
         const diags: Diagnostic[] = []

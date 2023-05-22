@@ -1,7 +1,6 @@
 import {
     CompletionItem,
     CompletionList,
-    Connection,
     Diagnostic,
     Hover,
     HoverParams,
@@ -16,7 +15,7 @@ export class BaseLanguageService implements LanguageService {
     ): Promise<CompletionList | CompletionItem[]> {
         throw new Error(`completion() not implemented for this Service.`)
     }
-    diagnostic(document: TextDocument, connection: Connection): Promise<Diagnostic[]> {
+    diagnostic(document: TextDocument): Promise<Diagnostic[]> {
         throw new Error(`diagnostic() not implemented for this Service.`)
     }
     hover(document: TextDocument, params: HoverParams): Promise<Hover | null> {
@@ -48,7 +47,7 @@ export interface LanguageService {
     ) => Promise<CompletionItem[] | CompletionList>
 
     /** Given a text document, provide diagnostic information (errors, warnings, ...) about it. */
-    diagnostic: (document: TextDocument, connection: Connection) => Promise<Diagnostic[]>
+    diagnostic: (document: TextDocument) => Promise<Diagnostic[]>
 
     /** When a user hovers their mouse over text, provide them with information. */
     hover: (document: TextDocument, params: HoverParams) => Promise<Hover | null>

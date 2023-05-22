@@ -2,7 +2,6 @@ import { BaseLanguageService, LanguageContext, LanguageService } from 'lsp-base'
 import {
     CompletionItem,
     CompletionList,
-    Connection,
     Diagnostic,
     Hover,
     HoverParams,
@@ -40,7 +39,7 @@ export class BoilerplateService extends BaseLanguageService {
         return Promise.resolve([])
     }
 
-    diagnostic(document: TextDocument, connection: Connection): Promise<Diagnostic[]> {
+    diagnostic(document: TextDocument): Promise<Diagnostic[]> {
         return Promise.resolve([])
     }
 
