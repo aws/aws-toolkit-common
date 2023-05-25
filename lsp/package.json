@@ -71,8 +71,6 @@
         "endOfLine": "lf"
     },
     "pkg": {
-        "assets": [
-            "out/src/service/filetypes/cc2/cfn_guard_wasm_bg.wasm"
-        ]
+        "assets": []
     }
 }
