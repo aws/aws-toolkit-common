@@ -1,177 +1,134 @@
+// TODO : figure out if these are the right packages to import from; do type imports where possible
+import { JSONDocument, LanguageService, TextDocument, getLanguageService } from 'vscode-json-languageservice'
 import {
-    CompletionItem,
-    CompletionList,
-    createConnection,
-    DidChangeConfigurationNotification,
-    Hover,
-    HoverParams,
+    Connection,
     InitializeParams,
     InitializeResult,
-    ProposedFeatures,
-    TextDocumentPositionParams,
-    TextDocuments,
+    Range,
     TextDocumentSyncKind,
-} from 'vscode-languageserver/node'
+    TextDocuments,
+} from 'vscode-languageserver'
 
-import { BuildspecServiceStrategy } from 'lsp-buildspec'
-import { TextDocument } from 'vscode-languageserver-textdocument'
-import { Cc2ServiceStrategy } from '../service/filetypes/cc2/strategy'
-import { Context0 } from '../service/toolkitContext'
-import { LanguageServerCacheDir } from '../utils/configurationDirectory'
+export class JSONLanguageServer {
+    /**
+     * Options, provided by language server to `onInitialize` callback.
+     */
+    // protected options?: InitializeParams;
+    /**
+     * Text documents manager (see https://github.com/microsoft/vscode-languageserver-node/blob/main/server/src/common/textDocuments.ts#L68)
+     */
+    protected documents = new TextDocuments(TextDocument)
 
-// Create a connection for the server, using Node's IPC as a transport.
-// Also include all preview / proposed LSP features.
-const connection = createConnection(ProposedFeatures.all)
+    protected jsonService: LanguageService
 
-var context = new Context0(connection)
-
-// Create a simple text document manager.
-const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument)
-
-// const fileRegistry = new LanguageServiceRegistry()
-connection.console.info('Adding buildspec service')
-// fileRegistry.addStrategy(new BuildspecServiceStrategy(context))
-new BuildspecServiceStrategy(context)
-connection.console.info('Adding cc2 service')
-// fileRegistry.addStrategy(new Cc2ServiceStrategy(context))
-new Cc2ServiceStrategy(context)
-connection.console.info('Done adding services')
-
-// Setup the local directory that will hold extension
-// related resources.
-LanguageServerCacheDir.setup()
-
-let hasConfigurationCapability = false
-let hasWorkspaceFolderCapability = false
-let hasDiagnosticRelatedInformationCapability = false
-
-connection.onInitialize((params: InitializeParams) => {
-    const capabilities = params.capabilities
-
-    // Does the client support the `workspace/configuration` request?
-    // If not, we fall back using global settings.
-    hasConfigurationCapability = !!(capabilities.workspace && !!capabilities.workspace.configuration)
-    hasWorkspaceFolderCapability = !!(capabilities.workspace && !!capabilities.workspace.workspaceFolders)
-    hasDiagnosticRelatedInformationCapability = !!(
-        capabilities.textDocument &&
-        capabilities.textDocument.publishDiagnostics &&
-        capabilities.textDocument.publishDiagnostics.relatedInformation
-    )
-
-    const result: InitializeResult = {
-        capabilities: {
-            textDocumentSync: TextDocumentSyncKind.Full,
-            // Tell the client that this server supports code completion.
-            completionProvider: {
-                resolveProvider: false,
-            },
-            hoverProvider: true,
-        },
-    }
-    if (hasWorkspaceFolderCapability) {
-        result.capabilities.workspace = {
-            workspaceFolders: {
-                supported: true,
+    constructor(private readonly connection: Connection) {
+        const jsonSchemaUri = 'foo://server/data.schema.json'
+        // taken from https://json-schema.org/learn/miscellaneous-examples.html#basic
+        const jsonSchema = {
+            type: 'object',
+            properties: {
+                firstName: {
+                    type: 'string',
+                    description: "The person's first name.",
+                },
+                lastName: {
+                    type: 'string',
+                    description: "The person's last name.",
+                },
+                age: {
+                    description: 'Age in years which must be equal to or greater than zero.',
+                    type: 'integer',
+                    minimum: 0,
+                },
             },
         }
-    }
-    return result
-})
+        this.jsonService = getLanguageService({
+            schemaRequestService: () => {
+                return Promise.resolve(JSON.stringify(jsonSchema))
+            },
+        })
+        this.jsonService.configure({ allowComments: false, schemas: [{ fileMatch: ['*.json'], uri: jsonSchemaUri }] })
 
-connection.onInitialized(() => {
-    if (hasConfigurationCapability) {
-        // Register for all configuration changes.
-        connection.client.register(DidChangeConfigurationNotification.type, undefined)
+        this.connection.onInitialize((params: InitializeParams) => {
+            // this.options = params;
+            const result: InitializeResult = {
+                // serverInfo: initialisationOptions?.serverInfo,
+                capabilities: {
+                    textDocumentSync: {
+                        openClose: true,
+                        change: TextDocumentSyncKind.Incremental,
+                    },
+                    completionProvider: { resolveProvider: true },
+                    hoverProvider: true,
+                    documentFormattingProvider: true,
+                    // ...(initialisationOptions?.capabilities || {}),
+                },
+            }
+            return result
+        })
+        this.registerHandlers()
+        this.documents.listen(this.connection)
+        this.connection.listen()
+
+        this.connection.console.info('AWS Documents LS started!')
     }
-    if (hasWorkspaceFolderCapability) {
-        connection.workspace.onDidChangeWorkspaceFolders(_event => {
-            connection.console.log('Workspace folder change event received.')
+
+    getTextDocument(uri: string): TextDocument | undefined {
+        return this.documents.get(uri)
+    }
+
+    getTextDocumentAndJsonDocument(uri: string): [TextDocument, JSONDocument] {
+        const textDocument = this.getTextDocument(uri)
+        /* istanbul ignore next */
+        const jsonDocument = textDocument ? this.jsonService.parseJSONDocument(textDocument) : undefined
+        /* istanbul ignore next */
+        if (!textDocument || !jsonDocument) {
+            throw new Error(`Document with uri ${uri} not found.`)
+        }
+        return [textDocument, jsonDocument]
+    }
+
+    async validateDocument(uri: string): Promise<void> {
+        const [textDocument, jsonDocument] = this.getTextDocumentAndJsonDocument(uri)
+        const diagnostics = await this.jsonService.doValidation(textDocument, jsonDocument)
+        this.connection.sendDiagnostics({ uri, version: textDocument.version, diagnostics })
+    }
+
+    registerHandlers() {
+        this.documents.onDidOpen(({ document }) => {
+            this.validateDocument(document.uri)
+        })
+
+        this.documents.onDidChangeContent(({ document }) => {
+            this.validateDocument(document.uri)
+        })
+
+        this.connection.onCompletion(async ({ textDocument: requestedDocument, position }) => {
+            const [textDocument, jsonDocument] = this.getTextDocumentAndJsonDocument(requestedDocument.uri)
+            return await this.jsonService.doComplete(textDocument, position, jsonDocument)
+        })
+
+        this.connection.onHover(async ({ textDocument: requestedDocument, position }) => {
+            const [textDocument, jsonDocument] = this.getTextDocumentAndJsonDocument(requestedDocument.uri)
+            return await this.jsonService.doHover(textDocument, position, jsonDocument)
+        })
+
+        this.connection.onDocumentFormatting(async ({ textDocument: requestedDocument, options }) => {
+            const [textDocument] = this.getTextDocumentAndJsonDocument(requestedDocument.uri)
+            return await this.jsonService.format(textDocument, getTextDocumentFullRange(textDocument), options)
         })
     }
-})
-
-connection.onDidChangeConfiguration(change => {
-    // Revalidate all open text documents
-    documents.all().forEach(td => validateTextDocument(td.uri))
-})
-
-// Only keep settings for open documents
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-documents.onDidClose(e => {})
-
-// The content of a text document has changed. This event is emitted
-// when the text document first opened or when its content has changed.
-documents.onDidChangeContent(change => {
-    const textDoc = documents.get(change.document.uri)
-    if (textDoc === undefined) {
-        return
-    }
-    const service = context.getLanguageService(textDoc)
-    if (service === undefined) {
-        return
-    }
-    validateTextDocument(textDoc.uri)
-})
-
-async function validateTextDocument(textDocumentUri: TextDocument['uri']): Promise<void> {
-    const textDoc = documents.get(textDocumentUri)
-    if (textDoc === undefined) {
-        return
-    }
-    const service = await context.getLanguageService(textDoc)
-    if (service === undefined) {
-        return
-    }
-    const diagnostics = await service.diagnostic(textDoc)
-    connection.sendDiagnostics({ uri: textDocumentUri, diagnostics })
 }
 
-connection.onDidChangeWatchedFiles(_change => {
-    connection.console.log('We received an file change event')
-})
-
-connection.onCompletion(
-    async (textDocumentPosition: TextDocumentPositionParams): Promise<CompletionItem[] | CompletionList> => {
-        const textDoc = documents.get(textDocumentPosition.textDocument.uri)
-        if (textDoc === undefined) {
-            return []
-        }
-        const service = await context.getLanguageService(textDoc)
-        if (service === undefined) {
-            return []
-        }
-        return service.completion(textDoc, textDocumentPosition)
+const getTextDocumentFullRange = (textDocument: TextDocument): Range => {
+    return {
+        start: {
+            line: 0,
+            character: 0,
+        },
+        end: {
+            line: textDocument.lineCount,
+            character: 0,
+        },
     }
-)
-
-// connection.onCompletion(
-//     async (textDocumentPosition: TextDocumentPositionParams): Promise<CompletionItem[] | CompletionList> => {
-//         const res: CompletionItem[] = []
-//         return res
-//     }
-// )
-
-connection.onHover(async (params: HoverParams): Promise<Hover | null | undefined> => {
-    const textDoc = documents.get(params.textDocument.uri)
-    if (textDoc === undefined) {
-        return undefined
-    }
-    const service = await context.getLanguageService(textDoc)
-    if (service === undefined) {
-        return undefined
-    }
-    return service.hover(textDoc, params)
-})
-
-connection.onShutdown(async () => {
-    return undefined
-})
-
-// Make the text document manager listen on the connection
-// for open, change and close text document events
-documents.listen(connection)
-
-// Listen on the connection
-connection.listen()
-
-connection.console.info('AWS Documents LS started!')
+}

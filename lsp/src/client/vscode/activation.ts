@@ -21,7 +21,7 @@ export async function activateDocumentsLanguageServer(extensionContext: Extensio
      * Additonally, this is why we use multiple '..', to get to the output directory
      * with the javascript files.
      */
-    const serverModule = path.join(extensionContext.extensionPath, '../../../out/src/server/server.js')
+    const serverModule = path.join(extensionContext.extensionPath, '../../../out/src/server/instantiator.js')
 
     const debugOptions = { execArgv: ['--nolazy', '--inspect=6012', '--preserve-symlinks'] }
 

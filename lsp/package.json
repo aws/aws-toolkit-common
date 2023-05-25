@@ -15,9 +15,9 @@
         "vscode": "^1.74.0"
     },
     "bin": {
-        "awsdocuments-language-server": "./out/src/server/server.js"
+        "awsdocuments-language-server": "./out/src/server/instantiator.js"
     },
-    "main": "./out/src/server/server.js",
+    "main": "./out/src/server/instantiator.js",
     "scripts": {
         "prepare": "cd .. && husky install lsp/.husky",
         "vscode:prepublish": "npm run compile",
@@ -35,10 +35,10 @@
         "lsp-base": "file:src/npm/lsp-base",
         "lsp-buildspec": "file:src/npm/lsp-buildspec",
         "request-light": "^0.6.0",
-        "vscode-languageserver": "^7.0.0",
-        "vscode-languageserver-textdocument": "^1.0.4",
-        "vscode-uri": "^3.0.7",
-        "yaml-language-server": "^1.11.0"
+        "vscode-json-languageservice": "^5.3.5",
+        "vscode-languageserver": "8.0.1",
+        "vscode-languageserver-textdocument": "1.0.8",
+        "vscode-uri": "^3.0.7"
     },
     "devDependencies": {
         "@types/chai": "^4.3.4",
