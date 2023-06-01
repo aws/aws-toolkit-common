@@ -66,7 +66,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             {
                 Bees = 123,
                 Reason = "sample-reason",
-                Duration = 22.5
+                Duration = 22.5,
+                Locale = "en-US"
             };
 
             _telemetryLogger.Object.RecordSampleReleaseBees(payload);
@@ -84,6 +85,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.Equal(payload.Bees.ToString(), datum.Metadata["bees"]);
             Assert.Equal(payload.Reason, datum.Metadata["reason"]);
             Assert.Equal(payload.Duration.ToString(), datum.Metadata["duration"]);
+            Assert.Equal(payload.Locale, datum.Metadata["locale"]);
         }
 
         /// <summary>
