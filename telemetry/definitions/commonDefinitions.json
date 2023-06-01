@@ -313,6 +313,11 @@
             "description": "Language-specific identification. Examples: v4.6.1, netcoreapp3.1, nodejs12.x. Not AWS Lambda specific. Allows for additional details when other fields are opaque, such as the Lambda runtime value 'provided'."
         },
         {
+            "name": "locale",
+            "type": "string",
+            "description": "Language-related user preference information. Examples: en-US, en-GB, etc."
+        },
+        {
             "name": "insightsDialogOpenSource",
             "allowedValues": ["explorer", "resultsWindow", "logGroup"],
             "description": "Dialog open trigger source location"
@@ -2237,6 +2242,10 @@
                 },
                 {
                     "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "locale",
                     "required": false
                 }
             ]
