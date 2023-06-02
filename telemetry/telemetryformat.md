@@ -55,7 +55,7 @@ Global arguments that can be appended to any generated telemetry call.
 createTime?: Date
 // Value based on unit and call type
 value?: number
-// The Language-related user preference information. Examples: en-US, en-GB, etc.
+// The language-related user preference information. Examples: en-US, en-GB, etc.
 string?: locale
 // The AWS account ID associated with a metric
 // If a metric is not associated with credentials: "n/a"
