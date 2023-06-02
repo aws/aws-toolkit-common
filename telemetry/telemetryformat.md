@@ -48,13 +48,15 @@ These are then used to generate functions that take arguments pertaining to metr
 
 ### Global Arguments
 
-_Additionally_ two additional global arguments that can be appended to any generated telemetry call.
+Global arguments that can be appended to any generated telemetry call.
 
 ```
 // The time that the event took place
 createTime?: Date
 // Value based on unit and call type
 value?: number
+// The Language-related user preference information. Examples: en-US, en-GB, etc.
+string?: locale
 // The AWS account ID associated with a metric
 // If a metric is not associated with credentials: "n/a"
 // If a metric is associated with credentials, but credentials are not selected: "not-set"
