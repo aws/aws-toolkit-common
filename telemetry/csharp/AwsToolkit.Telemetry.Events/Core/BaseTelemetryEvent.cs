@@ -29,6 +29,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Core
         /// </summary>
         public double? Duration;
 
+        /// <summary>
+        /// Optional - Language-related user preference information. Examples: en-US, en-GB, etc.
+        /// </summary>
+        public string Locale;
+
         public DateTime? CreatedOn;
         public double? Value;
         public string AwsAccount;

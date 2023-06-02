@@ -60,6 +60,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 if (payload.Runtime.HasValue)
                 {
@@ -121,6 +122,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("bees", payload.Bees);
 
@@ -172,6 +174,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -221,6 +224,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 

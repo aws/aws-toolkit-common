@@ -59,6 +59,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -110,6 +111,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 if (payload.Runtime.HasValue)
                 {
@@ -175,6 +177,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -228,6 +231,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -279,6 +283,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -328,6 +333,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -377,6 +383,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -430,6 +437,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -481,6 +489,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -532,6 +541,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -588,6 +598,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -639,6 +650,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -688,6 +700,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -737,6 +750,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
@@ -788,6 +802,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
@@ -841,6 +856,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 if (payload.CredentialType.HasValue)
                 {
@@ -900,6 +916,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -949,6 +966,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("partitionId", payload.PartitionId);
 
@@ -1000,6 +1018,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1051,10 +1070,13 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("url", payload.Url);
+
+                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1104,6 +1126,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1153,6 +1176,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1210,6 +1234,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("credentialSourceId", payload.CredentialSourceId);
 
@@ -1261,6 +1286,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1310,6 +1336,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1363,6 +1390,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1374,6 +1402,73 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 if (payload.CredentialSourceId.HasValue)
                 {
                     datum.AddMetadata("credentialSourceId", payload.CredentialSourceId.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Emitted when credentials are automatically refreshed by the AWS SDK or Toolkit
+        public static void RecordAwsRefreshCredentials(this ITelemetryLogger telemetryLogger, AwsRefreshCredentials payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "aws_refreshCredentials";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("result", payload.Result);
+
+                if (payload.CredentialType.HasValue)
+                {
+                    datum.AddMetadata("credentialType", payload.CredentialType.Value);
+                }
+
+                if (payload.CredentialSourceId.HasValue)
+                {
+                    datum.AddMetadata("credentialSourceId", payload.CredentialSourceId.Value);
+                }
+
+                if (payload.SessionDuration.HasValue)
+                {
+                    datum.AddMetadata("sessionDuration", payload.SessionDuration.Value);
                 }
 
                 datum = datum.InvokeTransform(transformDatum);
@@ -1424,6 +1519,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1485,6 +1581,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("name", payload.Name);
 
@@ -1536,6 +1633,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1587,6 +1685,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1636,6 +1735,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1685,6 +1785,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
@@ -1736,6 +1837,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1785,6 +1887,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1856,6 +1959,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1911,6 +2015,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -1962,6 +2067,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2013,6 +2119,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2064,6 +2171,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2115,6 +2223,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2166,6 +2275,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2217,6 +2327,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2268,6 +2379,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2319,6 +2431,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2370,6 +2483,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2421,6 +2535,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2472,6 +2587,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2523,6 +2639,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2574,6 +2691,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2625,6 +2743,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2678,6 +2797,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2689,6 +2809,16 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
+
+                if (payload.HasTextFilter.HasValue)
+                {
+                    datum.AddMetadata("hasTextFilter", payload.HasTextFilter.Value);
+                }
+
+                if (payload.HasTimeFilter.HasValue)
+                {
+                    datum.AddMetadata("hasTimeFilter", payload.HasTimeFilter.Value);
+                }
 
                 datum.AddMetadata("source", payload.Source);
 
@@ -2740,6 +2870,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2793,6 +2924,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2846,6 +2978,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2899,6 +3032,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -2952,6 +3086,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3003,6 +3138,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3054,6 +3190,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3105,6 +3242,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("enabled", payload.Enabled);
 
@@ -3156,6 +3294,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("enabled", payload.Enabled);
 
@@ -3207,6 +3346,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("cloudWatchResourceType", payload.CloudWatchResourceType);
 
@@ -3258,6 +3398,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -3307,6 +3448,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -3321,7 +3463,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
-        /// Filters a CloudWatch Logs entity.
+        /// Filters a CloudWatch Logs entity. (Essentially a subset of cloudwatchlogs_open)
         public static void RecordCloudwatchlogsFilter(this ITelemetryLogger telemetryLogger, CloudwatchlogsFilter payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
@@ -3356,6 +3498,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3421,6 +3564,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3472,6 +3616,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3523,6 +3668,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3574,6 +3720,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3627,6 +3774,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3684,6 +3832,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3739,6 +3888,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3790,6 +3940,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3841,6 +3992,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3892,6 +4044,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3948,6 +4101,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -3999,6 +4153,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4050,6 +4205,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4103,6 +4259,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4161,6 +4318,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4212,6 +4370,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4265,6 +4424,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4318,6 +4478,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4369,6 +4530,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4422,6 +4584,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4473,6 +4636,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4524,6 +4688,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4575,6 +4740,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4626,6 +4792,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4677,6 +4844,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4728,6 +4896,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4779,6 +4948,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4830,6 +5000,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4881,6 +5052,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4932,6 +5104,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -4983,6 +5156,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5034,6 +5208,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5085,6 +5260,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5136,6 +5312,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5192,6 +5369,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5243,6 +5421,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5299,6 +5478,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5350,6 +5530,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5401,6 +5582,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5452,6 +5634,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5505,6 +5688,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5556,6 +5740,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5607,6 +5792,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5658,6 +5844,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5709,6 +5896,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5760,6 +5948,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5811,6 +6000,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5862,6 +6052,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5913,6 +6104,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5964,6 +6156,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6015,6 +6208,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6066,6 +6260,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6117,6 +6312,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6168,6 +6364,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6219,6 +6416,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6272,6 +6470,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -6321,6 +6520,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -6370,6 +6570,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6421,6 +6622,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6472,6 +6674,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6523,6 +6726,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6579,6 +6783,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6632,6 +6837,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6685,6 +6891,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6738,6 +6945,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6789,6 +6997,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6840,6 +7049,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6891,6 +7101,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6942,6 +7153,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -6993,6 +7205,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7044,6 +7257,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7095,6 +7309,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7146,6 +7361,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7201,6 +7417,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7252,6 +7469,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7303,6 +7521,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7354,6 +7573,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7407,6 +7627,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7460,6 +7681,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7513,6 +7735,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7566,6 +7789,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7617,6 +7841,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7668,6 +7893,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7719,6 +7945,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7770,6 +7997,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("runtime", payload.Runtime);
 
@@ -7821,6 +8049,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7878,6 +8107,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -7929,6 +8159,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 if (payload.Update.HasValue)
                 {
@@ -7987,6 +8218,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 if (payload.Runtime.HasValue)
                 {
@@ -8043,6 +8275,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 if (payload.Runtime.HasValue)
                 {
@@ -8110,6 +8343,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 if (payload.Runtime.HasValue)
                 {
@@ -8166,6 +8400,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 if (payload.Runtime.HasValue)
                 {
@@ -8222,6 +8457,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("lambdaPackageType", payload.LambdaPackageType);
 
@@ -8300,6 +8536,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8355,6 +8592,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8406,6 +8644,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8461,6 +8700,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8512,6 +8752,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8563,6 +8804,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8614,6 +8856,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8665,6 +8908,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8716,6 +8960,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8767,6 +9012,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8818,6 +9064,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8869,6 +9116,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8920,6 +9168,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -8975,6 +9224,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -9028,6 +9278,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -9081,6 +9332,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -9134,6 +9386,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -9191,6 +9444,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -9263,6 +9517,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -9314,6 +9569,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -9370,6 +9626,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -9421,6 +9678,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -9470,6 +9728,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -9519,6 +9778,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -9568,6 +9828,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -9617,6 +9878,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -9668,6 +9930,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -9721,6 +9984,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -9772,6 +10036,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -9823,6 +10088,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -9884,6 +10150,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -9935,6 +10202,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -10001,6 +10269,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -10052,6 +10321,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -10118,6 +10388,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -10169,6 +10440,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -10220,6 +10492,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -10271,6 +10544,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -10327,6 +10601,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -10378,6 +10653,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -10429,6 +10705,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 if (payload.Result.HasValue)
                 {
@@ -10483,6 +10760,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -10532,6 +10810,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("sqsQueueType", payload.SqsQueueType);
 
@@ -10583,6 +10862,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -10639,6 +10919,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -10692,6 +10973,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -10745,6 +11027,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -10798,6 +11081,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -10851,6 +11135,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -10904,6 +11189,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -10957,6 +11243,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11013,6 +11300,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11064,6 +11352,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11115,6 +11404,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11166,6 +11456,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11217,6 +11508,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11268,6 +11560,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11319,6 +11612,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11370,6 +11664,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11421,6 +11716,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11472,6 +11768,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11523,6 +11820,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11574,6 +11872,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11625,6 +11924,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("insightsDialogOpenSource", payload.InsightsDialogOpenSource);
 
@@ -11676,6 +11976,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11731,6 +12032,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11782,6 +12084,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11833,6 +12136,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11884,10 +12188,183 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("url", payload.Url);
 
                 datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// The toolkit tried to show a notification message
+        public static void RecordToolkitShowNotification(this ITelemetryLogger telemetryLogger, ToolkitShowNotification payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "toolkit_showNotification";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("id", payload.Id);
+
+                datum.AddMetadata("component", payload.Component);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// The toolkit tried to show an action. Source represents the notification that produced the action
+        public static void RecordToolkitShowAction(this ITelemetryLogger telemetryLogger, ToolkitShowAction payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "toolkit_showAction";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("id", payload.Id);
+
+                datum.AddMetadata("source", payload.Source);
+
+                datum.AddMetadata("component", payload.Component);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// A user invoked an action. Source represents the notification that produced the action
+        public static void RecordToolkitInvokeAction(this ITelemetryLogger telemetryLogger, ToolkitInvokeAction payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "toolkit_invokeAction";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("id", payload.Id);
+
+                datum.AddMetadata("source", payload.Source);
+
+                datum.AddMetadata("component", payload.Component);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -11937,6 +12414,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -11990,6 +12468,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -12043,6 +12522,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -12092,6 +12572,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("resourceType", payload.ResourceType);
 
@@ -12143,6 +12624,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -12198,6 +12680,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("experimentId", payload.ExperimentId);
 
@@ -12251,6 +12734,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("toolId", payload.ToolId);
 
@@ -12304,6 +12788,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("settingId", payload.SettingId);
 
@@ -12357,6 +12842,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("elementId", payload.ElementId);
 
@@ -12408,6 +12894,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("source", payload.Source);
 
@@ -12463,6 +12950,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("codewhispererAcceptedTokens", payload.CodewhispererAcceptedTokens);
 
@@ -12522,6 +13010,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("codewhispererCodeScanLines", payload.CodewhispererCodeScanLines);
 
@@ -12608,6 +13097,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 if (payload.CodewhispererAutomatedTriggerType.HasValue)
                 {
@@ -12641,9 +13131,99 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("codewhispererSessionId", payload.CodewhispererSessionId);
 
+                if (payload.CodewhispererSupplementalContextTimeout.HasValue)
+                {
+                    datum.AddMetadata("codewhispererSupplementalContextTimeout", payload.CodewhispererSupplementalContextTimeout.Value);
+                }
+
+                if (payload.CodewhispererSupplementalContextIsUtg.HasValue)
+                {
+                    datum.AddMetadata("codewhispererSupplementalContextIsUtg", payload.CodewhispererSupplementalContextIsUtg.Value);
+                }
+
+                if (payload.CodewhispererSupplementalContextLatency.HasValue)
+                {
+                    datum.AddMetadata("codewhispererSupplementalContextLatency", payload.CodewhispererSupplementalContextLatency.Value);
+                }
+
+                if (payload.CodewhispererSupplementalContextLength.HasValue)
+                {
+                    datum.AddMetadata("codewhispererSupplementalContextLength", payload.CodewhispererSupplementalContextLength.Value);
+                }
+
                 datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
 
                 datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                if (payload.CodewhispererImportRecommendationEnabled.HasValue)
+                {
+                    datum.AddMetadata("codewhispererImportRecommendationEnabled", payload.CodewhispererImportRecommendationEnabled.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Client side invocation blocked by another invocation in progress
+        public static void RecordCodewhispererBlockedInvocation(this ITelemetryLogger telemetryLogger, CodewhispererBlockedInvocation payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codewhisperer_blockedInvocation";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                if (payload.CodewhispererAutomatedTriggerType.HasValue)
+                {
+                    datum.AddMetadata("codewhispererAutomatedTriggerType", payload.CodewhispererAutomatedTriggerType.Value);
+                }
+
+                datum.AddMetadata("codewhispererCursorOffset", payload.CodewhispererCursorOffset);
+
+                datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
+
+                datum.AddMetadata("codewhispererLineNumber", payload.CodewhispererLineNumber);
+
+                datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
 
                 datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
 
@@ -12695,6 +13275,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("codewhispererCompletionType", payload.CodewhispererCompletionType);
 
@@ -12722,11 +13303,152 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("codewhispererSuggestionReferences", payload.CodewhispererSuggestionReferences);
 
+                if (payload.CodewhispererSuggestionImportCount.HasValue)
+                {
+                    datum.AddMetadata("codewhispererSuggestionImportCount", payload.CodewhispererSuggestionImportCount.Value);
+                }
+
                 datum.AddMetadata("codewhispererSuggestionState", payload.CodewhispererSuggestionState);
 
                 datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
 
                 datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// User decision aggregated at trigger level
+        public static void RecordCodewhispererUserTriggerDecision(this ITelemetryLogger telemetryLogger, CodewhispererUserTriggerDecision payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codewhisperer_userTriggerDecision";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codewhispererSessionId", payload.CodewhispererSessionId);
+
+                datum.AddMetadata("codewhispererFirstRequestId", payload.CodewhispererFirstRequestId);
+
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                if (payload.CodewhispererIsPartialAcceptance.HasValue)
+                {
+                    datum.AddMetadata("codewhispererIsPartialAcceptance", payload.CodewhispererIsPartialAcceptance.Value);
+                }
+
+                if (payload.CodewhispererPartialAcceptanceCount.HasValue)
+                {
+                    datum.AddMetadata("codewhispererPartialAcceptanceCount", payload.CodewhispererPartialAcceptanceCount.Value);
+                }
+
+                if (payload.CodewhispererCharactersAccepted.HasValue)
+                {
+                    datum.AddMetadata("codewhispererCharactersAccepted", payload.CodewhispererCharactersAccepted.Value);
+                }
+
+                if (payload.CodewhispererCharactersRecommended.HasValue)
+                {
+                    datum.AddMetadata("codewhispererCharactersRecommended", payload.CodewhispererCharactersRecommended.Value);
+                }
+
+                datum.AddMetadata("codewhispererCompletionType", payload.CodewhispererCompletionType);
+
+                datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
+
+                datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
+
+                if (payload.CodewhispererAutomatedTriggerType.HasValue)
+                {
+                    datum.AddMetadata("codewhispererAutomatedTriggerType", payload.CodewhispererAutomatedTriggerType.Value);
+                }
+
+                datum.AddMetadata("codewhispererLineNumber", payload.CodewhispererLineNumber);
+
+                datum.AddMetadata("codewhispererCursorOffset", payload.CodewhispererCursorOffset);
+
+                datum.AddMetadata("codewhispererSuggestionCount", payload.CodewhispererSuggestionCount);
+
+                datum.AddMetadata("codewhispererSuggestionImportCount", payload.CodewhispererSuggestionImportCount);
+
+                if (payload.CodewhispererTotalShownTime.HasValue)
+                {
+                    datum.AddMetadata("codewhispererTotalShownTime", payload.CodewhispererTotalShownTime.Value);
+                }
+
+                datum.AddMetadata("codewhispererTriggerCharacter", payload.CodewhispererTriggerCharacter);
+
+                datum.AddMetadata("codewhispererTypeaheadLength", payload.CodewhispererTypeaheadLength);
+
+                if (payload.CodewhispererTimeSinceLastDocumentChange.HasValue)
+                {
+                    datum.AddMetadata("codewhispererTimeSinceLastDocumentChange", payload.CodewhispererTimeSinceLastDocumentChange.Value);
+                }
+
+                if (payload.CodewhispererTimeSinceLastUserDecision.HasValue)
+                {
+                    datum.AddMetadata("codewhispererTimeSinceLastUserDecision", payload.CodewhispererTimeSinceLastUserDecision.Value);
+                }
+
+                if (payload.CodewhispererTimeToFirstRecommendation.HasValue)
+                {
+                    datum.AddMetadata("codewhispererTimeToFirstRecommendation", payload.CodewhispererTimeToFirstRecommendation.Value);
+                }
+
+                if (payload.CodewhispererPreviousSuggestionState.HasValue)
+                {
+                    datum.AddMetadata("codewhispererPreviousSuggestionState", payload.CodewhispererPreviousSuggestionState.Value);
+                }
+
+                datum.AddMetadata("codewhispererSuggestionState", payload.CodewhispererSuggestionState);
+
+                if (payload.CodewhispererClassifierResult.HasValue)
+                {
+                    datum.AddMetadata("codewhispererClassifierResult", payload.CodewhispererClassifierResult.Value);
+                }
+
+                if (payload.CodewhispererClassifierThreshold.HasValue)
+                {
+                    datum.AddMetadata("codewhispererClassifierThreshold", payload.CodewhispererClassifierThreshold.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -12776,6 +13498,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("codewhispererCompletionType", payload.CodewhispererCompletionType);
 
@@ -12848,6 +13571,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("codewhispererRequestId", payload.CodewhispererRequestId);
 
@@ -12909,6 +13633,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("codewhispererRequestId", payload.CodewhispererRequestId);
 
@@ -12982,6 +13707,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -13040,6 +13766,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -13095,6 +13822,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -13148,6 +13876,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -13201,6 +13930,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -13254,6 +13984,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("userId", payload.UserId);
 
@@ -13489,6 +14220,12 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// filesystem
         public static readonly Component Filesystem = new Component("filesystem");
+        
+        /// explorer
+        public static readonly Component Explorer = new Component("explorer");
+        
+        /// infobar
+        public static readonly Component Infobar = new Component("infobar");
         
         public Component(string value)
         {
@@ -13735,6 +14472,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// awsId
         public static readonly CredentialSourceId AwsId = new CredentialSourceId("awsId");
+        
+        /// iamIdentityCenter
+        public static readonly CredentialSourceId IamIdentityCenter = new CredentialSourceId("iamIdentityCenter");
         
         /// other
         public static readonly CredentialSourceId Other = new CredentialSourceId("other");
@@ -14237,6 +14977,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// IdleTime
         public static readonly CodewhispererAutomatedTriggerType IdleTime = new CodewhispererAutomatedTriggerType("IdleTime");
         
+        /// Classifier
+        public static readonly CodewhispererAutomatedTriggerType Classifier = new CodewhispererAutomatedTriggerType("Classifier");
+        
         public CodewhispererAutomatedTriggerType(string value)
         {
             this._value = value;
@@ -14436,6 +15179,36 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public static readonly CodewhispererTriggerType AutoTrigger = new CodewhispererTriggerType("AutoTrigger");
         
         public CodewhispererTriggerType(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// The aggregated user decision from previous trigger. 
+    public struct CodewhispererPreviousSuggestionState
+    {
+        
+        private string _value;
+        
+        /// Accept
+        public static readonly CodewhispererPreviousSuggestionState Accept = new CodewhispererPreviousSuggestionState("Accept");
+        
+        /// Reject
+        public static readonly CodewhispererPreviousSuggestionState Reject = new CodewhispererPreviousSuggestionState("Reject");
+        
+        /// Discard
+        public static readonly CodewhispererPreviousSuggestionState Discard = new CodewhispererPreviousSuggestionState("Discard");
+        
+        /// Empty
+        public static readonly CodewhispererPreviousSuggestionState Empty = new CodewhispererPreviousSuggestionState("Empty");
+        
+        public CodewhispererPreviousSuggestionState(string value)
         {
             this._value = value;
         }
@@ -14790,6 +15563,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The url associated with a metric
         public string Url;
         
+        /// Optional - The source of the operation
+        public string Source;
+        
         public AwsOpenUrl()
         {
             this.Passive = false;
@@ -14881,6 +15657,28 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CredentialSourceId? CredentialSourceId;
         
         public AwsValidateCredentials()
+        {
+            this.Passive = true;
+        }
+    }
+    
+    /// Emitted when credentials are automatically refreshed by the AWS SDK or Toolkit
+    public sealed class AwsRefreshCredentials : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// Optional - The type of credential that was selected
+        public CredentialType? CredentialType;
+        
+        /// Optional - Where credentials are stored or retrieved from
+        public CredentialSourceId? CredentialSourceId;
+        
+        /// Optional - Length of time, in milliseconds, that an authentication session has lived for. Useful for determining how frequently a user has to reauthenticate.
+        public System.Int32? SessionDuration;
+        
+        public AwsRefreshCredentials()
         {
             this.Passive = true;
         }
@@ -15241,6 +16039,12 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
         public string ServiceType;
         
+        /// Optional - A text based filter was used
+        public System.Boolean? HasTextFilter;
+        
+        /// Optional - A time based filter was used
+        public System.Boolean? HasTimeFilter;
+        
         /// The source of the operation
         public string Source;
         
@@ -15412,7 +16216,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
-    /// Filters a CloudWatch Logs entity.
+    /// Filters a CloudWatch Logs entity. (Essentially a subset of cloudwatchlogs_open)
     public sealed class CloudwatchlogsFilter : BaseTelemetryEvent
     {
         
@@ -17789,6 +18593,69 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// The toolkit tried to show a notification message
+    public sealed class ToolkitShowNotification : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// A generic ID metadata
+        public string Id;
+        
+        /// The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...)
+        public Component Component;
+        
+        public ToolkitShowNotification()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// The toolkit tried to show an action. Source represents the notification that produced the action
+    public sealed class ToolkitShowAction : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// A generic ID metadata
+        public string Id;
+        
+        /// The source of the operation
+        public string Source;
+        
+        /// The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...)
+        public Component Component;
+        
+        public ToolkitShowAction()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// A user invoked an action. Source represents the notification that produced the action
+    public sealed class ToolkitInvokeAction : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// A generic ID metadata
+        public string Id;
+        
+        /// The source of the operation
+        public string Source;
+        
+        /// The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...)
+        public Component Component;
+        
+        public ToolkitInvokeAction()
+        {
+            this.Passive = false;
+        }
+    }
+    
     /// Open the dynamic resource model in the IDE
     public sealed class DynamicresourceGetResource : BaseTelemetryEvent
     {
@@ -18054,6 +18921,18 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The unique identifier for a CodeWhisperer session(which can contain multiple requests)
         public string CodewhispererSessionId;
         
+        /// Optional - If the supplemental context fetching timeout or not
+        public System.Boolean? CodewhispererSupplementalContextTimeout;
+        
+        /// Optional - If the supplemental context is for test file(UTG) or src file
+        public System.Boolean? CodewhispererSupplementalContextIsUtg;
+        
+        /// Optional - Latency to obtain supplemental context
+        public System.Double? CodewhispererSupplementalContextLatency;
+        
+        /// Optional - Length of codewhisperer supplemental context extracted from files
+        public System.Int32? CodewhispererSupplementalContextLength;
+        
         /// The type of the user trigger to send request to CodeWhisperer service
         public CodewhispererTriggerType CodewhispererTriggerType;
         
@@ -18063,7 +18942,38 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The start URL of current SSO connection
         public string CredentialStartUrl;
         
+        /// Optional - Whether Import Recommendation is enabled.
+        public System.Boolean? CodewhispererImportRecommendationEnabled;
+        
         public CodewhispererServiceInvocation()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Client side invocation blocked by another invocation in progress
+    public sealed class CodewhispererBlockedInvocation : BaseTelemetryEvent
+    {
+        
+        /// Optional - The type of the Automated trigger to send request to CodeWhisperer service
+        public CodewhispererAutomatedTriggerType? CodewhispererAutomatedTriggerType;
+        
+        /// cursor location offset in the editor when invoking CodeWhisperer for recommendation
+        public int CodewhispererCursorOffset;
+        
+        /// Programming language of the CodeWhisperer recommendation
+        public CodewhispererLanguage CodewhispererLanguage;
+        
+        /// The line number of the cursor when the event happens
+        public int CodewhispererLineNumber;
+        
+        /// The type of the user trigger to send request to CodeWhisperer service
+        public CodewhispererTriggerType CodewhispererTriggerType;
+        
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
+        public CodewhispererBlockedInvocation()
         {
             this.Passive = false;
         }
@@ -18103,6 +19013,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The list of unique license names for a particular suggestion
         public string CodewhispererSuggestionReferences;
         
+        /// Optional - The number of import statements included with recommendation.
+        public System.Int32? CodewhispererSuggestionImportCount;
+        
         /// User decision of each of the suggestion returned from CodeWhisperer
         public CodewhispererSuggestionState CodewhispererSuggestionState;
         
@@ -18113,6 +19026,91 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public string CredentialStartUrl;
         
         public CodewhispererUserDecision()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// User decision aggregated at trigger level
+    public sealed class CodewhispererUserTriggerDecision : BaseTelemetryEvent
+    {
+        
+        /// Optional - The unique identifier for a CodeWhisperer session(which can contain multiple requests)
+        public string CodewhispererSessionId;
+        
+        /// The request id of the first request in a paginated session.
+        public string CodewhispererFirstRequestId;
+        
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
+        /// Optional - If user has accepted only part of the recommendation or not.
+        public System.Boolean? CodewhispererIsPartialAcceptance;
+        
+        /// Optional - The number of times the user accept part of the recommendations.
+        public System.Int32? CodewhispererPartialAcceptanceCount;
+        
+        /// Optional - The number of characters user has accepted through partial acceptance.
+        public System.Int32? CodewhispererCharactersAccepted;
+        
+        /// Optional - The number of characters originally recommended to the user in partial acceptance scenario.
+        public System.Int32? CodewhispererCharactersRecommended;
+        
+        /// Completion Type of the inference results returned from CodeWhisperer model layer
+        public CodewhispererCompletionType CodewhispererCompletionType;
+        
+        /// Programming language of the CodeWhisperer recommendation
+        public CodewhispererLanguage CodewhispererLanguage;
+        
+        /// The type of the user trigger to send request to CodeWhisperer service
+        public CodewhispererTriggerType CodewhispererTriggerType;
+        
+        /// Optional - The type of the Automated trigger to send request to CodeWhisperer service
+        public CodewhispererAutomatedTriggerType? CodewhispererAutomatedTriggerType;
+        
+        /// The line number of the cursor when the event happens
+        public int CodewhispererLineNumber;
+        
+        /// cursor location offset in the editor when invoking CodeWhisperer for recommendation
+        public int CodewhispererCursorOffset;
+        
+        /// The total number of code suggestions in a paginated session.
+        public int CodewhispererSuggestionCount;
+        
+        /// The number of import statements included with recommendation.
+        public int CodewhispererSuggestionImportCount;
+        
+        /// Optional - The time that recommendations are shown to the user in a paginated session.
+        public System.Double? CodewhispererTotalShownTime;
+        
+        /// Optional - The character that triggered recommendation for special characters trigger.
+        public string CodewhispererTriggerCharacter;
+        
+        /// The length of additional characters inputted by the user since the invocation. 
+        public int CodewhispererTypeaheadLength;
+        
+        /// Optional - The time from last document change to the current document change. 
+        public System.Double? CodewhispererTimeSinceLastDocumentChange;
+        
+        /// Optional - The time from last user decision to current invocation. 
+        public System.Double? CodewhispererTimeSinceLastUserDecision;
+        
+        /// Optional - The time from user trigger to the first recommendation is received. 
+        public System.Double? CodewhispererTimeToFirstRecommendation;
+        
+        /// Optional - The aggregated user decision from previous trigger. 
+        public CodewhispererPreviousSuggestionState? CodewhispererPreviousSuggestionState;
+        
+        /// User decision of each of the suggestion returned from CodeWhisperer
+        public CodewhispererSuggestionState CodewhispererSuggestionState;
+        
+        /// Optional - The result from Classifier trigger.
+        public System.Double? CodewhispererClassifierResult;
+        
+        /// Optional - The threshold of Classifier trigger.
+        public System.Double? CodewhispererClassifierThreshold;
+        
+        public CodewhispererUserTriggerDecision()
         {
             this.Passive = false;
         }

@@ -60,6 +60,7 @@ namespace Test
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -109,6 +110,7 @@ namespace Test
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -158,6 +160,7 @@ namespace Test
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("attempts", payload.Attempts);
 
@@ -215,6 +218,7 @@ namespace Test
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("attempts", payload.Attempts);
 
@@ -272,6 +276,7 @@ namespace Test
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 if (payload.Attempts.HasValue)
                 {
@@ -338,6 +343,7 @@ namespace Test
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
