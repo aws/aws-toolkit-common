@@ -2647,6 +2647,18 @@
                     "type": "codewhispererSuggestionState"
                 },
                 {
+                    "type": "codewhispererSupplementalContextTimeout",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererSupplementalContextIsUtg",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererSupplementalContextLength",
+                    "required": false
+                },
+                {
                     "type": "codewhispererTriggerType"
                 },
                 {
@@ -2747,6 +2759,18 @@
                 },
                 {
                     "type": "codewhispererClassifierResult",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererSupplementalContextTimeout",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererSupplementalContextIsUtg",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererSupplementalContextLength",
                     "required": false
                 },
                 {
