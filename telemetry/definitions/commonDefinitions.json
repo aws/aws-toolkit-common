@@ -725,6 +725,11 @@
             "description": "The threshold of Classifier trigger."
         },
         {
+            "name": "codewhispererUserGroup",
+            "type": "string",
+            "description": "The user group identifier we assign to the customer and it should be unique identifier across different IDE platforms, i.e. Classifier, CrossFile etc."
+        },
+        {
             "name": "syncedResources",
             "type": "string",
             "description": "Describes which parts of an application (that we know of) were synced to the cloud. \"Code\" resources follow the SAM spec: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-sync.html",
@@ -2425,6 +2430,9 @@
                     "type": "codewhispererTotalTokens"
                 },
                 {
+                    "type": "codewhispererUserGroup"
+                },
+                {
                     "type": "reason",
                     "required": false
                 },
@@ -2571,6 +2579,9 @@
                 {
                     "type": "codewhispererImportRecommendationEnabled",
                     "required": false
+                },
+                {
+                    "type": "codewhispererUserGroup"
                 }
             ]
         },
@@ -2652,6 +2663,9 @@
                 {
                     "type": "credentialStartUrl",
                     "required": false
+                },
+                {
+                    "type": "codewhispererUserGroup"
                 }
             ]
         },
@@ -2752,6 +2766,9 @@
                 {
                     "type": "codewhispererClassifierThreshold",
                     "required": false
+                },
+                {
+                    "type": "codewhispererUserGroup"
                 }
             ]
         },
@@ -2792,6 +2809,9 @@
                 {
                     "type": "credentialStartUrl",
                     "required": false
+                },
+                {
+                    "type": "codewhispererUserGroup"
                 }
             ]
         },
@@ -2821,6 +2841,9 @@
                 {
                     "type": "credentialStartUrl",
                     "required": false
+                },
+                {
+                    "type": "codewhispererUserGroup"
                 }
             ]
         },
@@ -2865,6 +2888,9 @@
                 {
                     "type": "credentialStartUrl",
                     "required": false
+                },
+                {
+                    "type": "codewhispererUserGroup"
                 }
             ]
         },
