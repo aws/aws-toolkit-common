@@ -1,4 +1,9 @@
-import { SchemaProvider, completionItemUtils } from '@lsp-placeholder/aws-lsp-core'
+import {
+    AwsLanguageService,
+    SchemaProvider,
+    completionItemUtils,
+    textDocumentUtils,
+} from '@lsp-placeholder/aws-lsp-core'
 import {
     Connection,
     InitializeParams,
@@ -7,7 +12,7 @@ import {
     TextDocuments,
 } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { YamlLanguageServiceWrapper } from './yamlLanguageServiceWrapper'
+import { YamlLanguageService } from './yamlLanguageService'
 
 export type YamlSchemaServerProps = {
     displayName: string
@@ -26,13 +31,13 @@ export class YamlSchemaServer {
      */
     protected documents = new TextDocuments(TextDocument)
 
-    protected yamlService: YamlLanguageServiceWrapper
+    protected yamlService: AwsLanguageService
     protected connection: Connection
 
     constructor(private readonly props: YamlSchemaServerProps) {
         this.connection = props.connection
 
-        this.yamlService = new YamlLanguageServiceWrapper(props)
+        this.yamlService = new YamlLanguageService(props)
 
         this.connection.onInitialize((params: InitializeParams) => {
             // this.options = params;
@@ -58,7 +63,7 @@ export class YamlSchemaServer {
         this.documents.listen(this.connection)
         this.connection.listen()
 
-        this.connection.console.info('AWS Documents LS started!')
+        this.connection.console.info(`Started Yaml Schema language server, uri: ${props.defaultSchemaUri}`)
     }
 
     getTextDocument(uri: string): TextDocument {
@@ -74,7 +79,7 @@ export class YamlSchemaServer {
         try {
             const textDocument = this.getTextDocument(uri)
 
-            if (YamlLanguageServiceWrapper.isLangaugeIdSupported(textDocument.languageId) === false) {
+            if (this.yamlService.isSupported(textDocument) === false) {
                 return
             }
 
@@ -87,7 +92,7 @@ export class YamlSchemaServer {
 
     registerHandlers() {
         this.documents.onDidOpen(({ document }) => {
-            if (YamlLanguageServiceWrapper.isLangaugeIdSupported(document.languageId) === false) {
+            if (this.yamlService.isSupported(document) === false) {
                 return
             }
 
@@ -95,7 +100,7 @@ export class YamlSchemaServer {
         })
 
         this.documents.onDidChangeContent(({ document }) => {
-            if (YamlLanguageServiceWrapper.isLangaugeIdSupported(document.languageId) === false) {
+            if (this.yamlService.isSupported(document) === false) {
                 return
             }
             this.validateDocument(document.uri)
@@ -107,14 +112,16 @@ export class YamlSchemaServer {
 
                 const textDocument = this.getTextDocument(requestedDocument.uri)
 
-                if (YamlLanguageServiceWrapper.isLangaugeIdSupported(textDocument.languageId) === false) {
+                if (this.yamlService.isSupported(textDocument) === false) {
                     return
                 }
 
                 const results = await this.yamlService.doComplete(textDocument, position)
                 // this.connection.console.info(JSON.stringify(results.items, null, 4))
 
-                completionItemUtils.prependItemDetail(results.items, this.props.displayName)
+                if (results!!) {
+                    completionItemUtils.prependItemDetail(results.items, this.props.displayName)
+                }
 
                 return results
             } catch (error) {
@@ -125,7 +132,7 @@ export class YamlSchemaServer {
         this.connection.onHover(async ({ textDocument: requestedDocument, position }) => {
             const textDocument = this.getTextDocument(requestedDocument.uri)
 
-            if (YamlLanguageServiceWrapper.isLangaugeIdSupported(textDocument.languageId) === false) {
+            if (this.yamlService.isSupported(textDocument) === false) {
                 return
             }
 
@@ -135,11 +142,11 @@ export class YamlSchemaServer {
         this.connection.onDocumentFormatting(({ textDocument: requestedDocument, options }) => {
             const textDocument = this.getTextDocument(requestedDocument.uri)
 
-            if (YamlLanguageServiceWrapper.isLangaugeIdSupported(textDocument.languageId) === false) {
+            if (this.yamlService.isSupported(textDocument) === false) {
                 return
             }
 
-            return this.yamlService.doFormat(textDocument, {})
+            return this.yamlService.format(textDocument, textDocumentUtils.getFullRange(textDocument), options)
         })
 
         // this.connection.onCompletionResolve(item => {

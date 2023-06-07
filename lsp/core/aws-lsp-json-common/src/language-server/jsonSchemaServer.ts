@@ -1,4 +1,4 @@
-import { SchemaProvider, textDocumentUtils } from '@lsp-placeholder/aws-lsp-core'
+import { AwsLanguageService, SchemaProvider, textDocumentUtils } from '@lsp-placeholder/aws-lsp-core'
 import {
     Connection,
     InitializeParams,
@@ -7,7 +7,7 @@ import {
     TextDocuments,
 } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { JsonLanguageServiceWrapper } from './jsonLanguageServiceWrapper'
+import { JsonLanguageService } from './jsonLanguageService'
 
 export type JsonSchemaServerProps = {
     connection: Connection
@@ -25,14 +25,14 @@ export class JsonSchemaServer {
      */
     protected documents = new TextDocuments(TextDocument)
 
-    protected jsonService: JsonLanguageServiceWrapper
+    protected jsonService: AwsLanguageService
 
     protected connection: Connection
 
     constructor(private readonly props: JsonSchemaServerProps) {
         this.connection = props.connection
 
-        this.jsonService = new JsonLanguageServiceWrapper(props)
+        this.jsonService = new JsonLanguageService(props)
 
         this.connection.onInitialize((params: InitializeParams) => {
             // this.options = params;
@@ -55,7 +55,7 @@ export class JsonSchemaServer {
         this.documents.listen(this.connection)
         this.connection.listen()
 
-        this.connection.console.info('AWS Documents LS started!')
+        this.connection.console.info(`Started JSON Schema language server, uri: ${props.defaultSchemaUri}`)
     }
 
     getTextDocument(uri: string): TextDocument {
@@ -71,7 +71,7 @@ export class JsonSchemaServer {
     async validateDocument(uri: string): Promise<void> {
         const textDocument = this.getTextDocument(uri)
 
-        if (JsonLanguageServiceWrapper.isLangaugeIdSupported(textDocument.languageId) === false) {
+        if (this.jsonService.isSupported(textDocument) === false) {
             return
         }
 
@@ -81,7 +81,7 @@ export class JsonSchemaServer {
 
     registerHandlers() {
         this.documents.onDidOpen(({ document }) => {
-            if (JsonLanguageServiceWrapper.isLangaugeIdSupported(document.languageId) === false) {
+            if (this.jsonService.isSupported(document) === false) {
                 return
             }
 
@@ -89,7 +89,7 @@ export class JsonSchemaServer {
         })
 
         this.documents.onDidChangeContent(({ document }) => {
-            if (JsonLanguageServiceWrapper.isLangaugeIdSupported(document.languageId) === false) {
+            if (this.jsonService.isSupported(document) === false) {
                 return
             }
             this.validateDocument(document.uri)
@@ -98,7 +98,7 @@ export class JsonSchemaServer {
         this.connection.onCompletion(async ({ textDocument: requestedDocument, position }) => {
             const textDocument = this.getTextDocument(requestedDocument.uri)
 
-            if (JsonLanguageServiceWrapper.isLangaugeIdSupported(textDocument.languageId) === false) {
+            if (this.jsonService.isSupported(textDocument) === false) {
                 return
             }
 
@@ -110,7 +110,7 @@ export class JsonSchemaServer {
         this.connection.onHover(async ({ textDocument: requestedDocument, position }) => {
             const textDocument = this.getTextDocument(requestedDocument.uri)
 
-            if (JsonLanguageServiceWrapper.isLangaugeIdSupported(textDocument.languageId) === false) {
+            if (this.jsonService.isSupported(textDocument) === false) {
                 return
             }
 
@@ -120,7 +120,7 @@ export class JsonSchemaServer {
         this.connection.onDocumentFormatting(async ({ textDocument: requestedDocument, options }) => {
             const textDocument = this.getTextDocument(requestedDocument.uri)
 
-            if (JsonLanguageServiceWrapper.isLangaugeIdSupported(textDocument.languageId) === false) {
+            if (this.jsonService.isSupported(textDocument) === false) {
                 return
             }
 

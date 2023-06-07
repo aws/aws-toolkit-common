@@ -1,22 +1,19 @@
-import { SchemaProvider } from '@lsp-placeholder/aws-lsp-core'
-import { CompletionList, Diagnostic, Hover, Position, TextEdit } from 'vscode-languageserver'
+import { AwsLanguageService, SchemaProvider } from '@lsp-placeholder/aws-lsp-core'
+import { CompletionList, Diagnostic, Hover, Position, Range, TextEdit } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
-import { CustomFormatterOptions, LanguageService, getLanguageService } from 'yaml-language-server'
+import { LanguageService, getLanguageService } from 'yaml-language-server'
+import { YamlFormattingOptions } from './formattingOptions'
 
-export type YamlLanguageServiceWrapperProps = {
+export type YamlLanguageServiceProps = {
     displayName: string
     defaultSchemaUri: string
     schemaProvider: SchemaProvider
 }
 
-export class YamlLanguageServiceWrapper {
+export class YamlLanguageService implements AwsLanguageService {
     private yamlService: LanguageService
 
-    public static isLangaugeIdSupported(languageId: string): boolean {
-        return languageId === 'yaml'
-    }
-
-    constructor(private readonly props: YamlLanguageServiceWrapperProps) {
+    constructor(private readonly props: YamlLanguageServiceProps) {
         const workspaceContext = {
             resolveRelativePath(relativePath: string, resource: string) {
                 return new URL(relativePath, resource).href
@@ -29,6 +26,10 @@ export class YamlLanguageServiceWrapper {
         })
 
         this.yamlService.configure({ schemas: [{ fileMatch: ['*.yml'], uri: this.props.defaultSchemaUri }] })
+    }
+
+    public isSupported(document: TextDocument): boolean {
+        return document.languageId === 'yaml'
     }
 
     public doValidation(document: TextDocument): Promise<Diagnostic[]> {
@@ -46,7 +47,7 @@ export class YamlLanguageServiceWrapper {
         return this.yamlService.doHover(document, position)
     }
 
-    public doFormat(document: TextDocument, options: CustomFormatterOptions): TextEdit[] {
+    public format(document: TextDocument, range: Range, options: YamlFormattingOptions): TextEdit[] {
         this.updateSchemaMapping(document.uri)
         return this.yamlService.doFormat(document, options)
     }

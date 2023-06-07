@@ -1,21 +1,17 @@
-import { SchemaProvider } from '@lsp-placeholder/aws-lsp-core'
+import { AwsLanguageService, SchemaProvider } from '@lsp-placeholder/aws-lsp-core'
 import { JSONDocument, LanguageService, getLanguageService } from 'vscode-json-languageservice'
 import { CompletionList, Diagnostic, FormattingOptions, Hover, Range } from 'vscode-languageserver'
 import { Position, TextDocument, TextEdit } from 'vscode-languageserver-textdocument'
 
-export type JsonLanguageServiceWrapperProps = {
+export type JsonLanguageServiceProps = {
     defaultSchemaUri?: string
     schemaProvider?: SchemaProvider
 }
 
-export class JsonLanguageServiceWrapper {
+export class JsonLanguageService implements AwsLanguageService {
     private jsonService: LanguageService
 
-    public static isLangaugeIdSupported(languageId: string): boolean {
-        return languageId === 'json' || languageId === 'christou-test-json'
-    }
-
-    constructor(private readonly props: JsonLanguageServiceWrapperProps) {
+    constructor(private readonly props: JsonLanguageServiceProps) {
         this.jsonService = getLanguageService({
             schemaRequestService: props.schemaProvider?.bind(this),
         })
@@ -23,6 +19,11 @@ export class JsonLanguageServiceWrapper {
         const schemas = props.defaultSchemaUri ? [{ fileMatch: ['*.json'], uri: props.defaultSchemaUri }] : undefined
 
         this.jsonService.configure({ allowComments: false, schemas })
+    }
+
+    public isSupported(document: TextDocument): boolean {
+        const languageId = document.languageId
+        return languageId === 'json' || languageId === 'christou-test-json'
     }
 
     public doValidation(textDocument: TextDocument): Thenable<Diagnostic[]> {
