@@ -8,6 +8,10 @@ export type JsonLanguageServiceProps = {
     schemaProvider?: SchemaProvider
 }
 
+/**
+ * This is a thin wrapper around the VS Code Json Language Service
+ * https://github.com/microsoft/vscode-json-languageservice/
+ */
 export class JsonLanguageService implements AwsLanguageService {
     private jsonService: LanguageService
 

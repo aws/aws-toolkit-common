@@ -15,6 +15,9 @@ export type JsonSchemaServerProps = {
     schemaProvider?: SchemaProvider
 }
 
+/**
+ * Listens to an LSP connection and wraps JsonLanguageService to handle the calls
+ */
 export class JsonSchemaServer {
     /**
      * Options, provided by language server to `onInitialize` callback.

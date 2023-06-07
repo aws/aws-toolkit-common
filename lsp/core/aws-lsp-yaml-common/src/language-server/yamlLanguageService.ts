@@ -10,6 +10,10 @@ export type YamlLanguageServiceProps = {
     schemaProvider: SchemaProvider
 }
 
+/**
+ * This is a thin wrapper around the Redhat Yaml Language Service
+ * https://github.com/redhat-developer/yaml-language-server/
+ */
 export class YamlLanguageService implements AwsLanguageService {
     private yamlService: LanguageService
 

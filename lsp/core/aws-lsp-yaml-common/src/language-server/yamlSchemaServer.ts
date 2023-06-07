@@ -21,6 +21,9 @@ export type YamlSchemaServerProps = {
     schemaProvider: SchemaProvider
 }
 
+/**
+ * Listens to an LSP connection and wraps YamlLanguageService to handle the calls
+ */
 export class YamlSchemaServer {
     /**
      * Options, provided by language server to `onInitialize` callback.

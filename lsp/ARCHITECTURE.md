@@ -4,9 +4,17 @@
 
 These designs are at the proof of concept level:
 
-`AwsLanguageService` is the interface for the inner-most language processing "component". It closely follows the interfaces exposed by the VS Code language servers (specifically the JSON language server). These are intended to be reusable. Language servers are composed from `AwsLanguageService` implementations.
+-   service (interface `AwsLanguageService`)
 
-To support the goal of providing language support in the browser and in client applications, `AwsLanguageService` implementations should inject handling (where necessary) for features not supported by the browser (like file I/O, etc).
+    -   the interface for the inner-most language processing "component"
+    -   closely follows the interfaces exposed by the VS Code language servers (specifically the JSON language server)
+    -   intended to be reusable -- Language servers are composed of `AwsLanguageService` implementations.
+    -   To support the goal of providing language support in the browser and in client applications, `AwsLanguageService` implementations should inject handling (where necessary) for features not supported by the browser (like file I/O, etc).
+
+-   server (language server)
+    -   the functional component that communicates with Language clients
+    -   wraps `AwsLanguageService` implementations
+    -   operates on an LSP connection
 
 # Architecture
 
