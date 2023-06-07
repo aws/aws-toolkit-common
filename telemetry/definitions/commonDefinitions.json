@@ -851,6 +851,95 @@
             "description": "View the App Runner service logs (the logs produced by App Runner)"
         },
         {
+            "name": "auth_gettingStartedPage",
+            "description": "Called when user lands on getting started page",
+            "metadata": [
+                { "type": "source" }, // define source point 
+                {"type" : "accessibleTabs"}
+            ] 
+        },
+        {
+            "name": "auth_connectToAWS", // is connect to AWS same as Add new connection if user had atleast one connections ?
+            "description": "Called when user clicks on getting ConnectToAWS from any source. e.g. explorer, developer tools, etc",
+            "metadata": [
+                { "type": "source" },
+                { "type": "numberOfConnections"} // default 0, do we fetch everytime to add value to this field? 
+            ]
+        },
+        {
+            "name": "auth_awsResources",
+            "description": "Called upon user clicking View, Modify, and Deploy AWS Resources Tab",
+            "metadata": [
+                { "type": "elementId"} , 
+                { "type": "profileNameStatus"}, // todo define profileNameStatus in types
+                { "type": "accessKeyStatus"},   // todo define accessKeyStatus in types
+                { "type": "secretStatus"},      // todo define secretStatus in types,
+                { "type": "result"}
+            ]
+        },
+        {
+            "name": "auth_signUpForFree",
+            "description": "Called upon user clicking sign up for free in IAM Credentials",
+            "metadata": [
+                { "type": "status"},   // can we know if the user came back signing up successfully?
+                { "type": "numberOfConnections", "required": false}
+            ]
+        },
+        {
+            "name": "auth_codeWhisperer",
+            "description": "Called when user clicks AI-powered Code suggestions from Codewhisperer tab under getting started",
+            "metadata": [
+                { "type": "builderIDStatus"},
+                { "type": "iamIdentityCenterStartURL"}, // could be set, invalid, empty
+                { "type": "iamIdentityCenterRegion"}, // could be set, empty
+                { "type": "result"}
+            ]
+        },
+        {
+            "name": "auth_codeCatalyst",
+            "description": "Called when user clicks Launch CodeCatalyst Cloud-based Environments tab under getting started",
+            "metadata": [
+                { "type": "builderIDStatus"},
+                { "type": "result"}
+            ]
+        },
+        {
+            "name": "auth_addIAMUserCredentials",
+            "description": "Called when user clicks add IAM User Credentials",
+            "metadata": [
+                { "type": "source"}, // do we wanna do status check for each input field here? 
+                { "type": "result"}
+            ]
+        },
+        {
+            "name": "auth_addIAMIdentityProfile",
+            "description": "Called when user clicks add IAM Identity Center profile ",
+            "metadata": [
+                { "type": "source"}, // do we wanna do status check for each input field here? 
+                { "type": "result"}
+            ]
+        },
+        {
+            "name": "auth_learnMoreCodeWhisperer",
+            "description": "Called when user clicks learn More about Codewhisperer link under getting started"
+        },
+        {
+            "name": "auth_learnMoreCodeCatalyst",
+            "description": "Called when user clicks learn More about CodeCatalyst link under getting started"
+        },
+        {
+            "name": "auth_learnMoreAWSResources",
+            "description": "Called when user clicks learn More about CodeCatalyst link under getting started"
+        },
+        {
+            "name": "auth_switchBetweenTheRoles",
+            "description": "Called when user clicks selects one yes or no to switch role upon adding new connection",
+            "metadata": [
+                { "type": "numberOfConnections"}, // good to have connection statuses here. can we get list of user connections? 
+                { "type": "userChoice"}
+            ]
+        },
+        {
             "name": "aws_copyArn",
             "description": "Copy the ARN of an AWS resource",
             "metadata": [{ "type": "serviceType" }]
