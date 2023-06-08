@@ -13,12 +13,6 @@
     "files": [],
     "references": [
         {
-            "path": "./app/aws-lsp-buildspec-binary"
-        },
-        {
-            "path": "./app/aws-lsp-cloudformation-binary"
-        },
-        {
             "path": "./client/vscode"
         },
         {
@@ -35,6 +29,12 @@
         },
         {
             "path": "./server/aws-lsp-cloudformation"
+        },
+        {
+            "path": "./app/aws-lsp-buildspec-binary"
+        },
+        {
+            "path": "./app/aws-lsp-cloudformation-binary"
         }
     ]
 }
