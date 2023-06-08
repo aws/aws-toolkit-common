@@ -13,10 +13,10 @@
     "files": [],
     "references": [
         {
-            "path": "./client/vscode"
+            "path": "./app/aws-lsp-buildspec-binary"
         },
         {
-            "path": "./app/aws-lsp-buildspec-binary"
+            "path": "./client/vscode"
         },
         {
             "path": "./core/aws-lsp-core"
