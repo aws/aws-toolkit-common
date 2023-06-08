@@ -10,7 +10,7 @@
 		<Company>Amazon Web Services</Company>
 		<Product>AWS Toolkit Telemetry</Product>
 		<Version Condition="'$(Version)' == ''">0.0.1</Version>
-		<Copyright>Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.</Copyright>
+		<Copyright>Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.</Copyright>
 		<PackageProjectUrl></PackageProjectUrl>
 		<RepositoryUrl>https://github.com/aws/aws-toolkit-common</RepositoryUrl>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
