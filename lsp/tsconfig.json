@@ -16,6 +16,9 @@
             "path": "./app/aws-lsp-buildspec-binary"
         },
         {
+            "path": "./app/aws-lsp-cloudformation-binary"
+        },
+        {
             "path": "./client/vscode"
         },
         {
