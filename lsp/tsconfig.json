@@ -13,6 +13,9 @@
     "files": [],
     "references": [
         {
+            "path": "./client/vscode"
+        },
+        {
             "path": "./core/aws-lsp-core"
         },
         {
