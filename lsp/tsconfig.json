@@ -29,6 +29,9 @@
         },
         {
             "path": "./server/aws-lsp-buildspec"
+        },
+        {
+            "path": "./server/aws-lsp-cloudformation"
         }
     ]
 }
