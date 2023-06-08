@@ -773,7 +773,58 @@
             "name": "codecatalyst_devEnvironmentWorkflowStep",
             "type": "string",
             "description": "Workflow step name"
+        },
+        {
+            "name": "profileNameStatus",
+            "type": "string",
+            "description": "Shows the status of Profile Name input validations under IAM Credentials",
+            "allowedValues":[
+                "empty", "valid", "invalid"
+            ]
+        },
+        {
+            "name": "accessKeyStatus",
+            "type": "string",
+            "description": "Shows the status of AccessKey input validations under IAM Credentials",
+            "allowedValues":[
+                "empty", "valid", "invalid"
+            ]
+        },
+        {
+            "name": "secretStatus",
+            "type": "string",
+            "description": "Shows the status of Secret Key input validations under IAM Credentials",
+            "allowedValues":[
+                "empty", "valid", "invalid"
+            ]
+        },
+        {
+            "name": "numberOfConnections",
+            "type": "int",
+            "description": "Number of Existing connections the user has."
+            
+        },
+        {
+            "name": "builderIDStatus",
+            "type": "string",
+            "description": "If the user if successfully logged in",
+            "allowedValues":[ "connected", "non-connected"
+            ]
+            
+        },
+        {
+            "name": "iamIdentityCenterStartURLStatus",
+            "type": "string",
+            "description": "Shows the status of Start URL input validations under IAM Identity Center",
+            "allowedValues":[ "empty", "valid", "invalid" ]
+            
+        },
+        {
+            "name": "iamIdentityCenterRegion",
+            "type": "string",
+            "description": "Shows region selected by user under IAM Identity Center" 
         }
+
     ],
     "metrics": [
         {
@@ -854,44 +905,47 @@
             "name": "auth_gettingStartedPage",
             "description": "Called when user lands on getting started page",
             "metadata": [
-                { "type": "source" }, // define source point 
-                {"type" : "accessibleTabs"}
+                { "type" : "source" }, // should it be enum? if yes let's make list of sources for each field we monitor
+                { "type" : "numberOfConnections"}
             ] 
         },
         {
-            "name": "auth_connectToAWS", // is connect to AWS same as Add new connection if user had atleast one connections ?
+            "name": "auth_connectToAWS",
             "description": "Called when user clicks on getting ConnectToAWS from any source. e.g. explorer, developer tools, etc",
             "metadata": [
                 { "type": "source" },
-                { "type": "numberOfConnections"} // default 0, do we fetch everytime to add value to this field? 
+                { "type": "numberOfConnections"}
             ]
         },
         {
             "name": "auth_awsResources",
-            "description": "Called upon user clicking View, Modify, and Deploy AWS Resources Tab",
+            "description": "Called upon user interacting with View, Modify, and Deploy AWS Resources Tab",
             "metadata": [
-                { "type": "elementId"} , 
-                { "type": "profileNameStatus"}, // todo define profileNameStatus in types
-                { "type": "accessKeyStatus"},   // todo define accessKeyStatus in types
-                { "type": "secretStatus"},      // todo define secretStatus in types,
+                { "type": "profileNameStatus"},
+                { "type": "accessKeyStatus"},
+                { "type": "secretStatus"},  
                 { "type": "result"}
             ]
         },
         {
-            "name": "auth_signUpForFree",
+            "name": "auth_helpIAMIdentityCenter",
+            "description": "Called upon user clicking sign up for free in IAM Credentials"
+        },
+        {
+            "name": "auth_signUpForFree", // make make a post-signupForFree
             "description": "Called upon user clicking sign up for free in IAM Credentials",
             "metadata": [
-                { "type": "status"},   // can we know if the user came back signing up successfully?
-                { "type": "numberOfConnections", "required": false}
+                { "type": "result"}, // can we know if the user came back signing up successfully?
+                { "type": "source"}
             ]
         },
         {
             "name": "auth_codeWhisperer",
-            "description": "Called when user clicks AI-powered Code suggestions from Codewhisperer tab under getting started",
+            "description": "Called when user clicks AI-powered Code suggestions from Codewhisperer tab under getting started. Since there are two ways of loggining we want to know status of each available option",
             "metadata": [
                 { "type": "builderIDStatus"},
-                { "type": "iamIdentityCenterStartURL"}, // could be set, invalid, empty
-                { "type": "iamIdentityCenterRegion"}, // could be set, empty
+                { "type": "iamIdentityCenterStartURL"}, 
+                { "type": "iamIdentityCenterRegion", "required": false }, // have a default region
                 { "type": "result"}
             ]
         },
@@ -903,22 +957,22 @@
                 { "type": "result"}
             ]
         },
-        {
-            "name": "auth_addIAMUserCredentials",
-            "description": "Called when user clicks add IAM User Credentials",
-            "metadata": [
-                { "type": "source"}, // do we wanna do status check for each input field here? 
-                { "type": "result"}
-            ]
-        },
-        {
-            "name": "auth_addIAMIdentityProfile",
-            "description": "Called when user clicks add IAM Identity Center profile ",
-            "metadata": [
-                { "type": "source"}, // do we wanna do status check for each input field here? 
-                { "type": "result"}
-            ]
-        },
+        // {
+        //     "name": "auth_addIAMUserCredentials",  // redundant
+        //     "description": "Called when user clicks add IAM User Credentials",
+        //     "metadata": [
+        //         { "type": "source"},  // do we wanna do status check for each input field here? 
+        //         { "type": "result"}
+        //     ]
+        // },
+        // {
+        //     "name": "auth_addIAMIdentityProfile", //redundant 
+        //     "description": "Called when user clicks add IAM Identity Center profile ",
+        //     "metadata": [
+        //         { "type": "source"},  // do we wanna do status check for each input field here? 
+        //         { "type": "result"}
+        //     ]
+        // },
         {
             "name": "auth_learnMoreCodeWhisperer",
             "description": "Called when user clicks learn More about Codewhisperer link under getting started"
@@ -935,7 +989,7 @@
             "name": "auth_switchBetweenTheRoles",
             "description": "Called when user clicks selects one yes or no to switch role upon adding new connection",
             "metadata": [
-                { "type": "numberOfConnections"}, // good to have connection statuses here. can we get list of user connections? 
+                { "type": "numberOfConnections"},
                 { "type": "userChoice"}
             ]
         },
