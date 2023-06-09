@@ -23,7 +23,6 @@ describe('Test UriCacheRepository', async () => {
             '//cache': {
                 cachedUris: {
                     metadata: '{}',
-                    // todo : some cached uri here
                 },
             },
         })

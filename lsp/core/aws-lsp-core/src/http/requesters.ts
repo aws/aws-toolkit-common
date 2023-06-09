@@ -1,7 +1,7 @@
 import { Headers, xhr, XHROptions, XHRResponse } from 'request-light'
 
 // Abstract away interfaces of existing implementations
-export type HttpRequestOptions = Pick<XHROptions, 'headers'>
+export type HttpRequestOptions = Pick<XHROptions, 'headers' | 'type'>
 export type HttpRequestHeaders = Headers
 export type HttpResponse = XHRResponse
 
