@@ -5,14 +5,29 @@ import {
     createCloudFormationService,
     jsonSchemaUrl,
 } from '@lsp-placeholder/aws-lsp-cloudformation'
-import { HttpHandler, SchemaProvider, SchemaProviderBuilder, httpsUtils } from '@lsp-placeholder/aws-lsp-core'
+import {
+    CachedContentHandler,
+    FileHandler,
+    HttpHandler,
+    SchemaProvider,
+    SchemaProviderBuilder,
+    UriCacheRepository,
+    httpsUtils,
+} from '@lsp-placeholder/aws-lsp-core'
 import { ProposedFeatures, createConnection } from 'vscode-languageserver/node'
 
 function createSchemaProvider(): SchemaProvider {
     const builder = new SchemaProviderBuilder()
 
-    // TODO : Add more handlers here as they're implemented
+    const cacheRepository = new UriCacheRepository()
 
+    builder.addHandler(new FileHandler())
+
+    builder.addHandler(
+        new CachedContentHandler({
+            cacheRepository: cacheRepository,
+        })
+    )
     builder.addHandler(new HttpHandler())
 
     return builder.build()
