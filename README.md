@@ -7,7 +7,7 @@ This repo contains shared components for the AWS Toolkits for
 * [Visual Studio](https://github.com/aws/aws-toolkit-visual-studio)
 
 Contributers looking to contribute to the above projects should consult the contributing guide (CONTRIBUTING.md)
-on the repos they are interested in: this repo contains internal components that most contributers would find boring.
+on the repos they are interested in. This repo contains internal components that most contributers would find boring.
 
 ## Components
 
