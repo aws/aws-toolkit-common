@@ -24,5 +24,5 @@ export class DefaultHttpRequester implements HttpRequester {
 }
 
 export function getETag(headers: HttpRequestHeaders): string {
-    return headers.eTag as string
+    return (headers.eTag as string) ?? (headers.ETag as string) ?? (headers.etag as string)
 }
