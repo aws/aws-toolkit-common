@@ -1,7 +1,10 @@
 import { URI } from 'vscode-uri'
 import { DefaultHttpRequester, HttpRequester, getETag } from '../../http/requesters'
-import { ContentRequestMiddleware, ContentRequestMiddlewareDelegate } from '../contentRequestMiddleware'
-import { ContentRequestResponse } from '../contentRequestResponse'
+import {
+    ContentRequestMiddleware,
+    ContentRequestMiddlewareDelegate,
+    ContentRequestResponse,
+} from '../contentRequestMiddleware'
 
 export class HttpHandler implements ContentRequestMiddleware {
     constructor(readonly httpContentDownloader: HttpRequester = new DefaultHttpRequester()) {}
