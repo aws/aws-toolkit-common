@@ -9,14 +9,14 @@ import {
     CachedContentHandler,
     FileHandler,
     HttpHandler,
-    SchemaProvider,
     SchemaProviderBuilder,
     UriCacheRepository,
+    UriResolver,
     httpsUtils,
 } from '@lsp-placeholder/aws-lsp-core'
 import { ProposedFeatures, createConnection } from 'vscode-languageserver/node'
 
-function createSchemaProvider(): SchemaProvider {
+function createJsonSchemaResolver(): UriResolver {
     const builder = new SchemaProviderBuilder()
 
     const cacheRepository = new UriCacheRepository()
@@ -38,7 +38,7 @@ const connection = createConnection(ProposedFeatures.all)
 const serviceProps: CloudFormationServiceProps = {
     displayName: CloudFormationServer.serverId,
     defaultSchemaUri: jsonSchemaUrl,
-    schemaProvider: createSchemaProvider(),
+    uriResolver: createJsonSchemaResolver(),
 }
 
 const cloudformationService = createCloudFormationService(serviceProps)

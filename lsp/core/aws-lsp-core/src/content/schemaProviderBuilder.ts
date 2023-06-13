@@ -1,6 +1,6 @@
 import { URI } from 'vscode-uri'
 import { ContentRequestMiddleware, ContentRequestMiddlewareDelegate } from './contentRequestMiddleware'
-import { SchemaProvider } from './schemaProvider'
+import { UriResolver } from './uriResolver'
 
 /**
  * Creates a middleware pipeline for resolving requests for a schema.
@@ -16,7 +16,7 @@ export class SchemaProviderBuilder {
         return this
     }
 
-    public build(): SchemaProvider {
+    public build(): UriResolver {
         let fnNextHandler: ContentRequestMiddlewareDelegate = async (uri: URI) => {
             throw new Error(`Unhandled uri: ${uri.toString()}`)
         }
