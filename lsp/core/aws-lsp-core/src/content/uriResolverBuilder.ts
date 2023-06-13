@@ -3,15 +3,15 @@ import { ContentRequestMiddleware, ContentRequestMiddlewareDelegate } from './co
 import { UriResolver } from './uriResolver'
 
 /**
- * Creates a middleware pipeline for resolving requests for a schema.
+ * Creates a middleware pipeline for resolving requests for content from a uri.
  * Middleware handlers will be called in the order they are added, until a
  * handler returns a response. At this point, the handlers in the call stack
  * have a chance to handle/process the response.
  */
-export class SchemaProviderBuilder {
+export class UriResolverBuilder {
     private readonly handlers: ContentRequestMiddleware[] = []
 
-    public addHandler(handler: ContentRequestMiddleware): SchemaProviderBuilder {
+    public addHandler(handler: ContentRequestMiddleware): UriResolverBuilder {
         this.handlers.push(handler)
         return this
     }

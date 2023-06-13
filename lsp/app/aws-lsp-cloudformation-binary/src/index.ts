@@ -9,15 +9,15 @@ import {
     CachedContentHandler,
     FileHandler,
     HttpHandler,
-    SchemaProviderBuilder,
     UriCacheRepository,
     UriResolver,
+    UriResolverBuilder,
     httpsUtils,
 } from '@lsp-placeholder/aws-lsp-core'
 import { ProposedFeatures, createConnection } from 'vscode-languageserver/node'
 
 function createJsonSchemaResolver(): UriResolver {
-    const builder = new SchemaProviderBuilder()
+    const builder = new UriResolverBuilder()
 
     const cacheRepository = new UriCacheRepository()
 
