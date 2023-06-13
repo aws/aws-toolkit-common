@@ -151,6 +151,9 @@ export class UriCacheRepository {
     }
 
     private hashUri(uri: URI): string {
-        return createHash('sha256').update(uri.toString()).digest('hex')
+        // Used for mapping a uri to a local file cache location
+        // This use doesn't require a cryptographically strong hash.
+        // Sha1 is being used for speed gains over stronger hash algos, since this can be called in rapid succession.
+        return createHash('sha1').update(uri.toString()).digest('hex')
     }
 }

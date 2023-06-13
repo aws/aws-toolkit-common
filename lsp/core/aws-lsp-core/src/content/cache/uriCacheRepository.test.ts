@@ -93,6 +93,6 @@ describe('Test UriCacheRepository', async () => {
     }
 
     function getHash(uri: URI): string {
-        return createHash('sha256').update(uri.toString()).digest('hex')
+        return createHash('sha1').update(uri.toString()).digest('hex')
     }
 })
