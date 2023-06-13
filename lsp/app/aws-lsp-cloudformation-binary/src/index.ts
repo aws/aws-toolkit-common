@@ -21,14 +21,14 @@ function createSchemaProvider(): SchemaProvider {
 
     const cacheRepository = new UriCacheRepository()
 
-    builder.addHandler(new FileHandler())
-
-    builder.addHandler(
-        new CachedContentHandler({
-            cacheRepository: cacheRepository,
-        })
-    )
-    builder.addHandler(new HttpHandler())
+    builder
+        .addHandler(new FileHandler())
+        .addHandler(
+            new CachedContentHandler({
+                cacheRepository: cacheRepository,
+            })
+        )
+        .addHandler(new HttpHandler())
 
     return builder.build()
 }
