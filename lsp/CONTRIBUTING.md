@@ -11,7 +11,7 @@ How to contribute.
 Run:
 
 ```
-git clone git@github.com:aws/aws-toolkit-common.git && \
+git clone git@github.com:aws/aws-toolkit-common.git
 
 cd aws-toolkit-common
 
