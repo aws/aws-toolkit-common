@@ -823,8 +823,12 @@
             "name": "iamIdentityCenterRegion",
             "type": "string",
             "description": "Shows region selected by user under IAM Identity Center" 
+        },
+        {
+            "name": "errorMsg",
+            "type": "string",
+            "description": "Error message" 
         }
-
     ],
     "metrics": [
         {
@@ -905,7 +909,7 @@
             "name": "auth_gettingStartedPage",
             "description": "Called when user lands on getting started page",
             "metadata": [
-                { "type" : "source" }, // should it be enum? if yes let's make list of sources for each field we monitor
+                { "type" : "source" },
                 { "type" : "numberOfConnections"}
             ] 
         },
@@ -923,20 +927,11 @@
             "metadata": [
                 { "type": "profileNameStatus"},
                 { "type": "accessKeyStatus"},
-                { "type": "secretStatus"},  
+                { "type": "secretStatus"},
+                { "type": "iamIdentityCenterStartURL"}, 
+                { "type": "iamIdentityCenterRegion", "required": false },
+                { "type": "errorMsg", "required": false},
                 { "type": "result"}
-            ]
-        },
-        {
-            "name": "auth_helpIAMIdentityCenter",
-            "description": "Called upon user clicking sign up for free in IAM Credentials"
-        },
-        {
-            "name": "auth_signUpForFree", // make make a post-signupForFree
-            "description": "Called upon user clicking sign up for free in IAM Credentials",
-            "metadata": [
-                { "type": "result"}, // can we know if the user came back signing up successfully?
-                { "type": "source"}
             ]
         },
         {
@@ -945,7 +940,8 @@
             "metadata": [
                 { "type": "builderIDStatus"},
                 { "type": "iamIdentityCenterStartURL"}, 
-                { "type": "iamIdentityCenterRegion", "required": false }, // have a default region
+                { "type": "iamIdentityCenterRegion", "required": false },
+                { "type": "errorMsg", "required": false},
                 { "type": "result"}
             ]
         },
@@ -957,33 +953,29 @@
                 { "type": "result"}
             ]
         },
-        // {
-        //     "name": "auth_addIAMUserCredentials",  // redundant
-        //     "description": "Called when user clicks add IAM User Credentials",
-        //     "metadata": [
-        //         { "type": "source"},  // do we wanna do status check for each input field here? 
-        //         { "type": "result"}
-        //     ]
-        // },
-        // {
-        //     "name": "auth_addIAMIdentityProfile", //redundant 
-        //     "description": "Called when user clicks add IAM Identity Center profile ",
-        //     "metadata": [
-        //         { "type": "source"},  // do we wanna do status check for each input field here? 
-        //         { "type": "result"}
-        //     ]
-        // },
         {
-            "name": "auth_learnMoreCodeWhisperer",
-            "description": "Called when user clicks learn More about Codewhisperer link under getting started"
+            "name": "auth_signUpForFree", 
+            "description": "Called upon user clicking sign up for free in IAM Credentials",
+            "metadata": [
+                { "type": "result"}, // can we know if the user came back signing up successfully?
+                { "type": "source"}
+            ]
         },
         {
-            "name": "auth_learnMoreCodeCatalyst",
-            "description": "Called when user clicks learn More about CodeCatalyst link under getting started"
+            "name": "auth_addIAMUserCredentials",  // redundant
+            "description": "Called when user clicks add IAM User Credentials",
+            "metadata": [
+                { "type": "source"},  // do we wanna do status check for each input field here? 
+                { "type": "result"}
+            ]
         },
         {
-            "name": "auth_learnMoreAWSResources",
-            "description": "Called when user clicks learn More about CodeCatalyst link under getting started"
+            "name": "auth_addIAMIdentityProfile", //redundant 
+            "description": "Called when user clicks add IAM Identity Center profile ",
+            "metadata": [
+                { "type": "source"},  // do we wanna do status check for each input field here? 
+                { "type": "result"}
+            ]
         },
         {
             "name": "auth_switchBetweenTheRoles",
