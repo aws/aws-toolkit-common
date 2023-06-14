@@ -49,4 +49,5 @@ jobs:
               uses: actions/upload-artifact@v3
               with:
                   name: langauge-servers
-                  path: lsp/**/bin/*
+                  # Make sure you don't include lsp/node_modules
+                  path: lsp/app/**/bin/*
