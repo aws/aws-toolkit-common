@@ -43,7 +43,7 @@ jobs:
             - name: Create binaries
               run: |
                   cd lsp
-                  npm run package-x64
+                  npm run package
             # TODO : Can we easily create ARM binaries from GitHub?
             - name: Attach binaries
               uses: actions/upload-artifact@v3
