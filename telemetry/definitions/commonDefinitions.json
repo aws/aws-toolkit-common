@@ -907,7 +907,7 @@
         },
         {
             "name": "auth_gettingStartedPage",
-            "description": "Called when user lands on getting started page",
+            "description": "Landed on the getting started page",
             "metadata": [
                 { "type" : "source" },
                 { "type" : "numberOfConnections"}
