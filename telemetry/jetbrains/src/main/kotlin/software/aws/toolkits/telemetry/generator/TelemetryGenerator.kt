@@ -1,4 +1,4 @@
-// Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 package software.aws.toolkits.telemetry.generator
@@ -52,7 +52,7 @@ fun generateTelemetryFromFiles(
 }
 
 private fun FileSpec.Builder.generateHeader(): FileSpec.Builder {
-    addFileComment("Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.\n")
+    addFileComment("Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.\n")
     addFileComment("SPDX-License-Identifier: Apache-2.0\n")
     addFileComment("THIS FILE IS GENERATED! DO NOT EDIT BY HAND!")
     addAnnotation(AnnotationSpec.builder(Suppress::class).addMember("\"unused\", \"MemberVisibilityCanBePrivate\"").build())

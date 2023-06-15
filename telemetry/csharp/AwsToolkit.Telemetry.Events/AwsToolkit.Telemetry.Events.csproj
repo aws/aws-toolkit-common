@@ -9,7 +9,7 @@
 		<Company>Amazon Web Services</Company>
 		<Product>AWS Toolkit Telemetry Events</Product>
 		<Description>Telemetry events datatypes and functionality for AWS Toolkits</Description>
-		<Copyright>Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.</Copyright>
+		<Copyright>Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.</Copyright>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<RepositoryUrl>https://github.com/aws/aws-toolkit-common</RepositoryUrl>
