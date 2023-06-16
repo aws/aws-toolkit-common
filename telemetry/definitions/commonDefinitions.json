@@ -778,7 +778,6 @@
             "name": "numberOfConnections",
             "type": "int",
             "description": "Number of Existing connections the user has."
-            
         },
         {
             "name": "builderIDStatus",
@@ -795,7 +794,7 @@
             
         },
         {
-            "name": "accessibleTabs",
+            "name": "unlockedTabs",
             "type": "string",
             "description": "comma delimtied List of tabs that user already has valid connections to."
             
@@ -810,7 +809,13 @@
             "name": "iamIdentityCenterRegion",
             "type": "string",
             "description": "Shows region selected by user under IAM Identity Center" 
+        },
+        {
+            "name": "userChoice",
+            "type": "string",
+            "description": "role switch choice user makes in quickpick when they add new profile" 
         }
+        
     ],
     "metrics": [
         {
@@ -893,7 +898,7 @@
             "metadata": [
                 { "type": "source"},
                 { "type": "tab", "required": false},
-                { "type": "accessibleTabs", "required": false},
+                { "type": "unlockedTabs", "required": false},
                 { "type": "numberOfConnections", "required": false},
                 { "type": "credentialSourceId", "required": false},
                 { "type": "invalidInputFields", "required": false},
