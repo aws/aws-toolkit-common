@@ -775,30 +775,6 @@
             "description": "Workflow step name"
         },
         {
-            "name": "profileNameStatus",
-            "type": "string",
-            "description": "Shows the status of Profile Name input validations under IAM Credentials",
-            "allowedValues":[
-                "empty", "valid", "invalid"
-            ]
-        },
-        {
-            "name": "accessKeyStatus",
-            "type": "string",
-            "description": "Shows the status of AccessKey input validations under IAM Credentials",
-            "allowedValues":[
-                "empty", "valid", "invalid"
-            ]
-        },
-        {
-            "name": "secretStatus",
-            "type": "string",
-            "description": "Shows the status of Secret Key input validations under IAM Credentials",
-            "allowedValues":[
-                "empty", "valid", "invalid"
-            ]
-        },
-        {
             "name": "numberOfConnections",
             "type": "int",
             "description": "Number of Existing connections the user has."
@@ -808,26 +784,19 @@
             "name": "builderIDStatus",
             "type": "string",
             "description": "If the user if successfully logged in",
-            "allowedValues":[ "connected", "non-connected"
-            ]
+            "allowedValues":[ "not attempted" , "attempted" , "canceled", "failed"]
             
         },
         {
-            "name": "iamIdentityCenterStartURLStatus",
+            "name": "accessibleTabs",
             "type": "string",
-            "description": "Shows the status of Start URL input validations under IAM Identity Center",
-            "allowedValues":[ "empty", "valid", "invalid" ]
+            "description": "comma delimtied List of tabs that user already has valid connections to."
             
         },
         {
             "name": "iamIdentityCenterRegion",
             "type": "string",
             "description": "Shows region selected by user under IAM Identity Center" 
-        },
-        {
-            "name": "errorMsg",
-            "type": "string",
-            "description": "Error message" 
         }
     ],
     "metrics": [
@@ -906,74 +875,17 @@
             "description": "View the App Runner service logs (the logs produced by App Runner)"
         },
         {
-            "name": "auth_gettingStartedPage",
-            "description": "Called when user lands on getting started page",
+            "name": "auth_addConnection",
+            "description": "Called when user clicks on add New Connections from any of entry points. fields captures snapshot of user state upon reaching a result",
             "metadata": [
-                { "type" : "source" },
-                { "type" : "numberOfConnections"}
-            ] 
-        },
-        {
-            "name": "auth_connectToAWS",
-            "description": "Called when user clicks on getting ConnectToAWS from any source. e.g. explorer, developer tools, etc",
-            "metadata": [
-                { "type": "source" },
-                { "type": "numberOfConnections"}
-            ]
-        },
-        {
-            "name": "auth_awsResources",
-            "description": "Called upon user interacting with View, Modify, and Deploy AWS Resources Tab",
-            "metadata": [
-                { "type": "profileNameStatus"},
-                { "type": "accessKeyStatus"},
-                { "type": "secretStatus"},
-                { "type": "iamIdentityCenterStartURL"}, 
+                { "type": "source"},
+                { "type": "tab", "required": false},
+                { "type": "accessibleTabs", "required": false},
+                { "type": "numberOfConnections", "required": false},
+                { "type": "credentialSourceId", "required": false},
+                { "type": "invalidInputFields", "required": false},
                 { "type": "iamIdentityCenterRegion", "required": false },
-                { "type": "errorMsg", "required": false},
-                { "type": "result"}
-            ]
-        },
-        {
-            "name": "auth_codeWhisperer",
-            "description": "Called when user clicks AI-powered Code suggestions from Codewhisperer tab under getting started. Since there are two ways of loggining we want to know status of each available option",
-            "metadata": [
-                { "type": "builderIDStatus"},
-                { "type": "iamIdentityCenterStartURL"}, 
-                { "type": "iamIdentityCenterRegion", "required": false },
-                { "type": "errorMsg", "required": false},
-                { "type": "result"}
-            ]
-        },
-        {
-            "name": "auth_codeCatalyst",
-            "description": "Called when user clicks Launch CodeCatalyst Cloud-based Environments tab under getting started",
-            "metadata": [
-                { "type": "builderIDStatus"},
-                { "type": "result"}
-            ]
-        },
-        {
-            "name": "auth_signUpForFree", 
-            "description": "Called upon user clicking sign up for free in IAM Credentials",
-            "metadata": [
-                { "type": "result"}, // can we know if the user came back signing up successfully?
-                { "type": "source"}
-            ]
-        },
-        {
-            "name": "auth_addIAMUserCredentials",  // redundant
-            "description": "Called when user clicks add IAM User Credentials",
-            "metadata": [
-                { "type": "source"},  // do we wanna do status check for each input field here? 
-                { "type": "result"}
-            ]
-        },
-        {
-            "name": "auth_addIAMIdentityProfile", //redundant 
-            "description": "Called when user clicks add IAM Identity Center profile ",
-            "metadata": [
-                { "type": "source"},  // do we wanna do status check for each input field here? 
+                { "type": "reason", "required": false},
                 { "type": "result"}
             ]
         },
