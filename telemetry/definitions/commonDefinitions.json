@@ -788,9 +788,22 @@
             
         },
         {
+            "name": "tab",
+            "type": "string",
+            "description": "Feature tab user is interacting in.",
+            "allowedValues":["awsResource", "codeWhisperer", "codeCatalyst"]
+            
+        },
+        {
             "name": "accessibleTabs",
             "type": "string",
             "description": "comma delimtied List of tabs that user already has valid connections to."
+            
+        },
+        {
+            "name": "invalidInputFields",
+            "type": "string",
+            "description": "comma delimtied list of input fields that user has invalid inputs typed."
             
         },
         {
