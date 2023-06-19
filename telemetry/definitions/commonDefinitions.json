@@ -789,7 +789,22 @@
                 "canceled", 
                 "failed"
             ]
-        }
+        },
+        {
+            "name": "tab",
+            "type": "string",
+            "description": "Feature tab user is interacting in.",
+            "allowedValues": [
+                "awsResource",
+                "codewhisperer",
+                "codecatalyst"
+            ]
+        },
+        {
+            "name": "unlockedTabs",
+            "type": "string",
+            "description": "comma delimtied List of tabs that user already has valid connections to."
+        },
         
     ],
     "metrics": [
