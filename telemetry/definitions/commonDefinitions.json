@@ -899,6 +899,21 @@
             "description": "View the App Runner service logs (the logs produced by App Runner)"
         },
         {
+            "name": "auth_addConnection",
+            "description": "Called when user clicks on add New Connections from any of entry points. fields captures snapshot of user state upon reaching a result",
+            "metadata": [
+                { "type": "source"},
+                { "type": "tab", "required": false},
+                { "type": "unlockedTabs", "required": false},
+                { "type": "numberOfConnections", "required": false},
+                { "type": "credentialSourceId", "required": false},
+                { "type": "invalidInputFields", "required": false},
+                { "type": "iamIdentityCenterRegion", "required": false },
+                { "type": "reason", "required": false},
+                { "type": "result"}
+            ]
+        },
+        {
             "name": "auth_switchBetweenTheRoles",
             "description": "Called when user clicks yes or no to switch role upon adding new connection",
             "metadata": [
