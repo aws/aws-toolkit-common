@@ -773,6 +773,11 @@
             "name": "codecatalyst_devEnvironmentWorkflowStep",
             "type": "string",
             "description": "Workflow step name"
+        },
+        {
+            "name": "numberOfConnections",
+            "type": "int",
+            "description": "Number of Existing connections the user has."
         }
         
     ],
