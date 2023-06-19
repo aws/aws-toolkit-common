@@ -780,26 +780,6 @@
             "description": "Number of Existing connections the user has."
         },
         {
-            "name": "builderIDStatus",
-            "type": "string",
-            "description": "If the user if successfully logged in",
-            "allowedValues": [ "not attempted", "attempted", "canceled", "failed" ]
-
-        },
-        {
-            "name": "tab",
-            "type": "string",
-            "description": "Feature tab user is interacting in.",
-            "allowedValues": [ "awsResource", "codeWhisperer", "codeCatalyst" ]
-
-        },
-        {
-            "name": "unlockedTabs",
-            "type": "string",
-            "description": "comma delimtied List of tabs that user already has valid connections to."
-
-        },
-        {
             "name": "invalidInputFields",
             "type": "string",
             "description": "comma delimtied list of input fields that user has invalid inputs typed."
@@ -890,6 +870,29 @@
         {
             "name": "apprunner_viewServiceLogs",
             "description": "View the App Runner service logs (the logs produced by App Runner)"
+        },
+        {
+            "name": "auth_addConnection",
+            "description": "Called when user clicks on add New Connections from any of entry points. fields captures snapshot of user state upon reaching a result",
+            "metadata": [
+                { "type": "source"},
+                { "type": "tab", "required": false},
+                { "type": "unlockedTabs", "required": false},
+                { "type": "numberOfConnections", "required": false},
+                { "type": "credentialSourceId", "required": false},
+                { "type": "invalidInputFields", "required": false},
+                { "type": "iamIdentityCenterRegion", "required": false },
+                { "type": "reason", "required": false},
+                { "type": "result"}
+            ]
+        },
+        {
+            "name": "auth_switchBetweenTheRoles",
+            "description": "Called when user clicks yes or no to switch role upon adding new connection",
+            "metadata": [
+                { "type": "numberOfConnections"},
+                { "type": "userChoice"}
+            ]
         },
         {
             "name": "aws_copyArn",
