@@ -780,21 +780,17 @@
             "description": "Number of Existing connections the user has."
         },
         {
-            "name": "invalidInputFields",
+            "name": "builderIdStatus",
             "type": "string",
-            "description": "comma delimtied list of input fields that user has invalid inputs typed."
-
-        },
-        {
-            "name": "iamIdentityCenterRegion",
-            "type": "string",
-            "description": "Shows region selected by user under IAM Identity Center"
-        },
-        {
-            "name": "userChoice",
-            "type": "string",
-            "description": "role switch choice user makes in quickpick when they add new profile"
+            "description": "login status with builderId option",
+            "allowedValues": [
+                "not_attempted",
+                "attempted",
+                "canceled", 
+                "failed"
+            ]
         }
+        
     ],
     "metrics": [
         {
@@ -870,29 +866,6 @@
         {
             "name": "apprunner_viewServiceLogs",
             "description": "View the App Runner service logs (the logs produced by App Runner)"
-        },
-        {
-            "name": "auth_addConnection",
-            "description": "Called when user clicks on add New Connections from any of entry points. fields captures snapshot of user state upon reaching a result",
-            "metadata": [
-                { "type": "source"},
-                { "type": "tab", "required": false},
-                { "type": "unlockedTabs", "required": false},
-                { "type": "numberOfConnections", "required": false},
-                { "type": "credentialSourceId", "required": false},
-                { "type": "invalidInputFields", "required": false},
-                { "type": "iamIdentityCenterRegion", "required": false },
-                { "type": "reason", "required": false},
-                { "type": "result"}
-            ]
-        },
-        {
-            "name": "auth_switchBetweenTheRoles",
-            "description": "Called when user clicks yes or no to switch role upon adding new connection",
-            "metadata": [
-                { "type": "numberOfConnections"},
-                { "type": "userChoice"}
-            ]
         },
         {
             "name": "aws_copyArn",
