@@ -812,9 +812,9 @@
 
         },
         {
-            "name": "iamIdentityCenterRegion",
+            "name": "region",
             "type": "string",
-            "description": "Shows region selected by user under IAM Identity Center" 
+            "description": "Region selected by user." 
         },
         {
             "name": "userChoice",
@@ -908,7 +908,7 @@
                 { "type": "numberOfConnections", "required": false},
                 { "type": "credentialSourceId", "required": false},
                 { "type": "invalidInputFields", "required": false},
-                { "type": "iamIdentityCenterRegion", "required": false },
+                { "type": "region", "required": false },
                 { "type": "reason", "required": false},
                 { "type": "result"}
             ]
