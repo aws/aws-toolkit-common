@@ -775,12 +775,12 @@
             "description": "Workflow step name"
         },
         {
-            "name": "numberOfConnections",
+            "name": "authConnectionsCount",
             "type": "int",
-            "description": "Number of Existing connections the user has."
+            "description": "Current number of authentication connections the user has."
         },
         {
-            "name": "builderIdStatus",
+            "name": "authBuilderIdStatus",
             "type": "string",
             "description": "login status with builderId option",
             "allowedValues": [
@@ -791,7 +791,7 @@
             ]
         },
         {
-            "name": "tab",
+            "name": "authUIElement",
             "type": "string",
             "description": "Feature tab user is interacting in.",
             "allowedValues": [
@@ -819,7 +819,7 @@
         {
             "name": "userChoice",
             "type": "string",
-            "description": "role switch choice user makes in quickpick when they add new profile" 
+            "description": "User selection from a predefined menu (not user-provided input)" 
         }
         
     ],
@@ -914,7 +914,7 @@
             ]
         },
         {
-            "name": "auth_switchBetweenTheRoles",
+            "name": "auth_switchRoles",
             "description": "Called when user clicks yes or no to switch role upon adding new connection",
             "metadata": [
                 { "type": "numberOfConnections"},
