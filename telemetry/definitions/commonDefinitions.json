@@ -777,7 +777,7 @@
         {
             "name": "authConnectionsCount",
             "type": "int",
-            "description": "Current number of authentication connections the user has."
+            "description": "Current number of authentication connections the user has"
         },
         {
             "name": "authUIElement",
@@ -797,8 +797,7 @@
         {
             "name": "invalidInputFields",
             "type": "string",
-            "description": "comma delimtied list of input fields that user has invalid inputs typed."
-
+            "description": "Comma delimited list of input fields that user has invalid inputs typed"
         },
         {
             "name": "region",
@@ -810,7 +809,6 @@
             "type": "string",
             "description": "User selection from a predefined menu (not user-provided input)" 
         }
-        
     ],
     "metrics": [
         {
