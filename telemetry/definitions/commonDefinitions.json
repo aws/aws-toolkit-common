@@ -906,7 +906,7 @@
             "name": "auth_switchRoles",
             "description": "Called when user clicks yes or no to switch role upon adding new connection",
             "metadata": [
-                { "type": "numberOfConnections"},
+                { "type": "authConnectionsCount"},
                 { "type": "userChoice"}
             ]
         },
