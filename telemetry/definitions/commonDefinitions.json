@@ -801,11 +801,6 @@
 
         },
         {
-            "name": "region",
-            "type": "string",
-            "description": "Region selected by user." 
-        },
-        {
             "name": "userChoice",
             "type": "string",
             "description": "User selection from a predefined menu (not user-provided input)" 
@@ -889,7 +884,7 @@
         },
         {
             "name": "auth_addConnection",
-            "description": "Called when user clicks on add New Connections from any of entry points. fields captures snapshot of user state upon reaching a result",
+            "description": "Covers the user's 'Add New Connection' experience from an entry point. Captures a snapshot of user state on completion.",
             "metadata": [
                 { "type": "source"},
                 { "type": "authUIElement", "required": false},
@@ -897,7 +892,7 @@
                 { "type": "authConnectionsCount", "required": false},
                 { "type": "credentialSourceId", "required": false},
                 { "type": "invalidInputFields", "required": false},
-                { "type": "region", "required": false },
+                { "type": "awsRegion", "required": false },
                 { "type": "reason", "required": false},
                 { "type": "result"}
             ]
