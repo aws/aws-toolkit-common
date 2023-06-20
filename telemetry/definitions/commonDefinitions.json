@@ -780,17 +780,6 @@
             "description": "Current number of authentication connections the user has."
         },
         {
-            "name": "authBuilderIdStatus",
-            "type": "string",
-            "description": "login status with builderId option",
-            "allowedValues": [
-                "not_attempted",
-                "attempted",
-                "canceled", 
-                "failed"
-            ]
-        },
-        {
             "name": "authUIElement",
             "type": "string",
             "description": "Feature tab user is interacting in.",
@@ -903,9 +892,9 @@
             "description": "Called when user clicks on add New Connections from any of entry points. fields captures snapshot of user state upon reaching a result",
             "metadata": [
                 { "type": "source"},
-                { "type": "tab", "required": false},
+                { "type": "authUIElement", "required": false},
                 { "type": "unlockedTabs", "required": false},
-                { "type": "numberOfConnections", "required": false},
+                { "type": "authConnectionsCount", "required": false},
                 { "type": "credentialSourceId", "required": false},
                 { "type": "invalidInputFields", "required": false},
                 { "type": "region", "required": false },
