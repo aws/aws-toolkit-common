@@ -890,7 +890,6 @@
                 { "type": "authConnectionsCount", "required": false},
                 { "type": "credentialSourceId", "required": false},
                 { "type": "invalidInputFields", "required": false},
-                { "type": "awsRegion", "required": false },
                 { "type": "reason", "required": false},
                 { "type": "result"}
             ]
