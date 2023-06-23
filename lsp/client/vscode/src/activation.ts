@@ -41,13 +41,17 @@ export async function activateDocumentsLanguageServer(extensionContext: Extensio
     const clientOptions: LanguageClientOptions = {
         // Register the server for json documents
         documentSelector: [
+            // yaml/json is illustrative of static filetype handling language servers
             { scheme: 'file', language: 'yaml' },
             { scheme: 'untitled', language: 'yaml' },
             { scheme: 'file', language: 'json' },
             { scheme: 'untitled', language: 'json' },
+            // typescript is illustrative of code-handling language servers
+            { scheme: 'file', language: 'typescript' },
+            { scheme: 'untitled', language: 'typescript' },
         ],
         synchronize: {
-            fileEvents: workspace.createFileSystemWatcher('**/*.{json,yml,yaml}'),
+            fileEvents: workspace.createFileSystemWatcher('**/*.{json,yml,yaml,ts}'),
         },
     }
 
