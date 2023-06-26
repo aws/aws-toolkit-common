@@ -886,7 +886,7 @@
             "metadata": [
                 { "type": "source"},
                 { "type": "authUiElement", "required": false},
-                { "type": "unlockedTabs", "required": false},
+                { "type": "authEnabledAreas", "required": false},
                 { "type": "authConnectionsCount", "required": false},
                 { "type": "credentialSourceId", "required": false},
                 { "type": "invalidInputFields", "required": false},
