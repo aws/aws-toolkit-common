@@ -773,6 +773,36 @@
             "name": "codecatalyst_devEnvironmentWorkflowStep",
             "type": "string",
             "description": "Workflow step name"
+        },
+        {
+            "name": "authConnectionsCount",
+            "type": "int",
+            "description": "Current number of authentication connections the user has"
+        },
+        {
+            "name": "authUiElement",
+            "type": "string",
+            "description": "Feature tab user is interacting in.",
+            "allowedValues": [
+                "awsResource",
+                "codewhisperer",
+                "codecatalyst"
+            ]
+        },
+        {
+            "name": "authEnabledAreas",
+            "type": "string",
+            "description": "Comma delimtied list of tabs that user already has valid connections to. e.g. 'awsResource,codewhisperer,codecatalyst'"
+        },
+        {
+            "name": "invalidInputFields",
+            "type": "string",
+            "description": "Comma delimited list of input fields that user has invalid inputs typed. e.g. 'profileName,accessKey,startUrl'"
+        },
+        {
+            "name": "userChoice",
+            "type": "string",
+            "description": "User selection from a predefined menu (not user-provided input)" 
         }
     ],
     "metrics": [
@@ -849,6 +879,28 @@
         {
             "name": "apprunner_viewServiceLogs",
             "description": "View the App Runner service logs (the logs produced by App Runner)"
+        },
+        {
+            "name": "auth_addConnection",
+            "description": "'Captures the Add New Connection' workflow",
+            "metadata": [
+                { "type": "source"},
+                { "type": "authUiElement", "required": false},
+                { "type": "authEnabledAreas", "required": false},
+                { "type": "authConnectionsCount", "required": false},
+                { "type": "credentialSourceId", "required": false},
+                { "type": "invalidInputFields", "required": false},
+                { "type": "reason", "required": false},
+                { "type": "result"}
+            ]
+        },
+        {
+            "name": "auth_switchRoles",
+            "description": "Called when user clicks yes or no to switch role upon adding new connection",
+            "metadata": [
+                { "type": "authConnectionsCount"},
+                { "type": "userChoice"}
+            ]
         },
         {
             "name": "aws_copyArn",
