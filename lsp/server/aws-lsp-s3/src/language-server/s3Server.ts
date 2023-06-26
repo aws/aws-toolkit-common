@@ -1,4 +1,4 @@
-import { AwsLanguageService } from '@lsp-placeholder/aws-lsp-core'
+import { AwsInitializationOptions, AwsLanguageService } from '@lsp-placeholder/aws-lsp-core'
 import {
     Connection,
     InitializeParams,
@@ -28,6 +28,7 @@ export class S3Server {
     protected s3Service: AwsLanguageService
 
     protected connection: Connection
+    private initializationOptions?: AwsInitializationOptions
 
     constructor(private readonly props: S3ServerProps) {
         this.connection = props.connection
@@ -36,6 +37,8 @@ export class S3Server {
 
         this.connection.onInitialize((params: InitializeParams) => {
             // this.options = params;
+            this.initializationOptions = params.initializationOptions as AwsInitializationOptions
+
             const result: InitializeResult = {
                 // serverInfo: initialisationOptions?.serverInfo,
                 capabilities: {

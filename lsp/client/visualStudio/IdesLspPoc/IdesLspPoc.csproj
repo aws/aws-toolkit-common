@@ -48,6 +48,7 @@
     <Compile Include="ContentDefinitions\BuildSpec.cs" />
     <Compile Include="ContentDefinitions\JsonContentType.cs" />
     <Compile Include="LspClient\BuildspecLspClient.cs" />
+    <Compile Include="LspClient\S3LspClient.cs" />
     <Compile Include="LspClient\CloudFormationLspClient.cs" />
     <Compile Include="LspClient\ToolkitLspClient.cs" />
     <Compile Include="Output\OutputWindow.cs" />

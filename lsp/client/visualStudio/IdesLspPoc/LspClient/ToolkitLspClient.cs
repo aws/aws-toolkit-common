@@ -49,7 +49,7 @@ namespace IdesLspPoc.LspClient
         /// https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#initialize
         /// </summary>
         /// <inheritdoc cref="ILanguageClient.InitializationOptions"/>
-        public object InitializationOptions { get; } = null;
+        public virtual object InitializationOptions { get; } = null;
 
         public IEnumerable<string> FilesToWatch { get; } = new List<string>()
         {
