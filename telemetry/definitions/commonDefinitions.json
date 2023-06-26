@@ -882,7 +882,7 @@
         },
         {
             "name": "auth_addConnection",
-            "description": "Covers issues/errors for all possible authentication methods during 'add new connection' flow",
+            "description": "'Captures the Add New Connection' workflow",
             "metadata": [
                 { "type": "source"},
                 { "type": "authUiElement", "required": false},
