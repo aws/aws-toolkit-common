@@ -790,7 +790,7 @@
             ]
         },
         {
-            "name": "unlockedTabs",
+            "name": "authEnabledAreas",
             "type": "string",
             "description": "Comma delimtied list of tabs that user already has valid connections to. e.g. 'awsResource,codewhisperer,codecatalyst'"
         },
