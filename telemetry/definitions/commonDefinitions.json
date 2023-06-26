@@ -882,7 +882,7 @@
         },
         {
             "name": "auth_addConnection",
-            "description": "Covers the user's 'Add New Connection' experience from an entry point. Captures a snapshot of user state on completion.",
+            "description": "Covers issues/errors for all possible authentication methods during 'add new connection' flow",
             "metadata": [
                 { "type": "source"},
                 { "type": "authUiElement", "required": false},
