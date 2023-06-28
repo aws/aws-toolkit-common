@@ -8,6 +8,7 @@ import * as path from 'path'
 import { ExtensionContext, workspace } from 'vscode'
 
 import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from 'vscode-languageclient/node'
+import { configureCredentialsCapabilities, registerIamCredentialsProvider } from './credentialsActivation'
 
 export async function activateDocumentsLanguageServer(extensionContext: ExtensionContext) {
     /**
@@ -28,6 +29,8 @@ export async function activateDocumentsLanguageServer(extensionContext: Extensio
     const fallbackPath = path.join(extensionContext.extensionPath, '../../../out/src/server/server.js')
     const serverModule = process.env.LSP_SERVER ?? fallbackPath
 
+    const enableIamProvider = process.env.ENABLE_IAM_PROVIDER === 'true'
+
     const debugOptions = { execArgv: ['--nolazy', '--inspect=6012', '--preserve-symlinks'] }
 
     // If the extension is launch in debug mode the debug server options are use
@@ -46,13 +49,22 @@ export async function activateDocumentsLanguageServer(extensionContext: Extensio
             { scheme: 'file', language: 'json' },
             { scheme: 'untitled', language: 'json' },
         ],
+        initializationOptions: {},
         synchronize: {
             fileEvents: workspace.createFileSystemWatcher('**/*.{json,yml,yaml}'),
         },
     }
 
+    if (enableIamProvider) {
+        configureCredentialsCapabilities(clientOptions)
+    }
+
     // Create the language client and start the client.
     const client = new LanguageClient('awsDocuments', 'AWS Documents Language Server', serverOptions, clientOptions)
+
+    if (enableIamProvider) {
+        await registerIamCredentialsProvider(client, extensionContext)
+    }
 
     client.start()
 
