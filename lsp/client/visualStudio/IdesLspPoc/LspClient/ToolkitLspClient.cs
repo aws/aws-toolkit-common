@@ -73,7 +73,7 @@ namespace IdesLspPoc.LspClient
         /// VS Calls this when the extension has loaded
         /// </summary>
         /// <inheritdoc cref="ILanguageClient.OnLoadedAsync"/>
-        public async Task OnLoadedAsync()
+        public virtual async Task OnLoadedAsync()
         {
             // Just exploring how to query for VS what file types it knows about
             // var x = ContentTypeRegistryService.ContentTypes.ToList();

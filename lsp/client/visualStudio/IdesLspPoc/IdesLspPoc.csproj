@@ -47,9 +47,13 @@
   <ItemGroup>
     <Compile Include="ContentDefinitions\BuildSpec.cs" />
     <Compile Include="ContentDefinitions\JsonContentType.cs" />
+    <Compile Include="Credentials\ResolveCredenitalsResponse.cs" />
     <Compile Include="LspClient\BuildspecLspClient.cs" />
+    <Compile Include="Credentials\ResolveCredenitalsRequest.cs" />
+    <Compile Include="Credentials\ResolveIamCredenitalsResponseData.cs" />
     <Compile Include="LspClient\S3LspClient.cs" />
     <Compile Include="LspClient\CloudFormationLspClient.cs" />
+    <Compile Include="LspClient\S3\S3LspMessageHandler.cs" />
     <Compile Include="LspClient\ToolkitLspClient.cs" />
     <Compile Include="Output\OutputWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,6 +75,9 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AWSSDK.Core">
+      <Version>3.7.107.9</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.LanguageServer.Client">
       <Version>17.0.5165</Version>
     </PackageReference>

@@ -8,5 +8,6 @@ export interface AwsInitializationOptions {
     credentials?: {
         providesIam?: boolean
         providesBearerToken?: boolean
+        providerKey?: string
     }
 }
