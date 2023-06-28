@@ -47,7 +47,7 @@ namespace IdesLspPoc.LspClient.S3
         [JsonRpcMethod("$/aws/credentials/iam")]
         public async Task<ResolveCredenitalsResponse> OnProvideIamCredentialsAsync(JToken arg, CancellationToken token)
         {
-            _outputWindow.WriteLine("HANDLER: $/aws/credentials/iam");
+            _outputWindow.WriteLine("Client: Credentials have been requested");
 
             var request = arg.ToObject<ResolveCredenitalsRequest>();
 

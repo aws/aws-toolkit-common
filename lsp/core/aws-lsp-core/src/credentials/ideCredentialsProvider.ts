@@ -35,7 +35,7 @@ export class IdeCredentialsProvider implements CredentialsProvider {
      * Requests credentials from host
      */
     public async resolveIamCredentials(token: CancellationToken): Promise<IamCredentials> {
-        this.connection.console.info('Requesting Credentials')
+        this.connection.console.info('Server: Requesting Credentials...')
 
         const request: ResolveCredenitalsRequest = {
             requestId: crypto.randomUUID(),
@@ -44,7 +44,7 @@ export class IdeCredentialsProvider implements CredentialsProvider {
 
         const credentials = await this.getCredentialsFromHost(request, token)
 
-        this.connection.console.info('DONE Requesting Credentials')
+        this.connection.console.info('Server: Done Requesting Credentials')
 
         return credentials
     }

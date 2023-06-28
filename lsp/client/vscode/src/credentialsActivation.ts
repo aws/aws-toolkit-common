@@ -86,7 +86,7 @@ export async function registerIamCredentialsProvider(
             languageClient.onRequest<ResolveCredenitalsRequest, ResolveCredenitalsResponse, Error>(
                 resolveIamRequestType,
                 async (request: ResolveCredenitalsRequest, token: CancellationToken) => {
-                    languageClient.info('Credentials have been requested')
+                    languageClient.info('Client: Credentials have been requested')
 
                     // Here we would do some validation checks on request
                     // TODO : check request.requestId for uniqueness (eg: maintain a queue that auto-evicts after 5 minutes. Have an upper size limit, evict oldest ids if needed)
