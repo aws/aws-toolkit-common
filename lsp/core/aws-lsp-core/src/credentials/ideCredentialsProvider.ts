@@ -1,11 +1,9 @@
-import {
-    AwsInitializationOptions,
-    ResolveCredenitalsRequest,
-    ResolveCredenitalsResponse,
-} from '@lsp-placeholder/aws-lsp-core'
 import * as crypto from 'crypto'
 import { CancellationToken, Connection, RequestType } from 'vscode-languageserver'
+import { AwsInitializationOptions } from '../initialization/awsInitializationOptions'
 import { CredentialsProvider, IamCredentials, credentialsProtocolMethodNames } from './credentialsProvider'
+import { ResolveCredenitalsRequest } from './resolveCredenitalsRequest'
+import { ResolveCredenitalsResponse } from './resolveCredenitalsResponse'
 
 /**
  * Requests credentials from IDE extensions, and decrypts the responses for use by language server components.

@@ -1,11 +1,5 @@
-import { AwsInitializationOptions } from '@lsp-placeholder/aws-lsp-core'
-import {
-    IdeCredentialsProvider,
-    S3Server,
-    S3ServerProps,
-    S3ServiceProps,
-    createS3ervice,
-} from '@lsp-placeholder/aws-lsp-s3'
+import { AwsInitializationOptions, IdeCredentialsProvider } from '@lsp-placeholder/aws-lsp-core'
+import { S3Server, S3ServerProps, S3ServiceProps, createS3ervice } from '@lsp-placeholder/aws-lsp-s3'
 import { ProposedFeatures, createConnection } from 'vscode-languageserver/node'
 
 const connection = createConnection(ProposedFeatures.all)

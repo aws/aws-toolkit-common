@@ -1,10 +1,9 @@
 import { ListBucketsCommand, S3Client } from '@aws-sdk/client-s3'
 import { AwsCredentialIdentity, AwsCredentialIdentityProvider } from '@aws-sdk/types'
-import { AwsLanguageService } from '@lsp-placeholder/aws-lsp-core'
+import { AwsLanguageService, CredentialsProvider } from '@lsp-placeholder/aws-lsp-core'
 import { CancellationToken, CompletionItem } from 'vscode-languageserver'
 import { Position, Range, TextDocument, TextEdit } from 'vscode-languageserver-textdocument'
 import { CompletionList, Diagnostic, FormattingOptions, Hover } from 'vscode-languageserver-types'
-import { CredentialsProvider } from './credentialsProvider'
 
 export type S3ServiceProps = {
     displayName: string
