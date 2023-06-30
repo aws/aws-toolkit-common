@@ -1,5 +1,7 @@
 import { AwsLanguageService } from '@lsp-placeholder/aws-lsp-core'
 import {
+    CancellationToken,
+    CompletionParams,
     Connection,
     InitializeParams,
     InitializeResult,
@@ -7,6 +9,7 @@ import {
     TextDocuments,
 } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
+import { CodeWhispererService } from './codeWhispererService'
 
 export type CodeWhispererServerProps = {
     connection: Connection
@@ -14,24 +17,26 @@ export type CodeWhispererServerProps = {
 }
 
 /**
- * This is a demonstration language server that TODO
+ * This is a demonstration language server that gets code recommendations from
+ * CodeWisperer.
  *
- * This illustrates TODO how we can use an AWS Service Client in an LSP.
- * It will be used to explore deeper integration concerns, like credentials.
+ * It will be used to explore deeper integration concerns, like providing bearer token access.
  */
 export class CodeWhispererServer {
     public static readonly serverId = 'aws-lsp-codewhisperer'
 
     protected documents = new TextDocuments(TextDocument)
 
-    protected service: AwsLanguageService
+    // HACK: Ideally we keep things to the standard AwsLanguageService interface
+    // For now we're experimenting with service calls.
+    protected service: CodeWhispererService
 
     protected connection: Connection
 
     constructor(private readonly props: CodeWhispererServerProps) {
         this.connection = props.connection
 
-        this.service = this.props.codeWhispererService
+        this.service = this.props.codeWhispererService as CodeWhispererService
 
         this.connection.onInitialize((params: InitializeParams) => {
             // this.options = params;
@@ -42,7 +47,12 @@ export class CodeWhispererServer {
                         openClose: true,
                         change: TextDocumentSyncKind.Incremental,
                     },
-                    completionProvider: { resolveProvider: true },
+                    completionProvider: {
+                        resolveProvider: true,
+                        completionItem: {
+                            labelDetailsSupport: true,
+                        },
+                    },
                 },
             }
             return result
@@ -65,11 +75,15 @@ export class CodeWhispererServer {
     }
 
     registerHandlers() {
-        this.connection.onCompletion(async ({ textDocument: requestedDocument, position }) => {
-            const textDocument = this.getTextDocument(requestedDocument.uri)
+        this.connection.onCompletion(async (params: CompletionParams, token: CancellationToken) => {
+            const textDocument = this.getTextDocument(params.textDocument.uri)
 
             if (this.service.isSupported(textDocument)) {
-                return await this.service.doComplete(textDocument, position)
+                return await this.service.doComplete2({
+                    textDocument,
+                    position: params.position,
+                    token,
+                })
             }
 
             return

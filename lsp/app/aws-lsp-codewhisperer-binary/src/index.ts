@@ -10,13 +10,14 @@ const connection = createConnection(ProposedFeatures.all)
 
 const serviceProps: CodeWhispererServiceProps = {
     displayName: CodeWhispererServer.serverId,
+    connection,
 }
 
-const cloudformationService = createCodeWhispererService(serviceProps)
+const service = createCodeWhispererService(serviceProps)
 
 const props: CodeWhispererServerProps = {
     connection,
-    codeWhispererService: cloudformationService,
+    codeWhispererService: service,
 }
 
 export const server = new CodeWhispererServer(props)
