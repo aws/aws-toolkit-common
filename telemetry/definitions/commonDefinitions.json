@@ -805,7 +805,7 @@
             "description": "Comma delimited list of NEW enabled auth connections"
         },
         {
-            "name": "isInvidiual",
+            "name": "isIndividual",
             "type": "boolean",
             "description": "Whether this was the result of an individual point, compared to an aggregation."
         },
@@ -902,7 +902,7 @@
                 { "type": "source"},
                 { "type": "featureId"},
                 { "type": "credentialSourceId"},
-                { "type": "isInvidiual"},
+                { "type": "isIndividual"},
                 { "type": "result"},
                 { "type": "attempts", "required": false},
                 { "type": "invalidInputFields", "required": false},
