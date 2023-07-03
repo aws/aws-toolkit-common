@@ -1,6 +1,6 @@
 ﻿namespace IdesLspPoc.Credentials
 {
-    public class ResolveIamCredenitalsResponseData
+    public class ResolveIamCredentialsResponseData
     {
         public string AccessKey;
         public string SecretKey;

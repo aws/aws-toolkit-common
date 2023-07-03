@@ -5,7 +5,7 @@ namespace IdesLspPoc.Credentials
     /// <summary>
     /// Credentials response sent to the langauge server
     /// </summary>
-    public class ResolveCredenitalsResponse
+    public class ResolveCredentialsResponse
     {
         /// <summary>
         /// Initialization vector for encrypted data, in base64

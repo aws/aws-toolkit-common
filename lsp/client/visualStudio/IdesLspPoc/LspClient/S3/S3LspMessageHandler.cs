@@ -41,15 +41,15 @@ namespace IdesLspPoc.LspClient.S3
         /// <summary>
         /// Provides the language server with IAM credentials
         /// </summary>
-        /// <param name="arg">JSON serialized <see cref="ResolveCredenitalsResponse"/> object</param>
+        /// <param name="arg">JSON serialized <see cref="ResolveCredentialsResponse"/> object</param>
         /// <param name="token">Cancellation token</param>
         /// <returns>IAM credentials</returns>
         [JsonRpcMethod("$/aws/credentials/iam")]
-        public async Task<ResolveCredenitalsResponse> OnProvideIamCredentialsAsync(JToken arg, CancellationToken token)
+        public async Task<ResolveCredentialsResponse> OnProvideIamCredentialsAsync(JToken arg, CancellationToken token)
         {
             _outputWindow.WriteLine("Client: Credentials have been requested");
 
-            var request = arg.ToObject<ResolveCredenitalsRequest>();
+            var request = arg.ToObject<ResolveCredentialsRequest>();
 
             // Here we would do some validation checks
             // TODO : check request.RequestId for uniqueness (eg: maintain a queue that auto-evicts after 5 minutes. Have an upper size limit, evict oldest ids if needed)
@@ -65,12 +65,12 @@ namespace IdesLspPoc.LspClient.S3
             }
 
             AWSCredentials awsCredentials = profile.GetAWSCredentials(creds);
-            return CreateResolveIamCredenitalsResponse(await awsCredentials.GetCredentialsAsync(), _aes);
+            return CreateResolveIamCredentialsResponse(await awsCredentials.GetCredentialsAsync(), _aes);
         }
 
-        private static ResolveCredenitalsResponse CreateResolveIamCredenitalsResponse(ImmutableCredentials credentials, Aes aes)
+        private static ResolveCredentialsResponse CreateResolveIamCredentialsResponse(ImmutableCredentials credentials, Aes aes)
         {
-            var payload = new ResolveIamCredenitalsResponseData
+            var payload = new ResolveIamCredentialsResponseData
             {
                 AccessKey = credentials.AccessKey,
                 SecretKey = credentials.SecretKey,
@@ -78,13 +78,13 @@ namespace IdesLspPoc.LspClient.S3
                 IssuedOn = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds()
             };
 
-            return CreateResolveIamCredenitalsResponse(payload, aes);
+            return CreateResolveIamCredentialsResponse(payload, aes);
         }
 
         /// <summary>
         /// Creates a response payload that contains encrypted data
         /// </summary>
-        private static ResolveCredenitalsResponse CreateResolveIamCredenitalsResponse(object data, Aes aes)
+        private static ResolveCredentialsResponse CreateResolveIamCredentialsResponse(object data, Aes aes)
         {
             byte[] iv = CreateInitializationVector(aes);
             var encryptor = aes.CreateEncryptor(aes.Key, iv);
@@ -98,7 +98,7 @@ namespace IdesLspPoc.LspClient.S3
                 inputStream.CopyTo(encryptStream);
                 encryptStream.FlushFinalBlock();
 
-                return new ResolveCredenitalsResponse
+                return new ResolveCredentialsResponse
                 {
                     Iv = Convert.ToBase64String(iv),
                     Data = Convert.ToBase64String(outputStream.ToArray())

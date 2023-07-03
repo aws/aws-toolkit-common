@@ -1,7 +1,7 @@
 /**
  * Used to request credentials from the langauge server's host
  */
-export interface ResolveCredenitalsRequest {
+export interface ResolveCredentialsRequest {
     /**
      * Unique Id of request for IAM Credentials
      */

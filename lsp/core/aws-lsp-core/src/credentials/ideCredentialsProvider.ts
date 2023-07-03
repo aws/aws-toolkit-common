@@ -2,8 +2,8 @@ import * as crypto from 'crypto'
 import { CancellationToken, Connection, RequestType } from 'vscode-languageserver'
 import { AwsInitializationOptions } from '../initialization/awsInitializationOptions'
 import { CredentialsProvider, IamCredentials, credentialsProtocolMethodNames } from './credentialsProvider'
-import { ResolveCredenitalsRequest } from './resolveCredenitalsRequest'
-import { ResolveCredenitalsResponse } from './resolveCredenitalsResponse'
+import { ResolveCredentialsRequest } from './resolveCredentialsRequest'
+import { ResolveCredentialsResponse } from './resolveCredentialsResponse'
 
 /**
  * Requests credentials from IDE extensions, and decrypts the responses for use by language server components.
@@ -12,8 +12,8 @@ import { ResolveCredenitalsResponse } from './resolveCredenitalsResponse'
  */
 export class IdeCredentialsProvider implements CredentialsProvider {
     private readonly resolveIamRequestType = new RequestType<
-        ResolveCredenitalsRequest,
-        ResolveCredenitalsResponse,
+        ResolveCredentialsRequest,
+        ResolveCredentialsResponse,
         Error
     >(credentialsProtocolMethodNames.resolveIamCredentials)
 
@@ -37,7 +37,7 @@ export class IdeCredentialsProvider implements CredentialsProvider {
     public async resolveIamCredentials(token: CancellationToken): Promise<IamCredentials> {
         this.connection.console.info('Server: Requesting Credentials...')
 
-        const request: ResolveCredenitalsRequest = {
+        const request: ResolveCredentialsRequest = {
             requestId: crypto.randomUUID(),
             issuedOn: new Date().valueOf(),
         }
@@ -50,7 +50,7 @@ export class IdeCredentialsProvider implements CredentialsProvider {
     }
 
     private async getCredentialsFromHost(
-        request: ResolveCredenitalsRequest,
+        request: ResolveCredentialsRequest,
         token: CancellationToken
     ): Promise<IamCredentials> {
         // Call out to the IDE for credentials
@@ -60,7 +60,7 @@ export class IdeCredentialsProvider implements CredentialsProvider {
         return JSON.parse(responseData) as IamCredentials
     }
 
-    private decryptResponseData(response: ResolveCredenitalsResponse): string {
+    private decryptResponseData(response: ResolveCredentialsResponse): string {
         if (!this.key) {
             throw new Error('no encryption key')
         }

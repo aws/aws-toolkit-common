@@ -1,7 +1,7 @@
 /**
  * Credentials response provided by langauge server's host
  */
-export interface ResolveCredenitalsResponse {
+export interface ResolveCredentialsResponse {
     /**
      * Initialization vector for encrypted data, in base64
      */

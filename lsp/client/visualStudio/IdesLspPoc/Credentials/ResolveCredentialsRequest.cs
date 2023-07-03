@@ -3,7 +3,7 @@
     /// <summary>
     /// Request for credentials from the langauge server
     /// </summary>
-    public class ResolveCredenitalsRequest
+    public class ResolveCredentialsRequest
     {
         /// <summary>
         /// Unique Id of request for IAM Credentials

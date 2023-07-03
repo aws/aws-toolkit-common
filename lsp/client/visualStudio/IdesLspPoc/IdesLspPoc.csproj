@@ -47,10 +47,10 @@
   <ItemGroup>
     <Compile Include="ContentDefinitions\BuildSpec.cs" />
     <Compile Include="ContentDefinitions\JsonContentType.cs" />
-    <Compile Include="Credentials\ResolveCredenitalsResponse.cs" />
+    <Compile Include="Credentials\ResolveCredentialsResponse.cs" />
     <Compile Include="LspClient\BuildspecLspClient.cs" />
-    <Compile Include="Credentials\ResolveCredenitalsRequest.cs" />
-    <Compile Include="Credentials\ResolveIamCredenitalsResponseData.cs" />
+    <Compile Include="Credentials\ResolveCredentialsRequest.cs" />
+    <Compile Include="Credentials\ResolveIamCredentialsResponseData.cs" />
     <Compile Include="LspClient\S3LspClient.cs" />
     <Compile Include="LspClient\CloudFormationLspClient.cs" />
     <Compile Include="LspClient\S3\S3LspMessageHandler.cs" />

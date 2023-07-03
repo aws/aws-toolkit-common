@@ -7,7 +7,7 @@ import { CancellationToken, LanguageClient, LanguageClientOptions, RequestType }
 /**
  * Request for credentials from the langauge server
  */
-export interface ResolveCredenitalsRequest {
+export interface ResolveCredentialsRequest {
     /**
      * Unique Id of request for IAM Credentials
      */
@@ -22,7 +22,7 @@ export interface ResolveCredenitalsRequest {
 /**
  * Credentials response sent to the langauge server
  */
-export interface ResolveCredenitalsResponse {
+export interface ResolveCredentialsResponse {
     /**
      * Initialization vector for encrypted data, in base64
      */
@@ -35,7 +35,7 @@ export interface ResolveCredenitalsResponse {
     data: string
 }
 
-export interface ResolveIamCredenitalsResponseData {
+export interface ResolveIamCredentialsResponseData {
     accessKey: string
     secretKey: string
     token?: string
@@ -48,7 +48,7 @@ const lspMethodNames = {
     resolveIamCredentials: '$/aws/credentials/iam',
 }
 
-const resolveIamRequestType = new RequestType<ResolveCredenitalsRequest, ResolveCredenitalsResponse, Error>(
+const resolveIamRequestType = new RequestType<ResolveCredentialsRequest, ResolveCredentialsResponse, Error>(
     lspMethodNames.resolveIamCredentials
 )
 
@@ -83,9 +83,9 @@ export async function registerIamCredentialsProvider(
     extensionContext.subscriptions.push(
         ...[
             // Provides the language server with IAM credentials
-            languageClient.onRequest<ResolveCredenitalsRequest, ResolveCredenitalsResponse, Error>(
+            languageClient.onRequest<ResolveCredentialsRequest, ResolveCredentialsResponse, Error>(
                 resolveIamRequestType,
-                async (request: ResolveCredenitalsRequest, token: CancellationToken) => {
+                async (request: ResolveCredentialsRequest, token: CancellationToken) => {
                     languageClient.info('Client: Credentials have been requested')
 
                     // Here we would do some validation checks on request
@@ -99,7 +99,7 @@ export async function registerIamCredentialsProvider(
                         profile: 'default',
                     })()
 
-                    return createResolveIamCredenitalsResponse(awsCredentials)
+                    return createResolveIamCredentialsResponse(awsCredentials)
                 }
             ),
         ]
@@ -109,8 +109,8 @@ export async function registerIamCredentialsProvider(
 /**
  * Creates a response payload that contains encrypted data
  */
-function createResolveIamCredenitalsResponse(awsCredentials: AwsCredentialIdentity): ResolveCredenitalsResponse {
-    const responseData: ResolveIamCredenitalsResponseData = {
+function createResolveIamCredentialsResponse(awsCredentials: AwsCredentialIdentity): ResolveCredentialsResponse {
+    const responseData: ResolveIamCredentialsResponseData = {
         accessKey: awsCredentials.accessKeyId,
         secretKey: awsCredentials.secretAccessKey,
         token: awsCredentials.sessionToken,
