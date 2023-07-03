@@ -773,6 +773,51 @@
             "name": "codecatalyst_devEnvironmentWorkflowStep",
             "type": "string",
             "description": "Workflow step name"
+        },
+        {
+            "name": "authConnectionsCount",
+            "type": "int",
+            "description": "Current number of authentication connections the user has"
+        },
+        {
+            "name": "newAuthConnectionsCount",
+            "type": "int",
+            "description": "Number of new authentication connections the user has"
+        },
+        {
+            "name": "featureId",
+            "type": "string",
+            "description": "The id of the feature the user is interacting in.",
+            "allowedValues": [
+                "awsExplorer",
+                "codewhisperer",
+                "codecatalyst"
+            ]
+        },
+        {
+            "name": "enabledAuthConnections",
+            "type": "string",
+            "description": "Comma delimited list of enabled auth connections"
+        },
+        {
+            "name": "newEnabledAuthConnections",
+            "type": "string",
+            "description": "Comma delimited list of NEW enabled auth connections"
+        },
+        {
+            "name": "isAggregated",
+            "type": "boolean",
+            "description": "Whether this was an individual point or an aggregation of points."
+        },
+        {
+            "name": "invalidInputFields",
+            "type": "string",
+            "description": "Comma delimited list of input fields that user has invalid inputs typed. e.g. 'profileName,accessKey,startUrl'"
+        },
+        {
+            "name": "userChoice",
+            "type": "string",
+            "description": "User selection from a predefined menu (not user-provided input)" 
         }
     ],
     "metrics": [
@@ -849,6 +894,42 @@
         {
             "name": "apprunner_viewServiceLogs",
             "description": "View the App Runner service logs (the logs produced by App Runner)"
+        },
+        {
+            "name": "auth_addConnection",
+            "description": "Captures the result of adding a new connection in the 'Add New Connection' workflow",
+            "metadata": [
+                { "type": "source"},
+                { "type": "featureId"},
+                { "type": "credentialSourceId"},
+                { "type": "isAggregated"},
+                { "type": "result"},
+                { "type": "attempts", "required": false},
+                { "type": "invalidInputFields", "required": false},
+                { "type": "reason", "required": false}
+            ]
+        },
+        {
+            "name": "auth_addedConnections",
+            "description": "The diff/change in Auth connections",
+            "metadata": [
+                { "type": "source"},
+                { "type": "authConnectionsCount"},
+                { "type": "newAuthConnectionsCount"},
+                { "type": "enabledAuthConnections"},
+                { "type": "newEnabledAuthConnections"},
+                { "type": "attempts"},
+                { "type": "result"},
+                { "type": "reason", "required": false}
+            ]
+        },
+        {
+            "name": "auth_switchRoles",
+            "description": "Called when user clicks yes or no to switch role upon adding new connection",
+            "metadata": [
+                { "type": "authConnectionsCount"},
+                { "type": "userChoice"}
+            ]
         },
         {
             "name": "aws_copyArn",
