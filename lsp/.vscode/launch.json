@@ -45,7 +45,8 @@
             "args": ["--extensionDevelopmentPath=${workspaceFolder}/client/vscode"],
             "outFiles": ["${workspaceFolder}/client/vscode/out/**/*.js"],
             "env": {
-                "LSP_SERVER": "${workspaceFolder}/app/aws-lsp-codewhisperer-binary/out/index.js"
+                "LSP_SERVER": "${workspaceFolder}/app/aws-lsp-codewhisperer-binary/out/index.js",
+                "ENABLE_INLINE_COMPLETION": "true"
             },
             "preLaunchTask": "npm: compile"
         },

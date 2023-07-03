@@ -8,6 +8,7 @@ import * as path from 'path'
 import { ExtensionContext, workspace } from 'vscode'
 
 import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from 'vscode-languageclient/node'
+import { registerInlineCompletion } from './inlineCompletionActivation'
 
 export async function activateDocumentsLanguageServer(extensionContext: ExtensionContext) {
     /**
@@ -27,6 +28,14 @@ export async function activateDocumentsLanguageServer(extensionContext: Extensio
      */
     const fallbackPath = path.join(extensionContext.extensionPath, '../../../out/src/server/server.js')
     const serverModule = process.env.LSP_SERVER ?? fallbackPath
+
+    /**
+     * If you are iterating with a language server that uses inline completion,
+     * set the ENABLE_INLINE_COMPLETION environment variable to "true".
+     * This will set up the extension's inline completion provider to get recommendations
+     * from the language server.
+     */
+    const enableInlineCompletion = process.env.ENABLE_INLINE_COMPLETION === 'true'
 
     const debugOptions = { execArgv: ['--nolazy', '--inspect=6012', '--preserve-symlinks'] }
 
@@ -57,6 +66,10 @@ export async function activateDocumentsLanguageServer(extensionContext: Extensio
 
     // Create the language client and start the client.
     const client = new LanguageClient('awsDocuments', 'AWS Documents Language Server', serverOptions, clientOptions)
+
+    if (enableInlineCompletion) {
+        registerInlineCompletion(client)
+    }
 
     client.start()
 

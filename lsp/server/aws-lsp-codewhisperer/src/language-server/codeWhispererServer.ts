@@ -9,6 +9,8 @@ import {
     TextDocuments,
 } from 'vscode-languageserver'
 import { TextDocument } from 'vscode-languageserver-textdocument'
+import { InlineCompletionParams, inlineCompletionRequestType } from '../inline/futureProtocol'
+import { InlineCompletionList } from '../inline/futureTypes'
 import { CodeWhispererService } from './codeWhispererService'
 
 export type CodeWhispererServerProps = {
@@ -75,6 +77,32 @@ export class CodeWhispererServer {
     }
 
     registerHandlers() {
+        // TODO : Design Note: inline completions are not a part of the LSP spec, so
+        // we define our own (with message name aws/textDocument/inlineCompletion).
+        // This implementation follows the proposal
+        // in https://github.com/microsoft/language-server-protocol/pull/1673 (protocol)
+        // and https://github.com/microsoft/vscode-languageserver-node/pull/1190 (vscode-languageserver-node libraries)
+        // If/when it is added to the spec, we can transition this code over the spec,
+        // release servers with new major versions, and update the Toolkit clients appropriately.
+        this.connection.onRequest(inlineCompletionRequestType, async (params: InlineCompletionParams, token) => {
+            const results: InlineCompletionList = {
+                items: [],
+            }
+            params.context
+
+            const textDocument = this.getTextDocument(params.textDocument.uri)
+            if (this.service.isSupported(textDocument)) {
+                return await this.service.doInlineCompletion({
+                    textDocument,
+                    position: params.position,
+                    context: params.context,
+                    token,
+                })
+            }
+
+            return results
+        })
+
         this.connection.onCompletion(async (params: CompletionParams, token: CancellationToken) => {
             const textDocument = this.getTextDocument(params.textDocument.uri)
 
