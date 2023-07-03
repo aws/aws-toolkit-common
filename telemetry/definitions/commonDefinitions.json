@@ -780,19 +780,34 @@
             "description": "Current number of authentication connections the user has"
         },
         {
-            "name": "authUiElement",
+            "name": "newAuthConnectionsCount",
+            "type": "int",
+            "description": "Number of new authentication connections the user has"
+        },
+        {
+            "name": "featureId",
             "type": "string",
-            "description": "Feature tab user is interacting in.",
+            "description": "The id of the feature the user is interacting in.",
             "allowedValues": [
-                "awsResource",
+                "awsExplorer",
                 "codewhisperer",
                 "codecatalyst"
             ]
         },
         {
-            "name": "authEnabledAreas",
+            "name": "enabledAuthConnections",
             "type": "string",
-            "description": "Comma delimtied list of tabs that user already has valid connections to. e.g. 'awsResource,codewhisperer,codecatalyst'"
+            "description": "Comma delimited list of enabled auth connections"
+        },
+        {
+            "name": "newEnabledAuthConnections",
+            "type": "string",
+            "description": "Comma delimited list of NEW enabled auth connections"
+        },
+        {
+            "name": "isAggregated",
+            "type": "boolean",
+            "description": "Whether this was an individual point or an aggregation of points."
         },
         {
             "name": "invalidInputFields",
@@ -882,16 +897,30 @@
         },
         {
             "name": "auth_addConnection",
-            "description": "'Captures the Add New Connection' workflow",
+            "description": "Captures the result of adding a new connection in the 'Add New Connection' workflow",
             "metadata": [
                 { "type": "source"},
-                { "type": "authUiElement", "required": false},
-                { "type": "authEnabledAreas", "required": false},
-                { "type": "authConnectionsCount", "required": false},
-                { "type": "credentialSourceId", "required": false},
+                { "type": "featureId"},
+                { "type": "credentialSourceId"},
+                { "type": "isAggregated"},
+                { "type": "result"},
+                { "type": "attempts", "required": false},
                 { "type": "invalidInputFields", "required": false},
-                { "type": "reason", "required": false},
-                { "type": "result"}
+                { "type": "reason", "required": false}
+            ]
+        },
+        {
+            "name": "auth_addedConnections",
+            "description": "The diff/change in Auth connections",
+            "metadata": [
+                { "type": "source"},
+                { "type": "authConnectionsCount"},
+                { "type": "newAuthConnectionsCount"},
+                { "type": "enabledAuthConnections"},
+                { "type": "newEnabledAuthConnections"},
+                { "type": "attempts"},
+                { "type": "result"},
+                { "type": "reason", "required": false}
             ]
         },
         {
