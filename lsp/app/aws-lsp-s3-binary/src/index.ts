@@ -1,4 +1,5 @@
 import {
+    AwsInitializationOptions,
     EncryptionInitialization,
     IdeCredentialsProvider,
     shouldWaitForEncryptionKey,
@@ -72,6 +73,9 @@ function createServer(connection: any, key?: string): S3Server {
     const props: S3ServerProps = {
         connection,
         s3Service: service,
+        onInitialize: (props: AwsInitializationOptions) => {
+            credentialsProvider.initialize(props)
+        },
     }
 
     return new S3Server(props)

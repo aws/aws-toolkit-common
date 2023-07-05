@@ -19,6 +19,16 @@
         "onLanguage:yaml"
     ],
     "contributes": {
+        "commands": [
+            {
+                "command": "awslsp.selectProfile",
+                "title": "AWS LSP - Choose credentials profile"
+            },
+            {
+                "command": "awslsp.clearProfile",
+                "title": "AWS LSP - Don't use any credentials"
+            }
+        ],
         "configuration": {
             "type": "object",
             "title": "AWS Documents Language Server",

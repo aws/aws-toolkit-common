@@ -2,8 +2,29 @@ import { fromIni } from '@aws-sdk/credential-providers'
 import { AwsCredentialIdentity } from '@aws-sdk/types'
 import * as crypto from 'crypto'
 import { Writable } from 'stream'
-import { ExtensionContext } from 'vscode'
-import { CancellationToken, LanguageClient, LanguageClientOptions, RequestType } from 'vscode-languageclient/node'
+import { ExtensionContext, commands, window } from 'vscode'
+import {
+    CancellationToken,
+    LanguageClient,
+    LanguageClientOptions,
+    NotificationType,
+    RequestType,
+} from 'vscode-languageclient/node'
+
+/**
+ * Proof of Concept: We are evaluating how we want language server to receive
+ * credentials. In production, there will only be one approach.
+ */
+export enum CredentialsDirectionConcept {
+    /**
+     * language server should pull credentials from the extension whenever it needs
+     */
+    serverPull,
+    /**
+     * credendials should be pushed by the extension as credentials state changes
+     */
+    extPush,
+}
 
 /**
  * Request for credentials from the langauge server
@@ -47,6 +68,8 @@ const encryptionKey = crypto.randomBytes(32)
 
 const lspMethodNames = {
     resolveIamCredentials: '$/aws/credentials/iam',
+    iamCredentialsUpdate: '$/aws/credentials/iam/update',
+    iamCredentialsClear: '$/aws/credentials/iam/clear',
 }
 
 const resolveIamRequestType = new RequestType<ResolveCredentialsRequest, ResolveCredentialsResponse, Error>(
@@ -66,7 +89,10 @@ export function writeEncryptionInit(stream: Writable): void {
  * Updates the language client's initialization payload to indicate that it can provide credentials
  * for AWS language servers.
  */
-export function configureCredentialsCapabilities(clientOptions: LanguageClientOptions) {
+export function configureCredentialsCapabilities(
+    clientOptions: LanguageClientOptions,
+    credentialsDirection: CredentialsDirectionConcept
+) {
     if (!clientOptions.initializationOptions) {
         clientOptions.initializationOptions = {}
     }
@@ -78,13 +104,14 @@ export function configureCredentialsCapabilities(clientOptions: LanguageClientOp
     // See lsp\core\aws-lsp-core\src\initialization\awsInitializationOptions.ts
     clientOptions.initializationOptions.credentials = {
         providesIam: true,
+        credentialsDirection: credentialsDirection.toString(),
     }
 }
 
 /**
  * Registers language clieng callbacks to handle credentials related protocol messages.
  */
-export async function registerIamCredentialsProvider(
+export async function registerIamCredentialsProvider_serverPull(
     languageClient: LanguageClient,
     extensionContext: ExtensionContext
 ): Promise<void> {
@@ -134,4 +161,48 @@ function createResolveIamCredentialsResponse(awsCredentials: AwsCredentialIdenti
         iv: iv.toString('base64'),
         data: encoder.update(JSON.stringify(responseData), 'utf-8', 'base64') + encoder.final('base64'),
     }
+}
+
+export async function registerIamCredentialsProvider_extensionPush(
+    languageClient: LanguageClient,
+    extensionContext: ExtensionContext
+): Promise<void> {
+    extensionContext.subscriptions.push(
+        ...[
+            commands.registerCommand('awslsp.selectProfile', createSelectProfileCommand(languageClient)),
+            commands.registerCommand('awslsp.clearProfile', createClearProfileCommand(languageClient)),
+        ]
+    )
+}
+
+function createSelectProfileCommand(languageClient: LanguageClient) {
+    return async () => {
+        const profileName = await window.showInputBox({
+            prompt: 'Which credentials profile should the language server use?',
+        })
+
+        // PROOF OF CONCEPT
+        // We will resolve the default profile from the local system.
+        // In a product, the host extension would know which profile it is configured to provide to the language server.
+        const awsCredentials = await fromIni({
+            profile: profileName,
+        })()
+
+        const payload = createResolveIamCredentialsResponse(awsCredentials)
+        await sendIamCredentialsUpdate(payload, languageClient)
+
+        languageClient.info(`Client: The language server is now using credentials profile: ${profileName}`)
+    }
+}
+
+function createClearProfileCommand(languageClient: LanguageClient) {
+    return async () => {
+        await languageClient.sendNotification(lspMethodNames.iamCredentialsClear)
+    }
+}
+
+function sendIamCredentialsUpdate(payload: ResolveCredentialsResponse, languageClient: LanguageClient): Promise<void> {
+    const updateCredentialsType = new NotificationType<ResolveCredentialsResponse>(lspMethodNames.iamCredentialsUpdate)
+
+    return languageClient.sendNotification(updateCredentialsType, payload)
 }

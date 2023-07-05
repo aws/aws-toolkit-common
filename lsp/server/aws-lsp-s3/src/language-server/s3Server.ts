@@ -11,6 +11,7 @@ import { TextDocument } from 'vscode-languageserver-textdocument'
 export type S3ServerProps = {
     connection: Connection
     s3Service: AwsLanguageService
+    onInitialize: (params: AwsInitializationOptions) => void
 }
 
 /**
@@ -38,6 +39,7 @@ export class S3Server {
         this.connection.onInitialize((params: InitializeParams) => {
             // this.options = params;
             this.initializationOptions = params.initializationOptions as AwsInitializationOptions
+            this.props.onInitialize(this.initializationOptions)
 
             const result: InitializeResult = {
                 // serverInfo: initialisationOptions?.serverInfo,

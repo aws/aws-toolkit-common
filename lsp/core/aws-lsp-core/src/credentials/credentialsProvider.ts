@@ -7,7 +7,11 @@ export interface IamCredentials {
 }
 
 export const credentialsProtocolMethodNames = {
+    // Concept: If the server requests credentials from the host on-demand
     resolveIamCredentials: '$/aws/credentials/iam',
+    // Concept: If the host pushes credentials to the server whenever credentials state changes
+    iamCredentialsUpdate: '$/aws/credentials/iam/update',
+    iamCredentialsClear: '$/aws/credentials/iam/clear',
 }
 
 /**

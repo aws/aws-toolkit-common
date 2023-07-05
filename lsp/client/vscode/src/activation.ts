@@ -10,8 +10,10 @@ import { ExtensionContext, workspace } from 'vscode'
 
 import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from 'vscode-languageclient/node'
 import {
+    CredentialsDirectionConcept,
     configureCredentialsCapabilities,
-    registerIamCredentialsProvider,
+    registerIamCredentialsProvider_extensionPush,
+    registerIamCredentialsProvider_serverPull,
     writeEncryptionInit,
 } from './credentialsActivation'
 
@@ -43,6 +45,15 @@ export async function activateDocumentsLanguageServer(extensionContext: Extensio
     // enableBearerTokenProvider is not used yet
     const enableBearerTokenProvider = process.env.ENABLE_TOKEN_PROVIDER === 'true'
     const enableEncryptionInit = enableIamProvider || enableBearerTokenProvider
+
+    // Proof of Concept:
+    // We are evaluating whether language server should pull credentials from the extension
+    // whenever it needs ("serverPull"), or if credendials should be pushed by the extension
+    // as credentials state changes ("extPush"). Set envvar CREDENTIALS_CONCEPT based on the
+    // approach you want to use. In production, there will only be one approach.
+    const credentialsConceptKey = process.env.CREDENTIALS_CONCEPT ?? CredentialsDirectionConcept.serverPull.toString()
+    const credentialsDirection: CredentialsDirectionConcept =
+        CredentialsDirectionConcept[credentialsConceptKey as keyof typeof CredentialsDirectionConcept]
 
     const debugOptions = { execArgv: ['--nolazy', '--inspect=6012', '--preserve-symlinks'] }
 
@@ -80,14 +91,18 @@ export async function activateDocumentsLanguageServer(extensionContext: Extensio
     }
 
     if (enableIamProvider) {
-        configureCredentialsCapabilities(clientOptions)
+        configureCredentialsCapabilities(clientOptions, credentialsDirection)
     }
 
     // Create the language client and start the client.
     const client = new LanguageClient('awsDocuments', 'AWS Documents Language Server', serverOptions, clientOptions)
 
     if (enableIamProvider) {
-        await registerIamCredentialsProvider(client, extensionContext)
+        if (credentialsDirection === CredentialsDirectionConcept.serverPull) {
+            await registerIamCredentialsProvider_serverPull(client, extensionContext)
+        } else {
+            await registerIamCredentialsProvider_extensionPush(client, extensionContext)
+        }
     }
 
     client.start()
