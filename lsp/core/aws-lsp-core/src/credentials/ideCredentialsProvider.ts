@@ -1,6 +1,5 @@
 import * as crypto from 'crypto'
 import { CancellationToken, Connection, RequestType } from 'vscode-languageserver'
-import { AwsInitializationOptions } from '../initialization/awsInitializationOptions'
 import { CredentialsProvider, IamCredentials, credentialsProtocolMethodNames } from './credentialsProvider'
 import { ResolveCredentialsRequest } from './resolveCredentialsRequest'
 import { ResolveCredentialsResponse } from './resolveCredentialsResponse'
@@ -19,15 +18,12 @@ export class IdeCredentialsProvider implements CredentialsProvider {
 
     private key: Buffer | undefined
 
-    constructor(private readonly connection: Connection) {}
-
-    /**
-     * Obtains the encryption key, which is provided by the host during LSP initialization.
-     * Intended to be called when the language server is initialized.
-     */
-    public initialize(props: AwsInitializationOptions) {
-        if (props.credentials?.providerKey) {
-            this.key = Buffer.from(props.credentials.providerKey, 'base64')
+    constructor(private readonly connection: Connection, key?: string) {
+        if (key) {
+            this.key = Buffer.from(key, 'base64')
+            this.connection.console.info('Server: I was initialized with an encryption key')
+        } else {
+            this.connection.console.info("Server: I didn't get an encryption key. Functionality will be limited.")
         }
     }
 

@@ -1,4 +1,5 @@
 export * from './credentialsProvider'
+export * from './encryption'
 export * from './ideCredentialsProvider'
 export * from './resolveCredentialsRequest'
 export * from './resolveCredentialsResponse'

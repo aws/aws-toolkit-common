@@ -1,6 +1,7 @@
 import { fromIni } from '@aws-sdk/credential-providers'
 import { AwsCredentialIdentity } from '@aws-sdk/types'
 import * as crypto from 'crypto'
+import { Writable } from 'stream'
 import { ExtensionContext } from 'vscode'
 import { CancellationToken, LanguageClient, LanguageClientOptions, RequestType } from 'vscode-languageclient/node'
 
@@ -52,6 +53,15 @@ const resolveIamRequestType = new RequestType<ResolveCredentialsRequest, Resolve
     lspMethodNames.resolveIamCredentials
 )
 
+export function writeEncryptionInit(stream: Writable): void {
+    const payload = {
+        version: '1.0',
+        key: encryptionKey.toString('base64'),
+    }
+    stream.write(JSON.stringify(payload))
+    stream.write('\n')
+}
+
 /**
  * Updates the language client's initialization payload to indicate that it can provide credentials
  * for AWS language servers.
@@ -68,7 +78,6 @@ export function configureCredentialsCapabilities(clientOptions: LanguageClientOp
     // See lsp\core\aws-lsp-core\src\initialization\awsInitializationOptions.ts
     clientOptions.initializationOptions.credentials = {
         providesIam: true,
-        providerKey: encryptionKey.toString('base64'),
     }
 }
 
