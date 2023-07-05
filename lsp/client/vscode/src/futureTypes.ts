@@ -10,7 +10,7 @@ import {
 
 /**
  * Inline completion is not a part of the language server protocol.
- * It is being proposed at this time.
+ * It is being proposed at this time (https://github.com/microsoft/language-server-protocol/pull/1673).
  *
  * This file contains boilerplate code that goes away if that proposal goes mainline.
  * The proposal is being modelled after the VS Code extensibility APIs, so the types
