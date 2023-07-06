@@ -12,4 +12,8 @@ export interface ResolveCredentialsResponse {
      * (eg: The payload is different when requesting IAM vs Bearer token)
      */
     data: string
+    /**
+     * Encrypted data's authTag - used for decryption validation
+     */
+    authTag: string
 }

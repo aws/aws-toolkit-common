@@ -108,8 +108,11 @@ export class IdeCredentialsProvider implements CredentialsProvider {
         }
 
         const iv = Buffer.from(response.iv, 'base64')
+        const decipher = crypto.createDecipheriv('aes-256-gcm', this.key, iv, {
+            authTagLength: 16,
+        })
+        decipher.setAuthTag(Buffer.from(response.authTag, 'base64'))
 
-        const decipher = crypto.createDecipheriv('aes-256-cbc', this.key, iv)
         return decipher.update(response.data, 'base64', 'utf8') + decipher.final('utf8')
     }
 }

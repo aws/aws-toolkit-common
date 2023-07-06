@@ -55,6 +55,10 @@ export interface ResolveCredentialsResponse {
      * (eg: The payload is different when requesting IAM vs Bearer token)
      */
     data: string
+    /**
+     * Encrypted data's authTag - used for decryption validation
+     */
+    authTag: string
 }
 
 export interface ResolveIamCredentialsResponseData {
@@ -155,11 +159,16 @@ function createResolveIamCredentialsResponse(awsCredentials: AwsCredentialIdenti
 
     // encrypt payload, create response
     const iv = crypto.randomBytes(16)
-    const encoder = crypto.createCipheriv('aes-256-cbc', encryptionKey, iv)
+    const encoder = crypto.createCipheriv('aes-256-gcm', encryptionKey, iv, {
+        authTagLength: 16,
+    })
+    const data = encoder.update(JSON.stringify(responseData), 'utf-8', 'base64') + encoder.final('base64')
+    const authTag = encoder.getAuthTag().toString('base64')
 
     return {
         iv: iv.toString('base64'),
-        data: encoder.update(JSON.stringify(responseData), 'utf-8', 'base64') + encoder.final('base64'),
+        data,
+        authTag,
     }
 }
 
