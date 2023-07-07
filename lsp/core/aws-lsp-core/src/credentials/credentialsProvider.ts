@@ -1,16 +1,20 @@
 import { CancellationToken } from 'vscode-languageserver'
 
 export interface IamCredentials {
-    accessKey: string
-    secretKey: string
-    token?: string
+    accessKeyId: string
+    secretAccessKey: string
+    sessionToken?: string
 }
 
 export const credentialsProtocolMethodNames = {
-    // Concept: If the server requests credentials from the host on-demand
-    resolveIamCredentials: '$/aws/credentials/iam',
-    // Concept: If the host pushes credentials to the server whenever credentials state changes
-    iamCredentialsUpdate: '$/aws/credentials/iam/update',
+    /**
+     * Called by host to push new IAM credentials whenever credentials state changes
+     * (and there are valid credentials)
+     */
+    iamCredentialsUpdate: '$/aws/credentials/iam',
+    /**
+     * Called by host to un-set any stored IAM credentials
+     */
     iamCredentialsClear: '$/aws/credentials/iam/clear',
 }
 

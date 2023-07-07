@@ -64,9 +64,9 @@ export class S3Service implements AwsLanguageService {
             const response = await credentialsProvider.resolveIamCredentials(CancellationToken.None)
 
             return {
-                accessKeyId: response.accessKey,
-                secretAccessKey: response.secretKey,
-                sessionToken: response.token,
+                accessKeyId: response.accessKeyId,
+                secretAccessKey: response.secretAccessKey,
+                sessionToken: response.sessionToken,
             }
         }
 

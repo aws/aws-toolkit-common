@@ -1,24 +1,18 @@
 import * as crypto from 'crypto'
-import { CancellationToken, Connection, RequestType } from 'vscode-languageserver'
-import { AwsInitializationOptions, CredentialsDirectionConcept } from '../initialization/awsInitializationOptions'
+import { CancellationToken, Connection } from 'vscode-languageserver'
+import { AwsInitializationOptions } from '../initialization/awsInitializationOptions'
 import { CredentialsProvider, IamCredentials, credentialsProtocolMethodNames } from './credentialsProvider'
-import { ResolveCredentialsRequest } from './resolveCredentialsRequest'
-import { ResolveCredentialsResponse } from './resolveCredentialsResponse'
+import { NoCredentialsError } from './error/noCredentialsError'
+import { UpdateCredentialsPayload } from './updateCredentialsPayload'
 
 /**
- * Requests credentials from IDE extensions, and decrypts the responses for use by language server components.
+ * Receives credentials from IDE extensions, and decrypts them for use by language server components.
  *
  * PROOF OF CONCEPT: Browser hosts might have a more simplified provider, assuming they already have credentials available.
  */
 export class IdeCredentialsProvider implements CredentialsProvider {
-    private readonly resolveIamRequestType = new RequestType<
-        ResolveCredentialsRequest,
-        ResolveCredentialsResponse,
-        Error
-    >(credentialsProtocolMethodNames.resolveIamCredentials)
-
     private key: Buffer | undefined
-    private credentialsDirection: CredentialsDirectionConcept = CredentialsDirectionConcept.serverPull
+    private pushedCredentials: IamCredentials | undefined
 
     constructor(private readonly connection: Connection, key?: string) {
         if (key) {
@@ -30,28 +24,31 @@ export class IdeCredentialsProvider implements CredentialsProvider {
     }
 
     /**
-     * Obtains the encryption key, which is provided by the host during LSP initialization.
      * Intended to be called when the language server is initialized.
+     * If the client provides credentials, handlers are registered.
      */
     public initialize(props: AwsInitializationOptions) {
-        if (props.credentials?.credentialsDirection) {
-            this.credentialsDirection = props.credentials.credentialsDirection
+        this.registerCredentialsPushHandlers(props)
+    }
 
-            if (this.credentialsDirection == CredentialsDirectionConcept.extPush) {
-                this.registerCredentialsPushHandlers()
-            }
+    private async registerCredentialsPushHandlers(props: AwsInitializationOptions) {
+        if (props.credentials?.providesIam) {
+            this.registerIamCredentialsPushHandlers()
+        }
+
+        if (props.credentials?.providesBearerToken) {
+            this.connection.console.info('Server: (stub) Registering bearer token credentials push handlers')
+            // TODO : Set up Bearer token handlers
         }
     }
 
-    private pushedCredentials: IamCredentials | undefined
-
-    private async registerCredentialsPushHandlers() {
-        this.connection.console.info('Server: Registering credentials push handlers')
+    private registerIamCredentialsPushHandlers(): void {
+        this.connection.console.info('Server: Registering IAM credentials push handlers')
 
         // Handle when host sends us credentials to use
         this.connection.onNotification(
             credentialsProtocolMethodNames.iamCredentialsUpdate,
-            (payload: ResolveCredentialsResponse) => {
+            (payload: UpdateCredentialsPayload) => {
                 const responseData = this.decryptResponseData(payload)
                 this.pushedCredentials = JSON.parse(responseData) as IamCredentials
                 this.connection.console.info('Server: The language server received updated credentials data.')
@@ -66,43 +63,17 @@ export class IdeCredentialsProvider implements CredentialsProvider {
     }
 
     /**
-     * Requests credentials from host
+     * Provides IAM based credentials. Throws NoCredentialsError if no credentials are available
      */
     public async resolveIamCredentials(token: CancellationToken): Promise<IamCredentials> {
-        if (this.credentialsDirection == CredentialsDirectionConcept.serverPull) {
-            this.connection.console.info('Server: Requesting Credentials...')
-            const request: ResolveCredentialsRequest = {
-                requestId: crypto.randomUUID(),
-                issuedOn: new Date().valueOf(),
-            }
-
-            const credentials = await this.getCredentialsFromHost(request, token)
-
-            this.connection.console.info('Server: Done Requesting Credentials')
-
-            return credentials
-        } else {
-            if (!this.pushedCredentials) {
-                throw new Error('there are no credentials')
-            }
-
-            this.connection.console.info('Server: I am using cached Credentials')
-            return this.pushedCredentials
+        if (!this.pushedCredentials) {
+            throw new NoCredentialsError()
         }
+
+        return this.pushedCredentials
     }
 
-    private async getCredentialsFromHost(
-        request: ResolveCredentialsRequest,
-        token: CancellationToken
-    ): Promise<IamCredentials> {
-        // Call out to the IDE for credentials
-        const response = await this.connection.sendRequest(this.resolveIamRequestType, request, token)
-
-        const responseData = this.decryptResponseData(response)
-        return JSON.parse(responseData) as IamCredentials
-    }
-
-    private decryptResponseData(response: ResolveCredentialsResponse): string {
+    private decryptResponseData(response: UpdateCredentialsPayload): string {
         if (!this.key) {
             throw new Error('no encryption key')
         }

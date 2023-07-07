@@ -10,10 +10,8 @@ import { ExtensionContext, workspace } from 'vscode'
 
 import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from 'vscode-languageclient/node'
 import {
-    CredentialsDirectionConcept,
     configureCredentialsCapabilities,
-    registerIamCredentialsProvider_extensionPush,
-    registerIamCredentialsProvider_serverPull,
+    registerIamCredentialsProviderSupport,
     writeEncryptionInit,
 } from './credentialsActivation'
 import { registerInlineCompletion } from './inlineCompletionActivation'
@@ -55,15 +53,6 @@ export async function activateDocumentsLanguageServer(extensionContext: Extensio
     const enableBearerTokenProvider = process.env.ENABLE_TOKEN_PROVIDER === 'true'
     const enableEncryptionInit = enableIamProvider || enableBearerTokenProvider
 
-    // Proof of Concept:
-    // We are evaluating whether language server should pull credentials from the extension
-    // whenever it needs ("serverPull"), or if credendials should be pushed by the extension
-    // as credentials state changes ("extPush"). Set envvar CREDENTIALS_CONCEPT based on the
-    // approach you want to use. In production, there will only be one approach.
-    const credentialsConceptKey = process.env.CREDENTIALS_CONCEPT ?? CredentialsDirectionConcept.serverPull.toString()
-    const credentialsDirection: CredentialsDirectionConcept =
-        CredentialsDirectionConcept[credentialsConceptKey as keyof typeof CredentialsDirectionConcept]
-
     const debugOptions = { execArgv: ['--nolazy', '--inspect=6012', '--preserve-symlinks'] }
 
     // If the extension is launch in debug mode the debug server options are use
@@ -104,18 +93,14 @@ export async function activateDocumentsLanguageServer(extensionContext: Extensio
     }
 
     if (enableIamProvider) {
-        configureCredentialsCapabilities(clientOptions, credentialsDirection)
+        configureCredentialsCapabilities(clientOptions)
     }
 
     // Create the language client and start the client.
     const client = new LanguageClient('awsDocuments', 'AWS Documents Language Server', serverOptions, clientOptions)
 
     if (enableIamProvider) {
-        if (credentialsDirection === CredentialsDirectionConcept.serverPull) {
-            await registerIamCredentialsProvider_serverPull(client, extensionContext)
-        } else {
-            await registerIamCredentialsProvider_extensionPush(client, extensionContext)
-        }
+        await registerIamCredentialsProviderSupport(client, extensionContext)
     }
 
     if (enableInlineCompletion) {

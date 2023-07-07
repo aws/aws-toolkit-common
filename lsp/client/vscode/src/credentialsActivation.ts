@@ -3,56 +3,20 @@ import { AwsCredentialIdentity } from '@aws-sdk/types'
 import * as crypto from 'crypto'
 import { Writable } from 'stream'
 import { ExtensionContext, commands, window } from 'vscode'
-import {
-    CancellationToken,
-    LanguageClient,
-    LanguageClientOptions,
-    NotificationType,
-    RequestType,
-} from 'vscode-languageclient/node'
+import { LanguageClient, LanguageClientOptions, NotificationType } from 'vscode-languageclient/node'
 
 /**
- * Proof of Concept: We are evaluating how we want language server to receive
- * credentials. In production, there will only be one approach.
+ * Payload for custom notification "Update Credentials"
  */
-export enum CredentialsDirectionConcept {
-    /**
-     * language server should pull credentials from the extension whenever it needs
-     */
-    serverPull,
-    /**
-     * credendials should be pushed by the extension as credentials state changes
-     */
-    extPush,
-}
-
-/**
- * Request for credentials from the langauge server
- */
-export interface ResolveCredentialsRequest {
-    /**
-     * Unique Id of request for IAM Credentials
-     */
-    requestId: string
-
-    /**
-     * When the request was produced, in milliseconds since Unix Epoch
-     */
-    issuedOn: number
-}
-
-/**
- * Credentials response sent to the langauge server
- */
-export interface ResolveCredentialsResponse {
+export interface UpdateCredentialsPayload {
     /**
      * Initialization vector for encrypted data, in base64
      */
     iv: string
 
     /**
-     * Encrypted data, in base64. The data contents will vary based on the request made.
-     * (eg: The payload is different when requesting IAM vs Bearer token)
+     * Encrypted data, in base64. The data contents will vary based on the notification used.
+     * (eg: The payload is different for IAM vs Bearer token)
      */
     data: string
     /**
@@ -61,25 +25,27 @@ export interface ResolveCredentialsResponse {
     authTag: string
 }
 
-export interface ResolveIamCredentialsResponseData {
-    accessKey: string
-    secretKey: string
-    token?: string
-    issuedOn: number // adds variation to the encrypted payload
+export interface UpdateIamCredentialsPayloadData {
+    accessKeyId: string
+    secretAccessKey: string
+    sessionToken?: string
 }
 
 const encryptionKey = crypto.randomBytes(32)
 
 const lspMethodNames = {
-    resolveIamCredentials: '$/aws/credentials/iam',
-    iamCredentialsUpdate: '$/aws/credentials/iam/update',
+    iamCredentialsUpdate: '$/aws/credentials/iam',
     iamCredentialsClear: '$/aws/credentials/iam/clear',
 }
 
-const resolveIamRequestType = new RequestType<ResolveCredentialsRequest, ResolveCredentialsResponse, Error>(
-    lspMethodNames.resolveIamCredentials
-)
+const notificationTypes = {
+    updateIamCredentials: new NotificationType<UpdateCredentialsPayload>(lspMethodNames.iamCredentialsUpdate),
+    clearIamCredentials: new NotificationType(lspMethodNames.iamCredentialsClear),
+}
 
+/**
+ * Sends a json payload to the language server, who is waiting to know what the encryption key is.
+ */
 export function writeEncryptionInit(stream: Writable): void {
     const payload = {
         version: '1.0',
@@ -93,10 +59,7 @@ export function writeEncryptionInit(stream: Writable): void {
  * Updates the language client's initialization payload to indicate that it can provide credentials
  * for AWS language servers.
  */
-export function configureCredentialsCapabilities(
-    clientOptions: LanguageClientOptions,
-    credentialsDirection: CredentialsDirectionConcept
-) {
+export function configureCredentialsCapabilities(clientOptions: LanguageClientOptions) {
     if (!clientOptions.initializationOptions) {
         clientOptions.initializationOptions = {}
     }
@@ -108,53 +71,56 @@ export function configureCredentialsCapabilities(
     // See lsp\core\aws-lsp-core\src\initialization\awsInitializationOptions.ts
     clientOptions.initializationOptions.credentials = {
         providesIam: true,
-        credentialsDirection: credentialsDirection.toString(),
     }
 }
 
-/**
- * Registers language clieng callbacks to handle credentials related protocol messages.
- */
-export async function registerIamCredentialsProvider_serverPull(
+export async function registerIamCredentialsProviderSupport(
     languageClient: LanguageClient,
     extensionContext: ExtensionContext
 ): Promise<void> {
-    languageClient.info('Registering credentials provider')
     extensionContext.subscriptions.push(
         ...[
-            // Provides the language server with IAM credentials
-            languageClient.onRequest<ResolveCredentialsRequest, ResolveCredentialsResponse, Error>(
-                resolveIamRequestType,
-                async (request: ResolveCredentialsRequest, token: CancellationToken) => {
-                    languageClient.info('Client: Credentials have been requested')
-
-                    // Here we would do some validation checks on request
-                    // TODO : check request.requestId for uniqueness (eg: maintain a queue that auto-evicts after 5 minutes. Have an upper size limit, evict oldest ids if needed)
-                    // TODO : check request.issuedOn for staleness (eg: 10 seconds)
-
-                    // PROOF OF CONCEPT
-                    // We will resolve the default profile from the local system.
-                    // In a product, the host extension would know which profile it is configured to provide to the language server.
-                    const awsCredentials = await fromIni({
-                        profile: 'default',
-                    })()
-
-                    return createResolveIamCredentialsResponse(awsCredentials)
-                }
-            ),
+            commands.registerCommand('awslsp.selectProfile', createSelectProfileCommand(languageClient)),
+            commands.registerCommand('awslsp.clearProfile', createClearProfileCommand(languageClient)),
         ]
     )
 }
 
 /**
+ * This command simulates an extension's credentials state changing, and pushing updated
+ * credentials to the server.
+ *
+ * In this simulation, the user is asked for a profile name. That profile's credentials are
+ * resolved and sent. (basic profile types only in this proof of concept)
+ */
+function createSelectProfileCommand(languageClient: LanguageClient) {
+    return async () => {
+        const profileName = await window.showInputBox({
+            prompt: 'Which credentials profile should the language server use?',
+        })
+
+        // PROOF OF CONCEPT
+        // We will resolve the default profile from the local system.
+        // In a product, the host extension would know which profile it is configured to provide to the language server.
+        const awsCredentials = await fromIni({
+            profile: profileName,
+        })()
+
+        const payload = createUpdateIamCredentialsPayload(awsCredentials)
+        await sendIamCredentialsUpdate(payload, languageClient)
+
+        languageClient.info(`Client: The language server is now using credentials profile: ${profileName}`)
+    }
+}
+
+/**
  * Creates a response payload that contains encrypted data
  */
-function createResolveIamCredentialsResponse(awsCredentials: AwsCredentialIdentity): ResolveCredentialsResponse {
-    const responseData: ResolveIamCredentialsResponseData = {
-        accessKey: awsCredentials.accessKeyId,
-        secretKey: awsCredentials.secretAccessKey,
-        token: awsCredentials.sessionToken,
-        issuedOn: Date.now(),
+function createUpdateIamCredentialsPayload(awsCredentials: AwsCredentialIdentity): UpdateCredentialsPayload {
+    const responseData: UpdateIamCredentialsPayloadData = {
+        accessKeyId: awsCredentials.accessKeyId,
+        secretAccessKey: awsCredentials.secretAccessKey,
+        sessionToken: awsCredentials.sessionToken,
     }
 
     // encrypt payload, create response
@@ -172,46 +138,17 @@ function createResolveIamCredentialsResponse(awsCredentials: AwsCredentialIdenti
     }
 }
 
-export async function registerIamCredentialsProvider_extensionPush(
-    languageClient: LanguageClient,
-    extensionContext: ExtensionContext
-): Promise<void> {
-    extensionContext.subscriptions.push(
-        ...[
-            commands.registerCommand('awslsp.selectProfile', createSelectProfileCommand(languageClient)),
-            commands.registerCommand('awslsp.clearProfile', createClearProfileCommand(languageClient)),
-        ]
-    )
+function sendIamCredentialsUpdate(payload: UpdateCredentialsPayload, languageClient: LanguageClient): Promise<void> {
+    return languageClient.sendNotification(notificationTypes.updateIamCredentials, payload)
 }
 
-function createSelectProfileCommand(languageClient: LanguageClient) {
-    return async () => {
-        const profileName = await window.showInputBox({
-            prompt: 'Which credentials profile should the language server use?',
-        })
-
-        // PROOF OF CONCEPT
-        // We will resolve the default profile from the local system.
-        // In a product, the host extension would know which profile it is configured to provide to the language server.
-        const awsCredentials = await fromIni({
-            profile: profileName,
-        })()
-
-        const payload = createResolveIamCredentialsResponse(awsCredentials)
-        await sendIamCredentialsUpdate(payload, languageClient)
-
-        languageClient.info(`Client: The language server is now using credentials profile: ${profileName}`)
-    }
-}
-
+/**
+ * This command simulates an extension's credentials expiring (or the user configuring "no credentials").
+ *
+ * The server's credentials are cleared.
+ */
 function createClearProfileCommand(languageClient: LanguageClient) {
     return async () => {
-        await languageClient.sendNotification(lspMethodNames.iamCredentialsClear)
+        await languageClient.sendNotification(notificationTypes.clearIamCredentials)
     }
-}
-
-function sendIamCredentialsUpdate(payload: ResolveCredentialsResponse, languageClient: LanguageClient): Promise<void> {
-    const updateCredentialsType = new NotificationType<ResolveCredentialsResponse>(lspMethodNames.iamCredentialsUpdate)
-
-    return languageClient.sendNotification(updateCredentialsType, payload)
 }

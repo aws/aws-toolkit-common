@@ -83,7 +83,7 @@ export class S3Server {
 
                 // TODO : handle error (eg: telemetry, etc)
 
-                throw err
+                return null
             }
 
             return
