@@ -16,6 +16,7 @@ import {
     registerIamCredentialsProvider_serverPull,
     writeEncryptionInit,
 } from './credentialsActivation'
+import { registerInlineCompletion } from './inlineCompletionActivation'
 
 export async function activateDocumentsLanguageServer(extensionContext: ExtensionContext) {
     /**
@@ -35,6 +36,14 @@ export async function activateDocumentsLanguageServer(extensionContext: Extensio
      */
     const fallbackPath = path.join(extensionContext.extensionPath, '../../../out/src/server/server.js')
     const serverModule = process.env.LSP_SERVER ?? fallbackPath
+
+    /**
+     * If you are iterating with a language server that uses inline completion,
+     * set the ENABLE_INLINE_COMPLETION environment variable to "true".
+     * This will set up the extension's inline completion provider to get recommendations
+     * from the language server.
+     */
+    const enableInlineCompletion = process.env.ENABLE_INLINE_COMPLETION === 'true'
 
     /**
      * If you are iterating with a language server that uses credentials...
@@ -79,14 +88,18 @@ export async function activateDocumentsLanguageServer(extensionContext: Extensio
     const clientOptions: LanguageClientOptions = {
         // Register the server for json documents
         documentSelector: [
+            // yaml/json is illustrative of static filetype handling language servers
             { scheme: 'file', language: 'yaml' },
             { scheme: 'untitled', language: 'yaml' },
             { scheme: 'file', language: 'json' },
             { scheme: 'untitled', language: 'json' },
+            // typescript is illustrative of code-handling language servers
+            { scheme: 'file', language: 'typescript' },
+            { scheme: 'untitled', language: 'typescript' },
         ],
         initializationOptions: {},
         synchronize: {
-            fileEvents: workspace.createFileSystemWatcher('**/*.{json,yml,yaml}'),
+            fileEvents: workspace.createFileSystemWatcher('**/*.{json,yml,yaml,ts}'),
         },
     }
 
@@ -103,6 +116,10 @@ export async function activateDocumentsLanguageServer(extensionContext: Extensio
         } else {
             await registerIamCredentialsProvider_extensionPush(client, extensionContext)
         }
+    }
+
+    if (enableInlineCompletion) {
+        registerInlineCompletion(client)
     }
 
     client.start()

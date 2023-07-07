@@ -9,7 +9,14 @@
         {
             "name": "appRunnerServiceStatus",
             "type": "string",
-            "allowedValues": ["CREATE_FAILED", "RUNNING", "DELETED", "DELETE_FAILED", "PAUSED", "OPERATION_IN_PROGRESS"],
+            "allowedValues": [
+                "CREATE_FAILED",
+                "RUNNING",
+                "DELETED",
+                "DELETE_FAILED",
+                "PAUSED",
+                "OPERATION_IN_PROGRESS"
+            ],
             "description": "The current state of the App Runner service"
         },
         {
@@ -241,7 +248,17 @@
             "name": "credentialSourceId",
             "type": "string",
             "description": "Where credentials are stored or retrieved from",
-            "allowedValues": ["sharedCredentials", "sdkStore", "ec2", "ecs", "envVars", "awsId", "iamIdentityCenter", "other"]
+            "allowedValues": [
+                "sharedCredentials",
+                "sdkStore",
+                "ec2",
+                "ecs",
+                "envVars",
+                "awsId",
+                "iamIdentityCenter",
+                "memory",
+                "other"
+            ]
         },
         {
             "name": "credentialType",
@@ -402,7 +419,13 @@
             "name": "toolId",
             "type": "string",
             "description": "The tool being installed",
-            "allowedValues": ["session-manager-plugin", "dotnet-lambda-deploy", "dotnet-deploy-cli", "aws-cli", "sam-cli"]
+            "allowedValues": [
+                "session-manager-plugin",
+                "dotnet-lambda-deploy",
+                "dotnet-deploy-cli",
+                "aws-cli",
+                "sam-cli"
+            ]
         },
         {
             "name": "elementId",
@@ -428,7 +451,14 @@
             "name": "codewhispererAutomatedTriggerType",
             "type": "string",
             "description": "The type of the Automated trigger to send request to CodeWhisperer service",
-            "allowedValues": ["KeyStrokeCount", "SpecialCharacters", "Enter", "IntelliSenseAcceptance", "IdleTime", "Classifier"]
+            "allowedValues": [
+                "KeyStrokeCount",
+                "SpecialCharacters",
+                "Enter",
+                "IntelliSenseAcceptance",
+                "IdleTime",
+                "Classifier"
+            ]
         },
 
         {
@@ -501,8 +531,26 @@
             "name": "codewhispererLanguage",
             "type": "string",
             "description": "Programming language of the CodeWhisperer recommendation",
-            "allowedValues": ["java", "python", "javascript", "plaintext", "jsx", "typescript", "tsx", "csharp",
-                "c", "cpp", "go", "kotlin", "php", "ruby", "rust", "scala", "shell", "sql"]
+            "allowedValues": [
+                "java",
+                "python",
+                "javascript",
+                "plaintext",
+                "jsx",
+                "typescript",
+                "tsx",
+                "csharp",
+                "c",
+                "cpp",
+                "go",
+                "kotlin",
+                "php",
+                "ruby",
+                "rust",
+                "scala",
+                "shell",
+                "sql"
+            ]
         },
         {
             "name": "codewhispererLastSuggestionIndex",
@@ -707,12 +755,7 @@
             "name": "codewhispererPreviousSuggestionState",
             "type": "string",
             "description": "The aggregated user decision from previous trigger. ",
-            "allowedValues": [
-                "Accept",
-                "Reject",
-                "Discard",
-                "Empty"
-            ]
+            "allowedValues": ["Accept", "Reject", "Discard", "Empty"]
         },
         {
             "name": "codewhispererClassifierResult",
@@ -744,20 +787,13 @@
             "name": "codecatalyst_createDevEnvironmentRepoType",
             "type": "string",
             "description": "Type of Git repository provided to the Amazon CodeCatalyst dev environment create wizard",
-            "allowedValues": [
-                "linked",
-                "unlinked",
-                "none"
-            ]
+            "allowedValues": ["linked", "unlinked", "none"]
         },
         {
             "name": "codecatalyst_updateDevEnvironmentLocationType",
             "type": "string",
             "description": "Locality of the Amazon CodeCatalyst update dev environment request (i.e., from the thin client or the local IDE instance)",
-            "allowedValues": [
-                "remote",
-                "local"
-            ]
+            "allowedValues": ["remote", "local"]
         },
         {
             "name": "userId",
@@ -788,11 +824,7 @@
             "name": "featureId",
             "type": "string",
             "description": "The id of the feature the user is interacting in.",
-            "allowedValues": [
-                "awsExplorer",
-                "codewhisperer",
-                "codecatalyst"
-            ]
+            "allowedValues": ["awsExplorer", "codewhisperer", "codecatalyst"]
         },
         {
             "name": "enabledAuthConnections",
@@ -817,7 +849,7 @@
         {
             "name": "userChoice",
             "type": "string",
-            "description": "User selection from a predefined menu (not user-provided input)" 
+            "description": "User selection from a predefined menu (not user-provided input)"
         }
     ],
     "metrics": [
@@ -877,10 +909,7 @@
         {
             "name": "apprunner_deleteService",
             "description": "Delete an App Runner service",
-            "metadata": [
-                { "type": "result" },
-                { "type": "appRunnerServiceStatus", "required": false }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "appRunnerServiceStatus", "required": false }]
         },
         {
             "name": "apprunner_startDeployment",
@@ -899,37 +928,34 @@
             "name": "auth_addConnection",
             "description": "Captures the result of adding a new connection in the 'Add New Connection' workflow",
             "metadata": [
-                { "type": "source"},
-                { "type": "featureId"},
-                { "type": "credentialSourceId"},
-                { "type": "isAggregated"},
-                { "type": "result"},
-                { "type": "attempts", "required": false},
-                { "type": "invalidInputFields", "required": false},
-                { "type": "reason", "required": false}
+                { "type": "source" },
+                { "type": "featureId" },
+                { "type": "credentialSourceId" },
+                { "type": "isAggregated" },
+                { "type": "result" },
+                { "type": "attempts", "required": false },
+                { "type": "invalidInputFields", "required": false },
+                { "type": "reason", "required": false }
             ]
         },
         {
             "name": "auth_addedConnections",
             "description": "The diff/change in Auth connections",
             "metadata": [
-                { "type": "source"},
-                { "type": "authConnectionsCount"},
-                { "type": "newAuthConnectionsCount"},
-                { "type": "enabledAuthConnections"},
-                { "type": "newEnabledAuthConnections"},
-                { "type": "attempts"},
-                { "type": "result"},
-                { "type": "reason", "required": false}
+                { "type": "source" },
+                { "type": "authConnectionsCount" },
+                { "type": "newAuthConnectionsCount" },
+                { "type": "enabledAuthConnections" },
+                { "type": "newEnabledAuthConnections" },
+                { "type": "attempts" },
+                { "type": "result" },
+                { "type": "reason", "required": false }
             ]
         },
         {
             "name": "auth_switchRoles",
             "description": "Called when user clicks yes or no to switch role upon adding new connection",
-            "metadata": [
-                { "type": "authConnectionsCount"},
-                { "type": "userChoice"}
-            ]
+            "metadata": [{ "type": "authConnectionsCount" }, { "type": "userChoice" }]
         },
         {
             "name": "aws_copyArn",
@@ -1007,8 +1033,8 @@
             "name": "aws_validateCredentials",
             "description": "Validate credentials when selecting new credentials",
             "metadata": [
-                { "type": "result" }, 
-                { "type": "credentialType", "required": false }, 
+                { "type": "result" },
+                { "type": "credentialType", "required": false },
                 { "type": "credentialSourceId", "required": false }
             ],
             "passive": true
@@ -1029,8 +1055,8 @@
             "name": "aws_loginWithBrowser",
             "description": "Called when a connection requires login using the browser",
             "metadata": [
-                { "type": "result" }, 
-                { "type": "credentialType", "required": false }, 
+                { "type": "result" },
+                { "type": "credentialType", "required": false },
                 { "type": "credentialSourceId", "required": false }
             ]
         },
@@ -1074,7 +1100,7 @@
                 { "type": "xrayEnabled", "required": false },
                 { "type": "enhancedHealthEnabled", "required": false },
                 { "type": "serviceType", "required": false },
-                { "type": "source" , "required": false}
+                { "type": "source", "required": false }
             ]
         },
         {
@@ -1084,7 +1110,7 @@
                 { "type": "result" },
                 { "type": "duration", "required": false },
                 { "type": "serviceType", "required": false },
-                { "type": "source" , "required": false}
+                { "type": "source", "required": false }
             ]
         },
         {
@@ -1160,10 +1186,7 @@
         {
             "name": "cloudwatchlogs_copyArn",
             "description": "Copy the ARN of a CloudWatch Logs entity",
-            "metadata": [
-                { "type": "result" },
-                { "type": "cloudWatchResourceType" }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "cloudWatchResourceType" }]
         },
         {
             "name": "cloudwatchlogs_open",
@@ -1191,19 +1214,13 @@
         {
             "name": "cloudwatchlogs_delete",
             "description": "Delete a CloudWatch Logs entity.",
-            "metadata": [
-                { "type": "result" },
-                { "type": "cloudWatchResourceType" }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "cloudWatchResourceType" }]
         },
         {
             "name": "cloudwatchlogs_download",
             "unit": "Bytes",
             "description": "Download a CloudWatch Logs entity. Value indicates the final size of the formatted stream in bytes.",
-            "metadata": [
-                { "type": "result" },
-                { "type": "cloudWatchResourceType" }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "cloudWatchResourceType" }]
         },
         {
             "name": "cloudwatchlogs_downloadStreamToFile",
@@ -1274,20 +1291,17 @@
         {
             "name": "cloudformation_createProject",
             "description": "Called when creating a CloudFormation project",
-            "metadata": [
-                { "type": "result" },
-                { "type": "templateName" }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "templateName" }]
         },
         {
             "name": "cloudformation_deploy",
             "description": "Called when deploying a CloudFormation template",
             "metadata": [
-                { "type": "result" }, 
+                { "type": "result" },
                 { "type": "initialDeploy" },
                 { "type": "duration", "required": false },
                 { "type": "serviceType", "required": false },
-                { "type": "source" , "required": false}
+                { "type": "source", "required": false }
             ]
         },
         {
@@ -1297,7 +1311,7 @@
                 { "type": "result" },
                 { "type": "duration", "required": false },
                 { "type": "serviceType", "required": false },
-                { "type": "source" , "required": false}
+                { "type": "source", "required": false }
             ]
         },
         {
@@ -1308,52 +1322,33 @@
         {
             "name": "codecommit_cloneRepo",
             "description": "A repo is cloned from CodeCommit",
-            "metadata": [
-                { "type": "result" },
-                { "type": "reason", "required": false }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "reason", "required": false }]
         },
         {
             "name": "codecommit_createRepo",
             "description": "A repo is created in CodeCommit",
-            "metadata": [
-                { "type": "result" },
-                { "type": "reason", "required": false }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "reason", "required": false }]
         },
         {
             "name": "codecommit_setCredentials",
             "description": "A connection is established to CodeCommit to perform actions on repos",
-            "metadata": [
-                { "type": "result" },
-                { "type": "credentialType", "required": false }
-            ],
+            "metadata": [{ "type": "result" }, { "type": "credentialType", "required": false }],
             "passive": true
         },
         {
             "name": "dynamodb_createTable",
             "description": "Create a DynamoDB table",
-            "metadata": [
-                { "type": "result" },
-                { "type": "reason", "required": false }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "reason", "required": false }]
         },
         {
             "name": "dynamodb_deleteTable",
             "description": "Delete a DynamoDB table",
-            "metadata": [
-                { "type": "result" },
-                { "type": "reason", "required": false }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "reason", "required": false }]
         },
         {
             "name": "dynamodb_edit",
             "description": "Modify a DynamoDB entity",
-            "metadata": [
-                { "type": "result" },
-                { "type": "dynamoDbTarget" },
-                { "type": "reason", "required": false }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "dynamoDbTarget" }, { "type": "reason", "required": false }]
         },
         {
             "name": "dynamodb_fetchRecords",
@@ -1372,211 +1367,148 @@
         {
             "name": "dynamodb_view",
             "description": "View a DynamoDB entity",
-            "metadata": [
-                { "type": "result" },
-                { "type": "dynamoDbTarget" },
-                { "type": "reason", "required": false }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "dynamoDbTarget" }, { "type": "reason", "required": false }]
         },
         {
             "name": "ec2_changeState",
             "description": "Change the state of an EC2 Instance",
-            "metadata": [
-                { "type": "result" }, 
-                { "type": "ec2InstanceState" }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "ec2InstanceState" }]
         },
         {
             "name": "ec2_clearPrivateKey",
             "unit": "Count",
             "description": "Remove the private key of an EC2 Key Pair from internal storage",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_connectToInstance",
             "description": "Perform a connection to an EC2 Instance",
-            "metadata": [
-                { "type": "result" }, 
-                { "type": "ec2ConnectionType" }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "ec2ConnectionType" }]
         },
         {
             "name": "ec2_copyAmiToRegion",
             "description": "Copy AMI image to another region",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_createAmi",
             "description": "Create an image from an EC2 Instance",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_createElasticIp",
             "description": "Create (allocate) an Elastic IP address",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_createKeyPair",
             "description": "Create an EC2 Key Pair",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_createSecurityGroup",
             "description": "Create an EC2 security group",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_createSnapshot",
             "description": "Create an EC2 volume snapshot",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_createVolume",
             "description": "Create an EC2 volume",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_deleteAmi",
             "unit": "Count",
             "description": "Delete (de-register) an AMI image",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_deleteElasticIp",
             "description": "Delete (release) an Elastic IP address",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_deleteKeyPair",
             "unit": "Count",
             "description": "Delete an EC2 Key Pair",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_deleteSecurityGroup",
             "unit": "Count",
             "description": "Delete an EC2 security group",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_deleteSnapshot",
             "unit": "Count",
             "description": "Delete an EC2 Volume Snapshot",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_deleteVolume",
             "unit": "Count",
             "description": "Delete an EC2 Volume",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_editAmiPermission",
             "description": "Edit AMI image permissions",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_editInstanceElasticIp",
             "description": "Associate or disassociate an Elastic IP with an EC2 Instance",
-            "metadata": [
-                { "type": "result" }, 
-                { "type": "enabled", "required": false}
-            ]
+            "metadata": [{ "type": "result" }, { "type": "enabled", "required": false }]
         },
         {
             "name": "ec2_editInstanceShutdownBehavior",
             "description": "Adjust the shutdown behavior of an EC2 Instance",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_editInstanceTerminationProtection",
             "description": "Adjust the termination protection of an EC2 Instance",
-            "metadata": [
-                { "type": "result" }, 
-                { "type": "enabled", "required": false}
-            ]
+            "metadata": [{ "type": "result" }, { "type": "enabled", "required": false }]
         },
         {
             "name": "ec2_editInstanceType",
             "description": "Adjust the instance type of an EC2 Instance",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_editInstanceUserData",
             "description": "Adjust an EC2 Instance's user data",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_editSecurityGroupPermission",
             "description": "Alter an EC2 security group permission",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_editVolumeAttachment",
             "description": "Attach (enabled = true) or detach a volume",
-            "metadata": [
-                { "type": "result" },
-                { "type": "enabled" }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "enabled" }]
         },
         {
             "name": "ec2_exportPrivateKey",
             "description": "Save the private key of an EC2 Key Pair out to disk",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_importPrivateKey",
             "description": "Store the private key of an EC2 Key Pair in internal storage",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_launchInstance",
             "description": "Launch an EC2 Instance",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ec2_openInstances",
@@ -1621,9 +1553,7 @@
         {
             "name": "ec2_viewInstanceUserData",
             "description": "View an EC2 Instance's user data",
-            "metadata": [
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "result" }]
         },
         {
             "name": "ecs_enableExecuteCommand",
@@ -1676,37 +1606,22 @@
         {
             "name": "ecs_deployScheduledTask",
             "description": "Called when deploying a scheduled task to an ECS cluster",
-            "metadata": [
-                { "type": "result" },
-                { "type": "ecsLaunchType" },
-                { "type": "duration", "required": false }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "ecsLaunchType" }, { "type": "duration", "required": false }]
         },
         {
             "name": "ecs_deployService",
             "description": "Called when deploying a service to an ECS cluster",
-            "metadata": [
-                { "type": "result" },
-                { "type": "ecsLaunchType" },
-                { "type": "duration", "required": false }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "ecsLaunchType" }, { "type": "duration", "required": false }]
         },
         {
             "name": "ecs_deployTask",
             "description": "Called when deploying a task to an ECS cluster",
-            "metadata": [
-                { "type": "result" },
-                { "type": "ecsLaunchType" },
-                { "type": "duration", "required": false }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "ecsLaunchType" }, { "type": "duration", "required": false }]
         },
         {
             "name": "ecs_publishWizard",
             "description": "Called when user completes the ECS publish wizard",
-            "metadata": [
-                { "type": "result" },
-                { "type": "duration", "required": false }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "duration", "required": false }]
         },
         {
             "name": "ecs_openRepository",
@@ -1750,8 +1665,8 @@
             "description": "Use authoring features such as autocompletion, syntax checking, and highlighting, for AWS filetypes (CFN, SAM, etc.). Emit this _once_ per file-editing session for a given file. Ideally this is emitted only if authoring features are used, rather than merely opening or touching a file.",
             "metadata": [
                 { "type": "result" },
-                { "type": "awsFiletype", "required": true},
-                { "type": "filenameExt", "required": false}
+                { "type": "awsFiletype", "required": true },
+                { "type": "filenameExt", "required": false }
             ]
         },
         {
@@ -1772,34 +1687,22 @@
         {
             "name": "iam_open",
             "description": "Open a window to view/edit an IAM resource",
-            "metadata": [
-                { "type": "result" },
-                { "type": "iamResourceType" }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "iamResourceType" }]
         },
         {
             "name": "iam_create",
             "description": "Create an IAM resource",
-            "metadata": [
-                { "type": "result" },
-                { "type": "iamResourceType" }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "iamResourceType" }]
         },
         {
             "name": "iam_delete",
             "description": "Delete an IAM resource",
-            "metadata": [
-                { "type": "result" },
-                { "type": "iamResourceType" }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "iamResourceType" }]
         },
         {
             "name": "iam_edit",
             "description": "Edits policy/configuration associated with an IAM resource",
-            "metadata": [
-                { "type": "result" },
-                { "type": "iamResourceType" }
-            ]
+            "metadata": [{ "type": "result" }, { "type": "iamResourceType" }]
         },
         {
             "name": "iam_createUserAccessKey",
@@ -1888,7 +1791,7 @@
                 { "type": "language", "required": false },
                 { "type": "xrayEnabled", "required": false },
                 { "type": "serviceType", "required": false },
-                { "type": "source" , "required": false}
+                { "type": "source", "required": false }
             ]
         },
         {
@@ -1898,7 +1801,7 @@
                 { "type": "result" },
                 { "type": "duration", "required": false },
                 { "type": "serviceType", "required": false },
-                { "type": "source" , "required": false}
+                { "type": "source", "required": false }
             ]
         },
         {
@@ -1988,10 +1891,10 @@
             "name": "sam_sync",
             "description": "Called when syncing a SAM application",
             "metadata": [
-                { "type": "result" }, 
+                { "type": "result" },
                 { "type": "syncedResources" },
                 { "type": "lambdaPackageType" },
-                { "type": "reason", "required": false }, 
+                { "type": "reason", "required": false },
                 { "type": "version", "required": false }
             ]
         },
@@ -2067,8 +1970,8 @@
             "description": "Delete S3 object(s)",
             "metadata": [
                 { "type": "result" },
-                { "type": "successCount", "required": false},
-                { "type": "failedCount", "required": false}
+                { "type": "successCount", "required": false },
+                { "type": "failedCount", "required": false }
             ]
         },
         {
@@ -2081,9 +1984,9 @@
             "description": "Download S3 object(s)",
             "metadata": [
                 { "type": "result" },
-                { "type": "successCount", "required": false},
-                { "type": "failedCount", "required": false},
-                { "type": "component", "required": false}
+                { "type": "successCount", "required": false },
+                { "type": "failedCount", "required": false },
+                { "type": "component", "required": false }
             ]
         },
         {
@@ -2097,9 +2000,9 @@
             "description": "Upload S3 object(s)",
             "metadata": [
                 { "type": "result" },
-                { "type": "successCount", "required": false},
-                { "type": "failedCount", "required": false},
-                { "type": "component", "required": false}
+                { "type": "successCount", "required": false },
+                { "type": "failedCount", "required": false },
+                { "type": "component", "required": false }
             ]
         },
         {
@@ -2121,11 +2024,8 @@
         {
             "name": "s3_editObject",
             "description": "Edit or view one or more S3 objects in the IDE",
-            "unit":  "Count",
-            "metadata": [
-                { "type": "result" },
-                { "type": "component", "required": false}
-            ]
+            "unit": "Count",
+            "metadata": [{ "type": "result" }, { "type": "component", "required": false }]
         },
         {
             "name": "s3_openBucketProperties",
@@ -2955,7 +2855,7 @@
         {
             "name": "codewhisperer_clientComponentLatency",
             "description": "The latency from each CodeWhisperer components in milliseconds",
-             "passive": true,
+            "passive": true,
             "metadata": [
                 {
                     "type": "codewhispererRequestId"
@@ -3023,26 +2923,17 @@
         {
             "name": "codecatalyst_updateDevfile",
             "description": "Trigger a devfile update on a Amazon CodeCatalyst dev environment",
-            "metadata": [
-                { "type": "userId" },
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "userId" }, { "type": "result" }]
         },
         {
             "name": "codecatalyst_localClone",
             "description": "Clone a Amazon CodeCatalyst code repository locally",
-            "metadata": [
-                { "type": "userId" },
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "userId" }, { "type": "result" }]
         },
         {
             "name": "codecatalyst_connect",
             "description": "Connect to a Amazon CodeCatalyst dev environment",
-            "metadata": [
-                { "type": "userId" },
-                { "type": "result" }
-            ]
+            "metadata": [{ "type": "userId" }, { "type": "result" }]
         },
         {
             "name": "codecatalyst_devEnvironmentWorkflowStatistic",
@@ -3051,8 +2942,8 @@
             "metadata": [
                 { "type": "userId" },
                 { "type": "result" },
-                { "type": "duration"},
-                { "type": "codecatalyst_devEnvironmentWorkflowStep"},
+                { "type": "duration" },
+                { "type": "codecatalyst_devEnvironmentWorkflowStep" },
                 { "type": "codecatalyst_devEnvironmentWorkflowError", "required": false }
             ]
         }
