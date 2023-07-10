@@ -1,6 +1,6 @@
 # Proof of Concept: AWS Documents LSP Client integration into VS Code
 
-This is an example Visual Studio extension that wraps an experimental LSP service. The repo contains more than one language server, but this extension is only used to launch one server. To launch a specific server with this extension, set the `LSP_SERVER` environment variable prior to launching this extension. `LSP_SERVER` should be set to the .js file that `node` should launch. See [lsp/.vscode/launch.json](lsp/.vscode/launch.json) for examples.
+This is an example Visual Studio extension that wraps an experimental LSP service. The repo contains more than one language server, but this extension is only used to launch one server. To launch a specific server with this extension, set the `LSP_SERVER` environment variable prior to launching this extension. `LSP_SERVER` should be set to the .js file that `node` should launch. See [/lsp/.vscode/launch.json](/lsp/.vscode/launch.json) for examples.
 
 # Working Credentials example
 
