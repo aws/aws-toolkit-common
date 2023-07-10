@@ -5,7 +5,7 @@ namespace IdesLspPoc.Credentials
     /// <summary>
     /// Credentials response sent to the langauge server
     /// </summary>
-    public class ResolveCredentialsResponse
+    public class UpdateCredentialsPayload
     {
         /// <summary>
         /// Initialization vector for encrypted data, in base64
@@ -19,5 +19,11 @@ namespace IdesLspPoc.Credentials
         /// </summary>
         [JsonProperty("data")]
         public string Data;
+
+        /// <summary>
+        /// Encrypted data's authTag - used for decryption validation
+        /// </summary>
+        [JsonProperty("authTag")]
+        public string AuthTag;
     }
 }

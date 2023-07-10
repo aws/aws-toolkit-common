@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using OutputWindow = IdesLspPoc.Output.OutputWindow;
@@ -107,7 +108,14 @@ namespace IdesLspPoc.LspClient
                 return null;
             }
 
+            await OnBeforeLspConnectionStartsAsync(lspProcess);
+
             return new Connection(lspProcess.StandardOutput.BaseStream, lspProcess.StandardInput.BaseStream);
+        }
+
+        protected virtual Task OnBeforeLspConnectionStartsAsync(Process lspProcess)
+        {
+            return Task.CompletedTask;
         }
 
         /// <summary>
@@ -148,7 +156,7 @@ namespace IdesLspPoc.LspClient
             {
                 WorkingDirectory = GetServerWorkingDir(),
                 FileName = GetServerPath(),
-                Arguments = "--stdio",
+                Arguments = string.Join(" ", GetLspProcessArgs()),
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
@@ -161,6 +169,11 @@ namespace IdesLspPoc.LspClient
             };
 
             return process;
+        }
+
+        protected virtual IEnumerable<string> GetLspProcessArgs()
+        {
+            return new[] { "--stdio" };
         }
 
         protected abstract string GetServerWorkingDir();

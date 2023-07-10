@@ -2,11 +2,15 @@
 using IdesLspPoc.LspClient.S3;
 using Microsoft.VisualStudio.LanguageServer.Client;
 using Microsoft.VisualStudio.Utilities;
+using Newtonsoft.Json;
+using Org.BouncyCastle.Security;
 using StreamJsonRpc;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Diagnostics;
-using System.Security.Cryptography;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace IdesLspPoc.LspClient
@@ -40,25 +44,22 @@ namespace IdesLspPoc.LspClient
                 return new
                 {
                     // CONCEPT: We signal that we can provide credentials.
-                    // We initialize the server with an encryption key. The server requests credentials, and will
-                    // decrypt them with this key.
                     credentials = new
                     {
                         providesIam = true,
-                        providerKey = Convert.ToBase64String(_aes.Key),
                     }
                 };
             }
         }
 
-        private readonly Aes _aes;
+        private readonly byte[] _aesKey = new byte[32];
+        private S3CredentialsUpdater _credentialsUpdater;
 
         public S3LspClient()
         {
-            _aes = Aes.Create();
-            _aes.Mode = CipherMode.CBC;
-            _aes.KeySize = 256;
-            _aes.GenerateKey();
+            // Create encryption key for this session
+            SecureRandom random = new SecureRandom();
+            random.NextBytes(_aesKey);
         }
 
         protected override string GetServerWorkingDir()
@@ -72,12 +73,31 @@ namespace IdesLspPoc.LspClient
             return $@"{GetServerWorkingDir()}\aws-lsp-s3-binary-win.exe";
         }
 
-        public override Task OnLoadedAsync()
+        protected override IEnumerable<string> GetLspProcessArgs()
         {
-            // This is what allows the extension to handle requests for credentials from the language server
-            CustomMessageTarget = new S3LspMessageHandler(_outputWindow, _aes);
+            return base.GetLspProcessArgs()
+                .Concat(new[] {
+                    // Signal that we will send the encryption key before starting the LSP protocol channel
+                    "--pre-init"
+                });
+        }
 
-            return base.OnLoadedAsync();
+        protected override async Task OnBeforeLspConnectionStartsAsync(Process lspProcess)
+        {
+            WriteEncryptionInit(lspProcess.StandardInput);
+
+            await base.OnBeforeLspConnectionStartsAsync(lspProcess);
+        }
+
+        private void WriteEncryptionInit(StreamWriter writer)
+        {
+            var json = JsonConvert.SerializeObject(new
+            {
+                version = "1.0",
+                key = Convert.ToBase64String(_aesKey),
+            });
+
+            writer.WriteLine(json);
         }
 
         #region ILanguageClientCustomMessage2
@@ -95,6 +115,10 @@ namespace IdesLspPoc.LspClient
         public Task AttachForCustomMessageAsync(JsonRpc rpc)
         {
             _rpc = rpc;
+
+            // This is how we would call custom notifications to push credentials to the server
+            _credentialsUpdater = new S3CredentialsUpdater(_rpc, _aesKey, _outputWindow);
+            _credentialsUpdater.StartCredentialsRefreshSimulation();
 
             return Task.CompletedTask;
         }
