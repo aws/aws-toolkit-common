@@ -18,11 +18,41 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Core
         public bool Passive = false;
 
         /// <summary>
-        /// Optional - The reason for a metric or exception depending on context
+        /// Optional - The reason for a metric or exception depending on context. It describes a certain theme of errors usually the exception class name eg. FileIOException
         /// This is often used in failure scenarios to provide additional details about why something failed.
         /// </summary>
         public string Reason;
 
+        /// <summary>
+        /// Optional - User-friendly error codes describing a failed operation
+        /// This is often used in failure scenarios to provide additional details about why something failed.
+        /// </summary>
+        public string ErrorCode;
+
+        /// <summary>
+        /// Optional - High level categorization indicating the cause of the error eg. client, user, service, unknown
+        /// This is often used in failure scenarios to provide additional details about why something failed.
+        /// </summary>
+        public string CausedBy;
+
+        /// <summary>
+        /// Optional - Describes the HTTP status code for request made. The semantics are contextual based off of other fields (e.g. `requestId`)
+        /// This is often used in failure scenarios to provide additional details about why something failed.
+        /// </summary>
+        public string HttpStatusCode;
+
+        /// <summary>
+        /// Optional - A generic request ID field. The semantics are contextual based off of other fields (e.g. `requestServiceType`). For example, an event with `requestServiceType: s3` means that the request ID is associated with an S3 API call. Events that cover mutliple API calls should use the request ID of the most recent call.
+        /// This is often used in failure scenarios to provide additional details about why something failed.
+        /// </summary>
+        public string RequestId;
+
+        /// <summary>
+        /// Optional - Per-request service identifier. Unlike `serviceType` (which describes the originator of the request), this describes the request itself.
+        /// This is often used in failure scenarios to provide additional details about why something failed.
+        /// </summary>
+        public string RequestServiceType;
+        
         /// <summary>
         /// Optional - The duration for the workflow associated with the metric 
         /// This is often used in multi-step workflows to provide additional details about how long did the action take

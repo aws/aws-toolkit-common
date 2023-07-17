@@ -26,6 +26,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
         private static readonly string[] ImplicitFields = 
         {
             "reason",
+            "errorCode",
+            "causedBy",
+            "httpStatusCode",
+            "requestId",
+            "requestServiceType",
             "duration",
             "locale"
         };
@@ -405,6 +410,31 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             var payloadReason = new CodeFieldReferenceExpression(payload, "Reason");
             tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
                 new CodePrimitiveExpression("reason"), payloadReason)));
+
+            // Generate: datum.AddMetadata("errorCode", payload.ErrorCode);
+            var payloadErrorCode = new CodeFieldReferenceExpression(payload, "ErrorCode");
+            tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
+                new CodePrimitiveExpression("errorCode"), payloadErrorCode)));
+
+            // Generate: datum.AddMetadata("causedBy", payload.CausedBy);
+            var payloadCausedBy = new CodeFieldReferenceExpression(payload, "CausedBy");
+            tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
+                new CodePrimitiveExpression("causedBy"), payloadCausedBy)));
+
+            // Generate: datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+            var payloadHttpStatusCode = new CodeFieldReferenceExpression(payload, "HttpStatusCode");
+            tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
+                new CodePrimitiveExpression("httpStatusCode"), payloadHttpStatusCode)));
+
+            // Generate: datum.AddMetadata("requestId", payload.RequestId);
+            var payloadRequestId = new CodeFieldReferenceExpression(payload, "RequestId");
+            tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
+                new CodePrimitiveExpression("requestId"), payloadRequestId)));
+
+            // Generate: datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+            var payloadRequestServiceType = new CodeFieldReferenceExpression(payload, "RequestServiceType");
+            tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
+                new CodePrimitiveExpression("requestServiceType"), payloadRequestServiceType)));  
 
             // Generate: 
             // if (payload.Duration.HasValue)

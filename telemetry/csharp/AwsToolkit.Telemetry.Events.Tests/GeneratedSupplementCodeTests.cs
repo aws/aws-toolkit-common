@@ -66,6 +66,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             {
                 Bees = 123,
                 Reason = "sample-reason",
+                ErrorCode = "SampleErrorCode",
+                CausedBy = "unknown",
+                HttpStatusCode = "BadGateway",
+                RequestId = "1234",
+                RequestServiceType = "Lambda",
                 Duration = 22.5,
                 Locale = "en-US"
             };
@@ -84,6 +89,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.Equal(Unit.None, datum.Unit);
             Assert.Equal(payload.Bees.ToString(), datum.Metadata["bees"]);
             Assert.Equal(payload.Reason, datum.Metadata["reason"]);
+            Assert.Equal(payload.ErrorCode, datum.Metadata["errorCode"]);
+            Assert.Equal(payload.CausedBy, datum.Metadata["causedBy"]);
+            Assert.Equal(payload.HttpStatusCode, datum.Metadata["httpStatusCode"]);
+            Assert.Equal(payload.RequestId, datum.Metadata["requestId"]);
+            Assert.Equal(payload.RequestServiceType, datum.Metadata["requestServiceType"]);
             Assert.Equal(payload.Duration.ToString(), datum.Metadata["duration"]);
             Assert.Equal(payload.Locale, datum.Metadata["locale"]);
         }
