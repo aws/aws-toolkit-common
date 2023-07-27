@@ -1,7 +1,7 @@
 import * as crypto from 'crypto'
 import { CancellationToken, Connection } from 'vscode-languageserver'
 import { AwsInitializationOptions } from '../initialization/awsInitializationOptions'
-import { CredentialsProvider, IamCredentials, credentialsProtocolMethodNames } from './credentialsProvider'
+import { BearerToken, CredentialsProvider, IamCredentials, credentialsProtocolMethodNames } from './credentialsProvider'
 import { NoCredentialsError } from './error/noCredentialsError'
 import { UpdateCredentialsRequest } from './updateCredentialsRequest'
 
@@ -13,6 +13,7 @@ import { UpdateCredentialsRequest } from './updateCredentialsRequest'
 export class IdeCredentialsProvider implements CredentialsProvider {
     private key: Buffer | undefined
     private pushedCredentials: IamCredentials | undefined
+    private pushedToken: BearerToken | undefined
 
     constructor(private readonly connection: Connection, key?: string) {
         if (key) {
@@ -37,8 +38,7 @@ export class IdeCredentialsProvider implements CredentialsProvider {
         }
 
         if (props.credentials?.providesBearerToken) {
-            this.connection.console.info('Server: (stub) Registering bearer token credentials push handlers')
-            // TODO : Set up Bearer token handlers
+            this.registerBearerTokenPushHandlers()
         }
     }
 
@@ -62,6 +62,26 @@ export class IdeCredentialsProvider implements CredentialsProvider {
         })
     }
 
+    private registerBearerTokenPushHandlers(): void {
+        this.connection.console.info('Server: Registering bearer token push handlers')
+
+        // Handle when host sends us credentials to use
+        this.connection.onNotification(
+            credentialsProtocolMethodNames.iamBearerTokenUpdate,
+            (request: UpdateCredentialsRequest) => {
+                const responseData = this.decryptUpdateCredentialsRequestData(request)
+                this.pushedToken = JSON.parse(responseData) as BearerToken
+                this.connection.console.info('Server: The language server received an updated bearer token.')
+            }
+        )
+
+        // Handle when host tells us we have no credentials to use
+        this.connection.onNotification(credentialsProtocolMethodNames.iamBearerTokenDelete, () => {
+            this.pushedToken = undefined
+            this.connection.console.info('Server: The language server does not have a bearer token anymore.')
+        })
+    }
+
     /**
      * Provides IAM based credentials. Throws NoCredentialsError if no credentials are available
      */
@@ -71,6 +91,17 @@ export class IdeCredentialsProvider implements CredentialsProvider {
         }
 
         return this.pushedCredentials
+    }
+
+    /**
+     * Provides a bearer token. Throws NoCredentialsError if bearer token is not available
+     */
+    public async resolveBearerToken(token: CancellationToken): Promise<BearerToken> {
+        if (!this.pushedToken) {
+            throw new NoCredentialsError()
+        }
+
+        return this.pushedToken
     }
 
     private decryptUpdateCredentialsRequestData(request: UpdateCredentialsRequest): string {
