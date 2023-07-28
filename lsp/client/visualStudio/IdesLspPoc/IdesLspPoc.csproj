@@ -47,9 +47,9 @@
   <ItemGroup>
     <Compile Include="ContentDefinitions\BuildSpec.cs" />
     <Compile Include="ContentDefinitions\JsonContentType.cs" />
-    <Compile Include="Credentials\UpdateCredentialsPayload.cs" />
+    <Compile Include="Credentials\UpdateCredentialsRequest.cs" />
     <Compile Include="LspClient\BuildspecLspClient.cs" />
-    <Compile Include="Credentials\UpdateIamCredentialsPayloadData.cs" />
+    <Compile Include="Credentials\UpdateIamCredentialsRequestData.cs" />
     <Compile Include="LspClient\S3LspClient.cs" />
     <Compile Include="LspClient\CloudFormationLspClient.cs" />
     <Compile Include="LspClient\S3\S3CredentialsUpdater.cs" />

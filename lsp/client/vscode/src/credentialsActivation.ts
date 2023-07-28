@@ -6,9 +6,10 @@ import { ExtensionContext, commands, window } from 'vscode'
 import { LanguageClient, LanguageClientOptions, NotificationType } from 'vscode-languageclient/node'
 
 /**
- * Payload for custom notification "Update Credentials"
+ * Request for custom notifications that Update Credentials and tokens.
+ * See core\aws-lsp-core\src\credentials\updateCredentialsRequest.ts for details
  */
-export interface UpdateCredentialsPayload {
+export interface UpdateCredentialsRequest {
     /**
      * Initialization vector for encrypted data, in base64
      */
@@ -25,7 +26,7 @@ export interface UpdateCredentialsPayload {
     authTag: string
 }
 
-export interface UpdateIamCredentialsPayloadData {
+export interface UpdateIamCredentialsRequestData {
     accessKeyId: string
     secretAccessKey: string
     sessionToken?: string
@@ -41,7 +42,7 @@ const lspMethodNames = {
 }
 
 const notificationTypes = {
-    updateIamCredentials: new NotificationType<UpdateCredentialsPayload>(lspMethodNames.iamCredentialsUpdate),
+    updateIamCredentials: new NotificationType<UpdateCredentialsRequest>(lspMethodNames.iamCredentialsUpdate),
     clearIamCredentials: new NotificationType(lspMethodNames.iamCredentialsClear),
 }
 
@@ -49,11 +50,11 @@ const notificationTypes = {
  * Sends a json payload to the language server, who is waiting to know what the encryption key is.
  */
 export function writeEncryptionInit(stream: Writable): void {
-    const payload = {
+    const request = {
         version: '1.0',
         key: encryptionKey.toString('base64'),
     }
-    stream.write(JSON.stringify(payload))
+    stream.write(JSON.stringify(request))
     stream.write('\n')
 }
 
@@ -108,24 +109,24 @@ function createSelectProfileCommand(languageClient: LanguageClient) {
             profile: profileName,
         })()
 
-        const payload = createUpdateIamCredentialsPayload(awsCredentials)
-        await sendIamCredentialsUpdate(payload, languageClient)
+        const request = createUpdateIamCredentialsRequest(awsCredentials)
+        await sendIamCredentialsUpdate(request, languageClient)
 
         languageClient.info(`Client: The language server is now using credentials profile: ${profileName}`)
     }
 }
 
 /**
- * Creates a response payload that contains encrypted data
+ * Creates an "update credentials" request that contains encrypted data
  */
-function createUpdateIamCredentialsPayload(awsCredentials: AwsCredentialIdentity): UpdateCredentialsPayload {
-    const responseData: UpdateIamCredentialsPayloadData = {
+function createUpdateIamCredentialsRequest(awsCredentials: AwsCredentialIdentity): UpdateCredentialsRequest {
+    const responseData: UpdateIamCredentialsRequestData = {
         accessKeyId: awsCredentials.accessKeyId,
         secretAccessKey: awsCredentials.secretAccessKey,
         sessionToken: awsCredentials.sessionToken,
     }
 
-    // encrypt payload, create response
+    // encrypt the data field and create the response
     const iv = crypto.randomBytes(16)
     const encoder = crypto.createCipheriv('aes-256-gcm', encryptionKey, iv, {
         authTagLength: 16,
@@ -140,8 +141,8 @@ function createUpdateIamCredentialsPayload(awsCredentials: AwsCredentialIdentity
     }
 }
 
-function sendIamCredentialsUpdate(payload: UpdateCredentialsPayload, languageClient: LanguageClient): Promise<void> {
-    return languageClient.sendNotification(notificationTypes.updateIamCredentials, payload)
+function sendIamCredentialsUpdate(request: UpdateCredentialsRequest, languageClient: LanguageClient): Promise<void> {
+    return languageClient.sendNotification(notificationTypes.updateIamCredentials, request)
 }
 
 /**

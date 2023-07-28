@@ -27,7 +27,6 @@ namespace IdesLspPoc.LspClient.S3
     /// </summary>
     internal class S3CredentialsUpdater
     {
-        private static readonly object _aesSyncRoot = new object();
         private static readonly JsonSerializerSettings _serializerSettings = new JsonSerializerSettings
         {
             ContractResolver = new DefaultContractResolver
@@ -81,33 +80,33 @@ namespace IdesLspPoc.LspClient.S3
             Task.Run(async () =>
             {
                 AWSCredentials awsCredentials = profile.GetAWSCredentials(creds);
-                var payload = CreateUpdateCredentialsPayload(await awsCredentials.GetCredentialsAsync(), _aesKey);
-                await SendIamCredentialsAsync(payload);
+                var request = CreateUpdateCredentialsRequest(await awsCredentials.GetCredentialsAsync(), _aesKey);
+                await SendIamCredentialsAsync(request);
             }).Forget();
         }
 
-        public async Task SendIamCredentialsAsync(UpdateCredentialsPayload payload)
+        public async Task SendIamCredentialsAsync(UpdateCredentialsRequest request)
         {
             _outputWindow.WriteLine("Client: Sending (simulated) refreshed Credentials to the server");
-            await this._rpc.NotifyAsync("$/aws/credentials/iam", payload);
+            await this._rpc.NotifyAsync("$/aws/credentials/iam", request);
         }
 
-        private static UpdateCredentialsPayload CreateUpdateCredentialsPayload(ImmutableCredentials credentials, byte[] aesKey)
+        private static UpdateCredentialsRequest CreateUpdateCredentialsRequest(ImmutableCredentials credentials, byte[] aesKey)
         {
-            var payload = new UpdateIamCredentialsPayloadData
+            var requestData = new UpdateIamCredentialsRequestData
             {
                 AccessKeyId = credentials.AccessKey,
                 SecretAccessKey = credentials.SecretKey,
                 SessionToken = credentials.Token,
             };
 
-            return CreateUpdateCredentialsPayload(payload, aesKey);
+            return CreateUpdateCredentialsRequest(requestData, aesKey);
         }
 
         /// <summary>
-        /// Creates a response payload that contains encrypted data
+        /// Creates an "update credentials" request that contains encrypted data
         /// </summary>
-        private static UpdateCredentialsPayload CreateUpdateCredentialsPayload(object data, byte[] aesKey)
+        private static UpdateCredentialsRequest CreateUpdateCredentialsRequest(object data, byte[] aesKey)
         {
             byte[] iv = CreateInitializationVector();
 
@@ -130,7 +129,7 @@ namespace IdesLspPoc.LspClient.S3
             string authtag = Convert.ToBase64String(mac);
             var dataLength = cipherText.Length - mac.Length;
 
-            return new UpdateCredentialsPayload
+            return new UpdateCredentialsRequest
             {
                 Iv = Convert.ToBase64String(iv),
                 // Remove Mac from end of cipherText

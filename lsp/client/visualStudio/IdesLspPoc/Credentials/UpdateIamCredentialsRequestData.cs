@@ -1,6 +1,6 @@
 ﻿namespace IdesLspPoc.Credentials
 {
-    public class UpdateIamCredentialsPayloadData
+    public class UpdateIamCredentialsRequestData
     {
         public string AccessKeyId;
         public string SecretAccessKey;
