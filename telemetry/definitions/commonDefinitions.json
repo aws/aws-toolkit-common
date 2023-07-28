@@ -148,7 +148,22 @@
         {
             "name": "reason",
             "type": "string",
-            "description": "The reason for a metric or exception depending on context"
+            "description": "The reason for a metric or exception depending on context. It describes a certain theme of errors usually the exception class name eg. FileIOException"
+        },
+        {
+            "name": "errorCode",
+            "type": "string",
+            "description": "User-friendly error codes describing a failed operation"
+        },
+        {
+            "name": "causedBy",
+            "allowedValues": ["user", "service", "client", "unknown"],
+            "description": "High level categorization indicating the cause of the error"
+        },
+        {
+            "name": "httpStatusCode",
+            "type": "string",
+            "description": "Describes the HTTP status code for request made. The semantics are contextual based off of other fields (e.g. `requestId`)"
         },
         {
             "name": "url",
