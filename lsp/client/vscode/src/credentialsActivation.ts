@@ -33,6 +33,8 @@ export interface UpdateIamCredentialsPayloadData {
 
 const encryptionKey = crypto.randomBytes(32)
 
+// See core\aws-lsp-core\src\credentials\credentialsProvider.ts for the server's
+// custom method names and intents.
 const lspMethodNames = {
     iamCredentialsUpdate: '$/aws/credentials/iam',
     iamCredentialsClear: '$/aws/credentials/iam/clear',

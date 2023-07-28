@@ -113,6 +113,11 @@ namespace IdesLspPoc.LspClient
             return new Connection(lspProcess.StandardOutput.BaseStream, lspProcess.StandardInput.BaseStream);
         }
 
+        /// <summary>
+        /// Used by implementing classes that need to interact with the language server process prior to 
+        /// starting up the LSP protocol.
+        /// </summary>
+        /// <param name="lspProcess">Language server process</param>
         protected virtual Task OnBeforeLspConnectionStartsAsync(Process lspProcess)
         {
             return Task.CompletedTask;

@@ -17,6 +17,14 @@ using System.Timers;
 
 namespace IdesLspPoc.LspClient.S3
 {
+    /// <summary>
+    /// This class knows how to push credentials over to the language server (via SendIamCredentialsAsync)
+    /// PROOF OF CONCEPT - this class would be used in a product like the AWS Toolkit 
+    /// to push credentials to the server whenever the credentials state changes (eg: user selects another profile, or
+    /// credentials expire). For this concept, it is resolving and pushing credentials every 10 seconds as a 
+    /// simulation of the Toolkit sending credentials to the server.
+    /// This class would also know how to clear credentials from the language server.
+    /// </summary>
     internal class S3CredentialsUpdater
     {
         private static readonly object _aesSyncRoot = new object();
@@ -78,7 +86,7 @@ namespace IdesLspPoc.LspClient.S3
             }).Forget();
         }
 
-        private async Task SendIamCredentialsAsync(UpdateCredentialsPayload payload)
+        public async Task SendIamCredentialsAsync(UpdateCredentialsPayload payload)
         {
             _outputWindow.WriteLine("Client: Sending (simulated) refreshed Credentials to the server");
             await this._rpc.NotifyAsync("$/aws/credentials/iam", payload);
