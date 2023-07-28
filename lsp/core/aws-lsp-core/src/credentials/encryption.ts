@@ -1,5 +1,5 @@
 export function shouldWaitForEncryptionKey(): boolean {
-    return process.argv.some(arg => arg === '--pre-init')
+    return process.argv.some(arg => arg === '--pre-init-encryption')
 }
 
 /**

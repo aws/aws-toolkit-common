@@ -66,7 +66,7 @@ export async function activateDocumentsLanguageServer(extensionContext: Extensio
         // If the host is going to encrypt credentials,
         // receive the encryption key over stdin before starting the language server.
         debugOptions.execArgv.push('--stdio')
-        debugOptions.execArgv.push('--pre-init')
+        debugOptions.execArgv.push('--pre-init-encryption')
         const child = cp.spawn('node', [serverModule, ...debugOptions.execArgv])
         writeEncryptionInit(child.stdin)
 

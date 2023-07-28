@@ -78,7 +78,7 @@ namespace IdesLspPoc.LspClient
             return base.GetLspProcessArgs()
                 .Concat(new[] {
                     // Signal that we will send the encryption key before starting the LSP protocol channel
-                    "--pre-init"
+                    "--pre-init-encryption"
                 });
         }
 
