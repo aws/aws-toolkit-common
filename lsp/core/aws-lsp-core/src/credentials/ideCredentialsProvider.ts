@@ -56,7 +56,7 @@ export class IdeCredentialsProvider implements CredentialsProvider {
         )
 
         // Handle when host tells us we have no credentials to use
-        this.connection.onNotification(credentialsProtocolMethodNames.iamCredentialsClear, () => {
+        this.connection.onNotification(credentialsProtocolMethodNames.iamCredentialsDelete, () => {
             this.pushedCredentials = undefined
             this.connection.console.info('Server: The language server does not have credentials anymore.')
         })

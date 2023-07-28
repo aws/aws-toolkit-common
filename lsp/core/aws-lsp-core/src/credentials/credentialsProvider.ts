@@ -11,11 +11,11 @@ export const credentialsProtocolMethodNames = {
      * Called by host to push new IAM credentials whenever credentials state changes
      * (and there are valid credentials)
      */
-    iamCredentialsUpdate: '$/aws/credentials/iam',
+    iamCredentialsUpdate: '$/aws/credentials/iam/update',
     /**
      * Called by host to un-set any stored IAM credentials
      */
-    iamCredentialsClear: '$/aws/credentials/iam/clear',
+    iamCredentialsDelete: '$/aws/credentials/iam/delete',
 }
 
 /**

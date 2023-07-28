@@ -37,13 +37,13 @@ const encryptionKey = crypto.randomBytes(32)
 // See core\aws-lsp-core\src\credentials\credentialsProvider.ts for the server's
 // custom method names and intents.
 const lspMethodNames = {
-    iamCredentialsUpdate: '$/aws/credentials/iam',
-    iamCredentialsClear: '$/aws/credentials/iam/clear',
+    iamCredentialsUpdate: '$/aws/credentials/iam/update',
+    iamCredentialsDelete: '$/aws/credentials/iam/delete',
 }
 
 const notificationTypes = {
     updateIamCredentials: new NotificationType<UpdateCredentialsRequest>(lspMethodNames.iamCredentialsUpdate),
-    clearIamCredentials: new NotificationType(lspMethodNames.iamCredentialsClear),
+    deleteIamCredentials: new NotificationType(lspMethodNames.iamCredentialsDelete),
 }
 
 /**
@@ -152,6 +152,6 @@ function sendIamCredentialsUpdate(request: UpdateCredentialsRequest, languageCli
  */
 function createClearProfileCommand(languageClient: LanguageClient) {
     return async () => {
-        await languageClient.sendNotification(notificationTypes.clearIamCredentials)
+        await languageClient.sendNotification(notificationTypes.deleteIamCredentials)
     }
 }
