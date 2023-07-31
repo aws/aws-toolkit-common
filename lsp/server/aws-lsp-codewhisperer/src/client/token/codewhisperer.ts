@@ -5,6 +5,7 @@ import CodeWhispererClient = require('./codewhispererclient')
 
 // PROOF OF CONCEPT
 // This client fiddling was copied from the AWS Toolkit for VS Code
+// https://github.com/aws/aws-toolkit-vscode/blob/5d621c8405a8b20ffe571ad0ba10ae700178e051/src/shared/awsClientBuilder.ts#L68
 // We'll want to give this a common shape down in one of the core packages so
 // that we can re-use it in other bearer token based clients.
 interface RequestExtras {

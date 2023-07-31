@@ -4,6 +4,7 @@
  */
 
 // For the Proof of concept, this file's code was copied from the AWS Toolkit for VS Code repo
+// https://github.com/aws/aws-toolkit-vscode/blob/5d621c8405a8b20ffe571ad0ba10ae700178e051/src/shared/utilities/tsUtils.ts
 
 export function stringOrProp(obj: any, prop: string): string {
     if (obj === undefined || typeof obj === 'string') {

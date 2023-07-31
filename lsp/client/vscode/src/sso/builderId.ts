@@ -19,6 +19,11 @@ import {
 } from './model'
 
 // For the Proof of concept, this file's code was copied (and culled) from the AWS Toolkit for VS Code repo
+// https://github.com/aws/aws-toolkit-vscode/blob/5d621c8405a8b20ffe571ad0ba10ae700178e051/src/auth/auth.ts
+// https://github.com/aws/aws-toolkit-vscode/blob/5d621c8405a8b20ffe571ad0ba10ae700178e051/src/auth/connection.ts
+// https://github.com/aws/aws-toolkit-vscode/blob/5d621c8405a8b20ffe571ad0ba10ae700178e051/src/auth/sso/cache.ts
+// https://github.com/aws/aws-toolkit-vscode/blob/5d621c8405a8b20ffe571ad0ba10ae700178e051/src/auth/sso/clients.ts
+// https://github.com/aws/aws-toolkit-vscode/blob/5d621c8405a8b20ffe571ad0ba10ae700178e051/src/auth/sso/ssoAccessTokenProvider.ts
 
 export interface SsoAccess {
     readonly token: SsoToken
