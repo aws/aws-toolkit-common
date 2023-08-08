@@ -2025,6 +2025,11 @@
             ]
         },
         {
+            "name": "sam_info",
+            "description": "Called when checking if the SAM executable on the local machine is valid with a valid version",
+            "metadata": [{ "type": "result" }, { "type": "version", "required": false }]
+        },
+        {
             "name": "schemas_view",
             "description": "Called when selecting an EventBridge schema to view",
             "metadata": [{ "type": "result" }]
