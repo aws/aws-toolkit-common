@@ -1997,7 +1997,10 @@
         {
             "name": "sam_deploy",
             "description": "Called when deploying a SAM application",
-            "metadata": [{ "type": "result" }, { "type": "version", "required": false }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "version", "required": false }
+            ]
         },
         {
             "name": "sam_sync",
@@ -2022,6 +2025,15 @@
                 { "type": "reason", "required": false },
                 { "type": "eventBridgeSchema", "required": false },
                 { "type": "lambdaArchitecture", "required": false }
+            ]
+        },
+        {
+            "name": "sam_info",
+            "description": "Called when checking if the SAM executable on the local machine is valid with a valid version",
+            "metadata": [
+                { "type": "result" },
+                { "type": "reason", "required": false },
+                { "type": "version", "required": false }
             ]
         },
         {
