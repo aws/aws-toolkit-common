@@ -1997,7 +1997,11 @@
         {
             "name": "sam_deploy",
             "description": "Called when deploying a SAM application",
-            "metadata": [{ "type": "result" }, { "type": "version", "required": false }]
+            "metadata": [
+                { "type": "result" },
+                { "type": "reason", "required": false },
+                { "type": "version", "required": false }
+            ]
         },
         {
             "name": "sam_sync",
