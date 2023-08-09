@@ -2008,7 +2008,7 @@
             "metadata": [
                 { "type": "result" }, 
                 { "type": "syncedResources" },
-                { "type": "lambdaPackageType" },
+                { "type": "lambdaPackageType", "required": false },
                 { "type": "reason", "required": false }, 
                 { "type": "version", "required": false }
             ]
