@@ -606,6 +606,11 @@
             "description": "Length of codewhisperer supplemental context extracted from files"
         },
         {
+            "name": "codewhispererSupplementalContextStrategyId",
+            "type": "string",
+            "description": "Name tag or identifier for supplemental context fetching strategy being used for us to easier analyze corresponding acceptance rate"
+        },
+        {
             "name": "codewhispererImportRecommendationEnabled",
             "type": "boolean",
             "description": "Whether Import Recommendation is enabled."
@@ -2893,6 +2898,10 @@
                 },
                 {
                     "type": "codewhispererSupplementalContextLength",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererSupplementalContextStrategyId",
                     "required": false
                 },
                 {
