@@ -520,6 +520,18 @@
                 "c", "cpp", "go", "kotlin", "php", "ruby", "rust", "scala", "shell", "sql"]
         },
         {
+            "name": "codewhispererGettingStartedTaskType",
+            "type": "string",
+            "description": "The type of the getting started task to open the file",
+            "allowedValues": [
+                "Automatic",
+                "Manual",
+                "Comments",
+                "TestCase",
+                "Navigattion"
+            ]
+        },
+        {
             "name": "codewhispererLastSuggestionIndex",
             "type": "int",
             "description": "The last index of recommendation from a particular response"
@@ -2632,6 +2644,10 @@
                 },
                 {
                     "type": "codewhispererLanguage"
+                },
+                {
+                    "type": "codewhispererGettingStartedTaskType",
+                    "required": false
                 },
                 {
                     "type": "codewhispererLastSuggestionIndex",
