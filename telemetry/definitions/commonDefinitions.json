@@ -524,11 +524,11 @@
             "type": "string",
             "description": "The type of the getting started task to open the file",
             "allowedValues": [
-                "Automatic",
-                "Manual",
-                "Comments",
-                "TestCase",
-                "Navigattion"
+                "AUTO_TRIGGER",
+                "MANUAL_TRIGGER",
+                "COMMENT_AS_PROMPT",
+                "UNIT_TEST",
+                "NAVIGATION"
             ]
         },
         {
@@ -2751,6 +2751,10 @@
                     "type": "codewhispererLanguage"
                 },
                 {
+                    "type": "codewhispererGettingStartedTaskType",
+                    "required": false
+                },
+                {
                     "type": "codewhispererPaginationProgress",
                     "required": false
                 },
@@ -2852,6 +2856,10 @@
                     "type": "codewhispererLanguage"
                 },
                 {
+                    "type": "codewhispererGettingStartedTaskType",
+                    "required": false
+                },
+                {
                     "type": "codewhispererTriggerType"
                 },
                 {
@@ -2926,6 +2934,19 @@
                 },
                 {
                     "type": "codewhispererUserGroup"
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_onboardingTaskButtonClick",
+            "description": "This metric provides the particular language and task type selected by the user in the onboarding page by clicking on the Try Exmaple button.",
+            "metadata": [
+                {
+                    "type": "codewhispererLanguage"
+                },
+                {
+                    "type": "codewhispererGettingStartedTaskType",
+                    "required": false
                 }
             ]
         },
