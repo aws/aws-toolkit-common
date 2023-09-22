@@ -524,11 +524,11 @@
             "type": "string",
             "description": "The task type selected by the user in getting started page",
             "allowedValues": [
-                "AUTO_TRIGGER",
-                "MANUAL_TRIGGER",
-                "COMMENT_AS_PROMPT",
-                "UNIT_TEST",
-                "NAVIGATION"
+                "autoTrigger",
+                "manualTrigger",
+                "commentAsPrompt",
+                "unitTest",
+                "navigation"
             ]
         },
         {
@@ -2938,15 +2938,14 @@
             ]
         },
         {
-            "name": "codewhisperer_onboardingTaskButtonClick",
+            "name": "codewhisperer_onboardingClick",
             "description": "This metric provides the particular language and task type selected by the user in the onboarding page by clicking on the Try Example button.",
             "metadata": [
                 {
                     "type": "codewhispererLanguage"
                 },
                 {
-                    "type": "codewhispererGettingStartedTaskType",
-                    "required": false
+                    "type": "codewhispererGettingStartedTaskType"
                 }
             ]
         },
