@@ -520,6 +520,18 @@
                 "c", "cpp", "go", "kotlin", "php", "ruby", "rust", "scala", "shell", "sql"]
         },
         {
+            "name": "codewhispererGettingStartedTask",
+            "type": "string",
+            "description": "The task type selected by the user in getting started page",
+            "allowedValues": [
+                "autoTrigger",
+                "manualTrigger",
+                "commentAsPrompt",
+                "unitTest",
+                "navigation"
+            ]
+        },
+        {
             "name": "codewhispererLastSuggestionIndex",
             "type": "int",
             "description": "The last index of recommendation from a particular response"
@@ -2634,6 +2646,10 @@
                     "type": "codewhispererLanguage"
                 },
                 {
+                    "type": "codewhispererGettingStartedTask",
+                    "required": false
+                },
+                {
                     "type": "codewhispererLastSuggestionIndex",
                     "required": false
                 },
@@ -2733,6 +2749,10 @@
                 },
                 {
                     "type": "codewhispererLanguage"
+                },
+                {
+                    "type": "codewhispererGettingStartedTask",
+                    "required": false
                 },
                 {
                     "type": "codewhispererPaginationProgress",
@@ -2836,6 +2856,10 @@
                     "type": "codewhispererLanguage"
                 },
                 {
+                    "type": "codewhispererGettingStartedTask",
+                    "required": false
+                },
+                {
                     "type": "codewhispererTriggerType"
                 },
                 {
@@ -2910,6 +2934,18 @@
                 },
                 {
                     "type": "codewhispererUserGroup"
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_onboardingClick",
+            "description": "This metric provides the particular language and task type selected by the user in the onboarding page by clicking on the Try Example button.",
+            "metadata": [
+                {
+                    "type": "codewhispererLanguage"
+                },
+                {
+                    "type": "codewhispererGettingStartedTask"
                 }
             ]
         },
