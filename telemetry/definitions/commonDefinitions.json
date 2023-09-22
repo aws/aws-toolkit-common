@@ -522,7 +522,7 @@
         {
             "name": "codewhispererGettingStartedTaskType",
             "type": "string",
-            "description": "The type of the getting started task to open the file",
+            "description": "The task type selected by the user in getting started page",
             "allowedValues": [
                 "AUTO_TRIGGER",
                 "MANUAL_TRIGGER",
@@ -2939,7 +2939,7 @@
         },
         {
             "name": "codewhisperer_onboardingTaskButtonClick",
-            "description": "This metric provides the particular language and task type selected by the user in the onboarding page by clicking on the Try Exmaple button.",
+            "description": "This metric provides the particular language and task type selected by the user in the onboarding page by clicking on the Try Example button.",
             "metadata": [
                 {
                     "type": "codewhispererLanguage"
