@@ -2047,6 +2047,7 @@
         {
             "name": "sam_info",
             "description": "Called when checking if the SAM executable on the local machine is valid with a valid version",
+            "passive": true,
             "metadata": [
                 { "type": "result" },
                 { "type": "reason", "required": false },
