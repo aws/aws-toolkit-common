@@ -7,6 +7,15 @@ updates:
     directory: "/telemetry/vscode"
     schedule:
       interval: "daily"
+    groups:
+        jest:
+            dependency-type: 'development'
+            patterns:
+                - '*jest'
+        types:
+            dependency-type: 'development'
+            patterns:
+                - '@types/*'
 
   - package-ecosystem: "gradle"
     directory: "/telemetry/jetbrains"
