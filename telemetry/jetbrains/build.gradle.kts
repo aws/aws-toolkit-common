@@ -28,7 +28,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("com.github.erosb:everit-json-schema:1.14.1")
+        classpath("com.github.erosb:everit-json-schema:1.14.3")
         classpath(kotlin("gradle-plugin", version = "1.3.20"))
     }
 }
@@ -43,7 +43,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("com.squareup:kotlinpoet:1.13.2")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
-    implementation("com.github.erosb:everit-json-schema:1.12.2")
+    implementation("com.github.erosb:everit-json-schema:1.14.3")
     testImplementation("junit:junit:$junitVersion")
     testImplementation("org.assertj:assertj-core:$assertjVersion")
 }
