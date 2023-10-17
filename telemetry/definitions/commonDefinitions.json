@@ -513,6 +513,11 @@
             "description": "cursor location offset in the editor when invoking CodeWhisperer for recommendation"
         },
         {
+            "name": "codewhispererCustomizationArn",
+            "type": "string",
+            "description": "The currently selected customization arn(None if using the base model)"
+        },
+        {
             "name": "codewhispererLanguage",
             "type": "string",
             "description": "Programming language of the CodeWhisperer recommendation",
@@ -2564,6 +2569,10 @@
                 },
                 {
                     "type": "successCount"
+                },
+                {
+                    "type": "codewhispererCustomizationArn",
+                    "required": false
                 }
             ],
             "passive": true
@@ -2712,6 +2721,10 @@
                 },
                 {
                     "type": "codewhispererUserGroup"
+                },
+                {
+                    "type": "codewhispererCustomizationArn",
+                    "required": false
                 }
             ]
         },
@@ -2935,6 +2948,10 @@
                 },
                 {
                     "type": "codewhispererUserGroup"
+                },
+                {
+                    "type": "codewhispererCustomizationArn",
+                    "required": false
                 }
             ]
         },
