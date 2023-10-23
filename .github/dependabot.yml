@@ -4,6 +4,7 @@
 version: 2
 updates:
     - package-ecosystem: 'npm'
+      target-branch: 'main' # Avoid updates to "staging".
       directory: '/telemetry/vscode'
       schedule:
           interval: 'daily'
@@ -18,11 +19,13 @@ updates:
                   - '@types/*'
 
     - package-ecosystem: 'gradle'
+      target-branch: 'main' # Avoid updates to "staging".
       directory: '/telemetry/jetbrains'
       schedule:
           interval: 'daily'
 
     - package-ecosystem: 'nuget'
+      target-branch: 'main' # Avoid updates to "staging".
       directory: '/telemetry/csharp'
       schedule:
           interval: 'daily'
