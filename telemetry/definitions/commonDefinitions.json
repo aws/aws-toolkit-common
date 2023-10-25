@@ -2611,7 +2611,7 @@
         },
         {
             "name": "awsq_serviceInvocation",
-            "description": "Client side invocation of the weavervird service for solving software engineering tasks",
+            "description": "Client side invocation of the weaverbird service for solving software engineering tasks",
             "metadata": [
                 {
                     "type": "awsqAssignClickCount"
