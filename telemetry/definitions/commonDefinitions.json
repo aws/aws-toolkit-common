@@ -872,11 +872,6 @@
             "description": "Number of times user has clicked on Generate Code after they have iterated through the approach phase" 
         },
         {
-            "name": "awsqApproachIterationCount",
-            "type": "int",
-            "description": "Number of times an Approach has been created per task" 
-        },
-        {
             "name": "awsqFilesReviewedCount",
             "type": "int",
             "description": "Number of files reviewed by user after changes are made by WB" 
@@ -900,11 +895,6 @@
             "name": "awsqThumbsDownCount",
             "type": "int",
             "description": "Number of users click on the thumbs down button to say that they are unsatisfied" 
-        },
-        {
-            "name": "awsqServiceErrorsCount",
-            "type": "int",
-            "description": "Number of errors from engineering and service availability?" 
         }
     ],
     "metrics": [
@@ -2636,7 +2626,7 @@
             "metadata": [{ "type": "enabled" }] 
         },
         {
-            "name": "awsq_repositorySize",
+            "name": "awsq_repo",
             "description": "User provides awsq with repository",
             "metadata": [{ "type": "awsqRepositorySize" }] 
         },
@@ -2647,13 +2637,13 @@
             "metadata": [{ "type": "awsqFilesChangedCount" }] 
         },
         {
-            "name": "awsq_thumbsUpCount",
+            "name": "awsq_thumbsUp",
             "description": "User clicked on the thumbs up button, to mention that they are satisfied",
             "unit": "Count",
             "metadata": [{ "type": "awsqThumbsUpCount" }] 
         },
         {
-            "name": "awsq_thumbsDownCount",
+            "name": "awsq_thumbsDown",
             "description": "User clicked on the thumbs down button to say that they are unsatisfied",
             "unit": "Count",
             "metadata": [{ "type": "awsqThumbsDownCount" }]
