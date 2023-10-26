@@ -862,19 +862,19 @@
             "description": "Number of times users have triggered /assign" 
         },
         {
-            "name": "awsqCodeGenerationIterationsCount",
+            "name": "awsqCodeRegenerationCount",
             "type": "int",
-            "description": "Measure the conversational depth in Code gen, how often does a user invoke the weaverbird agent to re-engage in Code gen" 
+            "description": "How often does a user invoke the weaverbird agent to re-engage in Code gen" 
         },
         {
-            "name": "awsqGenerateCodeClickCount",
+            "name": "awsqApproachGeneratedCount",
             "type": "int",
             "description": "Number of times user has clicked on Generate Code after they have iterated through the approach phase" 
         },
         {
             "name": "awsqApproachIterationCount",
             "type": "int",
-            "description": "Approach iteration count" 
+            "description": "Number of times an Approach has been created per task" 
         },
         {
             "name": "awsqFilesReviewedCount",
@@ -2597,64 +2597,64 @@
 
         {
             "name": "awsq_assignCommand",
-            "description": "Number of times users have triggered /assign",
+            "description": "User have triggered /assign",
             "unit": "Count",
             "metadata": [{ "type": "awsqAssignCommandCount" }]
         },
         {
-            "name": "awsq_codeGenerationIterations",
-            "description": "Measure the conversational depth in Code gen, how often does a user invoke the weaverbird agent to re-engage in Code gen",
+            "name": "awsq_codeReGeneration",
+            "description": "User invoked the weaverbird agent to re-engage in Code gen",
             "unit": "Count",
-            "metadata": [{ "type": "awsqCodeGenerationIterationsCount" }]
+            "metadata": [{ "type": "awsqCodeReGenerationCount" }]
         },
         {
-            "name": "awsq_generateCodeClick",
-            "description": "Number of times user has clicked on Generate Code after they have iterated through the approach phase",
+            "name": "awsq_codeGenerateClick",
+            "description": "User has clicked on Generate Code after have iterated through the Approach phase",
             "unit": "Count",
             "metadata": [{ "type": "awsqGenerateCodeClickCount" }]
         },
         {
-            "name": "awsq_approachIteration",
-            "description": "Approach iteration count",
+            "name": "awsq_approach",
+            "description": "User received an Approach",
             "unit": "Count",
-            "metadata": [{ "type": "awsqApproachIterationCount" }]
+            "metadata": [{ "type": "awsqApproachGeneratedCount" }]
         },
         {
             "name": "awsq_isRegeneratedCode",
-            "description": "States if user has re-generated code as a part of code generation portion",
+            "description": "User has re-generated code as a part of code generation portion",
             "metadata": [{ "type": "enabled" }]
         },
         {
             "name": "awsq_filesReviewed",
-            "description": "Number of files reviewed by user after changes are made by WB",
+            "description": "User reviewed X files after Code Generation phase",
             "unit": "Count",
             "metadata": [{ "type": "awsqFilesReviewedCount" }] 
         },
         {
             "name": "awsq_isAcceptedCodeChanges",
-            "description": "States if user applied the code changes generated for the task",
+            "description": "User applied code changes generated for the task",
             "metadata": [{ "type": "enabled" }] 
         },
         {
             "name": "awsq_repositorySize",
-            "description": "The size of the repository",
+            "description": "User provides awsq with repository",
             "metadata": [{ "type": "awsqRepositorySize" }] 
         },
         {
             "name": "awsq_filesChanged",
-            "description": "Number of files that are changed as a part of the task",
+            "description": "Awsq service suggested X files to change",
             "unit": "Count",
             "metadata": [{ "type": "awsqFilesChangedCount" }] 
         },
         {
             "name": "awsq_thumbsUpCount",
-            "description": "Number of users users click on the thumbs up button, to mention that they are satisfied",
+            "description": "User clicked on the thumbs up button, to mention that they are satisfied",
             "unit": "Count",
             "metadata": [{ "type": "awsqThumbsUpCount" }] 
         },
         {
             "name": "awsq_thumbsDownCount",
-            "description": "Number of users click on the thumbs down button to say that they are unsatisfied",
+            "description": "User clicked on the thumbs down button to say that they are unsatisfied",
             "unit": "Count",
             "metadata": [{ "type": "awsqThumbsDownCount" }]
         },
@@ -2662,12 +2662,6 @@
             "name": "awsq_isApproachAccepted",
             "description": "User has accepted the approach generated by Weaverbird",
             "metadata": [{ "type": "enabled" }] 
-        },
-        {
-            "name": "awsq_serviceErrors",
-            "description": "Number of errors from engineering and service availability?",
-            "unit": "Count",
-            "metadata": [{ "type": "awsqServiceErrorsCount" }]  
         },
         {
             "name": "codewhisperer_codePercentage",
