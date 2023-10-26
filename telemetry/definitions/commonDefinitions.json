@@ -864,7 +864,12 @@
         {
             "name": "awsqCodeRegenerationCount",
             "type": "int",
-            "description": "How often does a user invoke the weaverbird agent to re-engage in Code gen" 
+            "description": "Number of timesuser invoke the weaverbird agent to re-engage in Code gen" 
+        },
+        {
+            "name": "awsqGenerateCodeClickCount",
+            "type": "int",
+            "description": "Number of times user click Genrate Code button" 
         },
         {
             "name": "awsqApproachGeneratedCount",
