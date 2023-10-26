@@ -862,7 +862,7 @@
             "description": "Number of times users have triggered /assign" 
         },
         {
-            "name": "awsqCodeRegenerationCount",
+            "name": "awsqCodeReGenerationCount",
             "type": "int",
             "description": "Number of timesuser invoke the weaverbird agent to re-engage in Code gen" 
         },
