@@ -502,6 +502,11 @@
             "description": "The number of security issues been detected"
         },
         {
+            "name": "codewhispererCodeScanIssuesWithFixes",
+            "type": "int",
+            "description": "The number of security issues detected with suggested fixes"
+        },
+        {
             "name": "codewhispererCompletionType",
             "type": "string",
             "description": "Completion Type of the inference results returned from CodeWhisperer model layer",
@@ -2718,6 +2723,9 @@
                 },
                 {
                     "type": "codewhispererCodeScanTotalIssues"
+                },
+                {
+                    "type": "codewhispererCodeScanIssuesWithFixes"
                 },
                 {
                     "type": "codewhispererLanguage"
