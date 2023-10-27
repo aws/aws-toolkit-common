@@ -240,7 +240,7 @@
         {
             "name": "language",
             "type": "string",
-            "description": "Language used for the project"
+            "description": "Language used for the project."
         },
         {
             "name": "workflowToken",
