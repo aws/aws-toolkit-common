@@ -2601,14 +2601,40 @@
             "unit": "Count"
         },
         {
-            "name": "awsq_thumbsUp",
+            "name": "awsq_codeGenerationThumbsUp",
             "description": "User clicked on the thumbs up button, to mention that they are satisfied",
             "unit": "Count"
         },
         {
-            "name": "awsq_thumbsDown",
+            "name": "awsq_codeGenerationThumbsDown",
             "description": "User clicked on the thumbs down button to say that they are unsatisfied",
             "unit": "Count"
+        },
+        {
+            "name": "awsq_approachThumbsUp",
+            "description": "User clicked on the thumbs up button, to mention that they are satisfied",
+            "unit": "Count"
+        },
+        {
+            "name": "awsq_approachThumbsDown",
+            "description": "User clicked on the thumbs down button to say that they are unsatisfied",
+            "unit": "Count"
+        },
+        {
+            "name": "aws_codeGeneration",
+            "description": "Emitted when the user started Code Generation process",
+            "metadata": [
+                { "type": "result" },
+                { "type": "reason", "required": false }
+            ]
+        },
+        {
+            "name": "aws_approachFlow",
+            "description": "Emitted when the user started Approach process",
+            "metadata": [
+                { "type": "result" },
+                { "type": "reason", "required": false }
+            ]
         },
         {
             "name": "awsq_isApproachAccepted",
