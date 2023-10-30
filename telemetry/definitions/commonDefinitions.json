@@ -2630,7 +2630,7 @@
         },
         {
             "name": "aws_approachFlow",
-            "description": "A metric to see if Code Genration flow succeeded",
+            "description": "A metric to see if Approach flow succeeded",
             "metadata": [
                 { "type": "result" },
                 { "type": "reason", "required": false }
