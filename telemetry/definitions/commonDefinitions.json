@@ -2621,8 +2621,8 @@
             "unit": "Count"
         },
         {
-            "name": "aws_codeGenerationFlow",
-            "description": "A metric to see if Code Genration flow succeeded",
+            "name": "aws_codeGeneration",
+            "description": "Emitted when the user started Code Generation process",
             "metadata": [
                 { "type": "result" },
                 { "type": "reason", "required": false }
@@ -2630,7 +2630,7 @@
         },
         {
             "name": "aws_approachFlow",
-            "description": "A metric to see if Approach flow succeeded",
+            "description": "Emitted when the user started Approach process",
             "metadata": [
                 { "type": "result" },
                 { "type": "reason", "required": false }
