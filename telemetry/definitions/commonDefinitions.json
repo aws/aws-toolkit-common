@@ -2707,7 +2707,8 @@
                     "type": "codewhispererCodeScanTotalIssues"
                 },
                 {
-                    "type": "codewhispererCodeScanIssuesWithFixes"
+                    "type": "codewhispererCodeScanIssuesWithFixes",
+                    "required": false
                 },
                 {
                     "type": "codewhispererLanguage"
