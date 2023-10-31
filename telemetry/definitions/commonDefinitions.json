@@ -2621,7 +2621,7 @@
             "unit": "Count"
         },
         {
-            "name": "aws_codeGeneration",
+            "name": "awsq_codeGenerationInvoke",
             "description": "Emitted when the user started Code Generation process.",
             "metadata": [
                 { "type": "result" },
@@ -2629,7 +2629,7 @@
             ]
         },
         {
-            "name": "aws_approachFlow",
+            "name": "awsq_approachInvoke",
             "description": "Emitted when the user started Approach process.",
             "metadata": [
                 { "type": "result" },
