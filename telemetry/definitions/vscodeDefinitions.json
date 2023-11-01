@@ -35,6 +35,7 @@
             "passive": true,
             "metadata": [
                 { "type": "command" },
+                { "type": "source" },
                 { "type": "debounceCount" },
                 { "type": "duration" },
                 { "type": "result" },
