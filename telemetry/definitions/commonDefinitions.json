@@ -869,7 +869,7 @@
         {
             "name": "awsqConversationId",
             "type": "string",
-            "description": "The ID of the security scan job"
+            "description": "Uniquely identifies a message with which the user interacts"
         }
     ],
     "metrics": [
