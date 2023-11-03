@@ -869,7 +869,7 @@
         {
             "name": "awsqConversationId",
             "type": "string",
-            "description": "Uniquely identifies a message with which the user interacts"
+            "description": "Uniquely identifies a message with which the user interacts."
         }
     ],
     "metrics": [
