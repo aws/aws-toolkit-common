@@ -523,6 +523,11 @@
             "description": "The currently selected customization arn(None if using the base model)"
         },
         {
+            "name": "codewhispererFeatureEvaluations",
+            "type": "string",
+            "description": "Feature assignments for a particular user"
+        },
+        {
             "name": "codewhispererLanguage",
             "type": "string",
             "description": "Programming language of the CodeWhisperer recommendation",
@@ -3069,6 +3074,10 @@
                 },
                 {
                     "type": "codewhispererCustomizationArn",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererFeatureEvaluations",
                     "required": false
                 }
             ]
