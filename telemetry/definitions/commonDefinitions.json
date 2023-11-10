@@ -2770,6 +2770,12 @@
             "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }]
         },
         {
+            "name": "amazonq_codeGenerationThumbsUp",
+            "description": "User clicked on the thumbs up button to say that they are unsatisfied",
+            "unit": "Count",
+            "metadata": [{ "type": "amazonqConversationId" }]
+        },
+        {
             "name": "amazonq_codeGenerationThumbsDown",
             "description": "User clicked on the thumbs down button to say that they are unsatisfied",
             "unit": "Count",
