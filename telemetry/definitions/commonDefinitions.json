@@ -903,7 +903,7 @@
         },
         {
             "name": "amazonqCodeGenerationResult",
-            "type": "double",
+            "type": "string",
             "description": "Captures if code generation result is Complete, Failed,etc"
         },
         {
