@@ -867,33 +867,23 @@
             "description": "User selection from a predefined menu (not user-provided input)" 
         },
         {
-            "name": "awsqRepositorySize",
-            "type": "int",
-            "description": "The size of the repository" 
-        },
-        {
-            "name": "awsqConversationId",
-            "type": "string",
-            "description": "Uniquely identifies a message with which the user interacts."
-        },
-        {
             "name": "amazonqConversationId",
             "type": "string",
             "description": "Uniquely identifies a message with which the user interacts."
         },
         {
             "name": "amazonqGenerateApproachIteration",
-            "type": "int",
+            "type": "double",
             "description": "Order of approach iteration. For initial code changes it is 0"
         },
         {
-            "name": "amazonGenerateApproachLatency",
+            "name": "amazonqGenerateApproachLatency",
             "type": "double",
             "description": "The time it takes to generate approach response"
         },
         {
             "name": "amazonqGenerateCodeIteration",
-            "type": "int",
+            "type": "double",
             "description": "Order of code generation iteration. For initial code changes it is 0"
         },
         {
@@ -908,13 +898,13 @@
         },
         {
             "name": "amazonqNumberOfFilesGenerated",
-            "type": "int",
+            "type": "double",
             "description": "Captures the number of files generated as a part of code generation iteration"
         },
 
         {
             "name": "amazonqRepositorySize",
-            "type": "int",
+            "type": "double",
             "description": "Captures  size of the source code"
         }
     ],
@@ -2605,105 +2595,6 @@
             ],
             "passive": true
         },
-
-        {
-            "name": "awsq_assignCommand",
-            "description": "Number of times the user have triggered /assign ",
-            "unit": "Count",
-            "metadata": [{ "type": "awsqConversationId" }]
-        },
-        {
-            "name": "awsq_codeReGeneration",
-            "description": "Number of times the user invoked agent to re-engage in Code Gen.",
-            "unit": "Count",
-            "metadata": [{ "type": "awsqConversationId" }]
-        },
-        {
-            "name": "awsq_codeGenerateClick",
-            "description": "Number of times the user has clicked on Generate Code",
-            "unit": "Count",
-            "metadata": [{ "type": "awsqConversationId" }]
-        },
-        {
-            "name": "awsq_approach",
-            "description": "Number of time the user received an Approach.",
-            "unit": "Count",
-            "metadata": [{ "type": "awsqConversationId" }]
-        },
-        {
-            "name": "awsq_isRegeneratedCode",
-            "description": "User has re-generated code as a part of code generation portion",
-            "metadata": [{ "type": "enabled" }, { "type": "awsqConversationId" }]
-        },
-        {
-            "name": "awsq_filesReviewed",
-            "description": "How many files the user reviewed files after Code Generation phase.",
-            "unit": "Count",
-            "metadata": [{ "type": "awsqConversationId" }]
-        },
-        {
-            "name": "awsq_isAcceptedCodeChanges",
-            "description": "User applied code changes generated for the task.",
-            "metadata": [{ "type": "enabled" }, { "type": "awsqConversationId" }]
-        },
-        {
-            "name": "awsq_repo",
-            "description": "The size of the input repository",
-            "metadata": [{ "type": "awsqRepositorySize" }, { "type": "awsqConversationId" }] 
-        },
-        {
-            "name": "awsq_filesChanged",
-            "description": "The numbed of files suggested to change",
-            "unit": "Count",
-            "metadata": [{ "type": "awsqConversationId" }]
-        },
-        {
-            "name": "awsq_codeGenerationThumbsUp",
-            "description": "User clicked on the thumbs up button, to mention that they are satisfied",
-            "unit": "Count",
-            "metadata": [{ "type": "awsqConversationId" }]
-        },
-        {
-            "name": "awsq_codeGenerationThumbsDown",
-            "description": "User clicked on the thumbs down button to say that they are unsatisfied",
-            "unit": "Count",
-            "metadata": [{ "type": "awsqConversationId" }]
-        },
-        {
-            "name": "awsq_approachThumbsUp",
-            "description": "User clicked on the thumbs up button, to mention that they are satisfied",
-            "unit": "Count",
-            "metadata": [{ "type": "awsqConversationId" }]
-        },
-        {
-            "name": "awsq_approachThumbsDown",
-            "description": "User clicked on the thumbs down button to say that they are unsatisfied",
-            "unit": "Count",
-            "metadata": [{ "type": "awsqConversationId" }]
-        },
-        {
-            "name": "awsq_codeGenerationInvoke",
-            "description": "Emitted when the user started Code Generation process.",
-            "metadata": [
-                { "type": "result" },
-                { "type": "reason", "required": false },
-                { "type": "awsqConversationId" }
-            ]
-        },
-        {
-            "name": "awsq_approachInvoke",
-            "description": "Emitted when the user started Approach process.",
-            "metadata": [
-                { "type": "result" },
-                { "type": "reason", "required": false },
-                { "type": "awsqConversationId" }
-            ]
-        },
-        {
-            "name": "awsq_isApproachAccepted",
-            "description": "User has accepted the approach generated by Weaverbird.",
-            "metadata": [{ "type": "enabled" }, { "type": "awsqConversationId" }] 
-        },
         {
             "name": "amazonq_startChat",
             "description": "Number of times the user have triggered /dev and started the chat",
@@ -2725,12 +2616,12 @@
             "metadata": [
                 { "type": "amazonqConversationId" },
                 { "type": "amazonqGenerateApproachIteration" },
-                { "type": "amazonGenerateApproachLatency" }
+                { "type": "amazonqGenerateApproachLatency" }
             ]
         },
         {
             "name": "amazonq_isApproachAccepted",
-            "description": "User has accepted the approach generated by Weaverbird.",
+            "description": "User has accepted the approach generated",
             "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }] 
         },
         {
