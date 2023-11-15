@@ -867,16 +867,6 @@
             "description": "User selection from a predefined menu (not user-provided input)" 
         },
         {
-            "name": "awsqRepositorySize",
-            "type": "int",
-            "description": "The size of the repository" 
-        },
-        {
-            "name": "awsqConversationId",
-            "type": "string",
-            "description": "Uniquely identifies a message with which the user interacts."
-        },
-        {
             "name": "amazonqConversationId",
             "type": "string",
             "description": "Uniquely identifies a message with which the user interacts."
