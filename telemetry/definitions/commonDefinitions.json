@@ -914,7 +914,7 @@
         {
             "name": "amazonqEndOfTheConversationLatency",
             "type": "double",
-            "description": "The time it takes to end amazonq conversation"
+            "description": "Total time from start to end"
         }
     ],
     "metrics": [
