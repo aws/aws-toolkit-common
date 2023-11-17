@@ -2642,7 +2642,7 @@
                 { "type": "amazonqCodeGenerationResult" },
                 { "type": "amazonqNumberOfFilesGenerated", "required": false },
                 { "type": "amazonqRepositorySize" },
-                { "type": "amazonqNumberOfReferences", "required": false },
+                { "type": "amazonqNumberOfReferences", "required": false }
             ]
         },
         {
