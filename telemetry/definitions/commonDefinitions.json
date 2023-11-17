@@ -2624,9 +2624,7 @@
             "metadata": [
                 { "type": "amazonqConversationId" },
                 { "type": "amazonqGenerateApproachIteration" },
-                { "type": "amazonqGenerateApproachLatency" },
-                { "type": "result" },
-                { "type": "reason", "required": false }
+                { "type": "amazonqGenerateApproachLatency" }
             ]
         },
         {
@@ -2645,8 +2643,6 @@
                 { "type": "amazonqNumberOfFilesGenerated", "required": false },
                 { "type": "amazonqRepositorySize" },
                 { "type": "amazonqNumberOfReferences", "required": false },
-                { "type": "result" },
-                { "type": "reason", "required": false }
             ]
         },
         {
