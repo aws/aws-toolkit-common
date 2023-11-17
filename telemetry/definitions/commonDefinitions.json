@@ -2651,6 +2651,11 @@
             "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }]
         },
         {
+            "name": "amazonq_isProvideFeedbackForCodeGen",
+            "description": "User asked to regenerate code generation with a comment",
+            "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }]
+        },
+        {
             "name": "amazonq_isReviewedChanges",
             "description": "User reviewed changes",
             "passive": true,
