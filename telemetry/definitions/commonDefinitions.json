@@ -901,11 +901,20 @@
             "type": "double",
             "description": "Captures the number of files generated as a part of code generation iteration"
         },
-
         {
             "name": "amazonqRepositorySize",
             "type": "double",
             "description": "Captures  size of the source code"
+        },
+        {
+            "name": "amazonqNumberOfReferences",
+            "type": "double",
+            "description": "Captures the number of references"
+        },
+        {
+            "name": "amazonqEndOfTheConversationLatency",
+            "type": "double",
+            "description": "Total time from start to end"
         }
     ],
     "metrics": [
@@ -2602,17 +2611,16 @@
             "metadata": [{ "type": "amazonqConversationId" }]
         },
         {
-            "name": "amazonq_approachInvoke",
-            "description": "Emitted when the user started Approach process and captures if the proccess succeeded or failed.",
+            "name": "amazonq_endChat",
+            "description": "Captures end of the conversation with amazonq /dev",
             "metadata": [
                 { "type": "amazonqConversationId" },
-                { "type": "result" },
-                { "type": "reason", "required": false }
+                { "type": "amazonqEndOfTheConversationLatency", "required": false }
             ]
         },
         {
-            "name": "amazonq_approachIteration",
-            "description": "User recieved a result in Approach Iteration stage",
+            "name": "amazonq_approachInvoke",
+            "description": "Captures Approach generation process",
             "metadata": [
                 { "type": "amazonqConversationId" },
                 { "type": "amazonqGenerateApproachIteration" },
@@ -2622,27 +2630,19 @@
         {
             "name": "amazonq_isApproachAccepted",
             "description": "User has accepted the approach generated",
-            "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }] 
+            "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }]
         },
         {
             "name": "amazonq_codeGenerationInvoke",
-            "description": "Emitted when the user started Code Generation process and captures if the proccess succeeded or failed.",
-            "metadata": [
-                { "type": "amazonqConversationId" },
-                { "type": "result" },
-                { "type": "reason", "required": false }
-            ]
-        },
-        {
-            "name": "amazonq_codeGenerationIteration",
-            "description": "User recieved a result in Code Generation Iteration stage",
+            "description": "Captures Code Generation generation process",
             "metadata": [
                 { "type": "amazonqConversationId" },
                 { "type": "amazonqGenerateCodeIteration" },
                 { "type": "amazonqGenerateCodeResponseLatency" },
                 { "type": "amazonqCodeGenerationResult" },
-                { "type": "amazonqNumberOfFilesGenerated" },
-                { "type": "amazonqRepositorySize" }
+                { "type": "amazonqNumberOfFilesGenerated", "required": false },
+                { "type": "amazonqRepositorySize" },
+                { "type": "amazonqNumberOfReferences", "required": false }
             ]
         },
         {
@@ -2651,13 +2651,14 @@
             "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }]
         },
         {
-            "name": "amazonq_isRejectedCodeChanges",
-            "description": "User rejected code changes generated for the task.",
+            "name": "amazonq_isProvideFeedbackForCodeGen",
+            "description": "User asked to regenerate code generation with a comment",
             "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }]
         },
         {
             "name": "amazonq_isReviewedChanges",
             "description": "User reviewed changes",
+            "passive": true,
             "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }]
         },
         {
