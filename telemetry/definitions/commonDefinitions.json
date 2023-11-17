@@ -2631,7 +2631,7 @@
         },
         {
             "name": "amazonq_isApproachAccepted",
-            "description": "User has accepted the approach generated,",
+            "description": "User has accepted the approach generated",
             "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }]
         },
         {
