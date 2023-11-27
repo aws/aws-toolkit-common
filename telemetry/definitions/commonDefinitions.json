@@ -54,7 +54,7 @@
         },
         {
             "name": "component",
-            "allowedValues": ["editor", "viewer", "filesystem", "explorer", "infobar"],
+            "allowedValues": ["editor", "viewer", "filesystem", "explorer", "infobar", "hover", "webview", "quickfix"],
             "description": "The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...)"
         },
         {
@@ -240,7 +240,7 @@
         {
             "name": "language",
             "type": "string",
-            "description": "Language used for the project"
+            "description": "Language used for the project."
         },
         {
             "name": "workflowToken",
@@ -502,6 +502,11 @@
             "description": "The number of security issues been detected"
         },
         {
+            "name": "codewhispererCodeScanIssuesWithFixes",
+            "type": "int",
+            "description": "The number of security issues detected with suggested fixes"
+        },
+        {
             "name": "codewhispererCompletionType",
             "type": "string",
             "description": "Completion Type of the inference results returned from CodeWhisperer model layer",
@@ -516,6 +521,11 @@
             "name": "codewhispererCustomizationArn",
             "type": "string",
             "description": "The currently selected customization arn(None if using the base model)"
+        },
+        {
+            "name": "codewhispererFeatureEvaluations",
+            "type": "string",
+            "description": "Feature assignments for a particular user"
         },
         {
             "name": "codewhispererLanguage",
@@ -857,69 +867,54 @@
             "description": "User selection from a predefined menu (not user-provided input)" 
         },
         {
-            "name": "awsqAssignClickCount",
-            "type": "int",
-            "description": "Number of times users have triggered /assign" 
+            "name": "amazonqConversationId",
+            "type": "string",
+            "description": "Uniquely identifies a message with which the user interacts."
         },
         {
-            "name": "awsqGenerateCodeIterationCount",
-            "type": "int",
-            "description": "Measure the conversational depth in Code gen, how often does a user invoke the weaverbird agent to re-engage in Code gen" 
+            "name": "amazonqGenerateApproachIteration",
+            "type": "double",
+            "description": "Order of approach iteration. For initial code changes it is 0"
         },
         {
-            "name": "awsqGenerateCodeClickCount",
-            "type": "int",
-            "description": "Number of times user has clicked on Generate Code after they have iterated through the approach phase" 
+            "name": "amazonqGenerateApproachLatency",
+            "type": "double",
+            "description": "The time it takes to generate approach response"
         },
         {
-            "name": "awsqApproachIterationCount",
-            "type": "int",
-            "description": "Approach iteration count" 
+            "name": "amazonqGenerateCodeIteration",
+            "type": "double",
+            "description": "Order of code generation iteration. For initial code changes it is 0"
         },
         {
-            "name": "awsqIsRegeneratedCode",
-            "type": "boolean",
-            "description": "States if user is engaged and has re-generated code as a part of code generation portion" 
+            "name": "amazonqGenerateCodeResponseLatency",
+            "type": "double",
+            "description": "The time it takes to generate code generation response"
         },
         {
-            "name": "awsqFilesReviewedCount",
-            "type": "int",
-            "description": "Number of files reviewed by user after changes are made by WB" 
+            "name": "amazonqCodeGenerationResult",
+            "type": "string",
+            "description": "Captures if code generation result is Complete, Failed,etc"
         },
         {
-            "name": "awsqIsAcceptedCodeChanges",
-            "type": "boolean",
-            "description": "States if user applied the code changes generated for the task" 
+            "name": "amazonqNumberOfFilesGenerated",
+            "type": "double",
+            "description": "Captures the number of files generated as a part of code generation iteration"
         },
         {
-            "name": "awsqRepositorySize",
-            "type": "int",
-            "description": "The size of the repository" 
+            "name": "amazonqRepositorySize",
+            "type": "double",
+            "description": "Captures  size of the source code"
         },
         {
-            "name": "awsqFilesChangedCount",
-            "type": "int",
-            "description": "Number of files that are changed as a part of the task" 
+            "name": "amazonqNumberOfReferences",
+            "type": "double",
+            "description": "Captures the number of references"
         },
         {
-            "name": "awsqThumbsUpCount",
-            "type": "int",
-            "description": "Number of users users click on the thumbs up button, to mention that they are satisfied" 
-        },
-        {
-            "name": "awsqThumbsDownCount",
-            "type": "int",
-            "description": "Number of users click on the thumbs down button to say that they are unsatisfied" 
-        },
-        {
-            "name": "awsqIsApproachAccepted",
-            "type": "boolean",
-            "description": "User has accepted the approach generated by Weaverbird" 
-        },
-        {
-            "name": "awsqServiceErrorsCount",
-            "type": "int",
-            "description": "Number of errors from engineering and service availability?" 
+            "name": "amazonqEndOfTheConversationLatency",
+            "type": "double",
+            "description": "Total time from start to end"
         }
     ],
     "metrics": [
@@ -2610,49 +2605,85 @@
             "passive": true
         },
         {
-            "name": "awsq_serviceInvocation",
-            "description": "Client side invocation of the weaverbird service for solving software engineering tasks",
+            "name": "amazonq_startChat",
+            "description": "Number of times the user have triggered /dev and started the chat",
+            "unit": "Count",
+            "metadata": [{ "type": "amazonqConversationId" }]
+        },
+        {
+            "name": "amazonq_endChat",
+            "description": "Captures end of the conversation with amazonq /dev",
             "metadata": [
-                {
-                    "type": "awsqAssignClickCount"
-                },
-                {
-                    "type": "awsqGenerateCodeIterationCount"
-                },
-                {
-                    "type": "awsqGenerateCodeClickCount"
-                },
-                {
-                    "type": "awsqApproachIterationCount"
-                },
-                {
-                    "type": "awsqIsRegeneratedCode"
-                },
-                {
-                    "type": "awsqFilesReviewedCount"
-                },
-                {
-                    "type": "awsqIsAcceptedCodeChanges"
-                },
-                {
-                    "type": "awsqRepositorySize"
-                },
-                {
-                    "type": "awsqFilesChangedCount"
-                },
-                {
-                    "type": "awsqThumbsUpCount"
-                },
-                {
-                    "type": "awsqThumbsDownCount"
-                },
-                {
-                    "type": "awsqIsApproachAccepted"
-                },
-                {
-                    "type": "awsqServiceErrorsCount"
-                }
+                { "type": "amazonqConversationId" },
+                { "type": "amazonqEndOfTheConversationLatency", "required": false }
             ]
+        },
+        {
+            "name": "amazonq_approachInvoke",
+            "description": "Captures Approach generation process",
+            "metadata": [
+                { "type": "amazonqConversationId" },
+                { "type": "amazonqGenerateApproachIteration" },
+                { "type": "amazonqGenerateApproachLatency" }
+            ]
+        },
+        {
+            "name": "amazonq_isApproachAccepted",
+            "description": "User has accepted the approach generated",
+            "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }]
+        },
+        {
+            "name": "amazonq_codeGenerationInvoke",
+            "description": "Captures Code Generation generation process",
+            "metadata": [
+                { "type": "amazonqConversationId" },
+                { "type": "amazonqGenerateCodeIteration" },
+                { "type": "amazonqGenerateCodeResponseLatency" },
+                { "type": "amazonqCodeGenerationResult" },
+                { "type": "amazonqNumberOfFilesGenerated", "required": false },
+                { "type": "amazonqRepositorySize" },
+                { "type": "amazonqNumberOfReferences", "required": false }
+            ]
+        },
+        {
+            "name": "amazonq_isAcceptedCodeChanges",
+            "description": "User applied code changes generated for the task.",
+            "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }]
+        },
+        {
+            "name": "amazonq_isProvideFeedbackForCodeGen",
+            "description": "User asked to regenerate code generation with a comment",
+            "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }]
+        },
+        {
+            "name": "amazonq_isReviewedChanges",
+            "description": "User reviewed changes",
+            "passive": true,
+            "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }]
+        },
+        {
+            "name": "amazonq_codeGenerationThumbsUp",
+            "description": "User clicked on the thumbs up button to say that they are unsatisfied",
+            "unit": "Count",
+            "metadata": [{ "type": "amazonqConversationId" }]
+        },
+        {
+            "name": "amazonq_codeGenerationThumbsDown",
+            "description": "User clicked on the thumbs down button to say that they are unsatisfied",
+            "unit": "Count",
+            "metadata": [{ "type": "amazonqConversationId" }]
+        },
+        {
+            "name": "amazonq_approachThumbsUp",
+            "description": "User clicked on the thumbs up button, to mention that they are satisfied",
+            "unit": "Count",
+            "metadata": [{ "type": "amazonqConversationId" }]
+        },
+        {
+            "name": "amazonq_approachThumbsDown",
+            "description": "User clicked on the thumbs down button to say that they are unsatisfied",
+            "unit": "Count",
+            "metadata": [{ "type": "amazonqConversationId" }]
         },
         {
             "name": "codewhisperer_codePercentage",
@@ -2718,6 +2749,10 @@
                 },
                 {
                     "type": "codewhispererCodeScanTotalIssues"
+                },
+                {
+                    "type": "codewhispererCodeScanIssuesWithFixes",
+                    "required": false
                 },
                 {
                     "type": "codewhispererLanguage"
@@ -3061,6 +3096,10 @@
                 },
                 {
                     "type": "codewhispererCustomizationArn",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererFeatureEvaluations",
                     "required": false
                 }
             ]
