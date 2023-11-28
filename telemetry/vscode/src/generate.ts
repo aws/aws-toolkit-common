@@ -63,7 +63,7 @@ export async function generate(args: CommandLineArguments) {
 
     const output = generateFile(input, args.outputFile)
     const options = await prettier.resolveConfig(await readFile(`${__dirname}/../.prettierrc`, 'utf-8'))
-    const formattedOutput = prettier.format(output.getFullText(), { parser: 'typescript', ...options })
+    const formattedOutput = await prettier.format(output.getFullText(), { parser: 'typescript', ...options })
     await writeFile(output.getFilePath(), formattedOutput)
 
     console.log('Done generating!')
