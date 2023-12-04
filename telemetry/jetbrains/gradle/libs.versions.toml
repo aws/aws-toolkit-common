@@ -1,0 +1,20 @@
+[versions]
+assertJ = "3.24.2"
+jackson = "2.16.0"
+# deprecated; should move to json-skema
+jsonSchema = "1.14.3"
+junit4 = "4.13.2"
+kotlin = "1.9.21"
+kotlin-poet = "1.15.3"
+nexus = "1.1.0"
+
+[libraries]
+assertj = { module = "org.assertj:assertj-core", version.ref = "assertJ" }
+kotlin-poet = { module = "com.squareup:kotlinpoet", version.ref = "kotlin-poet" }
+jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+json-schema = { module = "com.github.erosb:everit-json-schema", version.ref = "jsonSchema" }
+junit4 = { module = "junit:junit", version.ref = "junit4" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+nexus-publishing = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexus" }
