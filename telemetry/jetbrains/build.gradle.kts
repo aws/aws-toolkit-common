@@ -1,6 +1,7 @@
 import org.everit.json.schema.Schema
 import org.everit.json.schema.loader.SchemaLoader
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.json.JSONObject
 
 plugins {
@@ -42,14 +43,23 @@ dependencies {
 }
 
 tasks {
+    withType<JavaCompile>() {
+        sourceCompatibility = "17"
+        targetCompatibility = "17"
+    }
+
+    withType<KotlinCompile>() {
+        kotlinOptions.jvmTarget = "17"
+    }
+
     compileKotlin {
         dependsOn(":copyTelemetryResources", ":validatePackagedSchema")
-        kotlinOptions.jvmTarget = "17"
     }
+
     compileTestKotlin {
         dependsOn(":copyTestTelemetryResources")
-        kotlinOptions.jvmTarget = "17"
     }
+
     register("validatePackagedSchema") {
         group = "build"
         description = "Validates that the packaged definition is compatable with the packaged schema"
