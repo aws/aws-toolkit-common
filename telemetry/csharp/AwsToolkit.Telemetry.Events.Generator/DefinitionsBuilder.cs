@@ -210,7 +210,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             {
                 // eg: public static readonly Runtime Dotnetcore21 = new Runtime("dotnetcore2.1")
                 CodeMemberField field = new CodeMemberField($"readonly {type.GetGeneratedTypeName()}",
-                    allowedValue.ToPascalCase().Replace(".", "").Replace("-", ""))
+                    allowedValue.Replace(" ", "_").ToPascalCase().Replace(".", "").Replace("-", ""))
                 {
                     InitExpression = new CodeObjectCreateExpression(type.GetGeneratedTypeName(),
                         new CodeExpression[] {new CodePrimitiveExpression(allowedValue)}),
