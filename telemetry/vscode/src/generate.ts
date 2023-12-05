@@ -81,7 +81,10 @@ function getArgsFromMetadata(m: MetadataType): string {
                 name,
                 kind: StructureKind.TypeAlias,
                 isExported: true,
-                type: m.allowedValues.map(v => `'${v}'`).join(' | '),
+                type: m.allowedValues.map(v => {
+                    const modifiedVal = typeof v === "string" ? v.replace(/\s/g, "_") : v;
+                    return `'${modifiedVal}'`
+                }).join(' | '),
             })
         }
 
