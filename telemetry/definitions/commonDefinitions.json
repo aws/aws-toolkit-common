@@ -3440,17 +3440,6 @@
             ]
         },
         {
-            "name": "codeTransform_isVisibleToUser",
-            "passive": true,
-            "description": "The code transform button will only be available to start transform when a Java module or build configuration is found in the repository.",
-            "metadata": [
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                }
-            ]
-        },
-        {
             "name": "codeTransform_totalRunTime",
             "passive": true,
             "description": "The code transform button will only be available to start transform when a Java module or build configuration is found in the repository.",
