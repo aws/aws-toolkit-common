@@ -3442,7 +3442,7 @@
         {
             "name": "codeTransform_totalRunTime",
             "passive": true,
-            "description": "The code transform button will only be available to start transform when a Java module or build configuration is found in the repository.",
+            "description": "We want to log the total run time in the users experience for the IDE. The total runtime should end when all API's have finished running and the users is prompted for next step actions.",
             "metadata": [
                 {
                     "type": "codeTransformSessionId",
