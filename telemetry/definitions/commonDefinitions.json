@@ -3826,7 +3826,7 @@
         },
         {
             "name": "codeTransform_dependenciesCopied",
-            "description": "It copies over at least 1 dependency",
+            "description": "The repo copies over at least one dependency successfully.",
             "metadata": [
                 {
                     "type": "codeTransformSessionId",
@@ -3836,7 +3836,7 @@
         },
         {
             "name": "codeTransform_mvnBuildFailed",
-            "description": "The maven command build failed",
+            "description": "The maven command build failed.",
             "metadata": [
                 {
                     "type": "codeTransformSessionId",
