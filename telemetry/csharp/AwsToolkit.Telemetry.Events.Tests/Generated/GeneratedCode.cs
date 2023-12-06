@@ -19395,29 +19395,29 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         private string _value;
         
-        /// No pom.xml file found
-        public static readonly CodeTransformPreValidationError NoPomxmlFileFound = new CodeTransformPreValidationError("No_pom.xml_file_found");
+        /// NoPom
+        public static readonly CodeTransformPreValidationError NoPom = new CodeTransformPreValidationError("NoPom");
         
-        /// No Java project found
-        public static readonly CodeTransformPreValidationError NoJavaProjectFound = new CodeTransformPreValidationError("No_Java_project_found");
+        /// NoJavaProject
+        public static readonly CodeTransformPreValidationError NoJavaProject = new CodeTransformPreValidationError("NoJavaProject");
         
-        /// Mixed Java project and another language found
-        public static readonly CodeTransformPreValidationError MixedJavaProjectAndAnotherLanguageFound = new CodeTransformPreValidationError("Mixed_Java_project_and_another_language_found");
+        /// MixedLanguages
+        public static readonly CodeTransformPreValidationError MixedLanguages = new CodeTransformPreValidationError("MixedLanguages");
         
-        /// Project selected is not Java 8 or Java 11
-        public static readonly CodeTransformPreValidationError ProjectSelectedIsNotJava8OrJava11 = new CodeTransformPreValidationError("Project_selected_is_not_Java_8_or_Java_11");
+        /// UnsupportedJavaVersion
+        public static readonly CodeTransformPreValidationError UnsupportedJavaVersion = new CodeTransformPreValidationError("UnsupportedJavaVersion");
         
-        /// Only Maven projects supported
-        public static readonly CodeTransformPreValidationError OnlyMavenProjectsSupported = new CodeTransformPreValidationError("Only_Maven_projects_supported");
+        /// NonMavenProject
+        public static readonly CodeTransformPreValidationError NonMavenProject = new CodeTransformPreValidationError("NonMavenProject");
         
-        /// Empty project
-        public static readonly CodeTransformPreValidationError EmptyProject = new CodeTransformPreValidationError("Empty_project");
+        /// EmptyProject
+        public static readonly CodeTransformPreValidationError EmptyProject = new CodeTransformPreValidationError("EmptyProject");
         
-        /// Non SSO login
-        public static readonly CodeTransformPreValidationError NonSSOLogin = new CodeTransformPreValidationError("Non_SSO_login");
+        /// NonSsoLogin
+        public static readonly CodeTransformPreValidationError NonSsoLogin = new CodeTransformPreValidationError("NonSsoLogin");
         
-        /// Project running on backend
-        public static readonly CodeTransformPreValidationError ProjectRunningOnBackend = new CodeTransformPreValidationError("Project_running_on_backend");
+        /// RemoteRunProject
+        public static readonly CodeTransformPreValidationError RemoteRunProject = new CodeTransformPreValidationError("RemoteRunProject");
         
         public CodeTransformPreValidationError(string value)
         {

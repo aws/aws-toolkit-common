@@ -5,7 +5,7 @@
       "name": "testAllowedValues",
       "allowedValues": [
         "test spaces are replaced",
-        "in allowed values"
+        "in allowed values output key"
       ],
       "description": "A test object for parsing allowedValues"
     }

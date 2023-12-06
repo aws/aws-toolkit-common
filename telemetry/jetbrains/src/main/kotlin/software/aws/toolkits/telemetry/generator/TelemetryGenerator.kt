@@ -86,7 +86,7 @@ private fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType
     item.allowedValues!!.forEach { enumValue ->
         enum.addEnumConstant(
             enumValue.toString().replace(Regex("\\s"), "_").toTypeFormat(), TypeSpec.anonymousClassBuilder()
-                .addSuperclassConstructorParameter("%S", enumValue.toString().replace(Regex("\\s"), "_"))
+                .addSuperclassConstructorParameter("%S", enumValue.toString())
                 .build()
         )
     }

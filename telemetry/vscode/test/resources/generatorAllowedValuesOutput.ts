@@ -22,7 +22,7 @@ export interface TestMetric extends MetricBase {
 
 export type Result = 'Succeeded'
 export type LambdaRuntime = 'dotnetcore2.1' | 'nodejs12.x'
-export type TestAllowedValues = 'test_spaces_are_replaced' | 'in_allowed_values'
+export type TestAllowedValues = 'test spaces are replaced' | 'in allowed values output key'
 
 export interface MetricDefinition {
     readonly unit: string

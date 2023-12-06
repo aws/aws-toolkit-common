@@ -22,8 +22,8 @@ import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 public enum class TestAllowedValues(
     private val `value`: String,
 ) {
-    TestSpacesAreReplaced("test_spaces_are_replaced"),
-    InAllowedValues("in_allowed_values"),
+    TestSpacesAreReplaced("test spaces are replaced"),
+    InAllowedValuesOutputKey("in allowed values output key"),
     Unknown("unknown"),
     ;
 
