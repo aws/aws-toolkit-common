@@ -217,6 +217,40 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.Single(datum.Metadata);
         }
 
+        /// <summary>
+        /// RecordCodeTransformIsDoubleClickedToTriggerInvalidProject was chosen as a sample call that has a 
+        /// CodeTransformPreValidationError for allowedValues which have spaces in the values that 
+        /// should be converted to underscores.
+        /// </summary>
+        [Fact]
+        public void RecordWithAllowedValues()
+        {
+            var doubleClickRecord = new CodeTransformIsDoubleClickedToTriggerInvalidProject()
+            {
+                CodeTransformPreValidationError = CodeTransformPreValidationError.NoJavaProjectFound,
+                CodeTransformSessionId = "test-session-id",
+                Result = Result.Succeeded
+            };
+
+            _telemetryLogger.Object.RecordCodeTransformIsDoubleClickedToTriggerInvalidProject(doubleClickRecord);
+
+            Assert.NotNull(_recordedMetrics);
+            _telemetryLogger.Verify(
+                mock => mock.Record(_recordedMetrics),
+                Times.Once
+            );
+
+            var datum = Assert.Single(_recordedMetrics.Data);
+            Assert.NotNull(datum);
+            Assert.Equal("codeTransform_isDoubleClickedToTriggerInvalidProject", datum.MetricName);
+            Assert.Equal(Unit.None, datum.Unit);
+            Assert.False(datum.Passive);
+            Assert.True(datum.Metadata.ContainsKey("codeTransformSessionId"));
+            Assert.Equal("test-session-id", datum.Metadata["codeTransformSessionId"]);
+            Assert.True(datum.Metadata.ContainsKey("codeTransformPreValidationError"));
+            Assert.Equal("No_Java_project_found", datum.Metadata["codeTransformPreValidationError"]);
+        }
+
         private MetricDatum TransformDuplicateReason(MetricDatum datum)
         {
             datum.Metadata["reason1"] = datum.Metadata["reason"];

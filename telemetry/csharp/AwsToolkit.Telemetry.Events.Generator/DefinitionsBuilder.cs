@@ -213,7 +213,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
                     allowedValue.Replace(" ", "_").ToPascalCase().Replace(".", "").Replace("-", ""))
                 {
                     InitExpression = new CodeObjectCreateExpression(type.GetGeneratedTypeName(),
-                        new CodeExpression[] {new CodePrimitiveExpression(allowedValue)}),
+                        new CodeExpression[] {new CodePrimitiveExpression(allowedValue.Replace(" ", "_"))}),
                     Attributes = MemberAttributes.Static | MemberAttributes.Public
                 };
                 field.Comments.Add(new CodeCommentStatement(allowedValue, true));
