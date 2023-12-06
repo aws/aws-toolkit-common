@@ -24,3 +24,9 @@
     compileJava.dependsOn(generateTelemetry)
     ```
 To add additional telemetry files, add `file("/path/to/file)` entries into the inputFiles array.
+
+## Testing 
+
+### Running Tests
+
+To run the tests you can run them from this directory `telemetry/jetbrains` with the `./gradlew test` command.
