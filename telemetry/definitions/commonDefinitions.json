@@ -2777,10 +2777,11 @@
             "metadata": [{ "type": "amazonqConversationId", "required": false }]
         },
         {
-            "name": "amazonq_createUploadUrl",
+            "name": "amazonq_createUpload",
             "description": "Captures createUploadUrl process",
             "metadata": [
-                { "type": "amazonqConversationId" }
+                { "type": "amazonqConversationId" },
+                { "type": "amazonqRepositorySize" }
             ]
         },
         {
