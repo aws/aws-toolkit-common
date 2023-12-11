@@ -2781,7 +2781,7 @@
             "description": "Captures createUploadUrl process",
             "metadata": [
                 { "type": "amazonqConversationId" },
-                { "type": "amazonqRepositorySize" }
+                { "type": "amazonqRepositorySize", "required": false }
             ]
         },
         {
