@@ -864,7 +864,7 @@
         {
             "name": "userChoice",
             "type": "string",
-            "description": "User selection from a predefined menu (not user-provided input)" 
+            "description": "User selection from a predefined menu (not user-provided input)"
         },
         {
             "name": "amazonqConversationId",
@@ -1248,8 +1248,8 @@
             "name": "aws_validateCredentials",
             "description": "Validate credentials when selecting new credentials",
             "metadata": [
-                { "type": "result" }, 
-                { "type": "credentialType", "required": false }, 
+                { "type": "result" },
+                { "type": "credentialType", "required": false },
                 { "type": "credentialSourceId", "required": false }
             ],
             "passive": true
@@ -1270,8 +1270,8 @@
             "name": "aws_loginWithBrowser",
             "description": "Called when a connection requires login using the browser",
             "metadata": [
-                { "type": "result" }, 
-                { "type": "credentialType", "required": false }, 
+                { "type": "result" },
+                { "type": "credentialType", "required": false },
                 { "type": "credentialSourceId", "required": false }
             ]
         },
@@ -1524,7 +1524,7 @@
             "name": "cloudformation_deploy",
             "description": "Called when deploying a CloudFormation template",
             "metadata": [
-                { "type": "result" }, 
+                { "type": "result" },
                 { "type": "initialDeploy" },
                 { "type": "duration", "required": false },
                 { "type": "serviceType", "required": false },
@@ -1623,7 +1623,7 @@
             "name": "ec2_changeState",
             "description": "Change the state of an EC2 Instance",
             "metadata": [
-                { "type": "result" }, 
+                { "type": "result" },
                 { "type": "ec2InstanceState" }
             ]
         },
@@ -1639,7 +1639,7 @@
             "name": "ec2_connectToInstance",
             "description": "Perform a connection to an EC2 Instance",
             "metadata": [
-                { "type": "result" }, 
+                { "type": "result" },
                 { "type": "ec2ConnectionType" }
             ]
         },
@@ -1750,7 +1750,7 @@
             "name": "ec2_editInstanceElasticIp",
             "description": "Associate or disassociate an Elastic IP with an EC2 Instance",
             "metadata": [
-                { "type": "result" }, 
+                { "type": "result" },
                 { "type": "enabled", "required": false}
             ]
         },
@@ -1765,7 +1765,7 @@
             "name": "ec2_editInstanceTerminationProtection",
             "description": "Adjust the termination protection of an EC2 Instance",
             "metadata": [
-                { "type": "result" }, 
+                { "type": "result" },
                 { "type": "enabled", "required": false}
             ]
         },
@@ -2232,10 +2232,10 @@
             "name": "sam_sync",
             "description": "Called when syncing a SAM application",
             "metadata": [
-                { "type": "result" }, 
+                { "type": "result" },
                 { "type": "syncedResources" },
                 { "type": "lambdaPackageType", "required": false },
-                { "type": "reason", "required": false }, 
+                { "type": "reason", "required": false },
                 { "type": "version", "required": false }
             ]
         },
@@ -2769,6 +2769,18 @@
                 { "type": "amazonqConversationId" },
                 { "type": "amazonqGenerateApproachIteration" },
                 { "type": "amazonqGenerateApproachLatency" }
+            ]
+        },
+        {
+            "name": "amazonq_startConversationInvoke",
+            "description": "Captures startConversation process",
+            "metadata": [{ "type": "amazonqConversationId", "required": false }]
+        },
+        {
+            "name": "amazonq_createUploadUrl",
+            "description": "Captures createUploadUrl process",
+            "metadata": [
+                { "type": "amazonqConversationId" }
             ]
         },
         {
