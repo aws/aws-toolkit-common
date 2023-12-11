@@ -1041,14 +1041,14 @@
             "type": "string",
             "description": "Names of the pre-validation errors that can occur in the project",
             "allowedValues": [
-                "No pom.xml file found",
-                "No Java project found",
-                "Mixed Java project and another language found",
-                "Project selected is not Java 8 or Java 11",
-                "Only Maven projects supported",
-                "Empty project",
-                "Non SSO login",
-                "Project running on backend"
+                "NoPom",
+                "NoJavaProject",
+                "MixedLanguages",
+                "UnsupportedJavaVersion",
+                "NonMavenProject",
+                "EmptyProject",
+                "NonSsoLogin",
+                "RemoteRunProject"
             ]
         },
         {
