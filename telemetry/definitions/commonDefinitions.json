@@ -2773,12 +2773,12 @@
         },
         {
             "name": "amazonq_startConversationInvoke",
-            "description": "Captures startConversation process",
+            "description": "Captures startConversation invocation process",
             "metadata": [{ "type": "amazonqConversationId", "required": false }]
         },
         {
             "name": "amazonq_createUpload",
-            "description": "Captures createUploadUrl process",
+            "description": "Captures createUploadUrl invocation process",
             "metadata": [
                 { "type": "amazonqConversationId" },
                 { "type": "amazonqRepositorySize", "required": false }
