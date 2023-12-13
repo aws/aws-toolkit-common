@@ -1058,7 +1058,7 @@
             "allowedValues": [
                 "mvn",
                 "mvnw",
-                "intelliJBundledMaven"
+                "IDEBundledMaven"
             ]
         }
     ],
