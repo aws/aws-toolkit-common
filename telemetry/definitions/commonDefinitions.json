@@ -1,12 +1,6 @@
 {
     "types": [
         {
-            "name": "toolkitTelemetryStatusType",
-            "type": "string",
-            "description": "The type to determine the users status of having telemetry event submitted or not.",
-            "allowedValues": ["OFF", "ON"]
-        },
-        {
             "name": "appRunnerServiceSource",
             "type": "string",
             "allowedValues": ["ecr", "ecrPublic", "repository"],
@@ -1073,7 +1067,7 @@
             "description": "A event for when users toggle the telemetry status for reporting metrics.",
             "metadata": [
                 { "type": "result" },
-                { "type": "toolkitTelemetryStatusType" }
+                { "type": "enabled"}
             ]
         },
         {
