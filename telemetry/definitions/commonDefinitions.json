@@ -2969,7 +2969,9 @@
                 { "type": "findingId" },
                 { "type": "detectorId" },
                 { "type": "component" },
-                { "type": "ruleId", "required": false }
+                { "type": "ruleId", "required": false },
+                { "type": "result" },
+                { "type": "reason", "required": false }
             ]
         },
         {
