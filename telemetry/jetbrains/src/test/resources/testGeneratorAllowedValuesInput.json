@@ -1,0 +1,21 @@
+
+{
+  "types": [
+    {
+      "name": "testAllowedValues",
+      "allowedValues": [
+        "test spaces are replaced",
+        "in allowed values output key"
+      ],
+      "description": "A test object for parsing allowedValues"
+    }
+  ],
+  "metrics": [
+      {
+          "name": "test_metric",
+          "description": "A test for defining allowedValues",
+          "unit": "None",
+          "metadata": [{ "type": "testAllowedValues" }]
+      }
+  ]
+}

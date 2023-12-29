@@ -81,6 +81,15 @@ Supplemental telemetry definitions can be integrated as follows:
 1. Run the generator, using the Toolkit's supplemental telemetry definition file(s) as command line arguments (`toolkitcore\AWSToolkit.Util\Telemetry\vs-telemetry-definitions.json`)
 1. Take the generated file(s) (GeneratedCode.cs), and place them in the toolkit (`toolkitcore\AWSToolkit.Util\Telemetry\ToolkitTelemetryEvents.generated.cs`)
 
+## Testing 
+
+Tests are located under `AwsToolkit.Telmetry.Events.Tests`. These 
+tests are based off the build from `commonDefinitions.json`.
+
+### Running Tests
+
+To run the tests you can run them from this directory `telemetry/csharp` with the `dotnet build -c Release AwsToolkit.Telemetry.sln` command. This command will build the repo, including `commonDefinitions.json` and the tests will be run against that JSON file output for C#.
+
 ## Roadmap
 
 -   Standalone NuGet Package containing the Telemetry Event generator

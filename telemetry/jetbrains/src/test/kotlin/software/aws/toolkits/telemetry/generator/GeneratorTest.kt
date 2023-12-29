@@ -40,6 +40,11 @@ class GeneratorTest {
     }
 
     @Test
+    fun generateAllowedValuesWithUnderscores() {
+        testGenerator(defaultDefinitionsFile = "/testGeneratorAllowedValuesInput.json", expectedOutputFile = "/testGeneratorAllowedValuesOutput")
+    }
+
+    @Test
     fun longEnum() {
         testGenerator(defaultDefinitionsFile = "/testLongEnumInput.json", expectedOutputFile = "/testLongEnumOutput")
     }

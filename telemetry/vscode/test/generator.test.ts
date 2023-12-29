@@ -12,7 +12,6 @@ describe('Generator', () => {
     beforeAll(() => {
         tempDir = tmpdir()
     })
-
     test('Generate fails when validation fails', async () => {
         await expect(testGenerator(['resources/invalidInput.json'], '/invalid/file/path')).rejects.toBeDefined()
     })
@@ -25,6 +24,13 @@ describe('Generator', () => {
         await testGenerator(
             ['resources/testOverrideInput.json', 'resources/testResultInput.json'],
             'resources/generatorOverrideOutput.ts'
+        )
+    })
+
+    test('Generate replaces allowedValues spaces with underscores', async () => {
+        await testGenerator(
+            ['resources/generatorAllowedValuesInput.json'],
+            'resources/generatorAllowedValuesOutput.ts'
         )
     })
 

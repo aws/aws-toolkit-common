@@ -1,0 +1,36 @@
+
+{
+  "types": [
+    {
+        "name": "result",
+        "allowedValues": ["Succeeded"],
+        "description": "The result of the operation"
+    },
+    {
+        "name": "reason",
+        "type": "string",
+        "description": "The reason for a metric or exception depending on context"
+    },
+    {
+      "name": "duration",
+      "type": "double",
+      "description": "The duration of the operation in miliseconds"
+    },
+    {
+      "name": "testAllowedValues",
+      "allowedValues": [
+        "test spaces are replaced",
+        "in allowed values output key"
+      ],
+      "description": "A test object for parsing allowedValues"
+    }
+  ],
+  "metrics": [
+      {
+          "name": "test_metric",
+          "description": "A test for defining allowedValues",
+          "unit": "None",
+          "metadata": [{ "type": "testAllowedValues" }]
+      }
+  ]
+}

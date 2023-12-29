@@ -10467,7 +10467,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("syncedResources", payload.SyncedResources);
 
-                datum.AddMetadata("lambdaPackageType", payload.LambdaPackageType);
+                if (payload.LambdaPackageType.HasValue)
+                {
+                    datum.AddMetadata("lambdaPackageType", payload.LambdaPackageType.Value);
+                }
 
                 datum.AddMetadata("version", payload.Version);
 
@@ -10548,6 +10551,65 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("lambdaArchitecture", payload.LambdaArchitecture.Value);
                 }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when checking if the SAM executable on the local machine is valid with a valid version
+        public static void RecordSamInfo(this ITelemetryLogger telemetryLogger, SamInfo payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "sam_info";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("version", payload.Version);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -14315,6 +14377,725 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
+        /// Number of times the user have triggered /dev and started the chat
+        public static void RecordAmazonqStartChat(this ITelemetryLogger telemetryLogger, AmazonqStartChat payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_startChat";
+                datum.Unit = Unit.Count;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("amazonqConversationId", payload.AmazonqConversationId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Captures end of the conversation with amazonq /dev
+        public static void RecordAmazonqEndChat(this ITelemetryLogger telemetryLogger, AmazonqEndChat payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_endChat";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("amazonqConversationId", payload.AmazonqConversationId);
+
+                if (payload.AmazonqEndOfTheConversationLatency.HasValue)
+                {
+                    datum.AddMetadata("amazonqEndOfTheConversationLatency", payload.AmazonqEndOfTheConversationLatency.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Captures Approach generation process
+        public static void RecordAmazonqApproachInvoke(this ITelemetryLogger telemetryLogger, AmazonqApproachInvoke payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_approachInvoke";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("amazonqConversationId", payload.AmazonqConversationId);
+
+                datum.AddMetadata("amazonqGenerateApproachIteration", payload.AmazonqGenerateApproachIteration);
+
+                datum.AddMetadata("amazonqGenerateApproachLatency", payload.AmazonqGenerateApproachLatency);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// User has accepted the approach generated
+        public static void RecordAmazonqIsApproachAccepted(this ITelemetryLogger telemetryLogger, AmazonqIsApproachAccepted payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_isApproachAccepted";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("enabled", payload.Enabled);
+
+                datum.AddMetadata("amazonqConversationId", payload.AmazonqConversationId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Captures Code Generation generation process
+        public static void RecordAmazonqCodeGenerationInvoke(this ITelemetryLogger telemetryLogger, AmazonqCodeGenerationInvoke payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_codeGenerationInvoke";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("amazonqConversationId", payload.AmazonqConversationId);
+
+                datum.AddMetadata("amazonqGenerateCodeIteration", payload.AmazonqGenerateCodeIteration);
+
+                datum.AddMetadata("amazonqGenerateCodeResponseLatency", payload.AmazonqGenerateCodeResponseLatency);
+
+                datum.AddMetadata("amazonqCodeGenerationResult", payload.AmazonqCodeGenerationResult);
+
+                if (payload.AmazonqNumberOfFilesGenerated.HasValue)
+                {
+                    datum.AddMetadata("amazonqNumberOfFilesGenerated", payload.AmazonqNumberOfFilesGenerated.Value);
+                }
+
+                datum.AddMetadata("amazonqRepositorySize", payload.AmazonqRepositorySize);
+
+                if (payload.AmazonqNumberOfReferences.HasValue)
+                {
+                    datum.AddMetadata("amazonqNumberOfReferences", payload.AmazonqNumberOfReferences.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// User applied code changes generated for the task.
+        public static void RecordAmazonqIsAcceptedCodeChanges(this ITelemetryLogger telemetryLogger, AmazonqIsAcceptedCodeChanges payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_isAcceptedCodeChanges";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("enabled", payload.Enabled);
+
+                datum.AddMetadata("amazonqConversationId", payload.AmazonqConversationId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// User asked to regenerate code generation with a comment
+        public static void RecordAmazonqIsProvideFeedbackForCodeGen(this ITelemetryLogger telemetryLogger, AmazonqIsProvideFeedbackForCodeGen payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_isProvideFeedbackForCodeGen";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("enabled", payload.Enabled);
+
+                datum.AddMetadata("amazonqConversationId", payload.AmazonqConversationId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// User reviewed changes
+        public static void RecordAmazonqIsReviewedChanges(this ITelemetryLogger telemetryLogger, AmazonqIsReviewedChanges payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_isReviewedChanges";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("enabled", payload.Enabled);
+
+                datum.AddMetadata("amazonqConversationId", payload.AmazonqConversationId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// User clicked on the thumbs up button to say that they are unsatisfied
+        public static void RecordAmazonqCodeGenerationThumbsUp(this ITelemetryLogger telemetryLogger, AmazonqCodeGenerationThumbsUp payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_codeGenerationThumbsUp";
+                datum.Unit = Unit.Count;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("amazonqConversationId", payload.AmazonqConversationId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// User clicked on the thumbs down button to say that they are unsatisfied
+        public static void RecordAmazonqCodeGenerationThumbsDown(this ITelemetryLogger telemetryLogger, AmazonqCodeGenerationThumbsDown payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_codeGenerationThumbsDown";
+                datum.Unit = Unit.Count;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("amazonqConversationId", payload.AmazonqConversationId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// User clicked on the thumbs up button, to mention that they are satisfied
+        public static void RecordAmazonqApproachThumbsUp(this ITelemetryLogger telemetryLogger, AmazonqApproachThumbsUp payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_approachThumbsUp";
+                datum.Unit = Unit.Count;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("amazonqConversationId", payload.AmazonqConversationId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// User clicked on the thumbs down button to say that they are unsatisfied
+        public static void RecordAmazonqApproachThumbsDown(this ITelemetryLogger telemetryLogger, AmazonqApproachThumbsDown payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_approachThumbsDown";
+                datum.Unit = Unit.Count;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("amazonqConversationId", payload.AmazonqConversationId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
         /// Percentage of user tokens against suggestions until 5 mins of time
         public static void RecordCodewhispererCodePercentage(this ITelemetryLogger telemetryLogger, CodewhispererCodePercentage payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
@@ -14368,6 +15149,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("codewhispererUserGroup", payload.CodewhispererUserGroup);
 
                 datum.AddMetadata("successCount", payload.SuccessCount);
+
+                datum.AddMetadata("codewhispererCustomizationArn", payload.CodewhispererCustomizationArn);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -14448,6 +15231,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
 
                 datum.AddMetadata("codewhispererCodeScanTotalIssues", payload.CodewhispererCodeScanTotalIssues);
+
+                if (payload.CodewhispererCodeScanIssuesWithFixes.HasValue)
+                {
+                    datum.AddMetadata("codewhispererCodeScanIssuesWithFixes", payload.CodewhispererCodeScanIssuesWithFixes.Value);
+                }
 
                 datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
 
@@ -14530,6 +15318,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
 
+                if (payload.CodewhispererGettingStartedTask.HasValue)
+                {
+                    datum.AddMetadata("codewhispererGettingStartedTask", payload.CodewhispererGettingStartedTask.Value);
+                }
+
                 if (payload.CodewhispererLastSuggestionIndex.HasValue)
                 {
                     datum.AddMetadata("codewhispererLastSuggestionIndex", payload.CodewhispererLastSuggestionIndex.Value);
@@ -14580,6 +15373,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
 
                 datum.AddMetadata("codewhispererUserGroup", payload.CodewhispererUserGroup);
+
+                datum.AddMetadata("codewhispererCustomizationArn", payload.CodewhispererCustomizationArn);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -14709,6 +15504,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("codewhispererCompletionType", payload.CodewhispererCompletionType);
 
                 datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
+
+                if (payload.CodewhispererGettingStartedTask.HasValue)
+                {
+                    datum.AddMetadata("codewhispererGettingStartedTask", payload.CodewhispererGettingStartedTask.Value);
+                }
 
                 if (payload.CodewhispererPaginationProgress.HasValue)
                 {
@@ -14845,6 +15645,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
 
+                if (payload.CodewhispererGettingStartedTask.HasValue)
+                {
+                    datum.AddMetadata("codewhispererGettingStartedTask", payload.CodewhispererGettingStartedTask.Value);
+                }
+
                 datum.AddMetadata("codewhispererTriggerType", payload.CodewhispererTriggerType);
 
                 if (payload.CodewhispererAutomatedTriggerType.HasValue)
@@ -14911,12 +15716,77 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("codewhispererSupplementalContextLength", payload.CodewhispererSupplementalContextLength.Value);
                 }
 
+                datum.AddMetadata("codewhispererSupplementalContextStrategyId", payload.CodewhispererSupplementalContextStrategyId);
+
                 if (payload.CodewhispererClassifierThreshold.HasValue)
                 {
                     datum.AddMetadata("codewhispererClassifierThreshold", payload.CodewhispererClassifierThreshold.Value);
                 }
 
                 datum.AddMetadata("codewhispererUserGroup", payload.CodewhispererUserGroup);
+
+                datum.AddMetadata("codewhispererCustomizationArn", payload.CodewhispererCustomizationArn);
+
+                datum.AddMetadata("codewhispererFeatureEvaluations", payload.CodewhispererFeatureEvaluations);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// This metric provides the particular language and task type selected by the user in the onboarding page by clicking on the Try Example button.
+        public static void RecordCodewhispererOnboardingClick(this ITelemetryLogger telemetryLogger, CodewhispererOnboardingClick payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codewhisperer_onboardingClick";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codewhispererLanguage", payload.CodewhispererLanguage);
+
+                datum.AddMetadata("codewhispererGettingStartedTask", payload.CodewhispererGettingStartedTask);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -15524,6 +16394,1402 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
             }
         }
+        
+        /// Records Telemetry Event:
+        /// We want to log the total run time in the users experience for the IDE. The total runtime should end when all API's have finished running and the users is prompted for next step actions.
+        public static void RecordCodeTransformTotalRunTime(this ITelemetryLogger telemetryLogger, CodeTransformTotalRunTime payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_totalRunTime";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("codeTransformRunTimeLatency", payload.CodeTransformRunTimeLatency);
+
+                datum.AddMetadata("codeTransformResultStatusMessage", payload.CodeTransformResultStatusMessage);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// The code transform button in the devtools to initiate the pre transform user modal window.
+        public static void RecordCodeTransformIsDoubleClickedToTriggerUserModal(this ITelemetryLogger telemetryLogger, CodeTransformIsDoubleClickedToTriggerUserModal payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_isDoubleClickedToTriggerUserModal";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("codeTransformStartSrcComponents", payload.CodeTransformStartSrcComponents);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// The code transform button in the devtools to initiate the job but there is a validation error.
+        public static void RecordCodeTransformIsDoubleClickedToTriggerInvalidProject(this ITelemetryLogger telemetryLogger, CodeTransformIsDoubleClickedToTriggerInvalidProject payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_isDoubleClickedToTriggerInvalidProject";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformPreValidationError", payload.CodeTransformPreValidationError);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// The user initiates a transform job from the pre transform user modal window.
+        public static void RecordCodeTransformJobIsStartedFromUserPopupClick(this ITelemetryLogger telemetryLogger, CodeTransformJobIsStartedFromUserPopupClick payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_jobIsStartedFromUserPopupClick";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// The user was previously running a transformation and came back to IDE to see it still running
+        public static void RecordCodeTransformJobIsResumedAfterIdeClose(this ITelemetryLogger telemetryLogger, CodeTransformJobIsResumedAfterIdeClose payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_jobIsResumedAfterIdeClose";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
+
+                datum.AddMetadata("codeTransformStatus", payload.CodeTransformStatus);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// The user closes their IDE and stops viewing the transformation.
+        public static void RecordCodeTransformJobIsClosedDuringIdeRun(this ITelemetryLogger telemetryLogger, CodeTransformJobIsClosedDuringIdeRun payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_jobIsClosedDuringIdeRun";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
+
+                datum.AddMetadata("codeTransformStatus", payload.CodeTransformStatus);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// The user initiates a transform job from Amazon Q chat prompt.
+        public static void RecordCodeTransformJobIsStartedFromChatPrompt(this ITelemetryLogger telemetryLogger, CodeTransformJobIsStartedFromChatPrompt payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_jobIsStartedFromChatPrompt";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// The code transform button to initiate the pre transform user modal.
+        public static void RecordCodeTransformJobIsCanceledFromUserPopupClick(this ITelemetryLogger telemetryLogger, CodeTransformJobIsCanceledFromUserPopupClick payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_jobIsCanceledFromUserPopupClick";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// After modal validation of inputs, code execution will start and we will fire this event.
+        public static void RecordCodeTransformJobStartedCompleteFromPopupDialog(this ITelemetryLogger telemetryLogger, CodeTransformJobStartedCompleteFromPopupDialog payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_jobStartedCompleteFromPopupDialog";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformJavaSourceVersionsAllowed", payload.CodeTransformJavaSourceVersionsAllowed);
+
+                datum.AddMetadata("codeTransformJavaTargetVersionsAllowed", payload.CodeTransformJavaTargetVersionsAllowed);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// During the transformation progress, log the status steps returning from the API.
+        public static void RecordCodeTransformJobStatusChanged(this ITelemetryLogger telemetryLogger, CodeTransformJobStatusChanged payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_jobStatusChanged";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
+
+                datum.AddMetadata("codeTransformStatus", payload.CodeTransformStatus);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Fire a change event when users select a new configuration/module file from the dropdown.
+        public static void RecordCodeTransformConfigurationFileSelectedChanged(this ITelemetryLogger telemetryLogger, CodeTransformConfigurationFileSelectedChanged payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_configurationFileSelectedChanged";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// After a job is running the user has the ability to cancel the job.
+        public static void RecordCodeTransformJobIsCancelledByUser(this ITelemetryLogger telemetryLogger, CodeTransformJobIsCancelledByUser payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_jobIsCancelledByUser";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformCancelSrcComponents", payload.CodeTransformCancelSrcComponents);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("codeTransformRuntimeError", payload.CodeTransformRuntimeError);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// A timestamp for when the job is ending upload zip contents
+        public static void RecordCodeTransformJobCreateZipEndTime(this ITelemetryLogger telemetryLogger, CodeTransformJobCreateZipEndTime payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_jobCreateZipEndTime";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformTotalByteSize", payload.CodeTransformTotalByteSize);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("codeTransformRunTimeLatency", payload.CodeTransformRunTimeLatency);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// A timestamp for when the job is ending download zip contents
+        public static void RecordCodeTransformJobArtifactDownloadAndDeserializeTime(this ITelemetryLogger telemetryLogger, CodeTransformJobArtifactDownloadAndDeserializeTime payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_jobArtifactDownloadAndDeserializeTime";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
+
+                datum.AddMetadata("codeTransformTotalByteSize", payload.CodeTransformTotalByteSize);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("codeTransformRunTimeLatency", payload.CodeTransformRunTimeLatency);
+
+                datum.AddMetadata("codeTransformRuntimeError", payload.CodeTransformRuntimeError);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// An interactivity measured when users click to view diff results.
+        public static void RecordCodeTransformVcsViewerClicked(this ITelemetryLogger telemetryLogger, CodeTransformVcsViewerClicked payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_vcsViewerClicked";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformVCSViewerSrcComponents", payload.CodeTransformVCSViewerSrcComponents);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// A timestamp for when the diff view is being displayed to the user.
+        public static void RecordCodeTransformVcsDiffViewerVisible(this ITelemetryLogger telemetryLogger, CodeTransformVcsDiffViewerVisible payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_vcsDiffViewerVisible";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// An interactivity measured when users cancel a patch view.
+        public static void RecordCodeTransformVcsViewerCanceled(this ITelemetryLogger telemetryLogger, CodeTransformVcsViewerCanceled payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_vcsViewerCanceled";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformPatchViewerCancelSrcComponents", payload.CodeTransformPatchViewerCancelSrcComponents);
+
+                datum.AddMetadata("codeTransformRuntimeError", payload.CodeTransformRuntimeError);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// An interactivity measured when users submit their patch view results.
+        public static void RecordCodeTransformVcsViewerSubmitted(this ITelemetryLogger telemetryLogger, CodeTransformVcsViewerSubmitted payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_vcsViewerSubmitted";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// A general logging measure for all client side API's latency.
+        public static void RecordCodeTransformLogApiLatency(this ITelemetryLogger telemetryLogger, CodeTransformLogApiLatency payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_logApiLatency";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformApiNames", payload.CodeTransformApiNames);
+
+                datum.AddMetadata("codeTransformRunTimeLatency", payload.CodeTransformRunTimeLatency);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("codeTransformRequestId", payload.CodeTransformRequestId);
+
+                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
+
+                datum.AddMetadata("codeTransformUploadId", payload.CodeTransformUploadId);
+
+                if (payload.CodeTransformTotalByteSize.HasValue)
+                {
+                    datum.AddMetadata("codeTransformTotalByteSize", payload.CodeTransformTotalByteSize.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// A general logging measure for all client side API errors.
+        public static void RecordCodeTransformLogGeneralError(this ITelemetryLogger telemetryLogger, CodeTransformLogGeneralError payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_logGeneralError";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformApiErrorMessage", payload.CodeTransformApiErrorMessage);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// A general logging measure for all client side API errors.
+        public static void RecordCodeTransformLogApiError(this ITelemetryLogger telemetryLogger, CodeTransformLogApiError payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_logApiError";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformApiErrorMessage", payload.CodeTransformApiErrorMessage);
+
+                datum.AddMetadata("codeTransformApiNames", payload.CodeTransformApiNames);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("codeTransformRequestId", payload.CodeTransformRequestId);
+
+                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// The repo copies over at least one dependency successfully.
+        public static void RecordCodeTransformDependenciesCopied(this ITelemetryLogger telemetryLogger, CodeTransformDependenciesCopied payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_dependenciesCopied";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// The maven command build failed.
+        public static void RecordCodeTransformMvnBuildFailed(this ITelemetryLogger telemetryLogger, CodeTransformMvnBuildFailed payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codeTransform_mvnBuildFailed";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
+
+                datum.AddMetadata("codeTransformMavenBuildCommand", payload.CodeTransformMavenBuildCommand);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
     }
     
     /// Metric field type
@@ -15745,6 +18011,15 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// infobar
         public static readonly Component Infobar = new Component("infobar");
+        
+        /// hover
+        public static readonly Component Hover = new Component("hover");
+        
+        /// webview
+        public static readonly Component Webview = new Component("webview");
+        
+        /// quickfix
+        public static readonly Component Quickfix = new Component("quickfix");
         
         public Component(string value)
         {
@@ -16628,7 +18903,58 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// sql
         public static readonly CodewhispererLanguage Sql = new CodewhispererLanguage("sql");
         
+        /// json
+        public static readonly CodewhispererLanguage Json = new CodewhispererLanguage("json");
+        
+        /// jsonc
+        public static readonly CodewhispererLanguage Jsonc = new CodewhispererLanguage("jsonc");
+        
+        /// yaml
+        public static readonly CodewhispererLanguage Yaml = new CodewhispererLanguage("yaml");
+        
+        /// yml
+        public static readonly CodewhispererLanguage Yml = new CodewhispererLanguage("yml");
+        
+        /// hcl
+        public static readonly CodewhispererLanguage Hcl = new CodewhispererLanguage("hcl");
+        
+        /// tf
+        public static readonly CodewhispererLanguage Tf = new CodewhispererLanguage("tf");
+        
         public CodewhispererLanguage(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// The task type selected by the user in getting started page
+    public struct CodewhispererGettingStartedTask
+    {
+        
+        private string _value;
+        
+        /// autoTrigger
+        public static readonly CodewhispererGettingStartedTask AutoTrigger = new CodewhispererGettingStartedTask("autoTrigger");
+        
+        /// manualTrigger
+        public static readonly CodewhispererGettingStartedTask ManualTrigger = new CodewhispererGettingStartedTask("manualTrigger");
+        
+        /// commentAsPrompt
+        public static readonly CodewhispererGettingStartedTask CommentAsPrompt = new CodewhispererGettingStartedTask("commentAsPrompt");
+        
+        /// unitTest
+        public static readonly CodewhispererGettingStartedTask UnitTest = new CodewhispererGettingStartedTask("unitTest");
+        
+        /// navigation
+        public static readonly CodewhispererGettingStartedTask Navigation = new CodewhispererGettingStartedTask("navigation");
+        
+        public CodewhispererGettingStartedTask(string value)
         {
             this._value = value;
         }
@@ -16863,6 +19189,261 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public static readonly FeatureId Codecatalyst = new FeatureId("codecatalyst");
         
         public FeatureId(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Allowed Java versions to transform from.
+    public struct CodeTransformJavaSourceVersionsAllowed
+    {
+        
+        private string _value;
+        
+        /// JDK_1_8
+        public static readonly CodeTransformJavaSourceVersionsAllowed JDK18 = new CodeTransformJavaSourceVersionsAllowed("JDK_1_8");
+        
+        /// JDK_11
+        public static readonly CodeTransformJavaSourceVersionsAllowed JDK11 = new CodeTransformJavaSourceVersionsAllowed("JDK_11");
+        
+        public CodeTransformJavaSourceVersionsAllowed(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Allowed Java versions to transform to.
+    public struct CodeTransformJavaTargetVersionsAllowed
+    {
+        
+        private string _value;
+        
+        /// JDK_17
+        public static readonly CodeTransformJavaTargetVersionsAllowed JDK17 = new CodeTransformJavaTargetVersionsAllowed("JDK_17");
+        
+        public CodeTransformJavaTargetVersionsAllowed(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Names of components that can start a transform job.
+    public struct CodeTransformStartSrcComponents
+    {
+        
+        private string _value;
+        
+        /// devToolsStartButton
+        public static readonly CodeTransformStartSrcComponents DevToolsStartButton = new CodeTransformStartSrcComponents("devToolsStartButton");
+        
+        /// bottomPanelSideNavButton
+        public static readonly CodeTransformStartSrcComponents BottomPanelSideNavButton = new CodeTransformStartSrcComponents("bottomPanelSideNavButton");
+        
+        public CodeTransformStartSrcComponents(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Names of components that can cancel a transform job.
+    public struct CodeTransformCancelSrcComponents
+    {
+        
+        private string _value;
+        
+        /// apiError
+        public static readonly CodeTransformCancelSrcComponents ApiError = new CodeTransformCancelSrcComponents("apiError");
+        
+        /// loadingPanelStopButton
+        public static readonly CodeTransformCancelSrcComponents LoadingPanelStopButton = new CodeTransformCancelSrcComponents("loadingPanelStopButton");
+        
+        /// devToolsStopButton
+        public static readonly CodeTransformCancelSrcComponents DevToolsStopButton = new CodeTransformCancelSrcComponents("devToolsStopButton");
+        
+        /// bottomPanelSideNavButton
+        public static readonly CodeTransformCancelSrcComponents BottomPanelSideNavButton = new CodeTransformCancelSrcComponents("bottomPanelSideNavButton");
+        
+        public CodeTransformCancelSrcComponents(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Names of components that can initiate the patch viewer.
+    public struct CodeTransformVCSViewerSrcComponents
+    {
+        
+        private string _value;
+        
+        /// toastNotification
+        public static readonly CodeTransformVCSViewerSrcComponents ToastNotification = new CodeTransformVCSViewerSrcComponents("toastNotification");
+        
+        /// treeView
+        public static readonly CodeTransformVCSViewerSrcComponents TreeView = new CodeTransformVCSViewerSrcComponents("treeView");
+        
+        /// treeViewHeader
+        public static readonly CodeTransformVCSViewerSrcComponents TreeViewHeader = new CodeTransformVCSViewerSrcComponents("treeViewHeader");
+        
+        public CodeTransformVCSViewerSrcComponents(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Names of components that can cancel the patch viewer.
+    public struct CodeTransformPatchViewerCancelSrcComponents
+    {
+        
+        private string _value;
+        
+        /// apiError
+        public static readonly CodeTransformPatchViewerCancelSrcComponents ApiError = new CodeTransformPatchViewerCancelSrcComponents("apiError");
+        
+        /// cancelButton
+        public static readonly CodeTransformPatchViewerCancelSrcComponents CancelButton = new CodeTransformPatchViewerCancelSrcComponents("cancelButton");
+        
+        public CodeTransformPatchViewerCancelSrcComponents(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Names of allowed api calls in code transform service.
+    public struct CodeTransformApiNames
+    {
+        
+        private string _value;
+        
+        /// StartTransformation
+        public static readonly CodeTransformApiNames StartTransformation = new CodeTransformApiNames("StartTransformation");
+        
+        /// StopTransformation
+        public static readonly CodeTransformApiNames StopTransformation = new CodeTransformApiNames("StopTransformation");
+        
+        /// GetTransformation
+        public static readonly CodeTransformApiNames GetTransformation = new CodeTransformApiNames("GetTransformation");
+        
+        /// GetTransformationPlan
+        public static readonly CodeTransformApiNames GetTransformationPlan = new CodeTransformApiNames("GetTransformationPlan");
+        
+        /// UploadZip
+        public static readonly CodeTransformApiNames UploadZip = new CodeTransformApiNames("UploadZip");
+        
+        /// CreateUploadUrl
+        public static readonly CodeTransformApiNames CreateUploadUrl = new CodeTransformApiNames("CreateUploadUrl");
+        
+        /// ExportResultArchive
+        public static readonly CodeTransformApiNames ExportResultArchive = new CodeTransformApiNames("ExportResultArchive");
+        
+        public CodeTransformApiNames(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Names of the pre-validation errors that can occur in the project
+    public struct CodeTransformPreValidationError
+    {
+        
+        private string _value;
+        
+        /// NoPom
+        public static readonly CodeTransformPreValidationError NoPom = new CodeTransformPreValidationError("NoPom");
+        
+        /// NoJavaProject
+        public static readonly CodeTransformPreValidationError NoJavaProject = new CodeTransformPreValidationError("NoJavaProject");
+        
+        /// MixedLanguages
+        public static readonly CodeTransformPreValidationError MixedLanguages = new CodeTransformPreValidationError("MixedLanguages");
+        
+        /// UnsupportedJavaVersion
+        public static readonly CodeTransformPreValidationError UnsupportedJavaVersion = new CodeTransformPreValidationError("UnsupportedJavaVersion");
+        
+        /// NonMavenProject
+        public static readonly CodeTransformPreValidationError NonMavenProject = new CodeTransformPreValidationError("NonMavenProject");
+        
+        /// EmptyProject
+        public static readonly CodeTransformPreValidationError EmptyProject = new CodeTransformPreValidationError("EmptyProject");
+        
+        /// NonSsoLogin
+        public static readonly CodeTransformPreValidationError NonSsoLogin = new CodeTransformPreValidationError("NonSsoLogin");
+        
+        /// RemoteRunProject
+        public static readonly CodeTransformPreValidationError RemoteRunProject = new CodeTransformPreValidationError("RemoteRunProject");
+        
+        public CodeTransformPreValidationError(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Type of maven command
+    public struct CodeTransformMavenBuildCommand
+    {
+        
+        private string _value;
+        
+        /// mvn
+        public static readonly CodeTransformMavenBuildCommand Mvn = new CodeTransformMavenBuildCommand("mvn");
+        
+        /// mvnw
+        public static readonly CodeTransformMavenBuildCommand Mvnw = new CodeTransformMavenBuildCommand("mvnw");
+        
+        public CodeTransformMavenBuildCommand(string value)
         {
             this._value = value;
         }
@@ -19085,7 +21666,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The result of the operation
         public Result Result;
         
-        /// Language used for the project
+        /// Language used for the project.
         public string Language;
         
         /// Generic name of a template
@@ -19230,7 +21811,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - Lambda architecture identifier
         public LambdaArchitecture? LambdaArchitecture;
         
-        /// Optional - Language used for the project
+        /// Optional - Language used for the project.
         public string Language;
         
         /// Optional - Whether or not AWS X-Ray is enabled
@@ -19493,8 +22074,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Describes which parts of an application (that we know of) were synced to the cloud. "Code" resources follow the SAM spec: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-sync.html
         public SyncedResources SyncedResources;
         
-        /// The Lambda Package type of the function
-        public LambdaPackageType LambdaPackageType;
+        /// Optional - The Lambda Package type of the function
+        public LambdaPackageType? LambdaPackageType;
         
         /// Optional - A generic version metadata
         public string Version;
@@ -19533,6 +22114,22 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SamInit()
         {
             this.Passive = false;
+        }
+    }
+    
+    /// Called when checking if the SAM executable on the local machine is valid with a valid version
+    public sealed class SamInfo : BaseTelemetryEvent
+    {
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// Optional - A generic version metadata
+        public string Version;
+        
+        public SamInfo()
+        {
+            this.Passive = true;
         }
     }
     
@@ -20467,6 +23064,201 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// Number of times the user have triggered /dev and started the chat
+    public sealed class AmazonqStartChat : BaseTelemetryEvent
+    {
+        
+        /// Uniquely identifies a message with which the user interacts.
+        public string AmazonqConversationId;
+        
+        public AmazonqStartChat()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Captures end of the conversation with amazonq /dev
+    public sealed class AmazonqEndChat : BaseTelemetryEvent
+    {
+        
+        /// Uniquely identifies a message with which the user interacts.
+        public string AmazonqConversationId;
+        
+        /// Optional - Total time from start to end
+        public System.Double? AmazonqEndOfTheConversationLatency;
+        
+        public AmazonqEndChat()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Captures Approach generation process
+    public sealed class AmazonqApproachInvoke : BaseTelemetryEvent
+    {
+        
+        /// Uniquely identifies a message with which the user interacts.
+        public string AmazonqConversationId;
+        
+        /// Order of approach iteration. For initial code changes it is 0
+        public double AmazonqGenerateApproachIteration;
+        
+        /// The time it takes to generate approach response
+        public double AmazonqGenerateApproachLatency;
+        
+        public AmazonqApproachInvoke()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// User has accepted the approach generated
+    public sealed class AmazonqIsApproachAccepted : BaseTelemetryEvent
+    {
+        
+        /// True if turned on, false if turned off
+        public bool Enabled;
+        
+        /// Uniquely identifies a message with which the user interacts.
+        public string AmazonqConversationId;
+        
+        public AmazonqIsApproachAccepted()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// Captures Code Generation generation process
+    public sealed class AmazonqCodeGenerationInvoke : BaseTelemetryEvent
+    {
+        
+        /// Uniquely identifies a message with which the user interacts.
+        public string AmazonqConversationId;
+        
+        /// Order of code generation iteration. For initial code changes it is 0
+        public double AmazonqGenerateCodeIteration;
+        
+        /// The time it takes to generate code generation response
+        public double AmazonqGenerateCodeResponseLatency;
+        
+        /// Captures if code generation result is Complete, Failed,etc
+        public string AmazonqCodeGenerationResult;
+        
+        /// Optional - Captures the number of files generated as a part of code generation iteration
+        public System.Double? AmazonqNumberOfFilesGenerated;
+        
+        /// Captures  size of the source code
+        public double AmazonqRepositorySize;
+        
+        /// Optional - Captures the number of references
+        public System.Double? AmazonqNumberOfReferences;
+        
+        public AmazonqCodeGenerationInvoke()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// User applied code changes generated for the task.
+    public sealed class AmazonqIsAcceptedCodeChanges : BaseTelemetryEvent
+    {
+        
+        /// True if turned on, false if turned off
+        public bool Enabled;
+        
+        /// Uniquely identifies a message with which the user interacts.
+        public string AmazonqConversationId;
+        
+        public AmazonqIsAcceptedCodeChanges()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// User asked to regenerate code generation with a comment
+    public sealed class AmazonqIsProvideFeedbackForCodeGen : BaseTelemetryEvent
+    {
+        
+        /// True if turned on, false if turned off
+        public bool Enabled;
+        
+        /// Uniquely identifies a message with which the user interacts.
+        public string AmazonqConversationId;
+        
+        public AmazonqIsProvideFeedbackForCodeGen()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// User reviewed changes
+    public sealed class AmazonqIsReviewedChanges : BaseTelemetryEvent
+    {
+        
+        /// True if turned on, false if turned off
+        public bool Enabled;
+        
+        /// Uniquely identifies a message with which the user interacts.
+        public string AmazonqConversationId;
+        
+        public AmazonqIsReviewedChanges()
+        {
+            this.Passive = true;
+        }
+    }
+    
+    /// User clicked on the thumbs up button to say that they are unsatisfied
+    public sealed class AmazonqCodeGenerationThumbsUp : BaseTelemetryEvent
+    {
+        
+        /// Uniquely identifies a message with which the user interacts.
+        public string AmazonqConversationId;
+        
+        public AmazonqCodeGenerationThumbsUp()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// User clicked on the thumbs down button to say that they are unsatisfied
+    public sealed class AmazonqCodeGenerationThumbsDown : BaseTelemetryEvent
+    {
+        
+        /// Uniquely identifies a message with which the user interacts.
+        public string AmazonqConversationId;
+        
+        public AmazonqCodeGenerationThumbsDown()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// User clicked on the thumbs up button, to mention that they are satisfied
+    public sealed class AmazonqApproachThumbsUp : BaseTelemetryEvent
+    {
+        
+        /// Uniquely identifies a message with which the user interacts.
+        public string AmazonqConversationId;
+        
+        public AmazonqApproachThumbsUp()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// User clicked on the thumbs down button to say that they are unsatisfied
+    public sealed class AmazonqApproachThumbsDown : BaseTelemetryEvent
+    {
+        
+        /// Uniquely identifies a message with which the user interacts.
+        public string AmazonqConversationId;
+        
+        public AmazonqApproachThumbsDown()
+        {
+            this.Passive = false;
+        }
+    }
+    
     /// Percentage of user tokens against suggestions until 5 mins of time
     public sealed class CodewhispererCodePercentage : BaseTelemetryEvent
     {
@@ -20488,6 +23280,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The number of successful operations
         public int SuccessCount;
+        
+        /// Optional - The currently selected customization arn(None if using the base model)
+        public string CodewhispererCustomizationArn;
         
         public CodewhispererCodePercentage()
         {
@@ -20522,6 +23317,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The number of security issues been detected
         public int CodewhispererCodeScanTotalIssues;
+        
+        /// Optional - The number of security issues detected with suggested fixes
+        public System.Int32? CodewhispererCodeScanIssuesWithFixes;
         
         /// Programming language of the CodeWhisperer recommendation
         public CodewhispererLanguage CodewhispererLanguage;
@@ -20562,6 +23360,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Programming language of the CodeWhisperer recommendation
         public CodewhispererLanguage CodewhispererLanguage;
+        
+        /// Optional - The task type selected by the user in getting started page
+        public CodewhispererGettingStartedTask? CodewhispererGettingStartedTask;
         
         /// Optional - The last index of recommendation from a particular response
         public System.Int32? CodewhispererLastSuggestionIndex;
@@ -20608,6 +23409,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The user group identifier we assign to the customer and it should be unique identifier across different IDE platforms, i.e. Classifier, CrossFile etc.
         public string CodewhispererUserGroup;
         
+        /// Optional - The currently selected customization arn(None if using the base model)
+        public string CodewhispererCustomizationArn;
+        
         public CodewhispererServiceInvocation()
         {
             this.Passive = false;
@@ -20651,6 +23455,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Programming language of the CodeWhisperer recommendation
         public CodewhispererLanguage CodewhispererLanguage;
+        
+        /// Optional - The task type selected by the user in getting started page
+        public CodewhispererGettingStartedTask? CodewhispererGettingStartedTask;
         
         /// Optional - The number of recommendations received so far when user makes a decision
         public System.Int32? CodewhispererPaginationProgress;
@@ -20737,6 +23544,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Programming language of the CodeWhisperer recommendation
         public CodewhispererLanguage CodewhispererLanguage;
         
+        /// Optional - The task type selected by the user in getting started page
+        public CodewhispererGettingStartedTask? CodewhispererGettingStartedTask;
+        
         /// The type of the user trigger to send request to CodeWhisperer service
         public CodewhispererTriggerType CodewhispererTriggerType;
         
@@ -20791,13 +23601,38 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - Length of codewhisperer supplemental context extracted from files
         public System.Int32? CodewhispererSupplementalContextLength;
         
+        /// Optional - Name tag or identifier for supplemental context fetching strategy being used for us to easier analyze corresponding acceptance rate
+        public string CodewhispererSupplementalContextStrategyId;
+        
         /// Optional - The threshold of Classifier trigger.
         public System.Double? CodewhispererClassifierThreshold;
         
         /// The user group identifier we assign to the customer and it should be unique identifier across different IDE platforms, i.e. Classifier, CrossFile etc.
         public string CodewhispererUserGroup;
         
+        /// Optional - The currently selected customization arn(None if using the base model)
+        public string CodewhispererCustomizationArn;
+        
+        /// Optional - Feature assignments for a particular user
+        public string CodewhispererFeatureEvaluations;
+        
         public CodewhispererUserTriggerDecision()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// This metric provides the particular language and task type selected by the user in the onboarding page by clicking on the Try Example button.
+    public sealed class CodewhispererOnboardingClick : BaseTelemetryEvent
+    {
+        
+        /// Programming language of the CodeWhisperer recommendation
+        public CodewhispererLanguage CodewhispererLanguage;
+        
+        /// The task type selected by the user in getting started page
+        public CodewhispererGettingStartedTask CodewhispererGettingStartedTask;
+        
+        public CodewhispererOnboardingClick()
         {
             this.Passive = false;
         }
@@ -21031,6 +23866,428 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodecatalystDevEnvironmentWorkflowStatistic()
         {
             this.Passive = true;
+        }
+    }
+    
+    /// We want to log the total run time in the users experience for the IDE. The total runtime should end when all API's have finished running and the users is prompted for next step actions.
+    public sealed class CodeTransformTotalRunTime : BaseTelemetryEvent
+    {
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// A millisecond value of the total runtime latency.
+        public int CodeTransformRunTimeLatency;
+        
+        /// Optional - A general string field to represent the result of the project
+        public string CodeTransformResultStatusMessage;
+        
+        public CodeTransformTotalRunTime()
+        {
+            this.Passive = true;
+        }
+    }
+    
+    /// The code transform button in the devtools to initiate the pre transform user modal window.
+    public sealed class CodeTransformIsDoubleClickedToTriggerUserModal : BaseTelemetryEvent
+    {
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// Names of components that can start a transform job.
+        public CodeTransformStartSrcComponents CodeTransformStartSrcComponents;
+        
+        public CodeTransformIsDoubleClickedToTriggerUserModal()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// The code transform button in the devtools to initiate the job but there is a validation error.
+    public sealed class CodeTransformIsDoubleClickedToTriggerInvalidProject : BaseTelemetryEvent
+    {
+        
+        /// Names of the pre-validation errors that can occur in the project
+        public CodeTransformPreValidationError CodeTransformPreValidationError;
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public CodeTransformIsDoubleClickedToTriggerInvalidProject()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// The user initiates a transform job from the pre transform user modal window.
+    public sealed class CodeTransformJobIsStartedFromUserPopupClick : BaseTelemetryEvent
+    {
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        public CodeTransformJobIsStartedFromUserPopupClick()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// The user was previously running a transformation and came back to IDE to see it still running
+    public sealed class CodeTransformJobIsResumedAfterIdeClose : BaseTelemetryEvent
+    {
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// A string id for the current job running in the background.
+        public string CodeTransformJobId;
+        
+        /// A string to identify the API status.
+        public string CodeTransformStatus;
+        
+        public CodeTransformJobIsResumedAfterIdeClose()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// The user closes their IDE and stops viewing the transformation.
+    public sealed class CodeTransformJobIsClosedDuringIdeRun : BaseTelemetryEvent
+    {
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// A string id for the current job running in the background.
+        public string CodeTransformJobId;
+        
+        /// A string to identify the API status.
+        public string CodeTransformStatus;
+        
+        public CodeTransformJobIsClosedDuringIdeRun()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// The user initiates a transform job from Amazon Q chat prompt.
+    public sealed class CodeTransformJobIsStartedFromChatPrompt : BaseTelemetryEvent
+    {
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        public CodeTransformJobIsStartedFromChatPrompt()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// The code transform button to initiate the pre transform user modal.
+    public sealed class CodeTransformJobIsCanceledFromUserPopupClick : BaseTelemetryEvent
+    {
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        public CodeTransformJobIsCanceledFromUserPopupClick()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// After modal validation of inputs, code execution will start and we will fire this event.
+    public sealed class CodeTransformJobStartedCompleteFromPopupDialog : BaseTelemetryEvent
+    {
+        
+        /// Allowed Java versions to transform from.
+        public CodeTransformJavaSourceVersionsAllowed CodeTransformJavaSourceVersionsAllowed;
+        
+        /// Allowed Java versions to transform to.
+        public CodeTransformJavaTargetVersionsAllowed CodeTransformJavaTargetVersionsAllowed;
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        public CodeTransformJobStartedCompleteFromPopupDialog()
+        {
+            this.Passive = true;
+        }
+    }
+    
+    /// During the transformation progress, log the status steps returning from the API.
+    public sealed class CodeTransformJobStatusChanged : BaseTelemetryEvent
+    {
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// A string id for the current job running in the background.
+        public string CodeTransformJobId;
+        
+        /// A string to identify the API status.
+        public string CodeTransformStatus;
+        
+        public CodeTransformJobStatusChanged()
+        {
+            this.Passive = true;
+        }
+    }
+    
+    /// Fire a change event when users select a new configuration/module file from the dropdown.
+    public sealed class CodeTransformConfigurationFileSelectedChanged : BaseTelemetryEvent
+    {
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        public CodeTransformConfigurationFileSelectedChanged()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// After a job is running the user has the ability to cancel the job.
+    public sealed class CodeTransformJobIsCancelledByUser : BaseTelemetryEvent
+    {
+        
+        /// Names of components that can cancel a transform job.
+        public CodeTransformCancelSrcComponents CodeTransformCancelSrcComponents;
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// Optional - A general string field to represent runtime errors in the project.
+        public string CodeTransformRuntimeError;
+        
+        public CodeTransformJobIsCancelledByUser()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// A timestamp for when the job is ending upload zip contents
+    public sealed class CodeTransformJobCreateZipEndTime : BaseTelemetryEvent
+    {
+        
+        /// An integer representing the byte size of the upload or download.
+        public int CodeTransformTotalByteSize;
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// A millisecond value of the total runtime latency.
+        public int CodeTransformRunTimeLatency;
+        
+        public CodeTransformJobCreateZipEndTime()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// A timestamp for when the job is ending download zip contents
+    public sealed class CodeTransformJobArtifactDownloadAndDeserializeTime : BaseTelemetryEvent
+    {
+        
+        /// A string id for the current job running in the background.
+        public string CodeTransformJobId;
+        
+        /// An integer representing the byte size of the upload or download.
+        public int CodeTransformTotalByteSize;
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// A millisecond value of the total runtime latency.
+        public int CodeTransformRunTimeLatency;
+        
+        /// Optional - A general string field to represent runtime errors in the project.
+        public string CodeTransformRuntimeError;
+        
+        public CodeTransformJobArtifactDownloadAndDeserializeTime()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// An interactivity measured when users click to view diff results.
+    public sealed class CodeTransformVcsViewerClicked : BaseTelemetryEvent
+    {
+        
+        /// Names of components that can initiate the patch viewer.
+        public CodeTransformVCSViewerSrcComponents CodeTransformVCSViewerSrcComponents;
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// Optional - A string id for the current job running in the background.
+        public string CodeTransformJobId;
+        
+        public CodeTransformVcsViewerClicked()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// A timestamp for when the diff view is being displayed to the user.
+    public sealed class CodeTransformVcsDiffViewerVisible : BaseTelemetryEvent
+    {
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// Optional - A string id for the current job running in the background.
+        public string CodeTransformJobId;
+        
+        public CodeTransformVcsDiffViewerVisible()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// An interactivity measured when users cancel a patch view.
+    public sealed class CodeTransformVcsViewerCanceled : BaseTelemetryEvent
+    {
+        
+        /// Names of components that can cancel the patch viewer.
+        public CodeTransformPatchViewerCancelSrcComponents CodeTransformPatchViewerCancelSrcComponents;
+        
+        /// Optional - A general string field to represent runtime errors in the project.
+        public string CodeTransformRuntimeError;
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// Optional - A string id for the current job running in the background.
+        public string CodeTransformJobId;
+        
+        public CodeTransformVcsViewerCanceled()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// An interactivity measured when users submit their patch view results.
+    public sealed class CodeTransformVcsViewerSubmitted : BaseTelemetryEvent
+    {
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// Optional - A string id for the current job running in the background.
+        public string CodeTransformJobId;
+        
+        public CodeTransformVcsViewerSubmitted()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// A general logging measure for all client side API's latency.
+    public sealed class CodeTransformLogApiLatency : BaseTelemetryEvent
+    {
+        
+        /// Names of allowed api calls in code transform service.
+        public CodeTransformApiNames CodeTransformApiNames;
+        
+        /// A millisecond value of the total runtime latency.
+        public int CodeTransformRunTimeLatency;
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// Optional - A string id for the api request that was fired.
+        public string CodeTransformRequestId;
+        
+        /// Optional - A string id for the current job running in the background.
+        public string CodeTransformJobId;
+        
+        /// Optional - A unique upload id representing the uploadId to s3 bucket.
+        public string CodeTransformUploadId;
+        
+        /// Optional - An integer representing the byte size of the upload or download.
+        public System.Int32? CodeTransformTotalByteSize;
+        
+        public CodeTransformLogApiLatency()
+        {
+            this.Passive = true;
+        }
+    }
+    
+    /// A general logging measure for all client side API errors.
+    public sealed class CodeTransformLogGeneralError : BaseTelemetryEvent
+    {
+        
+        /// A general string field to represent API specific errors in the project.
+        public string CodeTransformApiErrorMessage;
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// Optional - A string id for the current job running in the background.
+        public string CodeTransformJobId;
+        
+        public CodeTransformLogGeneralError()
+        {
+            this.Passive = true;
+        }
+    }
+    
+    /// A general logging measure for all client side API errors.
+    public sealed class CodeTransformLogApiError : BaseTelemetryEvent
+    {
+        
+        /// A general string field to represent API specific errors in the project.
+        public string CodeTransformApiErrorMessage;
+        
+        /// Names of allowed api calls in code transform service.
+        public CodeTransformApiNames CodeTransformApiNames;
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// Optional - A string id for the api request that was fired.
+        public string CodeTransformRequestId;
+        
+        /// Optional - A string id for the current job running in the background.
+        public string CodeTransformJobId;
+        
+        public CodeTransformLogApiError()
+        {
+            this.Passive = true;
+        }
+    }
+    
+    /// The repo copies over at least one dependency successfully.
+    public sealed class CodeTransformDependenciesCopied : BaseTelemetryEvent
+    {
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        public CodeTransformDependenciesCopied()
+        {
+            this.Passive = false;
+        }
+    }
+    
+    /// The maven command build failed.
+    public sealed class CodeTransformMvnBuildFailed : BaseTelemetryEvent
+    {
+        
+        /// A general string field to represent the IDE session from when users start the modernization process.
+        public string CodeTransformSessionId;
+        
+        /// Type of maven command
+        public CodeTransformMavenBuildCommand CodeTransformMavenBuildCommand;
+        
+        public CodeTransformMvnBuildFailed()
+        {
+            this.Passive = false;
         }
     }
 }

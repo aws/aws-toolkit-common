@@ -1,0 +1,101 @@
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+// THIS FILE IS GENERATED! DO NOT EDIT BY HAND!
+@file:Suppress("unused", "MemberVisibilityCanBePrivate")
+
+package software.aws.toolkits.telemetry
+
+import com.intellij.openapi.project.Project
+import java.time.Instant
+import kotlin.Boolean
+import kotlin.Double
+import kotlin.String
+import kotlin.Suppress
+import kotlin.Unit
+import software.aws.toolkits.core.ConnectionSettings
+import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
+import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
+
+/**
+ * A test object for parsing allowedValues
+ */
+public enum class TestAllowedValues(
+    private val `value`: String,
+) {
+    TestSpacesAreReplaced("test spaces are replaced"),
+    InAllowedValuesOutputKey("in allowed values output key"),
+    Unknown("unknown"),
+    ;
+
+    public override fun toString(): String = value
+
+    public companion object {
+        public fun from(type: String): TestAllowedValues = values().firstOrNull { it.value == type }
+                ?: Unknown
+    }
+}
+
+public object TestTelemetry {
+    /**
+     * A test for defining allowedValues
+     */
+    public fun metric(
+        project: Project?,
+        testAllowedValues: TestAllowedValues,
+        passive: Boolean = false,
+        `value`: Double = 1.0,
+        createTime: Instant = Instant.now(),
+    ): Unit {
+        TelemetryService.getInstance().record(project) {
+            datum("test_metric") {
+                createTime(createTime)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
+                value(value)
+                passive(passive)
+                metadata("testAllowedValues", testAllowedValues.toString())
+            }
+        }
+    }
+
+    /**
+     * A test for defining allowedValues
+     */
+    public fun metric(
+        connectionSettings: ConnectionSettings? = null,
+        testAllowedValues: TestAllowedValues,
+        passive: Boolean = false,
+        `value`: Double = 1.0,
+        createTime: Instant = Instant.now(),
+    ): Unit {
+        TelemetryService.getInstance().record(connectionSettings) {
+            datum("test_metric") {
+                createTime(createTime)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
+                value(value)
+                passive(passive)
+                metadata("testAllowedValues", testAllowedValues.toString())
+            }
+        }
+    }
+
+    /**
+     * A test for defining allowedValues
+     */
+    public fun metric(
+        metadata: MetricEventMetadata,
+        testAllowedValues: TestAllowedValues,
+        passive: Boolean = false,
+        `value`: Double = 1.0,
+        createTime: Instant = Instant.now(),
+    ): Unit {
+        TelemetryService.getInstance().record(metadata) {
+            datum("test_metric") {
+                createTime(createTime)
+                unit(software.amazon.awssdk.services.toolkittelemetry.model.Unit.NONE)
+                value(value)
+                passive(passive)
+                metadata("testAllowedValues", testAllowedValues.toString())
+            }
+        }
+    }
+}
