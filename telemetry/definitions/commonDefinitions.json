@@ -177,6 +177,7 @@
                 "dotnet5.0",
                 "dotnet6",
                 "dotnet7",
+                "dotnet8",
                 "nodejs18.x",
                 "nodejs16.x",
                 "nodejs14.x",
