@@ -1,5 +1,6 @@
 # Please see the documentation for all configuration options:
-# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates
 
 version: 2
 updates:
@@ -33,6 +34,9 @@ updates:
           xunit:
               dependency-type: 'development'
               patterns:
+                  - 'xunit'
+                  - 'xunit.runner.visualstudio'
                   - 'xunit*'
+                  - 'xunit.*'
               update-types:
                   - 'minor'
