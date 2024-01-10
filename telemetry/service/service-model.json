@@ -64,7 +64,7 @@
       "type":"string",
       "max":2000
     },
-    "CommputeEnv":{
+    "ComputeEnv":{
       "type":"string",
       "enum":[
         "cloud9",
