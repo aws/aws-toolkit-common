@@ -68,15 +68,17 @@
       "type":"string",
       "enum":[
         "cloud9",
-        "codeCatalyst",
-        "dev",
+        "cloud9-codecatalyst",
+        "cloud9-ec2",
+        "codecatalyst",
         "ec2",
         "local",
         "sagemaker",
         "ssh",
         "test",
         "web",
-        "wsl"
+        "wsl",
+        "other"
       ]
     },
     "Datapoint":{
