@@ -1,38 +1,48 @@
-# Please see the documentation for all configuration options:
-# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+# Documentation for configuration options:
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 # https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates
 
 version: 2
 updates:
     - package-ecosystem: 'npm'
       target-branch: 'main' # Avoid updates to "staging".
+      commit-message:
+          prefix: 'deps'
       directory: '/telemetry/vscode'
       schedule:
           interval: 'daily'
+      allow:
+          - dependency-name: '*'
       groups:
           jest:
-              dependency-type: 'development'
               patterns:
                   - '*jest'
           types:
-              dependency-type: 'development'
               patterns:
                   - '@types/*'
+          # other: # Catch-all to ensure dependabot updates other dependencies...
+          #     patterns:
+          #         - '*'
 
     - package-ecosystem: 'gradle'
       target-branch: 'main' # Avoid updates to "staging".
+      commit-message:
+          prefix: 'deps'
       directory: '/telemetry/jetbrains'
       schedule:
           interval: 'daily'
 
     - package-ecosystem: 'nuget'
       target-branch: 'main' # Avoid updates to "staging".
+      commit-message:
+          prefix: 'deps'
       directory: '/telemetry/csharp'
       schedule:
           interval: 'daily'
+      allow:
+          - dependency-name: '*'
       groups:
           xunit:
-              dependency-type: 'development'
               patterns:
                   - 'xunit'
                   - 'xunit.runner.visualstudio'
@@ -40,3 +50,6 @@ updates:
                   - 'xunit.*'
               update-types:
                   - 'minor'
+          # other: # Catch-all to ensure dependabot updates other dependencies...
+          #     patterns:
+          #         - '*'
