@@ -1,6 +1,6 @@
 # Documentation for configuration options:
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
-# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates
 
 version: 2
 updates:
@@ -11,8 +11,6 @@ updates:
       directory: '/telemetry/vscode'
       schedule:
           interval: 'daily'
-      allow:
-          - dependency-name: '*'
       groups:
           jest:
               patterns:
@@ -39,8 +37,6 @@ updates:
       directory: '/telemetry/csharp'
       schedule:
           interval: 'daily'
-      allow:
-          - dependency-name: '*'
       groups:
           xunit:
               patterns:
