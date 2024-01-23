@@ -3541,6 +3541,14 @@
                 {
                     "type": "codeTransformRuntimeError",
                     "required": false
+                },
+                { 
+                    "type": "result", 
+                    "required": true 
+                },
+                { 
+                    "type": "reason", 
+                    "required": true 
                 }
             ]
         },
@@ -3894,6 +3902,14 @@
                 {
                     "type": "codeTransformRuntimeError",
                     "required": true
+                },
+                { 
+                    "type": "result", 
+                    "required": true 
+                },
+                { 
+                    "type": "reason", 
+                    "required": true 
                 }
             ]
         }
