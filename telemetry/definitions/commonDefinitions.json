@@ -3538,8 +3538,10 @@
                     "type": "codeTransformSessionId",
                     "required": true
                 },
-                { "type": "result", "required": true },
-                { "type": "reason", "required": true }
+                {
+                    "type": "codeTransformRuntimeError",
+                    "required": false
+                }
             ]
         },
         {
@@ -3890,8 +3892,8 @@
                     "required": true
                 },
                 {
-                    "type": "reason",
-                    "required": false
+                    "type": "codeTransformRuntimeError",
+                    "required": true
                 }
             ]
         }
