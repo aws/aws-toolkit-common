@@ -6,7 +6,7 @@ import org.json.JSONObject
 val jacksonVersion = "2.14.1"
 val junitVersion = "4.13.2"
 val kotlinVersion = "1.3.20"
-val assertjVersion = "3.24.2"
+val assertjVersion = "3.25.2"
 
 plugins {
     java
