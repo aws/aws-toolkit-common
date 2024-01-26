@@ -980,6 +980,16 @@
             "description": "A general string field to represent the result of the project"
         },
         {
+            "name": "codeTransformLocalJavaVersion",
+            "type": "string",
+            "description": "A string field to represent the Java version on the user's machine"
+        },
+        {
+            "name": "codeTransformLocalMavenVersion",
+            "type": "string",
+            "description": "A string field to represent the Maven version on the user's machine"
+        },
+        {
             "name": "codeTransformRuntimeError",
             "type": "string",
             "description": "A general string field to represent runtime errors in the project."
@@ -3508,6 +3518,14 @@
                 },
                 {
                     "type": "codeTransformResultStatusMessage",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformLocalJavaVersion",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformLocalMavenVersion",
                     "required": false
                 }
             ]
