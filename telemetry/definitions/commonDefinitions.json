@@ -3556,6 +3556,10 @@
                     "type": "codeTransformSessionId",
                     "required": true
                 },
+                {
+                    "type": "codeTransformRuntimeError",
+                    "required": false
+                },
                 { "type": "result", "required": true },
                 { "type": "reason", "required": true }
             ]
