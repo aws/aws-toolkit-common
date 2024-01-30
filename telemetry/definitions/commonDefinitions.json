@@ -1078,13 +1078,23 @@
             ]
         },
         {
-            "name": "codeTransformMavenBuildCommand",
+            "name": "codeTransformCommandExecutables",
             "type": "string",
             "description": "Type of maven command",
             "allowedValues": [
                 "mvn",
                 "mvnw",
                 "IDEBundledMaven"
+            ]
+        },
+        {
+            "name": "codeTransformCommandNames",
+            "type": "string",
+            "description": "Type of maven, gradle and other command line arguments run in the IDE",
+            "allowedValues": [
+                "MavenInstall",
+                "MavenCopy",
+                "JavaP"
             ]
         }
     ],
@@ -3556,6 +3566,14 @@
                     "type": "codeTransformSessionId",
                     "required": true
                 },
+                {
+                    "type": "codeTransformRuntimeError",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformCommandNames",
+                    "required": true
+                },
                 { "type": "result", "required": true },
                 { "type": "reason", "required": true }
             ]
@@ -3904,12 +3922,20 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformMavenBuildCommand",
+                    "type": "codeTransformCommandExecutables",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformRuntimeError",
                     "required": true
                 },
                 {
                     "type": "reason",
-                    "required": false
+                    "required": true
+                },
+                {
+                    "type": "result",
+                    "required": true
                 }
             ]
         }
