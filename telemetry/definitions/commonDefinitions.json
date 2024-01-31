@@ -910,7 +910,7 @@
         {
             "name": "amazonqCodeGenerationResult",
             "type": "string",
-            "description": "Captures if code generation result is Complete, Failed,etc"
+            "description": "Captures if code generation result is Complete, Failed, etc."
         },
         {
             "name": "amazonqNumberOfFilesGenerated",
@@ -920,7 +920,7 @@
         {
             "name": "amazonqRepositorySize",
             "type": "double",
-            "description": "Captures  size of the source code"
+            "description": "Captures the size of the source code"
         },
         {
             "name": "amazonqNumberOfReferences",
@@ -935,7 +935,7 @@
         {
             "name": "codeTransformJavaSourceVersionsAllowed",
             "type": "string",
-            "description": "Allowed Java versions to transform from.",
+            "description": "Allowed Java versions to transform from",
             "allowedValues": [
                 "JDK_1_8",
                 "JDK_11"
@@ -944,7 +944,7 @@
         {
             "name": "codeTransformJavaTargetVersionsAllowed",
             "type": "string",
-            "description": "Allowed Java versions to transform to.",
+            "description": "Allowed Java versions to transform to",
             "allowedValues": [
                 "JDK_17"
             ]
@@ -952,67 +952,67 @@
         {
             "name": "codeTransformJobId",
             "type": "string",
-            "description": "A string id for the current job running in the background."
+            "description": "The ID of the job currently running"
         },
         {
             "name": "codeTransformStatus",
             "type": "string",
-            "description": "A string to identify the API status."
+            "description": "The current transformation job's status"
         },
         {
             "name": "codeTransformRequestId",
             "type": "string",
-            "description": "A string id for the api request that was fired."
+            "description": "A string id for the API request"
         },
         {
             "name": "codeTransformTotalByteSize",
             "type": "int",
-            "description": "An integer representing the byte size of the upload or download."
+            "description": "The byte size of the upload or download."
         },
         {
             "name": "codeTransformUploadId",
             "type": "string",
-            "description": "A unique upload id representing the uploadId to s3 bucket."
+            "description": "A unique upload ID for S3"
         },
         {
             "name": "codeTransformResultStatusMessage",
             "type": "string",
-            "description": "A general string field to represent the result of the project"
+            "description": "The outcome of the transformation"
         },
         {
             "name": "codeTransformLocalJavaVersion",
             "type": "string",
-            "description": "A string field to represent the Java version on the user's machine"
+            "description": "The Java version on the user's machine"
         },
         {
             "name": "codeTransformLocalMavenVersion",
             "type": "string",
-            "description": "A string field to represent the Maven version on the user's machine"
+            "description": "The Maven version on the user's machine"
         },
         {
             "name": "codeTransformRuntimeError",
             "type": "string",
-            "description": "A general string field to represent runtime errors in the project."
+            "description": "Any runtime errors"
         },
         {
             "name": "codeTransformApiErrorMessage",
             "type": "string",
-            "description": "A general string field to represent API specific errors in the project."
+            "description": "Any API-specific errors"
         },
         {
             "name": "codeTransformSessionId",
             "type": "string",
-            "description": "A general string field to represent the IDE session from when users start the modernization process."
+            "description": "Represents the IDE session from which users start the transformation process"
         },
         {
             "name": "codeTransformRunTimeLatency",
             "type": "int",
-            "description": "A millisecond value of the total runtime latency."
+            "description": "A millisecond value of the total run time"
         },
         {
             "name": "codeTransformStartSrcComponents",
             "type": "string",
-            "description": "Names of components that can start a transform job.",
+            "description": "Names of components that can start a transformation",
             "allowedValues": [
                 "devToolsStartButton",
                 "bottomPanelSideNavButton"
@@ -1021,7 +1021,7 @@
         {
             "name": "codeTransformCancelSrcComponents",
             "type": "string",
-            "description": "Names of components that can cancel a transform job.",
+            "description": "Names of components that can cancel a transformation",
             "allowedValues": [
                 "apiError",
                 "loadingPanelStopButton",
@@ -1032,7 +1032,7 @@
         {
             "name": "codeTransformVCSViewerSrcComponents",
             "type": "string",
-            "description": "Names of components that can initiate the patch viewer.",
+            "description": "Names of components that can initiate the diff viewer",
             "allowedValues": [
                 "toastNotification",
                 "treeView",
@@ -1042,7 +1042,7 @@
         {
             "name": "codeTransformPatchViewerCancelSrcComponents",
             "type": "string",
-            "description": "Names of components that can cancel the patch viewer.",
+            "description": "Names of components that can cancel the diff viewer",
             "allowedValues": [
                 "apiError",
                 "cancelButton"
@@ -1051,7 +1051,7 @@
         {
             "name": "codeTransformApiNames",
             "type": "string",
-            "description": "Names of allowed api calls in code transform service.",
+            "description": "Names of allowed API calls",
             "allowedValues": [
                 "StartTransformation",
                 "StopTransformation",
@@ -1065,7 +1065,7 @@
         {
             "name": "codeTransformPreValidationError",
             "type": "string",
-            "description": "Names of the pre-validation errors that can occur in the project",
+            "description": "Names of the pre-validation errors that can occur",
             "allowedValues": [
                 "NoPom",
                 "NoJavaProject",
