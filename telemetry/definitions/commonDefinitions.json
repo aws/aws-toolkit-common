@@ -3541,6 +3541,26 @@
             ]
         },
         {
+            "name": "codeTransform_projectDetails",
+            "description": "The code transform has requirements for a valid project and Amazon Q needs to log information about users project environment.",
+            "metadata": [
+                {
+                    "type": "codeTransformPreValidationError",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformRuntimeError",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformCommandNames",
+                    "required": false
+                },
+                { "type": "result", "required": false },
+                { "type": "reason", "required": false }
+            ]
+        },
+        {
             "name": "codeTransform_isDoubleClickedToTriggerUserModal",
             "description": "The code transform button in the devtools to initiate the pre transform user modal window.",
             "metadata": [
