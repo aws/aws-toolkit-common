@@ -929,6 +929,12 @@
             "description": "Captures the size of the source code"
         },
         {
+            "name": "amazonqUploadIntent",
+            "type": "string",
+            "description": "The intent of the upload",
+            "allowedValues": ["TRANSFORMATION", "TASK_ASSIST_PLANNING"]
+        },
+        {
             "name": "amazonqNumberOfReferences",
             "type": "double",
             "description": "Captures the number of references"
@@ -2816,7 +2822,8 @@
             "description": "Captures createUploadUrl invocation process",
             "metadata": [
                 { "type": "amazonqConversationId" },
-                { "type": "amazonqRepositorySize", "required": false }
+                { "type": "amazonqRepositorySize", "required": false },
+                { "type": "amazonqUploadIntent", "required": false }
             ]
         },
         {
