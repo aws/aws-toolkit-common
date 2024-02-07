@@ -190,6 +190,7 @@
                 "java8.al2",
                 "java11",
                 "java17",
+                "java21",
                 "go1.x",
                 "python3.12",
                 "python3.11",
