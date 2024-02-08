@@ -968,7 +968,7 @@
         {
             "name": "codeTransformRequestId",
             "type": "string",
-            "description": "A string id for the API request"
+            "description": "The API request ID"
         },
         {
             "name": "codeTransformTotalByteSize",
@@ -1074,10 +1074,10 @@
             "description": "Names of the pre-validation errors that can occur",
             "allowedValues": [
                 "NoPom",
-                "NoJavaProject",
+                "NoJavaProjects",
                 "MixedLanguages",
                 "UnsupportedJavaVersion",
-                "NonMavenProject",
+                "NoMavenProjects",
                 "EmptyProject",
                 "NonSsoLogin",
                 "RemoteRunProject"
@@ -3797,6 +3797,10 @@
                 {
                     "type": "codeTransformJobId",
                     "required": false
+                },
+                {
+                    "type": "codeTransformStatus",
+                    "required": true
                 }
             ]
         },
@@ -3811,6 +3815,10 @@
                 {
                     "type": "codeTransformJobId",
                     "required": false
+                },
+                {
+                    "type": "codeTransformStatus",
+                    "required": true
                 }
             ]
         },
