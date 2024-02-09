@@ -1074,10 +1074,10 @@
             "description": "Names of the pre-validation errors that can occur",
             "allowedValues": [
                 "NoPom",
-                "NoJavaProjects",
+                "NoJavaProject",
                 "MixedLanguages",
                 "UnsupportedJavaVersion",
-                "NoMavenProjects",
+                "NonMavenProject",
                 "EmptyProject",
                 "NonSsoLogin",
                 "RemoteRunProject"
