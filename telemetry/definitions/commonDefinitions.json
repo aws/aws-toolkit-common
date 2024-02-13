@@ -2784,12 +2784,6 @@
             "passive": true
         },
         {
-            "name": "amazonq_startChat",
-            "description": "Number of times the user have triggered /dev and started the chat",
-            "unit": "Count",
-            "metadata": [{ "type": "amazonqConversationId" }]
-        },
-        {
             "name": "amazonq_endChat",
             "description": "Captures end of the conversation with amazonq /dev",
             "metadata": [
