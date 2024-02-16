@@ -3450,6 +3450,21 @@
             ]
         },
         {
+            "name": "codewhisperer_enabled",
+            "description": "Whether or not CodeWhisperer is enabled",
+            "passive": true,
+            "metadata": [
+                {
+                    "type": "source",
+                    "required": true
+                },
+                {
+                    "type": "enabled",
+                    "required": true
+                }
+            ]
+        },
+        {
             "name": "codecatalyst_createDevEnvironment",
             "description": "Create an Amazon CodeCatalyst Dev Environment",
             "metadata": [
