@@ -1091,7 +1091,7 @@
             "description": "Type of maven command",
             "allowedValues": [
                 "mvnw.cmd",
-                "./mvnw",
+                "mvnw",
                 "mvn",
                 "IDEBundledMaven"
             ]
