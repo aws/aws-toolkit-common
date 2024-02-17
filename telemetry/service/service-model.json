@@ -186,7 +186,7 @@
         "AWSProductVersion":{"shape":"AWSProductVersion"},
         "OS":{"shape":"Value"},
         "OSVersion":{"shape":"Value"},
-        "CommputeEnv": {"shape":"ComputeEnv"},
+        "ComputeEnv": {"shape":"ComputeEnv"},
         "ParentProduct":{"shape":"Value"},
         "ParentProductVersion":{"shape":"Value"},
         "Metadata":{"shape":"Metadata"},
@@ -209,7 +209,7 @@
         "OS":{"shape":"Value"},
         "OSArchitecture":{"shape":"Value"},
         "OSVersion":{"shape":"Value"},
-        "CommputeEnv": {"shape":"ComputeEnv"},
+        "ComputeEnv": {"shape":"ComputeEnv"},
         "ParentProduct":{"shape":"Value"},
         "ParentProductVersion":{"shape":"Value"},
         "MetricData":{"shape":"MetricData"}
