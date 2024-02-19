@@ -2791,7 +2791,8 @@
             "description": "Captures end of the conversation with amazonq /dev",
             "metadata": [
                 { "type": "amazonqConversationId" },
-                { "type": "amazonqEndOfTheConversationLatency", "required": false }
+                { "type": "amazonqEndOfTheConversationLatency", "required": false },
+                { "type": "credentialStartUrl", "required": false }
             ]
         },
         {
@@ -2800,26 +2801,35 @@
             "metadata": [
                 { "type": "amazonqConversationId" },
                 { "type": "amazonqGenerateApproachIteration" },
-                { "type": "amazonqGenerateApproachLatency" }
+                { "type": "amazonqGenerateApproachLatency" },
+                { "type": "credentialStartUrl", "required": false }
             ]
         },
         {
             "name": "amazonq_startConversationInvoke",
             "description": "Captures startConversation invocation process",
-            "metadata": [{ "type": "amazonqConversationId", "required": false }]
+            "metadata": [
+                { "type": "amazonqConversationId", "required": false },
+                { "type": "credentialStartUrl", "required": false }
+        ]
         },
         {
             "name": "amazonq_createUpload",
             "description": "Captures createUploadUrl invocation process",
             "metadata": [
                 { "type": "amazonqConversationId" },
-                { "type": "amazonqRepositorySize", "required": false }
+                { "type": "amazonqRepositorySize", "required": false },
+                { "type": "credentialStartUrl", "required": false }
             ]
         },
         {
             "name": "amazonq_isApproachAccepted",
             "description": "User has accepted the approach generated",
-            "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }]
+            "metadata": [
+                { "type": "enabled" }, 
+                { "type": "amazonqConversationId" },
+                { "type": "credentialStartUrl", "required": false }
+            ]
         },
         {
             "name": "amazonq_codeGenerationInvoke",
@@ -2831,48 +2841,73 @@
                 { "type": "amazonqCodeGenerationResult" },
                 { "type": "amazonqNumberOfFilesGenerated", "required": false },
                 { "type": "amazonqRepositorySize" },
-                { "type": "amazonqNumberOfReferences", "required": false }
+                { "type": "amazonqNumberOfReferences", "required": false },
+                { "type": "credentialStartUrl", "required": false }
             ]
         },
         {
             "name": "amazonq_isAcceptedCodeChanges",
             "description": "User applied code changes generated for the task.",
-            "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }]
+            "metadata": [
+                { "type": "enabled" }, 
+                { "type": "amazonqConversationId" },
+                { "type": "credentialStartUrl", "required": false }
+            ]
         },
         {
             "name": "amazonq_isProvideFeedbackForCodeGen",
             "description": "User asked to regenerate code generation with a comment",
-            "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }]
+            "metadata": [
+                { "type": "enabled" }, 
+                { "type": "amazonqConversationId" },
+                { "type": "credentialStartUrl", "required": false }
+            ]
         },
         {
             "name": "amazonq_isReviewedChanges",
             "description": "User reviewed changes",
             "passive": true,
-            "metadata": [{ "type": "enabled" }, { "type": "amazonqConversationId" }]
+            "metadata": [
+                { "type": "enabled" }, 
+                { "type": "amazonqConversationId" },
+                { "type": "credentialStartUrl", "required": false }
+            ]
         },
         {
             "name": "amazonq_codeGenerationThumbsUp",
             "description": "User clicked on the thumbs up button to say that they are unsatisfied",
             "unit": "Count",
-            "metadata": [{ "type": "amazonqConversationId" }]
+            "metadata": [
+                { "type": "amazonqConversationId" },
+                { "type": "credentialStartUrl", "required": false }
+            ]
         },
         {
             "name": "amazonq_codeGenerationThumbsDown",
             "description": "User clicked on the thumbs down button to say that they are unsatisfied",
             "unit": "Count",
-            "metadata": [{ "type": "amazonqConversationId" }]
+            "metadata": [
+                { "type": "amazonqConversationId" },
+                { "type": "credentialStartUrl", "required": false }
+            ]
         },
         {
             "name": "amazonq_approachThumbsUp",
             "description": "User clicked on the thumbs up button, to mention that they are satisfied",
             "unit": "Count",
-            "metadata": [{ "type": "amazonqConversationId" }]
+            "metadata": [
+                { "type": "amazonqConversationId" },
+                { "type": "credentialStartUrl", "required": false }
+        ]
         },
         {
             "name": "amazonq_approachThumbsDown",
             "description": "User clicked on the thumbs down button to say that they are unsatisfied",
             "unit": "Count",
-            "metadata": [{ "type": "amazonqConversationId" }]
+            "metadata": [
+                { "type": "amazonqConversationId" },
+                { "type": "credentialStartUrl", "required": false }
+            ]
         },
         {
             "name": "codewhisperer_codePercentage",
