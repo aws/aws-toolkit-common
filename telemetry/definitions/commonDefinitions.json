@@ -799,6 +799,11 @@
             "description": "The id of the rule which produced the code scan issue"
         },
         {
+            "name": "includesFix",
+            "type": "boolean",
+            "description": "Whether the security issue includes a suggested fix"
+        },
+        {
             "name": "syncedResources",
             "type": "string",
             "description": "Describes which parts of an application (that we know of) were synced to the cloud. \"Code\" resources follow the SAM spec: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-sync.html",
@@ -929,6 +934,12 @@
             "description": "Captures the size of the source code"
         },
         {
+            "name": "amazonqUploadIntent",
+            "type": "string",
+            "description": "The intent of the upload",
+            "allowedValues": ["TRANSFORMATION", "TASK_ASSIST_PLANNING"]
+        },
+        {
             "name": "amazonqNumberOfReferences",
             "type": "double",
             "description": "Captures the number of references"
@@ -1022,7 +1033,8 @@
             "description": "Names of components that can start a transformation",
             "allowedValues": [
                 "devToolsStartButton",
-                "bottomPanelSideNavButton"
+                "bottomPanelSideNavButton",
+                "chatPrompt"
             ]
         },
         {
@@ -2819,7 +2831,8 @@
             "metadata": [
                 { "type": "amazonqConversationId" },
                 { "type": "amazonqRepositorySize", "required": false },
-                { "type": "credentialStartUrl", "required": false }
+                { "type": "credentialStartUrl", "required": false },
+                { "type": "amazonqUploadIntent", "required": false }
             ]
         },
         {
@@ -3009,7 +3022,12 @@
         {
             "name": "codewhisperer_codeScanIssueHover",
             "description": "Called when a code scan issue is hovered over",
-            "metadata": [{ "type": "findingId" }, { "type": "detectorId" }, { "type": "ruleId", "required": false }]
+            "metadata": [
+                { "type": "findingId" },
+                { "type": "detectorId" },
+                { "type": "ruleId", "required": false },
+                { "type": "includesFix" }
+            ]
         },
         {
             "name": "codewhisperer_codeScanIssueApplyFix",
