@@ -799,6 +799,11 @@
             "description": "The id of the rule which produced the code scan issue"
         },
         {
+            "name": "includesFix",
+            "type": "boolean",
+            "description": "Whether the security issue includes a suggested fix"
+        },
+        {
             "name": "syncedResources",
             "type": "string",
             "description": "Describes which parts of an application (that we know of) were synced to the cloud. \"Code\" resources follow the SAM spec: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-sync.html",
@@ -2975,7 +2980,12 @@
         {
             "name": "codewhisperer_codeScanIssueHover",
             "description": "Called when a code scan issue is hovered over",
-            "metadata": [{ "type": "findingId" }, { "type": "detectorId" }, { "type": "ruleId", "required": false }]
+            "metadata": [
+                { "type": "findingId" },
+                { "type": "detectorId" },
+                { "type": "ruleId", "required": false },
+                { "type": "includesFix" }
+            ]
         },
         {
             "name": "codewhisperer_codeScanIssueApplyFix",
