@@ -1107,6 +1107,11 @@
                 "mvn",
                 "IDEBundledMaven"
             ]
+        },
+        {
+            "name": "codeTransformHas1pDependency",
+            "type": "boolean",
+            "description": "Project contains at least 1 dependency not available in maven central"
         }
     ],
     "metrics": [
@@ -3984,6 +3989,24 @@
                 {
                     "type": "reason",
                     "required": false
+                }
+            ]
+        },
+        {
+            "name": "codeTransform_projectContains1pDependencies",
+            "description": "When a project contains dependencies not available on maven central",
+            "metadata": [
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformJobId",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformHas1pDependency",
+                    "required": true
                 }
             ]
         }
