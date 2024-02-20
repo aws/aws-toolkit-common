@@ -1022,7 +1022,8 @@
             "description": "Names of components that can start a transformation",
             "allowedValues": [
                 "devToolsStartButton",
-                "bottomPanelSideNavButton"
+                "bottomPanelSideNavButton",
+                "chatPrompt"
             ]
         },
         {
