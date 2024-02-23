@@ -3031,10 +3031,7 @@
                 { "type": "detectorId" },
                 { "type": "ruleId", "required": false },
                 { "type": "includesFix" },
-                {
-                    "type": "credentialStartUrl",
-                    "required": false
-                }
+                { "type": "credentialStartUrl", "required": false }
             ]
         },
         {
@@ -3047,10 +3044,7 @@
                 { "type": "ruleId", "required": false },
                 { "type": "result" },
                 { "type": "reason", "required": false },
-                {
-                    "type": "credentialStartUrl",
-                    "required": false
-                }
+                { "type": "credentialStartUrl", "required": false }
             ]
         },
         {
@@ -3060,10 +3054,7 @@
                 { "type": "findingId" }, 
                 { "type": "detectorId" }, 
                 { "type": "ruleId", "required": false },
-                {
-                    "type": "credentialStartUrl",
-                    "required": false
-                }
+                { "type": "credentialStartUrl", "required": false }
             ]
         },
         {
