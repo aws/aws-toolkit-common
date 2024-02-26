@@ -2951,6 +2951,10 @@
                 {
                     "type": "codewhispererCustomizationArn",
                     "required": false
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
                 }
             ],
             "passive": true
@@ -3026,7 +3030,8 @@
                 { "type": "findingId" },
                 { "type": "detectorId" },
                 { "type": "ruleId", "required": false },
-                { "type": "includesFix" }
+                { "type": "includesFix" },
+                { "type": "credentialStartUrl", "required": false }
             ]
         },
         {
@@ -3038,13 +3043,19 @@
                 { "type": "component" },
                 { "type": "ruleId", "required": false },
                 { "type": "result" },
-                { "type": "reason", "required": false }
+                { "type": "reason", "required": false },
+                { "type": "credentialStartUrl", "required": false }
             ]
         },
         {
             "name": "codewhisperer_codeScanIssueViewDetails",
             "description": "Called when a code scan issue webview is opened",
-            "metadata": [{ "type": "findingId" }, { "type": "detectorId" }, { "type": "ruleId", "required": false }]
+            "metadata": [
+                { "type": "findingId" }, 
+                { "type": "detectorId" }, 
+                { "type": "ruleId", "required": false },
+                { "type": "credentialStartUrl", "required": false }
+            ]
         },
         {
             "name": "codewhisperer_serviceInvocation",
@@ -3514,6 +3525,10 @@
                 {
                     "type": "enabled",
                     "required": true
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
                 }
             ]
         },
