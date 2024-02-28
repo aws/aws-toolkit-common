@@ -983,17 +983,7 @@
             "description": "The API request ID"
         },
         {
-            "name": "codeTransformMavenCommands",
-            "type": "string",
-            "description": "Maven commands that have been run."
-        },
-        {
-            "name": "codeTransformMavenExecutionSuccessful",
-            "type": "boolean",
-            "description": "If the Maven commands executions are successful."
-        },
-        {
-            "name": "codeTransformMavenExecutionDuration",
+            "name": "codeTransformMvnCommandsExecutionDuration",
             "type": "int",
             "description": "Total time of Maven commands executions."
         },
@@ -3824,7 +3814,7 @@
             ]
         },
         {
-            "name": "codeTransform_jobMavenRunTime",
+            "name": "codeTransform_mvnCommandsExecutionComplete",
             "description": "A timestamp for when all maven commands are done executing",
             "metadata": [
                 {
@@ -3832,15 +3822,7 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformMavenCommands",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformMavenExecutionSuccessful",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformMavenExecutionDuration",
+                    "type": "codeTransformMvnCommandsExecutionDuration",
                     "required": true
                 }
             ]
