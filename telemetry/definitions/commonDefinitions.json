@@ -929,6 +929,11 @@
             "description": "Captures the number of files generated as a part of code generation iteration"
         },
         {
+            "name": "amazonqNumberOfFilesRejected",
+            "type": "double",
+            "description": "Captures the number of rejected files as a part of code generation iteration"
+        },
+        {
             "name": "amazonqRepositorySize",
             "type": "double",
             "description": "Captures the size of the source code"
@@ -2864,6 +2869,7 @@
             "metadata": [
                 { "type": "enabled" }, 
                 { "type": "amazonqConversationId" },
+                { "type": "amazonqNumberOfFilesRejected" },
                 { "type": "credentialStartUrl", "required": false }
             ]
         },
