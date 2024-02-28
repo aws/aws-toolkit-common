@@ -2869,7 +2869,7 @@
             "metadata": [
                 { "type": "enabled" }, 
                 { "type": "amazonqConversationId" },
-                { "type": "amazonqNumberOfFilesRejected" },
+                { "type": "amazonqNumberOfFilesRejected", "required": false },
                 { "type": "credentialStartUrl", "required": false }
             ]
         },
