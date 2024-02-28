@@ -983,11 +983,6 @@
             "description": "The API request ID"
         },
         {
-            "name": "codeTransformMvnCommandsExecutionDuration",
-            "type": "int",
-            "description": "Total time of Maven commands executions."
-        },
-        {
             "name": "codeTransformTotalByteSize",
             "type": "int",
             "description": "The byte size of the upload or download."
@@ -3822,7 +3817,7 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformMvnCommandsExecutionDuration",
+                    "type": "codeTransformRunTimeLatency",
                     "required": true
                 }
             ]
