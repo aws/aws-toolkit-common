@@ -983,6 +983,21 @@
             "description": "The API request ID"
         },
         {
+            "name": "codeTransformMavenCommands",
+            "type": "string",
+            "description": "Maven commands that have been run."
+        },
+        {
+            "name": "codeTransformMavenExecutionSuccessful",
+            "type": "boolean",
+            "description": "If the Maven commands executions are successful."
+        },
+        {
+            "name": "codeTransformMavenExecutionDuration",
+            "type": "int",
+            "description": "Total time of Maven commands executions."
+        },
+        {
             "name": "codeTransformTotalByteSize",
             "type": "int",
             "description": "The byte size of the upload or download."
@@ -3805,6 +3820,28 @@
                 {
                     "type": "codeTransformRuntimeError",
                     "required": false
+                }
+            ]
+        },
+        {
+            "name": "codeTransform_jobMavenRunTime",
+            "description": "A timestamp for when all maven commands are done executing",
+            "metadata": [
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformMavenCommands",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformMavenExecutionSuccessful",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformMavenExecutionDuration",
+                    "required": true
                 }
             ]
         },
