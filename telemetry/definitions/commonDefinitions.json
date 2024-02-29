@@ -3815,6 +3815,20 @@
             ]
         },
         {
+            "name": "codeTransform_mvnCommandsExecutionComplete",
+            "description": "A timestamp for when all maven commands are done executing",
+            "metadata": [
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformRunTimeLatency",
+                    "required": true
+                }
+            ]
+        },
+        {
             "name": "codeTransform_jobCreateZipEndTime",
             "description": "A timestamp for when the job is ending upload zip contents",
             "metadata": [
