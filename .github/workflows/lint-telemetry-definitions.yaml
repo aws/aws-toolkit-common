@@ -1,0 +1,26 @@
+name: Lint Telemetry Definitions
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main, feature/*]
+
+jobs:
+    build:
+        name: Build and Test
+        runs-on: ubuntu-latest
+        steps:
+            - name: Sync Code
+              uses: actions/checkout@v3
+
+            - name: Compile the Validation code
+              run: |
+                  cd telemetry/validation
+                  npm install
+                  npm run build
+                  npm run test
+
+            - name: Validate the telemetry definitions
+              run: |
+                  cd telemetry/validation
+                  npm run validate
