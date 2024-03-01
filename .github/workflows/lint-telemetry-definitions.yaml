@@ -16,7 +16,7 @@ jobs:
             - name: Compile the Validation code
               run: |
                   cd telemetry/validation
-                  npm install
+                  npm ci
                   npm run build
                   npm run test
 
