@@ -1,5 +1,9 @@
-import { reorder } from './reorder'
-import { TelemetryDefinitions, loadTelemetryDefinitions, saveTelemetryDefinitions } from './telemetryDefinitions'
+import {
+    TelemetryDefinitions,
+    loadTelemetryDefinitions,
+    reorder,
+    saveTelemetryDefinitions
+} from './telemetryDefinitions'
 
 /**
  * Performs automated fixes for certain validation checks on the given file.
@@ -14,13 +18,9 @@ async function main() {
     const jsonPath = process.argv[2]
     const definitions = await loadTelemetryDefinitions(jsonPath)
 
-    fix(definitions)
+    reorder(definitions)
 
     await saveTelemetryDefinitions(definitions, jsonPath)
-}
-
-export function fix(definitions: TelemetryDefinitions): void {
-    reorder(definitions)
 }
 
 ;(async () => {

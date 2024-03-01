@@ -1,5 +1,4 @@
-import { loadTelemetryDefinitions } from './telemetryDefinitions'
-import { validate } from './validation'
+import { loadTelemetryDefinitions, validate } from './telemetryDefinitions'
 
 /**
  * Performs validation checks on the given file.
