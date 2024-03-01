@@ -1346,6 +1346,9 @@
             "description": "Captures Code Generation generation process",
             "metadata": [
                 {
+                    "type": "amazonqCodeGenerationResult"
+                },
+                {
                     "type": "amazonqConversationId"
                 },
                 {
@@ -1355,18 +1358,15 @@
                     "type": "amazonqGenerateCodeResponseLatency"
                 },
                 {
-                    "type": "amazonqCodeGenerationResult"
-                },
-                {
                     "type": "amazonqNumberOfFilesGenerated",
                     "required": false
                 },
                 {
-                    "type": "amazonqRepositorySize"
-                },
-                {
                     "type": "amazonqNumberOfReferences",
                     "required": false
+                },
+                {
+                    "type": "amazonqRepositorySize"
                 },
                 {
                     "type": "credentialStartUrl",
@@ -1414,11 +1414,11 @@
                     "required": false
                 },
                 {
-                    "type": "credentialStartUrl",
+                    "type": "amazonqUploadIntent",
                     "required": false
                 },
                 {
-                    "type": "amazonqUploadIntent",
+                    "type": "credentialStartUrl",
                     "required": false
                 }
             ]
@@ -1445,9 +1445,6 @@
             "description": "User applied code changes generated for the task.",
             "metadata": [
                 {
-                    "type": "enabled"
-                },
-                {
                     "type": "amazonqConversationId"
                 },
                 {
@@ -1456,6 +1453,9 @@
                 {
                     "type": "credentialStartUrl",
                     "required": false
+                },
+                {
+                    "type": "enabled"
                 }
             ]
         },
@@ -1464,14 +1464,14 @@
             "description": "User has accepted the approach generated",
             "metadata": [
                 {
-                    "type": "enabled"
-                },
-                {
                     "type": "amazonqConversationId"
                 },
                 {
                     "type": "credentialStartUrl",
                     "required": false
+                },
+                {
+                    "type": "enabled"
                 }
             ]
         },
@@ -1480,14 +1480,14 @@
             "description": "User asked to regenerate code generation with a comment",
             "metadata": [
                 {
-                    "type": "enabled"
-                },
-                {
                     "type": "amazonqConversationId"
                 },
                 {
                     "type": "credentialStartUrl",
                     "required": false
+                },
+                {
+                    "type": "enabled"
                 }
             ]
         },
@@ -1497,14 +1497,14 @@
             "passive": true,
             "metadata": [
                 {
-                    "type": "enabled"
-                },
-                {
                     "type": "amazonqConversationId"
                 },
                 {
                     "type": "credentialStartUrl",
                     "required": false
+                },
+                {
+                    "type": "enabled"
                 }
             ]
         },
@@ -1536,21 +1536,21 @@
             "description": "Invoking one simulated API Gateway call using the SAM cli",
             "metadata": [
                 {
-                    "type": "runtime",
-                    "required": false
+                    "type": "debug"
                 },
                 {
                     "type": "httpMethod",
                     "required": false
                 },
                 {
+                    "type": "lambdaArchitecture",
+                    "required": false
+                },
+                {
                     "type": "result"
                 },
                 {
-                    "type": "debug"
-                },
-                {
-                    "type": "lambdaArchitecture",
+                    "type": "runtime",
                     "required": false
                 }
             ]
@@ -1560,11 +1560,11 @@
             "description": "Calling a remote API Gateway",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "httpMethod",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -1586,14 +1586,14 @@
             "description": "Create an App Runner service",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "appRunnerServiceSource"
                 },
                 {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -1602,11 +1602,11 @@
             "description": "Delete an App Runner service",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "appRunnerServiceStatus",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -1654,31 +1654,31 @@
             "description": "Captures the result of adding a new connection in the 'Add New Connection' workflow",
             "metadata": [
                 {
-                    "type": "source"
-                },
-                {
-                    "type": "featureId"
+                    "type": "attempts",
+                    "required": false
                 },
                 {
                     "type": "credentialSourceId"
                 },
                 {
-                    "type": "isAggregated"
-                },
-                {
-                    "type": "result"
-                },
-                {
-                    "type": "attempts",
-                    "required": false
+                    "type": "featureId"
                 },
                 {
                     "type": "invalidInputFields",
                     "required": false
                 },
                 {
+                    "type": "isAggregated"
+                },
+                {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "source"
                 }
             ]
         },
@@ -1687,29 +1687,29 @@
             "description": "The diff/change in Auth connections",
             "metadata": [
                 {
-                    "type": "source"
+                    "type": "attempts"
                 },
                 {
                     "type": "authConnectionsCount"
                 },
                 {
-                    "type": "newAuthConnectionsCount"
+                    "type": "enabledAuthConnections"
                 },
                 {
-                    "type": "enabledAuthConnections"
+                    "type": "newAuthConnectionsCount"
                 },
                 {
                     "type": "newEnabledAuthConnections"
                 },
                 {
-                    "type": "attempts"
+                    "type": "reason",
+                    "required": false
                 },
                 {
                     "type": "result"
                 },
                 {
-                    "type": "reason",
-                    "required": false
+                    "type": "source"
                 }
             ]
         },
@@ -1743,10 +1743,10 @@
             "description": "Delete an AWS resource",
             "metadata": [
                 {
-                    "type": "serviceType"
+                    "type": "result"
                 },
                 {
-                    "type": "result"
+                    "type": "serviceType"
                 }
             ]
         },
@@ -1820,15 +1820,15 @@
             "description": "Called when a connection requires login using the browser",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "credentialSourceId",
+                    "required": false
                 },
                 {
                     "type": "credentialType",
                     "required": false
                 },
                 {
-                    "type": "credentialSourceId",
-                    "required": false
+                    "type": "result"
                 }
             ]
         },
@@ -1837,17 +1837,17 @@
             "description": "Modify credentials (e.g. Add, Edit, Delete)",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "credentialModification"
                 },
                 {
-                    "type": "source"
+                    "type": "result"
                 },
                 {
                     "type": "serviceType",
                     "required": false
+                },
+                {
+                    "type": "source"
                 }
             ]
         },
@@ -1881,11 +1881,11 @@
                     "type": "result"
                 },
                 {
-                    "type": "url",
+                    "type": "source",
                     "required": false
                 },
                 {
-                    "type": "source",
+                    "type": "url",
                     "required": false
                 }
             ]
@@ -1896,10 +1896,7 @@
             "passive": true,
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
-                    "type": "reason",
+                    "type": "credentialSourceId",
                     "required": false
                 },
                 {
@@ -1907,8 +1904,11 @@
                     "required": false
                 },
                 {
-                    "type": "credentialSourceId",
+                    "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result"
                 },
                 {
                     "type": "sessionDuration",
@@ -1933,11 +1933,11 @@
             "description": "Select a credentials profile",
             "metadata": [
                 {
-                    "type": "credentialType",
+                    "type": "credentialSourceId",
                     "required": false
                 },
                 {
-                    "type": "credentialSourceId",
+                    "type": "credentialType",
                     "required": false
                 }
             ]
@@ -1965,10 +1965,10 @@
             "description": "An external tool was installed automatically",
             "metadata": [
                 {
-                    "type": "toolId"
+                    "type": "result"
                 },
                 {
-                    "type": "result"
+                    "type": "toolId"
                 }
             ],
             "passive": true
@@ -1978,15 +1978,15 @@
             "description": "Validate credentials when selecting new credentials",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "credentialSourceId",
+                    "required": false
                 },
                 {
                     "type": "credentialType",
                     "required": false
                 },
                 {
-                    "type": "credentialSourceId",
-                    "required": false
+                    "type": "result"
                 }
             ],
             "passive": true
@@ -2014,25 +2014,7 @@
             "description": "Called when deploying an application to Elastic Beanstalk",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
-                    "type": "initialDeploy"
-                },
-                {
                     "type": "duration",
-                    "required": false
-                },
-                {
-                    "type": "name",
-                    "required": false
-                },
-                {
-                    "type": "framework",
-                    "required": false
-                },
-                {
-                    "type": "xrayEnabled",
                     "required": false
                 },
                 {
@@ -2040,11 +2022,29 @@
                     "required": false
                 },
                 {
+                    "type": "framework",
+                    "required": false
+                },
+                {
+                    "type": "initialDeploy"
+                },
+                {
+                    "type": "name",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                },
+                {
                     "type": "serviceType",
                     "required": false
                 },
                 {
                     "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "xrayEnabled",
                     "required": false
                 }
             ]
@@ -2081,11 +2081,11 @@
             "description": "Called when user completes the Elastic Beanstalk publish wizard",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "duration",
                     "required": false
+                },
+                {
+                    "type": "result"
                 },
                 {
                     "type": "serviceType",
@@ -2141,14 +2141,14 @@
             "description": "Called when deploying a CloudFormation template",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "duration",
+                    "required": false
                 },
                 {
                     "type": "initialDeploy"
                 },
                 {
-                    "type": "duration",
-                    "required": false
+                    "type": "result"
                 },
                 {
                     "type": "serviceType",
@@ -2174,11 +2174,11 @@
             "description": "Called when user completes the CloudFormation template publish wizard",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "duration",
                     "required": false
+                },
+                {
+                    "type": "result"
                 },
                 {
                     "type": "serviceType",
@@ -2258,13 +2258,13 @@
             "description": "Start an insights query",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "insightsQueryStringType"
                 },
                 {
                     "type": "insightsQueryTimeType"
                 },
                 {
-                    "type": "insightsQueryStringType"
+                    "type": "result"
                 }
             ]
         },
@@ -2309,10 +2309,10 @@
             "description": "Copy the ARN of a CloudWatch Logs entity",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "cloudWatchResourceType"
                 },
                 {
-                    "type": "cloudWatchResourceType"
+                    "type": "result"
                 }
             ]
         },
@@ -2321,10 +2321,10 @@
             "description": "Delete a CloudWatch Logs entity.",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "cloudWatchResourceType"
                 },
                 {
-                    "type": "cloudWatchResourceType"
+                    "type": "result"
                 }
             ]
         },
@@ -2334,10 +2334,10 @@
             "description": "Download a CloudWatch Logs entity. Value indicates the final size of the formatted stream in bytes.",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "cloudWatchResourceType"
                 },
                 {
-                    "type": "cloudWatchResourceType"
+                    "type": "result"
                 }
             ]
         },
@@ -2356,14 +2356,7 @@
             "description": "Filters a CloudWatch Logs entity. (Essentially a subset of cloudwatchlogs_open)",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "cloudWatchResourceType"
-                },
-                {
-                    "type": "source",
-                    "required": false
                 },
                 {
                     "type": "hasTextFilter",
@@ -2371,6 +2364,13 @@
                 },
                 {
                     "type": "hasTimeFilter",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "source",
                     "required": false
                 }
             ]
@@ -2380,18 +2380,11 @@
             "description": "Open a CloudWatch Logs entity. ServiceType and source indicate where the request came from (example: while viewing an ECS container)",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
-                    "type": "cloudWatchResourceType"
-                },
-                {
                     "type": "cloudWatchLogsPresentation",
                     "required": false
                 },
                 {
-                    "type": "serviceType",
-                    "required": false
+                    "type": "cloudWatchResourceType"
                 },
                 {
                     "type": "hasTextFilter",
@@ -2399,6 +2392,13 @@
                 },
                 {
                     "type": "hasTimeFilter",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "serviceType",
                     "required": false
                 },
                 {
@@ -2518,10 +2518,10 @@
             "description": "Connect to a Amazon CodeCatalyst dev environment",
             "metadata": [
                 {
-                    "type": "userId"
+                    "type": "result"
                 },
                 {
-                    "type": "result"
+                    "type": "userId"
                 }
             ]
         },
@@ -2530,14 +2530,14 @@
             "description": "Create an Amazon CodeCatalyst Dev Environment",
             "metadata": [
                 {
-                    "type": "userId"
+                    "type": "codecatalyst_createDevEnvironmentRepoType",
+                    "required": false
                 },
                 {
                     "type": "result"
                 },
                 {
-                    "type": "codecatalyst_createDevEnvironmentRepoType",
-                    "required": false
+                    "type": "userId"
                 }
             ]
         },
@@ -2547,20 +2547,20 @@
             "passive": true,
             "metadata": [
                 {
-                    "type": "userId"
-                },
-                {
-                    "type": "result"
-                },
-                {
-                    "type": "duration"
+                    "type": "codecatalyst_devEnvironmentWorkflowError",
+                    "required": false
                 },
                 {
                     "type": "codecatalyst_devEnvironmentWorkflowStep"
                 },
                 {
-                    "type": "codecatalyst_devEnvironmentWorkflowError",
-                    "required": false
+                    "type": "duration"
+                },
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "userId"
                 }
             ]
         },
@@ -2569,10 +2569,10 @@
             "description": "Clone a Amazon CodeCatalyst code repository locally",
             "metadata": [
                 {
-                    "type": "userId"
+                    "type": "result"
                 },
                 {
-                    "type": "result"
+                    "type": "userId"
                 }
             ]
         },
@@ -2581,13 +2581,13 @@
             "description": "Update properties of a Amazon CodeCatalyst Dev Environment",
             "metadata": [
                 {
-                    "type": "userId"
+                    "type": "codecatalyst_updateDevEnvironmentLocationType"
                 },
                 {
                     "type": "result"
                 },
                 {
-                    "type": "codecatalyst_updateDevEnvironmentLocationType"
+                    "type": "userId"
                 }
             ]
         },
@@ -2596,10 +2596,10 @@
             "description": "Trigger a devfile update on a Amazon CodeCatalyst dev environment",
             "metadata": [
                 {
-                    "type": "userId"
+                    "type": "result"
                 },
                 {
-                    "type": "result"
+                    "type": "userId"
                 }
             ]
         },
@@ -2608,11 +2608,11 @@
             "description": "A repo is cloned from CodeCommit",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -2621,11 +2621,11 @@
             "description": "A repo is created in CodeCommit",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -2634,11 +2634,11 @@
             "description": "A connection is established to CodeCommit to perform actions on repos",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "credentialType",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ],
             "passive": true
@@ -2672,19 +2672,19 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
                     "type": "codeTransformRuntimeError",
                     "required": false
                 },
                 {
-                    "type": "result",
+                    "type": "codeTransformSessionId",
                     "required": true
                 },
                 {
                     "type": "reason",
+                    "required": true
+                },
+                {
+                    "type": "result",
                     "required": true
                 }
             ]
@@ -2712,7 +2712,11 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformTotalByteSize",
+                    "type": "codeTransformRuntimeError",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformRunTimeLatency",
                     "required": true
                 },
                 {
@@ -2720,12 +2724,8 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformRunTimeLatency",
+                    "type": "codeTransformTotalByteSize",
                     "required": true
-                },
-                {
-                    "type": "codeTransformRuntimeError",
-                    "required": false
                 }
             ]
         },
@@ -2734,7 +2734,7 @@
             "description": "A timestamp for when the job is ending upload zip contents",
             "metadata": [
                 {
-                    "type": "codeTransformTotalByteSize",
+                    "type": "codeTransformRunTimeLatency",
                     "required": true
                 },
                 {
@@ -2742,7 +2742,7 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformRunTimeLatency",
+                    "type": "codeTransformTotalByteSize",
                     "required": true
                 }
             ]
@@ -2766,12 +2766,12 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
                     "type": "codeTransformRuntimeError",
                     "required": false
+                },
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
                 }
             ]
         },
@@ -2780,11 +2780,11 @@
             "description": "The user closes their IDE and stops viewing the transformation.",
             "metadata": [
                 {
-                    "type": "codeTransformSessionId",
+                    "type": "codeTransformJobId",
                     "required": true
                 },
                 {
-                    "type": "codeTransformJobId",
+                    "type": "codeTransformSessionId",
                     "required": true
                 },
                 {
@@ -2798,11 +2798,11 @@
             "description": "The user was previously running a transformation and came back to IDE to see it still running",
             "metadata": [
                 {
-                    "type": "codeTransformSessionId",
+                    "type": "codeTransformJobId",
                     "required": true
                 },
                 {
-                    "type": "codeTransformJobId",
+                    "type": "codeTransformSessionId",
                     "required": true
                 },
                 {
@@ -2856,11 +2856,11 @@
             "description": "During the transformation progress, log the status steps returning from the API.",
             "metadata": [
                 {
-                    "type": "codeTransformSessionId",
+                    "type": "codeTransformJobId",
                     "required": true
                 },
                 {
-                    "type": "codeTransformJobId",
+                    "type": "codeTransformSessionId",
                     "required": true
                 },
                 {
@@ -2883,16 +2883,16 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformSessionId",
-                    "required": true
+                    "type": "codeTransformJobId",
+                    "required": false
                 },
                 {
                     "type": "codeTransformRequestId",
                     "required": false
                 },
                 {
-                    "type": "codeTransformJobId",
-                    "required": false
+                    "type": "codeTransformSessionId",
+                    "required": true
                 }
             ]
         },
@@ -2906,6 +2906,14 @@
                     "required": true
                 },
                 {
+                    "type": "codeTransformJobId",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformRequestId",
+                    "required": false
+                },
+                {
                     "type": "codeTransformRunTimeLatency",
                     "required": true
                 },
@@ -2914,19 +2922,11 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformRequestId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformJobId",
+                    "type": "codeTransformTotalByteSize",
                     "required": false
                 },
                 {
                     "type": "codeTransformUploadId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformTotalByteSize",
                     "required": false
                 }
             ]
@@ -2941,12 +2941,12 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
                     "type": "codeTransformJobId",
                     "required": false
+                },
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
                 }
             ]
         },
@@ -2955,11 +2955,11 @@
             "description": "The maven command build failed.",
             "metadata": [
                 {
-                    "type": "codeTransformSessionId",
+                    "type": "codeTransformMavenBuildCommand",
                     "required": true
                 },
                 {
-                    "type": "codeTransformMavenBuildCommand",
+                    "type": "codeTransformSessionId",
                     "required": true
                 },
                 {
@@ -2973,15 +2973,7 @@
             "description": "Transform initiates project validation before user interaction and we want to gather project details then.",
             "metadata": [
                 {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "result",
-                    "required": true
-                },
-                {
-                    "type": "reason",
+                    "type": "codeTransformLocalJavaVersion",
                     "required": false
                 },
                 {
@@ -2989,8 +2981,16 @@
                     "required": false
                 },
                 {
-                    "type": "codeTransformLocalJavaVersion",
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
                 }
             ]
         },
@@ -3000,24 +3000,24 @@
             "description": "We want to log the total run time in the users experience for the IDE. The total runtime should end when all API's have finished running and the users is prompted for next step actions.",
             "metadata": [
                 {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformRunTimeLatency",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformResultStatusMessage",
-                    "required": false
-                },
-                {
                     "type": "codeTransformLocalJavaVersion",
                     "required": false
                 },
                 {
                     "type": "codeTransformLocalMavenVersion",
                     "required": false
+                },
+                {
+                    "type": "codeTransformResultStatusMessage",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformRunTimeLatency",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
                 }
             ]
         },
@@ -3026,12 +3026,12 @@
             "description": "A timestamp for when the diff view is being displayed to the user.",
             "metadata": [
                 {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
                     "type": "codeTransformJobId",
                     "required": false
+                },
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
                 }
             ]
         },
@@ -3039,6 +3039,10 @@
             "name": "codeTransform_vcsViewerCanceled",
             "description": "An interactivity measured when users cancel a patch view.",
             "metadata": [
+                {
+                    "type": "codeTransformJobId",
+                    "required": false
+                },
                 {
                     "type": "codeTransformPatchViewerCancelSrcComponents",
                     "required": true
@@ -3052,10 +3056,6 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformJobId",
-                    "required": false
-                },
-                {
                     "type": "codeTransformStatus",
                     "required": true
                 }
@@ -3066,16 +3066,16 @@
             "description": "An interactivity measured when users click to view diff results.",
             "metadata": [
                 {
-                    "type": "codeTransformVCSViewerSrcComponents",
-                    "required": true
+                    "type": "codeTransformJobId",
+                    "required": false
                 },
                 {
                     "type": "codeTransformSessionId",
                     "required": true
                 },
                 {
-                    "type": "codeTransformJobId",
-                    "required": false
+                    "type": "codeTransformVCSViewerSrcComponents",
+                    "required": true
                 }
             ]
         },
@@ -3084,12 +3084,12 @@
             "description": "An interactivity measured when users submit their patch view results.",
             "metadata": [
                 {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
                     "type": "codeTransformJobId",
                     "required": false
+                },
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
                 },
                 {
                     "type": "codeTransformStatus",
@@ -3129,44 +3129,44 @@
             "passive": true,
             "metadata": [
                 {
-                    "type": "codewhispererRequestId"
-                },
-                {
-                    "type": "codewhispererSessionId"
-                },
-                {
-                    "type": "codewhispererPreprocessingLatency"
-                },
-                {
-                    "type": "codewhispererCredentialFetchingLatency"
-                },
-                {
-                    "type": "codewhispererPostprocessingLatency"
-                },
-                {
-                    "type": "codewhispererFirstCompletionLatency"
-                },
-                {
-                    "type": "codewhispererEndToEndLatency"
-                },
-                {
                     "type": "codewhispererAllCompletionsLatency"
                 },
                 {
                     "type": "codewhispererCompletionType"
                 },
                 {
-                    "type": "codewhispererTriggerType"
+                    "type": "codewhispererCredentialFetchingLatency"
+                },
+                {
+                    "type": "codewhispererEndToEndLatency"
+                },
+                {
+                    "type": "codewhispererFirstCompletionLatency"
                 },
                 {
                     "type": "codewhispererLanguage"
                 },
                 {
-                    "type": "credentialStartUrl",
-                    "required": false
+                    "type": "codewhispererPostprocessingLatency"
+                },
+                {
+                    "type": "codewhispererPreprocessingLatency"
+                },
+                {
+                    "type": "codewhispererRequestId"
+                },
+                {
+                    "type": "codewhispererSessionId"
+                },
+                {
+                    "type": "codewhispererTriggerType"
                 },
                 {
                     "type": "codewhispererUserGroup"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
                 }
             ]
         },
@@ -3176,6 +3176,10 @@
             "metadata": [
                 {
                     "type": "codewhispererAcceptedTokens"
+                },
+                {
+                    "type": "codewhispererCustomizationArn",
+                    "required": false
                 },
                 {
                     "type": "codewhispererLanguage"
@@ -3190,19 +3194,15 @@
                     "type": "codewhispererUserGroup"
                 },
                 {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
                     "type": "reason",
                     "required": false
                 },
                 {
                     "type": "successCount"
-                },
-                {
-                    "type": "codewhispererCustomizationArn",
-                    "required": false
-                },
-                {
-                    "type": "credentialStartUrl",
-                    "required": false
                 }
             ],
             "passive": true
@@ -3212,27 +3212,27 @@
             "description": "Called when a code scan issue suggested fix is applied",
             "metadata": [
                 {
-                    "type": "findingId"
+                    "type": "component"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
                 },
                 {
                     "type": "detectorId"
                 },
                 {
-                    "type": "component"
-                },
-                {
-                    "type": "ruleId",
-                    "required": false
-                },
-                {
-                    "type": "result"
+                    "type": "findingId"
                 },
                 {
                     "type": "reason",
                     "required": false
                 },
                 {
-                    "type": "credentialStartUrl",
+                    "type": "result"
+                },
+                {
+                    "type": "ruleId",
                     "required": false
                 }
             ]
@@ -3242,20 +3242,20 @@
             "description": "Called when a code scan issue is hovered over",
             "metadata": [
                 {
-                    "type": "findingId"
+                    "type": "credentialStartUrl",
+                    "required": false
                 },
                 {
                     "type": "detectorId"
                 },
                 {
-                    "type": "ruleId",
-                    "required": false
+                    "type": "findingId"
                 },
                 {
                     "type": "includesFix"
                 },
                 {
-                    "type": "credentialStartUrl",
+                    "type": "ruleId",
                     "required": false
                 }
             ]
@@ -3265,17 +3265,17 @@
             "description": "Called when a code scan issue webview is opened",
             "metadata": [
                 {
-                    "type": "findingId"
+                    "type": "credentialStartUrl",
+                    "required": false
                 },
                 {
                     "type": "detectorId"
                 },
                 {
-                    "type": "ruleId",
-                    "required": false
+                    "type": "findingId"
                 },
                 {
-                    "type": "credentialStartUrl",
+                    "type": "ruleId",
                     "required": false
                 }
             ]
@@ -3286,16 +3286,16 @@
             "passive": true,
             "metadata": [
                 {
-                    "type": "source",
-                    "required": true
+                    "type": "credentialStartUrl",
+                    "required": false
                 },
                 {
                     "type": "enabled",
                     "required": true
                 },
                 {
-                    "type": "credentialStartUrl",
-                    "required": false
+                    "type": "source",
+                    "required": true
                 }
             ]
         },
@@ -3304,10 +3304,10 @@
             "description": "This metric provides the particular language and task type selected by the user in the onboarding page by clicking on the Try Example button.",
             "metadata": [
                 {
-                    "type": "codewhispererLanguage"
+                    "type": "codewhispererGettingStartedTask"
                 },
                 {
-                    "type": "codewhispererGettingStartedTask"
+                    "type": "codewhispererLanguage"
                 }
             ]
         },
@@ -3316,6 +3316,12 @@
             "description": "The duration from user last modification to the first recommendation shown in milliseconds",
             "metadata": [
                 {
+                    "type": "codewhispererCompletionType"
+                },
+                {
+                    "type": "codewhispererLanguage"
+                },
+                {
                     "type": "codewhispererRequestId"
                 },
                 {
@@ -3323,23 +3329,17 @@
                     "required": false
                 },
                 {
-                    "type": "duration"
-                },
-                {
                     "type": "codewhispererTriggerType"
                 },
                 {
-                    "type": "codewhispererCompletionType"
-                },
-                {
-                    "type": "codewhispererLanguage"
+                    "type": "codewhispererUserGroup"
                 },
                 {
                     "type": "credentialStartUrl",
                     "required": false
                 },
                 {
-                    "type": "codewhispererUserGroup"
+                    "type": "duration"
                 }
             ]
         },
@@ -3348,11 +3348,29 @@
             "description": "Client side invocation of the CodeWhisperer Security Scan",
             "metadata": [
                 {
-                    "type": "codewhispererCodeScanLines"
+                    "type": "artifactsUploadDuration"
+                },
+                {
+                    "type": "codeScanServiceInvocationsDuration"
+                },
+                {
+                    "type": "codewhispererCodeScanBuildPayloadBytes",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanBuildZipFileBytes",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanIssuesWithFixes",
+                    "required": false
                 },
                 {
                     "type": "codewhispererCodeScanJobId",
                     "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanLines"
                 },
                 {
                     "type": "codewhispererCodeScanProjectBytes",
@@ -3362,37 +3380,23 @@
                     "type": "codewhispererCodeScanSrcPayloadBytes"
                 },
                 {
-                    "type": "codewhispererCodeScanBuildPayloadBytes",
-                    "required": false
-                },
-                {
                     "type": "codewhispererCodeScanSrcZipFileBytes"
-                },
-                {
-                    "type": "codewhispererCodeScanBuildZipFileBytes",
-                    "required": false
                 },
                 {
                     "type": "codewhispererCodeScanTotalIssues"
                 },
                 {
-                    "type": "codewhispererCodeScanIssuesWithFixes",
-                    "required": false
-                },
-                {
                     "type": "codewhispererLanguage"
-                },
-                {
-                    "type": "duration"
                 },
                 {
                     "type": "contextTruncationDuration"
                 },
                 {
-                    "type": "artifactsUploadDuration"
+                    "type": "credentialStartUrl",
+                    "required": false
                 },
                 {
-                    "type": "codeScanServiceInvocationsDuration"
+                    "type": "duration"
                 },
                 {
                     "type": "reason",
@@ -3400,10 +3404,6 @@
                 },
                 {
                     "type": "result"
-                },
-                {
-                    "type": "credentialStartUrl",
-                    "required": false
                 }
             ]
         },
@@ -3423,11 +3423,19 @@
                     "type": "codewhispererCursorOffset"
                 },
                 {
-                    "type": "codewhispererLanguage"
+                    "type": "codewhispererCustomizationArn",
+                    "required": false
                 },
                 {
                     "type": "codewhispererGettingStartedTask",
                     "required": false
+                },
+                {
+                    "type": "codewhispererImportRecommendationEnabled",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererLanguage"
                 },
                 {
                     "type": "codewhispererLastSuggestionIndex",
@@ -3453,10 +3461,6 @@
                     "required": false
                 },
                 {
-                    "type": "codewhispererSupplementalContextTimeout",
-                    "required": false
-                },
-                {
                     "type": "codewhispererSupplementalContextIsUtg",
                     "required": false
                 },
@@ -3469,7 +3473,18 @@
                     "required": false
                 },
                 {
+                    "type": "codewhispererSupplementalContextTimeout",
+                    "required": false
+                },
+                {
                     "type": "codewhispererTriggerType"
+                },
+                {
+                    "type": "codewhispererUserGroup"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
                 },
                 {
                     "type": "duration"
@@ -3480,21 +3495,6 @@
                 },
                 {
                     "type": "result"
-                },
-                {
-                    "type": "credentialStartUrl",
-                    "required": false
-                },
-                {
-                    "type": "codewhispererImportRecommendationEnabled",
-                    "required": false
-                },
-                {
-                    "type": "codewhispererUserGroup"
-                },
-                {
-                    "type": "codewhispererCustomizationArn",
-                    "required": false
                 }
             ]
         },
@@ -3506,11 +3506,11 @@
                     "type": "codewhispererCompletionType"
                 },
                 {
-                    "type": "codewhispererLanguage"
-                },
-                {
                     "type": "codewhispererGettingStartedTask",
                     "required": false
+                },
+                {
+                    "type": "codewhispererLanguage"
                 },
                 {
                     "type": "codewhispererPaginationProgress",
@@ -3532,6 +3532,10 @@
                     "required": false
                 },
                 {
+                    "type": "codewhispererSuggestionImportCount",
+                    "required": false
+                },
+                {
                     "type": "codewhispererSuggestionIndex"
                 },
                 {
@@ -3542,15 +3546,7 @@
                     "required": false
                 },
                 {
-                    "type": "codewhispererSuggestionImportCount",
-                    "required": false
-                },
-                {
                     "type": "codewhispererSuggestionState"
-                },
-                {
-                    "type": "codewhispererSupplementalContextTimeout",
-                    "required": false
                 },
                 {
                     "type": "codewhispererSupplementalContextIsUtg",
@@ -3561,14 +3557,18 @@
                     "required": false
                 },
                 {
+                    "type": "codewhispererSupplementalContextTimeout",
+                    "required": false
+                },
+                {
                     "type": "codewhispererTriggerType"
+                },
+                {
+                    "type": "codewhispererUserGroup"
                 },
                 {
                     "type": "credentialStartUrl",
                     "required": false
-                },
-                {
-                    "type": "codewhispererUserGroup"
                 }
             ]
         },
@@ -3607,11 +3607,11 @@
                     "type": "codewhispererTriggerType"
                 },
                 {
-                    "type": "credentialStartUrl",
-                    "required": false
+                    "type": "codewhispererUserGroup"
                 },
                 {
-                    "type": "codewhispererUserGroup"
+                    "type": "credentialStartUrl",
+                    "required": false
                 }
             ]
         },
@@ -3620,22 +3620,7 @@
             "description": "User decision aggregated at trigger level",
             "metadata": [
                 {
-                    "type": "codewhispererSessionId",
-                    "required": false
-                },
-                {
-                    "type": "codewhispererFirstRequestId"
-                },
-                {
-                    "type": "credentialStartUrl",
-                    "required": false
-                },
-                {
-                    "type": "codewhispererIsPartialAcceptance",
-                    "required": false
-                },
-                {
-                    "type": "codewhispererPartialAcceptanceCount",
+                    "type": "codewhispererAutomatedTriggerType",
                     "required": false
                 },
                 {
@@ -3647,31 +3632,55 @@
                     "required": false
                 },
                 {
-                    "type": "reason",
+                    "type": "codewhispererClassifierResult",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererClassifierThreshold",
                     "required": false
                 },
                 {
                     "type": "codewhispererCompletionType"
                 },
                 {
-                    "type": "codewhispererLanguage"
+                    "type": "codewhispererCursorOffset"
+                },
+                {
+                    "type": "codewhispererCustomizationArn",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererFeatureEvaluations",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererFirstRequestId"
                 },
                 {
                     "type": "codewhispererGettingStartedTask",
                     "required": false
                 },
                 {
-                    "type": "codewhispererTriggerType"
+                    "type": "codewhispererIsPartialAcceptance",
+                    "required": false
                 },
                 {
-                    "type": "codewhispererAutomatedTriggerType",
-                    "required": false
+                    "type": "codewhispererLanguage"
                 },
                 {
                     "type": "codewhispererLineNumber"
                 },
                 {
-                    "type": "codewhispererCursorOffset"
+                    "type": "codewhispererPartialAcceptanceCount",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererPreviousSuggestionState",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererSessionId",
+                    "required": false
                 },
                 {
                     "type": "codewhispererSuggestionCount"
@@ -3680,42 +3689,7 @@
                     "type": "codewhispererSuggestionImportCount"
                 },
                 {
-                    "type": "codewhispererTotalShownTime",
-                    "required": false
-                },
-                {
-                    "type": "codewhispererTriggerCharacter",
-                    "required": false
-                },
-                {
-                    "type": "codewhispererTypeaheadLength"
-                },
-                {
-                    "type": "codewhispererTimeSinceLastDocumentChange",
-                    "required": false
-                },
-                {
-                    "type": "codewhispererTimeSinceLastUserDecision",
-                    "required": false
-                },
-                {
-                    "type": "codewhispererTimeToFirstRecommendation",
-                    "required": false
-                },
-                {
-                    "type": "codewhispererPreviousSuggestionState",
-                    "required": false
-                },
-                {
                     "type": "codewhispererSuggestionState"
-                },
-                {
-                    "type": "codewhispererClassifierResult",
-                    "required": false
-                },
-                {
-                    "type": "codewhispererSupplementalContextTimeout",
-                    "required": false
                 },
                 {
                     "type": "codewhispererSupplementalContextIsUtg",
@@ -3730,18 +3704,44 @@
                     "required": false
                 },
                 {
-                    "type": "codewhispererClassifierThreshold",
+                    "type": "codewhispererSupplementalContextTimeout",
                     "required": false
+                },
+                {
+                    "type": "codewhispererTimeSinceLastDocumentChange",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererTimeSinceLastUserDecision",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererTimeToFirstRecommendation",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererTotalShownTime",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererTriggerCharacter",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererTriggerType"
+                },
+                {
+                    "type": "codewhispererTypeaheadLength"
                 },
                 {
                     "type": "codewhispererUserGroup"
                 },
                 {
-                    "type": "codewhispererCustomizationArn",
+                    "type": "credentialStartUrl",
                     "required": false
                 },
                 {
-                    "type": "codewhispererFeatureEvaluations",
+                    "type": "reason",
                     "required": false
                 }
             ]
@@ -3751,14 +3751,14 @@
             "description": "User requested that a resource be opened in the browser using the deeplink service",
             "metadata": [
                 {
-                    "type": "source"
-                },
-                {
                     "type": "result"
                 },
                 {
                     "type": "serviceType",
                     "required": false
+                },
+                {
+                    "type": "source"
                 }
             ],
             "passive": true
@@ -3777,10 +3777,10 @@
             "description": "Open the dynamic resource model in the IDE",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "resourceType"
                 },
                 {
-                    "type": "resourceType"
+                    "type": "result"
                 }
             ]
         },
@@ -3789,10 +3789,10 @@
             "description": "Expand a Resource Type node",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "resourceType"
                 },
                 {
-                    "type": "resourceType"
+                    "type": "result"
                 }
             ]
         },
@@ -3801,16 +3801,16 @@
             "description": "A dynamic resource mutation request completed",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
-                    "type": "resourceType"
+                    "type": "duration"
                 },
                 {
                     "type": "dynamicResourceOperation"
                 },
                 {
-                    "type": "duration"
+                    "type": "resourceType"
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -3823,11 +3823,11 @@
             "description": "Create a DynamoDB table",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -3836,11 +3836,11 @@
             "description": "Delete a DynamoDB table",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -3849,14 +3849,14 @@
             "description": "Modify a DynamoDB entity",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "dynamoDbTarget"
                 },
                 {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -3865,14 +3865,14 @@
             "description": "Fetch records from a DynamoDB table in the table browser",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "dynamoDbFetchType"
                 },
                 {
                     "type": "dynamoDbIndexType",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -3890,14 +3890,14 @@
             "description": "View a DynamoDB entity",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "dynamoDbTarget"
                 },
                 {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -3906,10 +3906,10 @@
             "description": "Change the state of an EC2 Instance",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "ec2InstanceState"
                 },
                 {
-                    "type": "ec2InstanceState"
+                    "type": "result"
                 }
             ]
         },
@@ -3928,10 +3928,10 @@
             "description": "Perform a connection to an EC2 Instance",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "ec2ConnectionType"
                 },
                 {
-                    "type": "ec2ConnectionType"
+                    "type": "result"
                 }
             ]
         },
@@ -4071,11 +4071,11 @@
             "description": "Associate or disassociate an Elastic IP with an EC2 Instance",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "enabled",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -4093,11 +4093,11 @@
             "description": "Adjust the termination protection of an EC2 Instance",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "enabled",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -4133,10 +4133,10 @@
             "description": "Attach (enabled = true) or detach a volume",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "enabled"
                 },
                 {
-                    "type": "enabled"
+                    "type": "result"
                 }
             ]
         },
@@ -4280,15 +4280,15 @@
             "description": "Called when deploying an image to ECR",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "duration",
+                    "required": false
                 },
                 {
                     "type": "ecrDeploySource",
                     "required": false
                 },
                 {
-                    "type": "duration",
-                    "required": false
+                    "type": "result"
                 }
             ]
         },
@@ -4325,14 +4325,14 @@
             "description": "Called when deploying a scheduled task to an ECS cluster",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "duration",
+                    "required": false
                 },
                 {
                     "type": "ecsLaunchType"
                 },
                 {
-                    "type": "duration",
-                    "required": false
+                    "type": "result"
                 }
             ]
         },
@@ -4341,14 +4341,14 @@
             "description": "Called when deploying a service to an ECS cluster",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "duration",
+                    "required": false
                 },
                 {
                     "type": "ecsLaunchType"
                 },
                 {
-                    "type": "duration",
-                    "required": false
+                    "type": "result"
                 }
             ]
         },
@@ -4357,14 +4357,14 @@
             "description": "Called when deploying a task to an ECS cluster",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "duration",
+                    "required": false
                 },
                 {
                     "type": "ecsLaunchType"
                 },
                 {
-                    "type": "duration",
-                    "required": false
+                    "type": "result"
                 }
             ]
         },
@@ -4418,11 +4418,11 @@
             "description": "Called when user completes the ECS publish wizard",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "duration",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -4431,10 +4431,10 @@
             "description": "Called when the ECS execute command is run",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "ecsExecuteCommandType"
                 },
                 {
-                    "type": "ecsExecuteCommandType"
+                    "type": "result"
                 }
             ]
         },
@@ -4462,15 +4462,15 @@
             "description": "Use authoring features such as autocompletion, syntax checking, and highlighting, for AWS filetypes (CFN, SAM, etc.). Emit this _once_ per file-editing session for a given file. Ideally this is emitted only if authoring features are used, rather than merely opening or touching a file.",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "awsFiletype",
                     "required": true
                 },
                 {
                     "type": "filenameExt",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -4479,10 +4479,10 @@
             "description": "Create an IAM resource",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "iamResourceType"
                 },
                 {
-                    "type": "iamResourceType"
+                    "type": "result"
                 }
             ]
         },
@@ -4500,10 +4500,10 @@
             "description": "Delete an IAM resource",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "iamResourceType"
                 },
                 {
-                    "type": "iamResourceType"
+                    "type": "result"
                 }
             ]
         },
@@ -4521,10 +4521,10 @@
             "description": "Edits policy/configuration associated with an IAM resource",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "iamResourceType"
                 },
                 {
-                    "type": "iamResourceType"
+                    "type": "result"
                 }
             ]
         },
@@ -4533,10 +4533,10 @@
             "description": "Open a window to view/edit an IAM resource",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "iamResourceType"
                 },
                 {
-                    "type": "iamResourceType"
+                    "type": "result"
                 }
             ]
         },
@@ -4590,10 +4590,10 @@
             "description": "Called when creating a lambda project",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "language"
                 },
                 {
-                    "type": "language"
+                    "type": "result"
                 },
                 {
                     "type": "templateName"
@@ -4622,20 +4622,21 @@
             "description": "Called when deploying a Lambda Function",
             "metadata": [
                 {
-                    "type": "lambdaPackageType"
-                },
-                {
-                    "type": "result"
+                    "type": "duration",
+                    "required": false
                 },
                 {
                     "type": "initialDeploy"
                 },
                 {
-                    "type": "duration",
+                    "type": "lambdaArchitecture",
                     "required": false
                 },
                 {
-                    "type": "runtime",
+                    "type": "lambdaPackageType"
+                },
+                {
+                    "type": "language",
                     "required": false
                 },
                 {
@@ -4643,15 +4644,10 @@
                     "required": false
                 },
                 {
-                    "type": "lambdaArchitecture",
-                    "required": false
+                    "type": "result"
                 },
                 {
-                    "type": "language",
-                    "required": false
-                },
-                {
-                    "type": "xrayEnabled",
+                    "type": "runtime",
                     "required": false
                 },
                 {
@@ -4661,6 +4657,10 @@
                 {
                     "type": "source",
                     "required": false
+                },
+                {
+                    "type": "xrayEnabled",
+                    "required": false
                 }
             ]
         },
@@ -4669,14 +4669,14 @@
             "description": "Called when creating lambdas remotely",
             "metadata": [
                 {
-                    "type": "update",
-                    "required": false
-                },
-                {
                     "type": "lambdaPackageType"
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "update",
+                    "required": false
                 }
             ]
         },
@@ -4694,11 +4694,11 @@
             "description": "Called when importing a remote Lambda function",
             "metadata": [
                 {
-                    "type": "runtime",
-                    "required": false
+                    "type": "result"
                 },
                 {
-                    "type": "result"
+                    "type": "runtime",
+                    "required": false
                 }
             ]
         },
@@ -4707,11 +4707,10 @@
             "description": "Called when invoking lambdas locally (with SAM in most toolkits)",
             "metadata": [
                 {
-                    "type": "runtime",
-                    "required": false
+                    "type": "debug"
                 },
                 {
-                    "type": "version",
+                    "type": "lambdaArchitecture",
                     "required": false
                 },
                 {
@@ -4721,10 +4720,11 @@
                     "type": "result"
                 },
                 {
-                    "type": "debug"
+                    "type": "runtime",
+                    "required": false
                 },
                 {
-                    "type": "lambdaArchitecture",
+                    "type": "version",
                     "required": false
                 }
             ]
@@ -4734,11 +4734,11 @@
             "description": "Called when invoking lambdas remotely",
             "metadata": [
                 {
-                    "type": "runtime",
-                    "required": false
+                    "type": "result"
                 },
                 {
-                    "type": "result"
+                    "type": "runtime",
+                    "required": false
                 }
             ]
         },
@@ -4747,11 +4747,11 @@
             "description": "Called when user completes the Lambda publish wizard",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "duration",
                     "required": false
+                },
+                {
+                    "type": "result"
                 },
                 {
                     "type": "serviceType",
@@ -4768,11 +4768,11 @@
             "description": "Called when updating a Lambda function's code outside the context of a SAM template",
             "metadata": [
                 {
-                    "type": "runtime",
-                    "required": false
+                    "type": "result"
                 },
                 {
-                    "type": "result"
+                    "type": "runtime",
+                    "required": false
                 }
             ]
         },
@@ -4781,14 +4781,14 @@
             "description": "Called when creating a new database connection configuration to for a RDS database. In Datagrip we do not get this infromation if it is created directly, so this is only counts actions.",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "databaseCredentials"
                 },
                 {
                     "type": "databaseEngine",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -4845,13 +4845,13 @@
             "unit": "Milliseconds",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "databaseCredentials"
                 },
                 {
                     "type": "databaseEngine"
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -4896,10 +4896,10 @@
             "description": "Called when creating a new database connection configuration to for a Redshift database. In Datagrip we do not get this infromation if it is created directly, so this only counts actions.",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "databaseCredentials"
                 },
                 {
-                    "type": "databaseCredentials"
+                    "type": "result"
                 }
             ]
         },
@@ -4909,10 +4909,10 @@
             "unit": "Milliseconds",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "databaseCredentials"
                 },
                 {
-                    "type": "databaseCredentials"
+                    "type": "result"
                 }
             ]
         },
@@ -4938,10 +4938,10 @@
             "description": "Copy the URL of a S3 object to the clipboard",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "presigned"
                 },
                 {
-                    "type": "presigned"
+                    "type": "result"
                 }
             ]
         },
@@ -4977,14 +4977,14 @@
             "description": "Delete S3 object(s)",
             "metadata": [
                 {
+                    "type": "failedCount",
+                    "required": false
+                },
+                {
                     "type": "result"
                 },
                 {
                     "type": "successCount",
-                    "required": false
-                },
-                {
-                    "type": "failedCount",
                     "required": false
                 }
             ]
@@ -4994,10 +4994,7 @@
             "description": "Download S3 object(s)",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
-                    "type": "successCount",
+                    "type": "component",
                     "required": false
                 },
                 {
@@ -5005,7 +5002,10 @@
                     "required": false
                 },
                 {
-                    "type": "component",
+                    "type": "result"
+                },
+                {
+                    "type": "successCount",
                     "required": false
                 }
             ]
@@ -5026,11 +5026,11 @@
             "unit": "Count",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "component",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -5075,10 +5075,7 @@
             "description": "Upload S3 object(s)",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
-                    "type": "successCount",
+                    "type": "component",
                     "required": false
                 },
                 {
@@ -5086,7 +5083,10 @@
                     "required": false
                 },
                 {
-                    "type": "component",
+                    "type": "result"
+                },
+                {
+                    "type": "successCount",
                     "required": false
                 }
             ]
@@ -5120,11 +5120,11 @@
             "passive": true,
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result"
                 },
                 {
                     "type": "version",
@@ -5136,6 +5136,22 @@
             "name": "sam_init",
             "description": "Called when initing a SAM application",
             "metadata": [
+                {
+                    "type": "eventBridgeSchema",
+                    "required": false
+                },
+                {
+                    "type": "lambdaArchitecture",
+                    "required": false
+                },
+                {
+                    "type": "lambdaPackageType",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
                 {
                     "type": "result"
                 },
@@ -5150,22 +5166,6 @@
                 {
                     "type": "version",
                     "required": false
-                },
-                {
-                    "type": "lambdaPackageType",
-                    "required": false
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "eventBridgeSchema",
-                    "required": false
-                },
-                {
-                    "type": "lambdaArchitecture",
-                    "required": false
                 }
             ]
         },
@@ -5174,18 +5174,18 @@
             "description": "Called when syncing a SAM application",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
-                    "type": "syncedResources"
-                },
-                {
                     "type": "lambdaPackageType",
                     "required": false
                 },
                 {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "syncedResources"
                 },
                 {
                     "type": "version",
@@ -5411,16 +5411,16 @@
             "description": "The toolkit tried to retrieve blob data from a url",
             "metadata": [
                 {
-                    "type": "url",
-                    "required": true
+                    "type": "reason",
+                    "required": false
                 },
                 {
                     "type": "result",
                     "required": true
                 },
                 {
-                    "type": "reason",
-                    "required": false
+                    "type": "url",
+                    "required": true
                 }
             ],
             "passive": true
@@ -5430,11 +5430,11 @@
             "description": "The Toolkit has completed initialization",
             "metadata": [
                 {
-                    "type": "result",
+                    "type": "duration",
                     "required": false
                 },
                 {
-                    "type": "duration",
+                    "type": "result",
                     "required": false
                 }
             ],
@@ -5445,7 +5445,7 @@
             "description": "A user invoked an action. Source represents the notification that produced the action",
             "metadata": [
                 {
-                    "type": "result",
+                    "type": "component",
                     "required": true
                 },
                 {
@@ -5453,16 +5453,16 @@
                     "required": true
                 },
                 {
-                    "type": "source",
-                    "required": true
-                },
-                {
-                    "type": "component",
-                    "required": true
-                },
-                {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
                 }
             ]
         },
@@ -5471,7 +5471,7 @@
             "description": "The toolkit tried to show an action. Source represents the notification that produced the action",
             "metadata": [
                 {
-                    "type": "result",
+                    "type": "component",
                     "required": true
                 },
                 {
@@ -5479,16 +5479,16 @@
                     "required": true
                 },
                 {
-                    "type": "source",
-                    "required": true
-                },
-                {
-                    "type": "component",
-                    "required": true
-                },
-                {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
                 }
             ],
             "passive": true
@@ -5498,7 +5498,7 @@
             "description": "The toolkit tried to show a notification message",
             "metadata": [
                 {
-                    "type": "result",
+                    "type": "component",
                     "required": true
                 },
                 {
@@ -5506,12 +5506,12 @@
                     "required": true
                 },
                 {
-                    "type": "component",
-                    "required": true
-                },
-                {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
                 }
             ],
             "passive": true
