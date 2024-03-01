@@ -5,8 +5,13 @@ export interface TelemetryField {
     // there are other fields not used by this scripting
 }
 
+export interface MetricMetadata {
+    type: string
+}
+
 export interface Metric {
     name: string
+    metadata?: MetricMetadata[]
     // there are other fields not used by this scripting
 }
 
@@ -42,6 +47,7 @@ export async function saveTelemetryDefinitions(definitions: TelemetryDefinitions
 export function reorder(definitions: TelemetryDefinitions): void {
     orderTypes(definitions)
     orderMetrics(definitions)
+    orderMetricsMetadata(definitions)
 }
 
 function orderTypes(definitions: TelemetryDefinitions): void {
@@ -50,6 +56,14 @@ function orderTypes(definitions: TelemetryDefinitions): void {
 
 function orderMetrics(definitions: TelemetryDefinitions): void {
     definitions.metrics.sort(metricSort)
+}
+
+function orderMetricsMetadata(definitions: TelemetryDefinitions): void {
+    definitions.metrics
+        .filter(x => x.metadata !== undefined)
+        .forEach(metric => {
+            metric.metadata!.sort(metricMetadataSort)
+        })
 }
 
 /**
@@ -61,6 +75,7 @@ export function validate(definitions: TelemetryDefinitions): string[] {
 
     validations.push(...validateTypeOrder(definitions))
     validations.push(...validateMetricsOrder(definitions))
+    validations.push(...validateMetricsMetadataOrder(definitions))
 
     return validations
 }
@@ -101,12 +116,42 @@ function validateMetricsOrder(definitions: TelemetryDefinitions): string[] {
     return validations
 }
 
+function validateMetricsMetadataOrder(definitions: TelemetryDefinitions): string[] {
+    const validations = []
+
+    for (const metric of definitions.metrics) {
+        if (metric.metadata === undefined) {
+            continue
+        }
+
+        const sortedNames = metric.metadata.map(t => t.type).sort(stringSort)
+
+        for (let i = 0; i < metric.metadata.length; i++) {
+            const inputMetadata = metric.metadata[i]
+            const sortedName = sortedNames[i]
+
+            if (inputMetadata.type != sortedName) {
+                validations.push(
+                    `Telemetry Metric ${metric.name} has unsorted metadata. Expected: ${sortedName}, Found: ${inputMetadata.type}`
+                )
+                break
+            }
+        }
+    }
+
+    return validations
+}
+
 function fieldSort(a: TelemetryField, b: TelemetryField): number {
     return a.name.localeCompare(b.name)
 }
 
 function metricSort(a: Metric, b: Metric): number {
     return a.name.localeCompare(b.name)
+}
+
+function metricMetadataSort(a: MetricMetadata, b: MetricMetadata): number {
+    return a.type.localeCompare(b.type)
 }
 
 function stringSort(a: string, b: string): number {
