@@ -318,6 +318,11 @@
             ]
         },
         {
+            "name": "codeTransformPreviousStatus",
+            "type": "string",
+            "description": "The current transformation job's previous status"
+        },
+        {
             "name": "codeTransformStatus",
             "type": "string",
             "description": "The current transformation job's status"
