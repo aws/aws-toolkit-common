@@ -283,6 +283,11 @@
             ]
         },
         {
+            "name": "codeTransformPreviousStatus",
+            "type": "string",
+            "description": "The current transformation job's previous status"
+        },
+        {
             "name": "codeTransformRequestId",
             "type": "string",
             "description": "The API request ID"
@@ -316,11 +321,6 @@
                 "bottomPanelSideNavButton",
                 "chatPrompt"
             ]
-        },
-        {
-            "name": "codeTransformPreviousStatus",
-            "type": "string",
-            "description": "The current transformation job's previous status"
         },
         {
             "name": "codeTransformStatus",
