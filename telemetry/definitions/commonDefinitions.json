@@ -2869,6 +2869,10 @@
                     "required": true
                 },
                 {
+                    "type": "codeTransformPreviousStatus",
+                    "required": true
+                },
+                {
                     "type": "codeTransformStatus",
                     "required": true
                 }
