@@ -2865,11 +2865,11 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformSessionId",
+                    "type": "codeTransformPreviousStatus",
                     "required": true
                 },
                 {
-                    "type": "codeTransformPreviousStatus",
+                    "type": "codeTransformSessionId",
                     "required": true
                 },
                 {
