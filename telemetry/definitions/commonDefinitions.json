@@ -288,6 +288,11 @@
             "description": "The current transformation job's previous status"
         },
         {
+            "name": "codeTransformProjectId",
+            "type": "string",
+            "description": "A hash identifying the projects chosen top level build file that is to be transformed."
+        },
+        {
             "name": "codeTransformRequestId",
             "type": "string",
             "description": "The API request ID"
@@ -2847,6 +2852,10 @@
                 },
                 {
                     "type": "codeTransformJavaTargetVersionsAllowed",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformProjectId",
                     "required": true
                 },
                 {
