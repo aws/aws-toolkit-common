@@ -288,6 +288,11 @@
             "description": "The current transformation job's previous status"
         },
         {
+            "name": "codeTransformProjectId",
+            "type": "string",
+            "description": "A hash identifying the projects chosen top level build file that is to be transformed."
+        },
+        {
             "name": "codeTransformRequestId",
             "type": "string",
             "description": "The API request ID"
@@ -346,11 +351,6 @@
                 "treeView",
                 "treeViewHeader"
             ]
-        },
-        {
-            "name": "codeTransformProjectId",
-            "type": "string",
-            "description": "A hash identifying the projects chosen top level build file that is to be transformed."
         },
         {
             "name": "codewhispererAcceptedTokens",
@@ -2855,11 +2855,11 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformSessionId",
+                    "type": "codeTransformProjectId",
                     "required": true
                 },
                 {
-                    "type": "codeTransformProjectId",
+                    "type": "codeTransformSessionId",
                     "required": true
                 }
             ]
