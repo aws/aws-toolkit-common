@@ -348,6 +348,11 @@
             ]
         },
         {
+            "name": "codeTransformProjectId",
+            "type": "string",
+            "description": "A hash identifying the projects chosen top level build file that is to be transformed."
+        },
+        {
             "name": "codewhispererAcceptedTokens",
             "type": "int",
             "description": "The metrics accepted on suggested CodeWhisperer code"
@@ -2851,6 +2856,10 @@
                 },
                 {
                     "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformProjectId",
                     "required": true
                 }
             ]
