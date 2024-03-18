@@ -3019,7 +3019,7 @@
             "metadata": [
                 {
                     "type": "codeTransformJobId",
-                    "required": true
+                    "required": false
                 },
                 {
                     "type": "codeTransformLocalJavaVersion",
