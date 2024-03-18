@@ -3036,6 +3036,10 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
+                },
+                {
+                    "type": "codeTransformJobId",
+                    "required": true
                 }
             ]
         },
