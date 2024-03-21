@@ -2988,6 +2988,7 @@
         },
         {
             "name": "codeTransform_projectDetails",
+            "passive": true,
             "description": "Transform initiates project validation before user interaction and we want to gather project details then.",
             "metadata": [
                 {
