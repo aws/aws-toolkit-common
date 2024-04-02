@@ -1839,6 +1839,10 @@
                     "required": false
                 },
                 {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
                     "type": "credentialType",
                     "required": false
                 },
