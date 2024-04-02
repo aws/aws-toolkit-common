@@ -1059,6 +1059,11 @@
             "description": "Whether this was an individual point or an aggregation of points."
         },
         {
+            "name": "isReAuth",
+            "type": "boolean",
+            "description": "If this was performed as part of the reauthentication flow."
+        },
+        {
             "name": "lambdaArchitecture",
             "allowedValues": [
                 "x86_64",
@@ -1976,6 +1981,10 @@
                 },
                 {
                     "type": "credentialType",
+                    "required": false
+                },
+                {
+                    "type": "isReAuth",
                     "required": false
                 },
                 {
