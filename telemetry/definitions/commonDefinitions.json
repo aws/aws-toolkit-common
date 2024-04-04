@@ -2841,6 +2841,10 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
+                },
+                {
+                    "type": "enabledAuthConnections",
+                    "required": false
                 }
             ]
         },
