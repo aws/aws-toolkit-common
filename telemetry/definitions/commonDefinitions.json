@@ -2843,7 +2843,7 @@
                     "required": true
                 },
                 {
-                    "type": "enabledAuthConnections",
+                    "type": "credentialSourceId",
                     "required": false
                 }
             ]
