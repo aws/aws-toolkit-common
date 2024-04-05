@@ -2841,6 +2841,10 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
+                },
+                {
+                    "type": "credentialSourceId",
+                    "required": false
                 }
             ]
         },
