@@ -426,6 +426,15 @@
             "description": "The total size in bytes of customer project to perform security scan on"
         },
         {
+            "name": "codewhispererCodeScanScope",
+            "type": "string",
+            "description": "The scope of the security scan being performed",
+            "allowedValues": [
+                "FILE",
+                "PROJECT"
+            ]
+        },
+        {
             "name": "codewhispererCodeScanSrcPayloadBytes",
             "type": "int",
             "description": "The uncompressed payload size in bytes of the source files in customer project context sent for security scan"
@@ -439,15 +448,6 @@
             "name": "codewhispererCodeScanTotalIssues",
             "type": "int",
             "description": "The number of security issues been detected"
-        },
-        {
-            "name": "codewhispererCodeScanScope",
-            "type": "string",
-            "description": "The scope of the security scan being performed",
-            "allowedValues": [
-              "FILE",
-              "PROJECT"
-            ]
         },
         {
             "name": "codewhispererCompletionType",
@@ -3426,6 +3426,10 @@
                     "required": false
                 },
                 {
+                    "type": "codewhispererCodeScanScope",
+                    "required": false
+                },
+                {
                     "type": "codewhispererCodeScanSrcPayloadBytes"
                 },
                 {
@@ -3439,10 +3443,6 @@
                 },
                 {
                     "type": "contextTruncationDuration"
-                },
-                {
-                    "type": "codewhispererCodeScanScope",
-                    "required": false
                 },
                 {
                     "type": "credentialStartUrl",
