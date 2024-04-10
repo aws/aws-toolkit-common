@@ -441,6 +441,15 @@
             "description": "The number of security issues been detected"
         },
         {
+            "name": "codewhispererCodeScanScope",
+            "type": "string",
+            "description": "The scope of the security scan being performed",
+            "allowedValues": [
+              "FILE",
+              "PROJECT"
+            ]
+        },
+        {
             "name": "codewhispererCompletionType",
             "type": "string",
             "description": "Completion Type of the inference results returned from CodeWhisperer model layer",
@@ -3430,6 +3439,10 @@
                 },
                 {
                     "type": "contextTruncationDuration"
+                },
+                {
+                    "type": "codewhispererCodeScanScope",
+                    "required": false
                 },
                 {
                     "type": "credentialStartUrl",
