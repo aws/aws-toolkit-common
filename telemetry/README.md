@@ -1,7 +1,7 @@
 # Telemetry
 
 `telemetry` contains code generators and definitions files to generate telemetry calls for the various
-AWS Toolkits.
+AWS IDE Extensions.
 
 ## Adding Telemetry
 
