@@ -426,6 +426,15 @@
             "description": "The total size in bytes of customer project to perform security scan on"
         },
         {
+            "name": "codewhispererCodeScanScope",
+            "type": "string",
+            "description": "The scope of the security scan being performed",
+            "allowedValues": [
+                "FILE",
+                "PROJECT"
+            ]
+        },
+        {
             "name": "codewhispererCodeScanSrcPayloadBytes",
             "type": "int",
             "description": "The uncompressed payload size in bytes of the source files in customer project context sent for security scan"
@@ -1980,6 +1989,10 @@
                     "required": false
                 },
                 {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
                     "type": "credentialType",
                     "required": false
                 },
@@ -2978,6 +2991,10 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
+                },
+                {
+                    "type": "credentialSourceId",
+                    "required": false
                 }
             ]
         },
@@ -3547,6 +3564,10 @@
                 },
                 {
                     "type": "codewhispererCodeScanProjectBytes",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanScope",
                     "required": false
                 },
                 {
