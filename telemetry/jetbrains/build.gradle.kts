@@ -103,7 +103,7 @@ publishing {
             from(components["java"])
             pom {
                 name.set(project.name)
-                description.set("Telemetry generation for AWS Toolkit for JetBrains")
+                description.set("Telemetry generation for AWS Toolkit and Amazon Q for JetBrains")
                 url.set("https://github.com/aws/aws-toolkit-common")
                 licenses {
                     license {
