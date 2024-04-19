@@ -193,6 +193,7 @@
             "type": "string",
             "description": "Names of allowed API calls",
             "allowedValues": [
+                "ResumeTransformation",
                 "StartTransformation",
                 "StopTransformation",
                 "GetTransformation",
