@@ -1402,6 +1402,7 @@
             "type": "string",
             "description": "Names of allowed API calls",
             "allowedValues": [
+                "ResumeTransformation",
                 "StartTransformation",
                 "StopTransformation",
                 "GetTransformation",
@@ -1437,6 +1438,11 @@
                 "mvn",
                 "IDEBundledMaven"
             ]
+        },
+        {
+            "name": "codeTransformMetadata",
+            "type": "string",
+            "description": "A general field for logging metadata associated to Amazon Q transform metrics."
         },
         {
             "name": "xrayEnabled",
@@ -3257,6 +3263,24 @@
                 },
                 {
                     "type": "codeTransformStatus",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "codeTransform_humanInTheLoop",
+            "description": "An interactivity measured when a pause state is enabled that requires human interaction.",
+            "metadata": [
+                {
+                    "type": "codeTransformJobId",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformMetadata",
                     "required": true
                 }
             ]
