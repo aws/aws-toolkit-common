@@ -1,6 +1,8 @@
-# AWS Toolkit for VSCode Telemetry
+# AWS Toolkit/Amazon Q for VSCode Telemetry
 
-This package contains scripts and files to generate telemetry calls for the [AWS Toolkit for VS Code](https://github.com/aws/aws-toolkit-vscode).
+This package contains scripts and files to generate telemetry calls for:
+- [AWS Toolkit for VS Code](https://github.com/aws/aws-toolkit-vscode/tree/master/packages/toolkit)
+- [Amazon Q for VS Code](https://github.com/aws/aws-toolkit-vscode/tree/master/packages/amazonq).
 
 ## Usage
 
