@@ -264,11 +264,6 @@
             "description": "A general field for logging metadata associated to Amazon Q transform metrics."
         },
         {
-            "name": "codeTransformMetadata",
-            "type": "string",
-            "description": "A general field for logging metadata associated to Amazon Q transform metrics."
-        },
-        {
             "name": "codeTransformPatchViewerCancelSrcComponents",
             "type": "string",
             "description": "Names of components that can cancel the diff viewer",
@@ -2700,24 +2695,6 @@
             "name": "codeTransform_dependenciesCopied",
             "description": "The repo copies over at least one dependency successfully.",
             "metadata": [
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_humanInTheLoop",
-            "description": "The user interactivity when a transformation pause state is reached.",
-            "metadata": [
-                {
-                    "type": "codeTransformJobId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformMetadata",
-                    "required": true
-                },
                 {
                     "type": "codeTransformSessionId",
                     "required": true
