@@ -3154,7 +3154,7 @@
         },
         {
             "name": "codeTransform_humanInTheLoop",
-            "description": "An interactivity measured when a pause state is enabled that requires human interaction.",
+            "description": "The user interactivity when a transformation pause state is reached.",
             "metadata": [
                 {
                     "type": "codeTransformJobId",
