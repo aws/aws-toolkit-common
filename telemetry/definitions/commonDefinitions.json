@@ -193,6 +193,7 @@
             "type": "string",
             "description": "Names of allowed API calls",
             "allowedValues": [
+                "ResumeTransformation",
                 "StartTransformation",
                 "StopTransformation",
                 "GetTransformation",
@@ -351,6 +352,11 @@
                 "treeView",
                 "treeViewHeader"
             ]
+        },
+        {
+            "name": "codeTransformMetadata",
+            "type": "string",
+            "description": "A general field for logging metadata associated to Amazon Q transform metrics."
         },
         {
             "name": "codewhispererAcceptedTokens",
@@ -3142,6 +3148,24 @@
                 },
                 {
                     "type": "codeTransformStatus",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "codeTransform_humanInTheLoop",
+            "description": "The user interactivity when a transformation pause state is reached.",
+            "metadata": [
+                {
+                    "type": "codeTransformJobId",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformMetadata",
                     "required": true
                 }
             ]
