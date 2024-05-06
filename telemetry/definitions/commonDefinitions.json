@@ -1599,6 +1599,19 @@
             ]
         },
         {
+            "name": "amazonq_modifySourceFolder",
+            "description": "User modified source folder",
+            "metadata": [
+                {
+                    "type": "amazonqConversationId"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "amazonq_startConversationInvoke",
             "description": "Captures startConversation invocation process",
             "metadata": [
