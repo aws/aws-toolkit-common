@@ -259,6 +259,11 @@
             ]
         },
         {
+            "name": "codeTransformMetadata",
+            "type": "string",
+            "description": "A general field for logging metadata associated to Amazon Q transform metrics."
+        },
+        {
             "name": "codeTransformPatchViewerCancelSrcComponents",
             "type": "string",
             "description": "Names of components that can cancel the diff viewer",
@@ -352,11 +357,6 @@
                 "treeView",
                 "treeViewHeader"
             ]
-        },
-        {
-            "name": "codeTransformMetadata",
-            "type": "string",
-            "description": "A general field for logging metadata associated to Amazon Q transform metrics."
         },
         {
             "name": "codewhispererAcceptedTokens",
@@ -1481,6 +1481,26 @@
                 {
                     "type": "credentialStartUrl",
                     "required": false
+                },
+                {
+                    "type": "duration",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "requestId",
+                    "required": false
+                },
+                {
+                    "type": "requestServiceType",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": false
                 }
             ]
         },
@@ -1542,6 +1562,26 @@
                 {
                     "type": "credentialStartUrl",
                     "required": false
+                },
+                {
+                    "type": "duration",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "requestId",
+                    "required": false
+                },
+                {
+                    "type": "requestServiceType",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": false
                 }
             ]
         },
@@ -1590,6 +1630,26 @@
                 },
                 {
                     "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "duration",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "requestId",
+                    "required": false
+                },
+                {
+                    "type": "requestServiceType",
+                    "required": false
+                },
+                {
+                    "type": "result",
                     "required": false
                 }
             ]
@@ -1689,6 +1749,26 @@
                 },
                 {
                     "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "duration",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "requestId",
+                    "required": false
+                },
+                {
+                    "type": "requestServiceType",
+                    "required": false
+                },
+                {
+                    "type": "result",
                     "required": false
                 }
             ]
@@ -2843,6 +2923,24 @@
             ]
         },
         {
+            "name": "codeTransform_humanInTheLoop",
+            "description": "The user interactivity when a transformation pause state is reached.",
+            "metadata": [
+                {
+                    "type": "codeTransformJobId",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformMetadata",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                }
+            ]
+        },
+        {
             "name": "codeTransform_isDoubleClickedToTriggerInvalidProject",
             "description": "The code transform button in the devtools to initiate the job but there is a validation error.",
             "metadata": [
@@ -3289,24 +3387,6 @@
                 },
                 {
                     "type": "codeTransformStatus",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_humanInTheLoop",
-            "description": "The user interactivity when a transformation pause state is reached.",
-            "metadata": [
-                {
-                    "type": "codeTransformJobId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformMetadata",
                     "required": true
                 }
             ]
