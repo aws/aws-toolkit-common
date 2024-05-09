@@ -2762,16 +2762,6 @@
             "passive": true
         },
         {
-            "name": "codeTransform_configurationFileSelectedChanged",
-            "description": "Fire a change event when users select a new configuration/module file from the dropdown.",
-            "metadata": [
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                }
-            ]
-        },
-        {
             "name": "codeTransform_dependenciesCopied",
             "description": "The repo copies over at least one dependency successfully.",
             "metadata": [
@@ -2826,20 +2816,6 @@
             ]
         },
         {
-            "name": "codeTransform_isDoubleClickedToTriggerUserModal",
-            "description": "The code transform button in the devtools to initiate the pre transform user modal window.",
-            "metadata": [
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformStartSrcComponents",
-                    "required": true
-                }
-            ]
-        },
-        {
             "name": "codeTransform_jobArtifactDownloadAndDeserializeTime",
             "description": "A timestamp for when the job is ending download zip contents",
             "metadata": [
@@ -2879,16 +2855,6 @@
                 },
                 {
                     "type": "codeTransformTotalByteSize",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_jobIsCanceledFromUserPopupClick",
-            "description": "The code transform button to initiate the pre transform user modal.",
-            "metadata": [
-                {
-                    "type": "codeTransformSessionId",
                     "required": true
                 }
             ]
@@ -2962,16 +2928,6 @@
             ]
         },
         {
-            "name": "codeTransform_jobIsStartedFromUserPopupClick",
-            "description": "The user initiates a transform job from the pre transform user modal window.",
-            "metadata": [
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                }
-            ]
-        },
-        {
             "name": "codeTransform_jobStartedCompleteFromPopupDialog",
             "passive": true,
             "description": "After modal validation of inputs, code execution will start and we will fire this event.",
@@ -3041,6 +2997,10 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
+                },
+                {
+                    "type": "codeTransformTotalByteSize",
+                    "required": false
                 }
             ]
         },
