@@ -2796,6 +2796,14 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": false
                 }
             ]
         },
