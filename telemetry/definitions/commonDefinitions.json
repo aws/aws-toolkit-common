@@ -133,6 +133,20 @@
             "description": "High level categorization indicating the cause of the error"
         },
         {
+            "name": "cfnParameterFileUsed",
+            "type": "boolean",
+            "description": "Boolean value of whether or not a Cfn parameter file is provided."
+        },
+        {
+            "name": "checkType",
+            "type": "string",
+            "allowedValues": [
+                "CheckNoNewAccess",
+                "CheckAccessNotGranted"
+            ],
+            "description": "User inputted check type to denote which custom check to run."
+        },
+        {
             "name": "cloudWatchLogsPresentation",
             "allowedValues": [
                 "ui",
@@ -838,6 +852,16 @@
             "description": "The id of the detector which produced the code scan issue"
         },
         {
+            "name": "documentType",
+            "type": "string",
+            "allowedValues": [
+                "CloudFormation",
+                "Terraform Plan",
+                "JSON Policy Language"
+            ],
+            "description": "Document type of the edited file in IAM Policy Checks"
+        },
+        {
             "name": "duration",
             "type": "double",
             "description": "The duration of the operation in milliseconds"
@@ -990,6 +1014,11 @@
             "description": "The id of a security finding from a code scan"
         },
         {
+            "name": "findingsCount",
+            "type": "int",
+            "description": "Number of findings discovered after executing IAM Policy Checks"
+        },
+        {
             "name": "framework",
             "type": "string",
             "description": "Application framework being used"
@@ -1037,6 +1066,16 @@
             "name": "initialDeploy",
             "type": "boolean",
             "description": "Whether or not the deploy targets a new destination (true) or an existing destination (false)"
+        },
+        {
+            "name": "inputPolicyType",
+            "type": "string",
+            "allowedValues": [
+                "Identity",
+                "Resource",
+                "None"
+            ],
+            "description": "User inputted policy type of the edited file. Applicable to only JSON Policy Language."
         },
         {
             "name": "insightsDialogOpenSource",
@@ -1138,6 +1177,16 @@
             "name": "reason",
             "type": "string",
             "description": "The reason for a metric or exception depending on context. It describes a certain theme of errors usually the exception class name eg. FileIOException"
+        },
+        {
+            "name": "referencePolicyType",
+            "type": "string",
+            "allowedValues": [
+                "Identity",
+                "Resource",
+                "None"
+            ],
+            "description": "User inputted policy type of the reference file. Applicable to only CheckNoNewAccess check type."
         },
         {
             "name": "requestId",
@@ -1324,6 +1373,62 @@
         }
     ],
     "metrics": [
+        {
+            "name": "accessanalyzer_iamPolicyChecksCustomChecks",
+            "description": "Execution of Custom Policy Checks in IAM Policy Checks",
+            "metadata": [
+                {
+                    "type": "cfnParameterFileUsed"
+                },
+                {
+                    "type": "checkType"
+                },
+                {
+                    "type": "documentType"
+                },
+                {
+                    "type": "findingsCount"
+                },
+                {
+                    "type": "inputPolicyType"
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "referencePolicyType"
+                },
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "accessanalyzer_iamPolicyChecksValidatePolicy",
+            "description": "Execution of Validate Policy in IAM Policy Checks",
+            "metadata": [
+                {
+                    "type": "cfnParameterFileUsed"
+                },
+                {
+                    "type": "documentType"
+                },
+                {
+                    "type": "findingsCount"
+                },
+                {
+                    "type": "inputPolicyType"
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                }
+            ]
+        },
         {
             "name": "amazonq_approachInvoke",
             "description": "Captures Approach generation process",
