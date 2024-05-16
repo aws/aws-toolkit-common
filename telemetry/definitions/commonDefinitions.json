@@ -103,6 +103,22 @@
             "description": "Current number of authentication connections the user has"
         },
         {
+            "name": "authEnabledConnections",
+            "type": "string",
+            "description": "Comma-delimited list of enabled auths."
+        },
+        {
+            "name": "authScopes",
+            "type": "string",
+            "description": "Comma-delimited list of scopes that users has"
+        },
+        {
+            "name": "authStatus",
+            "type": "string",
+            "allowedValues": ["connected", "notConnected", "expired"],
+            "description": "Status of the an auth connection."
+        },
+        {
             "name": "awsFiletype",
             "type": "string",
             "allowedValues": [
@@ -1816,6 +1832,10 @@
                     "type": "authConnectionsCount"
                 },
                 {
+                    "type": "authScopes",
+                    "required": false
+                },
+                {
                     "type": "enabledAuthConnections"
                 },
                 {
@@ -1847,6 +1867,29 @@
                     "type": "userChoice"
                 }
             ]
+        },
+        {
+            "name": "auth_userState",
+            "description": "The state of the user's authentication.",
+            "metadata": [
+                {
+                    "type": "source",
+                    "required": true
+                },
+                {
+                    "type": "authStatus",
+                    "required": true
+                },
+                {
+                    "type": "authEnabledConnections",
+                    "required": true
+                },
+                {
+                    "type": "authScopes",
+                    "required": false
+                }
+            ],
+            "passive": true
         },
         {
             "name": "aws_copyArn",
