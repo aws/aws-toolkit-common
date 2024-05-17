@@ -1608,6 +1608,14 @@
                 {
                     "type": "credentialStartUrl",
                     "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": false
                 }
             ]
         },
