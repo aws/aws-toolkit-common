@@ -115,7 +115,11 @@
         {
             "name": "authStatus",
             "type": "string",
-            "allowedValues": ["connected", "notConnected", "expired"],
+            "allowedValues": [
+                "connected",
+                "notConnected",
+                "expired"
+            ],
             "description": "Status of the an auth connection."
         },
         {
@@ -1873,20 +1877,20 @@
             "description": "The state of the user's authentication.",
             "metadata": [
                 {
-                    "type": "source",
-                    "required": true
-                },
-                {
-                    "type": "authStatus",
-                    "required": true
-                },
-                {
                     "type": "authEnabledConnections",
                     "required": true
                 },
                 {
                     "type": "authScopes",
                     "required": false
+                },
+                {
+                    "type": "authStatus",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
                 }
             ],
             "passive": true
