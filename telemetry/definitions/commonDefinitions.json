@@ -1801,6 +1801,10 @@
                     "required": false
                 },
                 {
+                    "type": "authScopes",
+                    "required": false
+                },
+                {
                     "type": "credentialSourceId"
                 },
                 {
@@ -1834,10 +1838,6 @@
                 },
                 {
                     "type": "authConnectionsCount"
-                },
-                {
-                    "type": "authScopes",
-                    "required": false
                 },
                 {
                     "type": "enabledAuthConnections"
