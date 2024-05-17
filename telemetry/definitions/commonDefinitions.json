@@ -1874,7 +1874,7 @@
         },
         {
             "name": "auth_userState",
-            "description": "The state of the user's authentication.",
+            "description": "The state of the user's authentication upon startup.",
             "metadata": [
                 {
                     "type": "authEnabledConnections",
