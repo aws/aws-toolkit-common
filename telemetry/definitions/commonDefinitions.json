@@ -3432,6 +3432,10 @@
                     "type": "codewhispererCredentialFetchingLatency"
                 },
                 {
+                    "type": "codewhispererCustomizationArn",
+                    "required": false
+                },
+                {
                     "type": "codewhispererEndToEndLatency"
                 },
                 {
@@ -3611,6 +3615,10 @@
             "metadata": [
                 {
                     "type": "codewhispererCompletionType"
+                },
+                {
+                    "type": "codewhispererCustomizationArn",
+                    "required": false
                 },
                 {
                     "type": "codewhispererLanguage"
