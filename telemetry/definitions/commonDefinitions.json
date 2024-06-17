@@ -1728,7 +1728,8 @@
                     "required": false
                 },
                 {
-                    "type": "amazonqChatConversationId"
+                    "type": "amazonqChatConversationId",
+                    "required": true
                 },
                 {
                     "type": "amazonqChatHasReference",
@@ -1739,10 +1740,12 @@
                     "required": false
                 },
                 {
-                    "type": "amazonqChatInteractionType"
+                    "type": "amazonqChatInteractionType",
+                    "required": true
                 },
                 {
-                    "type": "amazonqChatMessageId"
+                    "type": "amazonqChatMessageId",
+                    "required": true
                 },
                 {
                     "type": "amazonqChatTotalCodeBlocks",
