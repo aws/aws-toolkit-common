@@ -1,6 +1,62 @@
 {
     "types": [
         {
+            "name": "amazonQChatAcceptedCharactersLength",
+            "type": "int",
+            "description": "Count of code characters copied to the editor"
+        },
+        {
+            "name": "amazonQChatAcceptedNumberOfLines",
+            "type": "int",
+            "description": "Count of lines of code copied to the editor"
+        },
+        {
+            "name": "amazonQChatCodeBlockIndex",
+            "type": "int",
+            "description": "Index of the code block inside a message in the conversation."
+        },
+        {
+            "name": "amazonQChatConversationId",
+            "type": "string",
+            "description": "Unique identifier for each conversation"
+        },
+        {
+            "name": "amazonQChatHasReference",
+            "type": "boolean",
+            "description": "True if the code snippet that user interacts with has a reference."
+        },
+        {
+            "name": "amazonQChatInteractionTarget",
+            "type": "string",
+            "description": "Identifies the entity within the message that user interacts with."
+        },
+        {
+            "name": "amazonQChatInteractionType",
+            "allowedValues": [
+                "insertAtCursor",
+                "copySnippet",
+                "copy",
+                "clickLink",
+                "clickFollowUp",
+                "hoverReference",
+                "upvote",
+                "downvote",
+                "clickBodyLink"
+            ],
+            "type": "string",
+            "description": "Indicates the specific interaction type with a message in a conversation"
+        },
+        {
+            "name": "amazonQChatMessageId",
+            "type": "string",
+            "description": "Unique identifier for each message in an conversation"
+        },
+        {
+            "name": "amazonQChatTotalCodeBlocks",
+            "type": "int",
+            "description": "Total number of code blocks inside a message in the conversation."
+        },
+        {
             "name": "amazonqCodeGenerationResult",
             "type": "string",
             "description": "Captures if code generation result is Complete, Failed, etc."
@@ -1660,40 +1716,40 @@
             "description": "When a user interacts with a message in the conversation",
             "metadata": [
                 {
+                    "type": "amazonqChatAcceptedCharactersLength",
+                    "required": false
+                },
+                {
+                    "type": "amazonqChatAcceptedNumberOfLines",
+                    "required": false
+                },
+                {
+                    "type": "amazonqChatCodeBlockIndex",
+                    "required": false
+                },
+                {
+                    "type": "amazonqChatConversationId"
+                },
+                {
+                    "type": "amazonqChatHasReference",
+                    "required": false
+                },
+                {
+                    "type": "amazonqChatInteractionTarget",
+                    "required": false
+                },
+                {
+                    "type": "amazonqChatInteractionType"
+                },
+                {
+                    "type": "amazonqChatMessageId"
+                },
+                {
+                    "type": "amazonqChatTotalCodeBlocks",
+                    "required": false
+                },
+                {
                     "type": "credentialStartUrl",
-                    "required": false
-                },
-                {
-                    "type": "cwsprChatAcceptedCharactersLength",
-                    "required": false
-                },
-                {
-                    "type": "cwsprChatAcceptedNumberOfLines",
-                    "required": false
-                },
-                {
-                    "type": "cwsprChatCodeBlockIndex",
-                    "required": false
-                },
-                {
-                    "type": "cwsprChatConversationId"
-                },
-                {
-                    "type": "cwsprChatHasReference",
-                    "required": false
-                },
-                {
-                    "type": "cwsprChatInteractionTarget",
-                    "required": false
-                },
-                {
-                    "type": "cwsprChatInteractionType"
-                },
-                {
-                    "type": "cwsprChatMessageId"
-                },
-                {
-                    "type": "cwsprChatTotalCodeBlocks",
                     "required": false
                 }
             ]
