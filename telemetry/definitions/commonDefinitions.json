@@ -2202,6 +2202,14 @@
                     "type": "result"
                 },
                 {
+                    "type": "requestId",
+                    "required": false
+                },
+                {
+                    "type": "reasonDesc",
+                    "required": false
+                },
+                {
                     "type": "sessionDuration",
                     "required": false
                 }
