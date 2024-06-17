@@ -1425,6 +1425,49 @@
             ]
         },
         {
+            "name": "amazonq_interactWithMessage",
+            "description": "When a user interacts with a message in the conversation",
+            "metadata": [
+                {
+                    "type": "cwsprChatConversationId"
+                },
+                {
+                    "type": "cwsprChatMessageId"
+                },
+                {
+                    "type": "cwsprChatInteractionType"
+                },
+                {
+                    "type": "cwsprChatInteractionTarget",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatCodeBlockIndex",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatTotalCodeBlocks",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatAcceptedCharactersLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatAcceptedNumberOfLines",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatHasReference",
+                    "required": false
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "accessanalyzer_iamPolicyChecksValidatePolicy",
             "description": "Execution of Validate Policy in IAM Policy Checks",
             "metadata": [
