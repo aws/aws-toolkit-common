@@ -1,65 +1,19 @@
 {
     "types": [
         {
-            "name": "amazonQChatAcceptedCharactersLength",
+            "name": "amazonQAcceptedCharactersLength",
             "type": "int",
             "description": "Count of code characters copied to the editor"
         },
         {
-            "name": "amazonQChatAcceptedNumberOfLines",
+            "name": "amazonQAcceptedNumberOfLines",
             "type": "int",
             "description": "Count of lines of code copied to the editor"
         },
         {
-            "name": "amazonQChatCodeBlockIndex",
+            "name": "amazonQCodeBlockIndex",
             "type": "int",
             "description": "Index of the code block inside a message in the conversation."
-        },
-        {
-            "name": "amazonQChatConversationId",
-            "type": "string",
-            "description": "Unique identifier for each conversation"
-        },
-        {
-            "name": "amazonQChatHasReference",
-            "type": "boolean",
-            "description": "True if the code snippet that user interacts with has a reference."
-        },
-        {
-            "name": "amazonQChatInteractionTarget",
-            "type": "string",
-            "description": "Identifies the entity within the message that user interacts with."
-        },
-        {
-            "name": "amazonQChatInteractionType",
-            "allowedValues": [
-                "insertAtCursor",
-                "copySnippet",
-                "copy",
-                "clickLink",
-                "clickFollowUp",
-                "hoverReference",
-                "upvote",
-                "downvote",
-                "clickBodyLink"
-            ],
-            "type": "string",
-            "description": "Indicates the specific interaction type with a message in a conversation"
-        },
-        {
-            "name": "amazonQChatMessageId",
-            "type": "string",
-            "description": "Unique identifier for each message in an conversation"
-        },
-        {
-            "name": "amazonQChatTotalCodeBlocks",
-            "type": "int",
-            "description": "Total number of code blocks inside a message in the conversation."
-        },
-        {
-            "name": "amazonqCodeGenerationResult",
-            "type": "string",
-            "description": "Captures if code generation result is Complete, Failed, etc."
         },
         {
             "name": "amazonqConversationId",
@@ -92,6 +46,42 @@
             "description": "The time it takes to generate code generation response"
         },
         {
+            "name": "amazonqGenerationResult",
+            "type": "string",
+            "description": "Captures if code generation result is Complete, Failed, etc."
+        },
+        {
+            "name": "amazonQHasReference",
+            "type": "boolean",
+            "description": "True if the code snippet that user interacts with has a reference."
+        },
+        {
+            "name": "amazonQInteractionTarget",
+            "type": "string",
+            "description": "Identifies the entity within the message that user interacts with."
+        },
+        {
+            "name": "amazonQInteractionType",
+            "allowedValues": [
+                "insertAtCursor",
+                "copySnippet",
+                "copy",
+                "clickLink",
+                "clickFollowUp",
+                "hoverReference",
+                "upvote",
+                "downvote",
+                "clickBodyLink"
+            ],
+            "type": "string",
+            "description": "Indicates the specific interaction type with a message in a conversation"
+        },
+        {
+            "name": "amazonQMessageId",
+            "type": "string",
+            "description": "Unique identifier for each message in an conversation"
+        },
+        {
             "name": "amazonqNumberOfFilesAccepted",
             "type": "double",
             "description": "Captures the number of accepted files as a part of code generation iteration"
@@ -110,6 +100,11 @@
             "name": "amazonqRepositorySize",
             "type": "double",
             "description": "Captures the size of the source code"
+        },
+        {
+            "name": "amazonQTotalCodeBlocks",
+            "type": "int",
+            "description": "Total number of code blocks inside a message in the conversation."
         },
         {
             "name": "amazonqUploadIntent",
@@ -1716,39 +1711,39 @@
             "description": "When a user interacts with a message in the conversation",
             "metadata": [
                 {
-                    "type": "amazonqChatAcceptedCharactersLength",
+                    "type": "amazonqAcceptedCharactersLength",
                     "required": false
                 },
                 {
-                    "type": "amazonqChatAcceptedNumberOfLines",
+                    "type": "amazonqAcceptedNumberOfLines",
                     "required": false
                 },
                 {
-                    "type": "amazonqChatCodeBlockIndex",
+                    "type": "amazonqCodeBlockIndex",
                     "required": false
                 },
                 {
-                    "type": "amazonqChatConversationId",
+                    "type": "amazonqConversationId",
                     "required": true
                 },
                 {
-                    "type": "amazonqChatHasReference",
+                    "type": "amazonqHasReference",
                     "required": false
                 },
                 {
-                    "type": "amazonqChatInteractionTarget",
+                    "type": "amazonqInteractionTarget",
                     "required": false
                 },
                 {
-                    "type": "amazonqChatInteractionType",
+                    "type": "amazonqInteractionType",
                     "required": true
                 },
                 {
-                    "type": "amazonqChatMessageId",
+                    "type": "amazonqMessageId",
                     "required": true
                 },
                 {
-                    "type": "amazonqChatTotalCodeBlocks",
+                    "type": "amazonqTotalCodeBlocks",
                     "required": false
                 },
                 {
