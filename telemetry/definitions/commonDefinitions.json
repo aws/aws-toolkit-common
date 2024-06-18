@@ -51,17 +51,17 @@
             "description": "Captures if code generation result is Complete, Failed, etc."
         },
         {
-            "name": "amazonQHasReference",
+            "name": "amazonqHasReference",
             "type": "boolean",
             "description": "True if the code snippet that user interacts with has a reference."
         },
         {
-            "name": "amazonQInteractionTarget",
+            "name": "amazonqInteractionTarget",
             "type": "string",
             "description": "Identifies the entity within the message that user interacts with."
         },
         {
-            "name": "amazonQInteractionType",
+            "name": "amazonqInteractionType",
             "allowedValues": [
                 "insertAtCursor",
                 "copySnippet",
@@ -77,7 +77,7 @@
             "description": "Indicates the specific interaction type with a message in a conversation"
         },
         {
-            "name": "amazonQMessageId",
+            "name": "amazonqMessageId",
             "type": "string",
             "description": "Unique identifier for each message in an conversation"
         },
@@ -102,7 +102,7 @@
             "description": "Captures the size of the source code"
         },
         {
-            "name": "amazonQTotalCodeBlocks",
+            "name": "amazonqTotalCodeBlocks",
             "type": "int",
             "description": "Total number of code blocks inside a message in the conversation."
         },
