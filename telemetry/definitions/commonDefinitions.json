@@ -1,21 +1,6 @@
 {
     "types": [
         {
-            "name": "amazonqAcceptedCharactersLength",
-            "type": "int",
-            "description": "Count of code characters copied to the editor"
-        },
-        {
-            "name": "amazonqAcceptedNumberOfLines",
-            "type": "int",
-            "description": "Count of lines of code copied to the editor"
-        },
-        {
-            "name": "amazonqCodeBlockIndex",
-            "type": "int",
-            "description": "Index of the code block inside a message in the conversation."
-        },
-        {
             "name": "amazonqCodeGenerationResult",
             "type": "string",
             "description": "Captures if code generation result is Complete, Failed, etc."
@@ -51,37 +36,6 @@
             "description": "The time it takes to generate code generation response"
         },
         {
-            "name": "amazonqHasReference",
-            "type": "boolean",
-            "description": "True if the code snippet that user interacts with has a reference."
-        },
-        {
-            "name": "amazonqInteractionTarget",
-            "type": "string",
-            "description": "Identifies the entity within the message that user interacts with."
-        },
-        {
-            "name": "amazonqInteractionType",
-            "allowedValues": [
-                "insertAtCursor",
-                "copySnippet",
-                "copy",
-                "clickLink",
-                "clickFollowUp",
-                "hoverReference",
-                "upvote",
-                "downvote",
-                "clickBodyLink"
-            ],
-            "type": "string",
-            "description": "Indicates the specific interaction type with a message in a conversation"
-        },
-        {
-            "name": "amazonqMessageId",
-            "type": "string",
-            "description": "Unique identifier for each message in an conversation"
-        },
-        {
             "name": "amazonqNumberOfFilesAccepted",
             "type": "double",
             "description": "Captures the number of accepted files as a part of code generation iteration"
@@ -100,11 +54,6 @@
             "name": "amazonqRepositorySize",
             "type": "double",
             "description": "Captures the size of the source code"
-        },
-        {
-            "name": "amazonqTotalCodeBlocks",
-            "type": "int",
-            "description": "Total number of code blocks inside a message in the conversation."
         },
         {
             "name": "amazonqUploadIntent",
@@ -897,6 +846,62 @@
                 "bearerToken",
                 "other"
             ]
+        },
+        {
+            "name": "cwsprChatAcceptedCharactersLength",
+            "type": "int",
+            "description": "Count of code characters copied to the editor"
+        },
+        {
+            "name": "cwsprChatAcceptedNumberOfLines",
+            "type": "int",
+            "description": "Count of lines of code copied to the editor"
+        },
+        {
+            "name": "cwsprChatCodeBlockIndex",
+            "type": "int",
+            "description": "Index of the code block inside a message in the conversation."
+        },
+        {
+            "name": "cwsprChatConversationId",
+            "type": "string",
+            "description": "Uniquely identifies a message with which the user interacts."
+        },
+        {
+            "name": "cwsprChatHasReference",
+            "type": "boolean",
+            "description": "True if the code snippet that user interacts with has a reference."
+        },
+        {
+            "name": "cwsprChatInteractionTarget",
+            "type": "string",
+            "description": "Identifies the entity within the message that user interacts with."
+        },
+        {
+            "name": "cwsprChatInteractionType",
+            "allowedValues": [
+                "insertAtCursor",
+                "copySnippet",
+                "copy",
+                "clickLink",
+                "clickFollowUp",
+                "hoverReference",
+                "upvote",
+                "downvote",
+                "clickBodyLink"
+            ],
+            "type": "string",
+            "description": "Indicates the specific interaction type with a message in a conversation"
+        },
+        {
+            "name": "cwsprChatMessageId",
+            "type": "string",
+            "description": "Unique identifier for each message in an conversation"
+        },
+        {
+            "name": "cwsprChatMessageId",
+            "type": "int",
+            "description": "Total number of code blocks inside a message in the conversation."
         },
         {
             "name": "databaseCredentials",
@@ -1711,43 +1716,43 @@
             "description": "When a user interacts with a message in the conversation",
             "metadata": [
                 {
-                    "type": "amazonqAcceptedCharactersLength",
-                    "required": false
-                },
-                {
-                    "type": "amazonqAcceptedNumberOfLines",
-                    "required": false
-                },
-                {
-                    "type": "amazonqCodeBlockIndex",
-                    "required": false
-                },
-                {
-                    "type": "amazonqConversationId",
-                    "required": true
-                },
-                {
-                    "type": "amazonqHasReference",
-                    "required": false
-                },
-                {
-                    "type": "amazonqInteractionTarget",
-                    "required": false
-                },
-                {
-                    "type": "amazonqInteractionType",
-                    "required": true
-                },
-                {
-                    "type": "amazonqMessageId",
-                    "required": true
-                },
-                {
-                    "type": "amazonqTotalCodeBlocks",
-                    "required": false
-                },
-                {
                     "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatAcceptedCharactersLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatAcceptedNumberOfLines",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatCodeBlockIndex",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatConversationId",
+                    "required": true
+                },
+                {
+                    "type": "cwsprChatHasReference",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatInteractionTarget",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatInteractionType",
+                    "required": true
+                },
+                {
+                    "type": "cwsprChatMessageId",
+                    "required": true
+                },
+                {
+                    "type": "cwsprChatMessageId",
                     "required": false
                 }
             ]
