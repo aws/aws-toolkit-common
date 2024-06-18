@@ -163,11 +163,18 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
         /// </summary>
         internal void ProcessMetricType(MetricType type, CodeNamespace generatedNamespace)
         {
-            // Handle non-POCO types
-            if (!type.IsAliasedType())
+            try
             {
-                // Generate strongly typed code for types that contain "allowed values"
-                generatedNamespace.Types.Add(GenerateEnumStruct(type));
+                // Handle non-POCO types
+                if (!type.IsAliasedType())
+                {
+                    // Generate strongly typed code for types that contain "allowed values"
+                    generatedNamespace.Types.Add(GenerateEnumStruct(type));
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Failed to generate code for metric type: {type.name}", ex);
             }
         }
 
@@ -253,8 +260,15 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
         /// </summary>
         private void ProcessMetric(Metric metric, CodeTypeDeclaration telemetryEventsClass, CodeNamespace generatedNamespace)
         {
-            generatedNamespace.Types.Add(CreateMetricDataClass(metric));
-            telemetryEventsClass.Members.Add(CreateRecordMetricMethodByDataClass(metric));
+            try
+            {
+                generatedNamespace.Types.Add(CreateMetricDataClass(metric));
+                telemetryEventsClass.Members.Add(CreateRecordMetricMethodByDataClass(metric));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Failed to generate code for metric: {metric.name}", ex);
+            }
         }
 
         /// <summary>
@@ -542,7 +556,14 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 
         private MetricType GetMetricType(string name)
         {
-            return _types.Single(t => t.name == name);
+            try
+            {
+                return _types.Single(t => t.name == name);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to find metric type: {name}", e);
+            }
         }
 
         private string SanitizeName(string name)
