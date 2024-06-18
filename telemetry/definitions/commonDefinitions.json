@@ -899,7 +899,7 @@
             "description": "Unique identifier for each message in an conversation"
         },
         {
-            "name": "cwsprChatMessageId",
+            "name": "cwsprChatTotalCodeBlocks",
             "type": "int",
             "description": "Total number of code blocks inside a message in the conversation."
         },
