@@ -46,7 +46,7 @@
             "description": "The time it takes to generate code generation response"
         },
         {
-            "name": "amazonqGenerationResult",
+            "name": "amazonqCodeGenerationResult",
             "type": "string",
             "description": "Captures if code generation result is Complete, Failed, etc."
         },
