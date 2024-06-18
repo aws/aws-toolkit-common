@@ -1,17 +1,17 @@
 {
     "types": [
         {
-            "name": "amazonqAcceptedCharactersLength",
+            "name": "amazonQAcceptedCharactersLength",
             "type": "int",
             "description": "Count of code characters copied to the editor"
         },
         {
-            "name": "amazonqAcceptedNumberOfLines",
+            "name": "amazonQAcceptedNumberOfLines",
             "type": "int",
             "description": "Count of lines of code copied to the editor"
         },
         {
-            "name": "amazonqCodeBlockIndex",
+            "name": "amazonQCodeBlockIndex",
             "type": "int",
             "description": "Index of the code block inside a message in the conversation."
         },
