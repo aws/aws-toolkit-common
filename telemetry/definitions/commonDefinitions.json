@@ -16,6 +16,11 @@
             "description": "Index of the code block inside a message in the conversation."
         },
         {
+            "name": "amazonqCodeGenerationResult",
+            "type": "string",
+            "description": "Captures if code generation result is Complete, Failed, etc."
+        },
+        {
             "name": "amazonqConversationId",
             "type": "string",
             "description": "Uniquely identifies a message with which the user interacts."
@@ -44,11 +49,6 @@
             "name": "amazonqGenerateCodeResponseLatency",
             "type": "double",
             "description": "The time it takes to generate code generation response"
-        },
-        {
-            "name": "amazonqCodeGenerationResult",
-            "type": "string",
-            "description": "Captures if code generation result is Complete, Failed, etc."
         },
         {
             "name": "amazonqHasReference",
