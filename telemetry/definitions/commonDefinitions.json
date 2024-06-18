@@ -2204,15 +2204,15 @@
                     "required": false
                 },
                 {
-                    "type": "result"
+                    "type": "reasonDesc",
+                    "required": false
                 },
                 {
                     "type": "requestId",
                     "required": false
                 },
                 {
-                    "type": "reasonDesc",
-                    "required": false
+                    "type": "result"
                 },
                 {
                     "type": "sessionDuration",
