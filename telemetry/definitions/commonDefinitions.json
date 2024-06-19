@@ -1750,10 +1750,6 @@
                 {
                     "type": "cwsprChatMessageId",
                     "required": true
-                },
-                {
-                    "type": "cwsprChatMessageId",
-                    "required": false
                 }
             ]
         },
