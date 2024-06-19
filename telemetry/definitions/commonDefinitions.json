@@ -1253,12 +1253,12 @@
         {
             "name": "reason",
             "type": "string",
-            "description": "The reason for a metric or exception depending on context. It describes a certain theme of errors usually the exception class name eg. FileIOException"
+            "description": "Reason code or name for an event (when result=Succeeded) or error (when result=Failed). Unlike the `reasonDesc` field, this should be a stable/predictable name for a class of events or errors (typically the exception name, e.g. FileIOException)."
         },
         {
             "name": "reasonDesc",
             "type": "string",
-            "description": "Error message detail (truncated). May contain arbitrary message details (as opposed to the 'reason' field, which is intended to have a predictable value for a particular class of failures)."
+            "description": "Error message detail. May contain arbitrary message details (unlike the `reason` field), but should be truncated (recommendation: 200 chars)."
         },
         {
             "name": "referencePolicyType",
@@ -1268,7 +1268,7 @@
                 "Resource",
                 "None"
             ],
-            "description": "User inputted policy type of the reference file. Applicable to only CheckNoNewAccess check type."
+            "description": "User-provided policy type of the reference file. Applicable to only CheckNoNewAccess check type."
         },
         {
             "name": "requestId",
