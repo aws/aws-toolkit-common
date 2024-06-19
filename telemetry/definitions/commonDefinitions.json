@@ -1256,6 +1256,11 @@
             "description": "The reason for a metric or exception depending on context. It describes a certain theme of errors usually the exception class name eg. FileIOException"
         },
         {
+            "name": "reasonDesc",
+            "type": "string",
+            "description": "Error message detail (truncated). May contain arbitrary message details (as opposed to the 'reason' field, which is intended to have a predictable value for a particular class of failures)."
+        },
+        {
             "name": "referencePolicyType",
             "type": "string",
             "allowedValues": [
@@ -2295,6 +2300,14 @@
                 },
                 {
                     "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "reasonDesc",
+                    "required": false
+                },
+                {
+                    "type": "requestId",
                     "required": false
                 },
                 {
