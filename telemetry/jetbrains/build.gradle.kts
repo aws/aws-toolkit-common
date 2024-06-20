@@ -150,7 +150,12 @@ nexusPublishing {
         sonatype {
             nexusUrl.set(uri("https://aws.oss.sonatype.org/service/local/"))
             snapshotRepositoryUrl.set(uri("https://aws.oss.sonatype.org/content/repositories/snapshots/"))
-            authenticationToken.set(project.findProperty("ossrhToken") as? String)
+            
+            // Using  token for authentication
+            credentials {
+                username = project.findProperty("ossrhKey")
+                password = project.findProperty("ossrhToken") as? String
+            }
         }
 
             // gotten using ./gradlew getStagingProfile with an older plugin (io.codearte.nexus-staging)
