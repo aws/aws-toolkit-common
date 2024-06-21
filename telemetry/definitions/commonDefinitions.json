@@ -1195,6 +1195,11 @@
             "description": "If this was performed as part of the reauthentication flow."
         },
         {
+            "name": "IsRetry",
+            "type": "boolean",
+            "description": "Whether or not the operation was a retry"
+        },
+        {
             "name": "lambdaArchitecture",
             "allowedValues": [
                 "x86_64",
@@ -1509,15 +1514,6 @@
                 {
                     "type": "result"
                 }
-            ]
-        },
-        {
-            "name": "amazonq_viewChatPane",
-            "description": "Captures if Chat pane is successfully or not",
-            "metadata": [
-                
-                    {"type": "reason", "required": false},
-                    {"type": "result"}
             ]
         },
         {
@@ -1892,6 +1888,19 @@
             ]
         },
         {
+            "name": "amazonq_viewChatPane",
+            "description": "Captures if Chat pane is successfully viewed or not",
+            "metadata": [
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
             "name": "apigateway_copyUrl",
             "description": "Copying an API Gateway remote URL",
             "metadata": [
@@ -2027,6 +2036,10 @@
                     "required": false
                 },
                 {
+                    "type": "authEnabledFeatures",
+                    "required": false
+                },
+                {
                     "type": "authScopes",
                     "required": false
                 },
@@ -2046,10 +2059,6 @@
                 },
                 {
                     "type": "isAggregated"
-                },
-                {
-                    "type": "authEnabledFeatures",
-                    "required": false
                 },
                 {
                     "type": "isReAuth"
@@ -2098,14 +2107,14 @@
             ]
         },
         {
-            "name": "auth_signInPageOpened",
-            "description": "When the Amazon Q sign in page is opened and focused.",
+            "name": "auth_signInPageClosed",
+            "description": "When the Amazon Q sign in page is closed.",
             "metadata": [],
             "passive": true
         },
         {
-            "name": "auth_signInPageClosed",
-            "description": "When the Amazon Q sign in page is closed.",
+            "name": "auth_signInPageOpened",
+            "description": "When the Amazon Q sign in page is opened and focused.",
             "metadata": [],
             "passive": true
         },
@@ -2260,16 +2269,6 @@
                 {
                     "type": "source"
                 }
-            ]
-        },
-        {
-            "name": "aws_webviewInstallation",
-            "description": "Captures process of webview installation",
-            "metadata": [
-                {"type": "elementId"},
-                {"type": "isRetry"},
-                {"type": "result"},
-                {"type": "reason", "required": false}
             ]
         },
         {
@@ -2438,6 +2437,25 @@
                 }
             ],
             "passive": true
+        },
+        {
+            "name": "aws_webviewInstallation",
+            "description": "Captures process of webview installation",
+            "metadata": [
+                {
+                    "type": "elementId"
+                },
+                {
+                    "type": "isRetry"
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "beanstalk_deleteApplication",
