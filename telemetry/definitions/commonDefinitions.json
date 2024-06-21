@@ -108,6 +108,11 @@
             "description": "Comma-delimited list of enabled auths."
         },
         {
+            "name": "authEnabledFeatures",
+            "type": "string",
+            "description": "Comma delimited list of enabled features for the authenticated user"
+        },
+        {
             "name": "authScopes",
             "type": "string",
             "description": "Comma-delimited list of scopes that users has"
@@ -1195,6 +1200,11 @@
             "description": "If this was performed as part of the reauthentication flow."
         },
         {
+            "name": "isRetry",
+            "type": "boolean",
+            "description": "Whether or not the operation was a retry"
+        },
+        {
             "name": "lambdaArchitecture",
             "allowedValues": [
                 "x86_64",
@@ -1883,6 +1893,19 @@
             ]
         },
         {
+            "name": "amazonq_viewChatPanel",
+            "description": "Captures if Q chat panel is successfully viewed or not",
+            "metadata": [
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
             "name": "apigateway_copyUrl",
             "description": "Copying an API Gateway remote URL",
             "metadata": [
@@ -2018,11 +2041,19 @@
                     "required": false
                 },
                 {
+                    "type": "authEnabledFeatures",
+                    "required": false
+                },
+                {
                     "type": "authScopes",
                     "required": false
                 },
                 {
                     "type": "credentialSourceId"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
                 },
                 {
                     "type": "featureId"
@@ -2033,6 +2064,9 @@
                 },
                 {
                     "type": "isAggregated"
+                },
+                {
+                    "type": "isReAuth"
                 },
                 {
                     "type": "reason",
@@ -2076,6 +2110,18 @@
                     "type": "source"
                 }
             ]
+        },
+        {
+            "name": "auth_signInPageClosed",
+            "description": "When the Amazon Q sign in page is closed.",
+            "metadata": [],
+            "passive": true
+        },
+        {
+            "name": "auth_signInPageOpened",
+            "description": "When the Amazon Q sign in page is opened and focused.",
+            "metadata": [],
+            "passive": true
         },
         {
             "name": "auth_switchRoles",
@@ -2224,6 +2270,9 @@
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "source"
                 }
             ]
         },
@@ -2393,6 +2442,25 @@
                 }
             ],
             "passive": true
+        },
+        {
+            "name": "aws_webviewInstallation",
+            "description": "Captures process of webview installation",
+            "metadata": [
+                {
+                    "type": "elementId"
+                },
+                {
+                    "type": "isRetry"
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                }
+            ]
         },
         {
             "name": "beanstalk_deleteApplication",
