@@ -1893,7 +1893,7 @@
             ]
         },
         {
-            "name": "amazonq_viewChatPane",
+            "name": "amazonq_viewChatPanel",
             "description": "Captures if Chat pane is successfully viewedor not",
             "metadata": [
                 {
