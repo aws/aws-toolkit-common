@@ -1512,6 +1512,15 @@
             ]
         },
         {
+            "name": "amazonq_viewChatPane",
+            "description": "Captures if Chat pane is successfully or not",
+            "metadata": [
+                
+                    {"type": "reason", "required": false},
+                    {"type": "result"}
+            ]
+        },
+        {
             "name": "amazonq_approachInvoke",
             "description": "Captures Approach generation process",
             "metadata": [
@@ -2025,6 +2034,10 @@
                     "type": "credentialSourceId"
                 },
                 {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
                     "type": "featureId"
                 },
                 {
@@ -2033,6 +2046,13 @@
                 },
                 {
                     "type": "isAggregated"
+                },
+                {
+                    "type": "authEnabledFeatures",
+                    "required": false
+                },
+                {
+                    "type": "isReAuth"
                 },
                 {
                     "type": "reason",
@@ -2076,6 +2096,18 @@
                     "type": "source"
                 }
             ]
+        },
+        {
+            "name": "auth_signInPageOpened",
+            "description": "When the Amazon Q sign in page is opened and focused.",
+            "metadata": [],
+            "passive": true
+        },
+        {
+            "name": "auth_signInPageClosed",
+            "description": "When the Amazon Q sign in page is closed.",
+            "metadata": [],
+            "passive": true
         },
         {
             "name": "auth_switchRoles",
@@ -2224,7 +2256,20 @@
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "source"
                 }
+            ]
+        },
+        {
+            "name": "aws_webviewInstallation",
+            "description": "Captures process of webview installation",
+            "metadata": [
+                {"type": "elementId"},
+                {"type": "isRetry"},
+                {"type": "result"},
+                {"type": "reason", "required": false}
             ]
         },
         {
