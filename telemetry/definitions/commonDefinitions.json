@@ -1894,7 +1894,7 @@
         },
         {
             "name": "amazonq_viewChatPanel",
-            "description": "Captures if Chat pane is successfully viewedor not",
+            "description": "Captures if Q chat panel is successfully viewed or not",
             "metadata": [
                 {
                     "type": "reason",
