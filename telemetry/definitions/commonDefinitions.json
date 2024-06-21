@@ -108,6 +108,11 @@
             "description": "Comma-delimited list of enabled auths."
         },
         {
+            "name": "authEnabledFeatures",
+            "type": "string",
+            "description": "Comma delimited list of enabled features for the authenticated user"
+        },
+        {
             "name": "authScopes",
             "type": "string",
             "description": "Comma-delimited list of scopes that users has"
@@ -1889,7 +1894,7 @@
         },
         {
             "name": "amazonq_viewChatPane",
-            "description": "Captures if Chat pane is successfully viewed or not",
+            "description": "Captures if Chat pane is successfully viewedor not",
             "metadata": [
                 {
                     "type": "reason",
