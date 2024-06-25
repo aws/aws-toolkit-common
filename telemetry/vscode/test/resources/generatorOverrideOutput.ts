@@ -5,8 +5,10 @@
 export interface MetricBase {
     /** The result of the operation */
     readonly result?: Result
-    /** The reason for a metric or exception depending on context */
+    /** Reason code or name for an event (when result=Succeeded) or error (when result=Failed). Unlike the `reasonDesc` field, this should be a stable/predictable name for a class of events or errors (typically the exception name, e.g. FileIOException). */
     readonly reason?: string
+    /** Error message detail. May contain arbitrary message details (unlike the `reason` field), but should be truncated (recommendation: 200 chars). */
+    readonly reasonDesc?: string
     /** The duration of the operation in miliseconds */
     readonly duration?: number
     /** A flag indicating that the metric was not caused by the user. */
