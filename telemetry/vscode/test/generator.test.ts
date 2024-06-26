@@ -13,15 +13,15 @@ describe('Generator', () => {
         tempDir = tmpdir()
     })
 
-    test('Generate fails when validation fails', async () => {
+    test('validation', async () => {
         await expect(testGenerator(['resources/invalidInput.json'], '/invalid/file/path')).rejects.toBeDefined()
     })
 
-    test('Generates with normal input', async () => {
+    test('with normal input', async () => {
         await testGenerator([`resources/generatorInput.json`], `resources/generatorOutput.ts`)
     })
 
-    test('Generate overrides', async () => {
+    test('overrides', async () => {
         await testGenerator(
             ['resources/testOverrideInput.json', 'resources/testResultInput.json'],
             'resources/generatorOverrideOutput.ts'

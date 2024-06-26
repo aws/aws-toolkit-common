@@ -114,7 +114,7 @@ function getTypeOrThrow(types: MetadataType[] = [], name: string) {
 }
 
 const baseName = 'MetricBase'
-const commonMetadata = ['result', 'reason', 'duration']
+const commonMetadata = ['result', 'reason', 'reasonDesc', 'duration']
 const passive: PropertySignatureStructure = {
     isReadonly: true,
     hasQuestionToken: true,
