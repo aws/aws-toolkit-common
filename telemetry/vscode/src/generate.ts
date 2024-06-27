@@ -17,7 +17,11 @@ import {
 } from 'ts-morph'
 import { readFile, readFileSync, writeFile } from 'fs-extra'
 import _ = require('lodash')
-import * as prettier from 'prettier'
+import { Options as prettierOptions } from 'prettier'
+// Using 'prettier/standalone' as a workaround since prettier v3 moved to ESM modules.
+import * as prettier from 'prettier/standalone'
+import * as parserTypeScript from 'prettier/plugins/typescript'
+import * as parserEstree from 'prettier/plugins/estree'
 import {
     MetadataType,
     MetricMetadataType,
@@ -62,8 +66,11 @@ export async function generate(args: CommandLineArguments) {
     }
 
     const output = generateFile(input, args.outputFile)
-    const options = await prettier.resolveConfig(await readFile(`${__dirname}/../.prettierrc`, 'utf-8'))
-    const formattedOutput = prettier.format(output.getFullText(), { parser: 'typescript', ...options })
+    const options: prettierOptions = JSON.parse(await readFile(`${__dirname}/../.prettierrc`, 'utf-8'))
+    options.parser = 'typescript'
+    // Because we use 'prettier/standalone', we need to explicitly pass the plugins.
+    options.plugins = [parserTypeScript, parserEstree]
+    const formattedOutput = await prettier.format(output.getFullText(), options)
     await writeFile(output.getFilePath(), formattedOutput)
 
     console.log('Done generating!')
