@@ -1286,6 +1286,11 @@
             "description": "Error message detail. May contain arbitrary message details (unlike the `reason` field), but should be truncated (recommendation: 200 chars)."
         },
         {
+            "name": "reAuthReason",
+            "type": "string",
+            "description": "Why was the connection/session put in to a state where it needs to be reauthenticated?"
+        },
+        {
             "name": "referencePolicyType",
             "type": "string",
             "allowedValues": [
@@ -2281,6 +2286,10 @@
                 },
                 {
                     "type": "isReAuth",
+                    "required": false
+                },
+                {
+                    "type": "reAuthReason",
                     "required": false
                 },
                 {
