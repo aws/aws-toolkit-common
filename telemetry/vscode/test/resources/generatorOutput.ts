@@ -9,8 +9,10 @@ export interface MetricBase {
     readonly reason?: string
     /** Error message detail. May contain arbitrary message details (unlike the `reason` field), but should be truncated (recommendation: 200 chars). */
     readonly reasonDesc?: string
-    /** The duration of the operation in miliseconds */
+    /** The duration of the operation in milliseconds */
     readonly duration?: number
+    /** AWS Region associated with a metric */
+    readonly awsRegion?: string
     /** A flag indicating that the metric was not caused by the user. */
     readonly passive?: boolean
     /** @deprecated Arbitrary "value" of the metric. */
@@ -18,30 +20,58 @@ export interface MetricBase {
 }
 
 export interface LambdaDelete extends MetricBase {
-    /** a test boolean type */
-    readonly booltype: boolean
+    /** Whether or not the operation was a retry */
+    readonly isRetry: boolean
 }
 
 export interface LambdaCreate extends MetricBase {
     /** The lambda runtime */
-    readonly lambdaRuntime: LambdaRuntime
-    /** untyped string type */
-    readonly arbitraryString: string
+    readonly runtime: Runtime
+    /** Opaque AWS Builder ID identifier */
+    readonly userId: string
 }
 
 export interface LambdaRemoteinvoke extends MetricBase {
     /** The lambda runtime */
-    readonly lambdaRuntime?: LambdaRuntime
-    /** a test int type */
-    readonly inttype: number
+    readonly runtime?: Runtime
+    /** The number of successful operations */
+    readonly successCount: number
 }
 
 export interface NoMetadata extends MetricBase {}
 
 export interface PassivePassive extends MetricBase {}
 
-export type Result = 'Succeeded'
-export type LambdaRuntime = 'dotnetcore2.1' | 'nodejs12.x'
+export type Result = 'Succeeded' | 'Failed' | 'Cancelled'
+export type Runtime =
+    | 'dotnetcore3.1'
+    | 'dotnetcore2.1'
+    | 'dotnet5.0'
+    | 'dotnet6'
+    | 'dotnet7'
+    | 'dotnet8'
+    | 'nodejs20.x'
+    | 'nodejs18.x'
+    | 'nodejs16.x'
+    | 'nodejs14.x'
+    | 'nodejs12.x'
+    | 'nodejs10.x'
+    | 'nodejs8.10'
+    | 'ruby2.5'
+    | 'java8'
+    | 'java8.al2'
+    | 'java11'
+    | 'java17'
+    | 'java21'
+    | 'go1.x'
+    | 'python3.12'
+    | 'python3.11'
+    | 'python3.10'
+    | 'python3.9'
+    | 'python3.8'
+    | 'python3.7'
+    | 'python3.6'
+    | 'python2.7'
 
 export interface MetricDefinition {
     readonly unit: string
@@ -60,9 +90,9 @@ export interface MetricShapes {
 export type MetricName = keyof MetricShapes
 
 export const definitions: Record<string, MetricDefinition> = {
-    lambda_delete: { unit: 'None', passive: false, requiredMetadata: ['booltype'] },
-    lambda_create: { unit: 'None', passive: false, requiredMetadata: ['lambdaRuntime', 'arbitraryString'] },
-    lambda_remoteinvoke: { unit: 'None', passive: false, requiredMetadata: ['inttype'] },
+    lambda_delete: { unit: 'None', passive: false, requiredMetadata: ['isRetry'] },
+    lambda_create: { unit: 'None', passive: false, requiredMetadata: ['runtime', 'userId'] },
+    lambda_remoteinvoke: { unit: 'None', passive: false, requiredMetadata: ['successCount'] },
     no_metadata: { unit: 'None', passive: false, requiredMetadata: [] },
     passive_passive: { unit: 'None', passive: true, requiredMetadata: [] },
 }

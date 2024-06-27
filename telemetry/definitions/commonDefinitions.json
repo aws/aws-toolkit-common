@@ -128,6 +128,11 @@
             "description": "Status of the an auth connection."
         },
         {
+            "name": "awsAccount",
+            "type": "string",
+            "description": "AWS account ID associated with a metric. \"n/a\" if credentials are not available. \"not-set\" if credentials are not selected. \"invalid\" if account ID cannot be obtained."
+        },
+        {
             "name": "awsFiletype",
             "type": "string",
             "allowedValues": [
@@ -146,6 +151,11 @@
                 "other"
             ],
             "description": "AWS filetype kind"
+        },
+        {
+            "name": "awsRegion",
+            "type": "string",
+            "description": "AWS Region associated with a metric"
         },
         {
             "name": "causedBy",
@@ -1224,6 +1234,11 @@
             "name": "language",
             "type": "string",
             "description": "Language used for the project."
+        },
+        {
+            "name": "locale",
+            "type": "string",
+            "description": "User locale. Examples: en-US, en-GB, etc."
         },
         {
             "name": "name",
