@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@aws-toolkits/telemetry": "^1.0.212"
+  }
+}
