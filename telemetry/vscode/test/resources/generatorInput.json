@@ -1,64 +1,45 @@
 {
-    "types": [
-        {
-            "name": "lambdaRuntime",
-            "type": "string",
-            "allowedValues": ["dotnetcore2.1", "nodejs12.x"],
-            "description": "The lambda runtime"
-        },
-        {
-            "name": "result",
-            "allowedValues": ["Succeeded"],
-            "description": "The result of the operation"
-        },
-        {
-            "name": "reason",
-            "type": "string",
-            "description": "Reason code or name for an event (when result=Succeeded) or error (when result=Failed). Unlike the `reasonDesc` field, this should be a stable/predictable name for a class of events or errors (typically the exception name, e.g. FileIOException)."
-        },
-        {
-            "name": "reasonDesc",
-            "type": "string",
-            "description": "Error message detail. May contain arbitrary message details (unlike the `reason` field), but should be truncated (recommendation: 200 chars)."
-        },
-        {
-            "name": "duration",
-            "type": "double",
-            "description": "The duration of the operation in miliseconds"
-        },
-        {
-            "name": "inttype",
-            "description": "a test int type",
-            "type": "int"
-        },
-        {
-            "name": "booltype",
-            "description": "a test boolean type",
-            "type": "boolean"
-        },
-        {
-            "name": "arbitraryString",
-            "description": "untyped string type"
-        }
-    ],
+    "types": "will be replaced with `types` from commonDefinitions.json",
     "metrics": [
         {
             "name": "lambda_delete",
             "description": "called when deleting lambdas remotely",
             "unit": "None",
-            "metadata": [{ "type": "duration" }, { "type": "booltype" }]
+            "metadata": [
+                {
+                    "type": "duration"
+                },
+                {
+                    "type": "isRetry"
+                }
+            ]
         },
         {
             "name": "lambda_create",
             "description": "called when creating lambdas remotely",
             "unit": "None",
-            "metadata": [{ "type": "lambdaRuntime" }, { "type": "arbitraryString" }]
+            "metadata": [
+                {
+                    "type": "runtime"
+                },
+                {
+                    "type": "userId"
+                }
+            ]
         },
         {
             "name": "lambda_remoteinvoke",
             "description": "called when invoking lambdas remotely",
             "unit": "None",
-            "metadata": [{ "type": "lambdaRuntime", "required": false }, { "type": "inttype" }]
+            "metadata": [
+                {
+                    "type": "runtime",
+                    "required": false
+                },
+                {
+                    "type": "successCount"
+                }
+            ]
         },
         {
             "name": "no_metadata",

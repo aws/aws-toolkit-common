@@ -9,8 +9,10 @@ export interface MetricBase {
     readonly reason?: string
     /** Error message detail. May contain arbitrary message details (unlike the `reason` field), but should be truncated (recommendation: 200 chars). */
     readonly reasonDesc?: string
-    /** The duration of the operation in miliseconds */
+    /** The duration of the operation in milliseconds */
     readonly duration?: number
+    /** AWS Region associated with a metric */
+    readonly awsRegion?: string
     /** A flag indicating that the metric was not caused by the user. */
     readonly passive?: boolean
     /** @deprecated Arbitrary "value" of the metric. */
@@ -19,8 +21,36 @@ export interface MetricBase {
 
 export interface MetadataHasResult extends MetricBase {}
 
-export type Result = 'Succeeded'
-export type LambdaRuntime = 'dotnetcore2.1' | 'nodejs12.x'
+export type Result = 'Succeeded' | 'Failed' | 'Cancelled'
+export type Runtime =
+    | 'dotnetcore3.1'
+    | 'dotnetcore2.1'
+    | 'dotnet5.0'
+    | 'dotnet6'
+    | 'dotnet7'
+    | 'dotnet8'
+    | 'nodejs20.x'
+    | 'nodejs18.x'
+    | 'nodejs16.x'
+    | 'nodejs14.x'
+    | 'nodejs12.x'
+    | 'nodejs10.x'
+    | 'nodejs8.10'
+    | 'ruby2.5'
+    | 'java8'
+    | 'java8.al2'
+    | 'java11'
+    | 'java17'
+    | 'java21'
+    | 'go1.x'
+    | 'python3.12'
+    | 'python3.11'
+    | 'python3.10'
+    | 'python3.9'
+    | 'python3.8'
+    | 'python3.7'
+    | 'python3.6'
+    | 'python2.7'
 
 export interface MetricDefinition {
     readonly unit: string

@@ -1,26 +1,5 @@
 {
-    "types": [
-        {
-            "name": "result",
-            "allowedValues": ["Succeeded"],
-            "description": "The result of the operation"
-        },
-        {
-            "name": "reason",
-            "type": "string",
-            "description": "Reason code or name for an event (when result=Succeeded) or error (when result=Failed). Unlike the `reasonDesc` field, this should be a stable/predictable name for a class of events or errors (typically the exception name, e.g. FileIOException)."
-        },
-        {
-            "name": "reasonDesc",
-            "type": "string",
-            "description": "Error message detail. May contain arbitrary message details (unlike the `reason` field), but should be truncated (recommendation: 200 chars)."
-        },
-        {
-            "name": "duration",
-            "type": "double",
-            "description": "The duration of the operation in miliseconds"
-        }
-    ],
+    "types": "will be replaced with `types` from commonDefinitions.json",
     "metrics": [
         {
             "name": "metadata_hasResult",
