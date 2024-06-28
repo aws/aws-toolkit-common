@@ -49,12 +49,11 @@ export function validateInput(fileText: string, fileName: string): MetricDefinit
         const input = JSON.parse(fileText)
         const valid = jsonValidator(input)
         if (!valid) {
-            console.error('validating schema failed!')
             throw jsonValidator.errors
         }
         return input as MetricDefinitionRoot
     } catch (errors) {
-        console.error(`Error while trying to parse the definitions file ${fileName}: ${JSON.stringify(errors)}`)
-        throw new Error('Failed to parse')
+        const msg = `Failed to parse definitions file ${fileName}: ${JSON.stringify(errors)}`
+        throw new Error(msg)
     }
 }
