@@ -3299,8 +3299,8 @@
             ]
         },
         {
-            "name": "codeTransform_jobIsStartedFromChatPrompt",
-            "description": "The user initiates a transform job from Amazon Q chat prompt.",
+            "name": "codeTransform_jobIsStarted",
+            "description": "The user initiates a transform job from the Amazon Q chat prompt or Solution Explorer.",
             "metadata": [
                 {
                     "type": "codeTransformSessionId",
@@ -3309,20 +3309,14 @@
                 {
                     "type": "credentialSourceId",
                     "required": false
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_jobIsStartedFromSolutionExplorer",
-            "description": "The user initiates a transform job from the Solution Explorer.",
-            "metadata": [
+                },
                 {
-                    "type": "codeTransformSessionId",
+                    "type": "isStartedFrom",
                     "required": true
                 },
                 {
-                    "type": "credentialSourceId",
-                    "required": false
+                    "type": "source",
+                    "required": true
                 }
             ]
         },
@@ -3350,16 +3344,12 @@
             ]
         },
         {
-            "name": "codeTransform_buildCompleted",
+            "name": "codeTransform_build",
             "passive": true,
-            "description": "During the transformation progress, log whether the build succeeded or failed.",
+            "description": "During the transformation progress, log the status of the build.",
             "metadata": [
                 {
-                    "type": "buildStatus",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformSessionId",
+                    "type": "tool",
                     "required": true
                 },
             ]
