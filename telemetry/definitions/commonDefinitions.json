@@ -130,7 +130,7 @@
         {
             "name": "awsAccount",
             "type": "string",
-            "description": "AWS account ID associated with a metric. \"n/a\" if credentials are not available. \"not-set\" if credentials are not selected. \"invalid\" if account ID cannot be obtained."
+            "description": "AWS account ID associated with a metric.\n- \"n/a\" if credentials are not available.\n- \"not-set\" if credentials are not selected.\n- \"invalid\" if account ID cannot be obtained."
         },
         {
             "name": "awsFiletype",
@@ -155,7 +155,7 @@
         {
             "name": "awsRegion",
             "type": "string",
-            "description": "AWS Region associated with a metric"
+            "description": "AWS Region associated with a metric\n- \"n/a\" if not associated with a region.\n- \"not-set\" if metric is associated with a region, but region is unknown."
         },
         {
             "name": "causedBy",
@@ -1133,7 +1133,7 @@
         {
             "name": "httpStatusCode",
             "type": "string",
-            "description": "Describes the HTTP status code for request made. The semantics are contextual based off of other fields (e.g. `requestId`)"
+            "description": "HTTP status code for the request (if any) associated with a metric."
         },
         {
             "name": "iamResourceType",
@@ -1303,7 +1303,7 @@
         {
             "name": "requestId",
             "type": "string",
-            "description": "A generic request ID field. The semantics are contextual based off of other fields (e.g. `requestServiceType`). For example, an event with `requestServiceType: s3` means that the request ID is associated with an S3 API call. Events that cover mutliple API calls should use the request ID of the most recent call."
+            "description": "Request ID (if any) associated with a metric. For example, an event with `requestServiceType: s3` means that the request ID is associated with an S3 API call. Events that cover multiple API calls should use the request ID of the most recent call."
         },
         {
             "name": "requestServiceType",
