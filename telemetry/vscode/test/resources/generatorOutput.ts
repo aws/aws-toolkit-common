@@ -3,16 +3,33 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 export interface MetricBase {
-    /** The result of the operation */
-    readonly result?: Result
+    /**
+     * AWS account ID associated with a metric.
+     * - "n/a" if credentials are not available.
+     * - "not-set" if credentials are not selected.
+     * - "invalid" if account ID cannot be obtained.
+     */
+    readonly awsAccount?: string
+    /**
+     * AWS Region associated with a metric
+     * - "n/a" if not associated with a region.
+     * - "not-set" if metric is associated with a region, but region is unknown.
+     */
+    readonly awsRegion?: string
+    /** The duration of the operation in milliseconds */
+    readonly duration?: number
+    /** HTTP status code for the request (if any) associated with a metric. */
+    readonly httpStatusCode?: string
     /** Reason code or name for an event (when result=Succeeded) or error (when result=Failed). Unlike the `reasonDesc` field, this should be a stable/predictable name for a class of events or errors (typically the exception name, e.g. FileIOException). */
     readonly reason?: string
     /** Error message detail. May contain arbitrary message details (unlike the `reason` field), but should be truncated (recommendation: 200 chars). */
     readonly reasonDesc?: string
-    /** The duration of the operation in milliseconds */
-    readonly duration?: number
-    /** AWS Region associated with a metric */
-    readonly awsRegion?: string
+    /** Request ID (if any) associated with a metric. For example, an event with `requestServiceType: s3` means that the request ID is associated with an S3 API call. Events that cover multiple API calls should use the request ID of the most recent call. */
+    readonly requestId?: string
+    /** Per-request service identifier. Unlike `serviceType` (which describes the originator of the request), this describes the request itself. */
+    readonly requestServiceType?: string
+    /** The result of the operation */
+    readonly result?: Result
     /** A flag indicating that the metric was not caused by the user. */
     readonly passive?: boolean
     /** @deprecated Arbitrary "value" of the metric. */
