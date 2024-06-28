@@ -3313,6 +3313,20 @@
             ]
         },
         {
+            "name": "codeTransform_jobIsStartedFromSolutionExplorer",
+            "description": "The user initiates a transform job from the Solution Explorer.",
+            "metadata": [
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "credentialSourceId",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "codeTransform_jobStartedCompleteFromPopupDialog",
             "passive": true,
             "description": "After modal validation of inputs, code execution will start and we will fire this event.",
@@ -3333,6 +3347,21 @@
                     "type": "codeTransformSessionId",
                     "required": true
                 }
+            ]
+        },
+        {
+            "name": "codeTransform_buildCompleted",
+            "passive": true,
+            "description": "During the transformation progress, log whether the build succeeded or failed.",
+            "metadata": [
+                {
+                    "type": "buildStatus",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
             ]
         },
         {
@@ -3503,6 +3532,10 @@
                 },
                 {
                     "type": "codeTransformLocalMavenVersion",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformPlanReceivedCount",
                     "required": false
                 },
                 {
