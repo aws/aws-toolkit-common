@@ -3335,7 +3335,7 @@
             "metadata": [
                 {
                     "type": "codeTransformNumberOfProjects",
-                    "required": true
+                    "required": false
                 },
                 {
                     "type": "codeTransformSessionId",
@@ -3343,7 +3343,7 @@
                 },
                 {
                     "type": "codeTransformTarget",
-                    "required": true
+                    "required": false
                 },
                 {
                     "type": "credentialSourceId",
