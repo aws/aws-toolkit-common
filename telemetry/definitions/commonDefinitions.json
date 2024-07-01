@@ -3311,10 +3311,6 @@
                     "required": false
                 },
                 {
-                    "type": "isStartedFrom",
-                    "required": true
-                },
-                {
                     "type": "source",
                     "required": true
                 }
