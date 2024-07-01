@@ -3159,6 +3159,17 @@
             "passive": true
         },
         {
+            "name": "codeTransform_buildComplete",
+            "passive": true,
+            "description": "During the transformation progress, log the status of the build.",
+            "metadata": [
+                {
+                    "type": "buildDuration",
+                    "required": true
+                }
+            ]
+        },
+        {
             "name": "codeTransform_dependenciesCopied",
             "description": "The repo copies over at least one dependency successfully.",
             "metadata": [
@@ -3367,17 +3378,6 @@
                 },
                 {
                     "type": "codeTransformSessionId",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_buildComplete",
-            "passive": true,
-            "description": "During the transformation progress, log the status of the build.",
-            "metadata": [
-                {
-                    "type": "buildDuration",
                     "required": true
                 }
             ]
