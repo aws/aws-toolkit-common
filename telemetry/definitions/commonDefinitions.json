@@ -158,6 +158,11 @@
             "description": "AWS Region associated with a metric\n- \"n/a\" if not associated with a region.\n- \"not-set\" if metric is associated with a region, but region is unknown."
         },
         {
+            "name": "buildDuration",
+            "type": "int",
+            "description": "The amount of time required for the build to complete (in seconds)."
+        },
+        {
             "name": "causedBy",
             "allowedValues": [
                 "user",
@@ -314,6 +319,11 @@
             "description": "A general field for logging metadata associated to Amazon Q transform metrics."
         },
         {
+            "name": "codeTransformNumberOfProjects",
+            "type": "int",
+            "description": "The number of projects selected for transformation"
+        },
+        {
             "name": "codeTransformPatchViewerCancelSrcComponents",
             "type": "string",
             "description": "Names of components that can cancel the diff viewer",
@@ -321,6 +331,11 @@
                 "apiError",
                 "cancelButton"
             ]
+        },
+        {
+            "name": "codeTransformPlanReceivedCount",
+            "type": "int",
+            "description": "The number of times the transformation plan was received during transformation"
         },
         {
             "name": "codeTransformPreValidationError",
@@ -387,6 +402,11 @@
             "name": "codeTransformStatus",
             "type": "string",
             "description": "The current transformation job's status"
+        },
+        {
+            "name": "codeTransformTarget",
+            "type": "string",
+            "description": "The target solution or project(s) selected for transformation"
         },
         {
             "name": "codeTransformTotalByteSize",
@@ -3139,6 +3159,17 @@
             "passive": true
         },
         {
+            "name": "codeTransform_buildComplete",
+            "passive": true,
+            "description": "During the transformation progress, log the status of the build.",
+            "metadata": [
+                {
+                    "type": "buildDuration",
+                    "required": true
+                }
+            ]
+        },
+        {
             "name": "codeTransform_dependenciesCopied",
             "description": "The repo copies over at least one dependency successfully.",
             "metadata": [
@@ -3299,12 +3330,20 @@
             ]
         },
         {
-            "name": "codeTransform_jobIsStartedFromChatPrompt",
-            "description": "The user initiates a transform job from Amazon Q chat prompt.",
+            "name": "codeTransform_jobStart",
+            "description": "The user initiates a transform job from the Amazon Q chat prompt or Solution Explorer.",
             "metadata": [
+                {
+                    "type": "codeTransformNumberOfProjects",
+                    "required": false
+                },
                 {
                     "type": "codeTransformSessionId",
                     "required": true
+                },
+                {
+                    "type": "codeTransformTarget",
+                    "required": false
                 },
                 {
                     "type": "credentialSourceId",
@@ -3503,6 +3542,10 @@
                 },
                 {
                     "type": "codeTransformLocalMavenVersion",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformPlanReceivedCount",
                     "required": false
                 },
                 {
