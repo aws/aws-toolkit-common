@@ -333,6 +333,11 @@
             ]
         },
         {
+            "name": "codeTransformPlanReceivedCount",
+            "type": "int",
+            "description": "The number of times the transformation plan was received during transformation"
+        },
+        {
             "name": "codeTransformPreValidationError",
             "type": "string",
             "description": "Names of the pre-validation errors that can occur",
