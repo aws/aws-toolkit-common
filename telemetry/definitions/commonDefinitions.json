@@ -3913,6 +3913,10 @@
                     "required": false
                 },
                 {
+                    "type": "reasonDesc",
+                    "required": false
+                },
+                {
                     "type": "result"
                 }
             ]
