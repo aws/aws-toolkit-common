@@ -389,11 +389,6 @@
             "description": "Represents the IDE session from which users start the transformation process"
         },
         {
-            "name": "codeTransformSolutionSelected",
-            "type": "boolean",
-            "description": "Indicates whether the solution is the selected transformation target (true if yes, false if no)"
-        },
-        {
             "name": "codeTransformStartSrcComponents",
             "type": "string",
             "description": "Names of components that can start a transformation",
@@ -3347,20 +3342,12 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformSolutionSelected",
-                    "required": true
-                },
-                {
                     "type": "codeTransformTarget",
                     "required": true
                 },
                 {
                     "type": "credentialSourceId",
                     "required": false
-                },
-                {
-                    "type": "source",
-                    "required": true
                 }
             ]
         },
