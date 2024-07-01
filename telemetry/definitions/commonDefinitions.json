@@ -158,6 +158,11 @@
             "description": "AWS Region associated with a metric\n- \"n/a\" if not associated with a region.\n- \"not-set\" if metric is associated with a region, but region is unknown."
         },
         {
+            "name": "buildDuration",
+            "type": "int",
+            "description": "The amount of time required for the build to complete (in seconds)."
+        },
+        {
             "name": "causedBy",
             "allowedValues": [
                 "user",
@@ -3299,7 +3304,7 @@
             ]
         },
         {
-            "name": "codeTransform_jobIsStarted",
+            "name": "codeTransform_jobStart",
             "description": "The user initiates a transform job from the Amazon Q chat prompt or Solution Explorer.",
             "metadata": [
                 {
@@ -3340,14 +3345,14 @@
             ]
         },
         {
-            "name": "codeTransform_build",
+            "name": "codeTransform_buildComplete",
             "passive": true,
             "description": "During the transformation progress, log the status of the build.",
             "metadata": [
                 {
-                    "type": "tool",
+                    "type": "buildDuration",
                     "required": true
-                },
+                }
             ]
         },
         {
