@@ -1433,6 +1433,11 @@
             "description": "The type of an SQS Queue"
         },
         {
+            "name": "startUpComponent",
+            "type": "string",
+            "description": "The Toolkit component being initialized."
+        },
+        {
             "name": "successCount",
             "type": "int",
             "description": "The number of successful operations"
@@ -5977,6 +5982,36 @@
                 }
             ],
             "passive": true
+        },
+        {
+            "name": "toolkit_componentInit",
+            "description": "The Toolkit has completed initialization for the specified component.",
+            "metadata": [
+                {
+                    "type": "attempts",
+                    "required": false
+                },
+                { 
+                    "type": "duration",
+                    "required": false
+                },
+                { 
+                    "type": "errorCode",
+                    "required": false
+                },
+                { 
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "startUpComponent",
+                    "required": true
+                }
+            ]
         },
         {
             "name": "toolkit_init",
