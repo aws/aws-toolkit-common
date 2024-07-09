@@ -6011,11 +6011,11 @@
                     "required": false
                 },
                 {
-                    "type": "result",
+                    "type": "module",
                     "required": true
                 },
                 {
-                    "type": "module",
+                    "type": "result",
                     "required": true
                 }
             ]
