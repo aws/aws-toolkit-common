@@ -1263,7 +1263,7 @@
         {
             "name": "module",
             "type": "string",
-            "description": "A generic module metadata"
+            "description": "Free-form module name for both high-level features such as \"PublishToAWS\", and lower-level modules such as \"ToolkitContextProvider\". Use \"component\" for UI components, or \"featureId\" for specific feature names."
         },
         {
             "name": "name",
@@ -6018,7 +6018,8 @@
                     "type": "result",
                     "required": true
                 }
-            ]
+            ],
+            "passive": true
         },
         {
             "name": "toolkit_invokeAction",
