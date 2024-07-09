@@ -1261,6 +1261,11 @@
             "description": "User locale. Examples: en-US, en-GB, etc."
         },
         {
+            "name": "module",
+            "type": "string",
+            "description": "A generic module metadata"
+        },
+        {
             "name": "name",
             "type": "string",
             "description": "A generic name metadata"
@@ -1431,11 +1436,6 @@
                 "fifo"
             ],
             "description": "The type of an SQS Queue"
-        },
-        {
-            "name": "startUpComponent",
-            "type": "string",
-            "description": "The Toolkit component being initialized."
         },
         {
             "name": "successCount",
@@ -5965,28 +5965,6 @@
             ]
         },
         {
-            "name": "toolkit_componentInit",
-            "description": "The Toolkit has completed initialization for the specified component.",
-            "metadata": [
-                {
-                    "type": "attempts",
-                    "required": false
-                },
-                { 
-                    "type": "duration",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
-                },
-                {
-                    "type": "startUpComponent",
-                    "required": true
-                }
-            ]
-        },
-        {
             "name": "toolkit_getExternalResource",
             "description": "The toolkit tried to retrieve blob data from a url",
             "metadata": [
@@ -6019,6 +5997,28 @@
                 }
             ],
             "passive": true
+        },
+        {
+            "name": "toolkit_initModule",
+            "description": "The Toolkit has completed initialization for the specified module.",
+            "metadata": [
+                {
+                    "type": "attempts",
+                    "required": false
+                },
+                { 
+                    "type": "duration",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "module",
+                    "required": true
+                }
+            ]
         },
         {
             "name": "toolkit_invokeAction",
