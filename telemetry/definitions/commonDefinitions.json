@@ -1261,6 +1261,11 @@
             "description": "User locale. Examples: en-US, en-GB, etc."
         },
         {
+            "name": "module",
+            "type": "string",
+            "description": "A generic module metadata"
+        },
+        {
             "name": "name",
             "type": "string",
             "description": "A generic name metadata"
@@ -5992,6 +5997,28 @@
                 }
             ],
             "passive": true
+        },
+        {
+            "name": "toolkit_initModule",
+            "description": "The Toolkit has completed initialization for the specified module.",
+            "metadata": [
+                {
+                    "type": "attempts",
+                    "required": false
+                },
+                { 
+                    "type": "duration",
+                    "required": false
+                },
+                {
+                    "type": "module",
+                    "required": true
+                },
+                {
+                    "type": "result",
+                    "required": true
+                }
+            ]
         },
         {
             "name": "toolkit_invokeAction",
