@@ -5965,25 +5965,6 @@
             ]
         },
         {
-            "name": "toolkit_getExternalResource",
-            "description": "The toolkit tried to retrieve blob data from a url",
-            "metadata": [
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
-                },
-                {
-                    "type": "url",
-                    "required": true
-                }
-            ],
-            "passive": true
-        },
-        {
             "name": "toolkit_componentInit",
             "description": "The Toolkit has completed initialization for the specified component.",
             "metadata": [
@@ -6012,6 +5993,25 @@
                     "required": true
                 }
             ]
+        },
+        {
+            "name": "toolkit_getExternalResource",
+            "description": "The toolkit tried to retrieve blob data from a url",
+            "metadata": [
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "url",
+                    "required": true
+                }
+            ],
+            "passive": true
         },
         {
             "name": "toolkit_init",
