@@ -5976,14 +5976,6 @@
                     "type": "duration",
                     "required": false
                 },
-                { 
-                    "type": "errorCode",
-                    "required": false
-                },
-                { 
-                    "type": "reason",
-                    "required": false
-                },
                 {
                     "type": "result",
                     "required": true
