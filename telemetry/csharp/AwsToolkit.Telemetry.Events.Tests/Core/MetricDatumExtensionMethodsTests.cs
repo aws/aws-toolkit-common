@@ -1,6 +1,8 @@
 ﻿using Amazon.AwsToolkit.Telemetry.Events.Core;
 using FluentAssertions;
 using System;
+using System.Globalization;
+using System.Threading;
 using Xunit;
 
 namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
@@ -30,6 +32,61 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
 
             _sut.AddMetadata(Key, false);
             _sut.Metadata[Key].Should().Be("false");
+        }
+
+        public static TheoryData<object, string> CreateNumericEntries()
+        {
+            return new TheoryData<object, string>
+            {
+                { (int) 123_456, "123456" },
+                { (uint) 123_456, "123456" },
+                { (Int16) 12_345, "12345" },
+                { (Int32) 123_456, "123456" },
+                { (Int64) 123_456, "123456" },
+                { (UInt16) 12_345 , "12345" },
+                { (UInt32) 123_456, "123456" },
+                { (UInt64) 123_456, "123456" },
+                { (short) 12_345, "12345" },
+                { (ushort) 12_345, "12345" },
+                { (long) 123_456, "123456" },
+                { (ulong) 123_456, "123456" },
+                { (float) 1_234.56, "1234.56" },
+                { (float) 1.234_5, "1.2345" },
+                { (decimal) 123_456.789_012, "123456.789012" },
+            };
+        }
+
+        [Theory]
+        [MemberData(nameof(CreateNumericEntries))]
+        public void AddMetadata_DetectPrimitiveType_NumericEntries(object numericValue, string expectedValue)
+        {
+            _sut.AddMetadata(Key, numericValue, detectPrimitiveType: true);
+            _sut.Metadata[Key].Should().Be(expectedValue);
+        }
+
+        [Theory]
+        [MemberData(nameof(CreateNumericEntries))]
+        public void AddMetadata_DetectPrimitiveType_NumericEntries_Us(object numericValue, string expectedValue)
+        {
+            // Use a locale known to have decimal separators
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+
+            _sut.AddMetadata(Key, numericValue, detectPrimitiveType: true);
+            _sut.Metadata[Key].Should().Be(expectedValue);
+        }
+
+        [Theory]
+        [MemberData(nameof(CreateNumericEntries))]
+        public void AddMetadata_DetectPrimitiveType_NumericEntries_CommaSeparatorLocale(object numericValue, string expectedValue)
+        {
+            // Set the local to use comma separators
+            var commaLocale = new CultureInfo("en-US");
+            commaLocale.NumberFormat.NumberDecimalSeparator = ",";
+
+            Thread.CurrentThread.CurrentCulture = commaLocale;
+
+            _sut.AddMetadata(Key, numericValue, detectPrimitiveType: true);
+            _sut.Metadata[Key].Should().Be(expectedValue);
         }
 
         [Fact]
