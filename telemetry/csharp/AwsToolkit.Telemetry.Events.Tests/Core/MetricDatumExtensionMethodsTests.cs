@@ -1,5 +1,6 @@
-﻿using System;
-using Amazon.AwsToolkit.Telemetry.Events.Core;
+﻿using Amazon.AwsToolkit.Telemetry.Events.Core;
+using FluentAssertions;
+using System;
 using Xunit;
 
 namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
@@ -13,45 +14,45 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
         public void AddMetadata_NonBlankEntries()
         {
             _sut.AddMetadata(Key, "hello");
-            Assert.Equal("hello", _sut.Metadata[Key]);
+            _sut.Metadata[Key].Should().Be("hello");
 
             _sut.AddMetadata(Key, 123);
-            Assert.Equal("123", _sut.Metadata[Key]);
+            _sut.Metadata[Key].Should().Be("123");
 
             _sut.AddMetadata(Key, 123.456);
-            Assert.Equal("123.456", _sut.Metadata[Key]);
+            _sut.Metadata[Key].Should().Be("123.456");
 
             _sut.AddMetadata(Key, 88.88d);
-            Assert.Equal("88.88", _sut.Metadata[Key]);
+            _sut.Metadata[Key].Should().Be("88.88");
 
             _sut.AddMetadata(Key, true);
-            Assert.Equal("true", _sut.Metadata[Key]);
+            _sut.Metadata[Key].Should().Be("true");
 
             _sut.AddMetadata(Key, false);
-            Assert.Equal("false", _sut.Metadata[Key]);
+            _sut.Metadata[Key].Should().Be("false");
         }
 
         [Fact]
         public void AddMetadata_BlankEntries()
         {
             _sut.AddMetadata(Key, (object) null);
-            Assert.False(_sut.Metadata.ContainsKey(Key));
+            _sut.Metadata.Should().NotContainKey(Key);
 
             _sut.AddMetadata(Key, (string) null);
-            Assert.False(_sut.Metadata.ContainsKey(Key));
+            _sut.Metadata.Should().NotContainKey(Key);
 
             _sut.AddMetadata(Key, string.Empty);
-            Assert.False(_sut.Metadata.ContainsKey(Key));
+            _sut.Metadata.Should().NotContainKey(Key);
 
             _sut.AddMetadata(Key, "   ");
-            Assert.False(_sut.Metadata.ContainsKey(Key));
+            _sut.Metadata.Should().NotContainKey(Key);
         }
 
         [Fact]
         public void InvokeTransform_Null()
         {
             var updatedDatum = _sut.InvokeTransform(null);
-            Assert.Equal(_sut, updatedDatum);
+            _sut.Should().BeSameAs(updatedDatum);
         }
 
         [Fact]
@@ -63,7 +64,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
             }
 
             var updatedDatum = _sut.InvokeTransform(TransformFunction);
-            Assert.NotNull(updatedDatum);
+            updatedDatum.Should().NotBeNull();
         }
 
         [Fact]
@@ -76,7 +77,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Core
             }
 
             var updatedDatum = _sut.InvokeTransform(TransformFunction);
-            Assert.Equal("hello", updatedDatum.Metadata[Key]);
+            updatedDatum.Metadata[Key].Should().Be("hello");
         }
     }
 }
