@@ -298,19 +298,32 @@
             "description": "The Java version on the user's machine"
         },
         {
-            "name": "codeTransformLocalMavenVersion",
+            "name": "codeTransformLocalBuildSystemVersion",
             "type": "string",
-            "description": "The Maven version on the user's machine"
+            "description": "The build system version on the user's machine"
         },
         {
-            "name": "codeTransformMavenBuildCommand",
+            "name": "codeTransformBuildCommand",
             "type": "string",
-            "description": "Type of maven command",
+            "description": "Type of build command",
             "allowedValues": [
                 "mvnw.cmd",
                 "mvnw",
                 "mvn",
-                "IDEBundledMaven"
+                "IDEBundledMaven",
+                "gradlew.bat",
+                "gradlew",
+                "gradle",
+                "IDEBundledGradle"
+            ]
+        },
+        {
+            "name": "codeTransformBuildSystem",
+            "type": "string",
+            "description": "Type of build system",
+            "allowedValues": [
+                "Maven",
+                "Gradle"
             ]
         },
         {
@@ -3370,6 +3383,10 @@
                     "required": true
                 },
                 {
+                    "type": "codeTransformBuildSystem",
+                    "required": false
+                },
+                {
                     "type": "codeTransformProjectId",
                     "required": true
                 },
@@ -3488,11 +3505,11 @@
             ]
         },
         {
-            "name": "codeTransform_mvnBuildFailed",
-            "description": "The maven command build failed.",
+            "name": "codeTransform_buildFailed",
+            "description": "The local build failed.",
             "metadata": [
                 {
-                    "type": "codeTransformMavenBuildCommand",
+                    "type": "codeTransformBuildCommand",
                     "required": true
                 },
                 {
