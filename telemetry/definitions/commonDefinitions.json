@@ -244,9 +244,9 @@
             "description": "Any API-specific errors"
         },
         {
-            "name": "codeTransformApiNames",
+            "name": "codeTransformApiName",
             "type": "string",
-            "description": "Names of allowed API calls",
+            "description": "Name of the API",
             "allowedValues": [
                 "ResumeTransformation",
                 "StartTransformation",
@@ -430,16 +430,6 @@
             "name": "codeTransformUploadId",
             "type": "string",
             "description": "A unique upload ID for S3"
-        },
-        {
-            "name": "codeTransformVCSViewerSrcComponents",
-            "type": "string",
-            "description": "Names of components that can initiate the diff viewer",
-            "allowedValues": [
-                "toastNotification",
-                "treeView",
-                "treeViewHeader"
-            ]
         },
         {
             "name": "codewhispererAcceptedTokens",
@@ -3420,17 +3410,17 @@
             ]
         },
         {
-            "name": "codeTransform_logApiError",
+            "name": "codeTransform_logApiResult",
             "passive": true,
-            "description": "A general logging measure for all client side API errors.",
+            "description": "A general logging measure for all client side API results.",
             "metadata": [
                 {
-                    "type": "codeTransformApiErrorMessage",
+                    "type": "codeTransformApiName",
                     "required": true
                 },
                 {
-                    "type": "codeTransformApiNames",
-                    "required": true
+                    "type": "codeTransformApiErrorMessage",
+                    "required": false
                 },
                 {
                     "type": "codeTransformJobId",
@@ -3442,41 +3432,14 @@
                 },
                 {
                     "type": "codeTransformSessionId",
-                    "required": true
+                    "required": false
                 },
                 {
                     "type": "codeTransformTotalByteSize",
-                    "required": false
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_logApiLatency",
-            "passive": true,
-            "description": "A general logging measure for all client side API's latency.",
-            "metadata": [
-                {
-                    "type": "codeTransformApiNames",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformJobId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformRequestId",
                     "required": false
                 },
                 {
                     "type": "codeTransformRunTimeLatency",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformTotalByteSize",
                     "required": false
                 },
                 {
@@ -3599,32 +3562,6 @@
             ]
         },
         {
-            "name": "codeTransform_vcsViewerCanceled",
-            "description": "An interactivity measured when users cancel a patch view.",
-            "metadata": [
-                {
-                    "type": "codeTransformJobId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformPatchViewerCancelSrcComponents",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformRuntimeError",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformStatus",
-                    "required": true
-                }
-            ]
-        },
-        {
             "name": "codeTransform_vcsViewerClicked",
             "description": "An interactivity measured when users click to view diff results.",
             "metadata": [
@@ -3637,26 +3574,8 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformVCSViewerSrcComponents",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_vcsViewerSubmitted",
-            "description": "An interactivity measured when users submit their patch view results.",
-            "metadata": [
-                {
-                    "type": "codeTransformJobId",
+                    "type": "codeTransformMetadata",
                     "required": false
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformStatus",
-                    "required": true
                 }
             ]
         },
