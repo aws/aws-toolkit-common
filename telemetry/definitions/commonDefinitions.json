@@ -317,14 +317,14 @@
             "description": "The ID of the job currently running"
         },
         {
-            "name": "codeTransformLocalJavaVersion",
-            "type": "string",
-            "description": "The Java version on the user's machine"
-        },
-        {
             "name": "codeTransformLocalBuildSystemVersion",
             "type": "string",
             "description": "The build system version on the user's machine"
+        },
+        {
+            "name": "codeTransformLocalJavaVersion",
+            "type": "string",
+            "description": "The Java version on the user's machine"
         },
         {
             "name": "codeTransformMetadata",
