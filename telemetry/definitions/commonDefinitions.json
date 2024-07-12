@@ -3475,11 +3475,11 @@
                     "required": false
                 },
                 {
-                    "type": "codeTransformLocalJavaVersion",
+                    "type": "codeTransformLocalBuildSystemVersion",
                     "required": false
                 },
                 {
-                    "type": "codeTransformLocalBuildSystemVersion",
+                    "type": "codeTransformLocalJavaVersion",
                     "required": false
                 },
                 {
