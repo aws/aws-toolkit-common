@@ -3172,12 +3172,12 @@
             "description": "The result of the local build.",
             "metadata": [
                 {
-                    "type": "codeTransformBuildCommand",
-                    "required": true
-                },
-                {
                     "type": "buildDuration",
                     "required": false
+                },
+                {
+                    "type": "codeTransformBuildCommand",
+                    "required": true
                 },
                 {
                     "type": "codeTransformSessionId",
@@ -3373,16 +3373,16 @@
             "description": "After modal validation of inputs, code execution will start and we will fire this event.",
             "metadata": [
                 {
+                    "type": "codeTransformBuildSystem",
+                    "required": false
+                },
+                {
                     "type": "codeTransformJavaSourceVersionsAllowed",
                     "required": true
                 },
                 {
                     "type": "codeTransformJavaTargetVersionsAllowed",
                     "required": true
-                },
-                {
-                    "type": "codeTransformBuildSystem",
-                    "required": false
                 },
                 {
                     "type": "codeTransformProjectId",
@@ -3423,12 +3423,12 @@
             "description": "A general logging measure for all client side API results.",
             "metadata": [
                 {
-                    "type": "codeTransformApiName",
-                    "required": true
-                },
-                {
                     "type": "codeTransformApiErrorMessage",
                     "required": false
+                },
+                {
+                    "type": "codeTransformApiName",
+                    "required": true
                 },
                 {
                     "type": "codeTransformJobId",
@@ -3439,15 +3439,15 @@
                     "required": false
                 },
                 {
+                    "type": "codeTransformRunTimeLatency",
+                    "required": false
+                },
+                {
                     "type": "codeTransformSessionId",
                     "required": false
                 },
                 {
                     "type": "codeTransformTotalByteSize",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformRunTimeLatency",
                     "required": false
                 },
                 {
@@ -3562,10 +3562,6 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
-                },
-                {
-                    "type": "codeTransformMetadata",
-                    "required": false
                 }
             ]
         },
