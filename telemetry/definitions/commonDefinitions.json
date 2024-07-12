@@ -259,6 +259,30 @@
             ]
         },
         {
+            "name": "codeTransformBuildCommand",
+            "type": "string",
+            "description": "Type of build command",
+            "allowedValues": [
+                "mvnw.cmd",
+                "mvnw",
+                "mvn",
+                "IDEBundledMaven",
+                "gradlew.bat",
+                "gradlew",
+                "gradle",
+                "IDEBundledGradle"
+            ]
+        },
+        {
+            "name": "codeTransformBuildSystem",
+            "type": "string",
+            "description": "Type of build system",
+            "allowedValues": [
+                "Maven",
+                "Gradle"
+            ]
+        },
+        {
             "name": "codeTransformCancelSrcComponents",
             "type": "string",
             "description": "Names of components that can cancel a transformation",
@@ -303,38 +327,9 @@
             "description": "The build system version on the user's machine"
         },
         {
-            "name": "codeTransformBuildCommand",
-            "type": "string",
-            "description": "Type of build command",
-            "allowedValues": [
-                "mvnw.cmd",
-                "mvnw",
-                "mvn",
-                "IDEBundledMaven",
-                "gradlew.bat",
-                "gradlew",
-                "gradle",
-                "IDEBundledGradle"
-            ]
-        },
-        {
-            "name": "codeTransformBuildSystem",
-            "type": "string",
-            "description": "Type of build system",
-            "allowedValues": [
-                "Maven",
-                "Gradle"
-            ]
-        },
-        {
             "name": "codeTransformMetadata",
             "type": "string",
             "description": "A general field for logging metadata associated to Amazon Q transform metrics."
-        },
-        {
-            "name": "codeTransformNumberOfProjects",
-            "type": "int",
-            "description": "The number of projects selected for transformation"
         },
         {
             "name": "codeTransformPatchViewerCancelSrcComponents",
@@ -344,11 +339,6 @@
                 "apiError",
                 "cancelButton"
             ]
-        },
-        {
-            "name": "codeTransformPlanReceivedCount",
-            "type": "int",
-            "description": "The number of times the transformation plan was received during transformation"
         },
         {
             "name": "codeTransformPreValidationError",
@@ -415,11 +405,6 @@
             "name": "codeTransformStatus",
             "type": "string",
             "description": "The current transformation job's status"
-        },
-        {
-            "name": "codeTransformTarget",
-            "type": "string",
-            "description": "The target solution or project(s) selected for transformation"
         },
         {
             "name": "codeTransformTotalByteSize",
@@ -3346,28 +3331,6 @@
             ]
         },
         {
-            "name": "codeTransform_jobStart",
-            "description": "The user initiates a transform job from the Amazon Q chat prompt or Solution Explorer.",
-            "metadata": [
-                {
-                    "type": "codeTransformNumberOfProjects",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformTarget",
-                    "required": false
-                },
-                {
-                    "type": "credentialSourceId",
-                    "required": false
-                }
-            ]
-        },
-        {
             "name": "codeTransform_jobStartedCompleteFromPopupDialog",
             "passive": true,
             "description": "After modal validation of inputs, code execution will start and we will fire this event.",
@@ -3517,10 +3480,6 @@
                 },
                 {
                     "type": "codeTransformLocalMavenVersion",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformPlanReceivedCount",
                     "required": false
                 },
                 {
