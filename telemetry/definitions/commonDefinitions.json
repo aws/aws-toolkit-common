@@ -3167,19 +3167,27 @@
             "passive": true
         },
         {
-            "name": "codeTransform_buildComplete",
+            "name": "codeTransform_buildResult",
             "passive": true,
-            "description": "During the transformation progress, log the status of the build.",
+            "description": "The result of the local build.",
             "metadata": [
                 {
-                    "type": "buildDuration",
+                    "type": "codeTransformBuildCommand",
                     "required": true
+                },
+                {
+                    "type": "buildDuration",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformSessionId",
+                    "required": false
                 }
             ]
         },
         {
             "name": "codeTransform_dependenciesCopied",
-            "description": "The repo copies over at least one dependency successfully.",
+            "description": "At least one dependency is copied over successfully.",
             "metadata": [
                 {
                     "type": "codeTransformSessionId",
@@ -3464,24 +3472,6 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_buildFailed",
-            "description": "The local build failed.",
-            "metadata": [
-                {
-                    "type": "codeTransformBuildCommand",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
                 }
             ]
         },
