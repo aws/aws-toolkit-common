@@ -3479,7 +3479,7 @@
                     "required": false
                 },
                 {
-                    "type": "codeTransformLocalMavenVersion",
+                    "type": "codeTransformLocalBuildSystemVersion",
                     "required": false
                 },
                 {
