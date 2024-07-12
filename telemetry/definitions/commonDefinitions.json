@@ -835,6 +835,11 @@
             "description": "Time taken for context truncation in milliseconds"
         },
         {
+            "name": "count",
+            "type": "int",
+            "description": "Number of occurrences a metric, or some other metric-defined count."
+        },
+        {
             "name": "credentialModification",
             "type": "string",
             "allowedValues": [
@@ -1630,6 +1635,18 @@
                 {
                     "type": "credentialStartUrl",
                     "required": false
+                }
+            ]
+        },
+        {
+            "name": "amazonq_bundleExtensionIgnored",
+            "description": "File extension was ignored 'count' many times during bundling process",
+            "metadata": [
+                {
+                    "type": "count"
+                },
+                {
+                    "type": "filenameExt"
                 }
             ]
         },
@@ -6006,7 +6023,7 @@
                     "type": "attempts",
                     "required": false
                 },
-                { 
+                {
                     "type": "duration",
                     "required": false
                 },
