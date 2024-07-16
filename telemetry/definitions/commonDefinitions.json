@@ -3601,8 +3601,22 @@
             ]
         },
         {
+            "name": "codeTransform_jobIsStartedFromChatPrompt",
+            "description": "The user initiates a transform job from the Amazon Q chat prompt.",
+            "metadata": [
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "credentialSourceId",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "codeTransform_jobStart",
-            "description": "The user initiates a transform job from the Amazon Q chat prompt or Solution Explorer.",
+            "description": "Transform job started for uploaded project.",
             "metadata": [
                 {
                     "type": "codeTransformNumberOfProjects",
