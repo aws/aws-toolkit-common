@@ -244,9 +244,9 @@
             "description": "Any API-specific errors"
         },
         {
-            "name": "codeTransformApiNames",
+            "name": "codeTransformApiName",
             "type": "string",
-            "description": "Names of allowed API calls",
+            "description": "Name of Code Transform API",
             "allowedValues": [
                 "ResumeTransformation",
                 "StartTransformation",
@@ -259,6 +259,54 @@
             ]
         },
         {
+            "name": "codeTransformApiNames",
+            "type": "string",
+            "description": "Names of allowed API calls (Deprecated - use codeTransformApiName)",
+            "allowedValues": [
+                "ResumeTransformation",
+                "StartTransformation",
+                "StopTransformation",
+                "GetTransformation",
+                "GetTransformationPlan",
+                "UploadZip",
+                "CreateUploadUrl",
+                "ExportResultArchive"
+            ]
+        },
+        {
+            "name": "codeTransformArtifactType",
+            "type": "string",
+            "description": "Type of transform artifact",
+            "allowedValues": [
+                "ClientInstructions",
+                "Logs"
+            ]
+        },
+        {
+            "name": "codeTransformBuildCommand",
+            "type": "string",
+            "description": "Type of build command",
+            "allowedValues": [
+                "mvnw.cmd",
+                "mvnw",
+                "mvn",
+                "IDEBundledMaven",
+                "gradlew.bat",
+                "gradlew",
+                "gradle",
+                "IDEBundledGradle"
+            ]
+        },
+        {
+            "name": "codeTransformBuildSystem",
+            "type": "string",
+            "description": "Type of build system",
+            "allowedValues": [
+                "Maven",
+                "Gradle"
+            ]
+        },
+        {
             "name": "codeTransformCancelSrcComponents",
             "type": "string",
             "description": "Names of components that can cancel a transformation",
@@ -268,6 +316,11 @@
                 "devToolsStopButton",
                 "bottomPanelSideNavButton"
             ]
+        },
+        {
+            "name": "codeTransformDependenciesCopied",
+            "type": "boolean",
+            "description": "If dependencies are copied into upload artifact."
         },
         {
             "name": "codeTransformJavaSourceVersionsAllowed",
@@ -293,6 +346,11 @@
             "description": "The ID of the job currently running"
         },
         {
+            "name": "codeTransformLocalBuildSystemVersion",
+            "type": "string",
+            "description": "The build system version on the user's machine"
+        },
+        {
             "name": "codeTransformLocalJavaVersion",
             "type": "string",
             "description": "The Java version on the user's machine"
@@ -300,12 +358,12 @@
         {
             "name": "codeTransformLocalMavenVersion",
             "type": "string",
-            "description": "The Maven version on the user's machine"
+            "description": "The Maven version on the user's machine (Deprecated - use codeTransformLocalBuildSystemVersion)"
         },
         {
             "name": "codeTransformMavenBuildCommand",
             "type": "string",
-            "description": "Type of maven command",
+            "description": "Type of maven command (Deprecated - use codeTransformBuildCommand)",
             "allowedValues": [
                 "mvnw.cmd",
                 "mvnw",
@@ -3181,22 +3239,41 @@
             "passive": true
         },
         {
-            "name": "codeTransform_buildComplete",
-            "passive": true,
-            "description": "During the transformation progress, log the status of the build.",
+            "name": "codeTransform_dependenciesCopied",
+            "description": "The repo copies over at least one dependency successfully. (Deprecated - use codeTransform_uploadProject)",
             "metadata": [
                 {
-                    "type": "buildDuration",
+                    "type": "codeTransformSessionId",
                     "required": true
                 }
             ]
         },
         {
-            "name": "codeTransform_dependenciesCopied",
-            "description": "The repo copies over at least one dependency successfully.",
+            "name": "codeTransform_downloadArtifact",
+            "description": "Transform or user downloads code transform artifact",
             "metadata": [
                 {
+                    "type": "codeTransformArtifactType",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformJobId",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformRuntimeError",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformRunTimeLatency",
+                    "required": true
+                },
+                {
                     "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformTotalByteSize",
                     "required": true
                 }
             ]
@@ -3228,8 +3305,57 @@
             ]
         },
         {
+            "name": "codeTransform_initiateTransform",
+            "description": "User initiates code transform from Q Chat Prompt.",
+            "metadata" : [
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "codeTransform_invokeApi",
+            "passive": true,
+            "description": "A general logging measure for all client side API invocations.",
+            "metadata": [
+                {
+                    "type": "codeTransformApiName",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformRunTimeLatency",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformRequestId",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformJobId",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformApiErrorMessage",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "codeTransform_isDoubleClickedToTriggerInvalidProject",
-            "description": "The code transform button in the devtools to initiate the job but there is a validation error.",
+            "description": "The code transform button in the devtools to initiate the job but there is a validation error. (Deprecated - use codeTransform_validateProject)",
             "metadata": [
                 {
                     "type": "codeTransformPreValidationError",
@@ -3255,7 +3381,7 @@
         },
         {
             "name": "codeTransform_jobArtifactDownloadAndDeserializeTime",
-            "description": "A timestamp for when the job is ending download zip contents",
+            "description": "A timestamp for when the job is ending download zip contents. (Deprecated - use codeTransform_downloadArtifact)",
             "metadata": [
                 {
                     "type": "codeTransformJobId",
@@ -3281,7 +3407,7 @@
         },
         {
             "name": "codeTransform_jobCreateZipEndTime",
-            "description": "A timestamp for when the job is ending upload zip contents",
+            "description": "A timestamp for when the job is ending upload zip contents. (Deprecated - use codeTransform_uploadProject)",
             "metadata": [
                 {
                     "type": "codeTransformRunTimeLatency",
@@ -3376,7 +3502,7 @@
         {
             "name": "codeTransform_jobStartedCompleteFromPopupDialog",
             "passive": true,
-            "description": "After modal validation of inputs, code execution will start and we will fire this event.",
+            "description": "After modal validation of inputs, code execution will start and we will fire this event. (Deprecated)",
             "metadata": [
                 {
                     "type": "codeTransformJavaSourceVersionsAllowed",
@@ -3420,9 +3546,31 @@
             ]
         },
         {
+            "name": "codeTransform_localBuildProject",
+            "description": "Transform initiates local build.",
+            "metadata" : [
+                {
+                    "type": "codeTransformBuildCommand",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "codeTransform_logApiError",
             "passive": true,
-            "description": "A general logging measure for all client side API errors.",
+            "description": "A general logging measure for all client side API errors. (Deprecated - use codeTransform_invokeApi)",
             "metadata": [
                 {
                     "type": "codeTransformApiErrorMessage",
@@ -3453,7 +3601,7 @@
         {
             "name": "codeTransform_logApiLatency",
             "passive": true,
-            "description": "A general logging measure for all client side API's latency.",
+            "description": "A general logging measure for all client side API's latency. (Deprecated - use codeTransform_invokeApi)",
             "metadata": [
                 {
                     "type": "codeTransformApiNames",
@@ -3488,7 +3636,7 @@
         {
             "name": "codeTransform_logGeneralError",
             "passive": true,
-            "description": "A general logging measure for all client side API errors.",
+            "description": "A general logging measure for all client side API errors. (Deprecated - use codeTransform_invokeApi)",
             "metadata": [
                 {
                     "type": "codeTransformApiErrorMessage",
@@ -3506,7 +3654,7 @@
         },
         {
             "name": "codeTransform_mvnBuildFailed",
-            "description": "The maven command build failed.",
+            "description": "The maven command build failed. (Deprecated - use codeTransform_localBuildProject)",
             "metadata": [
                 {
                     "type": "codeTransformMavenBuildCommand",
@@ -3525,7 +3673,7 @@
         {
             "name": "codeTransform_projectDetails",
             "passive": true,
-            "description": "Transform initiates project validation before user interaction and we want to gather project details then.",
+            "description": "Transform initiates project validation before user interaction and we want to gather project details then. (Deprecated - use codeTransform_validateProject)",
             "metadata": [
                 {
                     "type": "codeTransformLocalJavaVersion",
@@ -3546,6 +3694,36 @@
                 {
                     "type": "result",
                     "required": true
+                }
+            ]
+        },
+        {
+            "name": "codeTransform_submitSelection",
+            "description": "User provides input to project module and language selection.",
+            "metadata" : [
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformJavaSourceVersionsAllowed",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformJavaTargetVersionsAllowed",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformProjectId",
+                    "required": true
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
                 }
             ]
         },
@@ -3584,9 +3762,70 @@
                 }
             ]
         },
+
+        {
+            "name": "codeTransform_uploadProject",
+            "description": "Transform initiates project artifact upload.",
+            "metadata" : [
+                {
+                    "type": "codeTransformRuntimelatency",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformTotalByteSize",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformDependenciesCopied",
+                    "required": true
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "codeTransform_validateProject",
+            "description": "Transform initiates project language, build tool, and build file validation.",
+            "metadata" : [
+                {
+                    "type": "codeTransformLocalJavaVersion",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformPreValidationError",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformBuildSystem",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
+                }
+            ]
+        },
         {
             "name": "codeTransform_vcsDiffViewerVisible",
-            "description": "A timestamp for when the diff view is being displayed to the user.",
+            "description": "A timestamp for when the diff view is being displayed to the user. (Deprecated - use codeTransform_viewArtifact)",
             "metadata": [
                 {
                     "type": "codeTransformJobId",
@@ -3600,7 +3839,7 @@
         },
         {
             "name": "codeTransform_vcsViewerCanceled",
-            "description": "An interactivity measured when users cancel a patch view.",
+            "description": "An interactivity measured when users cancel a patch view. (Deprecated - use codeTransform_viewDiff)",
             "metadata": [
                 {
                     "type": "codeTransformJobId",
@@ -3626,7 +3865,7 @@
         },
         {
             "name": "codeTransform_vcsViewerClicked",
-            "description": "An interactivity measured when users click to view diff results.",
+            "description": "An interactivity measured when users click to view diff results. (Deprecated - use codeTransform_viewDiff)",
             "metadata": [
                 {
                     "type": "codeTransformJobId",
@@ -3644,7 +3883,7 @@
         },
         {
             "name": "codeTransform_vcsViewerSubmitted",
-            "description": "An interactivity measured when users submit their patch view results.",
+            "description": "An interactivity measured when users submit their patch view results. (Deprecated - use codeTransform_viewDiff)",
             "metadata": [
                 {
                     "type": "codeTransformJobId",
@@ -3656,6 +3895,40 @@
                 },
                 {
                     "type": "codeTransformStatus",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "codeTransform_viewArtifact",
+            "description": "User clicks to view downloaded artifact.",
+            "metadata": [
+                {
+                    "type": "codeTransformArtifactType",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformVCSViewerSrcComponents",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformJobId",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformRuntimeLatency",
+                    "required": true
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "reason",
                     "required": true
                 }
             ]
