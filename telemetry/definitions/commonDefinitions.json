@@ -3562,12 +3562,12 @@
                     "required": true
                 },
                 {
-                    "type": "result",
-                    "required": true
-                },
-                {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
                 }
             ]
         },
@@ -3577,8 +3577,20 @@
             "description": "A general logging measure for all client side API invocations.",
             "metadata": [
                 {
+                    "type": "codeTransformApiErrorMessage",
+                    "required": false
+                },
+                {
                     "type": "codeTransformApiName",
                     "required": true
+                },
+                {
+                    "type": "codeTransformJobId",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformRequestId",
+                    "required": false
                 },
                 {
                     "type": "codeTransformRunTimeLatency",
@@ -3589,16 +3601,12 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformRequestId",
+                    "type": "reason",
                     "required": false
                 },
                 {
-                    "type": "codeTransformJobId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformApiErrorMessage",
-                    "required": false
+                    "type": "result",
+                    "required": true
                 }
             ]
         },
@@ -3821,12 +3829,12 @@
                     "required": true
                 },
                 {
-                    "type": "result",
-                    "required": true
-                },
-                {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
                 }
             ]
         },
@@ -3965,10 +3973,6 @@
             "description": "User provides input to project module and language selection.",
             "metadata" : [
                 {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
                     "type": "codeTransformJavaSourceVersionsAllowed",
                     "required": true
                 },
@@ -3981,12 +3985,16 @@
                     "required": true
                 },
                 {
-                    "type": "result",
+                    "type": "codeTransformSessionId",
                     "required": true
                 },
                 {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
                 }
             ]
         },
@@ -4031,6 +4039,10 @@
             "description": "Transform initiates project artifact upload.",
             "metadata" : [
                 {
+                    "type": "codeTransformDependenciesCopied",
+                    "required": true
+                },
+                {
                     "type": "codeTransformRuntimelatency",
                     "required": true
                 },
@@ -4043,16 +4055,12 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformDependenciesCopied",
-                    "required": true
+                    "type": "reason",
+                    "required": false
                 },
                 {
                     "type": "result",
                     "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
                 }
             ]
         },
@@ -4061,16 +4069,16 @@
             "description": "Transform initiates project language, build tool, and build file validation.",
             "metadata" : [
                 {
+                    "type": "codeTransformBuildSystem",
+                    "required": true
+                },
+                {
                     "type": "codeTransformLocalJavaVersion",
                     "required": false
                 },
                 {
                     "type": "codeTransformPreValidationError",
                     "required": false
-                },
-                {
-                    "type": "codeTransformBuildSystem",
-                    "required": true
                 },
                 {
                     "type": "codeTransformSessionId",
@@ -4171,14 +4179,6 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformVCSViewerSrcComponents",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
                     "type": "codeTransformJobId",
                     "required": false
                 },
@@ -4187,11 +4187,19 @@
                     "required": true
                 },
                 {
-                    "type": "result",
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformVCSViewerSrcComponents",
                     "required": true
                 },
                 {
                     "type": "reason",
+                    "required": true
+                },
+                {
+                    "type": "result",
                     "required": true
                 }
             ]
