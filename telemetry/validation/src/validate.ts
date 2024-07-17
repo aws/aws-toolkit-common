@@ -18,7 +18,7 @@ async function main() {
     const validations = validate(definitions)
 
     if (validations.length > 0) {
-        console.log(`❌ Validation checks fail: ${jsonPath}`)
+        console.log(`❌ Validation checks fail (hint: "npm run fix"): ${jsonPath}`)
         validations.forEach(v => console.log(`- ${v}`))
         console.log()
 

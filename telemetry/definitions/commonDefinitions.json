@@ -1,6 +1,11 @@
 {
     "types": [
         {
+            "name": "action",
+            "type": "string",
+            "description": "Name of an action that was taken, displayed, etc."
+        },
+        {
             "name": "amazonqCodeGenerationResult",
             "type": "string",
             "description": "Captures if code generation result is Complete, Failed, etc."
@@ -885,7 +890,7 @@
                 "webview",
                 "quickfix"
             ],
-            "description": "The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...)"
+            "description": "The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...).  See also `featureId` for specific feature names, `module` for low-level modules, and `resourceType`."
         },
         {
             "name": "contextTruncationDuration",
@@ -1022,9 +1027,24 @@
             "description": "If the action was run in debug mode or not"
         },
         {
+            "name": "destFacetType",
+            "type": "string",
+            "description": "Resource subtype of connection end"
+        },
+        {
+            "name": "destResourceType",
+            "type": "string",
+            "description": "CloudFormation resource type of connection end"
+        },
+        {
             "name": "detectorId",
             "type": "string",
             "description": "The id of the detector which produced the code scan issue"
+        },
+        {
+            "name": "didSave",
+            "type": "boolean",
+            "description": "Whether the user saved"
         },
         {
             "name": "documentType",
@@ -1081,7 +1101,8 @@
             "allowedValues": [
                 "remoteDesktop",
                 "ssh",
-                "scp"
+                "scp",
+                "ssm"
             ],
             "description": "Ways to connect to an EC2 Instance"
         },
@@ -1171,7 +1192,7 @@
         {
             "name": "featureId",
             "type": "string",
-            "description": "The id of the feature the user is interacting in.",
+            "description": "The id of the feature the user is interacting in. See also: `component`, `featureId`, `module`, `resourceType`.",
             "allowedValues": [
                 "awsExplorer",
                 "codewhisperer",
@@ -1194,9 +1215,27 @@
             "description": "Number of findings discovered after executing IAM Policy Checks"
         },
         {
+            "name": "fps",
+            "type": "int",
+            "description": "Average frames per second"
+        },
+        {
             "name": "framework",
             "type": "string",
             "description": "Application framework being used"
+        },
+        {
+            "name": "generateFailure",
+            "type": "string",
+            "allowedValues": [
+                "Parse"
+            ],
+            "description": "Type of generation failure"
+        },
+        {
+            "name": "hasChatAuth",
+            "type": "boolean",
+            "description": "Whether the user has access to CodeWhisperer Chat"
         },
         {
             "name": "hasTextFilter",
@@ -1230,7 +1269,7 @@
         {
             "name": "id",
             "type": "string",
-            "description": "A generic ID metadata"
+            "description": "Metric-defined identifier"
         },
         {
             "name": "includesFix",
@@ -1241,6 +1280,11 @@
             "name": "initialDeploy",
             "type": "boolean",
             "description": "Whether or not the deploy targets a new destination (true) or an existing destination (false)"
+        },
+        {
+            "name": "initializeTime",
+            "type": "int",
+            "description": "Time from starting the feature until ready-to-use."
         },
         {
             "name": "inputPolicyType",
@@ -1319,6 +1363,11 @@
             "description": "Language used for the project."
         },
         {
+            "name": "loadFileTime",
+            "type": "int",
+            "description": "Time from opening Composer to loading the file"
+        },
+        {
             "name": "locale",
             "type": "string",
             "description": "User locale. Examples: en-US, en-GB, etc."
@@ -1326,7 +1375,7 @@
         {
             "name": "module",
             "type": "string",
-            "description": "Free-form module name for both high-level features such as \"PublishToAWS\", and lower-level modules such as \"ToolkitContextProvider\". Use \"component\" for UI components, or \"featureId\" for specific feature names."
+            "description": "Free-form module name for both high-level features such as \"PublishToAWS\", and lower-level modules such as \"ToolkitContextProvider\". Use `component` for UI components, or `featureId` for specific feature names. See also `resourceType`."
         },
         {
             "name": "name",
@@ -1344,6 +1393,11 @@
             "description": "Comma delimited list of NEW enabled auth connections"
         },
         {
+            "name": "numAttempts",
+            "type": "int",
+            "description": "Number of generations before the user accepted or rejected"
+        },
+        {
             "name": "oldVersion",
             "type": "string",
             "description": "The old version of something. Useful when updating dependent resources."
@@ -1352,6 +1406,11 @@
             "name": "partitionId",
             "type": "string",
             "description": "The ID of the partition that was selected"
+        },
+        {
+            "name": "pathsScrubbed",
+            "type": "int",
+            "description": "Number of generation paths modified"
         },
         {
             "name": "platform",
@@ -1399,9 +1458,14 @@
             "description": "Per-request service identifier. Unlike `serviceType` (which describes the originator of the request), this describes the request itself."
         },
         {
+            "name": "resourceCounts",
+            "type": "string",
+            "description": "Per-resource count of each resource in a container"
+        },
+        {
             "name": "resourceType",
             "type": "string",
-            "description": "The dynamic resource type being interacted with"
+            "description": "The dynamic resource type being interacted with. See also `component` for UI components, `featureId` for specific feature names, or `module` for low-level modules."
         },
         {
             "name": "result",
@@ -1458,6 +1522,17 @@
             "description": "A free-text field to record runtimes that may be separate from Lambda runtimes"
         },
         {
+            "name": "saveFileTime",
+            "type": "int",
+            "description": "Time from opening the feature until file saved."
+        },
+        {
+            "name": "saveType",
+            "type": "string",
+            "allowedValues": ["MANUAL_SAVE", "AUTO_SAVE"],
+            "description": "Type of save executed"
+        },
+        {
             "name": "schemaLanguage",
             "type": "string",
             "allowedValues": [
@@ -1491,6 +1566,16 @@
             "name": "source",
             "type": "string",
             "description": "The source of the operation"
+        },
+        {
+            "name": "sourceFacetType",
+            "type": "string",
+            "description": "Resource subtype of connection start"
+        },
+        {
+            "name": "sourceResourceType",
+            "type": "string",
+            "description": "CloudFormation resource type of connection start"
         },
         {
             "name": "sqsQueueType",
@@ -1530,6 +1615,11 @@
                 "aws-cli",
                 "sam-cli"
             ]
+        },
+        {
+            "name": "totalResourceCount",
+            "type": "int",
+            "description": "Total count of all resources in a container"
         },
         {
             "name": "update",
@@ -2081,6 +2171,165 @@
             ]
         },
         {
+            "name": "appcomposer_addConnection",
+            "description": "Called when two resources are connected",
+            "metadata": [
+                {
+                    "type": "destFacetType"
+                },
+                {
+                    "type": "destResourceType"
+                },
+                {
+                    "type": "sourceFacetType"
+                },
+                {
+                    "type": "sourceResourceType"
+                }
+            ]
+        },
+        {
+            "name": "appcomposer_addResource",
+            "description": "Called when a resource is added to the canvas",
+            "metadata": [
+                {
+                    "type": "resourceType"
+                }
+            ]
+        },
+        {
+            "name": "appcomposer_closeWfs",
+            "description": "Called when Step Functions Workflow Studio is closed",
+            "metadata": [
+                {
+                    "type": "didSave"
+                }
+            ]
+        },
+        {
+            "name": "appcomposer_customerReady",
+            "description": "Called after a customer loads into Composeer",
+            "metadata": [
+                {
+                    "type": "initializeTime"
+                },
+                {
+                    "type": "loadFileTime"
+                },
+                {
+                    "type": "saveFileTime"
+                }
+            ]
+        },
+        {
+            "name": "appcomposer_deployClicked",
+            "description": "Called after clicking the Sync button"
+        },
+        {
+            "name": "appcomposer_deployCompleted",
+            "description": "Called after a Composer-triggered SAM Sync completes"
+        },
+        {
+            "name": "appcomposer_fps",
+            "description": "Called regularly to record app performance",
+            "metadata": [
+                {
+                    "type": "fps"
+                }
+            ]
+        },
+        {
+            "name": "appcomposer_generateAccepted",
+            "description": "Called after accepting a generative AI suggestion",
+            "metadata": [
+                {
+                    "type": "numAttempts"
+                },
+                {
+                    "type": "resourceType"
+                }
+            ]
+        },
+        {
+            "name": "appcomposer_generateClicked",
+            "description": "Called after generating a standard resource template partial",
+            "metadata": [
+                {
+                    "type": "resourceType"
+                }
+            ]
+        },
+        {
+            "name": "appcomposer_generateRejected",
+            "description": "Called after rejecting a generative AI suggestion",
+            "metadata": [
+                {
+                    "type": "numAttempts"
+                },
+                {
+                    "type": "resourceType"
+                }
+            ]
+        },
+        {
+            "name": "appcomposer_initializeProject",
+            "description": "Called when a project successfully loads",
+            "metadata": [
+                {
+                    "type": "resourceCounts"
+                },
+                {
+                    "type": "totalResourceCount"
+                }
+            ]
+        },
+        {
+            "name": "appcomposer_invalidGeneration",
+            "description": "Called after a generate failed",
+            "metadata": [
+                {
+                    "type": "generateFailure"
+                },
+                {
+                    "type": "resourceType"
+                }
+            ]
+        },
+        {
+            "name": "appcomposer_openTemplate",
+            "description": "Called after opening a template",
+            "metadata": [
+                {
+                    "type": "hasChatAuth"
+                }
+            ]
+        },
+        {
+            "name": "appcomposer_openWfs",
+            "description": "Called when Step Functions Workflow Studio is opened"
+        },
+        {
+            "name": "appcomposer_postProcess",
+            "description": "Called after a generate is processed",
+            "metadata": [
+                {
+                    "type": "pathsScrubbed"
+                },
+                {
+                    "type": "resourceType"
+                }
+            ]
+        },
+        {
+            "name": "appcomposer_regenerateClicked",
+            "description": "Called after regenerating a standard resource template partial",
+            "metadata": [
+                {
+                    "type": "resourceType"
+                }
+            ]
+        },
+        {
             "name": "apprunner_copyServiceUrl",
             "description": "Copy the service URL"
         },
@@ -2154,7 +2403,7 @@
         },
         {
             "name": "auth_addConnection",
-            "description": "Captures the result of adding a new connection in the 'Add New Connection' workflow",
+            "description": "New connection was added in the 'Add New Connection' workflow.",
             "metadata": [
                 {
                     "type": "attempts",
@@ -2370,7 +2619,7 @@
         },
         {
             "name": "aws_loginWithBrowser",
-            "description": "Called when a connection requires login using the browser",
+            "description": "Extension navigated the user to a web browser to perform/complete the login process.",
             "metadata": [
                 {
                     "type": "credentialSourceId",
@@ -3478,8 +3727,22 @@
             ]
         },
         {
+            "name": "codeTransform_jobIsStartedFromChatPrompt",
+            "description": "The user initiates a transform job from the Amazon Q chat prompt.",
+            "metadata": [
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "credentialSourceId",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "codeTransform_jobStart",
-            "description": "The user initiates a transform job from the Amazon Q chat prompt or Solution Explorer.",
+            "description": "Transform job started for uploaded project.",
             "metadata": [
                 {
                     "type": "codeTransformNumberOfProjects",
@@ -6255,6 +6518,60 @@
             ]
         },
         {
+            "name": "threatComposer_closed",
+            "description": "Called after closing a threat composer file",
+            "metadata": [
+                {
+                    "type": "id",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "threatComposer_created",
+            "description": "Called after a new threat composer file is created using command pallet or New File option",
+            "metadata": [
+                {
+                    "type": "id",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "threatComposer_error",
+            "description": "Called after an error is thrown from the threat composer view",
+            "metadata": [
+                {
+                    "type": "id",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "threatComposer_fileSaved",
+            "description": "Called after a threat composer file has been saved",
+            "metadata": [
+                {
+                    "type": "id",
+                    "required": true
+                },
+                {
+                    "type": "saveType",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "threatComposer_opened",
+            "description": "Called after opening a threat composer file",
+            "metadata": [
+                {
+                    "type": "id",
+                    "required": true
+                }
+            ]
+        },
+        {
             "name": "toolkit_getExternalResource",
             "description": "The toolkit tried to retrieve blob data from a url",
             "metadata": [
@@ -6313,8 +6630,12 @@
         },
         {
             "name": "toolkit_invokeAction",
-            "description": "A user invoked an action. Source represents the notification that produced the action",
+            "description": "User invoked an action. `source` is the notification that produced the action",
             "metadata": [
+                {
+                    "type": "action",
+                    "required": true
+                },
                 {
                     "type": "component",
                     "required": true
