@@ -249,24 +249,9 @@
             "description": "Any API-specific errors"
         },
         {
-            "name": "codeTransformApiName",
-            "type": "string",
-            "description": "Name of Code Transform API",
-            "allowedValues": [
-                "ResumeTransformation",
-                "StartTransformation",
-                "StopTransformation",
-                "GetTransformation",
-                "GetTransformationPlan",
-                "UploadZip",
-                "CreateUploadUrl",
-                "ExportResultArchive"
-            ]
-        },
-        {
             "name": "codeTransformApiNames",
             "type": "string",
-            "description": "Deprecated - use codeTransformApiName",
+            "description": "Deprecated",
             "allowedValues": [
                 "ResumeTransformation",
                 "StartTransformation",
@@ -3572,45 +3557,6 @@
             ]
         },
         {
-            "name": "codeTransform_invokeApi",
-            "passive": true,
-            "description": "A general logging measure for all client side API invocations.",
-            "metadata": [
-                {
-                    "type": "codeTransformApiErrorMessage",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformApiName",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformJobId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformRequestId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformRunTimeLatency",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
-                }
-            ]
-        },
-        {
             "name": "codeTransform_isDoubleClickedToTriggerInvalidProject",
             "description": "Deprecated - use codeTransform_validateProject",
             "metadata": [
@@ -3841,7 +3787,7 @@
         {
             "name": "codeTransform_logApiError",
             "passive": true,
-            "description": "Deprecated - use codeTransform_invokeApi",
+            "description": "Deprecated - avoid logging every service call",
             "metadata": [
                 {
                     "type": "codeTransformApiErrorMessage",
@@ -3872,7 +3818,7 @@
         {
             "name": "codeTransform_logApiLatency",
             "passive": true,
-            "description": "Deprecated - use codeTransform_invokeApi",
+            "description": "Deprecated - avoid logging every service call",
             "metadata": [
                 {
                     "type": "codeTransformApiNames",
@@ -3907,7 +3853,7 @@
         {
             "name": "codeTransform_logGeneralError",
             "passive": true,
-            "description": "Deprecated - use codeTransform_invokeApi",
+            "description": "Deprecated - avoid logging every service call",
             "metadata": [
                 {
                     "type": "codeTransformApiErrorMessage",
@@ -4047,7 +3993,7 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformRuntimeLatency",
+                    "type": "codeTransformRunTimeLatency",
                     "required": true
                 },
                 {
@@ -4187,7 +4133,7 @@
                     "required": false
                 },
                 {
-                    "type": "codeTransformRuntimeLatency",
+                    "type": "codeTransformRunTimeLatency",
                     "required": true
                 },
                 {
