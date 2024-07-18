@@ -4060,7 +4060,7 @@
         },
         {
             "name": "codeTransform_vcsViewerCanceled",
-            "description": "Deprecated - use codeTransform_viewDiff",
+            "description": "Deprecated - use codeTransform_viewArtifact",
             "metadata": [
                 {
                     "type": "codeTransformJobId",
