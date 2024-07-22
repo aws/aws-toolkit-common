@@ -251,7 +251,7 @@
         {
             "name": "codeTransformApiNames",
             "type": "string",
-            "description": "Deprecated",
+            "description": "Deprecated (Names of allowed API calls)",
             "allowedValues": [
                 "ResumeTransformation",
                 "StartTransformation",
@@ -343,12 +343,12 @@
         {
             "name": "codeTransformLocalMavenVersion",
             "type": "string",
-            "description": "Deprecated - use codeTransformLocalBuildSystemVersion"
+            "description": "Deprecated - use codeTransformLocalBuildSystemVersion (The Maven version on the user's machine)"
         },
         {
             "name": "codeTransformMavenBuildCommand",
             "type": "string",
-            "description": "Deprecated - use codeTransformBuildCommand",
+            "description": "Deprecated - use codeTransformBuildCommand (Type of maven command)",
             "allowedValues": [
                 "mvnw.cmd",
                 "mvnw",
@@ -3474,7 +3474,7 @@
         },
         {
             "name": "codeTransform_dependenciesCopied",
-            "description": "Deprecated - use codeTransform_uploadProject",
+            "description": "Deprecated - use codeTransform_uploadProject (The repo copies over at least one dependency successfully)",
             "metadata": [
                 {
                     "type": "codeTransformSessionId",
@@ -3558,7 +3558,7 @@
         },
         {
             "name": "codeTransform_isDoubleClickedToTriggerInvalidProject",
-            "description": "Deprecated - use codeTransform_validateProject",
+            "description": "Deprecated - use codeTransform_validateProject (Transform initiated a job but there is a validation error)",
             "metadata": [
                 {
                     "type": "codeTransformPreValidationError",
@@ -3584,7 +3584,7 @@
         },
         {
             "name": "codeTransform_jobArtifactDownloadAndDeserializeTime",
-            "description": "Deprecated - use codeTransform_downloadArtifact",
+            "description": "Deprecated - use codeTransform_downloadArtifact (job is ending download zip contents)",
             "metadata": [
                 {
                     "type": "codeTransformJobId",
@@ -3610,7 +3610,7 @@
         },
         {
             "name": "codeTransform_jobCreateZipEndTime",
-            "description": "Deprecated - use codeTransform_uploadProject",
+            "description": "Deprecated - use codeTransform_uploadProject (A timestamp for when the job is ending upload zip contents)",
             "metadata": [
                 {
                     "type": "codeTransformRunTimeLatency",
@@ -3719,7 +3719,7 @@
         {
             "name": "codeTransform_jobStartedCompleteFromPopupDialog",
             "passive": true,
-            "description": "Deprecated - use codeTransform_submitSelection",
+            "description": "Deprecated - use codeTransform_submitSelection (code execution starts after model validation)",
             "metadata": [
                 {
                     "type": "codeTransformJavaSourceVersionsAllowed",
@@ -3871,7 +3871,7 @@
         },
         {
             "name": "codeTransform_mvnBuildFailed",
-            "description": "Deprecated - use codeTransform_localBuildProject",
+            "description": "Deprecated - use codeTransform_localBuildProject (The maven command build failed)",
             "metadata": [
                 {
                     "type": "codeTransformMavenBuildCommand",
@@ -3890,7 +3890,7 @@
         {
             "name": "codeTransform_projectDetails",
             "passive": true,
-            "description": "Deprecated - use codeTransform_validateProject",
+            "description": "Deprecated - use codeTransform_validateProject (Transform initiates project validation before user interaction)",
             "metadata": [
                 {
                     "type": "codeTransformLocalJavaVersion",
@@ -4046,7 +4046,7 @@
         },
         {
             "name": "codeTransform_vcsDiffViewerVisible",
-            "description": "Deprecated - use codeTransform_viewArtifact",
+            "description": "Deprecated - use codeTransform_viewArtifact (timestamp when the diff view is being displayed to the user)",
             "metadata": [
                 {
                     "type": "codeTransformJobId",
@@ -4060,7 +4060,7 @@
         },
         {
             "name": "codeTransform_vcsViewerCanceled",
-            "description": "Deprecated - use codeTransform_viewArtifact",
+            "description": "Deprecated - use codeTransform_viewArtifact (An interactivity measured when users cancel a patch view)",
             "metadata": [
                 {
                     "type": "codeTransformJobId",
@@ -4086,7 +4086,7 @@
         },
         {
             "name": "codeTransform_vcsViewerClicked",
-            "description": "Deprecated - use codeTransform_viewArtifact",
+            "description": "Deprecated - use codeTransform_viewArtifact (An interactivity measured when users click to view diff results)",
             "metadata": [
                 {
                     "type": "codeTransformJobId",
@@ -4104,7 +4104,7 @@
         },
         {
             "name": "codeTransform_vcsViewerSubmitted",
-            "description": "Deprecated - use codeTransform_viewArtifact",
+            "description": "Deprecated - use codeTransform_viewArtifact (An interactivity measured when users submit their patch view results)",
             "metadata": [
                 {
                     "type": "codeTransformJobId",
