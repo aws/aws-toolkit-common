@@ -6351,6 +6351,10 @@
                 {
                     "type": "result",
                     "required": true
+                },
+                {
+                    "type": "version",
+                    "required": false
                 }
             ],
             "passive": true
