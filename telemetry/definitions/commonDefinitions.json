@@ -4166,14 +4166,14 @@
                 },
                 {
                     "type": "codeTransformJobId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformRunTimeLatency",
                     "required": true
                 },
                 {
                     "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformStatus",
                     "required": true
                 },
                 {
