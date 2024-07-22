@@ -3555,6 +3555,10 @@
                     "required": true
                 },
                 {
+                    "type": "credentialSourceId",
+                    "required": false
+                },
+                {
                     "type": "reason",
                     "required": false
                 },
