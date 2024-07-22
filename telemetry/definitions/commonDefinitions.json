@@ -3715,7 +3715,7 @@
                     "required": false
                 },
                 {
-                    "type": "codeTransformRuntimelatency",
+                    "type": "codeTransformRunTimeLatency",
                     "required": false
                 },
                 {
