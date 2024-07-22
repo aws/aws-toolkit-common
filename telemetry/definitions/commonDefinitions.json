@@ -343,7 +343,7 @@
         {
             "name": "codeTransformLocalMavenVersion",
             "type": "string",
-            "description": "Deprecated - use codeTransformLocalBuildSystemVersion (The Maven version on the user's machine)"
+            "description": "Deprecated - use localBuildSystemVersion (The build system version on the user's machine)"
         },
         {
             "name": "codeTransformMavenBuildCommand",
@@ -3509,6 +3509,14 @@
                 {
                     "type": "codeTransformTotalByteSize",
                     "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
                 }
             ]
         },
@@ -3699,7 +3707,15 @@
             "description": "Transform job started for uploaded project.",
             "metadata": [
                 {
+                    "type": "codeTransformJobId",
+                    "required": false
+                },
+                {
                     "type": "codeTransformNumberOfProjects",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformRuntimelatency",
                     "required": false
                 },
                 {
@@ -3712,6 +3728,14 @@
                 },
                 {
                     "type": "credentialSourceId",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result",
                     "required": false
                 }
             ]
@@ -3941,6 +3965,10 @@
                 {
                     "type": "result",
                     "required": true
+                },
+                {
+                    "type": "userChoice",
+                    "required": true
                 }
             ]
         },
@@ -4033,6 +4061,10 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
+                },
+                {
+                    "type": "localBuildSystemVersion",
+                    "required": false
                 },
                 {
                     "type": "reason",
@@ -4146,10 +4178,14 @@
                 },
                 {
                     "type": "reason",
-                    "required": true
+                    "required": false
                 },
                 {
                     "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "userChoice",
                     "required": true
                 }
             ]
