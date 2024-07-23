@@ -168,6 +168,11 @@
             "description": "The amount of time required for the build to complete (in seconds)."
         },
         {
+            "name": "buildSystemVersion",
+            "type": "string",
+            "description": "The build system version on the user's machine"
+        },
+        {
             "name": "causedBy",
             "allowedValues": [
                 "user",
@@ -343,7 +348,7 @@
         {
             "name": "codeTransformLocalMavenVersion",
             "type": "string",
-            "description": "Deprecated - use localBuildSystemVersion (The build system version on the user's machine)"
+            "description": "Deprecated - use buildSystemVersion (The build system version on the user's machine)"
         },
         {
             "name": "codeTransformMavenBuildCommand",
@@ -1347,11 +1352,6 @@
             "name": "loadFileTime",
             "type": "int",
             "description": "Time from opening Composer to loading the file"
-        },
-        {
-            "name": "localBuildSystemVersion",
-            "type": "string",
-            "description": "The build system version on the user's machine"
         },
         {
             "name": "locale",
@@ -3485,7 +3485,7 @@
         },
         {
             "name": "codeTransform_downloadArtifact",
-            "description": "Transform or user downloads code transform artifact",
+            "description": "User downloads code transform artifact",
             "metadata": [
                 {
                     "type": "codeTransformArtifactType",
@@ -3983,6 +3983,10 @@
             "description": "We want to log the total run time in the users experience for the IDE. The total runtime should end when all API's have finished running and the users is prompted for next step actions.",
             "metadata": [
                 {
+                    "type": "buildSystemVersion",
+                    "required": false
+                },
+                {
                     "type": "codeTransformJobId",
                     "required": false
                 },
@@ -4009,10 +4013,6 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
-                },
-                {
-                    "type": "localBuildSystemVersion",
-                    "required": false
                 }
             ]
         },
@@ -4052,6 +4052,10 @@
             "description": "Transform initiates project language, build tool, and build file validation.",
             "metadata" : [
                 {
+                    "type": "buildSystemVersion",
+                    "required": false
+                },
+                {
                     "type": "codeTransformBuildSystem",
                     "required": true
                 },
@@ -4066,10 +4070,6 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
-                },
-                {
-                    "type": "localBuildSystemVersion",
-                    "required": false
                 },
                 {
                     "type": "reason",
