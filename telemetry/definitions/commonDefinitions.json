@@ -3948,15 +3948,15 @@
             "metadata" : [
                 {
                     "type": "codeTransformJavaSourceVersionsAllowed",
-                    "required": true
+                    "required": false
                 },
                 {
                     "type": "codeTransformJavaTargetVersionsAllowed",
-                    "required": true
+                    "required": false
                 },
                 {
                     "type": "codeTransformProjectId",
-                    "required": true
+                    "required": false
                 },
                 {
                     "type": "codeTransformSessionId",
