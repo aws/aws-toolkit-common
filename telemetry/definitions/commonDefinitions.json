@@ -3884,7 +3884,7 @@
         {
             "name": "codeTransform_logGeneralError",
             "passive": true,
-            "description": "Emit general error that occurred during the transformation.",
+            "description": "Deprecated - avoid logging every service call",
             "metadata": [
                 {
                     "type": "codeTransformApiErrorMessage",
