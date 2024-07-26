@@ -249,11 +249,6 @@
             "description": "Time taken to invoke code scan service APIs in milliseconds"
         },
         {
-            "name": "codeTransformErrorMessage",
-            "type": "string",
-            "description": "The error message (can be local or API-side)"
-        },
-        {
             "name": "codeTransformApiNames",
             "type": "string",
             "description": "Deprecated (Names of allowed API calls)",
@@ -316,6 +311,11 @@
             "name": "codeTransformDependenciesCopied",
             "type": "boolean",
             "description": "If dependencies are copied into upload artifact."
+        },
+        {
+            "name": "codeTransformErrorMessage",
+            "type": "string",
+            "description": "The error message (can be local or API-side)"
         },
         {
             "name": "codeTransformJavaSourceVersionsAllowed",
@@ -1525,7 +1525,10 @@
         {
             "name": "saveType",
             "type": "string",
-            "allowedValues": ["MANUAL_SAVE", "AUTO_SAVE"],
+            "allowedValues": [
+                "MANUAL_SAVE",
+                "AUTO_SAVE"
+            ],
             "description": "Type of save executed"
         },
         {
@@ -3488,7 +3491,7 @@
             "description": "Apply suggested changes to buildable units.",
             "metadata": [
                 {
-                    "type": "codeTransformSessionId",
+                    "type": "codeTransformNumberOfSelectedFiles",
                     "required": true
                 },
                 {
@@ -3496,7 +3499,7 @@
                     "required": false
                 },
                 {
-                    "type": "codeTransformNumberOfSelectedFiles",
+                    "type": "codeTransformSessionId",
                     "required": true
                 }
             ]
@@ -3578,7 +3581,7 @@
         {
             "name": "codeTransform_initiateTransform",
             "description": "User initiates code transform from Q Chat Prompt.",
-            "metadata" : [
+            "metadata": [
                 {
                     "type": "codeTransformSessionId",
                     "required": true
@@ -3826,7 +3829,7 @@
         {
             "name": "codeTransform_localBuildProject",
             "description": "Transform initiates local build.",
-            "metadata" : [
+            "metadata": [
                 {
                     "type": "codeTransformBuildCommand",
                     "required": true
@@ -3851,11 +3854,11 @@
             "description": "An API-side error has occurred.",
             "metadata": [
                 {
-                    "type": "codeTransformErrorMessage",
+                    "type": "codeTransformApiNames",
                     "required": true
                 },
                 {
-                    "type": "codeTransformApiNames",
+                    "type": "codeTransformErrorMessage",
                     "required": true
                 },
                 {
@@ -3978,7 +3981,7 @@
         {
             "name": "codeTransform_submitSelection",
             "description": "User provides input to project module and language selection.",
-            "metadata" : [
+            "metadata": [
                 {
                     "type": "codeTransformJavaSourceVersionsAllowed",
                     "required": false
@@ -4048,11 +4051,10 @@
                 }
             ]
         },
-
         {
             "name": "codeTransform_uploadProject",
             "description": "Transform initiates project artifact upload.",
-            "metadata" : [
+            "metadata": [
                 {
                     "type": "codeTransformDependenciesCopied",
                     "required": true
@@ -4082,7 +4084,7 @@
         {
             "name": "codeTransform_validateProject",
             "description": "Transform initiates project language, build tool, and build file validation.",
-            "metadata" : [
+            "metadata": [
                 {
                     "type": "buildSystemVersion",
                     "required": false
