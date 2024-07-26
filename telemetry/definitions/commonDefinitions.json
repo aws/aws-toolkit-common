@@ -367,19 +367,19 @@
             "description": "A general field for logging metadata associated to Amazon Q transform metrics."
         },
         {
-            "name": "codeTransformNumberOfSelectedFiles",
-            "type": "int",
-            "description": "The number of files selected to apply changes to"
-        },
-        {
             "name": "codeTransformNumberOfSelectedProjects",
             "type": "int",
             "description": "The number of projects selected for transformation"
         },
         {
-            "name": "codeTransformNumberOfSelectedUnits",
+            "name": "codeTransformNumberOfTransformedFilesAccepted",
             "type": "int",
-            "description": "The number of buildable units selected to apply changes to"
+            "description": "The number of transformed files that have been accepted by the user"
+        },
+        {
+            "name": "codeTransformNumberOfTransformedUnitsAccepted",
+            "type": "int",
+            "description": "The number of transformed buildable units that have been accepted by the user"
         },
         {
             "name": "codeTransformPatchViewerCancelSrcComponents",
@@ -3491,11 +3491,11 @@
             "description": "Apply suggested changes to buildable units.",
             "metadata": [
                 {
-                    "type": "codeTransformNumberOfSelectedFiles",
+                    "type": "codeTransformNumberOfTransformedFilesAccepted",
                     "required": true
                 },
                 {
-                    "type": "codeTransformNumberOfSelectedUnits",
+                    "type": "codeTransformNumberOfTransformedUnitsAccepted",
                     "required": false
                 },
                 {
