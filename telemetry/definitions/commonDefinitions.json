@@ -372,6 +372,11 @@
             "description": "The number of projects selected for transformation"
         },
         {
+            "name": "codeTransformNumberOfTransformedFiles",
+            "type": "int",
+            "description": "The number of files that were transformed during a transformation job"
+        },
+        {
             "name": "codeTransformNumberOfTransformedFilesAccepted",
             "type": "int",
             "description": "The number of transformed files that have been accepted by the user"
@@ -3633,6 +3638,10 @@
                 {
                     "type": "codeTransformJobId",
                     "required": true
+                },
+                {
+                    "type": "codeTransformNumberOfTransformedFiles",
+                    "required": false
                 },
                 {
                     "type": "codeTransformRuntimeError",
