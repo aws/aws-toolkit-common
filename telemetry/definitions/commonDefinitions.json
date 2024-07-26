@@ -313,11 +313,6 @@
             "description": "If dependencies are copied into upload artifact."
         },
         {
-            "name": "codeTransformErrorMessage",
-            "type": "string",
-            "description": "The error message (can be local or API-side)"
-        },
-        {
             "name": "codeTransformJavaSourceVersionsAllowed",
             "type": "string",
             "description": "Allowed Java versions to transform from",
@@ -367,7 +362,7 @@
             "description": "A general field for logging metadata associated to Amazon Q transform metrics."
         },
         {
-            "name": "codeTransformNumberOfSelectedProjects",
+            "name": "codeTransformNumberOfProjects",
             "type": "int",
             "description": "The number of projects selected for transformation"
         },
@@ -3640,10 +3635,6 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformNumberOfTransformedFiles",
-                    "required": false
-                },
-                {
                     "type": "codeTransformRuntimeError",
                     "required": false
                 },
@@ -3756,7 +3747,11 @@
                     "required": false
                 },
                 {
-                    "type": "codeTransformNumberOfSelectedProjects",
+                    "type": "codeTransformNumberOfProjects",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformNumberOfTransformedFiles",
                     "required": false
                 },
                 {
@@ -3860,16 +3855,8 @@
         {
             "name": "codeTransform_logApiError",
             "passive": true,
-            "description": "An API-side error has occurred.",
+            "description": "Deprecated - avoid logging every service call",
             "metadata": [
-                {
-                    "type": "codeTransformApiNames",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformErrorMessage",
-                    "required": true
-                },
                 {
                     "type": "codeTransformJobId",
                     "required": false
@@ -3885,6 +3872,10 @@
                 {
                     "type": "codeTransformTotalByteSize",
                     "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": true
                 }
             ]
         },
@@ -3929,15 +3920,15 @@
             "description": "A general error has occurred.",
             "metadata": [
                 {
-                    "type": "codeTransformErrorMessage",
-                    "required": true
-                },
-                {
                     "type": "codeTransformJobId",
                     "required": false
                 },
                 {
                     "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "reason",
                     "required": true
                 }
             ]
