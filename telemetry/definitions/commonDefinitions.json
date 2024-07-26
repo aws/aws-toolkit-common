@@ -249,11 +249,6 @@
             "description": "Time taken to invoke code scan service APIs in milliseconds"
         },
         {
-            "name": "codeTransformApiErrorMessage",
-            "type": "string",
-            "description": "Any API-specific errors"
-        },
-        {
             "name": "codeTransformApiNames",
             "type": "string",
             "description": "Deprecated (Names of allowed API calls)",
@@ -370,6 +365,21 @@
             "name": "codeTransformNumberOfProjects",
             "type": "int",
             "description": "The number of projects selected for transformation"
+        },
+        {
+            "name": "codeTransformNumberOfTransformedFiles",
+            "type": "int",
+            "description": "The number of files that were transformed during a transformation job"
+        },
+        {
+            "name": "codeTransformNumberOfTransformedFilesAccepted",
+            "type": "int",
+            "description": "The number of transformed files that have been accepted by the user"
+        },
+        {
+            "name": "codeTransformNumberOfTransformedUnitsAccepted",
+            "type": "int",
+            "description": "The number of transformed buildable units that have been accepted by the user"
         },
         {
             "name": "codeTransformPatchViewerCancelSrcComponents",
@@ -1515,7 +1525,10 @@
         {
             "name": "saveType",
             "type": "string",
-            "allowedValues": ["MANUAL_SAVE", "AUTO_SAVE"],
+            "allowedValues": [
+                "MANUAL_SAVE",
+                "AUTO_SAVE"
+            ],
             "description": "Type of save executed"
         },
         {
@@ -3474,6 +3487,24 @@
             "passive": true
         },
         {
+            "name": "codeTransform_applyChanges",
+            "description": "Apply suggested changes to buildable units.",
+            "metadata": [
+                {
+                    "type": "codeTransformNumberOfTransformedFilesAccepted",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformNumberOfTransformedUnitsAccepted",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                }
+            ]
+        },
+        {
             "name": "codeTransform_dependenciesCopied",
             "description": "Deprecated - use codeTransform_uploadProject (The repo copies over at least one dependency successfully)",
             "metadata": [
@@ -3550,7 +3581,7 @@
         {
             "name": "codeTransform_initiateTransform",
             "description": "User initiates code transform from Q Chat Prompt.",
-            "metadata" : [
+            "metadata": [
                 {
                     "type": "codeTransformSessionId",
                     "required": true
@@ -3720,6 +3751,10 @@
                     "required": false
                 },
                 {
+                    "type": "codeTransformNumberOfTransformedFiles",
+                    "required": false
+                },
+                {
                     "type": "codeTransformRunTimeLatency",
                     "required": false
                 },
@@ -3741,6 +3776,10 @@
                 },
                 {
                     "type": "result",
+                    "required": false
+                },
+                {
+                    "type": "source",
                     "required": false
                 }
             ]
@@ -3794,7 +3833,7 @@
         {
             "name": "codeTransform_localBuildProject",
             "description": "Transform initiates local build.",
-            "metadata" : [
+            "metadata": [
                 {
                     "type": "codeTransformBuildCommand",
                     "required": true
@@ -3819,14 +3858,6 @@
             "description": "Deprecated - avoid logging every service call",
             "metadata": [
                 {
-                    "type": "codeTransformApiErrorMessage",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformApiNames",
-                    "required": true
-                },
-                {
                     "type": "codeTransformJobId",
                     "required": false
                 },
@@ -3841,6 +3872,10 @@
                 {
                     "type": "codeTransformTotalByteSize",
                     "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": true
                 }
             ]
         },
@@ -3882,18 +3917,18 @@
         {
             "name": "codeTransform_logGeneralError",
             "passive": true,
-            "description": "Deprecated - avoid logging every service call",
+            "description": "A general error has occurred.",
             "metadata": [
-                {
-                    "type": "codeTransformApiErrorMessage",
-                    "required": true
-                },
                 {
                     "type": "codeTransformJobId",
                     "required": false
                 },
                 {
                     "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "reason",
                     "required": true
                 }
             ]
@@ -3946,7 +3981,7 @@
         {
             "name": "codeTransform_submitSelection",
             "description": "User provides input to project module and language selection.",
-            "metadata" : [
+            "metadata": [
                 {
                     "type": "codeTransformJavaSourceVersionsAllowed",
                     "required": false
@@ -4016,11 +4051,10 @@
                 }
             ]
         },
-
         {
             "name": "codeTransform_uploadProject",
             "description": "Transform initiates project artifact upload.",
-            "metadata" : [
+            "metadata": [
                 {
                     "type": "codeTransformDependenciesCopied",
                     "required": true
@@ -4050,7 +4084,7 @@
         {
             "name": "codeTransform_validateProject",
             "description": "Transform initiates project language, build tool, and build file validation.",
-            "metadata" : [
+            "metadata": [
                 {
                     "type": "buildSystemVersion",
                     "required": false
