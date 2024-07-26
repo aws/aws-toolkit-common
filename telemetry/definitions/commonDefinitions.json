@@ -249,9 +249,9 @@
             "description": "Time taken to invoke code scan service APIs in milliseconds"
         },
         {
-            "name": "codeTransformApiErrorMessage",
+            "name": "codeTransformErrorMessage",
             "type": "string",
-            "description": "Any API-specific errors"
+            "description": "The error message (can be local or API-side)"
         },
         {
             "name": "codeTransformApiNames",
@@ -367,9 +367,19 @@
             "description": "A general field for logging metadata associated to Amazon Q transform metrics."
         },
         {
-            "name": "codeTransformNumberOfProjects",
+            "name": "codeTransformNumberOfSelectedFiles",
+            "type": "int",
+            "description": "The number of files selected to apply changes to"
+        },
+        {
+            "name": "codeTransformNumberOfSelectedProjects",
             "type": "int",
             "description": "The number of projects selected for transformation"
+        },
+        {
+            "name": "codeTransformNumberOfSelectedUnits",
+            "type": "int",
+            "description": "The number of buildable units selected to apply changes to"
         },
         {
             "name": "codeTransformPatchViewerCancelSrcComponents",
@@ -3474,6 +3484,24 @@
             "passive": true
         },
         {
+            "name": "codeTransform_applyChanges",
+            "description": "Apply suggested changes to buildable units.",
+            "metadata": [
+                {
+                    "type": "codeTransformSessionId",
+                    "required": true
+                },
+                {
+                    "type": "codeTransformNumberOfSelectedUnits",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformNumberOfSelectedFiles",
+                    "required": true
+                }
+            ]
+        },
+        {
             "name": "codeTransform_dependenciesCopied",
             "description": "Deprecated - use codeTransform_uploadProject (The repo copies over at least one dependency successfully)",
             "metadata": [
@@ -3716,7 +3744,7 @@
                     "required": false
                 },
                 {
-                    "type": "codeTransformNumberOfProjects",
+                    "type": "codeTransformNumberOfSelectedProjects",
                     "required": false
                 },
                 {
@@ -3741,6 +3769,10 @@
                 },
                 {
                     "type": "result",
+                    "required": false
+                },
+                {
+                    "type": "source",
                     "required": false
                 }
             ]
@@ -3816,10 +3848,10 @@
         {
             "name": "codeTransform_logApiError",
             "passive": true,
-            "description": "Deprecated - avoid logging every service call",
+            "description": "An API-side error has occurred.",
             "metadata": [
                 {
-                    "type": "codeTransformApiErrorMessage",
+                    "type": "codeTransformErrorMessage",
                     "required": true
                 },
                 {
@@ -3882,10 +3914,10 @@
         {
             "name": "codeTransform_logGeneralError",
             "passive": true,
-            "description": "Deprecated - avoid logging every service call",
+            "description": "A general error has occurred.",
             "metadata": [
                 {
-                    "type": "codeTransformApiErrorMessage",
+                    "type": "codeTransformErrorMessage",
                     "required": true
                 },
                 {
