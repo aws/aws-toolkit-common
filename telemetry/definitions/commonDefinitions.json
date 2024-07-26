@@ -289,7 +289,8 @@
                 "gradlew.bat",
                 "gradlew",
                 "gradle",
-                "IDEBundledGradle"
+                "IDEBundledGradle",
+                "Unknown"
             ]
         },
         {
@@ -298,7 +299,8 @@
             "description": "Type of build system",
             "allowedValues": [
                 "Maven",
-                "Gradle"
+                "Gradle",
+                "Unknown"
             ]
         },
         {
@@ -3882,7 +3884,7 @@
         {
             "name": "codeTransform_logGeneralError",
             "passive": true,
-            "description": "Deprecated - avoid logging every service call",
+            "description": "Emit general error that occurred during the transformation.",
             "metadata": [
                 {
                     "type": "codeTransformApiErrorMessage",
