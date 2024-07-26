@@ -290,7 +290,7 @@
                 "gradlew",
                 "gradle",
                 "IDEBundledGradle",
-                "Unknown"
+                "unknown"
             ]
         },
         {
@@ -300,7 +300,7 @@
             "allowedValues": [
                 "Maven",
                 "Gradle",
-                "Unknown"
+                "unknown"
             ]
         },
         {
@@ -3799,7 +3799,7 @@
             "metadata" : [
                 {
                     "type": "codeTransformBuildCommand",
-                    "required": true
+                    "required": false
                 },
                 {
                     "type": "codeTransformSessionId",
@@ -4059,7 +4059,7 @@
                 },
                 {
                     "type": "codeTransformBuildSystem",
-                    "required": true
+                    "required": false
                 },
                 {
                     "type": "codeTransformLocalJavaVersion",
