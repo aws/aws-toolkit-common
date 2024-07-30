@@ -5603,7 +5603,7 @@
         },
         {
             "name": "file_editAwsFile",
-            "description": "Use authoring features such as autocompletion, syntax checking, and highlighting, for AWS filetypes (CFN, SAM, etc.). Emit this _once_ per file-editing session for a given file. Ideally this is emitted only if authoring features are used, rather than merely opening or touching a file.",
+            "description": "Use authoring features such as autocompletion, syntax checking, and highlighting, for AWS filetypes (CFN, SAM, etc.). Emit this _once_ per file-editing session for a given file. For generic code files see `ide_editCodeFile`.",
             "metadata": [
                 {
                     "type": "awsFiletype",
@@ -5708,6 +5708,17 @@
             "metadata": [
                 {
                     "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "ide_editCodeFile",
+            "description": "User opened a code file with the given file extension. Client should DEDUPLICATE this metric (ideally hourly/daily). AWS-specific files should (also) emit `file_editAwsFile`.",
+            "passive": true,
+            "metadata": [
+                {
+                    "type": "filenameExt",
+                    "required": false
                 }
             ]
         },
