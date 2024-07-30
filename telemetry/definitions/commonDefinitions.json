@@ -1661,7 +1661,7 @@
             "description": "Whether or not AWS X-Ray is enabled"
         },
         {
-            "name": "appTemplateSelected",
+            "name": "appTemplateChoice",
             "type": "string",
             "description": "Identifies the template choosen in the Getting Started Walkthrough."
         }
@@ -2305,6 +2305,10 @@
             "metadata": [
                 {
                     "type": "hasChatAuth"
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -5835,6 +5839,14 @@
             "metadata": [
                 {
                     "type": "result"
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -5875,6 +5887,14 @@
                 {
                     "type": "version",
                     "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -5887,6 +5907,14 @@
                 },
                 {
                     "type": "runtime",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "source",
                     "required": false
                 }
             ]
@@ -6260,6 +6288,10 @@
                 {
                     "type": "version",
                     "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -6338,6 +6370,35 @@
                 },
                 {
                     "type": "version",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "sam_build",
+            "description": "Called when building a SAM application",
+            "metadata": [
+                {
+                    "type": "lambdaPackageType",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "version",
+                    "required": false
+                },
+                {
+                    "type": "source",
                     "required": false
                 }
             ]
@@ -6819,6 +6880,10 @@
                 {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -6832,6 +6897,10 @@
                 },
                 {
                     "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "source",
                     "required": false
                 }
             ]
@@ -6847,6 +6916,10 @@
                 {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -6860,6 +6933,10 @@
                 },
                 {
                     "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "source",
                     "required": false
                 }
             ]
@@ -6877,7 +6954,11 @@
                     "required": false
                 },
                 {
-                    "type": "appTemplateSelected",
+                    "type": "appTemplateChoice",
+                    "required": false
+                },
+                {
+                    "type": "source",
                     "required": false
                 }
             ]
@@ -6893,6 +6974,10 @@
                 {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -6907,6 +6992,10 @@
                 {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -6920,6 +7009,10 @@
                 },
                 {
                     "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "source",
                     "required": false
                 }
             ]
