@@ -1659,6 +1659,11 @@
             "name": "xrayEnabled",
             "type": "boolean",
             "description": "Whether or not AWS X-Ray is enabled"
+        },
+        {
+            "name": "appTemplateSelected",
+            "type": "string",
+            "description": "Identifies the template choosen in the Getting Started Walkthrough."
         }
     ],
     "metrics": [
@@ -6800,6 +6805,122 @@
             "metadata": [
                 {
                     "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "app_walkthroughStart",
+            "description": "Open Getting Started Walkthrough",
+            "metadata": [
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "app_walkthroughInstallAwsCli",
+            "description": "Click Install AWS CLI button in Getting Started Walkthrough",
+            "metadata": [
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "app_walkthroughInstallSamcli",
+            "description": "Click Install SAM CLI button in Getting Started Walkthrough",
+            "metadata": [
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "app_walkthroughInstallDocker",
+            "description": "Click Install Docker button in Getting Started Walkthrough",
+            "metadata": [
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "app_walkthroughSelectTemplate",
+            "description": "Select a template and create project in Getting Started Walkthrough",
+            "metadata": [
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "appTemplateSelected",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "app_openTemplate",
+            "description": "Click open template button in Application Builder",
+            "metadata": [
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "app_openLocalInvokeWebView",
+            "description": "Click open Local invoke WebView button in Application Builder",
+            "metadata": [
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "app_openRemoteInvokeWebView",
+            "description": "Click open Remote invoke WebView button in Application Builder",
+            "metadata": [
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
                 }
             ]
         }
