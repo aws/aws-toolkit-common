@@ -4726,13 +4726,13 @@
             "description": "Percentage of user modifications for the selected suggestion until a fixed period of time",
             "metadata": [
                 {
-                    "type": "codewhispererCompletionType"
-                },
-                {
                     "type": "codewhispererCharactersAccepted"
                 },
                 {
                     "type": "codewhispererCharactersModified"
+                },
+                {
+                    "type": "codewhispererCompletionType"
                 },
                 {
                     "type": "codewhispererLanguage"
