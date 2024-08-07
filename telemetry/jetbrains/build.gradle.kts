@@ -1,11 +1,11 @@
 import org.everit.json.schema.Schema
 import org.everit.json.schema.loader.SchemaLoader
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.json.JSONObject
 
 plugins {
-    java
     `kotlin-dsl`
     alias(libs.plugins.kotlin.jvm)
     `maven-publish`
@@ -43,24 +43,11 @@ dependencies {
 }
 
 tasks {
-    withType<JavaCompile>() {
-        sourceCompatibility = "17"
-        targetCompatibility = "17"
+    withType<KotlinCompile> {
+        compilerOptions.jvmTarget = JvmTarget.JVM_17
     }
 
-    withType<KotlinCompile>() {
-        kotlinOptions.jvmTarget = "17"
-    }
-
-    compileKotlin {
-        dependsOn(":copyTelemetryResources", ":validatePackagedSchema")
-    }
-
-    compileTestKotlin {
-        dependsOn(":copyTestTelemetryResources")
-    }
-
-    register("validatePackagedSchema") {
+    val validatePackagedSchema by registering {
         group = "build"
         description = "Validates that the packaged definition is compatable with the packaged schema"
         doFirst {
@@ -77,15 +64,25 @@ tasks {
             }
         }
     }
-    val copyTelemetryResources = register(name = "copyTelemetryResources", type = Copy::class) {
+
+    val copyTelemetryResources by registering(Copy::class) {
         from("..")
         include("*.json", "definitions/*.json")
         into("src/main/resources/")
     }
-    val copyTestTelemetryResources = register(name = "copyTestTelemetryResources", type = Copy::class) {
+
+    val copyTestTelemetryResources by registering(Copy::class) {
         from("..")
         include("*.json", "definitions/*.json")
         into("src/test/resources/")
+    }
+
+    compileKotlin {
+        dependsOn(copyTelemetryResources, validatePackagedSchema)
+    }
+
+    compileTestKotlin {
+        dependsOn(copyTestTelemetryResources)
     }
 
     processResources {
