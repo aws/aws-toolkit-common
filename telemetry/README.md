@@ -1,7 +1,7 @@
 # Telemetry
 
 `telemetry` contains code generators and definitions files to generate telemetry calls for the various
-AWS Toolkits.
+AWS IDE Extensions.
 
 ## Adding Telemetry
 
@@ -74,7 +74,17 @@ and change `name`, `description`, and the values in `allowedValues`
 
 Then rerun the generator. This example will generate a new type that can be imported or used in telemetry calls.
 
+CI jobs run validation checks on the telemetry definitions file. For example, entries are expected to exist in alphabetical order. You may want to check this yourself before creating a PR, by switching to the `telemetry/validation` folder, and running:
+
+```
+npm install
+npm run validate
+```
+
+You can also run `npm run fix` to apply simple fixes to the file (like re-ordering).
+
 ### Overriding existing telemetry
+
 In VSCode and JetBrains, extra telemetry files will take precedence over existing definitions. For example, if you have a metric for `lambda_update`, adding another `lambda_update` in the repo's extra telemetry files will override all of the values of it.
 
 Types work similarly, and will also be overwritten by extra telemetry files.
