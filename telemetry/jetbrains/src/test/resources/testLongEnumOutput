@@ -22,7 +22,7 @@ public enum class
     Unknown("unknown"),
     ;
 
-    public override fun toString(): String = value
+    override fun toString(): String = value
 
     public companion object {
         public fun from(type: String):

@@ -1,12 +1,12 @@
 [versions]
-assertJ = "3.24.2"
-jackson = "2.16.0"
+assertJ = "3.26.3"
+jackson = "2.17.2"
 # deprecated; should move to json-skema
-jsonSchema = "1.14.3"
+jsonSchema = "1.14.4"
 junit4 = "4.13.2"
-kotlin = "1.9.21"
-kotlin-poet = "1.15.3"
-nexus = "1.1.0"
+kotlin = "2.0.10"
+kotlin-poet = "1.18.1"
+nexus = "2.0.0"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertJ" }
