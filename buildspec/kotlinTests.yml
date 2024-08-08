@@ -10,4 +10,4 @@ phases:
             - |
                 # TODO - iterate through the subdirectories to have one build script per runtime
                 cd telemetry/jetbrains
-                ./gradlew test
+                ./gradlew build
