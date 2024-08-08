@@ -513,7 +513,12 @@
         {
             "name": "codewhispererCharactersAccepted",
             "type": "int",
-            "description": "The number of characters user has accepted through partial acceptance."
+            "description": "The number of characters user has accepted through inline completion service"
+        },
+        {
+            "name": "codewhispererCharactersModified",
+            "type": "int",
+            "description": "number of characters modified by users within the accepted inline suggestion"
         },
         {
             "name": "codewhispererCharactersRecommended",
@@ -4720,6 +4725,12 @@
             "name": "codewhisperer_userModification",
             "description": "Percentage of user modifications for the selected suggestion until a fixed period of time",
             "metadata": [
+                {
+                    "type": "codewhispererCharactersAccepted"
+                },
+                {
+                    "type": "codewhispererCharactersModified"
+                },
                 {
                     "type": "codewhispererCompletionType"
                 },
