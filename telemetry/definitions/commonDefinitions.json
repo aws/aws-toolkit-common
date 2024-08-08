@@ -284,7 +284,8 @@
                 "gradlew.bat",
                 "gradlew",
                 "gradle",
-                "IDEBundledGradle"
+                "IDEBundledGradle",
+                "unknown"
             ]
         },
         {
@@ -293,7 +294,8 @@
             "description": "Type of build system",
             "allowedValues": [
                 "Maven",
-                "Gradle"
+                "Gradle",
+                "unknown"
             ]
         },
         {
@@ -3841,7 +3843,7 @@
             "metadata": [
                 {
                     "type": "codeTransformBuildCommand",
-                    "required": true
+                    "required": false
                 },
                 {
                     "type": "codeTransformSessionId",
@@ -4096,7 +4098,7 @@
                 },
                 {
                     "type": "codeTransformBuildSystem",
-                    "required": true
+                    "required": false
                 },
                 {
                     "type": "codeTransformLocalJavaVersion",
