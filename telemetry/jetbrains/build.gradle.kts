@@ -1,20 +1,16 @@
 import org.everit.json.schema.Schema
 import org.everit.json.schema.loader.SchemaLoader
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.json.JSONObject
 
-val jacksonVersion = "2.14.1"
-val junitVersion = "4.13.2"
-val kotlinVersion = "1.3.20"
-val assertjVersion = "3.24.2"
-
 plugins {
-    java
     `kotlin-dsl`
-    kotlin("jvm") version "1.8.0"
+    alias(libs.plugins.kotlin.jvm)
     `maven-publish`
     signing
-    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
+    alias(libs.plugins.nexus.publishing)
 }
 
 java {
@@ -28,8 +24,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("com.github.erosb:everit-json-schema:1.14.1")
-        classpath(kotlin("gradle-plugin", version = "1.3.20"))
+        classpath(libs.json.schema)
     }
 }
 
@@ -40,24 +35,19 @@ repositories {
 group = "software.aws.toolkits"
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
-    implementation("com.squareup:kotlinpoet:1.13.2")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
-    implementation("com.github.erosb:everit-json-schema:1.12.2")
-    testImplementation("junit:junit:$junitVersion")
-    testImplementation("org.assertj:assertj-core:$assertjVersion")
+    implementation(libs.kotlin.poet)
+    implementation(libs.jackson.module.kotlin)
+    implementation(libs.json.schema)
+    testImplementation(libs.junit4)
+    testImplementation(libs.assertj)
 }
 
 tasks {
-    compileKotlin {
-        dependsOn(":copyTelemetryResources", ":validatePackagedSchema")
-        kotlinOptions.jvmTarget = "1.8"
+    withType<KotlinCompile> {
+        compilerOptions.jvmTarget = JvmTarget.JVM_17
     }
-    compileTestKotlin {
-        dependsOn(":copyTestTelemetryResources")
-        kotlinOptions.jvmTarget = "1.8"
-    }
-    register("validatePackagedSchema") {
+
+    val validatePackagedSchema by registering {
         group = "build"
         description = "Validates that the packaged definition is compatable with the packaged schema"
         doFirst {
@@ -74,15 +64,33 @@ tasks {
             }
         }
     }
-    task(name = "copyTelemetryResources", type = Copy::class) {
+
+    val copyTelemetryResources by registering(Copy::class) {
         from("..")
         include("*.json", "definitions/*.json")
         into("src/main/resources/")
     }
-    task(name = "copyTestTelemetryResources", type = Copy::class) {
+
+    val copyTestTelemetryResources by registering(Copy::class) {
         from("..")
         include("*.json", "definitions/*.json")
         into("src/test/resources/")
+    }
+
+    compileKotlin {
+        dependsOn(copyTelemetryResources, validatePackagedSchema)
+    }
+
+    compileTestKotlin {
+        dependsOn(copyTestTelemetryResources)
+    }
+
+    processResources {
+        dependsOn(copyTelemetryResources)
+    }
+
+    processTestResources {
+        dependsOn(copyTestTelemetryResources)
     }
 }
 
