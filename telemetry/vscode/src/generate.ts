@@ -122,6 +122,10 @@ function getTypeOrThrow(types: MetadataType[] = [], name: string) {
 
 const baseName = 'MetricBase'
 
+/**
+ * Fields set automatically by the telemetry client (thus application code
+ * normally shouldn't set these because the value will be overridden).
+ */
 const commonMetadata = [
   'awsAccount',
   'awsRegion',
@@ -132,7 +136,13 @@ const commonMetadata = [
   'requestId',
   'requestServiceType',
   'result',
-]
+] as const
+
+/** 
+ * These fields will also be set by the telemetry client, but the caller might
+ * know better, so they won't be overridden if specified in `.record()` calls.
+ */
+const optionalMetadata: typeof commonMetadata[number][] = ['awsRegion']
 
 const passive: PropertySignatureStructure = {
     isReadonly: true,
@@ -183,7 +193,7 @@ const header = `
 `.trimStart()
 
 function getMetricMetadata(metric: Metric) {
-    return metric.metadata?.filter(m => !commonMetadata.includes(m.type)) ?? []
+    return metric.metadata?.filter(m => !commonMetadata.includes(m.type as typeof commonMetadata[number])) ?? []
 }
 
 function generateMetadataProperty(metadata: MetricMetadataType): PropertySignatureStructure {
@@ -351,7 +361,7 @@ function generateFile(telemetryJson: MetricDefinitionRoot, dest: string) {
         isExported: true,
         name: 'Metadata',
         typeParameters: [`T extends ${baseName}`],
-        type: `Partial<Omit<T, keyof ${baseName}>>`,
+        type: `Partial<Omit<T, keyof ${baseName}> | Partial<Pick<${baseName}, ${optionalMetadata.map(v => `'${v}'`).join(' | ')}>>>`,
         kind: StructureKind.TypeAlias,
     }
 

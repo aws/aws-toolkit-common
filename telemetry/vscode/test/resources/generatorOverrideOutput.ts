@@ -85,7 +85,7 @@ export const definitions: Record<string, MetricDefinition> = {
     metadata_hasResult: { unit: 'None', passive: false, requiredMetadata: [] },
 }
 
-export type Metadata<T extends MetricBase> = Partial<Omit<T, keyof MetricBase>>
+export type Metadata<T extends MetricBase> = Partial<Omit<T, keyof MetricBase> | Partial<Pick<MetricBase, 'awsRegion'>>>
 
 export interface Metric<T extends MetricBase = MetricBase> {
     readonly name: string
