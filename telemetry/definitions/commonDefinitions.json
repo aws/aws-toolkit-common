@@ -1590,6 +1590,16 @@
             "description": "The type of an SQS Queue"
         },
         {
+            "name": "ssoRegistrationClientId",
+            "type": "string",
+            "description": "The client ID of an SSO registration."
+        },
+        {
+            "name": "ssoRegistrationExpiresAt",
+            "type": "string",
+            "description": "Date/time that an SSO client registration expires."
+        },
+        {
             "name": "successCount",
             "type": "int",
             "description": "The number of successful operations"
@@ -2450,6 +2460,14 @@
                 },
                 {
                     "type": "source"
+                },
+                {
+                    "type": "ssoRegistrationClientId",
+                    "required": false
+                },
+                {
+                    "type": "ssoRegistrationExpiresAt",
+                    "required": false
                 }
             ]
         },
@@ -2525,8 +2543,20 @@
                     "required": true
                 },
                 {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
                     "type": "source",
                     "required": true
+                },
+                {
+                    "type": "ssoRegistrationClientId",
+                    "required": false
+                },
+                {
+                    "type": "ssoRegistrationExpiresAt",
+                    "required": false
                 }
             ],
             "passive": true
@@ -2650,6 +2680,14 @@
                 },
                 {
                     "type": "source"
+                },
+                {
+                    "type": "ssoRegistrationClientId",
+                    "required": false
+                },
+                {
+                    "type": "ssoRegistrationExpiresAt",
+                    "required": false
                 }
             ]
         },
@@ -2721,6 +2759,10 @@
                     "required": false
                 },
                 {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
                     "type": "credentialType",
                     "required": false
                 },
@@ -2741,6 +2783,14 @@
                 },
                 {
                     "type": "sessionDuration",
+                    "required": false
+                },
+                {
+                    "type": "ssoRegistrationClientId",
+                    "required": false
+                },
+                {
+                    "type": "ssoRegistrationExpiresAt",
                     "required": false
                 }
             ]
