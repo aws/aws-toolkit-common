@@ -490,7 +490,7 @@
         {
             "name": "codewhispererAcceptedTokens",
             "type": "int",
-            "description": "The metrics accepted on suggested CodeWhisperer code"
+            "description": "The number of tokens that are accepted and not modified by the user"
         },
         {
             "name": "codewhispererAllCompletionsLatency",
@@ -765,6 +765,11 @@
             "name": "codewhispererSessionId",
             "type": "string",
             "description": "The unique identifier for a CodeWhisperer session(which can contain multiple requests)"
+        },
+        {
+            "name": "codewhispererSuggestedTokens",
+            "type": "int",
+            "description": "The number of tokens in the original code suggestions"
         },
         {
             "name": "codewhispererSuggestionCount",
@@ -4327,6 +4332,9 @@
                 },
                 {
                     "type": "codewhispererPercentage"
+                },
+                {
+                    "type": "codewhispererSuggestedTokens"
                 },
                 {
                     "type": "codewhispererTotalTokens"
