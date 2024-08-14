@@ -5087,6 +5087,10 @@
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "count",
+                    "required": false
                 }
             ]
         },
@@ -5100,7 +5104,11 @@
                 {
                     "type": "source",
                     "required": false
-                }
+                },
+                {
+                    "type": "count",
+                    "required": false
+               }
             ]
         },
         {
@@ -5121,10 +5129,14 @@
         },
         {
             "name": "dynamodb_deleteRecord",
-            "description": "Deletes a record in DynamoDB table",
+            "description": "Deletes a record in DynamoDB record",
             "metadata": [
                 {
                     "type": "result"
+                },
+                {
+                    "type": "reason",
+                    "required": false
                 }
             ]
         },
@@ -5138,7 +5150,11 @@
                 {
                     "type": "source",
                     "required": false
-                }
+                },
+                {
+                    "type": "count",
+                    "required": false
+               }
             ]
         },
         {
