@@ -5096,6 +5096,10 @@
             "metadata": [
                 {
                     "type": "result"
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -5112,6 +5116,28 @@
                 },
                 {
                     "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "dynamodb_deleteRecord",
+            "description": "Deletes a record in DynamoDB table",
+            "metadata": [
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "dynamodb_fetchTables",
+            "description": "Fetches the tables in a DynamoDB entity",
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
