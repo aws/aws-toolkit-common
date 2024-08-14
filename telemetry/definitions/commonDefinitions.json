@@ -1617,7 +1617,8 @@
                 "dotnet-lambda-deploy",
                 "dotnet-deploy-cli",
                 "aws-cli",
-                "sam-cli"
+                "sam-cli",
+                "docker"
             ]
         },
         {
