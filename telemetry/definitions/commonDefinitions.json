@@ -4334,7 +4334,8 @@
                     "type": "codewhispererPercentage"
                 },
                 {
-                    "type": "codewhispererSuggestedTokens"
+                    "type": "codewhispererSuggestedTokens",
+                    "required": false
                 },
                 {
                     "type": "codewhispererTotalTokens"
