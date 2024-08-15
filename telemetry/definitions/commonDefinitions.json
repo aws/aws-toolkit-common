@@ -5046,6 +5046,19 @@
             ]
         },
         {
+            "name": "dynamodb_deleteRecord",
+            "description": "Deletes a record in DynamoDB record",
+            "metadata": [
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
             "name": "dynamodb_deleteTable",
             "description": "Delete a DynamoDB table",
             "metadata": [
@@ -5079,6 +5092,10 @@
             "description": "Fetch records from a DynamoDB table in the table browser",
             "metadata": [
                 {
+                    "type": "count",
+                    "required": false
+                },
+                {
                     "type": "dynamoDbFetchType"
                 },
                 {
@@ -5091,11 +5108,36 @@
             ]
         },
         {
+            "name": "dynamodb_fetchTables",
+            "description": "Fetches the tables in a DynamoDB entity",
+            "metadata": [
+                {
+                    "type": "count",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "source",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "dynamodb_openTable",
             "description": "Open a DynamoDB table in the table browser",
             "metadata": [
                 {
+                    "type": "count",
+                    "required": false
+                },
+                {
                     "type": "result"
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
