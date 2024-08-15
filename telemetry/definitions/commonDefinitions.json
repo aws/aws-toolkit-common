@@ -1670,7 +1670,7 @@
                 },
                 {
                     "type": "reason",
-                    "required": false
+                    "required": false  
                 },
                 {
                     "type": "requestId",
@@ -1740,6 +1740,10 @@
                 {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "reasonDesc",
+                    "required": false  
                 },
                 {
                     "type": "requestId",
@@ -1921,7 +1925,7 @@
                 },
                 {
                     "type": "reason",
-                    "required": false
+                    "required": false  
                 },
                 {
                     "type": "requestId",
