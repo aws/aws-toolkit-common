@@ -5079,6 +5079,10 @@
             "description": "Fetch records from a DynamoDB table in the table browser",
             "metadata": [
                 {
+                    "type": "count",
+                    "required": false
+                },
+                {
                     "type": "dynamoDbFetchType"
                 },
                 {
@@ -5087,10 +5091,6 @@
                 },
                 {
                     "type": "result"
-                },
-                {
-                    "type": "count",
-                    "required": false
                 }
             ]
         },
@@ -5099,16 +5099,16 @@
             "description": "Open a DynamoDB table in the table browser",
             "metadata": [
                 {
+                    "type": "count",
+                    "required": false
+                },
+                {
                     "type": "result"
                 },
                 {
                     "type": "source",
                     "required": false
-                },
-                {
-                    "type": "count",
-                    "required": false
-               }
+                }
             ]
         },
         {
@@ -5132,11 +5132,11 @@
             "description": "Deletes a record in DynamoDB record",
             "metadata": [
                 {
-                    "type": "result"
-                },
-                {
                     "type": "reason",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -5145,16 +5145,16 @@
             "description": "Fetches the tables in a DynamoDB entity",
             "metadata": [
                 {
+                    "type": "count",
+                    "required": false
+                },
+                {
                     "type": "result"
                 },
                 {
                     "type": "source",
                     "required": false
-                },
-                {
-                    "type": "count",
-                    "required": false
-               }
+                }
             ]
         },
         {
