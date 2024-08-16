@@ -2176,7 +2176,7 @@
             ]
         },
         {
-            "name": "appbuilder_installTool",
+            "name": "appBuilder_installTool",
             "description": "Click Install Docker button in Getting Started Walkthrough",
             "metadata": [
                 {
@@ -2190,7 +2190,7 @@
             ]
         },
         {
-            "name": "appbuilder_openLocalInvokeWebView",
+            "name": "appBuilder_openLocalInvokeWebView",
             "description": "Click open Local invoke WebView button in Application Builder",
             "metadata": [
                 {
@@ -2200,7 +2200,7 @@
             ]
         },
         {
-            "name": "appbuilder_openRemoteInvokeWebView",
+            "name": "appBuilder_openRemoteInvokeWebView",
             "description": "Click open Remote invoke WebView button in Application Builder",
             "metadata": [
                 {
@@ -2210,7 +2210,7 @@
             ]
         },
         {
-            "name": "appbuilder_openTemplate",
+            "name": "appBuilder_openTemplate",
             "description": "Click open template button in Application Builder",
             "metadata": [
                 {
@@ -2220,7 +2220,7 @@
             ]
         },
         {
-            "name": "appbuilder_selectWalkthroughTemplate",
+            "name": "appBuilder_selectWalkthroughTemplate",
             "description": "Select a template and create project in Getting Started Walkthrough",
             "metadata": [
                 {
@@ -2234,7 +2234,7 @@
             ]
         },
         {
-            "name": "appbuilder_startWalkthrough",
+            "name": "appBuilder_startWalkthrough",
             "description": "Open Getting Started Walkthrough",
             "metadata": [
                 {
