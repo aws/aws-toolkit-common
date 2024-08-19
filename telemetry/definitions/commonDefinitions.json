@@ -2177,7 +2177,7 @@
         },
         {
             "name": "appBuilder_installTool",
-            "description": "Click Install Docker button in Getting Started Walkthrough",
+            "description": "Click Install button in Getting Started Walkthrough",
             "metadata": [
                 {
                     "type": "source",
