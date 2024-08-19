@@ -1632,7 +1632,8 @@
                 "dotnet-lambda-deploy",
                 "dotnet-deploy-cli",
                 "aws-cli",
-                "sam-cli"
+                "sam-cli",
+                "docker"
             ]
         },
         {
@@ -2190,6 +2191,74 @@
             ]
         },
         {
+            "name": "appBuilder_installTool",
+            "description": "Click Install button in Getting Started Walkthrough",
+            "metadata": [
+                {
+                    "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "toolId",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "appBuilder_openLocalInvokeWebView",
+            "description": "Click open Local invoke WebView button in Application Builder",
+            "metadata": [
+                {
+                    "type": "source",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "appBuilder_openRemoteInvokeWebView",
+            "description": "Click open Remote invoke WebView button in Application Builder",
+            "metadata": [
+                {
+                    "type": "source",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "appBuilder_openTemplate",
+            "description": "Click open template button in Application Builder",
+            "metadata": [
+                {
+                    "type": "source",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "appBuilder_selectWalkthroughTemplate",
+            "description": "Select a template and create project in Getting Started Walkthrough",
+            "metadata": [
+                {
+                    "type": "action",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "appBuilder_startWalkthrough",
+            "description": "Open Getting Started Walkthrough",
+            "metadata": [
+                {
+                    "type": "source",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "appcomposer_addConnection",
             "description": "Called when two resources are connected",
             "metadata": [
@@ -2320,6 +2389,10 @@
             "metadata": [
                 {
                     "type": "hasChatAuth"
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -5952,7 +6025,8 @@
             "description": "Jump to a lambda handler from elsewhere",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -5991,6 +6065,10 @@
                     "required": false
                 },
                 {
+                    "type": "source",
+                    "required": false
+                },
+                {
                     "type": "version",
                     "required": false
                 }
@@ -6005,6 +6083,10 @@
                 },
                 {
                     "type": "runtime",
+                    "required": false
+                },
+                {
+                    "type": "source",
                     "required": false
                 }
             ]
@@ -6369,11 +6451,33 @@
             ]
         },
         {
+            "name": "sam_build",
+            "description": "Called when building a SAM application",
+            "metadata": [
+                {
+                    "type": "lambdaPackageType",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "version",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "sam_deploy",
             "description": "Called when deploying a SAM application",
             "metadata": [
                 {
                     "type": "result"
+                },
+                {
+                    "type": "source",
+                    "required": false
                 },
                 {
                     "type": "version",
@@ -6450,6 +6554,10 @@
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "source",
+                    "required": false
                 },
                 {
                     "type": "syncedResources"
