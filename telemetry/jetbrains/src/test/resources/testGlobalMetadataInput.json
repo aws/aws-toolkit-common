@@ -1,0 +1,50 @@
+{
+  "types": [
+    {
+      "name": "duration",
+      "type": "double",
+      "description": "The duration of the operation in milliseconds"
+    },
+    {
+      "name": "httpStatusCode",
+      "type": "string",
+      "description": "HTTP status code for the request (if any) associated with a metric."
+    },
+    {
+      "name": "reason",
+      "type": "string",
+      "description": "Reason code or name for an event (when result=Succeeded) or error (when result=Failed). Unlike the `reasonDesc` field, this should be a stable/predictable name for a class of events or errors (typically the exception name, e.g. FileIOException)."
+    },
+    {
+      "name": "reasonDesc",
+      "type": "string",
+      "description": "Error message detail. May contain arbitrary message details (unlike the `reason` field), but should be truncated (recommendation: 200 chars)."
+    },
+    {
+      "name": "requestId",
+      "type": "string",
+      "description": "Request ID (if any) associated with a metric. For example, an event with `requestServiceType: s3` means that the request ID is associated with an S3 API call. Events that cover multiple API calls should use the request ID of the most recent call."
+    },
+    {
+      "name": "requestServiceType",
+      "type": "string",
+      "description": "Per-request service identifier. Unlike `serviceType` (which describes the originator of the request), this describes the request itself."
+    },
+    {
+      "name": "result",
+      "allowedValues": [
+        "Succeeded",
+        "Failed",
+        "Cancelled"
+      ],
+      "description": "The result of the operation"
+    }
+  ],
+  "metrics": [
+    {
+      "name": "test_metric",
+      "description": "Testing metric with global metadata fields",
+      "metadata": []
+    }
+  ]
+}

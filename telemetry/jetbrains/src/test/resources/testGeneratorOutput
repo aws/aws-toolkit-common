@@ -44,6 +44,7 @@ public object LambdaTelemetry {
         project: Project?,
         lambdaRuntime: LambdaRuntime,
         arbitraryString: String,
+        duration: Double? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -56,6 +57,9 @@ public object LambdaTelemetry {
                 passive(passive)
                 metadata("lambdaRuntime", lambdaRuntime.toString())
                 metadata("arbitraryString", arbitraryString)
+                if(duration != null) {
+                    metadata("duration", duration.toString())
+                }
             }
         }
     }
@@ -67,6 +71,7 @@ public object LambdaTelemetry {
         connectionSettings: ConnectionSettings? = null,
         lambdaRuntime: LambdaRuntime,
         arbitraryString: String,
+        duration: Double? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -79,6 +84,9 @@ public object LambdaTelemetry {
                 passive(passive)
                 metadata("lambdaRuntime", lambdaRuntime.toString())
                 metadata("arbitraryString", arbitraryString)
+                if(duration != null) {
+                    metadata("duration", duration.toString())
+                }
             }
         }
     }
@@ -90,6 +98,7 @@ public object LambdaTelemetry {
         metadata: MetricEventMetadata,
         lambdaRuntime: LambdaRuntime,
         arbitraryString: String,
+        duration: Double? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -102,6 +111,9 @@ public object LambdaTelemetry {
                 passive(passive)
                 metadata("lambdaRuntime", lambdaRuntime.toString())
                 metadata("arbitraryString", arbitraryString)
+                if(duration != null) {
+                    metadata("duration", duration.toString())
+                }
             }
         }
     }
@@ -182,6 +194,7 @@ public object LambdaTelemetry {
         project: Project?,
         lambdaRuntime: LambdaRuntime? = null,
         inttype: Int,
+        duration: Double? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -196,6 +209,9 @@ public object LambdaTelemetry {
                     metadata("lambdaRuntime", lambdaRuntime.toString())
                 }
                 metadata("inttype", inttype.toString())
+                if(duration != null) {
+                    metadata("duration", duration.toString())
+                }
             }
         }
     }
@@ -207,6 +223,7 @@ public object LambdaTelemetry {
         connectionSettings: ConnectionSettings? = null,
         lambdaRuntime: LambdaRuntime? = null,
         inttype: Int,
+        duration: Double? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -221,6 +238,9 @@ public object LambdaTelemetry {
                     metadata("lambdaRuntime", lambdaRuntime.toString())
                 }
                 metadata("inttype", inttype.toString())
+                if(duration != null) {
+                    metadata("duration", duration.toString())
+                }
             }
         }
     }
@@ -232,6 +252,7 @@ public object LambdaTelemetry {
         metadata: MetricEventMetadata,
         lambdaRuntime: LambdaRuntime? = null,
         inttype: Int,
+        duration: Double? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -246,6 +267,9 @@ public object LambdaTelemetry {
                     metadata("lambdaRuntime", lambdaRuntime.toString())
                 }
                 metadata("inttype", inttype.toString())
+                if(duration != null) {
+                    metadata("duration", duration.toString())
+                }
             }
         }
     }
@@ -257,6 +281,7 @@ public object NoTelemetry {
      */
     public fun metadata(
         project: Project?,
+        duration: Double? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -267,6 +292,9 @@ public object NoTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(passive)
+                if(duration != null) {
+                    metadata("duration", duration.toString())
+                }
             }
         }
     }
@@ -276,6 +304,7 @@ public object NoTelemetry {
      */
     public fun metadata(
         connectionSettings: ConnectionSettings? = null,
+        duration: Double? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -286,6 +315,9 @@ public object NoTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(passive)
+                if(duration != null) {
+                    metadata("duration", duration.toString())
+                }
             }
         }
     }
@@ -295,6 +327,7 @@ public object NoTelemetry {
      */
     public fun metadata(
         metadata: MetricEventMetadata,
+        duration: Double? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -305,6 +338,9 @@ public object NoTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(passive)
+                if(duration != null) {
+                    metadata("duration", duration.toString())
+                }
             }
         }
     }
@@ -316,6 +352,7 @@ public object PassiveTelemetry {
      */
     public fun passive(
         project: Project?,
+        duration: Double? = null,
         passive: Boolean = true,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -326,6 +363,9 @@ public object PassiveTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(passive)
+                if(duration != null) {
+                    metadata("duration", duration.toString())
+                }
             }
         }
     }
@@ -335,6 +375,7 @@ public object PassiveTelemetry {
      */
     public fun passive(
         connectionSettings: ConnectionSettings? = null,
+        duration: Double? = null,
         passive: Boolean = true,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -345,6 +386,9 @@ public object PassiveTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(passive)
+                if(duration != null) {
+                    metadata("duration", duration.toString())
+                }
             }
         }
     }
@@ -354,6 +398,7 @@ public object PassiveTelemetry {
      */
     public fun passive(
         metadata: MetricEventMetadata,
+        duration: Double? = null,
         passive: Boolean = true,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -364,6 +409,9 @@ public object PassiveTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(passive)
+                if(duration != null) {
+                    metadata("duration", duration.toString())
+                }
             }
         }
     }
