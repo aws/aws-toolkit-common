@@ -25,6 +25,11 @@ class GeneratorTest {
     }
 
     @Test
+    fun generateWithGlobalMetadata() {
+        testGenerator(defaultDefinitionsFile = "/testGlobalMetadataInput.json", expectedOutputFile = "/testGlobalMetadataOutput")
+    }
+
+    @Test
     fun generatesWithNormalInput() {
         testGenerator(defaultDefinitionsFile = "/testGeneratorInput.json", expectedOutputFile = "/testGeneratorOutput")
     }
