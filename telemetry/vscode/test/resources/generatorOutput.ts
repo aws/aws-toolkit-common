@@ -34,6 +34,8 @@ export interface MetricBase {
     readonly passive?: boolean
     /** @deprecated Arbitrary "value" of the metric. */
     readonly value?: number
+    /** A flag indicating that the metric should track run-time performance information */
+    readonly trackPerformance?: boolean
 }
 
 export interface LambdaDelete extends MetricBase {
@@ -93,6 +95,7 @@ export type Runtime =
 export interface MetricDefinition {
     readonly unit: string
     readonly passive: boolean
+    readonly trackPerformance: boolean
     readonly requiredMetadata: readonly string[]
 }
 
@@ -107,11 +110,11 @@ export interface MetricShapes {
 export type MetricName = keyof MetricShapes
 
 export const definitions: Record<string, MetricDefinition> = {
-    lambda_delete: { unit: 'None', passive: false, requiredMetadata: ['isRetry'] },
-    lambda_create: { unit: 'None', passive: false, requiredMetadata: ['runtime', 'userId'] },
-    lambda_remoteinvoke: { unit: 'None', passive: false, requiredMetadata: ['successCount'] },
-    no_metadata: { unit: 'None', passive: false, requiredMetadata: [] },
-    passive_passive: { unit: 'None', passive: true, requiredMetadata: [] },
+    lambda_delete: { unit: 'None', passive: false, trackPerformance: false, requiredMetadata: ['isRetry'] },
+    lambda_create: { unit: 'None', passive: false, trackPerformance: false, requiredMetadata: ['runtime', 'userId'] },
+    lambda_remoteinvoke: { unit: 'None', passive: false, trackPerformance: false, requiredMetadata: ['successCount'] },
+    no_metadata: { unit: 'None', passive: false, trackPerformance: false, requiredMetadata: [] },
+    passive_passive: { unit: 'None', passive: true, trackPerformance: false, requiredMetadata: [] },
 }
 
 export type Metadata<T extends MetricBase> = Partial<Omit<T, keyof MetricBase> | Partial<Pick<MetricBase, 'awsRegion'>>>

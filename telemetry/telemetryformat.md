@@ -89,6 +89,8 @@ result: Result
 passive: boolean
 // Value based on unit and call type
 value: number
+// Indicates that the metric should track run-time performance information
+trackPerformance: boolean
 ```
 
 If not specified `createTime` defaults to UTC now, `value` defaults to `1.0`.

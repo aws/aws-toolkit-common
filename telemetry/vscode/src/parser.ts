@@ -34,6 +34,7 @@ export interface Metric {
     readonly unit?: string
     readonly metadata?: MetricMetadata[]
     readonly passive?: boolean
+    readonly trackPerformance?: boolean
 }
 
 export interface MetricDefinitionRoot {

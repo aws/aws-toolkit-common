@@ -153,6 +153,15 @@ const passive: PropertySignatureStructure = {
     kind: StructureKind.PropertySignature,
 }
 
+const trackPerformance: PropertySignatureStructure = {
+    isReadonly: true,
+    hasQuestionToken: true,
+    name: 'trackPerformance',
+    type: 'boolean',
+    docs: ['A flag indicating that the metric should track run-time performance information'],
+    kind: StructureKind.PropertySignature,
+}
+
 const value: PropertySignatureStructure = {
     isReadonly: true,
     hasQuestionToken: true,
@@ -174,6 +183,11 @@ const runtimeMetricDefinition: InterfaceDeclarationStructure = {
         },
         {
             name: 'passive',
+            type: 'boolean',
+            isReadonly: true,
+        },
+        {
+            name: 'trackPerformance',
             type: 'boolean',
             isReadonly: true,
         },
@@ -214,7 +228,7 @@ function generateMetricBase(types: MetadataType[] | undefined): InterfaceDeclara
         name: baseName,
         isExported: true,
         kind: StructureKind.Interface,
-        properties: commonMetadata.map(toProp).concat(passive, value),
+        properties: commonMetadata.map(toProp).concat(passive, value, trackPerformance),
     }    
 }
 
@@ -325,7 +339,7 @@ function generateDefinitions(metrics: Metric[]): VariableStatementStructure {
         const metadataTypes = getMetricMetadata(m).filter(m => m.required ?? true).map(m => `'${m.type}'`)
         const requiredMetadata = `[${metadataTypes.join(', ')}]`
         
-        return `${m.name}: { unit: '${m.unit ?? 'None'}', passive: ${m.passive ?? false}, requiredMetadata: ${requiredMetadata} }`
+        return `${m.name}: { unit: '${m.unit ?? 'None'}', passive: ${m.passive ?? false}, trackPerformance: ${m.trackPerformance ?? false}, requiredMetadata: ${requiredMetadata} }`
     })
 
     return {
