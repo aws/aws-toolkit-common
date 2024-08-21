@@ -1206,6 +1206,16 @@
             ]
         },
         {
+            "name": "featureValue",
+            "type": "string",
+            "description": "Additional Data Value for AB Testing"
+        },
+        {
+            "name": "featureVariation",
+            "type": "string",
+            "description": "Feature Variant for AB Testing"
+        },
+        {
             "name": "filenameExt",
             "type": "string",
             "description": "Filename extension (examples: .txt, .yml, .yaml, .asl.yaml, ...), or empty string if the filename does not contain dot (.) between two chars."
@@ -5774,6 +5784,21 @@
             "metadata": [
                 {
                     "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "experiment_feature_config",
+            "description": "AB Testing Feature response and Cohort Assignments",
+            "metadata": [
+                {
+                    "type": "featureValue"
+                },
+                {
+                    "type": "featureVariation"
+                },
+                {
+                    "type": "id"
                 }
             ]
         },
