@@ -162,6 +162,32 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.True(datum.Passive);
         }
 
+        /// <summary>
+        /// RecordAwsCopyArn / aws_copyArn was chosen as a sample metric that does not explicitly define a result field
+        /// </summary>
+        [Fact]
+        public void RecordResult()
+        {
+            var copyArn = new AwsCopyArn()
+            {
+                Result = Result.Succeeded,
+            };
+
+            _telemetryLogger.Object.RecordAwsCopyArn(copyArn);
+
+            Assert.NotNull(_recordedMetrics);
+            _telemetryLogger.Verify(
+                mock => mock.Record(_recordedMetrics),
+                Times.Once
+            );
+
+            var datum = Assert.Single(_recordedMetrics.Data);
+            Assert.NotNull(datum);
+            Assert.Equal("aws_copyArn", datum.MetricName);
+            Assert.True(datum.Metadata.ContainsKey("result"));
+            Assert.Equal("Succeeded", datum.Metadata["result"]);
+        }
+
         [Fact]
         public void RecordMetricWithMutationTransform()
         {

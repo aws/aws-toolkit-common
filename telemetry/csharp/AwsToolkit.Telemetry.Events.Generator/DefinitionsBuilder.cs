@@ -19,12 +19,14 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
         private const string MetadataEntryFullName = "MetadataEntry";
         private const string MetricDatumFullName = "MetricDatum";
         private const string AddMetadataMethodName = "AddMetadata";
+        private const string AddResultToMetadataMethodName = "AddResultToMetadata";
         private const string InvokeTransformMethodName = "InvokeTransform";
 
         // contains metadata fields that should be skipped when generating code.
-        // These fields are covered by the class BaseTelemetryEvent
+        // These fields are covered by the BaseTelemetryEvent and BaseGeneratedTelemetryEvent classes
         private static readonly string[] ImplicitFields = 
         {
+            "result",
             "reason",
             "errorCode",
             "causedBy",
@@ -283,7 +285,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
                 TypeAttributes = TypeAttributes.Public | TypeAttributes.Sealed
             };
 
-            cls.BaseTypes.Add("BaseTelemetryEvent");
+            cls.BaseTypes.Add("BaseGeneratedTelemetryEvent");
 
             if (!string.IsNullOrWhiteSpace(metric.description))
             {
@@ -455,7 +457,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             // {
             //     datum.AddMetadata("duration", payload.Duration.Value);
             // }
-            var payloadDuration= new CodeFieldReferenceExpression(payload, "Duration");
+            var payloadDuration = new CodeFieldReferenceExpression(payload, "Duration");
             var hasValueDuration = new CodeFieldReferenceExpression(payloadDuration, "HasValue");
             var durationMetadata = new CodeMethodInvokeExpression(datumAddData,
                         new CodePrimitiveExpression("duration"), new CodeFieldReferenceExpression(payloadDuration, "Value"));
@@ -466,6 +468,12 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             var payloadLocale = new CodeFieldReferenceExpression(payload, "Locale");
             tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
                 new CodePrimitiveExpression("locale"), payloadLocale)));
+
+            // Generate: datum.AddResultToMetadata(payload.Result);
+            var payloadResult = new CodeFieldReferenceExpression(payload, "Result");
+            tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(
+                new CodeMethodReferenceExpression(datum, AddResultToMetadataMethodName),
+                payloadResult)));
 
             // Set MetricDatum Metadata values
             metric.metadata?
