@@ -2696,6 +2696,21 @@
             ]
         },
         {
+            "name": "aws_featureConfig",
+            "description": "AB Testing Feature response and Cohort Assignments",
+            "metadata": [
+                {
+                    "type": "featureValue"
+                },
+                {
+                    "type": "featureVariation"
+                },
+                {
+                    "type": "id"
+                }
+            ]
+        },
+        {
             "name": "aws_help",
             "description": "Open docs for the extension",
             "metadata": [
@@ -5784,21 +5799,6 @@
             "metadata": [
                 {
                     "type": "result"
-                }
-            ]
-        },
-        {
-            "name": "experiment_feature_config",
-            "description": "AB Testing Feature response and Cohort Assignments",
-            "metadata": [
-                {
-                    "type": "featureValue"
-                },
-                {
-                    "type": "featureVariation"
-                },
-                {
-                    "type": "id"
                 }
             ]
         },
