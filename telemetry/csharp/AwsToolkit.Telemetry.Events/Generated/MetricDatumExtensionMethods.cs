@@ -1,7 +1,5 @@
 ﻿using Amazon.AwsToolkit.Telemetry.Events.Core;
 using log4net;
-using System;
-using System.Diagnostics;
 
 namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 {
@@ -10,6 +8,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         private static readonly ILog Logger = LogManager.GetLogger(typeof(MetricDatumExtensionMethods));
 
         /// <summary>
+        /// TODO : UPDATE ME
+        /// 
         /// Add metadata to a metric datum, only if the value is non-blank (object overload).
         /// 
         /// The main use-case for this method is the auto-generated code which provides 
