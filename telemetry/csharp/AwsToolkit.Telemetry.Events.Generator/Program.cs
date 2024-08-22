@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Amazon.AwsToolkit.Telemetry.Events.Generator.Core;
+using Amazon.AwsToolkit.Telemetry.Events.Generator.Core.Models;
+using CommandLine;
+using System;
 using System.IO;
 using System.Linq;
-using Amazon.AwsToolkit.Telemetry.Events.Generator.Models;
-using CommandLine;
 
 namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -27,6 +28,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
                 throw new Exception("Program Options are undefined or missing.");
             }
 
+            Generate(options);
+        }
+
+        public static void Generate(Options options)
+        { 
             var definitionPath = Path.Combine(GetTelemetryDefinitionsFolder(), "commonDefinitions.json");
 
             var commonDefinitions = TelemetryDefinitions.Load(definitionPath);

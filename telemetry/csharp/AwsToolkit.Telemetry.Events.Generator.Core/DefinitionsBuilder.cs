@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Amazon.AwsToolkit.Telemetry.Events.Generator.Core.Models;
+using Amazon.AwsToolkit.Telemetry.Events.Generator.Core.Utils;
+using System;
 using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
@@ -6,10 +8,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Amazon.AwsToolkit.Telemetry.Events.Generator.Models;
-using Amazon.AwsToolkit.Telemetry.Events.Generator.Utils;
 
-namespace Amazon.AwsToolkit.Telemetry.Events.Generator
+namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Core
 {
     /// <summary>
     /// Generates code that allows programs like the Toolkit to instantiate and publish Telemetry Events
@@ -112,9 +112,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
             blankNamespace.Imports.Add(new CodeNamespaceImport("System.Collections.Generic"));
             // All generated code is expected to be placed in, or somewhere with a dependency on,
             // AwsToolkit.Telemetry.Events.Generated
-            if (_namespace != Options.DefaultEventsNamespace)
+            if (_namespace != Constants.DefaultEventsNamespace)
             {
-                blankNamespace.Imports.Add(new CodeNamespaceImport(Options.DefaultEventsNamespace));
+                blankNamespace.Imports.Add(new CodeNamespaceImport(Constants.DefaultEventsNamespace));
             }
             blankNamespace.Imports.Add(new CodeNamespaceImport("Amazon.AwsToolkit.Telemetry.Events.Core"));
 

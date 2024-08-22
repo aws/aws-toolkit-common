@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using Amazon.AwsToolkit.Telemetry.Events.Generator.Core;
 using CommandLine;
+using System.Collections.Generic;
 
 namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 {
     public class Options
     {
-        public const string DefaultEventsNamespace = "Amazon.AwsToolkit.Telemetry.Events.Generated";
-
         [Option(
-            Default = DefaultEventsNamespace,
+            Default = Constants.DefaultEventsNamespace,
             Required = false,
             HelpText = "Namespace to produce generated code in. When generating code for supplemental " +
                        "telemetry definitions, this can help 'fit' the generated code into a host codebase"

@@ -1,7 +1,7 @@
-using Amazon.AwsToolkit.Telemetry.Events.Generator.Utils;
+using Amazon.AwsToolkit.Telemetry.Events.Generator.Core.Utils;
 using Xunit;
 
-namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Tests
+namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Core.Tests
 {
     public class StringExtensionMethodsTests
     {

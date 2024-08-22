@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -23,12 +23,14 @@
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="System.CodeDom" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Definitions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AwsToolkit.Telemetry.Events.Generator.Core\AwsToolkit.Telemetry.Events.Generator.Core.csproj" />
   </ItemGroup>
 
 </Project>
