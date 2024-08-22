@@ -66,9 +66,9 @@
                         "type": "boolean",
                         "description": "Set as true if the metric is emitted without any explicit user action."
                     },
-                    "performanceTracking": {
+                    "trackPerformance": {
                         "type": "boolean",
-                        "description": "Set as true if the metric should track run-time performance information."
+                        "description": "Set as true if the metric can track run-time performance information."
                     }
                 },
                 "required": ["name", "description"]
