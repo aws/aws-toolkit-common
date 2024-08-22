@@ -45,6 +45,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 datum.MetricName = "sample_extendedInvoke";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -112,6 +113,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 datum.MetricName = "sample_releaseBees";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -169,6 +171,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 datum.MetricName = "sample_testRun";
                 datum.Unit = Unit.Milliseconds;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -224,6 +227,63 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 datum.MetricName = "sample_passive";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Sample event that tracks performance
+        public static void RecordSampleTrackPerformance(this ITelemetryLogger telemetryLogger, SampleTrackPerformance payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "sample_trackPerformance";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -299,6 +359,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
         public SampleExtendedInvoke()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -312,6 +373,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
         public SampleReleaseBees()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -322,6 +384,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
         public SampleTestRun()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -332,6 +395,18 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
         public SamplePassive()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// Sample event that tracks performance
+    public sealed class SampleTrackPerformance : BaseTelemetryEvent
+    {
+        
+        public SampleTrackPerformance()
+        {
+            this.Passive = false;
+            this.TrackPerformance = true;
         }
     }
 }

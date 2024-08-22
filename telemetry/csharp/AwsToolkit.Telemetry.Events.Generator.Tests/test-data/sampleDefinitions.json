@@ -78,6 +78,12 @@
             "unit": "Count",
             "description": "Emit a passive metric",
             "passive": true
+        },
+        {
+            "name": "emit_trackPerformance",
+            "unit": "Count",
+            "description": "Emit a metric that should track the performance",
+            "trackPerformance": true
         }
     ]
 }

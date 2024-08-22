@@ -43,6 +43,11 @@
             "name": "sample_passive",
             "description": "Sample event that is passive",
             "passive": true
+        },
+        {
+            "name": "sample_trackPerformance",
+            "description": "Sample event that tracks performance",
+            "trackPerformance": true
         }
     ]
 }

@@ -50,6 +50,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.Equal("lambda_invokeRemote", datum.MetricName);
             Assert.Equal(Unit.None, datum.Unit);
             Assert.False(datum.Passive);
+            Assert.False(datum.TrackPerformance);
             Assert.Equal(lambdaInvokeRemote.AwsAccount, datum.Metadata["awsAccount"]);
             Assert.Equal(lambdaInvokeRemote.AwsRegion, datum.Metadata["awsRegion"]);
             Assert.Equal(lambdaInvokeRemote.Runtime.Value.ToString(), datum.Metadata["runtime"]);
@@ -82,6 +83,38 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.NotNull(datum);
             Assert.Equal("lambda_invokeRemote", datum.MetricName);
             Assert.True(datum.Passive);
+            Assert.False(datum.TrackPerformance);
+            Assert.Equal(lambdaInvokeRemote.Runtime.Value.ToString(), datum.Metadata["runtime"]);
+            Assert.Equal(lambdaInvokeRemote.Result.ToString(), datum.Metadata["result"]);
+        }
+
+        /// <summary>
+        /// RecordLambdaInvokeRemote is arbitrary here, we're checking that we can override the
+        /// TrackPerformance value.
+        /// </summary>
+        [Fact]
+        public void RecordLambdaInvokeRemote_withTrackPerformance()
+        {
+            var lambdaInvokeRemote = new LambdaInvokeRemote()
+            {
+                TrackPerformance = true,
+                Result = Result.Succeeded,
+                Runtime = Runtime.Dotnetcore31,
+            };
+
+            _telemetryLogger.Object.RecordLambdaInvokeRemote(lambdaInvokeRemote);
+
+            Assert.NotNull(_recordedMetrics);
+            _telemetryLogger.Verify(
+                mock => mock.Record(_recordedMetrics),
+                Times.Once
+            );
+
+            var datum = Assert.Single(_recordedMetrics.Data);
+            Assert.NotNull(datum);
+            Assert.Equal("lambda_invokeRemote", datum.MetricName);
+            Assert.False(datum.Passive);
+            Assert.True(datum.TrackPerformance);
             Assert.Equal(lambdaInvokeRemote.Runtime.Value.ToString(), datum.Metadata["runtime"]);
             Assert.Equal(lambdaInvokeRemote.Result.ToString(), datum.Metadata["result"]);
         }
@@ -111,6 +144,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.Equal("sam_deploy", datum.MetricName);
             Assert.Equal(Unit.None, datum.Unit);
             Assert.False(datum.Passive);
+            Assert.False(datum.TrackPerformance);
             Assert.Equal(samDeploy.Version, datum.Metadata["version"]);
             Assert.Equal(samDeploy.Result.ToString(), datum.Metadata["result"]);
         }
@@ -139,6 +173,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.Equal("sam_deploy", datum.MetricName);
             Assert.Equal(Unit.None, datum.Unit);
             Assert.False(datum.Passive);
+            Assert.False(datum.TrackPerformance);
             Assert.False(datum.Metadata.ContainsKey("version"));
             Assert.Equal(samDeploy.Result.ToString(), datum.Metadata["result"]);
         }
@@ -160,6 +195,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.NotNull(datum);
             Assert.Equal("session_start", datum.MetricName);
             Assert.True(datum.Passive);
+            Assert.False(datum.TrackPerformance);
         }
 
         [Fact]
