@@ -65,6 +65,10 @@
                     "passive": {
                         "type": "boolean",
                         "description": "Set as true if the metric is emitted without any explicit user action."
+                    },
+                    "trackPerformance": {
+                        "type": "boolean",
+                        "description": "Set as true if the metric can track run-time performance information. Default=false"
                     }
                 },
                 "required": ["name", "description"]

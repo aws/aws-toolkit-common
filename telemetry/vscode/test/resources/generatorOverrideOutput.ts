@@ -34,6 +34,8 @@ export interface MetricBase {
     readonly passive?: boolean
     /** @deprecated Arbitrary "value" of the metric. */
     readonly value?: number
+    /** A flag indicating that the metric should track run-time performance information */
+    readonly trackPerformance?: boolean
 }
 
 export interface MetadataHasResult extends MetricBase {}
@@ -72,6 +74,7 @@ export type Runtime =
 export interface MetricDefinition {
     readonly unit: string
     readonly passive: boolean
+    readonly trackPerformance: boolean
     readonly requiredMetadata: readonly string[]
 }
 
@@ -82,7 +85,7 @@ export interface MetricShapes {
 export type MetricName = keyof MetricShapes
 
 export const definitions: Record<string, MetricDefinition> = {
-    metadata_hasResult: { unit: 'None', passive: false, requiredMetadata: [] },
+    metadata_hasResult: { unit: 'None', passive: false, trackPerformance: false, requiredMetadata: [] },
 }
 
 export type Metadata<T extends MetricBase> = Partial<Omit<T, keyof MetricBase> | Partial<Pick<MetricBase, 'awsRegion'>>>
