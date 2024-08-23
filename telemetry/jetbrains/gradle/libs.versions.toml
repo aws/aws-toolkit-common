@@ -4,7 +4,7 @@ jackson = "2.17.2"
 # deprecated; should move to json-skema
 jsonSchema = "1.14.4"
 junit4 = "4.13.2"
-kotlin = "2.0.10"
+kotlin = "2.0.20"
 kotlin-poet = "1.18.1"
 nexus = "2.0.0"
 
