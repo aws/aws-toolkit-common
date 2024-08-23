@@ -74,7 +74,7 @@ class GeneratorTest {
         )
 
         val outputRoot = Paths.get(folder.root.absolutePath)
-        val outputFiles = Files.walk(outputRoot).filter { it.isRegularFile() }
+        val outputFiles = Files.walk(outputRoot).filter { it.isRegularFile() }.toList()
         val expectedRoot = this.javaClass.getResource("/$methodName").toURI().toPath().resolve("output")
         val expectedFiles = Files.walk(expectedRoot).filter { it.isRegularFile() }.toList()
 
@@ -89,7 +89,8 @@ class GeneratorTest {
             return
         }
 
-        assertThat(outputFiles.map { outputRoot.relativize(it) }.toList()).isEqualTo(expectedFiles.map { expectedRoot.relativize(it) })
+        assertThat(outputFiles.map { outputRoot.relativize(it) })
+            .containsExactlyInAnyOrder(*expectedFiles.map { expectedRoot.relativize(it) }.toTypedArray())
 
         outputFiles.forEach {
             val relPath = outputRoot.relativize(it)
