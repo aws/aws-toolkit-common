@@ -16,25 +16,6 @@ import software.aws.toolkits.core.ConnectionSettings
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
-/**
- * The result of the operation
- */
-public enum class Result(
-    private val `value`: String,
-) {
-    Succeeded("Succeeded"),
-    Failed("Failed"),
-    Cancelled("Cancelled"),
-    Unknown("unknown"),
-    ;
-
-    override fun toString(): String = value
-
-    public companion object {
-        public fun from(type: String): Result = values().firstOrNull { it.value == type } ?: Unknown
-    }
-}
-
 public object TestTelemetry {
     /**
      * Testing metric with global metadata fields
