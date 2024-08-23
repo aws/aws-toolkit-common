@@ -3,19 +3,27 @@
 
 package software.aws.toolkits.telemetry.generator
 
+import java.io.File
+import java.nio.file.Files
+import java.nio.file.Paths
+import kotlin.io.path.isRegularFile
+import kotlin.io.path.readText
+import kotlin.io.path.toPath
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
-import java.io.File
-import java.nio.file.Files
-import java.nio.file.Paths
+import org.junit.rules.TestName
 
 class GeneratorTest {
     @JvmField
     @Rule
     val folder = TemporaryFolder()
+
+    @Rule
+    @JvmField
+    val testName = TestName()
 
     @Test
     fun generateFailsWhenValidationFails() {
@@ -26,51 +34,66 @@ class GeneratorTest {
 
     @Test
     fun generateWithGlobalMetadata() {
-        testGenerator(defaultDefinitionsFile = "/testGlobalMetadataInput.json", expectedOutputFile = "/testGlobalMetadataOutput")
+        testGenerator()
     }
 
     @Test
     fun generatesWithNormalInput() {
-        testGenerator(defaultDefinitionsFile = "/testGeneratorInput.json", expectedOutputFile = "/testGeneratorOutput")
+        testGenerator()
     }
 
     @Test
     fun resultGeneratesTwoFunctions() {
-        testGenerator(defaultDefinitionsFile = "/testResultInput.json", expectedOutputFile = "/testResultOutput")
+        testGenerator()
     }
 
     @Test
     fun generateOverrides() {
-        testGenerator(defaultDefinitionsFile = "/testResultInput.json", definitionsOverrides = listOf("/testOverrideInput.json"), expectedOutputFile = "/testOverrideOutput")
+        testGenerator(definitionsFile = "/resultGeneratesTwoFunctions/input.json", definitionsOverrides = listOf("/generateOverrides/overrideInput.json"))
     }
 
     @Test
     fun longEnum() {
-        testGenerator(defaultDefinitionsFile = "/testLongEnumInput.json", expectedOutputFile = "/testLongEnumOutput")
+        testGenerator()
     }
 
     @Test
     fun generateGeneratesWithDefaultDefinitions() {
         generateTelemetryFromFiles(inputFiles = listOf(), outputFolder = folder.root)
-        val outputFile = Paths.get(folder.root.absolutePath, "software", "aws", "toolkits", "telemetry", "TelemetryDefinitions.kt")
-        assertThat(Files.exists(outputFile)).isTrue
+        val outputFile = Paths.get(folder.root.absolutePath, "software", "aws", "toolkits", "telemetry")
+        assertThat(Files.walk(outputFile).toList()).isNotEmpty
     }
 
     // inputPath and outputPath must be in test resources
-    private fun testGenerator(defaultDefinitionsFile: String, definitionsOverrides: List<String> = listOf(), expectedOutputFile: String) {
+    private fun testGenerator(definitionsFile: String? = null, definitionsOverrides: List<String> = listOf()) {
+        val methodName = testName.methodName
         generateTelemetryFromFiles(
-            defaultDefinitions = listOf(this.javaClass.getResourceAsStream(defaultDefinitionsFile).use { it.bufferedReader().readText() }),
+            defaultDefinitions = listOf(this.javaClass.getResourceAsStream(definitionsFile ?: "/$methodName/input.json").use { it.bufferedReader().readText() }),
             inputFiles = definitionsOverrides.map { File(javaClass.getResource(it).toURI()) },
             outputFolder = folder.root
         )
 
-        val outputFile = Paths.get(folder.root.absolutePath, "software", "aws", "toolkits", "telemetry", "TelemetryDefinitions.kt")
-        assertThat(outputFile).exists()
+        val outputRoot = Paths.get(folder.root.absolutePath)
+        val outputFiles = Files.walk(outputRoot).filter { it.isRegularFile() }
+        val expectedRoot = this.javaClass.getResource("/$methodName").toURI().toPath().resolve("output")
+        val expectedFiles = Files.walk(expectedRoot).filter { it.isRegularFile() }.toList()
 
-        val expected = this.javaClass.getResourceAsStream(expectedOutputFile).use {
-            it.bufferedReader().readText()
+        if (expectedFiles.isEmpty()) {
+            // for dev convenience, populate the test files and consider it a pass
+            val root = Paths.get("src", "test", "resources", methodName, "output")
+            outputFiles.forEach {
+                val dest = root.resolve(outputRoot.relativize(it))
+                Files.createDirectories(dest.parent)
+                Files.copy(it, dest)
+            }
+            return
         }
 
-        assertThat(outputFile.toFile().readText()).isEqualTo(expected)
+        assertThat(outputFiles.map { outputRoot.relativize(it) }.toList()).isEqualTo(expectedFiles.map { expectedRoot.relativize(it) })
+
+        outputFiles.forEach {
+            val relPath = outputRoot.relativize(it)
+            assertThat(it.readText()).isEqualTo(expectedRoot.resolve(relPath).readText())
+        }
     }
 }
