@@ -66,6 +66,7 @@ namespace Test
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
+                datum.AddResultToMetadata(payload.Result);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -121,6 +122,7 @@ namespace Test
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
+                datum.AddResultToMetadata(payload.Result);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -176,6 +178,7 @@ namespace Test
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
+                datum.AddResultToMetadata(payload.Result);
 
                 datum.AddMetadata("attempts", payload.Attempts);
 
@@ -239,6 +242,7 @@ namespace Test
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
+                datum.AddResultToMetadata(payload.Result);
 
                 datum.AddMetadata("attempts", payload.Attempts);
 
@@ -302,6 +306,7 @@ namespace Test
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
+                datum.AddResultToMetadata(payload.Result);
 
                 if (payload.Attempts.HasValue)
                 {
@@ -374,6 +379,7 @@ namespace Test
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
+                datum.AddResultToMetadata(payload.Result);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -389,7 +395,7 @@ namespace Test
     }
     
     /// Emits milliseconds
-    public sealed class EmitSomeIntMs : BaseTelemetryEvent
+    public sealed class EmitSomeIntMs : BaseGeneratedTelemetryEvent
     {
         
         public EmitSomeIntMs()
@@ -399,7 +405,7 @@ namespace Test
     }
     
     /// Emits something without a unit defined
-    public sealed class EmitNoUnit : BaseTelemetryEvent
+    public sealed class EmitNoUnit : BaseGeneratedTelemetryEvent
     {
         
         public EmitNoUnit()
@@ -409,7 +415,7 @@ namespace Test
     }
     
     /// Emits a bunch of metadata varieties
-    public sealed class EmitSomeBigBlob : BaseTelemetryEvent
+    public sealed class EmitSomeBigBlob : BaseGeneratedTelemetryEvent
     {
         
         /// A generic number of attempts
@@ -431,7 +437,7 @@ namespace Test
     }
     
     /// Emits a bunch of metadata varieties - required not set
-    public sealed class EmitSomeBigBlob2 : BaseTelemetryEvent
+    public sealed class EmitSomeBigBlob2 : BaseGeneratedTelemetryEvent
     {
         
         /// A generic number of attempts
@@ -453,7 +459,7 @@ namespace Test
     }
     
     /// Emits a bunch of optional metadata varieties
-    public sealed class EmitSomeBigOptionalBlob : BaseTelemetryEvent
+    public sealed class EmitSomeBigOptionalBlob : BaseGeneratedTelemetryEvent
     {
         
         /// Optional - A generic number of attempts
@@ -475,7 +481,7 @@ namespace Test
     }
     
     /// Emit a passive metric
-    public sealed class EmitPassive : BaseTelemetryEvent
+    public sealed class EmitPassive : BaseGeneratedTelemetryEvent
     {
         
         public EmitPassive()

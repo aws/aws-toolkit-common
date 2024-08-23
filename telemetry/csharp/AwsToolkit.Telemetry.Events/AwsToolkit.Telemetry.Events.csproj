@@ -24,6 +24,11 @@
 	  <PackageReference Include="log4net" Version="2.0.16" />
 	</ItemGroup>
 	<ItemGroup>
+
+	    <ProjectReference Include="..\AwsToolkit.Telemetry.Events.SourceGenerator\AwsToolkit.Telemetry.Events.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+
+	</ItemGroup>
+	<ItemGroup>
 		<Reference Include="System" />
 		<Reference Include="System.Core" />
 		<Reference Include="System.Xml.Linq" />

@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Amazon.AwsToolkit.Telemetry.Events.SourceGenerator</RootNamespace>
+    <AssemblyName>Amazon.AwsToolkit.Telemetry.Events.SourceGenerator</AssemblyName>
+    <!--<Authors>Amazon Web Services</Authors>-->
+    <!--<Product>AWS Toolkit Telemetry Events Generator</Product>-->
+    <!--<Description>Code generator that produces Telemetry events for AWS Toolkits</Description>-->
+    <!--<Copyright>Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.</Copyright>-->
+    <!--<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>-->
+    <!--<RepositoryUrl>https://github.com/aws/aws-toolkit-common</RepositoryUrl>-->
+    <!--<PackageTags>AWS AWSToolkit</PackageTags>-->
+    <!--<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>-->
+
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\definitions\*.json">
+      <Link>Definitions\%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="..\..\definitions\commonDefinitions.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\definitions\commonDefinitions.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.9.2" PrivateAssets="all" />
+
+    <!-- Take a private dependency on Newtonsoft.Json (PrivateAssets=all) Consumers of this generator will not reference it.
+         Set GeneratePathProperty=true so we can reference the binaries via the PKGNewtonsoft_Json property -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" GeneratePathProperty="true" PrivateAssets="all" />
+    <PackageReference Include="System.CodeDom" Version="8.0.0" GeneratePathProperty="true" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Definitions\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+
+      <!-- https://github.com/dotnet/roslyn/discussions/47517#discussioncomment-64145 -->
+      <!-- https://github.com/dotnet/roslyn-sdk/blob/0313c80ed950ac4f4eef11bb2e1c6d1009b328c4/samples/CSharp/SourceGenerators/SourceGeneratorSamples/SourceGeneratorSamples.csproj#L13-L30 -->
+      <!-- https://github.com/dotnet/roslyn/blob/main/docs/features/source-generators.cookbook.md#use-functionality-from-nuget-packages -->
+      <!-- https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview -->
+
+
+    <!-- Package the generator in the analyzer directory of the nuget package -->
+    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+
+    <!-- Package the Newtonsoft.Json dependency alongside the generator assembly -->
+    <!-- Seems like wildcard "*.dll" does not work -->
+
+    <TargetPathWithTargetPlatformMoniker Include="$(PKGNewtonsoft_Json)\lib\netstandard2.0\Newtonsoft.Json.dll" IncludeRuntimeDependency="false" />
+    <TargetPathWithTargetPlatformMoniker Include="$(PKGSystem_CodeDom)\lib\netstandard2.0\System.CodeDom.dll" IncludeRuntimeDependency="false" />
+  </ItemGroup>
+</Project>

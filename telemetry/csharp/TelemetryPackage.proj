@@ -1,11 +1,7 @@
 <Project ToolsVersion="15.0" DefaultTargets="datatype-pack" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
 	<Target Name="datatype-pack">
-		<Message Text="Build the generator and use it to generate code in the Events project" />
-		<Exec
-			Command="dotnet build $(MSBuildThisFileDirectory)AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj" />
-		<Exec
-			Command="dotnet run --project $(MSBuildThisFileDirectory)AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj -o $(MSBuildThisFileDirectory)AwsToolkit.Telemetry.Events --namespace Amazon.AwsToolkit.Telemetry.Events.Generated" />
+		<Message Text="Build Events project" />
 		<MSBuild Projects="$(MSBuildThisFileDirectory)\AwsToolkit.Telemetry.Events\AwsToolkit.Telemetry.Events.csproj"
 		         Targets="Build" />
 	</Target>

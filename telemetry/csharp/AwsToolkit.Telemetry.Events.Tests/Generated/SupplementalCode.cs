@@ -66,6 +66,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
+                datum.AddResultToMetadata(payload.Result);
 
                 if (payload.Runtime.HasValue)
                 {
@@ -76,8 +77,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                 {
                     datum.AddMetadata("extendedRuntime", payload.ExtendedRuntime.Value);
                 }
-
-                datum.AddMetadata("result", payload.Result);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -133,6 +132,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
+                datum.AddResultToMetadata(payload.Result);
 
                 datum.AddMetadata("bees", payload.Bees);
 
@@ -190,6 +190,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
+                datum.AddResultToMetadata(payload.Result);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -245,6 +246,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
+                datum.AddResultToMetadata(payload.Result);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -284,7 +286,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
     }
     
     /// Sample event that uses a type from this definition and a type from the common definitions
-    public sealed class SampleExtendedInvoke : BaseTelemetryEvent
+    public sealed class SampleExtendedInvoke : BaseGeneratedTelemetryEvent
     {
         
         /// Optional - The lambda runtime
@@ -293,9 +295,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
         /// Optional - Sample Extended runtime
         public ExtendedRuntime? ExtendedRuntime;
         
-        /// The result of the operation
-        public Result Result;
-        
         public SampleExtendedInvoke()
         {
             this.Passive = false;
@@ -303,7 +302,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
     }
     
     /// Sample event that uses types from this definition only
-    public sealed class SampleReleaseBees : BaseTelemetryEvent
+    public sealed class SampleReleaseBees : BaseGeneratedTelemetryEvent
     {
         
         /// Number of bees
@@ -316,7 +315,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
     }
     
     /// Sample event that uses a unit
-    public sealed class SampleTestRun : BaseTelemetryEvent
+    public sealed class SampleTestRun : BaseGeneratedTelemetryEvent
     {
         
         public SampleTestRun()
@@ -326,7 +325,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated
     }
     
     /// Sample event that is passive
-    public sealed class SamplePassive : BaseTelemetryEvent
+    public sealed class SamplePassive : BaseGeneratedTelemetryEvent
     {
         
         public SamplePassive()
