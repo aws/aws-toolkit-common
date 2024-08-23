@@ -66,15 +66,27 @@ fun generateTelemetryFromFiles(
         metric.copy(metadata = metric.metadata + commonMetadata)
     }
 
+    val indent = " ".repeat(4)
     // make sure the output directory exists before writing to it
     outputFolder.mkdirs()
-    FileSpec.builder(PACKAGE_NAME, "TelemetryDefinitions")
-        .indent(" ".repeat(4))
+    FileSpec.builder(PACKAGE_NAME, "TelemetryEnums")
+        .indent(indent)
         .generateHeader()
         .generateTelemetryEnumTypes(telemetry.types)
-        .generateTelemetryObjects(metricsWithCommonMetadata)
         .build()
         .writeTo(outputFolder)
+
+    // Namespaced metrics
+    metricsWithCommonMetadata.groupBy { it.namespace() }
+        .toSortedMap()
+        .forEach { (namespace, metrics) ->
+            FileSpec.builder(PACKAGE_NAME, namespace.capitalize() + "Telemetry")
+                .indent(indent)
+                .generateHeader()
+                .generateNamespaces(namespace, metrics)
+                .build()
+                .writeTo(outputFolder)
+        }
 }
 
 private fun FileSpec.Builder.generateHeader(): FileSpec.Builder {
@@ -140,14 +152,6 @@ private fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType
     enum.addType(companion)
 
     addType(enum.build())
-
-    return this
-}
-
-private fun FileSpec.Builder.generateTelemetryObjects(schema: List<MetricSchema>): FileSpec.Builder {
-    schema.groupBy { it.namespace() }
-        .toSortedMap()
-        .forEach { (namespace, metrics) -> generateNamespaces(namespace, metrics) }
 
     return this
 }
