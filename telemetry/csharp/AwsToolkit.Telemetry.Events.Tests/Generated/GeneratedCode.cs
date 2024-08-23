@@ -44,6 +44,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "accessanalyzer_iamPolicyChecksCustomChecks";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -113,6 +114,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "accessanalyzer_iamPolicyChecksValidatePolicy";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -178,6 +180,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_approachInvoke";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -246,6 +249,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_approachThumbsDown";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -305,6 +309,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_approachThumbsUp";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -364,6 +369,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_bundleExtensionIgnored";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -423,6 +429,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_codeGenerationInvoke";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -505,6 +512,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_codeGenerationThumbsDown";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -564,6 +572,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_codeGenerationThumbsUp";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -623,6 +632,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_createUpload";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -697,6 +707,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_endChat";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -761,6 +772,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_interactWithMessage";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -846,6 +858,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_isAcceptedCodeChanges";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -909,6 +922,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_isApproachAccepted";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -970,6 +984,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_isProvideFeedbackForCodeGen";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1031,6 +1046,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_isReviewedChanges";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1092,6 +1108,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_modifySourceFolder";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1156,6 +1173,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_startConversationInvoke";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1220,6 +1238,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "amazonq_viewChatPanel";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1277,6 +1296,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "apigateway_copyUrl";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1334,6 +1354,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "apigateway_invokeLocal";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1405,6 +1426,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "apigateway_invokeRemote";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1464,6 +1486,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "apigateway_startLocalServer";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1521,6 +1544,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appBuilder_installTool";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1583,6 +1607,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appBuilder_openLocalInvokeWebView";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1640,6 +1665,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appBuilder_openRemoteInvokeWebView";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1697,6 +1723,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appBuilder_openTemplate";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1754,6 +1781,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appBuilder_selectWalkthroughTemplate";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1813,6 +1841,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appBuilder_startWalkthrough";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1870,6 +1899,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appcomposer_addConnection";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1933,6 +1963,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appcomposer_addResource";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -1990,6 +2021,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appcomposer_closeWfs";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2047,6 +2079,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appcomposer_customerReady";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2108,6 +2141,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appcomposer_deployClicked";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2163,6 +2197,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appcomposer_deployCompleted";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2218,6 +2253,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appcomposer_fps";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2275,6 +2311,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appcomposer_generateAccepted";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2334,6 +2371,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appcomposer_generateClicked";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2391,6 +2429,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appcomposer_generateRejected";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2450,6 +2489,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appcomposer_initializeProject";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2509,6 +2549,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appcomposer_invalidGeneration";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2568,6 +2609,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appcomposer_openTemplate";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2627,6 +2669,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appcomposer_openWfs";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2682,6 +2725,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appcomposer_postProcess";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2741,6 +2785,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "appcomposer_regenerateClicked";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2798,6 +2843,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "apprunner_copyServiceUrl";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2853,6 +2899,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "apprunner_createService";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2912,6 +2959,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "apprunner_deleteService";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -2974,6 +3022,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "apprunner_openServiceUrl";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3029,6 +3078,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "apprunner_pauseService";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3086,6 +3136,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "apprunner_resumeService";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3143,6 +3194,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "apprunner_startDeployment";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3200,6 +3252,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "apprunner_viewApplicationLogs";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3255,6 +3308,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "apprunner_viewServiceLogs";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3310,6 +3364,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "auth_addConnection";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3394,6 +3449,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "auth_addedConnections";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3463,6 +3519,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "auth_signInPageClosed";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3518,6 +3575,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "auth_signInPageOpened";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3573,6 +3631,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "auth_switchRoles";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3632,6 +3691,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "auth_userState";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3701,6 +3761,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_copyArn";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3758,6 +3819,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_createCredentials";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3813,6 +3875,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_deleteResource";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3872,6 +3935,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_expandExplorerNode";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3929,6 +3993,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_experimentActivation";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -3988,6 +4053,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_featureConfig";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4049,6 +4115,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_help";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4106,6 +4173,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_helpQuickstart";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4163,6 +4231,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_injectCredentials";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4222,6 +4291,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_loadCredentials";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4279,6 +4349,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_loginWithBrowser";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4361,6 +4432,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_modifyCredentials";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4424,6 +4496,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_modifySetting";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4483,6 +4556,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_openCredentials";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4540,6 +4614,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_openUrl";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4601,6 +4676,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_refreshCredentials";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4681,6 +4757,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_refreshExplorer";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4736,6 +4813,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_reportPluginIssue";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4791,6 +4869,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_saveCredentials";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4846,6 +4925,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_setCredentials";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4911,6 +4991,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_setPartition";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -4968,6 +5049,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_setRegion";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5023,6 +5105,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_showExtensionSource";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5078,6 +5161,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_toolInstallation";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5137,6 +5221,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_validateCredentials";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5204,6 +5289,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "aws_webviewInstallation";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5265,6 +5351,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "beanstalk_deleteApplication";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5322,6 +5409,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "beanstalk_deleteEnvironment";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5379,6 +5467,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "beanstalk_deploy";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5456,6 +5545,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "beanstalk_editEnvironment";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5513,6 +5603,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "beanstalk_openApplication";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5570,6 +5661,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "beanstalk_openEnvironment";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5627,6 +5719,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "beanstalk_publishWizard";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5688,6 +5781,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "beanstalk_rebuildEnvironment";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5745,6 +5839,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "beanstalk_restartApplication";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5802,6 +5897,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudformation_createProject";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5861,6 +5957,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudformation_delete";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5918,6 +6015,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudformation_deploy";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -5981,6 +6079,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudformation_open";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6038,6 +6137,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudformation_publishWizard";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6099,6 +6199,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudfront_createDistribution";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6156,6 +6257,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudfront_createStreamingDistribution";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6213,6 +6315,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudfront_deleteDistribution";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6270,6 +6373,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudfront_deleteStreamingDistribution";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6327,6 +6431,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudfront_openDistribution";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6384,6 +6489,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudfront_openInvalidationRequest";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6441,6 +6547,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudfront_openStreamingDistribution";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6498,6 +6605,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchinsights_executeQuery";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6559,6 +6667,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchinsights_openDetailedLogRecord";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6616,6 +6725,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchinsights_openEditor";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6673,6 +6783,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchinsights_retrieveQuery";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6730,6 +6841,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchinsights_saveQuery";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6787,6 +6899,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_copyArn";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6846,6 +6959,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_delete";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6905,6 +7019,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_download";
                 datum.Unit = Unit.Bytes;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -6964,6 +7079,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_downloadStreamToFile";
                 datum.Unit = Unit.Bytes;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7021,6 +7137,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_filter";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7092,6 +7209,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_open";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7170,6 +7288,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_openGroup";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7229,6 +7348,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_openStream";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7288,6 +7408,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_openStreamInEditor";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7345,6 +7466,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_refresh";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7402,6 +7524,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_refreshGroup";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7457,6 +7580,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_refreshStream";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7512,6 +7636,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_searchGroup";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7569,6 +7694,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_searchStream";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7626,6 +7752,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_showEventsAround";
                 datum.Unit = Unit.Milliseconds;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7683,6 +7810,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_tailStream";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7740,6 +7868,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_viewCurrentMessagesInEditor";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7797,6 +7926,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "cloudwatchlogs_wrapEvents";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7854,6 +7984,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codecatalyst_connect";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7913,6 +8044,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codecatalyst_createDevEnvironment";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -7977,6 +8109,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codecatalyst_devEnvironmentWorkflowStatistic";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -8040,6 +8173,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codecatalyst_localClone";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -8099,6 +8233,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codecatalyst_updateDevEnvironmentSettings";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -8160,6 +8295,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codecatalyst_updateDevfile";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -8219,6 +8355,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codecommit_cloneRepo";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -8276,6 +8413,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codecommit_createRepo";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -8333,6 +8471,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codecommit_setCredentials";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -8395,6 +8534,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_applyChanges";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -8459,6 +8599,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_dependenciesCopied";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -8516,6 +8657,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_downloadArtifact";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -8585,6 +8727,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_humanInTheLoop";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -8651,6 +8794,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_initiateTransform";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -8715,6 +8859,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_isDoubleClickedToTriggerInvalidProject";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -8778,6 +8923,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_jobArtifactDownloadAndDeserializeTime";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -8843,6 +8989,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_jobCreateZipEndTime";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -8904,6 +9051,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_jobIsCancelledByUser";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -8965,6 +9113,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_jobIsClosedDuringIdeRun";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -9026,6 +9175,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_jobIsResumedAfterIdeClose";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -9087,6 +9237,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_jobIsStartedFromChatPrompt";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -9149,6 +9300,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_jobStart";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -9237,6 +9389,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_jobStartedCompleteFromPopupDialog";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -9300,6 +9453,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_jobStatusChanged";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -9363,6 +9517,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_localBuildProject";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -9424,6 +9579,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_logApiError";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -9490,6 +9646,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_logApiLatency";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -9562,6 +9719,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_logGeneralError";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -9621,6 +9779,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_mvnBuildFailed";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -9680,6 +9839,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_projectDetails";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -9746,6 +9906,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_submitSelection";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -9819,6 +9980,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_totalRunTime";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -9893,6 +10055,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_uploadProject";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -9958,6 +10121,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_validateProject";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -10028,6 +10192,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_vcsDiffViewerVisible";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -10087,6 +10252,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_vcsViewerCanceled";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -10152,6 +10318,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_vcsViewerClicked";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -10213,6 +10380,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_vcsViewerSubmitted";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -10274,6 +10442,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codeTransform_viewArtifact";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -10343,6 +10512,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codewhisperer_blockedInvocation";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -10413,6 +10583,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codewhisperer_clientComponentLatency";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -10496,6 +10667,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codewhisperer_codePercentage";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -10572,6 +10744,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codewhisperer_codeScanIssueApplyFix";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -10639,6 +10812,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codewhisperer_codeScanIssueHover";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -10704,6 +10878,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codewhisperer_codeScanIssueViewDetails";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -10767,6 +10942,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codewhisperer_enabled";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -10828,6 +11004,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codewhisperer_onboardingClick";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -10887,6 +11064,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codewhisperer_perceivedLatency";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -10958,6 +11136,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codewhisperer_securityScan";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -11060,6 +11239,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codewhisperer_serviceInvocation";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -11187,6 +11367,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codewhisperer_userDecision";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -11301,6 +11482,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codewhisperer_userModification";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -11385,6 +11567,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "codewhisperer_userTriggerDecision";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -11554,6 +11737,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "deeplink_open";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -11615,6 +11799,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "dynamicresource_copyIdentifier";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -11672,6 +11857,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "dynamicresource_getResource";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -11731,6 +11917,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "dynamicresource_listResource";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -11790,6 +11977,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "dynamicresource_mutateResource";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -11851,6 +12039,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "dynamicresource_selectResources";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -11906,6 +12095,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "dynamodb_createTable";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -11963,6 +12153,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "dynamodb_deleteRecord";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12020,6 +12211,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "dynamodb_deleteTable";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12077,6 +12269,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "dynamodb_edit";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12136,6 +12329,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "dynamodb_fetchRecords";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12205,6 +12399,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "dynamodb_fetchTables";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12269,6 +12464,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "dynamodb_openTable";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12333,6 +12529,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "dynamodb_view";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12392,6 +12589,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_changeState";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12451,6 +12649,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_clearPrivateKey";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12508,6 +12707,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_connectToInstance";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12567,6 +12767,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_copyAmiToRegion";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12624,6 +12825,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_createAmi";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12681,6 +12883,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_createElasticIp";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12738,6 +12941,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_createKeyPair";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12795,6 +12999,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_createSecurityGroup";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12852,6 +13057,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_createSnapshot";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12909,6 +13115,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_createVolume";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -12966,6 +13173,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_deleteAmi";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13023,6 +13231,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_deleteElasticIp";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13080,6 +13289,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_deleteKeyPair";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13137,6 +13347,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_deleteSecurityGroup";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13194,6 +13405,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_deleteSnapshot";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13251,6 +13463,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_deleteVolume";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13308,6 +13521,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_editAmiPermission";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13365,6 +13579,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_editInstanceElasticIp";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13427,6 +13642,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_editInstanceShutdownBehavior";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13484,6 +13700,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_editInstanceTerminationProtection";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13546,6 +13763,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_editInstanceType";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13603,6 +13821,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_editInstanceUserData";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13660,6 +13879,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_editSecurityGroupPermission";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13717,6 +13937,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_editVolumeAttachment";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13776,6 +13997,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_exportPrivateKey";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13833,6 +14055,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_importPrivateKey";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13890,6 +14113,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_launchInstance";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -13947,6 +14171,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_openAMIs";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14004,6 +14229,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_openElasticIPs";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14061,6 +14287,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_openInstances";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14118,6 +14345,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_openKeyPairs";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14175,6 +14403,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_openSecurityGroups";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14232,6 +14461,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_openVolumes";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14289,6 +14519,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_viewInstanceSystemLog";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14346,6 +14577,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ec2_viewInstanceUserData";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14403,6 +14635,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecr_copyRepositoryUri";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14458,6 +14691,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecr_copyTagUri";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14513,6 +14747,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecr_createRepository";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14570,6 +14805,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecr_deleteRepository";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14627,6 +14863,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecr_deleteTags";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14684,6 +14921,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecr_deployImage";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14746,6 +14984,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecs_deleteCluster";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14803,6 +15042,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecs_deleteScheduledTask";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14860,6 +15100,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecs_deleteService";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14917,6 +15158,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecs_deployScheduledTask";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -14976,6 +15218,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecs_deployService";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15035,6 +15278,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecs_deployTask";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15094,6 +15338,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecs_disableExecuteCommand";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15151,6 +15396,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecs_editService";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15208,6 +15454,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecs_enableExecuteCommand";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15265,6 +15512,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecs_openCluster";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15322,6 +15570,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecs_openRepository";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15379,6 +15628,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecs_publishWizard";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15436,6 +15686,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecs_runExecuteCommand";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15495,6 +15746,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ecs_stopTask";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15552,6 +15804,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "feedback_result";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15609,6 +15862,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "file_editAwsFile";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15670,6 +15924,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "iam_create";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15729,6 +15984,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "iam_createUserAccessKey";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15786,6 +16042,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "iam_delete";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15845,6 +16102,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "iam_deleteUserAccessKey";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15902,6 +16160,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "iam_edit";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -15961,6 +16220,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "iam_open";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -16020,6 +16280,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "iam_openGroup";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -16077,6 +16338,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "iam_openRole";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -16134,6 +16396,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "iam_openUser";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -16191,6 +16454,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ide_editCodeFile";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -16248,6 +16512,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "lambda_configure";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -16305,6 +16570,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "lambda_create";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -16362,6 +16628,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "lambda_createProject";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -16425,6 +16692,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "lambda_delete";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -16482,6 +16750,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "lambda_deploy";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -16566,6 +16835,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "lambda_editFunction";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -16630,6 +16900,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "lambda_goToHandler";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -16687,6 +16958,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "lambda_import";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -16749,6 +17021,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "lambda_invokeLocal";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -16824,6 +17097,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "lambda_invokeRemote";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -16888,6 +17162,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "lambda_publishWizard";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -16949,6 +17224,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "lambda_updateFunctionCode";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17011,6 +17287,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "rds_createConnectionConfiguration";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17072,6 +17349,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "rds_createSecurityGroup";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17129,6 +17407,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "rds_createSubnetGroup";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17186,6 +17465,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "rds_deleteInstance";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17243,6 +17523,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "rds_deleteSecurityGroup";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17300,6 +17581,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "rds_deleteSubnetGroup";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17357,6 +17639,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "rds_getCredentials";
                 datum.Unit = Unit.Milliseconds;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17418,6 +17701,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "rds_launchInstance";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17475,6 +17759,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "rds_openInstances";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17532,6 +17817,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "rds_openSecurityGroups";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17589,6 +17875,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "rds_openSubnets";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17646,6 +17933,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "redshift_createConnectionConfiguration";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17705,6 +17993,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "redshift_getCredentials";
                 datum.Unit = Unit.Milliseconds;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17764,6 +18053,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_copyBucketName";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17819,6 +18109,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_copyPath";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17874,6 +18165,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_copyUri";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17931,6 +18223,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_copyUrl";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -17990,6 +18283,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_createBucket";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -18047,6 +18341,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_createFolder";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -18104,6 +18399,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_deleteBucket";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -18161,6 +18457,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_deleteObject";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -18228,6 +18525,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_downloadObject";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -18300,6 +18598,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_downloadObjects";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -18357,6 +18656,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_editObject";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -18419,6 +18719,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_openBucketProperties";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -18476,6 +18777,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_openEditor";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -18533,6 +18835,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_openMultipartUpload";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -18590,6 +18893,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_renameObject";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -18647,6 +18951,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_uploadObject";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -18719,6 +19024,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "s3_uploadObjects";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -18776,6 +19082,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sam_build";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -18840,6 +19147,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sam_deploy";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -18901,6 +19209,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sam_info";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -18960,6 +19269,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sam_init";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19038,6 +19348,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sam_sync";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19106,6 +19417,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "schemas_download";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19168,6 +19480,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "schemas_search";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19225,6 +19538,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "schemas_view";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19282,6 +19596,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "session_end";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19337,6 +19652,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "session_start";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19392,6 +19708,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sns_createSubscription";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19449,6 +19766,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sns_createTopic";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19506,6 +19824,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sns_deleteSubscription";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19563,6 +19882,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sns_deleteTopic";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19620,6 +19940,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sns_openSubscriptions";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19677,6 +19998,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sns_openTopic";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19734,6 +20056,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sns_publishMessage";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19791,6 +20114,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sqs_configureLambdaTrigger";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19850,6 +20174,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sqs_createQueue";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19912,6 +20237,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sqs_deleteMessages";
                 datum.Unit = Unit.Count;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -19971,6 +20297,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sqs_deleteQueue";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20033,6 +20360,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sqs_editQueueParameters";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20092,6 +20420,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sqs_openQueue";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20149,6 +20478,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sqs_purgeQueue";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20208,6 +20538,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sqs_sendMessage";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20267,6 +20598,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "sqs_subscribeSns";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20326,6 +20658,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "threatComposer_closed";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20383,6 +20716,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "threatComposer_created";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20440,6 +20774,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "threatComposer_error";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20497,6 +20832,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "threatComposer_fileSaved";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20556,6 +20892,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "threatComposer_opened";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20613,6 +20950,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "toolkit_getExternalResource";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20672,6 +21010,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "toolkit_init";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20732,6 +21071,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "toolkit_initModule";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20798,6 +21138,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "toolkit_invokeAction";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20863,6 +21204,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "toolkit_showAction";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20926,6 +21268,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "toolkit_showNotification";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -20987,6 +21330,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "toolkit_viewLogs";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -21042,6 +21386,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "ui_click";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -21099,6 +21444,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "vpc_openACLs";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -21156,6 +21502,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "vpc_openGateways";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -21213,6 +21560,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "vpc_openRouteTables";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -21270,6 +21618,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "vpc_openSubnets";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -21327,6 +21676,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.MetricName = "vpc_openVPCs";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
                 if (payload.Value.HasValue)
                 {
                     datum.Value = payload.Value.Value;
@@ -23465,6 +23815,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AccessanalyzerIamPolicyChecksCustomChecks()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23490,6 +23841,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AccessanalyzerIamPolicyChecksValidatePolicy()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23515,6 +23867,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqApproachInvoke()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23531,6 +23884,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqApproachThumbsDown()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23547,6 +23901,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqApproachThumbsUp()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23563,6 +23918,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqBundleExtensionIgnored()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23600,6 +23956,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqCodeGenerationInvoke()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23616,6 +23973,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqCodeGenerationThumbsDown()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23632,6 +23990,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqCodeGenerationThumbsUp()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23657,6 +24016,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqCreateUpload()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23676,6 +24036,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqEndChat()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23713,6 +24074,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqInteractWithMessage()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23735,6 +24097,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqIsAcceptedCodeChanges()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23754,6 +24117,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqIsApproachAccepted()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23773,6 +24137,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqIsProvideFeedbackForCodeGen()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23792,6 +24157,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqIsReviewedChanges()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23811,6 +24177,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqModifySourceFolder()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23830,6 +24197,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqStartConversationInvoke()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23843,6 +24211,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AmazonqViewChatPanel()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23856,6 +24225,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ApigatewayCopyUrl()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23881,6 +24251,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ApigatewayInvokeLocal()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23897,6 +24268,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ApigatewayInvokeRemote()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23910,6 +24282,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ApigatewayStartLocalServer()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23926,6 +24299,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppBuilderInstallTool()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23939,6 +24313,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppBuilderOpenLocalInvokeWebView()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23952,6 +24327,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppBuilderOpenRemoteInvokeWebView()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23965,6 +24341,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppBuilderOpenTemplate()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23981,6 +24358,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppBuilderSelectWalkthroughTemplate()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -23994,6 +24372,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppBuilderStartWalkthrough()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24016,6 +24395,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppcomposerAddConnection()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24029,6 +24409,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppcomposerAddResource()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24042,6 +24423,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppcomposerCloseWfs()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24061,6 +24443,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppcomposerCustomerReady()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24071,6 +24454,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppcomposerDeployClicked()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24081,6 +24465,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppcomposerDeployCompleted()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24094,6 +24479,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppcomposerFps()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24110,6 +24496,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppcomposerGenerateAccepted()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24123,6 +24510,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppcomposerGenerateClicked()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24139,6 +24527,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppcomposerGenerateRejected()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24155,6 +24544,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppcomposerInitializeProject()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24171,6 +24561,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppcomposerInvalidGeneration()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24187,6 +24578,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppcomposerOpenTemplate()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24197,6 +24589,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppcomposerOpenWfs()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24213,6 +24606,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppcomposerPostProcess()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24226,6 +24620,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AppcomposerRegenerateClicked()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24236,6 +24631,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ApprunnerCopyServiceUrl()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24252,6 +24648,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ApprunnerCreateService()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24268,6 +24665,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ApprunnerDeleteService()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24278,6 +24676,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ApprunnerOpenServiceUrl()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24291,6 +24690,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ApprunnerPauseService()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24304,6 +24704,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ApprunnerResumeService()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24317,6 +24718,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ApprunnerStartDeployment()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24327,6 +24729,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ApprunnerViewApplicationLogs()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24337,6 +24740,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ApprunnerViewServiceLogs()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24386,6 +24790,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AuthAddConnection()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24417,6 +24822,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AuthAddedConnections()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24427,6 +24833,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AuthSignInPageClosed()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24437,6 +24844,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AuthSignInPageOpened()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24453,6 +24861,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AuthSwitchRoles()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24484,6 +24893,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AuthUserState()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24497,6 +24907,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsCopyArn()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24507,6 +24918,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsCreateCredentials()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24523,6 +24935,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsDeleteResource()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24536,6 +24949,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsExpandExplorerNode()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24552,6 +24966,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsExperimentActivation()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24571,6 +24986,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsFeatureConfig()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24584,6 +25000,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsHelp()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24597,6 +25014,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsHelpQuickstart()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24613,6 +25031,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsInjectCredentials()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24626,6 +25045,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsLoadCredentials()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24663,6 +25083,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsLoginWithBrowser()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24685,6 +25106,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsModifyCredentials()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24701,6 +25123,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsModifySetting()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24714,6 +25137,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsOpenCredentials()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24733,6 +25157,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsOpenUrl()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24767,6 +25192,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsRefreshCredentials()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24777,6 +25203,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsRefreshExplorer()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24787,6 +25214,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsReportPluginIssue()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24797,6 +25225,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsSaveCredentials()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24813,6 +25242,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsSetCredentials()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24826,6 +25256,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsSetPartition()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24836,6 +25267,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsSetRegion()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24846,6 +25278,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsShowExtensionSource()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24862,6 +25295,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsToolInstallation()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24881,6 +25315,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsValidateCredentials()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24900,6 +25335,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public AwsWebviewInstallation()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24913,6 +25349,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public BeanstalkDeleteApplication()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24926,6 +25363,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public BeanstalkDeleteEnvironment()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24960,6 +25398,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public BeanstalkDeploy()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24973,6 +25412,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public BeanstalkEditEnvironment()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24986,6 +25426,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public BeanstalkOpenApplication()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -24999,6 +25440,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public BeanstalkOpenEnvironment()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25018,6 +25460,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public BeanstalkPublishWizard()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25031,6 +25474,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public BeanstalkRebuildEnvironment()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25044,6 +25488,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public BeanstalkRestartApplication()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25060,6 +25505,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudformationCreateProject()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25073,6 +25519,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudformationDelete()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25095,6 +25542,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudformationDeploy()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25108,6 +25556,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudformationOpen()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25127,6 +25576,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudformationPublishWizard()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25140,6 +25590,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudfrontCreateDistribution()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25153,6 +25604,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudfrontCreateStreamingDistribution()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25166,6 +25618,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudfrontDeleteDistribution()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25179,6 +25632,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudfrontDeleteStreamingDistribution()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25192,6 +25646,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudfrontOpenDistribution()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25205,6 +25660,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudfrontOpenInvalidationRequest()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25218,6 +25674,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudfrontOpenStreamingDistribution()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25237,6 +25694,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchinsightsExecuteQuery()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25250,6 +25708,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchinsightsOpenDetailedLogRecord()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25263,6 +25722,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchinsightsOpenEditor()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25276,6 +25736,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchinsightsRetrieveQuery()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25289,6 +25750,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchinsightsSaveQuery()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25305,6 +25767,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsCopyArn()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25321,6 +25784,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsDelete()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25337,6 +25801,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsDownload()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25350,6 +25815,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsDownloadStreamToFile()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25375,6 +25841,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsFilter()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25406,6 +25873,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsOpen()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25422,6 +25890,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsOpenGroup()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25438,6 +25907,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsOpenStream()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25451,6 +25921,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsOpenStreamInEditor()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25464,6 +25935,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsRefresh()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25474,6 +25946,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsRefreshGroup()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25484,6 +25957,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsRefreshStream()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25497,6 +25971,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsSearchGroup()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25510,6 +25985,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsSearchStream()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25523,6 +25999,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsShowEventsAround()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25536,6 +26013,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsTailStream()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25549,6 +26027,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsViewCurrentMessagesInEditor()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25562,6 +26041,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CloudwatchlogsWrapEvents()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25578,6 +26058,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodecatalystConnect()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25597,6 +26078,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodecatalystCreateDevEnvironment()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25619,6 +26101,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodecatalystDevEnvironmentWorkflowStatistic()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25635,6 +26118,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodecatalystLocalClone()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25654,6 +26138,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodecatalystUpdateDevEnvironmentSettings()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25670,6 +26155,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodecatalystUpdateDevfile()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25683,6 +26169,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodecommitCloneRepo()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25696,6 +26183,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodecommitCreateRepo()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25712,6 +26200,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodecommitSetCredentials()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25731,6 +26220,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformApplyChanges()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25744,6 +26234,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformDependenciesCopied()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25775,6 +26266,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformDownloadArtifact()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25797,6 +26289,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformHumanInTheLoop()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25816,6 +26309,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformInitiateTransform()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25838,6 +26332,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformIsDoubleClickedToTriggerInvalidProject()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25863,6 +26358,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformJobArtifactDownloadAndDeserializeTime()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25882,6 +26378,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformJobCreateZipEndTime()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25901,6 +26398,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformJobIsCancelledByUser()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25920,6 +26418,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformJobIsClosedDuringIdeRun()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25939,6 +26438,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformJobIsResumedAfterIdeClose()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25955,6 +26455,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformJobIsStartedFromChatPrompt()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -25992,6 +26493,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformJobStart()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26014,6 +26516,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformJobStartedCompleteFromPopupDialog()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26036,6 +26539,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformJobStatusChanged()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26055,6 +26559,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformLocalBuildProject()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26077,6 +26582,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformLogApiError()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26108,6 +26614,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformLogApiLatency()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26124,6 +26631,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformLogGeneralError()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26140,6 +26648,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformMvnBuildFailed()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26162,6 +26671,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformProjectDetails()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26190,6 +26700,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformSubmitSelection()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26224,6 +26735,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformTotalRunTime()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26249,6 +26761,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformUploadProject()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26277,6 +26790,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformValidateProject()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26293,6 +26807,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformVcsDiffViewerVisible()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26318,6 +26833,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformVcsViewerCanceled()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26337,6 +26853,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformVcsViewerClicked()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26356,6 +26873,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformVcsViewerSubmitted()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26387,6 +26905,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodeTransformViewArtifact()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26415,6 +26934,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodewhispererBlockedInvocation()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26467,6 +26987,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodewhispererClientComponentLatency()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26504,6 +27025,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodewhispererCodePercentage()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26532,6 +27054,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodewhispererCodeScanIssueApplyFix()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26557,6 +27080,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodewhispererCodeScanIssueHover()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26579,6 +27103,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodewhispererCodeScanIssueViewDetails()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26598,6 +27123,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodewhispererEnabled()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26614,6 +27140,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodewhispererOnboardingClick()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26648,6 +27175,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodewhispererPerceivedLatency()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26706,6 +27234,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodewhispererSecurityScan()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26779,6 +27308,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodewhispererServiceInvocation()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26846,6 +27376,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodewhispererUserDecision()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -26895,6 +27426,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodewhispererUserModification()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27004,6 +27536,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CodewhispererUserTriggerDecision()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27023,6 +27556,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public DeeplinkOpen()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27036,6 +27570,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public DynamicresourceCopyIdentifier()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27052,6 +27587,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public DynamicresourceGetResource()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27068,6 +27604,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public DynamicresourceListResource()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27087,6 +27624,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public DynamicresourceMutateResource()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27097,6 +27635,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public DynamicresourceSelectResources()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27110,6 +27649,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public DynamodbCreateTable()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27123,6 +27663,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public DynamodbDeleteRecord()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27136,6 +27677,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public DynamodbDeleteTable()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27152,6 +27694,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public DynamodbEdit()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27174,6 +27717,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public DynamodbFetchRecords()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27193,6 +27737,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public DynamodbFetchTables()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27212,6 +27757,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public DynamodbOpenTable()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27228,6 +27774,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public DynamodbView()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27244,6 +27791,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2ChangeState()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27257,6 +27805,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2ClearPrivateKey()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27273,6 +27822,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2ConnectToInstance()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27286,6 +27836,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2CopyAmiToRegion()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27299,6 +27850,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2CreateAmi()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27312,6 +27864,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2CreateElasticIp()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27325,6 +27878,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2CreateKeyPair()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27338,6 +27892,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2CreateSecurityGroup()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27351,6 +27906,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2CreateSnapshot()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27364,6 +27920,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2CreateVolume()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27377,6 +27934,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2DeleteAmi()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27390,6 +27948,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2DeleteElasticIp()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27403,6 +27962,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2DeleteKeyPair()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27416,6 +27976,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2DeleteSecurityGroup()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27429,6 +27990,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2DeleteSnapshot()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27442,6 +28004,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2DeleteVolume()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27455,6 +28018,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2EditAmiPermission()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27471,6 +28035,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2EditInstanceElasticIp()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27484,6 +28049,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2EditInstanceShutdownBehavior()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27500,6 +28066,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2EditInstanceTerminationProtection()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27513,6 +28080,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2EditInstanceType()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27526,6 +28094,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2EditInstanceUserData()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27539,6 +28108,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2EditSecurityGroupPermission()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27555,6 +28125,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2EditVolumeAttachment()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27568,6 +28139,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2ExportPrivateKey()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27581,6 +28153,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2ImportPrivateKey()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27594,6 +28167,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2LaunchInstance()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27607,6 +28181,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2OpenAMIs()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27620,6 +28195,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2OpenElasticIPs()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27633,6 +28209,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2OpenInstances()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27646,6 +28223,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2OpenKeyPairs()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27659,6 +28237,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2OpenSecurityGroups()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27672,6 +28251,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2OpenVolumes()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27685,6 +28265,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2ViewInstanceSystemLog()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27698,6 +28279,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Ec2ViewInstanceUserData()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27708,6 +28290,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcrCopyRepositoryUri()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27718,6 +28301,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcrCopyTagUri()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27731,6 +28315,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcrCreateRepository()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27744,6 +28329,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcrDeleteRepository()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27757,6 +28343,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcrDeleteTags()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27773,6 +28360,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcrDeployImage()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27786,6 +28374,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcsDeleteCluster()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27799,6 +28388,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcsDeleteScheduledTask()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27812,6 +28402,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcsDeleteService()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27828,6 +28419,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcsDeployScheduledTask()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27844,6 +28436,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcsDeployService()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27860,6 +28453,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcsDeployTask()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27873,6 +28467,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcsDisableExecuteCommand()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27886,6 +28481,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcsEditService()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27899,6 +28495,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcsEnableExecuteCommand()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27912,6 +28509,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcsOpenCluster()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27925,6 +28523,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcsOpenRepository()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27938,6 +28537,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcsPublishWizard()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27954,6 +28554,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcsRunExecuteCommand()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27967,6 +28568,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public EcsStopTask()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27980,6 +28582,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public FeedbackResult()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -27999,6 +28602,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public FileEditAwsFile()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28015,6 +28619,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public IamCreate()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28028,6 +28633,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public IamCreateUserAccessKey()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28044,6 +28650,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public IamDelete()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28057,6 +28664,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public IamDeleteUserAccessKey()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28073,6 +28681,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public IamEdit()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28089,6 +28698,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public IamOpen()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28102,6 +28712,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public IamOpenGroup()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28115,6 +28726,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public IamOpenRole()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28128,6 +28740,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public IamOpenUser()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28141,6 +28754,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public IdeEditCodeFile()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28154,6 +28768,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public LambdaConfigure()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28167,6 +28782,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public LambdaCreate()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28189,6 +28805,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public LambdaCreateProject()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28202,6 +28819,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public LambdaDelete()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28242,6 +28860,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public LambdaDeploy()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28261,6 +28880,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public LambdaEditFunction()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28274,6 +28894,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public LambdaGoToHandler()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28290,6 +28911,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public LambdaImport()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28321,6 +28943,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public LambdaInvokeLocal()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28340,6 +28963,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public LambdaInvokeRemote()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28359,6 +28983,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public LambdaPublishWizard()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28375,6 +29000,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public LambdaUpdateFunctionCode()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28394,6 +29020,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public RdsCreateConnectionConfiguration()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28407,6 +29034,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public RdsCreateSecurityGroup()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28420,6 +29048,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public RdsCreateSubnetGroup()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28433,6 +29062,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public RdsDeleteInstance()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28446,6 +29076,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public RdsDeleteSecurityGroup()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28459,6 +29090,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public RdsDeleteSubnetGroup()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28478,6 +29110,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public RdsGetCredentials()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28491,6 +29124,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public RdsLaunchInstance()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28504,6 +29138,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public RdsOpenInstances()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28517,6 +29152,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public RdsOpenSecurityGroups()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28530,6 +29166,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public RdsOpenSubnets()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28546,6 +29183,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public RedshiftCreateConnectionConfiguration()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28562,6 +29200,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public RedshiftGetCredentials()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28572,6 +29211,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3CopyBucketName()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28582,6 +29222,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3CopyPath()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28595,6 +29236,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3CopyUri()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28611,6 +29253,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3CopyUrl()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28624,6 +29267,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3CreateBucket()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28637,6 +29281,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3CreateFolder()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28650,6 +29295,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3DeleteBucket()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28669,6 +29315,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3DeleteObject()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28691,6 +29338,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3DownloadObject()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28704,6 +29352,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3DownloadObjects()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28720,6 +29369,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3EditObject()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28733,6 +29383,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3OpenBucketProperties()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28746,6 +29397,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3OpenEditor()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28759,6 +29411,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3OpenMultipartUpload()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28772,6 +29425,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3RenameObject()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28794,6 +29448,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3UploadObject()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28807,6 +29462,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public S3UploadObjects()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28826,6 +29482,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SamBuild()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28845,6 +29502,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SamDeploy()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28861,6 +29519,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SamInfo()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28892,6 +29551,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SamInit()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28917,6 +29577,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SamSync()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28933,6 +29594,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SchemasDownload()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28946,6 +29608,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SchemasSearch()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28959,6 +29622,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SchemasView()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28969,6 +29633,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SessionEnd()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28979,6 +29644,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SessionStart()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -28992,6 +29658,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SnsCreateSubscription()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29005,6 +29672,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SnsCreateTopic()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29018,6 +29686,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SnsDeleteSubscription()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29031,6 +29700,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SnsDeleteTopic()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29044,6 +29714,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SnsOpenSubscriptions()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29057,6 +29728,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SnsOpenTopic()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29070,6 +29742,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SnsPublishMessage()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29086,6 +29759,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SqsConfigureLambdaTrigger()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29102,6 +29776,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SqsCreateQueue()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29118,6 +29793,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SqsDeleteMessages()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29134,6 +29810,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SqsDeleteQueue()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29150,6 +29827,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SqsEditQueueParameters()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29163,6 +29841,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SqsOpenQueue()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29179,6 +29858,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SqsPurgeQueue()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29195,6 +29875,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SqsSendMessage()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29211,6 +29892,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public SqsSubscribeSns()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29224,6 +29906,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ThreatComposerClosed()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29237,6 +29920,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ThreatComposerCreated()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29250,6 +29934,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ThreatComposerError()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29266,6 +29951,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ThreatComposerFileSaved()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29279,6 +29965,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ThreatComposerOpened()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29295,6 +29982,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ToolkitGetExternalResource()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29308,6 +29996,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ToolkitInit()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29330,6 +30019,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ToolkitInitModule()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29355,6 +30045,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ToolkitInvokeAction()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29377,6 +30068,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ToolkitShowAction()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29396,6 +30088,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ToolkitShowNotification()
         {
             this.Passive = true;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29406,6 +30099,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ToolkitViewLogs()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29419,6 +30113,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public UiClick()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29432,6 +30127,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public VpcOpenACLs()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29445,6 +30141,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public VpcOpenGateways()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29458,6 +30155,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public VpcOpenRouteTables()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29471,6 +30169,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public VpcOpenSubnets()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
     
@@ -29484,6 +30183,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public VpcOpenVPCs()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
         }
     }
 }

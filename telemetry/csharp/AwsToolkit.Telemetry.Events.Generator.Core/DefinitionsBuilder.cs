@@ -295,8 +295,13 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Core
 
             // Initialize the passive field based on this metric declaration
             // Generate: this.Passive = true/false;
-            var valueFieldRef = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), "Passive");
-            typeConstructor.Statements.Add(new CodeAssignStatement(valueFieldRef, new CodePrimitiveExpression(metric.passive)));
+            var passiveFieldRef = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), "Passive");
+            typeConstructor.Statements.Add(new CodeAssignStatement(passiveFieldRef, new CodePrimitiveExpression(metric.passive)));
+
+            // Initialize the TrackPerformance field based on this metric declaration
+            // Generate: this.TrackPerformance = true/false;
+            var performanceFieldRef = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), "TrackPerformance");
+            typeConstructor.Statements.Add(new CodeAssignStatement(performanceFieldRef, new CodePrimitiveExpression(metric.trackPerformance)));
 
             cls.Members.Add(typeConstructor);
 
@@ -399,6 +404,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Core
             tryStatements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "MetricName"), new CodePrimitiveExpression(metric.name)));
             tryStatements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "Unit"), GetMetricUnitExpression(metric)));
             tryStatements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "Passive"), new CodeFieldReferenceExpression(payload, "Passive")));
+            tryStatements.Add(new CodeAssignStatement(new CodeFieldReferenceExpression(datum, "TrackPerformance"), new CodeFieldReferenceExpression(payload, "TrackPerformance")));
 
             // Set Datum.Value to (payload.Value ?? 1)
             var payloadValue = new CodeFieldReferenceExpression(payload, "Value");

@@ -9,37 +9,19 @@ import com.intellij.openapi.project.Project
 import java.time.Instant
 import kotlin.Boolean
 import kotlin.Double
-import kotlin.String
 import kotlin.Suppress
 import software.amazon.awssdk.services.toolkittelemetry.model.Unit
 import software.aws.toolkits.core.ConnectionSettings
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
-/**
- * The result of the operation
- */
-public enum class Result(
-    private val `value`: String,
-) {
-    Succeeded("Succeeded"),
-    Unknown("unknown"),
-    ;
-
-    override fun toString(): String = value
-
-    public companion object {
-        public fun from(type: String): Result = values().firstOrNull { it.value == type } ?: Unknown
-    }
-}
-
 public object MetadataTelemetry {
     /**
-     * It does not actually have a result, yep
+     * It has a result
      */
     public fun hasResult(
         project: Project?,
-        result: Result? = null,
+        result: Result,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -50,19 +32,17 @@ public object MetadataTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(passive)
-                if(result != null) {
-                    metadata("result", result.toString())
-                }
+                metadata("result", result.toString())
             }
         }
     }
 
     /**
-     * It does not actually have a result, yep
+     * It has a result
      */
     public fun hasResult(
         connectionSettings: ConnectionSettings? = null,
-        result: Result? = null,
+        result: Result,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -73,19 +53,17 @@ public object MetadataTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(passive)
-                if(result != null) {
-                    metadata("result", result.toString())
-                }
+                metadata("result", result.toString())
             }
         }
     }
 
     /**
-     * It does not actually have a result, yep
+     * It has a result
      */
     public fun hasResult(
         metadata: MetricEventMetadata,
-        result: Result? = null,
+        result: Result,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -96,15 +74,13 @@ public object MetadataTelemetry {
                 unit(Unit.NONE)
                 value(value)
                 passive(passive)
-                if(result != null) {
-                    metadata("result", result.toString())
-                }
+                metadata("result", result.toString())
             }
         }
     }
 
     /**
-     * It does not actually have a result, yep
+     * It has a result
      */
     public fun hasResult(
         project: Project? = null,
@@ -118,7 +94,7 @@ public object MetadataTelemetry {
     }
 
     /**
-     * It does not actually have a result, yep
+     * It has a result
      */
     public fun hasResult(
         connectionSettings: ConnectionSettings? = null,
@@ -132,7 +108,7 @@ public object MetadataTelemetry {
     }
 
     /**
-     * It does not actually have a result, yep
+     * It has a result
      */
     public fun hasResult(
         metadata: MetricEventMetadata,
