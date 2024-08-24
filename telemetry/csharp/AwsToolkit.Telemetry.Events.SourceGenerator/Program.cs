@@ -66,6 +66,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
         //    File.WriteAllText(Path.Combine(options.OutputFolder, options.OutputFilename), code);
         //}
 
+        private static class AdditionalFilesPropertyNames
+        {
+            public const string Namespace = "build_metadata.AdditionalFiles.Telemetry_SrcGen_Namespace";
+        }
+
         public static string GetTelemetryDefinitionsFolder()
         {
             return Path.Combine(
@@ -75,6 +80,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
 
         public void Initialize(GeneratorInitializationContext context)
         {
+            //System.Diagnostics.Debugger.Launch();
             //throw new NotImplementedException();
         }
 
@@ -106,13 +112,52 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator
                 var code = builder.Build();
 
                 // Add the source code to the compilation
+                //context.AddSource($"GeneratedCode.g.cs", code);
 
-                // Produces "Amazon.AwsToolkit.Telemetry.Events.GeneratedCode.g.cs"
-                //context.AddSource($"{context.Compilation.AssemblyName}.GeneratedCode.g.cs", code);
 
-                context.AddSource($"GeneratedCode.g.cs", code);
+                // TODO: Temp: Experimental code.
+                // We should make one "internal" sourcegenerator to populate the "core" events into Telemetry.Events
+                // Then we make the public, packageable sourcegenerator that produces the supplemental definitions
+                // (this is what would be added to the Toolkit).
+                // For now this class operates makes these mutually exclusive
+                // Below is the supplemental generation.
 
-                //File.WriteAllText(Path.Combine(options.OutputFolder, options.OutputFilename), code);
+                bool skipMainGeneratedCode = false;
+                /////// --- supplemental ---
+                foreach (var file in context.AdditionalFiles)
+                {
+                    var fileOptions = context.AnalyzerConfigOptions.GetOptions(file);
+
+                    if (!fileOptions.TryGetValue(AdditionalFilesPropertyNames.Namespace, out var outputNamespace))
+                    {
+                        continue;
+                    }
+
+                    var fileJson = file.GetText().ToString();
+
+                    DefinitionsBuilder afBuilder = new DefinitionsBuilder()
+                           .WithNamespace(outputNamespace);
+
+                    // We're producing supplemental "repo-specific" definitions
+                    afBuilder
+                        .AddMetricsTypes(commonDefinitions.types, referenceOnly: true);
+
+                    var fileDefinitions = TelemetryDefinitions.LoadFromJson(fileJson);
+
+                    afBuilder
+                        .AddMetricsTypes(fileDefinitions.types)
+                        .AddMetrics(fileDefinitions.metrics);
+
+                    var fileCode = afBuilder.Build();
+                        
+                    context.AddSource($"{Path.GetFileNameWithoutExtension(file.Path)}.g.cs", fileCode);
+                    skipMainGeneratedCode = true;
+                }
+
+                if (!skipMainGeneratedCode)
+                {
+                    context.AddSource($"GeneratedCode.g.cs", code);
+                }
             }
             catch (Exception ex)
             {

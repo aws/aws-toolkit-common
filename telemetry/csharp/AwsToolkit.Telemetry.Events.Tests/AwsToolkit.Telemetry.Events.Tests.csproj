@@ -19,18 +19,15 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+
+  	<ItemGroup>
+		<CompilerVisibleItemMetadata Include="AdditionalFiles" MetadataName="Telemetry_SrcGen_Namespace" />
+		<AdditionalFiles Include="supplementDefinitions.json" Telemetry_SrcGen_Namespace="Amazon.AwsToolkit.Telemetry.Events.Tests.Generated" />
+	</ItemGroup>
+
   <ItemGroup>
+      <!-- TODO: Temp: Source Generator should get tested from its own test project, not this one -->
+    <ProjectReference Include="..\AwsToolkit.Telemetry.Events.SourceGenerator\AwsToolkit.Telemetry.Events.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\AwsToolkit.Telemetry.Events\AwsToolkit.Telemetry.Events.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Generated\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="supplementDefinitions.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="rem BUILD THE GENERATOR, THEN USE IT TO GENERATE CODE INTO THE TEST PROJECT&#xD;&#xA;rem dotnet build &quot;$(SolutionDir)\AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj&quot;&#xD;&#xA;rem dotnet run --no-build --project &quot;$(SolutionDir)\AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj&quot; -o $(ProjectDir)\Generated --namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated --s supplementDefinitions.json --f SupplementalCode.cs&#xD;&#xA;&quot;$(SolutionDir)\AwsToolkit.Telemetry.Events.Generator\bin\$(Configuration)\net8.0\Amazon.AwsToolkit.Telemetry.Events.Generator.exe&quot; -o $(ProjectDir)\Generated --namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated --s supplementDefinitions.json --f SupplementalCode.cs" />
-  </Target>
 </Project>
