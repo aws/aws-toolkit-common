@@ -1682,6 +1682,11 @@
             "description": "A generic version metadata"
         },
         {
+            "name": "viewId",
+            "type": "string",
+            "description": "Identifies a unique IDE window or sub-view within that unique IDE window. The value should be a comma delimited string where each item is a more specific view within the parent."
+        },
+        {
             "name": "workflowToken",
             "type": "string",
             "description": "A token used for flow metrics to link calls together"
