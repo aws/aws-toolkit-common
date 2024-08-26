@@ -29,7 +29,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Tests.Generator
         /// generating its own supplemental definitions.
         /// </summary>
         [Fact]
-        public void Bee()
+        public void ProducesSupplementalDefinitions()
         {
             var options = new Options()
             {
