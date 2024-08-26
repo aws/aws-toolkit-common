@@ -4033,6 +4033,68 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
+        /// AB Testing Feature response and Cohort Assignments
+        public static void RecordAwsFeatureConfig(this ITelemetryLogger telemetryLogger, AwsFeatureConfig payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "aws_featureConfig";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("featureValue", payload.FeatureValue);
+
+                datum.AddMetadata("featureVariation", payload.FeatureVariation);
+
+                datum.AddMetadata("id", payload.Id);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
         /// Open docs for the extension
         public static void RecordAwsHelp(this ITelemetryLogger telemetryLogger, AwsHelp payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
@@ -15722,68 +15784,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
-        /// AB Testing Feature response and Cohort Assignments
-        public static void RecordExperimentFeatureConfig(this ITelemetryLogger telemetryLogger, ExperimentFeatureConfig payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "experiment_feature_config";
-                datum.Unit = Unit.None;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("featureValue", payload.FeatureValue);
-
-                datum.AddMetadata("featureVariation", payload.FeatureVariation);
-
-                datum.AddMetadata("id", payload.Id);
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
         /// Called while submitting in-IDE feedback
         public static void RecordFeedbackResult(this ITelemetryLogger telemetryLogger, FeedbackResult payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
@@ -24970,6 +24970,26 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// AB Testing Feature response and Cohort Assignments
+    public sealed class AwsFeatureConfig : BaseTelemetryEvent
+    {
+        
+        /// Additional Data Value for AB Testing
+        public string FeatureValue;
+        
+        /// Feature Variant for AB Testing
+        public string FeatureVariation;
+        
+        /// Metric-defined identifier
+        public string Id;
+        
+        public AwsFeatureConfig()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
     /// Open docs for the extension
     public sealed class AwsHelp : BaseTelemetryEvent
     {
@@ -28546,26 +28566,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Result Result;
         
         public EcsStopTask()
-        {
-            this.Passive = false;
-            this.TrackPerformance = false;
-        }
-    }
-    
-    /// AB Testing Feature response and Cohort Assignments
-    public sealed class ExperimentFeatureConfig : BaseTelemetryEvent
-    {
-        
-        /// Additional Data Value for AB Testing
-        public string FeatureValue;
-        
-        /// Feature Variant for AB Testing
-        public string FeatureVariation;
-        
-        /// Metric-defined identifier
-        public string Id;
-        
-        public ExperimentFeatureConfig()
         {
             this.Passive = false;
             this.TrackPerformance = false;

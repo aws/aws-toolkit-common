@@ -1,5 +1,5 @@
 ﻿// ReSharper disable InconsistentNaming
-namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Models
+namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Core.Models
 {
     public class Metric
     {

@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Models
+namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Core.Models
 {
     public class TelemetryDefinitions
     {

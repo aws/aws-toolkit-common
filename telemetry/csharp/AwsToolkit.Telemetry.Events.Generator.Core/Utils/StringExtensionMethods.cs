@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Utils
+namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Core.Utils
 {
     public static class StringExtensionMethods
     {
@@ -16,7 +16,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Utils
                 return text.ToUpper();
             }
 
-            var segments = text.Split("_");
+            var segments = text.Split('_');
             if (segments.Length > 1)
             {
                 return string.Concat(segments.Select(ToPascalCase));
