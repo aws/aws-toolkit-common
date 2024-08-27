@@ -1200,7 +1200,9 @@
             "type": "string",
             "description": "The id of the feature the user is interacting in. See also: `component`, `featureId`, `module`, `resourceType`.",
             "allowedValues": [
+                "amazonQ",
                 "awsExplorer",
+                "awsToolkit",
                 "codewhisperer",
                 "codecatalyst"
             ]
@@ -6861,6 +6863,44 @@
             ]
         },
         {
+            "name": "toolkit_closeModule",
+            "description": "The user closed 'something' (specified by 'module'). Examples: a view, feature, resource, ...",
+            "metadata": [
+                {
+                    "type": "module",
+                    "required": true
+                }
+            ],
+            "passive": true
+        },
+        {
+            "name": "toolkit_featureState",
+            "description": "Represents the current enabled state of a feature. Used to track user journey through a feature. Emitted after feature-specific operations of interest in the Toolkit.",
+            "metadata": [
+                {
+                    "type": "authStatus",
+                    "required": false
+                },
+                {
+                    "type": "credentialSourceId",
+                    "required": false
+                },
+                {
+                    "type": "enabled",
+                    "required": true
+                },
+                {
+                    "type": "featureId",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
+                }
+            ],
+            "passive": true
+        },
+        {
             "name": "toolkit_getExternalResource",
             "description": "The toolkit tried to retrieve blob data from a url",
             "metadata": [
@@ -6950,6 +6990,25 @@
                     "required": true
                 }
             ]
+        },
+        {
+            "name": "toolkit_openModule",
+            "description": "The user opened 'something' (specified by 'module'). Examples: a view, feature, resource, ...",
+            "metadata": [
+                {
+                    "type": "module",
+                    "required": true
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
+                }
+            ],
+            "passive": true
         },
         {
             "name": "toolkit_showAction",
