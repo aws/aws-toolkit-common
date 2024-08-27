@@ -4166,7 +4166,7 @@
                 },
                 {
                     "type": "userChoice",
-                    "required": true
+                    "required": false
                 }
             ]
         },
@@ -4383,7 +4383,7 @@
                 },
                 {
                     "type": "userChoice",
-                    "required": true
+                    "required": false
                 }
             ]
         },
