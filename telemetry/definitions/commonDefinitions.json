@@ -404,8 +404,8 @@
                 "NoJavaProject",
                 "MixedLanguages",
                 "UnsupportedJavaVersion",
-                "ProjectJDKDiffersFromMavenJDK",
-                "NonMavenProject",
+                "ProjectJDKDiffersFromBuildSystemJDK",
+                "UnsupportedBuildSystem",
                 "EmptyProject",
                 "NonSsoLogin",
                 "RemoteRunProject"
@@ -4166,7 +4166,7 @@
                 },
                 {
                     "type": "userChoice",
-                    "required": true
+                    "required": false
                 }
             ]
         },
@@ -4249,7 +4249,7 @@
                 },
                 {
                     "type": "codeTransformBuildSystem",
-                    "required": true
+                    "required": false
                 },
                 {
                     "type": "codeTransformLocalJavaVersion",
@@ -4383,7 +4383,7 @@
                 },
                 {
                     "type": "userChoice",
-                    "required": true
+                    "required": false
                 }
             ]
         },
