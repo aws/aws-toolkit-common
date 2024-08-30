@@ -7138,6 +7138,26 @@
                     "type": "result"
                 }
             ]
+        },
+        {
+            "name": "webview_error",
+            "description": "Called when an error occurs inside of a webview",
+            "metadata": [
+                {
+                    "type": "name",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "webview_load",
+            "description": "Called when a webview is opened",
+            "metadata": [
+                {
+                    "type": "name",
+                    "required": true
+                }
+            ]
         }
     ]
 }
