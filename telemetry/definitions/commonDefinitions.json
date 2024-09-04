@@ -6895,6 +6895,24 @@
             "passive": true
         },
         {
+            "name": "toolkit_errorModule",
+            "description": "Called when an unexpected error occurs within a module outside of regular metrics tracking",
+            "metadata": [
+                {
+                    "type": "module",
+                    "required": true
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
+                }
+            ]
+        },
+        {
             "name": "toolkit_featureState",
             "description": "Represents the current enabled state of a feature. Used to track user journey through a feature. Emitted after feature-specific operations of interest in the Toolkit.",
             "metadata": [
@@ -7136,26 +7154,6 @@
             "metadata": [
                 {
                     "type": "result"
-                }
-            ]
-        },
-        {
-            "name": "webview_error",
-            "description": "Called when an error occurs inside of a webview",
-            "metadata": [
-                {
-                    "type": "name",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "webview_load",
-            "description": "Called when a webview is opened",
-            "metadata": [
-                {
-                    "type": "name",
-                    "required": true
                 }
             ]
         }
