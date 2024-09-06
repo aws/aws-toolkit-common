@@ -6586,6 +6586,10 @@
                     "required": false
                 },
                 {
+                    "type": "credentialType",
+                    "required": false
+                },
+                {
                     "type": "enabled",
                     "required": true
                 },
