@@ -2688,6 +2688,11 @@
             ]
         },
         {
+            "name": "aws_extensionUninstalled",
+            "description": "An extension in uninstalled",
+            "metadata": []
+        },
+        {
             "name": "aws_featureConfig",
             "description": "AB Testing Feature response and Cohort Assignments",
             "metadata": [
