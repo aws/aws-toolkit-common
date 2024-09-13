@@ -542,7 +542,8 @@
             "type": "string",
             "description": "The scope of the security scan being performed",
             "allowedValues": [
-                "FILE",
+                "FILE_AUTO",
+                "FILE_ON_DEMAND",
                 "PROJECT"
             ]
         },
