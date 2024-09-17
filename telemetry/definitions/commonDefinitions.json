@@ -2702,6 +2702,7 @@
         {
             "name": "aws_featureConfig",
             "description": "AB Testing Feature response and Cohort Assignments",
+            "passive": true,
             "metadata": [
                 {
                     "type": "featureValue"
