@@ -1386,6 +1386,11 @@
             "description": "User locale. Examples: en-US, en-GB, etc."
         },
         {
+            "name": "metricId",
+            "type": "string",
+            "description": "Unique identifier for this metric"
+        },
+        {
             "name": "module",
             "type": "string",
             "description": "Free-form module name for both high-level features such as \"PublishToAWS\", and lower-level modules such as \"ToolkitContextProvider\". Use `component` for UI components, or `featureId` for specific feature names. See also `resourceType`."
@@ -1414,6 +1419,11 @@
             "name": "oldVersion",
             "type": "string",
             "description": "The old version of something. Useful when updating dependent resources."
+        },
+        {
+            "name": "parentId",
+            "type": "string",
+            "description": "Unique identifier of this metrics parent metric id"
         },
         {
             "name": "partitionId",
@@ -1651,6 +1661,11 @@
             "description": "Total count of all resources in a container"
         },
         {
+            "name": "traceId",
+            "type": "string",
+            "description": "Unique identifier for the trace (a set of events) this metric belongs to"
+        },
+        {
             "name": "update",
             "type": "boolean",
             "description": "If the operation was an update or not"
@@ -1689,21 +1704,6 @@
             "name": "xrayEnabled",
             "type": "boolean",
             "description": "Whether or not AWS X-Ray is enabled"
-        },
-        {
-            "name": "traceId",
-            "type": "string",
-            "description": "Unique identifier for the trace (a set of events) this metric belongs to"
-        },
-        {
-            "name": "metricId",
-            "type": "string",
-            "description": "Unique identifier for this metric"
-        },
-        {
-            "name": "parentId",
-            "type": "string",
-            "description": "Unique identifier of this metrics parent metric id"
         }
     ],
     "metrics": [
