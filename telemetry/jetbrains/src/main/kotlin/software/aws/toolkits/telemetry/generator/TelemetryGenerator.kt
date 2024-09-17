@@ -48,6 +48,9 @@ fun generateTelemetryFromFiles(
         "requestId",
         "requestServiceType",
         "result",
+        "traceId",
+        "metricId",
+        "parentId"
     )
 
     val metricsWithCommonMetadata = telemetry.metrics.map { metric ->

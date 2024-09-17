@@ -38,6 +38,18 @@
         "Cancelled"
       ],
       "description": "The result of the operation"
+    },
+    {
+      "name": "traceId",
+      "description": "Unique identifier for the trace (a set of events) this metric belongs to"
+    },
+    {
+      "name": "metricId",
+      "description": "Unique identifier for this metric"
+    },
+    {
+      "name": "parentId",
+      "description": "Unique identifier of this metrics parent metric id"
     }
   ],
   "metrics": [

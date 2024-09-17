@@ -1689,6 +1689,21 @@
             "name": "xrayEnabled",
             "type": "boolean",
             "description": "Whether or not AWS X-Ray is enabled"
+        },
+        {
+            "name": "traceId",
+            "type": "string",
+            "description": "Unique identifier for the trace (a set of events) this metric belongs to"
+        },
+        {
+            "name": "metricId",
+            "type": "string",
+            "description": "Unique identifier for this metric"
+        },
+        {
+            "name": "parentId",
+            "type": "string",
+            "description": "Unique identifier of this metrics parent metric id"
         }
     ],
     "metrics": [

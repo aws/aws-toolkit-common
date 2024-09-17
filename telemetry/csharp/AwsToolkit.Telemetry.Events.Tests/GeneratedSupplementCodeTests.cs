@@ -72,7 +72,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
                 RequestId = "1234",
                 RequestServiceType = "Lambda",
                 Duration = 22.5,
-                Locale = "en-US"
+                Locale = "en-US",
+                TraceId = "abc",
+                MetricId = "def",
+                ParentId = "xyz",
             };
 
             _telemetryLogger.Object.RecordSampleReleaseBees(payload);
@@ -96,6 +99,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
             Assert.Equal(payload.RequestServiceType, datum.Metadata["requestServiceType"]);
             Assert.Equal(payload.Duration.ToString(), datum.Metadata["duration"]);
             Assert.Equal(payload.Locale, datum.Metadata["locale"]);
+            Assert.Equal(payload.TraceId, datum.Metadata["traceId"]);
+            Assert.Equal(payload.MetricId, datum.Metadata["metricId"]);
+            Assert.Equal(payload.ParentId, datum.Metadata["parentId"]);
         }
 
         /// <summary>

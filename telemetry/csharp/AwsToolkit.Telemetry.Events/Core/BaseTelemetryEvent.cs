@@ -56,6 +56,21 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Core
         public string RequestId;
 
         /// <summary>
+        /// Optional - A unique identifier for the trace (a set of events) this metric belongs to
+        /// </summary>
+        public string TraceId;
+        
+        /// <summary>
+        /// Optional - A unique identifier for this metric
+        /// </summary>
+        public string MetricId;
+        
+        /// <summary>
+        /// Optional - A unique identifier of this metrics parent metric id
+        /// </summary>
+        public string ParentId;
+        
+        /// <summary>
         /// Optional - Per-request service identifier. Unlike `serviceType` (which describes the originator of the request), this describes the request itself.
         /// This is often used in failure scenarios to provide additional details about why something failed.
         /// </summary>

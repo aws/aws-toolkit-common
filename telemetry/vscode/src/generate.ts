@@ -127,18 +127,18 @@ const baseName = 'MetricBase'
  * normally shouldn't set these because the value will be overridden).
  */
 const commonMetadata = [
-  'awsAccount',
-  'awsRegion',
-  'duration',
-  'httpStatusCode',
-  'reason',
-  'reasonDesc',
-  'requestId',
-  'requestServiceType',
-  'result',
+    'awsAccount',
+    'awsRegion',
+    'duration',
+    'httpStatusCode',
+    'reason',
+    'reasonDesc',
+    'requestId',
+    'requestServiceType',
+    'result',
 ] as const
 
-/** 
+/**
  * These fields will also be set by the telemetry client, but the caller might
  * know better, so they won't be overridden if specified in `.record()` calls.
  */
@@ -159,6 +159,33 @@ const trackPerformance: PropertySignatureStructure = {
     name: 'trackPerformance',
     type: 'boolean',
     docs: ['A flag indicating that the metric should track run-time performance information'],
+    kind: StructureKind.PropertySignature,
+}
+
+const traceId: PropertySignatureStructure = {
+    isReadonly: true,
+    hasQuestionToken: true,
+    name: 'traceId',
+    type: 'string',
+    docs: ['Unique identifier for the trace (a set of events) this metric belongs to'],
+    kind: StructureKind.PropertySignature,
+}
+
+const metricId: PropertySignatureStructure = {
+    isReadonly: true,
+    hasQuestionToken: true,
+    name: 'metricId',
+    type: 'string',
+    docs: ['Unique identifier for this metric'],
+    kind: StructureKind.PropertySignature,
+}
+
+const parentId: PropertySignatureStructure = {
+    isReadonly: true,
+    hasQuestionToken: true,
+    name: 'parentId',
+    type: 'string',
+    docs: ['Unique identifier of the parent of this metric'],
     kind: StructureKind.PropertySignature,
 }
 
@@ -228,8 +255,8 @@ function generateMetricBase(types: MetadataType[] | undefined): InterfaceDeclara
         name: baseName,
         isExported: true,
         kind: StructureKind.Interface,
-        properties: commonMetadata.map(toProp).concat(passive, value, trackPerformance),
-    }    
+        properties: commonMetadata.map(toProp).concat(passive, value, trackPerformance, traceId, metricId, parentId),
+    }
 }
 
 function generateMetricInterface(metric: Metric, types: MetadataType[] | undefined): InterfaceDeclarationStructure {
@@ -262,8 +289,8 @@ function generateMetricRecorder(metadataType: TypeAliasDeclarationStructure): In
                 name: 'record',
                 returnType: 'void',
                 parameters: [{
-                    name: 'data',
-                    type: `${metadataType.name}<T>`,
+                        name: 'data',
+                        type: `${metadataType.name}<T>`,
                 }],
             },
             {
@@ -271,9 +298,9 @@ function generateMetricRecorder(metadataType: TypeAliasDeclarationStructure): In
                 name: 'emit',
                 returnType: 'void',
                 parameters: [{
-                    name: 'data',
-                    type: 'T',
-                    hasQuestionToken: true,
+                        name: 'data',
+                        type: 'T',
+                        hasQuestionToken: true,
                 }],
             },
             {
@@ -282,8 +309,8 @@ function generateMetricRecorder(metadataType: TypeAliasDeclarationStructure): In
                 typeParameters: ['U'],
                 returnType: 'U',
                 parameters: [{
-                    name: 'fn',
-                    type: `(span: this) => U`,
+                        name: 'fn',
+                        type: `(span: this) => U`,
                 }],
             }
         ],
@@ -306,7 +333,7 @@ function generateTelemetryHelper(recorder: InterfaceDeclarationStructure, metric
         kind: StructureKind.Class,
         isAbstract: true,
         methods: [getMetric],
-        getAccessors: metrics.map(m => {        
+        getAccessors: metrics.map(m => {
             return {
                 scope: Scope.Public,
                 name: m.name,
@@ -338,16 +365,16 @@ function generateDefinitions(metrics: Metric[]): VariableStatementStructure {
     const fields = metrics.map(m => {
         const metadataTypes = getMetricMetadata(m).filter(m => m.required ?? true).map(m => `'${m.type}'`)
         const requiredMetadata = `[${metadataTypes.join(', ')}]`
-        
+
         return `${m.name}: { unit: '${m.unit ?? 'None'}', passive: ${m.passive ?? false}, trackPerformance: ${m.trackPerformance ?? false}, requiredMetadata: ${requiredMetadata} }`
     })
 
     return {
         isExported: true,
         declarations: [{
-            name: 'definitions',
-            type: `Record<string, ${runtimeMetricDefinition.name}>`,
-            initializer: `{ ${fields.join(',\n')} }`,
+                name: 'definitions',
+                type: `Record<string, ${runtimeMetricDefinition.name}>`,
+                initializer: `{ ${fields.join(',\n')} }`,
         }],
         declarationKind: VariableDeclarationKind.Const,
         kind: StructureKind.VariableStatement,

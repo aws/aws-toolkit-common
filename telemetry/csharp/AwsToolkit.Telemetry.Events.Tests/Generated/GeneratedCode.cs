@@ -61,6 +61,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -131,6 +134,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -197,6 +203,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -266,6 +275,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -326,6 +338,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -386,6 +401,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -446,6 +464,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -529,6 +550,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -589,6 +613,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -649,6 +676,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -724,6 +754,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -789,6 +822,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -875,6 +911,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -939,6 +978,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1001,6 +1043,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1063,6 +1108,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1125,6 +1173,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1190,6 +1241,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1255,6 +1309,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1313,6 +1370,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1371,6 +1431,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1443,6 +1506,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1503,6 +1569,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1561,6 +1630,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1624,6 +1696,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1682,6 +1757,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1740,6 +1818,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1798,6 +1879,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1858,6 +1942,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1916,6 +2003,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -1980,6 +2070,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2038,6 +2131,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2096,6 +2192,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2158,6 +2257,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2214,6 +2316,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2270,6 +2375,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2328,6 +2436,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2388,6 +2499,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2446,6 +2560,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2506,6 +2623,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2566,6 +2686,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2626,6 +2749,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2686,6 +2812,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2742,6 +2871,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2802,6 +2934,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2860,6 +2995,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2916,6 +3054,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -2976,6 +3117,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -3039,6 +3183,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -3095,6 +3242,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -3153,6 +3303,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -3211,6 +3364,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -3269,6 +3425,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -3325,6 +3484,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -3381,6 +3543,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -3466,6 +3631,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -3536,6 +3704,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -3592,6 +3763,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -3648,6 +3822,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -3708,6 +3885,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -3778,6 +3958,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -3836,6 +4019,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -3892,6 +4078,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -3952,6 +4141,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -4010,6 +4202,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -4019,6 +4214,65 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("experimentId", payload.ExperimentId);
 
                 datum.AddMetadata("experimentState", payload.ExperimentState);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// An extension in uninstalled
+        public static void RecordAwsExtensionUninstalled(this ITelemetryLogger telemetryLogger, AwsExtensionUninstalled payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "aws_extensionUninstalled";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -4070,6 +4324,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -4132,6 +4389,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -4190,6 +4450,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -4248,6 +4511,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -4308,6 +4574,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -4366,6 +4635,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -4449,6 +4721,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -4513,6 +4788,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -4573,6 +4851,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -4631,6 +4912,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -4693,6 +4977,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -4774,6 +5061,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -4830,6 +5120,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -4886,6 +5179,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -4942,6 +5238,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5008,6 +5307,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5066,6 +5368,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5122,6 +5427,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5178,6 +5486,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5238,6 +5549,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5306,6 +5620,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5368,6 +5685,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5426,6 +5746,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5484,6 +5807,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5562,6 +5888,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5620,6 +5949,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5678,6 +6010,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5736,6 +6071,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5798,6 +6136,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5856,6 +6197,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5914,6 +6258,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -5974,6 +6321,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6032,6 +6382,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6096,6 +6449,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6154,6 +6510,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6216,6 +6575,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6274,6 +6636,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6332,6 +6697,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6390,6 +6758,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6448,6 +6819,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6506,6 +6880,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6564,6 +6941,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6622,6 +7002,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6684,6 +7067,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6742,6 +7128,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6800,6 +7189,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6858,6 +7250,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6916,6 +7311,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -6976,6 +7374,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -7036,6 +7437,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -7096,6 +7500,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -7154,6 +7561,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -7226,6 +7636,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -7305,6 +7718,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -7365,6 +7781,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -7425,6 +7844,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -7483,6 +7905,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -7541,6 +7966,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -7597,6 +8025,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -7653,6 +8084,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -7711,6 +8145,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -7769,6 +8206,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -7827,6 +8267,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -7885,6 +8328,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -7943,6 +8389,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -8001,6 +8450,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -8061,6 +8513,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -8126,6 +8581,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -8190,6 +8648,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -8250,6 +8711,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -8312,6 +8776,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -8372,6 +8839,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -8430,6 +8900,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -8488,6 +8961,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -8551,6 +9027,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -8563,64 +9042,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("codeTransformNumberOfTransformedUnitsAccepted", payload.CodeTransformNumberOfTransformedUnitsAccepted.Value);
                 }
-
-                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
-        /// Deprecated - use codeTransform_uploadProject (The repo copies over at least one dependency successfully)
-        public static void RecordCodeTransformDependenciesCopied(this ITelemetryLogger telemetryLogger, CodeTransformDependenciesCopied payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "codeTransform_dependenciesCopied";
-                datum.Unit = Unit.None;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
 
@@ -8674,6 +9095,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -8744,6 +9168,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -8811,6 +9238,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -8825,198 +9255,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
-        /// Deprecated - use codeTransform_validateProject (Transform initiated a job but there is a validation error)
-        public static void RecordCodeTransformIsDoubleClickedToTriggerInvalidProject(this ITelemetryLogger telemetryLogger, CodeTransformIsDoubleClickedToTriggerInvalidProject payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "codeTransform_isDoubleClickedToTriggerInvalidProject";
-                datum.Unit = Unit.None;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("codeTransformPreValidationError", payload.CodeTransformPreValidationError);
-
-                datum.AddMetadata("codeTransformRuntimeError", payload.CodeTransformRuntimeError);
-
-                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
-
-                datum.AddMetadata("result", payload.Result);
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
-        /// Deprecated - use codeTransform_downloadArtifact (job is ending download zip contents)
-        public static void RecordCodeTransformJobArtifactDownloadAndDeserializeTime(this ITelemetryLogger telemetryLogger, CodeTransformJobArtifactDownloadAndDeserializeTime payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "codeTransform_jobArtifactDownloadAndDeserializeTime";
-                datum.Unit = Unit.None;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
-
-                datum.AddMetadata("codeTransformRuntimeError", payload.CodeTransformRuntimeError);
-
-                datum.AddMetadata("codeTransformRunTimeLatency", payload.CodeTransformRunTimeLatency);
-
-                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
-
-                datum.AddMetadata("codeTransformTotalByteSize", payload.CodeTransformTotalByteSize);
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
-        /// Deprecated - use codeTransform_uploadProject (A timestamp for when the job is ending upload zip contents)
-        public static void RecordCodeTransformJobCreateZipEndTime(this ITelemetryLogger telemetryLogger, CodeTransformJobCreateZipEndTime payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "codeTransform_jobCreateZipEndTime";
-                datum.Unit = Unit.None;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("codeTransformRunTimeLatency", payload.CodeTransformRunTimeLatency);
-
-                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
-
-                datum.AddMetadata("codeTransformTotalByteSize", payload.CodeTransformTotalByteSize);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -9068,6 +9306,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -9130,6 +9371,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -9192,6 +9436,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -9254,6 +9501,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -9317,6 +9567,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -9369,70 +9622,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
-        /// Deprecated - use codeTransform_submitSelection (code execution starts after model validation)
-        public static void RecordCodeTransformJobStartedCompleteFromPopupDialog(this ITelemetryLogger telemetryLogger, CodeTransformJobStartedCompleteFromPopupDialog payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "codeTransform_jobStartedCompleteFromPopupDialog";
-                datum.Unit = Unit.None;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("codeTransformJavaSourceVersionsAllowed", payload.CodeTransformJavaSourceVersionsAllowed);
-
-                datum.AddMetadata("codeTransformJavaTargetVersionsAllowed", payload.CodeTransformJavaTargetVersionsAllowed);
-
-                datum.AddMetadata("codeTransformProjectId", payload.CodeTransformProjectId);
-
-                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
         /// During the transformation progress, log the status steps returning from the API.
         public static void RecordCodeTransformJobStatusChanged(this ITelemetryLogger telemetryLogger, CodeTransformJobStatusChanged payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
@@ -9470,6 +9659,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -9534,6 +9726,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -9545,146 +9740,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
-        /// Deprecated - avoid logging every service call
-        public static void RecordCodeTransformLogApiError(this ITelemetryLogger telemetryLogger, CodeTransformLogApiError payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "codeTransform_logApiError";
-                datum.Unit = Unit.None;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
-
-                datum.AddMetadata("codeTransformRequestId", payload.CodeTransformRequestId);
-
-                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
-
-                if (payload.CodeTransformTotalByteSize.HasValue)
-                {
-                    datum.AddMetadata("codeTransformTotalByteSize", payload.CodeTransformTotalByteSize.Value);
-                }
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
-        /// Deprecated - avoid logging every service call
-        public static void RecordCodeTransformLogApiLatency(this ITelemetryLogger telemetryLogger, CodeTransformLogApiLatency payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "codeTransform_logApiLatency";
-                datum.Unit = Unit.None;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("codeTransformApiNames", payload.CodeTransformApiNames);
-
-                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
-
-                datum.AddMetadata("codeTransformRequestId", payload.CodeTransformRequestId);
-
-                datum.AddMetadata("codeTransformRunTimeLatency", payload.CodeTransformRunTimeLatency);
-
-                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
-
-                if (payload.CodeTransformTotalByteSize.HasValue)
-                {
-                    datum.AddMetadata("codeTransformTotalByteSize", payload.CodeTransformTotalByteSize.Value);
-                }
-
-                datum.AddMetadata("codeTransformUploadId", payload.CodeTransformUploadId);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -9736,6 +9791,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -9745,133 +9803,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
 
                 datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
-        /// Deprecated - use codeTransform_localBuildProject (The maven command build failed)
-        public static void RecordCodeTransformMvnBuildFailed(this ITelemetryLogger telemetryLogger, CodeTransformMvnBuildFailed payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "codeTransform_mvnBuildFailed";
-                datum.Unit = Unit.None;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("codeTransformMavenBuildCommand", payload.CodeTransformMavenBuildCommand);
-
-                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
-        /// Deprecated - use codeTransform_validateProject (Transform initiates project validation before user interaction)
-        public static void RecordCodeTransformProjectDetails(this ITelemetryLogger telemetryLogger, CodeTransformProjectDetails payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "codeTransform_projectDetails";
-                datum.Unit = Unit.None;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("codeTransformLocalJavaVersion", payload.CodeTransformLocalJavaVersion);
-
-                if (payload.CodeTransformPreValidationError.HasValue)
-                {
-                    datum.AddMetadata("codeTransformPreValidationError", payload.CodeTransformPreValidationError.Value);
-                }
-
-                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
-
-                datum.AddMetadata("result", payload.Result);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -9923,6 +9854,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -9997,6 +9931,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -10008,8 +9945,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
 
                 datum.AddMetadata("codeTransformLocalJavaVersion", payload.CodeTransformLocalJavaVersion);
-
-                datum.AddMetadata("codeTransformLocalMavenVersion", payload.CodeTransformLocalMavenVersion);
 
                 if (payload.CodeTransformPlanReceivedCount.HasValue)
                 {
@@ -10072,6 +10007,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -10138,6 +10076,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -10146,7 +10087,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("buildSystemVersion", payload.BuildSystemVersion);
 
-                datum.AddMetadata("codeTransformBuildSystem", payload.CodeTransformBuildSystem);
+                if (payload.CodeTransformBuildSystem.HasValue)
+                {
+                    datum.AddMetadata("codeTransformBuildSystem", payload.CodeTransformBuildSystem.Value);
+                }
 
                 datum.AddMetadata("codeTransformLocalJavaVersion", payload.CodeTransformLocalJavaVersion);
 
@@ -10158,256 +10102,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
-        /// Deprecated - use codeTransform_viewArtifact (timestamp when the diff view is being displayed to the user)
-        public static void RecordCodeTransformVcsDiffViewerVisible(this ITelemetryLogger telemetryLogger, CodeTransformVcsDiffViewerVisible payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "codeTransform_vcsDiffViewerVisible";
-                datum.Unit = Unit.None;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
-
-                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
-        /// Deprecated - use codeTransform_viewArtifact (An interactivity measured when users cancel a patch view)
-        public static void RecordCodeTransformVcsViewerCanceled(this ITelemetryLogger telemetryLogger, CodeTransformVcsViewerCanceled payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "codeTransform_vcsViewerCanceled";
-                datum.Unit = Unit.None;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
-
-                datum.AddMetadata("codeTransformPatchViewerCancelSrcComponents", payload.CodeTransformPatchViewerCancelSrcComponents);
-
-                datum.AddMetadata("codeTransformRuntimeError", payload.CodeTransformRuntimeError);
-
-                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
-
-                datum.AddMetadata("codeTransformStatus", payload.CodeTransformStatus);
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
-        /// Deprecated - use codeTransform_viewArtifact (An interactivity measured when users click to view diff results)
-        public static void RecordCodeTransformVcsViewerClicked(this ITelemetryLogger telemetryLogger, CodeTransformVcsViewerClicked payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "codeTransform_vcsViewerClicked";
-                datum.Unit = Unit.None;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
-
-                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
-
-                datum.AddMetadata("codeTransformVCSViewerSrcComponents", payload.CodeTransformVCSViewerSrcComponents);
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
-        /// Deprecated - use codeTransform_viewArtifact (An interactivity measured when users submit their patch view results)
-        public static void RecordCodeTransformVcsViewerSubmitted(this ITelemetryLogger telemetryLogger, CodeTransformVcsViewerSubmitted payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "codeTransform_vcsViewerSubmitted";
-                datum.Unit = Unit.None;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("codeTransformJobId", payload.CodeTransformJobId);
-
-                datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
-
-                datum.AddMetadata("codeTransformStatus", payload.CodeTransformStatus);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -10459,6 +10153,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -10529,6 +10226,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -10600,6 +10300,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -10684,6 +10387,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -10761,6 +10467,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -10829,6 +10538,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -10895,6 +10607,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -10959,6 +10674,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -11021,6 +10739,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -11081,6 +10802,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -11153,6 +10877,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -11256,6 +10983,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -11384,6 +11114,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -11499,6 +11232,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -11584,6 +11320,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -11754,6 +11493,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -11816,6 +11558,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -11874,6 +11619,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -11934,6 +11682,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -11994,6 +11745,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -12056,6 +11810,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -12112,6 +11869,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -12170,6 +11930,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -12228,6 +11991,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -12286,6 +12052,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -12346,6 +12115,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -12416,6 +12188,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -12481,6 +12256,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -12546,6 +12324,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -12606,6 +12387,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -12666,6 +12450,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -12724,6 +12511,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -12784,6 +12574,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -12842,6 +12635,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -12900,6 +12696,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -12958,6 +12757,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13016,6 +12818,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13074,6 +12879,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13132,6 +12940,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13190,6 +13001,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13248,6 +13062,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13306,6 +13123,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13364,6 +13184,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13422,6 +13245,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13480,6 +13306,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13538,6 +13367,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13596,6 +13428,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13659,6 +13494,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13717,6 +13555,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13780,6 +13621,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13838,6 +13682,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13896,6 +13743,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -13954,6 +13804,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14014,6 +13867,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14072,6 +13928,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14130,6 +13989,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14188,6 +14050,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14246,6 +14111,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14304,6 +14172,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14362,6 +14233,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14420,6 +14294,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14478,6 +14355,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14536,6 +14416,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14594,6 +14477,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14652,6 +14538,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14708,6 +14597,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14764,6 +14656,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14822,6 +14717,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14880,6 +14778,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -14938,6 +14839,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15001,6 +14905,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15059,6 +14966,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15117,6 +15027,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15175,6 +15088,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15235,6 +15151,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15295,6 +15214,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15355,6 +15277,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15413,6 +15338,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15471,6 +15399,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15529,6 +15460,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15587,6 +15521,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15645,6 +15582,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15703,6 +15643,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15763,6 +15706,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15821,6 +15767,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15879,6 +15828,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -15941,6 +15893,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16001,6 +15956,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16059,6 +16017,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16119,6 +16080,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16177,6 +16141,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16237,6 +16204,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16297,6 +16267,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16355,6 +16328,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16413,6 +16389,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16471,6 +16450,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16529,6 +16511,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16587,6 +16572,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16645,6 +16633,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16709,6 +16700,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16767,6 +16761,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16852,6 +16849,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16917,6 +16917,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -16975,6 +16978,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -17038,6 +17044,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -17114,6 +17123,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -17179,6 +17191,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -17241,6 +17256,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -17304,6 +17322,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -17366,6 +17387,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -17424,6 +17448,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -17482,6 +17509,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -17540,6 +17570,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -17598,6 +17631,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -17656,6 +17692,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -17718,6 +17757,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -17776,6 +17818,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -17834,6 +17879,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -17892,6 +17940,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -17950,6 +18001,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18010,6 +18064,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18070,6 +18127,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18126,6 +18186,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18182,6 +18245,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18240,6 +18306,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18300,6 +18369,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18358,6 +18430,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18416,6 +18491,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18474,6 +18552,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18542,6 +18623,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18615,6 +18699,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18673,6 +18760,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18736,6 +18826,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18794,6 +18887,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18852,6 +18948,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18910,6 +19009,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -18968,6 +19070,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -19041,6 +19146,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -19099,6 +19207,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -19164,6 +19275,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -19226,6 +19340,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -19286,6 +19403,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -19365,6 +19485,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -19434,6 +19557,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -19497,6 +19623,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -19555,6 +19684,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -19613,6 +19745,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -19669,6 +19804,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -19725,6 +19863,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -19783,6 +19924,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -19841,6 +19985,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -19899,6 +20046,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -19957,6 +20107,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20015,6 +20168,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20073,6 +20229,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20131,6 +20290,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20191,6 +20353,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20254,6 +20419,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20314,6 +20482,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20377,6 +20548,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20437,6 +20611,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20495,6 +20672,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20555,6 +20735,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20615,6 +20798,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20675,6 +20861,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20733,6 +20922,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20791,6 +20983,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20849,6 +21044,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20909,6 +21107,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -20916,6 +21117,147 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("id", payload.Id);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// The user closed 'something' (specified by 'module'). Examples: a view, feature, resource, ...
+        public static void RecordToolkitCloseModule(this ITelemetryLogger telemetryLogger, ToolkitCloseModule payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "toolkit_closeModule";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("module", payload.Module);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Represents the current enabled state of a feature. Used to track user journey through a feature. Emitted after feature-specific operations of interest in the Toolkit.
+        public static void RecordToolkitFeatureState(this ITelemetryLogger telemetryLogger, ToolkitFeatureState payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "toolkit_featureState";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                if (payload.AuthStatus.HasValue)
+                {
+                    datum.AddMetadata("authStatus", payload.AuthStatus.Value);
+                }
+
+                if (payload.CredentialSourceId.HasValue)
+                {
+                    datum.AddMetadata("credentialSourceId", payload.CredentialSourceId.Value);
+                }
+
+                if (payload.CredentialType.HasValue)
+                {
+                    datum.AddMetadata("credentialType", payload.CredentialType.Value);
+                }
+
+                datum.AddMetadata("enabled", payload.Enabled);
+
+                datum.AddMetadata("featureId", payload.FeatureId);
+
+                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -20967,6 +21309,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -21027,6 +21372,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -21088,6 +21436,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -21155,6 +21506,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -21166,6 +21520,71 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("component", payload.Component);
 
                 datum.AddMetadata("id", payload.Id);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("source", payload.Source);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// The user opened 'something' (specified by 'module'). Examples: a view, feature, resource, ...
+        public static void RecordToolkitOpenModule(this ITelemetryLogger telemetryLogger, ToolkitOpenModule payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "toolkit_openModule";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("module", payload.Module);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -21221,6 +21640,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -21285,6 +21707,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -21347,6 +21772,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -21403,6 +21831,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -21461,6 +21892,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -21519,6 +21953,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -21577,6 +22014,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -21635,6 +22075,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -21693,6 +22136,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
                 datum.AddMetadata("requestId", payload.RequestId);
                 datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
                 if (payload.Duration.HasValue)
                 {
                     datum.AddMetadata("duration", payload.Duration.Value);
@@ -22045,48 +22491,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     }
     
     /// Metric field type
-    /// Deprecated (Names of allowed API calls)
-    public struct CodeTransformApiNames
-    {
-        
-        private string _value;
-        
-        /// ResumeTransformation
-        public static readonly CodeTransformApiNames ResumeTransformation = new CodeTransformApiNames("ResumeTransformation");
-        
-        /// StartTransformation
-        public static readonly CodeTransformApiNames StartTransformation = new CodeTransformApiNames("StartTransformation");
-        
-        /// StopTransformation
-        public static readonly CodeTransformApiNames StopTransformation = new CodeTransformApiNames("StopTransformation");
-        
-        /// GetTransformation
-        public static readonly CodeTransformApiNames GetTransformation = new CodeTransformApiNames("GetTransformation");
-        
-        /// GetTransformationPlan
-        public static readonly CodeTransformApiNames GetTransformationPlan = new CodeTransformApiNames("GetTransformationPlan");
-        
-        /// UploadZip
-        public static readonly CodeTransformApiNames UploadZip = new CodeTransformApiNames("UploadZip");
-        
-        /// CreateUploadUrl
-        public static readonly CodeTransformApiNames CreateUploadUrl = new CodeTransformApiNames("CreateUploadUrl");
-        
-        /// ExportResultArchive
-        public static readonly CodeTransformApiNames ExportResultArchive = new CodeTransformApiNames("ExportResultArchive");
-        
-        public CodeTransformApiNames(string value)
-        {
-            this._value = value;
-        }
-        
-        public override string ToString()
-        {
-            return this._value;
-        }
-    }
-    
-    /// Metric field type
     /// Type of transform artifact
     public struct CodeTransformArtifactType
     {
@@ -22255,36 +22659,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     }
     
     /// Metric field type
-    /// Deprecated - use codeTransformBuildCommand (Type of maven command)
-    public struct CodeTransformMavenBuildCommand
-    {
-        
-        private string _value;
-        
-        /// mvnw.cmd
-        public static readonly CodeTransformMavenBuildCommand Mvnwcmd = new CodeTransformMavenBuildCommand("mvnw.cmd");
-        
-        /// mvnw
-        public static readonly CodeTransformMavenBuildCommand Mvnw = new CodeTransformMavenBuildCommand("mvnw");
-        
-        /// mvn
-        public static readonly CodeTransformMavenBuildCommand Mvn = new CodeTransformMavenBuildCommand("mvn");
-        
-        /// IDEBundledMaven
-        public static readonly CodeTransformMavenBuildCommand IDEBundledMaven = new CodeTransformMavenBuildCommand("IDEBundledMaven");
-        
-        public CodeTransformMavenBuildCommand(string value)
-        {
-            this._value = value;
-        }
-        
-        public override string ToString()
-        {
-            return this._value;
-        }
-    }
-    
-    /// Metric field type
     /// Names of components that can cancel the diff viewer
     public struct CodeTransformPatchViewerCancelSrcComponents
     {
@@ -22327,11 +22701,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// UnsupportedJavaVersion
         public static readonly CodeTransformPreValidationError UnsupportedJavaVersion = new CodeTransformPreValidationError("UnsupportedJavaVersion");
         
-        /// ProjectJDKDiffersFromMavenJDK
-        public static readonly CodeTransformPreValidationError ProjectJDKDiffersFromMavenJDK = new CodeTransformPreValidationError("ProjectJDKDiffersFromMavenJDK");
+        /// ProjectJDKDiffersFromBuildSystemJDK
+        public static readonly CodeTransformPreValidationError ProjectJDKDiffersFromBuildSystemJDK = new CodeTransformPreValidationError("ProjectJDKDiffersFromBuildSystemJDK");
         
-        /// NonMavenProject
-        public static readonly CodeTransformPreValidationError NonMavenProject = new CodeTransformPreValidationError("NonMavenProject");
+        /// UnsupportedBuildSystem
+        public static readonly CodeTransformPreValidationError UnsupportedBuildSystem = new CodeTransformPreValidationError("UnsupportedBuildSystem");
         
         /// EmptyProject
         public static readonly CodeTransformPreValidationError EmptyProject = new CodeTransformPreValidationError("EmptyProject");
@@ -22534,44 +22908,59 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         private string _value;
         
-        /// java
-        public static readonly CodewhispererLanguage Java = new CodewhispererLanguage("java");
-        
-        /// python
-        public static readonly CodewhispererLanguage Python = new CodewhispererLanguage("python");
-        
-        /// javascript
-        public static readonly CodewhispererLanguage Javascript = new CodewhispererLanguage("javascript");
-        
-        /// plaintext
-        public static readonly CodewhispererLanguage Plaintext = new CodewhispererLanguage("plaintext");
-        
-        /// jsx
-        public static readonly CodewhispererLanguage Jsx = new CodewhispererLanguage("jsx");
-        
-        /// typescript
-        public static readonly CodewhispererLanguage Typescript = new CodewhispererLanguage("typescript");
-        
-        /// tsx
-        public static readonly CodewhispererLanguage Tsx = new CodewhispererLanguage("tsx");
-        
-        /// csharp
-        public static readonly CodewhispererLanguage Csharp = new CodewhispererLanguage("csharp");
-        
         /// c
         public static readonly CodewhispererLanguage C = new CodewhispererLanguage("c");
         
         /// cpp
         public static readonly CodewhispererLanguage Cpp = new CodewhispererLanguage("cpp");
         
+        /// csharp
+        public static readonly CodewhispererLanguage Csharp = new CodewhispererLanguage("csharp");
+        
+        /// dart
+        public static readonly CodewhispererLanguage Dart = new CodewhispererLanguage("dart");
+        
         /// go
         public static readonly CodewhispererLanguage Go = new CodewhispererLanguage("go");
+        
+        /// hcl
+        public static readonly CodewhispererLanguage Hcl = new CodewhispererLanguage("hcl");
+        
+        /// java
+        public static readonly CodewhispererLanguage Java = new CodewhispererLanguage("java");
+        
+        /// javascript
+        public static readonly CodewhispererLanguage Javascript = new CodewhispererLanguage("javascript");
+        
+        /// json
+        public static readonly CodewhispererLanguage Json = new CodewhispererLanguage("json");
+        
+        /// jsonc
+        public static readonly CodewhispererLanguage Jsonc = new CodewhispererLanguage("jsonc");
+        
+        /// jsx
+        public static readonly CodewhispererLanguage Jsx = new CodewhispererLanguage("jsx");
         
         /// kotlin
         public static readonly CodewhispererLanguage Kotlin = new CodewhispererLanguage("kotlin");
         
+        /// lua
+        public static readonly CodewhispererLanguage Lua = new CodewhispererLanguage("lua");
+        
         /// php
         public static readonly CodewhispererLanguage Php = new CodewhispererLanguage("php");
+        
+        /// plaintext
+        public static readonly CodewhispererLanguage Plaintext = new CodewhispererLanguage("plaintext");
+        
+        /// powershell
+        public static readonly CodewhispererLanguage Powershell = new CodewhispererLanguage("powershell");
+        
+        /// python
+        public static readonly CodewhispererLanguage Python = new CodewhispererLanguage("python");
+        
+        /// r
+        public static readonly CodewhispererLanguage R = new CodewhispererLanguage("r");
         
         /// ruby
         public static readonly CodewhispererLanguage Ruby = new CodewhispererLanguage("ruby");
@@ -22588,23 +22977,29 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// sql
         public static readonly CodewhispererLanguage Sql = new CodewhispererLanguage("sql");
         
-        /// json
-        public static readonly CodewhispererLanguage Json = new CodewhispererLanguage("json");
+        /// swift
+        public static readonly CodewhispererLanguage Swift = new CodewhispererLanguage("swift");
         
-        /// jsonc
-        public static readonly CodewhispererLanguage Jsonc = new CodewhispererLanguage("jsonc");
+        /// systemVerilog
+        public static readonly CodewhispererLanguage SystemVerilog = new CodewhispererLanguage("systemVerilog");
+        
+        /// tf
+        public static readonly CodewhispererLanguage Tf = new CodewhispererLanguage("tf");
+        
+        /// tsx
+        public static readonly CodewhispererLanguage Tsx = new CodewhispererLanguage("tsx");
+        
+        /// typescript
+        public static readonly CodewhispererLanguage Typescript = new CodewhispererLanguage("typescript");
+        
+        /// vue
+        public static readonly CodewhispererLanguage Vue = new CodewhispererLanguage("vue");
         
         /// yaml
         public static readonly CodewhispererLanguage Yaml = new CodewhispererLanguage("yaml");
         
         /// yml
         public static readonly CodewhispererLanguage Yml = new CodewhispererLanguage("yml");
-        
-        /// hcl
-        public static readonly CodewhispererLanguage Hcl = new CodewhispererLanguage("hcl");
-        
-        /// tf
-        public static readonly CodewhispererLanguage Tf = new CodewhispererLanguage("tf");
         
         public CodewhispererLanguage(string value)
         {
@@ -23278,8 +23673,14 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         private string _value;
         
+        /// amazonQ
+        public static readonly FeatureId AmazonQ = new FeatureId("amazonQ");
+        
         /// awsExplorer
         public static readonly FeatureId AwsExplorer = new FeatureId("awsExplorer");
+        
+        /// awsToolkit
+        public static readonly FeatureId AwsToolkit = new FeatureId("awsToolkit");
         
         /// codewhisperer
         public static readonly FeatureId Codewhisperer = new FeatureId("codewhisperer");
@@ -24970,6 +25371,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// An extension in uninstalled
+    public sealed class AwsExtensionUninstalled : BaseTelemetryEvent
+    {
+        
+        public AwsExtensionUninstalled()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
     /// AB Testing Feature response and Cohort Assignments
     public sealed class AwsFeatureConfig : BaseTelemetryEvent
     {
@@ -26224,20 +26636,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
-    /// Deprecated - use codeTransform_uploadProject (The repo copies over at least one dependency successfully)
-    public sealed class CodeTransformDependenciesCopied : BaseTelemetryEvent
-    {
-        
-        /// Represents the IDE session from which users start the transformation process
-        public string CodeTransformSessionId;
-        
-        public CodeTransformDependenciesCopied()
-        {
-            this.Passive = false;
-            this.TrackPerformance = false;
-        }
-    }
-    
     /// User downloads code transform artifact
     public sealed class CodeTransformDownloadArtifact : BaseTelemetryEvent
     {
@@ -26307,75 +26705,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Result Result;
         
         public CodeTransformInitiateTransform()
-        {
-            this.Passive = false;
-            this.TrackPerformance = false;
-        }
-    }
-    
-    /// Deprecated - use codeTransform_validateProject (Transform initiated a job but there is a validation error)
-    public sealed class CodeTransformIsDoubleClickedToTriggerInvalidProject : BaseTelemetryEvent
-    {
-        
-        /// Names of the pre-validation errors that can occur
-        public CodeTransformPreValidationError CodeTransformPreValidationError;
-        
-        /// Optional - Any runtime errors
-        public string CodeTransformRuntimeError;
-        
-        /// Represents the IDE session from which users start the transformation process
-        public string CodeTransformSessionId;
-        
-        /// The result of the operation
-        public Result Result;
-        
-        public CodeTransformIsDoubleClickedToTriggerInvalidProject()
-        {
-            this.Passive = false;
-            this.TrackPerformance = false;
-        }
-    }
-    
-    /// Deprecated - use codeTransform_downloadArtifact (job is ending download zip contents)
-    public sealed class CodeTransformJobArtifactDownloadAndDeserializeTime : BaseTelemetryEvent
-    {
-        
-        /// The ID of the job currently running
-        public string CodeTransformJobId;
-        
-        /// Optional - Any runtime errors
-        public string CodeTransformRuntimeError;
-        
-        /// A millisecond value of the total run time
-        public int CodeTransformRunTimeLatency;
-        
-        /// Represents the IDE session from which users start the transformation process
-        public string CodeTransformSessionId;
-        
-        /// The byte size of the upload or download.
-        public int CodeTransformTotalByteSize;
-        
-        public CodeTransformJobArtifactDownloadAndDeserializeTime()
-        {
-            this.Passive = false;
-            this.TrackPerformance = false;
-        }
-    }
-    
-    /// Deprecated - use codeTransform_uploadProject (A timestamp for when the job is ending upload zip contents)
-    public sealed class CodeTransformJobCreateZipEndTime : BaseTelemetryEvent
-    {
-        
-        /// A millisecond value of the total run time
-        public int CodeTransformRunTimeLatency;
-        
-        /// Represents the IDE session from which users start the transformation process
-        public string CodeTransformSessionId;
-        
-        /// The byte size of the upload or download.
-        public int CodeTransformTotalByteSize;
-        
-        public CodeTransformJobCreateZipEndTime()
         {
             this.Passive = false;
             this.TrackPerformance = false;
@@ -26497,29 +26826,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
-    /// Deprecated - use codeTransform_submitSelection (code execution starts after model validation)
-    public sealed class CodeTransformJobStartedCompleteFromPopupDialog : BaseTelemetryEvent
-    {
-        
-        /// Allowed Java versions to transform from
-        public CodeTransformJavaSourceVersionsAllowed CodeTransformJavaSourceVersionsAllowed;
-        
-        /// Allowed Java versions to transform to
-        public CodeTransformJavaTargetVersionsAllowed CodeTransformJavaTargetVersionsAllowed;
-        
-        /// A hash identifying the projects chosen top level build file that is to be transformed.
-        public string CodeTransformProjectId;
-        
-        /// Represents the IDE session from which users start the transformation process
-        public string CodeTransformSessionId;
-        
-        public CodeTransformJobStartedCompleteFromPopupDialog()
-        {
-            this.Passive = true;
-            this.TrackPerformance = false;
-        }
-    }
-    
     /// During the transformation progress, log the status steps returning from the API.
     public sealed class CodeTransformJobStatusChanged : BaseTelemetryEvent
     {
@@ -26563,61 +26869,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
-    /// Deprecated - avoid logging every service call
-    public sealed class CodeTransformLogApiError : BaseTelemetryEvent
-    {
-        
-        /// Optional - The ID of the job currently running
-        public string CodeTransformJobId;
-        
-        /// Optional - The API request ID
-        public string CodeTransformRequestId;
-        
-        /// Represents the IDE session from which users start the transformation process
-        public string CodeTransformSessionId;
-        
-        /// Optional - The byte size of the upload or download.
-        public System.Int32? CodeTransformTotalByteSize;
-        
-        public CodeTransformLogApiError()
-        {
-            this.Passive = true;
-            this.TrackPerformance = false;
-        }
-    }
-    
-    /// Deprecated - avoid logging every service call
-    public sealed class CodeTransformLogApiLatency : BaseTelemetryEvent
-    {
-        
-        /// Deprecated (Names of allowed API calls)
-        public CodeTransformApiNames CodeTransformApiNames;
-        
-        /// Optional - The ID of the job currently running
-        public string CodeTransformJobId;
-        
-        /// Optional - The API request ID
-        public string CodeTransformRequestId;
-        
-        /// A millisecond value of the total run time
-        public int CodeTransformRunTimeLatency;
-        
-        /// Represents the IDE session from which users start the transformation process
-        public string CodeTransformSessionId;
-        
-        /// Optional - The byte size of the upload or download.
-        public System.Int32? CodeTransformTotalByteSize;
-        
-        /// Optional - A unique upload ID for S3
-        public string CodeTransformUploadId;
-        
-        public CodeTransformLogApiLatency()
-        {
-            this.Passive = true;
-            this.TrackPerformance = false;
-        }
-    }
-    
     /// A general error has occurred.
     public sealed class CodeTransformLogGeneralError : BaseTelemetryEvent
     {
@@ -26629,46 +26880,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public string CodeTransformSessionId;
         
         public CodeTransformLogGeneralError()
-        {
-            this.Passive = true;
-            this.TrackPerformance = false;
-        }
-    }
-    
-    /// Deprecated - use codeTransform_localBuildProject (The maven command build failed)
-    public sealed class CodeTransformMvnBuildFailed : BaseTelemetryEvent
-    {
-        
-        /// Deprecated - use codeTransformBuildCommand (Type of maven command)
-        public CodeTransformMavenBuildCommand CodeTransformMavenBuildCommand;
-        
-        /// Represents the IDE session from which users start the transformation process
-        public string CodeTransformSessionId;
-        
-        public CodeTransformMvnBuildFailed()
-        {
-            this.Passive = false;
-            this.TrackPerformance = false;
-        }
-    }
-    
-    /// Deprecated - use codeTransform_validateProject (Transform initiates project validation before user interaction)
-    public sealed class CodeTransformProjectDetails : BaseTelemetryEvent
-    {
-        
-        /// Optional - The Java version on the user's machine
-        public string CodeTransformLocalJavaVersion;
-        
-        /// Optional - Names of the pre-validation errors that can occur
-        public CodeTransformPreValidationError? CodeTransformPreValidationError;
-        
-        /// Represents the IDE session from which users start the transformation process
-        public string CodeTransformSessionId;
-        
-        /// The result of the operation
-        public Result Result;
-        
-        public CodeTransformProjectDetails()
         {
             this.Passive = true;
             this.TrackPerformance = false;
@@ -26694,7 +26905,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The result of the operation
         public Result Result;
         
-        /// User selection from a predefined menu (not user-provided input)
+        /// Optional - User selection from a predefined menu (not user-provided input)
         public string UserChoice;
         
         public CodeTransformSubmitSelection()
@@ -26716,9 +26927,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The Java version on the user's machine
         public string CodeTransformLocalJavaVersion;
-        
-        /// Optional - Deprecated - use buildSystemVersion (The build system version on the user's machine)
-        public string CodeTransformLocalMavenVersion;
         
         /// Optional - The number of times the transformation plan was received during transformation
         public System.Int32? CodeTransformPlanReceivedCount;
@@ -26772,8 +26980,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The build system version on the user's machine
         public string BuildSystemVersion;
         
-        /// Type of build system
-        public CodeTransformBuildSystem CodeTransformBuildSystem;
+        /// Optional - Type of build system
+        public CodeTransformBuildSystem? CodeTransformBuildSystem;
         
         /// Optional - The Java version on the user's machine
         public string CodeTransformLocalJavaVersion;
@@ -26788,89 +26996,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Result Result;
         
         public CodeTransformValidateProject()
-        {
-            this.Passive = false;
-            this.TrackPerformance = false;
-        }
-    }
-    
-    /// Deprecated - use codeTransform_viewArtifact (timestamp when the diff view is being displayed to the user)
-    public sealed class CodeTransformVcsDiffViewerVisible : BaseTelemetryEvent
-    {
-        
-        /// Optional - The ID of the job currently running
-        public string CodeTransformJobId;
-        
-        /// Represents the IDE session from which users start the transformation process
-        public string CodeTransformSessionId;
-        
-        public CodeTransformVcsDiffViewerVisible()
-        {
-            this.Passive = false;
-            this.TrackPerformance = false;
-        }
-    }
-    
-    /// Deprecated - use codeTransform_viewArtifact (An interactivity measured when users cancel a patch view)
-    public sealed class CodeTransformVcsViewerCanceled : BaseTelemetryEvent
-    {
-        
-        /// Optional - The ID of the job currently running
-        public string CodeTransformJobId;
-        
-        /// Names of components that can cancel the diff viewer
-        public CodeTransformPatchViewerCancelSrcComponents CodeTransformPatchViewerCancelSrcComponents;
-        
-        /// Optional - Any runtime errors
-        public string CodeTransformRuntimeError;
-        
-        /// Represents the IDE session from which users start the transformation process
-        public string CodeTransformSessionId;
-        
-        /// The current transformation job's status
-        public string CodeTransformStatus;
-        
-        public CodeTransformVcsViewerCanceled()
-        {
-            this.Passive = false;
-            this.TrackPerformance = false;
-        }
-    }
-    
-    /// Deprecated - use codeTransform_viewArtifact (An interactivity measured when users click to view diff results)
-    public sealed class CodeTransformVcsViewerClicked : BaseTelemetryEvent
-    {
-        
-        /// Optional - The ID of the job currently running
-        public string CodeTransformJobId;
-        
-        /// Represents the IDE session from which users start the transformation process
-        public string CodeTransformSessionId;
-        
-        /// Names of components that can initiate the diff viewer
-        public CodeTransformVCSViewerSrcComponents CodeTransformVCSViewerSrcComponents;
-        
-        public CodeTransformVcsViewerClicked()
-        {
-            this.Passive = false;
-            this.TrackPerformance = false;
-        }
-    }
-    
-    /// Deprecated - use codeTransform_viewArtifact (An interactivity measured when users submit their patch view results)
-    public sealed class CodeTransformVcsViewerSubmitted : BaseTelemetryEvent
-    {
-        
-        /// Optional - The ID of the job currently running
-        public string CodeTransformJobId;
-        
-        /// Represents the IDE session from which users start the transformation process
-        public string CodeTransformSessionId;
-        
-        /// The current transformation job's status
-        public string CodeTransformStatus;
-        
-        public CodeTransformVcsViewerSubmitted()
         {
             this.Passive = false;
             this.TrackPerformance = false;
@@ -26899,7 +27024,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The result of the operation
         public Result Result;
         
-        /// User selection from a predefined menu (not user-provided input)
+        /// Optional - User selection from a predefined menu (not user-provided input)
         public string UserChoice;
         
         public CodeTransformViewArtifact()
@@ -29969,6 +30094,49 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// The user closed 'something' (specified by 'module'). Examples: a view, feature, resource, ...
+    public sealed class ToolkitCloseModule : BaseTelemetryEvent
+    {
+        
+        /// Free-form module name for both high-level features such as "PublishToAWS", and lower-level modules such as "ToolkitContextProvider". Use `component` for UI components, or `featureId` for specific feature names. See also `resourceType`.
+        public string Module;
+        
+        public ToolkitCloseModule()
+        {
+            this.Passive = true;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// Represents the current enabled state of a feature. Used to track user journey through a feature. Emitted after feature-specific operations of interest in the Toolkit.
+    public sealed class ToolkitFeatureState : BaseTelemetryEvent
+    {
+        
+        /// Optional - Status of the an auth connection.
+        public AuthStatus? AuthStatus;
+        
+        /// Optional - Where credentials are stored or retrieved from
+        public CredentialSourceId? CredentialSourceId;
+        
+        /// Optional - The type of credential that was selected
+        public CredentialType? CredentialType;
+        
+        /// True if turned on, false if turned off
+        public bool Enabled;
+        
+        /// The id of the feature the user is interacting in. See also: `component`, `featureId`, `module`, `resourceType`.
+        public FeatureId FeatureId;
+        
+        /// The source of the operation
+        public string Source;
+        
+        public ToolkitFeatureState()
+        {
+            this.Passive = true;
+            this.TrackPerformance = false;
+        }
+    }
+    
     /// The toolkit tried to retrieve blob data from a url
     public sealed class ToolkitGetExternalResource : BaseTelemetryEvent
     {
@@ -30045,6 +30213,26 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ToolkitInvokeAction()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// The user opened 'something' (specified by 'module'). Examples: a view, feature, resource, ...
+    public sealed class ToolkitOpenModule : BaseTelemetryEvent
+    {
+        
+        /// Free-form module name for both high-level features such as "PublishToAWS", and lower-level modules such as "ToolkitContextProvider". Use `component` for UI components, or `featureId` for specific feature names. See also `resourceType`.
+        public string Module;
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// The source of the operation
+        public string Source;
+        
+        public ToolkitOpenModule()
+        {
+            this.Passive = true;
             this.TrackPerformance = false;
         }
     }
