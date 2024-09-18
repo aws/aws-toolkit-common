@@ -1561,6 +1561,14 @@
             "description": "Type of save executed"
         },
         {
+            "name": "scenarioType",
+            "type": "string",
+            "allowedValues": [
+                "wsOrphanedDocuments"
+            ],
+            "description": "Scenarios to count in telemetry"
+        },
+        {
             "name": "schemaLanguage",
             "type": "string",
             "allowedValues": [
