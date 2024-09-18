@@ -1902,10 +1902,12 @@
             "unit": "Count",
             "metadata": [
                 {
-                    "type": "amazonqConversationId"
+                    "type": "amazonqConversationId",
+                    "required": true
                 },
                 {
-                    "type": "scenarioType"
+                    "type": "scenarioType",
+                    "required": true
                 },
                 {
                     "type": "credentialStartUrl",
