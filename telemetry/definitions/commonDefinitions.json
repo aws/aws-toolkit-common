@@ -1899,6 +1899,7 @@
         {
             "name": "amazonq_trackScenarioCountUsage",
             "description": "Count how many times a scenario is reached.",
+            "unit": "Count",
             "metadata": [
                 {
                     "type": "amazonqConversationId"
