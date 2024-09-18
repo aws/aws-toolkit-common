@@ -120,6 +120,41 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Tests
         }
 
         /// <summary>
+        /// RecordLambdaInvokeRemote is arbitrary here, we're checking that we can override the
+        /// traceId, metricId and parentId values.
+        /// </summary>
+        [Fact]
+        public void RecordLambdaInvokeRemote_withIds()
+        {
+            var lambdaInvokeRemote = new LambdaInvokeRemote()
+            {
+                TraceId = "abc",
+                MetricId = "def",
+                ParentId = "xyz",
+                Result = Result.Succeeded,
+                Runtime = Runtime.Dotnetcore31,
+            };
+
+            _telemetryLogger.Object.RecordLambdaInvokeRemote(lambdaInvokeRemote);
+
+            Assert.NotNull(_recordedMetrics);
+            _telemetryLogger.Verify(
+                mock => mock.Record(_recordedMetrics),
+                Times.Once
+            );
+
+            var datum = Assert.Single(_recordedMetrics.Data);
+            Assert.NotNull(datum);
+            Assert.Equal("lambda_invokeRemote", datum.MetricName);
+            Assert.False(datum.Passive);
+            Assert.Equal("abc", datum.Metadata["traceId"]);
+            Assert.Equal("def", datum.Metadata["metricId"]);
+            Assert.Equal("xyz", datum.Metadata["parentId"]);
+            Assert.Equal(lambdaInvokeRemote.Runtime.Value.ToString(), datum.Metadata["runtime"]);
+            Assert.Equal(lambdaInvokeRemote.Result.ToString(), datum.Metadata["result"]);
+        }
+        
+        /// <summary>
         /// RecordSamDeployWithVersion was chosen as a sample call that has an optional field (Version)
         /// </summary>
         [Fact]

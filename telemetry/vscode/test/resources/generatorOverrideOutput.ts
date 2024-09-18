@@ -36,6 +36,12 @@ export interface MetricBase {
     readonly value?: number
     /** A flag indicating that the metric should track run-time performance information */
     readonly trackPerformance?: boolean
+    /** Unique identifier for the trace (a set of events) this metric belongs to */
+    readonly traceId?: string
+    /** Unique identifier for this metric */
+    readonly metricId?: string
+    /** Unique identifier of the parent of this metric */
+    readonly parentId?: string
 }
 
 export interface MetadataHasResult extends MetricBase {}

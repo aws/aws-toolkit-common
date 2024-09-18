@@ -32,7 +32,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Core
             "requestId",
             "requestServiceType",
             "duration",
-            "locale"
+            "locale",
+            "traceId",
+            "metricId",
+            "parentId"
         };
 
         private readonly CodeMethodReferenceExpression _invariantCulture =
@@ -454,8 +457,23 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Core
             // Generate: datum.AddMetadata("requestServiceType", payload.RequestServiceType);
             var payloadRequestServiceType = new CodeFieldReferenceExpression(payload, "RequestServiceType");
             tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
-                new CodePrimitiveExpression("requestServiceType"), payloadRequestServiceType)));  
+                new CodePrimitiveExpression("requestServiceType"), payloadRequestServiceType)));
 
+            // Generate: datum.AddMetadata("traceId", payload.TraceId);
+            var payloadTraceId = new CodeFieldReferenceExpression(payload, "TraceId");
+            tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
+                new CodePrimitiveExpression("traceId"), payloadTraceId)));
+            
+            // Generate: datum.AddMetadata("metricId", payload.MetricId);
+            var payloadMetricId = new CodeFieldReferenceExpression(payload, "MetricId");
+            tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
+                new CodePrimitiveExpression("metricId"), payloadMetricId)));
+            
+            // Generate: datum.AddMetadata("parentId", payload.ParentId);
+            var payloadParentId = new CodeFieldReferenceExpression(payload, "ParentId");
+            tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
+                new CodePrimitiveExpression("parentId"), payloadParentId)));
+            
             // Generate: 
             // if (payload.Duration.HasValue)
             // {

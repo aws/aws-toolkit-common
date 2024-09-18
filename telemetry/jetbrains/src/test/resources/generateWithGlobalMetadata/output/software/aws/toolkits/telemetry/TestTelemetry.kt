@@ -29,6 +29,9 @@ public object TestTelemetry {
         requestId: String? = null,
         requestServiceType: String? = null,
         result: Result? = null,
+        traceId: String? = null,
+        metricId: String? = null,
+        parentId: String? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -60,6 +63,15 @@ public object TestTelemetry {
                 if(result != null) {
                     metadata("result", result.toString())
                 }
+                if(traceId != null) {
+                    metadata("traceId", traceId)
+                }
+                if(metricId != null) {
+                    metadata("metricId", metricId)
+                }
+                if(parentId != null) {
+                    metadata("parentId", parentId)
+                }
             }
         }
     }
@@ -76,6 +88,9 @@ public object TestTelemetry {
         requestId: String? = null,
         requestServiceType: String? = null,
         result: Result? = null,
+        traceId: String? = null,
+        metricId: String? = null,
+        parentId: String? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -107,6 +122,15 @@ public object TestTelemetry {
                 if(result != null) {
                     metadata("result", result.toString())
                 }
+                if(traceId != null) {
+                    metadata("traceId", traceId)
+                }
+                if(metricId != null) {
+                    metadata("metricId", metricId)
+                }
+                if(parentId != null) {
+                    metadata("parentId", parentId)
+                }
             }
         }
     }
@@ -123,6 +147,9 @@ public object TestTelemetry {
         requestId: String? = null,
         requestServiceType: String? = null,
         result: Result? = null,
+        traceId: String? = null,
+        metricId: String? = null,
+        parentId: String? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -154,6 +181,15 @@ public object TestTelemetry {
                 if(result != null) {
                     metadata("result", result.toString())
                 }
+                if(traceId != null) {
+                    metadata("traceId", traceId)
+                }
+                if(metricId != null) {
+                    metadata("metricId", metricId)
+                }
+                if(parentId != null) {
+                    metadata("parentId", parentId)
+                }
             }
         }
     }
@@ -170,12 +206,16 @@ public object TestTelemetry {
         requestId: String? = null,
         requestServiceType: String? = null,
         success: Boolean,
+        traceId: String? = null,
+        metricId: String? = null,
+        parentId: String? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
         metric(project, duration, httpStatusCode, reason, reasonDesc, requestId, requestServiceType,
-                if(success) Result.Succeeded else Result.Failed, passive, value, createTime)
+                if(success) Result.Succeeded else Result.Failed, traceId, metricId, parentId,
+                passive, value, createTime)
     }
 
     /**
@@ -190,13 +230,16 @@ public object TestTelemetry {
         requestId: String? = null,
         requestServiceType: String? = null,
         success: Boolean,
+        traceId: String? = null,
+        metricId: String? = null,
+        parentId: String? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
         metric(connectionSettings, duration, httpStatusCode, reason, reasonDesc, requestId,
-                requestServiceType, if(success) Result.Succeeded else Result.Failed, passive, value,
-                createTime)
+                requestServiceType, if(success) Result.Succeeded else Result.Failed, traceId,
+                metricId, parentId, passive, value, createTime)
     }
 
     /**
@@ -211,12 +254,15 @@ public object TestTelemetry {
         requestId: String? = null,
         requestServiceType: String? = null,
         success: Boolean,
+        traceId: String? = null,
+        metricId: String? = null,
+        parentId: String? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
         metric(metadata, duration, httpStatusCode, reason, reasonDesc, requestId,
-                requestServiceType, if(success) Result.Succeeded else Result.Failed, passive, value,
-                createTime)
+                requestServiceType, if(success) Result.Succeeded else Result.Failed, traceId,
+                metricId, parentId, passive, value, createTime)
     }
 }
