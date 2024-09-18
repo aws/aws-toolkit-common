@@ -1897,25 +1897,6 @@
             ]
         },
         {
-            "name": "amazonq_trackScenarioCountUsage",
-            "description": "Count how many times a scenario is reached.",
-            "unit": "Count",
-            "metadata": [
-                {
-                    "type": "amazonqConversationId",
-                    "required": true
-                },
-                {
-                    "type": "scenarioType",
-                    "required": true
-                },
-                {
-                    "type": "credentialStartUrl",
-                    "required": false
-                }
-            ]
-        },
-        {
             "name": "amazonq_codeGenerationThumbsDown",
             "description": "User clicked on the thumbs down button to say that they are unsatisfied",
             "unit": "Count",
@@ -2162,6 +2143,25 @@
                 },
                 {
                     "type": "result",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "amazonq_trackScenarioCountUsage",
+            "description": "Count how many times a scenario is reached.",
+            "unit": "Count",
+            "metadata": [
+                {
+                    "type": "amazonqConversationId",
+                    "required": true
+                },
+                {
+                    "type": "scenarioType",
+                    "required": true
+                },
+                {
+                    "type": "credentialStartUrl",
                     "required": false
                 }
             ]
