@@ -1897,6 +1897,22 @@
             ]
         },
         {
+            "name": "amazonq_trackScenarioCountUsage",
+            "description": "Count how many times a scenario is reached.",
+            "metadata": [
+                {
+                    "type": "amazonqConversationId"
+                },
+                {
+                    "type": "scenarioType"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "amazonq_codeGenerationThumbsDown",
             "description": "User clicked on the thumbs down button to say that they are unsatisfied",
             "unit": "Count",
