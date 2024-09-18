@@ -2157,12 +2157,12 @@
                     "required": true
                 },
                 {
-                    "type": "scenarioType",
-                    "required": true
-                },
-                {
                     "type": "credentialStartUrl",
                     "required": false
+                },
+                {
+                    "type": "scenarioType",
+                    "required": true
                 }
             ]
         },
