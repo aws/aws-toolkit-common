@@ -4187,7 +4187,8 @@
                     "type": "codewhispererTriggerType"
                 },
                 {
-                    "type": "codewhispererUserGroup"
+                    "type": "codewhispererUserGroup",
+                    "required": false
                 },
                 {
                     "type": "credentialStartUrl",
@@ -4220,7 +4221,8 @@
                     "type": "codewhispererTotalTokens"
                 },
                 {
-                    "type": "codewhispererUserGroup"
+                    "type": "codewhispererUserGroup",
+                    "required": false
                 },
                 {
                     "type": "credentialStartUrl",
@@ -4365,7 +4367,8 @@
                     "type": "codewhispererTriggerType"
                 },
                 {
-                    "type": "codewhispererUserGroup"
+                    "type": "codewhispererUserGroup",
+                    "required": false
                 },
                 {
                     "type": "credentialStartUrl",
@@ -4517,7 +4520,8 @@
                     "type": "codewhispererTriggerType"
                 },
                 {
-                    "type": "codewhispererUserGroup"
+                    "type": "codewhispererUserGroup",
+                    "required": false
                 },
                 {
                     "type": "credentialStartUrl",
@@ -4601,7 +4605,8 @@
                     "type": "codewhispererTriggerType"
                 },
                 {
-                    "type": "codewhispererUserGroup"
+                    "type": "codewhispererUserGroup",
+                    "required": false
                 },
                 {
                     "type": "credentialStartUrl",
@@ -4650,7 +4655,8 @@
                     "type": "codewhispererTriggerType"
                 },
                 {
-                    "type": "codewhispererUserGroup"
+                    "type": "codewhispererUserGroup",
+                    "required": false
                 },
                 {
                     "type": "credentialStartUrl",
@@ -4777,7 +4783,8 @@
                     "type": "codewhispererTypeaheadLength"
                 },
                 {
-                    "type": "codewhispererUserGroup"
+                    "type": "codewhispererUserGroup",
+                    "required": false
                 },
                 {
                     "type": "credentialStartUrl",
