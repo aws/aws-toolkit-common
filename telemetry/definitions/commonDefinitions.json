@@ -978,7 +978,8 @@
                 "hoverReference",
                 "upvote",
                 "downvote",
-                "clickBodyLink"
+                "clickBodyLink",
+                "viewDiff"
             ],
             "type": "string",
             "description": "Indicates the specific interaction type with a message in a conversation"
