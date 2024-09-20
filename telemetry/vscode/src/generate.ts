@@ -402,6 +402,7 @@ function generateFile(telemetryJson: MetricDefinitionRoot, dest: string) {
         name: 'Span',
         isExported: true,
         typeParameters: [{ name: 'T' }],
+        docs: ['Represents a telemetry span for tracking and recording metric data.'],
         methods: [
             {
                 name: 'record',
