@@ -285,15 +285,6 @@ function generateMetricRecorder(metadataType: TypeAliasDeclarationStructure): In
         ],
         methods: [
             {
-                docs: ['Adds data to the metric which is preserved for the remainder of the execution context'],
-                name: 'record',
-                returnType: 'void',
-                parameters: [{
-                        name: 'data',
-                        type: `${metadataType.name}<T>`,
-                }],
-            },
-            {
                 docs: ['Sends the metric to the telemetry service'],
                 name: 'emit',
                 returnType: 'void',
@@ -310,7 +301,7 @@ function generateMetricRecorder(metadataType: TypeAliasDeclarationStructure): In
                 returnType: 'U',
                 parameters: [{
                         name: 'fn',
-                        type: `(span: this) => U`,
+                        type: `(span: Span<T>) => U`,
                 }],
             }
         ],
@@ -406,10 +397,30 @@ function generateFile(telemetryJson: MetricDefinitionRoot, dest: string) {
         kind: StructureKind.TypeAlias,
     }
 
+    const span: InterfaceDeclarationStructure = {
+        kind: StructureKind.Interface,
+        name: 'Span',
+        isExported: true,
+        typeParameters: [{ name: 'T' }],
+        methods: [
+            {
+                name: 'record',
+                parameters: [
+                    {
+                        name: 'data',
+                        type: 'Partial<T>',
+                    },
+                ],
+                returnType: 'this',
+            }
+        ],
+    }
+
     const definitions = generateDefinitions(telemetryJson.metrics)
     const recorder = generateMetricRecorder(metadataType)
     file.addVariableStatement(definitions)
     file.addTypeAlias(metadataType)
+    file.addInterface(span)
     file.addInterface(recorder)
     file.addClass(generateTelemetryHelper(recorder, telemetryJson.metrics))
 
