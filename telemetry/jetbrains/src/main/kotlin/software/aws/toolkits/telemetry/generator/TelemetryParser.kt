@@ -18,7 +18,7 @@ enum class MetricMetadataTypes(@get:JsonValue val type: String) {
         override fun kotlinType(): TypeName = com.squareup.kotlinpoet.STRING
     },
     INT("int") {
-        override fun kotlinType(): TypeName = com.squareup.kotlinpoet.INT
+        override fun kotlinType(): TypeName = com.squareup.kotlinpoet.LONG
     },
     DOUBLE("double") {
         override fun kotlinType(): TypeName = com.squareup.kotlinpoet.DOUBLE
