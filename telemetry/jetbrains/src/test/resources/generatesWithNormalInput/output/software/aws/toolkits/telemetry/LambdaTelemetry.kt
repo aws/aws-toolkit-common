@@ -9,7 +9,7 @@ import com.intellij.openapi.project.Project
 import java.time.Instant
 import kotlin.Boolean
 import kotlin.Double
-import kotlin.Int
+import kotlin.Long
 import kotlin.String
 import kotlin.Suppress
 import software.amazon.awssdk.services.toolkittelemetry.model.Unit
@@ -174,7 +174,7 @@ public object LambdaTelemetry {
     public fun remoteinvoke(
         project: Project?,
         lambdaRuntime: LambdaRuntime? = null,
-        inttype: Int,
+        inttype: Long,
         duration: Double? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
@@ -203,7 +203,7 @@ public object LambdaTelemetry {
     public fun remoteinvoke(
         connectionSettings: ConnectionSettings? = null,
         lambdaRuntime: LambdaRuntime? = null,
-        inttype: Int,
+        inttype: Long,
         duration: Double? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
@@ -232,7 +232,7 @@ public object LambdaTelemetry {
     public fun remoteinvoke(
         metadata: MetricEventMetadata,
         lambdaRuntime: LambdaRuntime? = null,
-        inttype: Int,
+        inttype: Long,
         duration: Double? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
