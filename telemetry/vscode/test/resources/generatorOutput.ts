@@ -125,6 +125,7 @@ export const definitions: Record<string, MetricDefinition> = {
 
 export type Metadata<T extends MetricBase> = Partial<Omit<T, keyof MetricBase> | Partial<Pick<MetricBase, 'awsRegion'>>>
 
+/** Represents a telemetry span for tracking and recording metric data. */
 export interface Span<T> {
     record(data: Partial<T>): this
 }
