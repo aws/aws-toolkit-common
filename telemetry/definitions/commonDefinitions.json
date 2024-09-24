@@ -2713,6 +2713,7 @@
         {
             "name": "aws_extensionUninstalled",
             "description": "An extension in uninstalled",
+            "passive": true,
             "metadata": []
         },
         {
