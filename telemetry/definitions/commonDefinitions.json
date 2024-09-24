@@ -990,6 +990,11 @@
             "description": "Unique identifier for each message in an conversation"
         },
         {
+            "name": "cwsprChatTotalCodeBlocks",
+            "type": "int",
+            "description": "Total number of code blocks inside a message in the conversation."
+        },
+        {
             "name": "cwsprChatUserIntent",
             "type": "string",
             "allowedValues": [
@@ -1003,11 +1008,6 @@
                 "generateUnitTests"
             ],
             "description": "Explict user intent associated with a chat message"
-        },
-        {
-            "name": "cwsprChatTotalCodeBlocks",
-            "type": "int",
-            "description": "Total number of code blocks inside a message in the conversation."
         },
         {
             "name": "databaseCredentials",
