@@ -2021,6 +2021,10 @@
                 {
                     "type": "cwsprChatMessageId",
                     "required": true
+                },
+                {
+                    "type": "cwsprChatUserIntent",
+                    "required": false
                 }
             ]
         },
