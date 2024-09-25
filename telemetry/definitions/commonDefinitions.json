@@ -1576,6 +1576,11 @@
             "description": "Type of save executed"
         },
         {
+            "name": "scenario",
+            "type": "string",
+            "description": "Scenarios to count in telemetry"
+        },
+        {
             "name": "schemaLanguage",
             "type": "string",
             "allowedValues": [
@@ -6819,6 +6824,30 @@
                 }
             ],
             "passive": true
+        },
+
+        {
+            "name": "toolkit_trackScenario",
+            "description": "Generic metric for tracking arbitrary scenarios that are not yet formalized into a full metric.",
+            "unit": "Count",
+            "metadata": [
+               
+                {
+                    "type": "amazonqConversationId",
+                    "required": true
+                },
+                 {
+                    "type": "count"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "scenario",
+                    "required": true
+                }
+            ]
         },
         {
             "name": "toolkit_viewLogs",
