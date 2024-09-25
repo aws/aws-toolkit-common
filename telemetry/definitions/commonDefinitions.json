@@ -1561,7 +1561,7 @@
             "description": "Type of save executed"
         },
         {
-            "name": "scenarioType",
+            "name": "scenario",
             "type": "string",
             "allowedValues": [
                 "wsOrphanedDocuments"
