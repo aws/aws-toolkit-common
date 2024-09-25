@@ -1563,9 +1563,6 @@
         {
             "name": "scenario",
             "type": "string",
-            "allowedValues": [
-                "wsOrphanedDocuments"
-            ],
             "description": "Scenarios to count in telemetry"
         },
         {
