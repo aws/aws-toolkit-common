@@ -6817,12 +6817,12 @@
                     "type": "amazonqConversationId",
                     "required": true
                 },
+                 {
+                    "type": "count"
+                },
                 {
                     "type": "credentialStartUrl",
                     "required": false
-                },
-                 {
-                    "type": "count"
                 },
                 {
                     "type": "scenario",
