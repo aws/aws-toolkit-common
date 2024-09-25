@@ -995,6 +995,21 @@
             "description": "Total number of code blocks inside a message in the conversation."
         },
         {
+            "name": "cwsprChatUserIntent",
+            "type": "string",
+            "allowedValues": [
+                "suggestAlternateImplementation",
+                "applyCommonBestPractices",
+                "improveCode",
+                "showExample",
+                "citeSources",
+                "explainLineByLine",
+                "explainCodeSelection",
+                "generateUnitTests"
+            ],
+            "description": "Explict user intent associated with a chat message"
+        },
+        {
             "name": "databaseCredentials",
             "type": "string",
             "allowedValues": [
@@ -2021,6 +2036,10 @@
                 {
                     "type": "cwsprChatMessageId",
                     "required": true
+                },
+                {
+                    "type": "cwsprChatUserIntent",
+                    "required": false
                 }
             ]
         },
