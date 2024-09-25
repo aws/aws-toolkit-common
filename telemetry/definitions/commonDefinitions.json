@@ -6825,7 +6825,7 @@
                     "type": "count"
                 },
                 {
-                    "type": "scenarioType",
+                    "type": "scenario",
                     "required": true
                 }
             ]
