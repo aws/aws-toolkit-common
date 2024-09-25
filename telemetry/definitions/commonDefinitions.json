@@ -2156,25 +2156,6 @@
             ]
         },
         {
-            "name": "amazonq_trackScenarioCountUsage",
-            "description": "Count how many times a scenario is reached.",
-            "unit": "Count",
-            "metadata": [
-                {
-                    "type": "amazonqConversationId",
-                    "required": true
-                },
-                {
-                    "type": "credentialStartUrl",
-                    "required": false
-                },
-                {
-                    "type": "scenarioType",
-                    "required": true
-                }
-            ]
-        },
-        {
             "name": "amazonq_viewChatPanel",
             "description": "Captures if Q chat panel is successfully viewed or not",
             "metadata": [
@@ -6827,6 +6808,29 @@
                 }
             ],
             "passive": true
+        },
+
+        {
+            "name": "toolkit_trackScenario",
+            "description": "Count how many times a scenario is reached.",
+            "unit": "Count",
+            "metadata": [
+                {
+                    "type": "count"
+                },
+                {
+                    "type": "amazonqConversationId",
+                    "required": true
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "scenarioType",
+                    "required": true
+                }
+            ]
         },
         {
             "name": "toolkit_viewLogs",
