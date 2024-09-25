@@ -2193,6 +2193,10 @@
             "description": "Invoking one simulated API Gateway call using the SAM cli",
             "metadata": [
                 {
+                    "type": "source",
+                    "required": false
+                },
+                {
                     "type": "debug"
                 },
                 {
@@ -2216,6 +2220,10 @@
             "name": "apigateway_invokeRemote",
             "description": "Calling a remote API Gateway",
             "metadata": [
+                {
+                    "type": "source",
+                    "required": false
+                },
                 {
                     "type": "httpMethod",
                     "required": false
