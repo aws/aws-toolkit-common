@@ -6815,9 +6815,7 @@
             "description": "Count how many times a scenario is reached.",
             "unit": "Count",
             "metadata": [
-                {
-                    "type": "count"
-                },
+               
                 {
                     "type": "amazonqConversationId",
                     "required": true
@@ -6825,6 +6823,9 @@
                 {
                     "type": "credentialStartUrl",
                     "required": false
+                },
+                 {
+                    "type": "count"
                 },
                 {
                     "type": "scenarioType",
