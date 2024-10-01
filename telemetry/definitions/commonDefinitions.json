@@ -970,6 +970,7 @@
         {
             "name": "cwsprChatInteractionType",
             "allowedValues": [
+                "acceptDiff",
                 "insertAtCursor",
                 "copySnippet",
                 "copy",
