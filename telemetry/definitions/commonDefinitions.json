@@ -133,6 +133,17 @@
             "description": "Status of the an auth connection."
         },
         {
+            "name": "authType",
+            "type": "string",
+            "allowedValues": [
+                "PKCE",
+                "DeviceCode",
+                "IAM",
+                "Unknown"
+            ],
+            "description": "The type of auth flow used for signing in"
+        },
+        {
             "name": "awsAccount",
             "type": "string",
             "description": "AWS account ID associated with a metric.\n- \"n/a\" if credentials are not available.\n- \"not-set\" if credentials are not selected.\n- \"invalid\" if account ID cannot be obtained."
@@ -1726,17 +1737,6 @@
             "name": "xrayEnabled",
             "type": "boolean",
             "description": "Whether or not AWS X-Ray is enabled"
-        },
-        {
-            "name": "authType",
-            "type": "string",
-            "allowedValues": [
-                "PKCE",
-                "DeviceCode",
-                "IAM",
-                "Unknown"
-            ],
-            "description": "The type of auth flow used for signing in"
         }
     ],
     "metrics": [
@@ -2825,6 +2825,10 @@
             "description": "Extension navigated the user to a web browser to perform/complete the login process.",
             "metadata": [
                 {
+                    "type": "authType",
+                    "required": false
+                },
+                {
                     "type": "credentialSourceId",
                     "required": false
                 },
@@ -2856,10 +2860,6 @@
                 },
                 {
                     "type": "ssoRegistrationExpiresAt",
-                    "required": false
-                },
-                {
-                    "type": "authType",
                     "required": false
                 }
             ]
