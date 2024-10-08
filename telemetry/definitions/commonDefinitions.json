@@ -133,6 +133,17 @@
             "description": "Status of the an auth connection."
         },
         {
+            "name": "authType",
+            "type": "string",
+            "allowedValues": [
+                "PKCE",
+                "DeviceCode",
+                "IAM",
+                "Unknown"
+            ],
+            "description": "The type of auth flow used for signing in"
+        },
+        {
             "name": "awsAccount",
             "type": "string",
             "description": "AWS account ID associated with a metric.\n- \"n/a\" if credentials are not available.\n- \"not-set\" if credentials are not selected.\n- \"invalid\" if account ID cannot be obtained."
@@ -2813,6 +2824,10 @@
             "name": "aws_loginWithBrowser",
             "description": "Extension navigated the user to a web browser to perform/complete the login process.",
             "metadata": [
+                {
+                    "type": "authType",
+                    "required": false
+                },
                 {
                     "type": "credentialSourceId",
                     "required": false
