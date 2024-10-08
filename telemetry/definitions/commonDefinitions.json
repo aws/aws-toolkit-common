@@ -1726,6 +1726,17 @@
             "name": "xrayEnabled",
             "type": "boolean",
             "description": "Whether or not AWS X-Ray is enabled"
+        },
+        {
+            "name": "authType",
+            "type": "string",
+            "allowedValues": [
+                "PKCE",
+                "DeviceCode",
+                "IAM",
+                "Unknown"
+            ],
+            "description": "The type of auth flow used for signing in"
         }
     ],
     "metrics": [
@@ -2845,6 +2856,10 @@
                 },
                 {
                     "type": "ssoRegistrationExpiresAt",
+                    "required": false
+                },
+                {
+                    "type": "authType",
                     "required": false
                 }
             ]
