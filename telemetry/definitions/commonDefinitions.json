@@ -2679,7 +2679,15 @@
                     "required": true
                 },
                 {
+                    "type": "credentialSourceId",
+                    "required": false
+                },
+                {
                     "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "credentialType",
                     "required": false
                 },
                 {
@@ -6834,18 +6842,16 @@
             ],
             "passive": true
         },
-
         {
             "name": "toolkit_trackScenario",
             "description": "Generic metric for tracking arbitrary scenarios that are not yet formalized into a full metric.",
             "unit": "Count",
             "metadata": [
-               
                 {
                     "type": "amazonqConversationId",
                     "required": true
                 },
-                 {
+                {
                     "type": "count"
                 },
                 {
