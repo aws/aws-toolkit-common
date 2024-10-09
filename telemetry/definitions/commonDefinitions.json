@@ -2702,6 +2702,10 @@
                     "required": false
                 },
                 {
+                    "type": "featureId",
+                    "required": false
+                },
+                {
                     "type": "source",
                     "required": true
                 },
