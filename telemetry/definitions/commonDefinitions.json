@@ -6851,16 +6851,16 @@
                     "required": true
                 },
                 {
-                    "type": "userChoice",
-                    "required": false
-                },
-                {
                     "type": "reason",
                     "required": false
                 },
                 {
                     "type": "result",
                     "required": true
+                },
+                {
+                    "type": "userChoice",
+                    "required": false
                 }
             ],
             "passive": true
