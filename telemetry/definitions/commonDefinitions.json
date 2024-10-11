@@ -3,7 +3,7 @@
         {
             "name": "action",
             "type": "string",
-            "description": "Name of an action that was taken, displayed, etc."
+            "description": "Name of an action that was taken, displayed, etc. See also `userChoice`."
         },
         {
             "name": "amazonqCodeGenerationResult",
@@ -1711,7 +1711,7 @@
         {
             "name": "userChoice",
             "type": "string",
-            "description": "User selection from a predefined menu (not user-provided input)"
+            "description": "User selection from a predefined menu (not user-provided input). See also `action`."
         },
         {
             "name": "userId",
@@ -6794,7 +6794,7 @@
         },
         {
             "name": "toolkit_openModule",
-            "description": "The user opened 'something' (specified by 'module'). Examples: a view, feature, resource, ...",
+            "description": "User opened 'something' (specified by 'module'). Examples: a view, feature, resource, ...",
             "metadata": [
                 {
                     "type": "module",
@@ -6813,7 +6813,7 @@
         },
         {
             "name": "toolkit_showAction",
-            "description": "The toolkit tried to show an action. Source represents the notification that produced the action",
+            "description": "Toolkit presented an action. `source` is the notification that produced the action. See also `toolkit_showNotification`.",
             "metadata": [
                 {
                     "type": "component",
@@ -6840,7 +6840,7 @@
         },
         {
             "name": "toolkit_showNotification",
-            "description": "The toolkit tried to show a notification message",
+            "description": "Show a notification message, optionally with selected action set in `userChoice`. See also `toolkit_showAction`.",
             "metadata": [
                 {
                     "type": "component",
@@ -6849,6 +6849,10 @@
                 {
                     "type": "id",
                     "required": true
+                },
+                {
+                    "type": "userChoice",
+                    "required": false
                 },
                 {
                     "type": "reason",
