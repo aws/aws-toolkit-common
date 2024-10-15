@@ -969,6 +969,11 @@
             "description": "Uniquely identifies a message with which the user interacts."
         },
         {
+            "name": "cwsprChatHasProjectContext",
+            "type": "boolean",
+            "description": "true if query has project level context, false otherwise."
+        },
+        {
             "name": "cwsprChatHasReference",
             "type": "boolean",
             "description": "True if the code snippet that user interacts with has a reference."
@@ -2044,6 +2049,10 @@
                     "required": true
                 },
                 {
+                    "type": "cwsprChatHasProjectContext",
+                    "required": false
+                },
+                {
                     "type": "cwsprChatHasReference",
                     "required": false
                 },
@@ -2061,6 +2070,10 @@
                 },
                 {
                     "type": "cwsprChatProgrammingLanguage",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatTotalCodeBlocks",
                     "required": false
                 },
                 {
