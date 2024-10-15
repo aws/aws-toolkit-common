@@ -1022,6 +1022,11 @@
             "description": "Explict user intent associated with a chat message"
         },
         {
+            "name": "cwsprChatProgrammingLanguage",
+            "type": "string",
+            "description": "Programming language associated with the message"
+        },
+        {
             "name": "databaseCredentials",
             "type": "string",
             "allowedValues": [
@@ -2056,6 +2061,10 @@
                 },
                 {
                     "type": "cwsprChatUserIntent",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatProgrammingLanguage",
                     "required": false
                 }
             ]
