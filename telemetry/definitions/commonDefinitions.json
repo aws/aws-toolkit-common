@@ -1002,14 +1002,14 @@
             "description": "Unique identifier for each message in an conversation"
         },
         {
-            "name": "cwsprChatTotalCodeBlocks",
-            "type": "int",
-            "description": "Total number of code blocks inside a message in the conversation."
-        },
-        {
             "name": "cwsprChatProgrammingLanguage",
             "type": "string",
             "description": "Programming language associated with the message"
+        },
+        {
+            "name": "cwsprChatTotalCodeBlocks",
+            "type": "int",
+            "description": "Total number of code blocks inside a message in the conversation."
         },
         {
             "name": "cwsprChatUserIntent",
