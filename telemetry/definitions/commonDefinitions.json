@@ -2077,6 +2077,7 @@
                     "required": false
                 },
                 {
+
                     "type": "cwsprChatUserIntent",
                     "required": false
                 }
