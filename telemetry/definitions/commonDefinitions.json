@@ -4427,6 +4427,37 @@
             ]
         },
         {
+            "name": "codewhisperer_codeScanIssueGenerateFix",
+            "description": "Called when a code scan issue fix is generated",
+            "metadata": [
+                {
+                    "type": "component"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "detectorId"
+                },
+                {
+                    "type": "findingId"
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "ruleId",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "codewhisperer_codeScanIssueHover",
             "description": "Called when a code scan issue is hovered over",
             "metadata": [
@@ -4442,26 +4473,6 @@
                 },
                 {
                     "type": "includesFix"
-                },
-                {
-                    "type": "ruleId",
-                    "required": false
-                }
-            ]
-        },
-        {
-            "name": "codewhisperer_codeScanIssueViewDetails",
-            "description": "Called when a code scan issue webview is opened",
-            "metadata": [
-                {
-                    "type": "credentialStartUrl",
-                    "required": false
-                },
-                {
-                    "type": "detectorId"
-                },
-                {
-                    "type": "findingId"
                 },
                 {
                     "type": "ruleId",
@@ -4516,37 +4527,6 @@
             ]
         },
         {
-            "name": "codewhisperer_codeScanIssueGenerateFix",
-            "description": "Called when a code scan issue fix is generated",
-            "metadata": [
-                {
-                    "type": "component"
-                },
-                {
-                    "type": "credentialStartUrl",
-                    "required": false
-                },
-                {
-                    "type": "detectorId"
-                },
-                {
-                    "type": "findingId"
-                },
-                {
-                    "type": "ruleId",
-                    "required": false
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
-                }
-            ]
-        },
-        {
             "name": "codewhisperer_codeScanIssueRegenerateFix",
             "description": "Called when a code scan issue fix is regenerated",
             "metadata": [
@@ -4564,16 +4544,36 @@
                     "type": "findingId"
                 },
                 {
-                    "type": "ruleId",
-                    "required": false
-                },
-                {
                     "type": "reason",
                     "required": false
                 },
                 {
                     "type": "result",
                     "required": true
+                },
+                {
+                    "type": "ruleId",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanIssueViewDetails",
+            "description": "Called when a code scan issue webview is opened",
+            "metadata": [
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "detectorId"
+                },
+                {
+                    "type": "findingId"
+                },
+                {
+                    "type": "ruleId",
+                    "required": false
                 }
             ]
         },
