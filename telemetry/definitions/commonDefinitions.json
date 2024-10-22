@@ -4341,14 +4341,6 @@
                 {
                     "type": "credentialSourceId",
                     "required": false
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
                 }
             ]
         },
@@ -4363,14 +4355,6 @@
                 {
                     "type": "credentialSourceId",
                     "required": false
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
                 }
             ]
         },
@@ -4385,14 +4369,6 @@
                 {
                     "type": "credentialSourceId",
                     "required": false
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
                 }
             ]
         },
@@ -4412,13 +4388,6 @@
                 },
                 {
                     "type": "findingId"
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result"
                 },
                 {
                     "type": "ruleId",
@@ -4442,14 +4411,6 @@
                 },
                 {
                     "type": "findingId"
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
                 },
                 {
                     "type": "ruleId",
@@ -4542,14 +4503,6 @@
                 },
                 {
                     "type": "findingId"
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
                 },
                 {
                     "type": "ruleId",
