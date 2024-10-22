@@ -4551,6 +4551,10 @@
                     "required": false
                 },
                 {
+                    "type": "codewhispererCodeScanInvocationSource",
+                    "required": false
+                },
+                {
                     "type": "codewhispererCodeScanIssuesWithFixes",
                     "required": false
                 },
@@ -4597,10 +4601,6 @@
                 },
                 {
                     "type": "result"
-                },
-                {
-                    "type": "codewhispererCodeScanInvocationSource",
-                    "required": false
                 }
             ]
         },
