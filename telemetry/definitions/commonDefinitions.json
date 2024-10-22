@@ -529,6 +529,15 @@
             "description": "The compressed payload size of built jars in bytes of customer project context sent for security scan. This is only applicable for Java project"
         },
         {
+            "name": "codewhispererCodeScanInvocationSource",
+            "description": "The location where the code scan is being invoked from",
+            "type": "string",
+            "allowedValues": [
+                "chat",
+                "menu"
+            ]
+        },
+        {
             "name": "codewhispererCodeScanIssuesWithFixes",
             "type": "int",
             "description": "The number of security issues detected with suggested fixes"
@@ -554,6 +563,8 @@
             "description": "The scope of the security scan being performed",
             "allowedValues": [
                 "FILE",
+                "FILE_AUTO",
+                "FILE_ON_DEMAND",
                 "PROJECT"
             ]
         },
@@ -885,7 +896,8 @@
                 "infobar",
                 "hover",
                 "webview",
-                "quickfix"
+                "quickfix",
+                "tree"
             ],
             "description": "The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...).  See also `featureId` for specific feature names, `module` for low-level modules, and `resourceType`."
         },
@@ -1131,7 +1143,7 @@
                 "remoteDesktop",
                 "ssh",
                 "scp",
-                "ssm", 
+                "ssm",
                 "remoteWorkspace"
             ],
             "description": "Ways to connect to an EC2 Instance"
@@ -4323,6 +4335,16 @@
             "passive": true
         },
         {
+            "name": "codewhisperer_codeScanChatNewTab",
+            "description": "Called when a new chat tab is opened in the code scan view",
+            "metadata": [
+                {
+                    "type": "credentialSourceId",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "codewhisperer_codeScanIssueApplyFix",
             "description": "Called when a code scan issue suggested fix is applied",
             "metadata": [
@@ -4340,14 +4362,34 @@
                     "type": "findingId"
                 },
                 {
-                    "type": "reason",
+                    "type": "ruleId",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanIssueGenerateFix",
+            "description": "Called when a code scan issue fix is generated",
+            "metadata": [
+                {
+                    "type": "component"
+                },
+                {
+                    "type": "credentialStartUrl",
                     "required": false
                 },
                 {
-                    "type": "result"
+                    "type": "detectorId"
+                },
+                {
+                    "type": "findingId"
                 },
                 {
                     "type": "ruleId",
+                    "required": false
+                },
+                {
+                    "type": "variant",
                     "required": false
                 }
             ]
@@ -4371,6 +4413,33 @@
                 },
                 {
                     "type": "ruleId",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanIssueIgnore",
+            "description": "Called when a code scan issue is ignored",
+            "metadata": [
+                {
+                    "type": "component"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "detectorId"
+                },
+                {
+                    "type": "findingId"
+                },
+                {
+                    "type": "ruleId",
+                    "required": false
+                },
+                {
+                    "type": "variant",
                     "required": false
                 }
             ]
@@ -4479,6 +4548,10 @@
                 },
                 {
                     "type": "codewhispererCodeScanBuildZipFileBytes",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanInvocationSource",
                     "required": false
                 },
                 {
