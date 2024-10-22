@@ -263,11 +263,6 @@
             "description": "Time taken to invoke code scan service APIs in milliseconds"
         },
         {
-            "name": "codeScanSessionId",
-            "type": "string",
-            "description": "Represents the IDE session from which users start the scan process"
-        },
-        {
             "name": "codeTransformArtifactType",
             "type": "string",
             "description": "Type of transform artifact",
@@ -532,6 +527,15 @@
             "name": "codewhispererCodeScanBuildZipFileBytes",
             "type": "int",
             "description": "The compressed payload size of built jars in bytes of customer project context sent for security scan. This is only applicable for Java project"
+        },
+        {
+            "name": "codewhispererCodeScanInvocationSource",
+            "description": "The location where the code scan is being invoked from",
+            "type": "string",
+            "allowedValues": [
+                "chat",
+                "menu"
+            ]
         },
         {
             "name": "codewhispererCodeScanIssuesWithFixes",
@@ -4331,41 +4335,9 @@
             "passive": true
         },
         {
-            "name": "codewhisperer_codeScanChatFileScan",
-            "description": "Called when file scan is selected from chat",
-            "metadata": [
-                {
-                    "type": "codeScanSessionId",
-                    "required": false
-                },
-                {
-                    "type": "credentialSourceId",
-                    "required": false
-                }
-            ]
-        },
-        {
             "name": "codewhisperer_codeScanChatNewTab",
             "description": "Called when a new chat tab is opened in the code scan view",
             "metadata": [
-                {
-                    "type": "codeScanSessionId",
-                    "required": false
-                },
-                {
-                    "type": "credentialSourceId",
-                    "required": false
-                }
-            ]
-        },
-        {
-            "name": "codewhisperer_codeScanChatProjectScan",
-            "description": "Called when project scan is selected from chat",
-            "metadata": [
-                {
-                    "type": "codeScanSessionId",
-                    "required": false
-                },
                 {
                     "type": "credentialSourceId",
                     "required": false
@@ -4415,6 +4387,10 @@
                 {
                     "type": "ruleId",
                     "required": false
+                },
+                {
+                    "type": "variant",
+                    "required": false
                 }
             ]
         },
@@ -4461,51 +4437,9 @@
                 {
                     "type": "ruleId",
                     "required": false
-                }
-            ]
-        },
-        {
-            "name": "codewhisperer_codeScanIssueIgnoreAll",
-            "description": "Called when all code scan issues of a specific type are ignored",
-            "metadata": [
-                {
-                    "type": "component"
                 },
                 {
-                    "type": "credentialStartUrl",
-                    "required": false
-                },
-                {
-                    "type": "detectorId"
-                },
-                {
-                    "type": "findingId"
-                },
-                {
-                    "type": "ruleId",
-                    "required": false
-                }
-            ]
-        },
-        {
-            "name": "codewhisperer_codeScanIssueRegenerateFix",
-            "description": "Called when a code scan issue fix is regenerated",
-            "metadata": [
-                {
-                    "type": "component"
-                },
-                {
-                    "type": "credentialStartUrl",
-                    "required": false
-                },
-                {
-                    "type": "detectorId"
-                },
-                {
-                    "type": "findingId"
-                },
-                {
-                    "type": "ruleId",
+                    "type": "variant",
                     "required": false
                 }
             ]
@@ -4663,6 +4597,10 @@
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "codewhispererCodeScanInvocationSource",
+                    "required": false
                 }
             ]
         },
