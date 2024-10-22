@@ -4331,6 +4331,72 @@
             "passive": true
         },
         {
+            "name": "codewhisperer_codeScanChatFileScan",
+            "description": "Called when file scan is selected from chat",
+            "metadata": [
+                {
+                    "type": "codeScanSessionId",
+                    "required": false
+                },
+                {
+                    "type": "credentialSourceId",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanChatNewTab",
+            "description": "Called when a new chat tab is opened in the code scan view",
+            "metadata": [
+                {
+                    "type": "codeScanSessionId",
+                    "required": false
+                },
+                {
+                    "type": "credentialSourceId",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanChatProjectScan",
+            "description": "Called when project scan is selected from chat",
+            "metadata": [
+                {
+                    "type": "codeScanSessionId",
+                    "required": false
+                },
+                {
+                    "type": "credentialSourceId",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
+                }
+            ]
+        },
+        {
             "name": "codewhisperer_codeScanIssueApplyFix",
             "description": "Called when a code scan issue suggested fix is applied",
             "metadata": [
@@ -4499,72 +4565,6 @@
                 },
                 {
                     "type": "ruleId",
-                    "required": false
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codewhisperer_codeScanChatNewTab",
-            "description": "Called when a new chat tab is opened in the code scan view",
-            "metadata": [
-                {
-                    "type": "codeScanSessionId",
-                    "required": false
-                },
-                {
-                    "type": "credentialSourceId",
-                    "required": false
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codewhisperer_codeScanChatProjectScan",
-            "description": "Called when project scan is selected from chat",
-            "metadata": [
-                {
-                    "type": "codeScanSessionId",
-                    "required": false
-                },
-                {
-                    "type": "credentialSourceId",
-                    "required": false
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codewhisperer_codeScanChatFileScan",
-            "description": "Called when file scan is selected from chat",
-            "metadata": [
-                {
-                    "type": "codeScanSessionId",
-                    "required": false
-                },
-                {
-                    "type": "credentialSourceId",
                     "required": false
                 },
                 {
