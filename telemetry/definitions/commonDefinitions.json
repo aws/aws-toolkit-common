@@ -263,6 +263,11 @@
             "description": "Time taken to invoke code scan service APIs in milliseconds"
         },
         {
+            "name": "codeScanSessionId",
+            "type": "string",
+            "description": "Represents the IDE session from which users start the scan process"
+        },
+        {
             "name": "codeTransformArtifactType",
             "type": "string",
             "description": "Type of transform artifact",
@@ -1134,7 +1139,7 @@
                 "remoteDesktop",
                 "ssh",
                 "scp",
-                "ssm", 
+                "ssm",
                 "remoteWorkspace"
             ],
             "description": "Ways to connect to an EC2 Instance"
