@@ -554,6 +554,8 @@
             "description": "The scope of the security scan being performed",
             "allowedValues": [
                 "FILE",
+                "FILE_AUTO",
+                "FILE_ON_DEMAND",
                 "PROJECT"
             ]
         },
@@ -885,7 +887,8 @@
                 "infobar",
                 "hover",
                 "webview",
-                "quickfix"
+                "quickfix",
+                "tree"
             ],
             "description": "The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...).  See also `featureId` for specific feature names, `module` for low-level modules, and `resourceType`."
         },
@@ -4392,6 +4395,180 @@
                 {
                     "type": "ruleId",
                     "required": false
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanIssueIgnore",
+            "description": "Called when a code scan issue is ignored",
+            "metadata": [
+                {
+                    "type": "component"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "detectorId"
+                },
+                {
+                    "type": "findingId"
+                },
+                {
+                    "type": "ruleId",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanIssueIgnoreAll",
+            "description": "Called when all code scan issues of a specific type are ignored",
+            "metadata": [
+                {
+                    "type": "component"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "detectorId"
+                },
+                {
+                    "type": "findingId"
+                },
+                {
+                    "type": "ruleId",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanIssueGenerateFix",
+            "description": "Called when a code scan issue fix is generated",
+            "metadata": [
+                {
+                    "type": "component"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "detectorId"
+                },
+                {
+                    "type": "findingId"
+                },
+                {
+                    "type": "ruleId",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanIssueRegenerateFix",
+            "description": "Called when a code scan issue fix is regenerated",
+            "metadata": [
+                {
+                    "type": "component"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "detectorId"
+                },
+                {
+                    "type": "findingId"
+                },
+                {
+                    "type": "ruleId",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanChatNewTab",
+            "description": "Called when a new chat tab is opened in the code scan view",
+            "metadata": [
+                {
+                    "type": "codeScanSessionId",
+                    "required": false
+                },
+                {
+                    "type": "credentialSourceId",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanChatProjectScan",
+            "description": "Called when project scan is selected from chat",
+            "metadata": [
+                {
+                    "type": "codeScanSessionId",
+                    "required": false
+                },
+                {
+                    "type": "credentialSourceId",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanChatFileScan",
+            "description": "Called when file scan is selected from chat",
+            "metadata": [
+                {
+                    "type": "codeScanSessionId",
+                    "required": false
+                },
+                {
+                    "type": "credentialSourceId",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
                 }
             ]
         },
