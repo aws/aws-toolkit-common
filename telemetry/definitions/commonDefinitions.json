@@ -430,23 +430,6 @@
             "description": "Represents the IDE session from which users start the transformation process"
         },
         {
-            "name": "codeTransformSQLSourceDBAllowed",
-            "type": "string",
-            "description": "Allowed DBs to transform from",
-            "allowedValues": [
-                "ORACLE"
-            ]
-        },
-        {
-            "name": "codeTransformSQLTargetDBAllowed",
-            "type": "string",
-            "description": "Allowed DBs to transform to",
-            "allowedValues": [
-                "AURORA_POSTGRESQL",
-                "RDS_POSTGRESQL"
-            ]
-        },
-        {
             "name": "codeTransformStartSrcComponents",
             "type": "string",
             "description": "Names of components that can start a transformation",
@@ -1654,6 +1637,11 @@
             "name": "source",
             "type": "string",
             "description": "The source of the operation"
+        },
+        {
+            "name": "target",
+            "type": "string",
+            "description": "The target of the operation"
         },
         {
             "name": "sourceFacetType",
@@ -4069,20 +4057,20 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformSQLSourceDBAllowed",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformSQLTargetDBAllowed",
-                    "required": false
-                },
-                {
                     "type": "reason",
                     "required": false
                 },
                 {
                     "type": "result",
                     "required": true
+                },
+                {
+                    "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "target",
+                    "required": false
                 },
                 {
                     "type": "userChoice",
