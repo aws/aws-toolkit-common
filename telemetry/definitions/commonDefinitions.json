@@ -1682,6 +1682,11 @@
             ]
         },
         {
+            "name": "target",
+            "type": "string",
+            "description": "The target of the operation"
+        },
+        {
             "name": "templateName",
             "type": "string",
             "description": "Generic name of a template"
@@ -4058,6 +4063,14 @@
                 {
                     "type": "result",
                     "required": true
+                },
+                {
+                    "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "target",
+                    "required": false
                 },
                 {
                     "type": "userChoice",
