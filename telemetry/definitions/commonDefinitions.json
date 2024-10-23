@@ -529,15 +529,6 @@
             "description": "The compressed payload size of built jars in bytes of customer project context sent for security scan. This is only applicable for Java project"
         },
         {
-            "name": "codewhispererCodeScanInvocationSource",
-            "description": "The location where the code scan is being invoked from",
-            "type": "string",
-            "allowedValues": [
-                "chat",
-                "menu"
-            ]
-        },
-        {
             "name": "codewhispererCodeScanIssuesWithFixes",
             "type": "int",
             "description": "The number of security issues detected with suggested fixes"
@@ -4369,7 +4360,7 @@
         },
         {
             "name": "codewhisperer_codeScanIssueGenerateFix",
-            "description": "Called when a code scan issue fix is generated",
+            "description": "Generated fix for a code scan issue. variant=refresh means the user chose to generate a fix again after one already exists.",
             "metadata": [
                 {
                     "type": "component"
@@ -4419,7 +4410,7 @@
         },
         {
             "name": "codewhisperer_codeScanIssueIgnore",
-            "description": "Called when a code scan issue is ignored",
+            "description": "User ignored a code scan issue. variant=all means the user ignored all issues of a specific type.",
             "metadata": [
                 {
                     "type": "component"
@@ -4551,10 +4542,6 @@
                     "required": false
                 },
                 {
-                    "type": "codewhispererCodeScanInvocationSource",
-                    "required": false
-                },
-                {
                     "type": "codewhispererCodeScanIssuesWithFixes",
                     "required": false
                 },
@@ -4601,6 +4588,10 @@
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
