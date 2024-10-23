@@ -1134,7 +1134,7 @@
                 "remoteDesktop",
                 "ssh",
                 "scp",
-                "ssm",
+                "ssm", 
                 "remoteWorkspace"
             ],
             "description": "Ways to connect to an EC2 Instance"
