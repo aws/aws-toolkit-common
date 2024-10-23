@@ -330,6 +330,23 @@
             ]
         },
         {
+            "name": "codeTransformSQLSourceDBAllowed",
+            "type": "string",
+            "description": "Allowed DBs to transform from",
+            "allowedValues": [
+                "ORACLE"
+            ]
+        },
+        {
+            "name": "codeTransformSQLTargetDBAllowed",
+            "type": "string",
+            "description": "Allowed DBs to transform to",
+            "allowedValues": [
+                "AURORA_POSTGRESQL",
+                "RDS_POSTGRESQL"
+            ]
+        },
+        {
             "name": "codeTransformJobId",
             "type": "string",
             "description": "The ID of the job currently running"
@@ -4041,6 +4058,14 @@
                 },
                 {
                     "type": "codeTransformJavaTargetVersionsAllowed",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformSQLSourceDBAllowed",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformSQLTargetDBAllowed",
                     "required": false
                 },
                 {
