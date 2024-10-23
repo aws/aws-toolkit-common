@@ -1639,11 +1639,6 @@
             "description": "The source of the operation"
         },
         {
-            "name": "target",
-            "type": "string",
-            "description": "The target of the operation"
-        },
-        {
             "name": "sourceFacetType",
             "type": "string",
             "description": "Resource subtype of connection start"
@@ -1685,6 +1680,11 @@
                 "AllResources",
                 "CodeOnly"
             ]
+        },
+        {
+            "name": "target",
+            "type": "string",
+            "description": "The target of the operation"
         },
         {
             "name": "templateName",
