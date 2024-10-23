@@ -554,6 +554,8 @@
             "description": "The scope of the security scan being performed",
             "allowedValues": [
                 "FILE",
+                "FILE_AUTO",
+                "FILE_ON_DEMAND",
                 "PROJECT"
             ]
         },
@@ -885,7 +887,8 @@
                 "infobar",
                 "hover",
                 "webview",
-                "quickfix"
+                "quickfix",
+                "tree"
             ],
             "description": "The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...).  See also `featureId` for specific feature names, `module` for low-level modules, and `resourceType`."
         },
@@ -4336,6 +4339,16 @@
             "passive": true
         },
         {
+            "name": "codewhisperer_codeScanChatNewTab",
+            "description": "Called when a new chat tab is opened in the code scan view",
+            "metadata": [
+                {
+                    "type": "credentialSourceId",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "codewhisperer_codeScanIssueApplyFix",
             "description": "Called when a code scan issue suggested fix is applied",
             "metadata": [
@@ -4353,14 +4366,34 @@
                     "type": "findingId"
                 },
                 {
-                    "type": "reason",
+                    "type": "ruleId",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanIssueGenerateFix",
+            "description": "Generated fix for a code scan issue. variant=refresh means the user chose to generate a fix again after one already exists.",
+            "metadata": [
+                {
+                    "type": "component"
+                },
+                {
+                    "type": "credentialStartUrl",
                     "required": false
                 },
                 {
-                    "type": "result"
+                    "type": "detectorId"
+                },
+                {
+                    "type": "findingId"
                 },
                 {
                     "type": "ruleId",
+                    "required": false
+                },
+                {
+                    "type": "variant",
                     "required": false
                 }
             ]
@@ -4384,6 +4417,33 @@
                 },
                 {
                     "type": "ruleId",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanIssueIgnore",
+            "description": "User ignored a code scan issue. variant=all means the user ignored all issues of a specific type.",
+            "metadata": [
+                {
+                    "type": "component"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "detectorId"
+                },
+                {
+                    "type": "findingId"
+                },
+                {
+                    "type": "ruleId",
+                    "required": false
+                },
+                {
+                    "type": "variant",
                     "required": false
                 }
             ]
@@ -4541,6 +4601,10 @@
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
