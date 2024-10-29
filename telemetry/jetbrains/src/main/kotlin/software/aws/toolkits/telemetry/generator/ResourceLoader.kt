@@ -4,13 +4,15 @@
 package software.aws.toolkits.telemetry.generator
 
 object ResourceLoader {
-    private const val schemaPath = "/telemetrySchema.json"
+    private const val SCHEMA_PATH = "/telemetrySchema.json"
 
-    val SCHEMA_FILE = this.javaClass.getResourceAsStream(schemaPath).use { it.bufferedReader().readText() }
+    val SCHEMA_FILE = this.javaClass.getResourceAsStream(SCHEMA_PATH).use { it.bufferedReader().readText() }
+
     // TODO add a manifest or something
-    val DEFINITIONS_FILES = listOf("/definitions/commonDefinitions.json").map {
-        this.javaClass.getResourceAsStream(it).use {
-            it.bufferedReader().readText()
+    val DEFINITIONS_FILES =
+        listOf("/definitions/commonDefinitions.json").map {
+            this.javaClass.getResourceAsStream(it).use {
+                it.bufferedReader().readText()
+            }
         }
-    }
 }

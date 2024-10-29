@@ -11,6 +11,7 @@ plugins {
     `maven-publish`
     signing
     alias(libs.plugins.nexus.publishing)
+    alias(libs.plugins.jlleitschuh.ktlint)
 }
 
 java {
@@ -146,9 +147,10 @@ publishing {
 gradlePlugin { setAutomatedPublishing(false) }
 
 signing {
-    if (project.hasProperty("signing.keyId")
-        && project.hasProperty("signing.password")
-        && project.hasProperty("signing.secretKeyRingFile")) {
+    if (project.hasProperty("signing.keyId") &&
+        project.hasProperty("signing.password") &&
+        project.hasProperty("signing.secretKeyRingFile")
+    ) {
         sign(publishing.publications["mavenJava"])
     }
 }

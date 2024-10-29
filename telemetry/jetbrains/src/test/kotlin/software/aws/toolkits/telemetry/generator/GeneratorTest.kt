@@ -3,18 +3,18 @@
 
 package software.aws.toolkits.telemetry.generator
 
-import java.io.File
-import java.nio.file.Files
-import java.nio.file.Paths
-import kotlin.io.path.isRegularFile
-import kotlin.io.path.readText
-import kotlin.io.path.toPath
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 import org.junit.rules.TestName
+import java.io.File
+import java.nio.file.Files
+import java.nio.file.Paths
+import kotlin.io.path.isRegularFile
+import kotlin.io.path.readText
+import kotlin.io.path.toPath
 
 class GeneratorTest {
     @JvmField
@@ -65,12 +65,18 @@ class GeneratorTest {
     }
 
     // inputPath and outputPath must be in test resources
-    private fun testGenerator(definitionsFile: String? = null, definitionsOverrides: List<String> = listOf()) {
+    private fun testGenerator(
+        definitionsFile: String? = null,
+        definitionsOverrides: List<String> = listOf(),
+    ) {
         val methodName = testName.methodName
         generateTelemetryFromFiles(
-            defaultDefinitions = listOf(this.javaClass.getResourceAsStream(definitionsFile ?: "/$methodName/input.json").use { it.bufferedReader().readText() }),
+            defaultDefinitions =
+                listOf(
+                    this.javaClass.getResourceAsStream(definitionsFile ?: "/$methodName/input.json").use { it.bufferedReader().readText() },
+                ),
             inputFiles = definitionsOverrides.map { File(javaClass.getResource(it).toURI()) },
-            outputFolder = folder.root
+            outputFolder = folder.root,
         )
 
         val outputRoot = Paths.get(folder.root.absolutePath)

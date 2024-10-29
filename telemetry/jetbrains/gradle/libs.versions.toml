@@ -1,6 +1,7 @@
 [versions]
 assertJ = "3.26.3"
 jackson = "2.17.2"
+jlleitschuh-ktlint = "12.1.1"
 # deprecated; should move to json-skema
 jsonSchema = "1.14.4"
 junit4 = "4.13.2"
@@ -16,5 +17,6 @@ json-schema = { module = "com.github.erosb:everit-json-schema", version.ref = "j
 junit4 = { module = "junit:junit", version.ref = "junit4" }
 
 [plugins]
+jlleitschuh-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "jlleitschuh-ktlint" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 nexus-publishing = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexus" }
