@@ -9,85 +9,78 @@ import com.intellij.openapi.project.Project
 import java.time.Instant
 import kotlin.Boolean
 import kotlin.Double
-import kotlin.String
 import kotlin.Suppress
 import software.amazon.awssdk.services.toolkittelemetry.model.Unit
 import software.aws.toolkits.core.ConnectionSettings
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
-/**
- * The result of the operation
- */
-public enum class MetricResult(
-    private val `value`: String,
-) {
-    Succeeded("Succeeded"),
-    Unknown("unknown"),
-    ;
-
-    override fun toString(): String = value
-
-    public companion object {
-        public fun from(type: String): MetricResult = values().firstOrNull { it.value == type }
-                ?: Unknown
-    }
-}
-
-public object MetadataTelemetry {
+public object NoTelemetry {
     /**
-     * It does not actually have a result, yep
+     * called when invoking lambdas remotely
      */
-    public fun hasResult(
+    public fun metadata(
         project: Project?,
+        duration: Double? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
         TelemetryService.getInstance().record(project) {
-            datum("metadata_hasResult") {
+            datum("no_metadata") {
                 createTime(createTime)
                 unit(Unit.NONE)
                 value(value)
                 passive(passive)
+                if(duration != null) {
+                    metadata("duration", duration.toString())
+                }
             }
         }
     }
 
     /**
-     * It does not actually have a result, yep
+     * called when invoking lambdas remotely
      */
-    public fun hasResult(
+    public fun metadata(
         connectionSettings: ConnectionSettings? = null,
+        duration: Double? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
         TelemetryService.getInstance().record(connectionSettings) {
-            datum("metadata_hasResult") {
+            datum("no_metadata") {
                 createTime(createTime)
                 unit(Unit.NONE)
                 value(value)
                 passive(passive)
+                if(duration != null) {
+                    metadata("duration", duration.toString())
+                }
             }
         }
     }
 
     /**
-     * It does not actually have a result, yep
+     * called when invoking lambdas remotely
      */
-    public fun hasResult(
+    public fun metadata(
         metadata: MetricEventMetadata,
+        duration: Double? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
         TelemetryService.getInstance().record(metadata) {
-            datum("metadata_hasResult") {
+            datum("no_metadata") {
                 createTime(createTime)
                 unit(Unit.NONE)
                 value(value)
                 passive(passive)
+                if(duration != null) {
+                    metadata("duration", duration.toString())
+                }
             }
         }
     }

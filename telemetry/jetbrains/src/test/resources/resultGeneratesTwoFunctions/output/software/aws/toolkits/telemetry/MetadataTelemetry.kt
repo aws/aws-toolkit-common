@@ -10,35 +10,11 @@ import java.time.Instant
 import kotlin.Boolean
 import kotlin.Deprecated
 import kotlin.Double
-import kotlin.String
 import kotlin.Suppress
 import software.amazon.awssdk.services.toolkittelemetry.model.Unit
 import software.aws.toolkits.core.ConnectionSettings
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
-
-/**
- * The result of the operation
- */
-public enum class MetricResult(
-    private val `value`: String,
-) {
-    Succeeded("Succeeded"),
-    Failed("Failed"),
-    Cancelled("Cancelled"),
-    CamelCase("CamelCase"),
-    DashSeparated("dash-separated"),
-    UnderscoreSeparated("underscore_separated"),
-    Unknown("unknown"),
-    ;
-
-    override fun toString(): String = value
-
-    public companion object {
-        public fun from(type: String): MetricResult = values().firstOrNull { it.value == type }
-                ?: Unknown
-    }
-}
 
 @Deprecated(
     message = "Name conflicts with the Kotlin standard library",
