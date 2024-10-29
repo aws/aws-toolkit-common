@@ -3,7 +3,7 @@
         {
             "name": "action",
             "type": "string",
-            "description": "Name of an action that was taken, displayed, etc."
+            "description": "Name of an action that was taken, displayed, etc. See also `userChoice`."
         },
         {
             "name": "amazonqCodeGenerationResult",
@@ -133,6 +133,17 @@
             "description": "Status of the an auth connection."
         },
         {
+            "name": "authType",
+            "type": "string",
+            "allowedValues": [
+                "PKCE",
+                "DeviceCode",
+                "IAM",
+                "Unknown"
+            ],
+            "description": "The type of auth flow used for signing in"
+        },
+        {
             "name": "awsAccount",
             "type": "string",
             "description": "AWS account ID associated with a metric.\n- \"n/a\" if credentials are not available.\n- \"not-set\" if credentials are not selected.\n- \"invalid\" if account ID cannot be obtained."
@@ -174,6 +185,7 @@
         },
         {
             "name": "causedBy",
+            "type": "string",
             "allowedValues": [
                 "user",
                 "service",
@@ -199,6 +211,7 @@
         },
         {
             "name": "cloudWatchLogsPresentation",
+            "type": "string",
             "allowedValues": [
                 "ui",
                 "text"
@@ -207,6 +220,7 @@
         },
         {
             "name": "cloudWatchResourceType",
+            "type": "string",
             "allowedValues": [
                 "logGroup",
                 "logGroupList",
@@ -247,21 +261,6 @@
             "name": "codeScanServiceInvocationsDuration",
             "type": "int",
             "description": "Time taken to invoke code scan service APIs in milliseconds"
-        },
-        {
-            "name": "codeTransformApiNames",
-            "type": "string",
-            "description": "Deprecated (Names of allowed API calls)",
-            "allowedValues": [
-                "ResumeTransformation",
-                "StartTransformation",
-                "StopTransformation",
-                "GetTransformation",
-                "GetTransformationPlan",
-                "UploadZip",
-                "CreateUploadUrl",
-                "ExportResultArchive"
-            ]
         },
         {
             "name": "codeTransformArtifactType",
@@ -341,22 +340,6 @@
             "description": "The Java version on the user's machine"
         },
         {
-            "name": "codeTransformLocalMavenVersion",
-            "type": "string",
-            "description": "Deprecated - use buildSystemVersion (The build system version on the user's machine)"
-        },
-        {
-            "name": "codeTransformMavenBuildCommand",
-            "type": "string",
-            "description": "Deprecated - use codeTransformBuildCommand (Type of maven command)",
-            "allowedValues": [
-                "mvnw.cmd",
-                "mvnw",
-                "mvn",
-                "IDEBundledMaven"
-            ]
-        },
-        {
             "name": "codeTransformMetadata",
             "type": "string",
             "description": "A general field for logging metadata associated to Amazon Q transform metrics."
@@ -404,8 +387,8 @@
                 "NoJavaProject",
                 "MixedLanguages",
                 "UnsupportedJavaVersion",
-                "ProjectJDKDiffersFromMavenJDK",
-                "NonMavenProject",
+                "ProjectJDKDiffersFromBuildSystemJDK",
+                "UnsupportedBuildSystem",
                 "EmptyProject",
                 "NonSsoLogin",
                 "RemoteRunProject"
@@ -490,7 +473,7 @@
         {
             "name": "codewhispererAcceptedTokens",
             "type": "int",
-            "description": "The metrics accepted on suggested CodeWhisperer code"
+            "description": "The number of tokens that are accepted and not modified by the user"
         },
         {
             "name": "codewhispererAllCompletionsLatency",
@@ -571,6 +554,8 @@
             "description": "The scope of the security scan being performed",
             "allowedValues": [
                 "FILE",
+                "FILE_AUTO",
+                "FILE_ON_DEMAND",
                 "PROJECT"
             ]
         },
@@ -660,30 +645,37 @@
             "type": "string",
             "description": "Programming language of the CodeWhisperer recommendation",
             "allowedValues": [
-                "java",
-                "python",
-                "javascript",
-                "plaintext",
-                "jsx",
-                "typescript",
-                "tsx",
-                "csharp",
                 "c",
                 "cpp",
+                "csharp",
+                "dart",
                 "go",
+                "hcl",
+                "java",
+                "javascript",
+                "json",
+                "jsonc",
+                "jsx",
                 "kotlin",
+                "lua",
                 "php",
+                "plaintext",
+                "powershell",
+                "python",
+                "r",
                 "ruby",
                 "rust",
                 "scala",
                 "shell",
                 "sql",
-                "json",
-                "jsonc",
+                "swift",
+                "systemVerilog",
+                "tf",
+                "tsx",
+                "typescript",
+                "vue",
                 "yaml",
-                "yml",
-                "hcl",
-                "tf"
+                "yml"
             ]
         },
         {
@@ -765,6 +757,11 @@
             "name": "codewhispererSessionId",
             "type": "string",
             "description": "The unique identifier for a CodeWhisperer session(which can contain multiple requests)"
+        },
+        {
+            "name": "codewhispererSuggestedTokens",
+            "type": "int",
+            "description": "The number of tokens in the original code suggestions"
         },
         {
             "name": "codewhispererSuggestionCount",
@@ -881,6 +878,7 @@
         },
         {
             "name": "component",
+            "type": "string",
             "allowedValues": [
                 "editor",
                 "viewer",
@@ -889,7 +887,8 @@
                 "infobar",
                 "hover",
                 "webview",
-                "quickfix"
+                "quickfix",
+                "tree"
             ],
             "description": "The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...).  See also `featureId` for specific feature names, `module` for low-level modules, and `resourceType`."
         },
@@ -973,6 +972,11 @@
             "description": "Uniquely identifies a message with which the user interacts."
         },
         {
+            "name": "cwsprChatHasProjectContext",
+            "type": "boolean",
+            "description": "true if query has project level context, false otherwise."
+        },
+        {
             "name": "cwsprChatHasReference",
             "type": "boolean",
             "description": "True if the code snippet that user interacts with has a reference."
@@ -985,6 +989,7 @@
         {
             "name": "cwsprChatInteractionType",
             "allowedValues": [
+                "acceptDiff",
                 "insertAtCursor",
                 "copySnippet",
                 "copy",
@@ -993,7 +998,8 @@
                 "hoverReference",
                 "upvote",
                 "downvote",
-                "clickBodyLink"
+                "clickBodyLink",
+                "viewDiff"
             ],
             "type": "string",
             "description": "Indicates the specific interaction type with a message in a conversation"
@@ -1004,9 +1010,29 @@
             "description": "Unique identifier for each message in an conversation"
         },
         {
+            "name": "cwsprChatProgrammingLanguage",
+            "type": "string",
+            "description": "Programming language associated with the message"
+        },
+        {
             "name": "cwsprChatTotalCodeBlocks",
             "type": "int",
             "description": "Total number of code blocks inside a message in the conversation."
+        },
+        {
+            "name": "cwsprChatUserIntent",
+            "type": "string",
+            "allowedValues": [
+                "suggestAlternateImplementation",
+                "applyCommonBestPractices",
+                "improveCode",
+                "showExample",
+                "citeSources",
+                "explainLineByLine",
+                "explainCodeSelection",
+                "generateUnitTests"
+            ],
+            "description": "Explict user intent associated with a chat message"
         },
         {
             "name": "databaseCredentials",
@@ -1064,6 +1090,7 @@
         },
         {
             "name": "dynamicResourceOperation",
+            "type": "string",
             "allowedValues": [
                 "Create",
                 "Update",
@@ -1073,6 +1100,7 @@
         },
         {
             "name": "dynamoDbFetchType",
+            "type": "string",
             "allowedValues": [
                 "scan",
                 "query"
@@ -1081,6 +1109,7 @@
         },
         {
             "name": "dynamoDbIndexType",
+            "type": "string",
             "allowedValues": [
                 "primary",
                 "localSecondary",
@@ -1090,6 +1119,7 @@
         },
         {
             "name": "dynamoDbTarget",
+            "type": "string",
             "allowedValues": [
                 "table",
                 "tableProperties",
@@ -1099,16 +1129,19 @@
         },
         {
             "name": "ec2ConnectionType",
+            "type": "string",
             "allowedValues": [
                 "remoteDesktop",
                 "ssh",
                 "scp",
-                "ssm"
+                "ssm", 
+                "remoteWorkspace"
             ],
             "description": "Ways to connect to an EC2 Instance"
         },
         {
             "name": "ec2InstanceState",
+            "type": "string",
             "allowedValues": [
                 "start",
                 "stop",
@@ -1119,6 +1152,7 @@
         },
         {
             "name": "ecrDeploySource",
+            "type": "string",
             "allowedValues": [
                 "dockerfile",
                 "tag"
@@ -1127,6 +1161,7 @@
         },
         {
             "name": "ecsExecuteCommandType",
+            "type": "string",
             "allowedValues": [
                 "command",
                 "shell"
@@ -1135,6 +1170,7 @@
         },
         {
             "name": "ecsLaunchType",
+            "type": "string",
             "allowedValues": [
                 "ec2",
                 "fargate"
@@ -1195,10 +1231,22 @@
             "type": "string",
             "description": "The id of the feature the user is interacting in. See also: `component`, `featureId`, `module`, `resourceType`.",
             "allowedValues": [
+                "amazonQ",
                 "awsExplorer",
+                "awsToolkit",
                 "codewhisperer",
                 "codecatalyst"
             ]
+        },
+        {
+            "name": "featureValue",
+            "type": "string",
+            "description": "Additional Data Value for AB Testing"
+        },
+        {
+            "name": "featureVariation",
+            "type": "string",
+            "description": "Feature Variant for AB Testing"
         },
         {
             "name": "filenameExt",
@@ -1260,6 +1308,7 @@
         },
         {
             "name": "iamResourceType",
+            "type": "string",
             "allowedValues": [
                 "group",
                 "role",
@@ -1299,6 +1348,7 @@
         },
         {
             "name": "insightsDialogOpenSource",
+            "type": "string",
             "allowedValues": [
                 "explorer",
                 "resultsWindow",
@@ -1308,6 +1358,7 @@
         },
         {
             "name": "insightsQueryStringType",
+            "type": "string",
             "allowedValues": [
                 "insights",
                 "searchTerm"
@@ -1316,6 +1367,7 @@
         },
         {
             "name": "insightsQueryTimeType",
+            "type": "string",
             "allowedValues": [
                 "relative",
                 "absolute"
@@ -1344,6 +1396,7 @@
         },
         {
             "name": "lambdaArchitecture",
+            "type": "string",
             "allowedValues": [
                 "x86_64",
                 "arm64"
@@ -1352,6 +1405,7 @@
         },
         {
             "name": "lambdaPackageType",
+            "type": "string",
             "allowedValues": [
                 "Zip",
                 "Image"
@@ -1372,6 +1426,11 @@
             "name": "locale",
             "type": "string",
             "description": "User locale. Examples: en-US, en-GB, etc."
+        },
+        {
+            "name": "metricId",
+            "type": "string",
+            "description": "Unique identifier for this metric"
         },
         {
             "name": "module",
@@ -1402,6 +1461,11 @@
             "name": "oldVersion",
             "type": "string",
             "description": "The old version of something. Useful when updating dependent resources."
+        },
+        {
+            "name": "parentId",
+            "type": "string",
+            "description": "Unique identifier of this metrics parent metric id"
         },
         {
             "name": "partitionId",
@@ -1470,6 +1534,7 @@
         },
         {
             "name": "result",
+            "type": "string",
             "allowedValues": [
                 "Succeeded",
                 "Failed",
@@ -1537,6 +1602,11 @@
             "description": "Type of save executed"
         },
         {
+            "name": "scenario",
+            "type": "string",
+            "description": "Scenarios to count in telemetry"
+        },
+        {
             "name": "schemaLanguage",
             "type": "string",
             "allowedValues": [
@@ -1583,11 +1653,22 @@
         },
         {
             "name": "sqsQueueType",
+            "type": "string",
             "allowedValues": [
                 "standard",
                 "fifo"
             ],
             "description": "The type of an SQS Queue"
+        },
+        {
+            "name": "ssoRegistrationClientId",
+            "type": "string",
+            "description": "The client ID of an SSO registration."
+        },
+        {
+            "name": "ssoRegistrationExpiresAt",
+            "type": "string",
+            "description": "Date/time that an SSO client registration expires."
         },
         {
             "name": "successCount",
@@ -1604,6 +1685,11 @@
             ]
         },
         {
+            "name": "target",
+            "type": "string",
+            "description": "The target of the operation"
+        },
+        {
             "name": "templateName",
             "type": "string",
             "description": "Generic name of a template"
@@ -1617,13 +1703,19 @@
                 "dotnet-lambda-deploy",
                 "dotnet-deploy-cli",
                 "aws-cli",
-                "sam-cli"
+                "sam-cli",
+                "docker"
             ]
         },
         {
             "name": "totalResourceCount",
             "type": "int",
             "description": "Total count of all resources in a container"
+        },
+        {
+            "name": "traceId",
+            "type": "string",
+            "description": "Unique identifier for the trace (a set of events) this metric belongs to"
         },
         {
             "name": "update",
@@ -1638,7 +1730,7 @@
         {
             "name": "userChoice",
             "type": "string",
-            "description": "User selection from a predefined menu (not user-provided input)"
+            "description": "User selection from a predefined menu (not user-provided input). See also `action`."
         },
         {
             "name": "userId",
@@ -1966,6 +2058,10 @@
                     "required": true
                 },
                 {
+                    "type": "cwsprChatHasProjectContext",
+                    "required": false
+                },
+                {
                     "type": "cwsprChatHasReference",
                     "required": false
                 },
@@ -1980,6 +2076,18 @@
                 {
                     "type": "cwsprChatMessageId",
                     "required": true
+                },
+                {
+                    "type": "cwsprChatProgrammingLanguage",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatTotalCodeBlocks",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatUserIntent",
+                    "required": false
                 }
             ]
         },
@@ -2149,6 +2257,10 @@
                 {
                     "type": "runtime",
                     "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -2162,6 +2274,10 @@
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -2171,6 +2287,74 @@
             "metadata": [
                 {
                     "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "appBuilder_installTool",
+            "description": "Click Install button in Getting Started Walkthrough",
+            "metadata": [
+                {
+                    "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "toolId",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "appBuilder_openLocalInvokeWebView",
+            "description": "Click open Local invoke WebView button in Application Builder",
+            "metadata": [
+                {
+                    "type": "source",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "appBuilder_openRemoteInvokeWebView",
+            "description": "Click open Remote invoke WebView button in Application Builder",
+            "metadata": [
+                {
+                    "type": "source",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "appBuilder_openTemplate",
+            "description": "Click open template button in Application Builder",
+            "metadata": [
+                {
+                    "type": "source",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "appBuilder_selectWalkthroughTemplate",
+            "description": "Select a template and create project in Getting Started Walkthrough",
+            "metadata": [
+                {
+                    "type": "action",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "appBuilder_startWalkthrough",
+            "description": "Open Getting Started Walkthrough",
+            "metadata": [
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -2305,6 +2489,10 @@
             "metadata": [
                 {
                     "type": "hasChatAuth"
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -2450,6 +2638,14 @@
                 },
                 {
                     "type": "source"
+                },
+                {
+                    "type": "ssoRegistrationClientId",
+                    "required": false
+                },
+                {
+                    "type": "ssoRegistrationExpiresAt",
+                    "required": false
                 }
             ]
         },
@@ -2525,8 +2721,32 @@
                     "required": true
                 },
                 {
+                    "type": "credentialSourceId",
+                    "required": false
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "credentialType",
+                    "required": false
+                },
+                {
+                    "type": "featureId",
+                    "required": false
+                },
+                {
                     "type": "source",
                     "required": true
+                },
+                {
+                    "type": "ssoRegistrationClientId",
+                    "required": false
+                },
+                {
+                    "type": "ssoRegistrationExpiresAt",
+                    "required": false
                 }
             ],
             "passive": true
@@ -2574,6 +2794,28 @@
                 },
                 {
                     "type": "experimentState"
+                }
+            ]
+        },
+        {
+            "name": "aws_extensionUninstalled",
+            "description": "An extension in uninstalled",
+            "passive": true,
+            "metadata": []
+        },
+        {
+            "name": "aws_featureConfig",
+            "description": "AB Testing Feature response and Cohort Assignments",
+            "passive": true,
+            "metadata": [
+                {
+                    "type": "featureValue"
+                },
+                {
+                    "type": "featureVariation"
+                },
+                {
+                    "type": "id"
                 }
             ]
         },
@@ -2626,6 +2868,10 @@
             "description": "Extension navigated the user to a web browser to perform/complete the login process.",
             "metadata": [
                 {
+                    "type": "authType",
+                    "required": false
+                },
+                {
                     "type": "credentialSourceId",
                     "required": false
                 },
@@ -2650,6 +2896,14 @@
                 },
                 {
                     "type": "source"
+                },
+                {
+                    "type": "ssoRegistrationClientId",
+                    "required": false
+                },
+                {
+                    "type": "ssoRegistrationExpiresAt",
+                    "required": false
                 }
             ]
         },
@@ -2721,6 +2975,10 @@
                     "required": false
                 },
                 {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
                     "type": "credentialType",
                     "required": false
                 },
@@ -2741,6 +2999,14 @@
                 },
                 {
                     "type": "sessionDuration",
+                    "required": false
+                },
+                {
+                    "type": "ssoRegistrationClientId",
+                    "required": false
+                },
+                {
+                    "type": "ssoRegistrationExpiresAt",
                     "required": false
                 }
             ]
@@ -3510,16 +3776,6 @@
             ]
         },
         {
-            "name": "codeTransform_dependenciesCopied",
-            "description": "Deprecated - use codeTransform_uploadProject (The repo copies over at least one dependency successfully)",
-            "metadata": [
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                }
-            ]
-        },
-        {
             "name": "codeTransform_downloadArtifact",
             "description": "User downloads code transform artifact",
             "metadata": [
@@ -3601,76 +3857,6 @@
                 },
                 {
                     "type": "result",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_isDoubleClickedToTriggerInvalidProject",
-            "description": "Deprecated - use codeTransform_validateProject (Transform initiated a job but there is a validation error)",
-            "metadata": [
-                {
-                    "type": "codeTransformPreValidationError",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformRuntimeError",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": true
-                },
-                {
-                    "type": "result",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_jobArtifactDownloadAndDeserializeTime",
-            "description": "Deprecated - use codeTransform_downloadArtifact (job is ending download zip contents)",
-            "metadata": [
-                {
-                    "type": "codeTransformJobId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformRuntimeError",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformRunTimeLatency",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformTotalByteSize",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_jobCreateZipEndTime",
-            "description": "Deprecated - use codeTransform_uploadProject (A timestamp for when the job is ending upload zip contents)",
-            "metadata": [
-                {
-                    "type": "codeTransformRunTimeLatency",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformTotalByteSize",
                     "required": true
                 }
             ]
@@ -3790,29 +3976,6 @@
             ]
         },
         {
-            "name": "codeTransform_jobStartedCompleteFromPopupDialog",
-            "passive": true,
-            "description": "Deprecated - use codeTransform_submitSelection (code execution starts after model validation)",
-            "metadata": [
-                {
-                    "type": "codeTransformJavaSourceVersionsAllowed",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformJavaTargetVersionsAllowed",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformProjectId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                }
-            ]
-        },
-        {
             "name": "codeTransform_jobStatusChanged",
             "passive": true,
             "description": "During the transformation progress, log the status steps returning from the API.",
@@ -3858,68 +4021,6 @@
             ]
         },
         {
-            "name": "codeTransform_logApiError",
-            "passive": true,
-            "description": "Deprecated - avoid logging every service call",
-            "metadata": [
-                {
-                    "type": "codeTransformJobId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformRequestId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformTotalByteSize",
-                    "required": false
-                },
-                {
-                    "type": "reason",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_logApiLatency",
-            "passive": true,
-            "description": "Deprecated - avoid logging every service call",
-            "metadata": [
-                {
-                    "type": "codeTransformApiNames",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformJobId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformRequestId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformRunTimeLatency",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformTotalByteSize",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformUploadId",
-                    "required": false
-                }
-            ]
-        },
-        {
             "name": "codeTransform_logGeneralError",
             "passive": true,
             "description": "A general error has occurred.",
@@ -3934,51 +4035,6 @@
                 },
                 {
                     "type": "reason",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_mvnBuildFailed",
-            "description": "Deprecated - use codeTransform_localBuildProject (The maven command build failed)",
-            "metadata": [
-                {
-                    "type": "codeTransformMavenBuildCommand",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_projectDetails",
-            "passive": true,
-            "description": "Deprecated - use codeTransform_validateProject (Transform initiates project validation before user interaction)",
-            "metadata": [
-                {
-                    "type": "codeTransformLocalJavaVersion",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformPreValidationError",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
                     "required": true
                 }
             ]
@@ -4012,8 +4068,16 @@
                     "required": true
                 },
                 {
+                    "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "target",
+                    "required": false
+                },
+                {
                     "type": "userChoice",
-                    "required": true
+                    "required": false
                 }
             ]
         },
@@ -4032,10 +4096,6 @@
                 },
                 {
                     "type": "codeTransformLocalJavaVersion",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformLocalMavenVersion",
                     "required": false
                 },
                 {
@@ -4096,7 +4156,7 @@
                 },
                 {
                     "type": "codeTransformBuildSystem",
-                    "required": true
+                    "required": false
                 },
                 {
                     "type": "codeTransformLocalJavaVersion",
@@ -4116,82 +4176,6 @@
                 },
                 {
                     "type": "result",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_vcsDiffViewerVisible",
-            "description": "Deprecated - use codeTransform_viewArtifact (timestamp when the diff view is being displayed to the user)",
-            "metadata": [
-                {
-                    "type": "codeTransformJobId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_vcsViewerCanceled",
-            "description": "Deprecated - use codeTransform_viewArtifact (An interactivity measured when users cancel a patch view)",
-            "metadata": [
-                {
-                    "type": "codeTransformJobId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformPatchViewerCancelSrcComponents",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformRuntimeError",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformStatus",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_vcsViewerClicked",
-            "description": "Deprecated - use codeTransform_viewArtifact (An interactivity measured when users click to view diff results)",
-            "metadata": [
-                {
-                    "type": "codeTransformJobId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformVCSViewerSrcComponents",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_vcsViewerSubmitted",
-            "description": "Deprecated - use codeTransform_viewArtifact (An interactivity measured when users submit their patch view results)",
-            "metadata": [
-                {
-                    "type": "codeTransformJobId",
-                    "required": false
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformStatus",
                     "required": true
                 }
             ]
@@ -4230,7 +4214,7 @@
                 },
                 {
                     "type": "userChoice",
-                    "required": true
+                    "required": false
                 }
             ]
         },
@@ -4303,7 +4287,8 @@
                     "type": "codewhispererTriggerType"
                 },
                 {
-                    "type": "codewhispererUserGroup"
+                    "type": "codewhispererUserGroup",
+                    "required": false
                 },
                 {
                     "type": "credentialStartUrl",
@@ -4329,10 +4314,15 @@
                     "type": "codewhispererPercentage"
                 },
                 {
+                    "type": "codewhispererSuggestedTokens",
+                    "required": false
+                },
+                {
                     "type": "codewhispererTotalTokens"
                 },
                 {
-                    "type": "codewhispererUserGroup"
+                    "type": "codewhispererUserGroup",
+                    "required": false
                 },
                 {
                     "type": "credentialStartUrl",
@@ -4347,6 +4337,16 @@
                 }
             ],
             "passive": true
+        },
+        {
+            "name": "codewhisperer_codeScanChatNewTab",
+            "description": "Called when a new chat tab is opened in the code scan view",
+            "metadata": [
+                {
+                    "type": "credentialSourceId",
+                    "required": false
+                }
+            ]
         },
         {
             "name": "codewhisperer_codeScanIssueApplyFix",
@@ -4366,14 +4366,34 @@
                     "type": "findingId"
                 },
                 {
-                    "type": "reason",
+                    "type": "ruleId",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanIssueGenerateFix",
+            "description": "Generated fix for a code scan issue. variant=refresh means the user chose to generate a fix again after one already exists.",
+            "metadata": [
+                {
+                    "type": "component"
+                },
+                {
+                    "type": "credentialStartUrl",
                     "required": false
                 },
                 {
-                    "type": "result"
+                    "type": "detectorId"
+                },
+                {
+                    "type": "findingId"
                 },
                 {
                     "type": "ruleId",
+                    "required": false
+                },
+                {
+                    "type": "variant",
                     "required": false
                 }
             ]
@@ -4397,6 +4417,33 @@
                 },
                 {
                     "type": "ruleId",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanIssueIgnore",
+            "description": "User ignored a code scan issue. variant=all means the user ignored all issues of a specific type.",
+            "metadata": [
+                {
+                    "type": "component"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "detectorId"
+                },
+                {
+                    "type": "findingId"
+                },
+                {
+                    "type": "ruleId",
+                    "required": false
+                },
+                {
+                    "type": "variant",
                     "required": false
                 }
             ]
@@ -4477,7 +4524,8 @@
                     "type": "codewhispererTriggerType"
                 },
                 {
-                    "type": "codewhispererUserGroup"
+                    "type": "codewhispererUserGroup",
+                    "required": false
                 },
                 {
                     "type": "credentialStartUrl",
@@ -4553,6 +4601,10 @@
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -4629,7 +4681,8 @@
                     "type": "codewhispererTriggerType"
                 },
                 {
-                    "type": "codewhispererUserGroup"
+                    "type": "codewhispererUserGroup",
+                    "required": false
                 },
                 {
                     "type": "credentialStartUrl",
@@ -4713,7 +4766,8 @@
                     "type": "codewhispererTriggerType"
                 },
                 {
-                    "type": "codewhispererUserGroup"
+                    "type": "codewhispererUserGroup",
+                    "required": false
                 },
                 {
                     "type": "credentialStartUrl",
@@ -4762,7 +4816,8 @@
                     "type": "codewhispererTriggerType"
                 },
                 {
-                    "type": "codewhispererUserGroup"
+                    "type": "codewhispererUserGroup",
+                    "required": false
                 },
                 {
                     "type": "credentialStartUrl",
@@ -4889,7 +4944,8 @@
                     "type": "codewhispererTypeaheadLength"
                 },
                 {
-                    "type": "codewhispererUserGroup"
+                    "type": "codewhispererUserGroup",
+                    "required": false
                 },
                 {
                     "type": "credentialStartUrl",
@@ -4987,6 +5043,19 @@
             ]
         },
         {
+            "name": "dynamodb_deleteRecord",
+            "description": "Deletes a record in DynamoDB record",
+            "metadata": [
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
             "name": "dynamodb_deleteTable",
             "description": "Delete a DynamoDB table",
             "metadata": [
@@ -5020,6 +5089,10 @@
             "description": "Fetch records from a DynamoDB table in the table browser",
             "metadata": [
                 {
+                    "type": "count",
+                    "required": false
+                },
+                {
                     "type": "dynamoDbFetchType"
                 },
                 {
@@ -5032,11 +5105,36 @@
             ]
         },
         {
+            "name": "dynamodb_fetchTables",
+            "description": "Fetches the tables in a DynamoDB entity",
+            "metadata": [
+                {
+                    "type": "count",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "source",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "dynamodb_openTable",
             "description": "Open a DynamoDB table in the table browser",
             "metadata": [
                 {
+                    "type": "count",
+                    "required": false
+                },
+                {
                     "type": "result"
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -5851,7 +5949,8 @@
             "description": "Jump to a lambda handler from elsewhere",
             "metadata": [
                 {
-                    "type": "result"
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
@@ -5890,6 +5989,10 @@
                     "required": false
                 },
                 {
+                    "type": "source",
+                    "required": false
+                },
+                {
                     "type": "version",
                     "required": false
                 }
@@ -5904,6 +6007,10 @@
                 },
                 {
                     "type": "runtime",
+                    "required": false
+                },
+                {
+                    "type": "source",
                     "required": false
                 }
             ]
@@ -6268,11 +6375,33 @@
             ]
         },
         {
+            "name": "sam_build",
+            "description": "Called when building a SAM application",
+            "metadata": [
+                {
+                    "type": "lambdaPackageType",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "version",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "sam_deploy",
             "description": "Called when deploying a SAM application",
             "metadata": [
                 {
                     "type": "result"
+                },
+                {
+                    "type": "source",
+                    "required": false
                 },
                 {
                     "type": "version",
@@ -6349,6 +6478,10 @@
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "source",
+                    "required": false
                 },
                 {
                     "type": "syncedResources"
@@ -6627,6 +6760,48 @@
             ]
         },
         {
+            "name": "toolkit_closeModule",
+            "description": "The user closed 'something' (specified by 'module'). Examples: a view, feature, resource, ...",
+            "metadata": [
+                {
+                    "type": "module",
+                    "required": true
+                }
+            ],
+            "passive": true
+        },
+        {
+            "name": "toolkit_featureState",
+            "description": "Represents the current enabled state of a feature. Used to track user journey through a feature. Emitted after feature-specific operations of interest in the Toolkit.",
+            "metadata": [
+                {
+                    "type": "authStatus",
+                    "required": false
+                },
+                {
+                    "type": "credentialSourceId",
+                    "required": false
+                },
+                {
+                    "type": "credentialType",
+                    "required": false
+                },
+                {
+                    "type": "enabled",
+                    "required": true
+                },
+                {
+                    "type": "featureId",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
+                }
+            ],
+            "passive": true
+        },
+        {
             "name": "toolkit_getExternalResource",
             "description": "The toolkit tried to retrieve blob data from a url",
             "metadata": [
@@ -6718,8 +6893,27 @@
             ]
         },
         {
+            "name": "toolkit_openModule",
+            "description": "User opened 'something' (specified by 'module'). Examples: a view, feature, resource, ...",
+            "metadata": [
+                {
+                    "type": "module",
+                    "required": true
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
+                }
+            ],
+            "passive": true
+        },
+        {
             "name": "toolkit_showAction",
-            "description": "The toolkit tried to show an action. Source represents the notification that produced the action",
+            "description": "Toolkit presented an action. `source` is the notification that produced the action. See also `toolkit_showNotification`.",
             "metadata": [
                 {
                     "type": "component",
@@ -6746,7 +6940,7 @@
         },
         {
             "name": "toolkit_showNotification",
-            "description": "The toolkit tried to show a notification message",
+            "description": "Show a notification message, optionally with selected action set in `userChoice`. See also `toolkit_showAction`.",
             "metadata": [
                 {
                     "type": "component",
@@ -6763,9 +6957,35 @@
                 {
                     "type": "result",
                     "required": true
+                },
+                {
+                    "type": "userChoice",
+                    "required": false
                 }
             ],
             "passive": true
+        },
+        {
+            "name": "toolkit_trackScenario",
+            "description": "Generic metric for tracking arbitrary scenarios that are not yet formalized into a full metric.",
+            "unit": "Count",
+            "metadata": [
+                {
+                    "type": "amazonqConversationId",
+                    "required": true
+                },
+                {
+                    "type": "count"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "scenario",
+                    "required": true
+                }
+            ]
         },
         {
             "name": "toolkit_viewLogs",

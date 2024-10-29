@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net472</TargetFramework>
 		<RootNamespace>Amazon.AwsToolkit.Telemetry.Events.Tests</RootNamespace>
@@ -11,26 +11,30 @@
 		<Reference Include="System.Core" />
 	</ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="6.12.0" />
+    <PackageReference Include="FluentAssertions" Version="6.12.1" />
     <PackageReference Include="Moq" Version="4.18.4" />
-    <PackageReference Include="xunit" Version="2.9.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\AwsToolkit.Telemetry.Events\AwsToolkit.Telemetry.Events.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <Folder Include="Generated\" />
+    <!-- We cheat here: 
+        Tests in AwsToolkit.Telemetry.Events.Generator.Tests validate that the generated code that is produced is what is expected.
+        Since we need to generate the code for those tests, we're going to put that code under test in this project.
+    -->
+    <Compile Include="..\SampleData\Outcomes\supplementDefinitions.txt">
+      <Link>Generated\SupplementalCode.cs</Link>
+    </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <None Update="supplementDefinitions.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="rem BUILD THE GENERATOR, THEN USE IT TO GENERATE CODE INTO THE TEST PROJECT&#xD;&#xA;dotnet build &quot;$(SolutionDir)\AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj&quot;&#xD;&#xA;dotnet run --project &quot;$(SolutionDir)\AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj&quot; -o $(ProjectDir)\Generated&#xD;&#xA;dotnet run --project &quot;$(SolutionDir)\AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj&quot; -o $(ProjectDir)\Generated --namespace Amazon.AwsToolkit.Telemetry.Events.Tests.Generated --s supplementDefinitions.json --f SupplementalCode.cs&#xD;&#xA;" />
+    <Exec Command="rem BUILD THE GENERATOR, THEN USE IT TO GENERATE CODE INTO THE TEST PROJECT&#xD;&#xA;dotnet build &quot;$(SolutionDir)\AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj&quot;&#xD;&#xA;dotnet run --project &quot;$(SolutionDir)\AwsToolkit.Telemetry.Events.Generator\AwsToolkit.Telemetry.Events.Generator.csproj&quot; -o $(ProjectDir)\Generated&#xD;&#xA;" />
   </Target>
 </Project>

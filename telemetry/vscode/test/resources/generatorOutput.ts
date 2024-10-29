@@ -34,6 +34,14 @@ export interface MetricBase {
     readonly passive?: boolean
     /** @deprecated Arbitrary "value" of the metric. */
     readonly value?: number
+    /** A flag indicating that the metric should track run-time performance information */
+    readonly trackPerformance?: boolean
+    /** Unique identifier for the trace (a set of events) this metric belongs to */
+    readonly traceId?: string
+    /** Unique identifier for this metric */
+    readonly metricId?: string
+    /** Unique identifier of the parent of this metric */
+    readonly parentId?: string
 }
 
 export interface LambdaDelete extends MetricBase {
@@ -93,6 +101,7 @@ export type Runtime =
 export interface MetricDefinition {
     readonly unit: string
     readonly passive: boolean
+    readonly trackPerformance: boolean
     readonly requiredMetadata: readonly string[]
 }
 
@@ -107,23 +116,26 @@ export interface MetricShapes {
 export type MetricName = keyof MetricShapes
 
 export const definitions: Record<string, MetricDefinition> = {
-    lambda_delete: { unit: 'None', passive: false, requiredMetadata: ['isRetry'] },
-    lambda_create: { unit: 'None', passive: false, requiredMetadata: ['runtime', 'userId'] },
-    lambda_remoteinvoke: { unit: 'None', passive: false, requiredMetadata: ['successCount'] },
-    no_metadata: { unit: 'None', passive: false, requiredMetadata: [] },
-    passive_passive: { unit: 'None', passive: true, requiredMetadata: [] },
+    lambda_delete: { unit: 'None', passive: false, trackPerformance: false, requiredMetadata: ['isRetry'] },
+    lambda_create: { unit: 'None', passive: false, trackPerformance: false, requiredMetadata: ['runtime', 'userId'] },
+    lambda_remoteinvoke: { unit: 'None', passive: false, trackPerformance: false, requiredMetadata: ['successCount'] },
+    no_metadata: { unit: 'None', passive: false, trackPerformance: false, requiredMetadata: [] },
+    passive_passive: { unit: 'None', passive: true, trackPerformance: false, requiredMetadata: [] },
 }
 
-export type Metadata<T extends MetricBase> = Partial<Omit<T, keyof MetricBase>>
+export type Metadata<T extends MetricBase> = Partial<Omit<T, keyof MetricBase> | Partial<Pick<MetricBase, 'awsRegion'>>>
+
+/** Represents a telemetry span for tracking and recording metric data. */
+export interface Span<T> {
+    record(data: Partial<T>): this
+}
 
 export interface Metric<T extends MetricBase = MetricBase> {
     readonly name: string
-    /** Adds data to the metric which is preserved for the remainder of the execution context */
-    record(data: Metadata<T>): void
     /** Sends the metric to the telemetry service */
     emit(data?: T): void
     /** Executes a callback, automatically sending the metric after completion */
-    run<U>(fn: (span: this) => U): U
+    run<U>(fn: (span: Span<T>) => U): U
 }
 
 export abstract class TelemetryBase {

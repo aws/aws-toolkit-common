@@ -42,15 +42,56 @@ fun generateTelemetryFromFiles(
     outputFolder: File
 ) {
     val telemetry = TelemetryParser.parseFiles(defaultDefinitions, inputFiles)
+    val commonMetadataTypes = setOf(
+        "duration",
+        "httpStatusCode",
+        "reason",
+        "reasonDesc",
+        "requestId",
+        "requestServiceType",
+        "result",
+        "traceId",
+        "metricId",
+        "parentId"
+    )
+
+    val metricsWithCommonMetadata = telemetry.metrics.map { metric ->
+        // compute [MetadataSchema] for any common types not already declared in the schema
+        val commonMetadata = commonMetadataTypes.mapNotNull { commonMetadataType ->
+            val type = telemetry.types.firstOrNull { it.name == commonMetadataType }
+
+            if (type != null && metric.metadata.none { it.type.name == commonMetadataType }) {
+                MetadataSchema(type, false)
+            } else {
+                null
+            }
+        }
+
+        // metadata will be sorted during generation
+        metric.copy(metadata = metric.metadata + commonMetadata)
+    }
+
+    val indent = " ".repeat(4)
     // make sure the output directory exists before writing to it
     outputFolder.mkdirs()
-    FileSpec.builder(PACKAGE_NAME, "TelemetryDefinitions")
-        .indent(" ".repeat(4))
+    FileSpec.builder(PACKAGE_NAME, "TelemetryEnums")
+        .indent(indent)
         .generateHeader()
         .generateTelemetryEnumTypes(telemetry.types)
-        .generateTelemetryObjects(telemetry.metrics)
         .build()
         .writeTo(outputFolder)
+
+    // Namespaced metrics
+    metricsWithCommonMetadata.groupBy { it.namespace() }
+        .toSortedMap()
+        .forEach { (namespace, metrics) ->
+            FileSpec.builder(PACKAGE_NAME, namespace.capitalize() + "Telemetry")
+                .indent(indent)
+                .generateHeader()
+                .generateNamespaces(namespace, metrics)
+                .build()
+                .writeTo(outputFolder)
+        }
 }
 
 private fun FileSpec.Builder.generateHeader(): FileSpec.Builder {
@@ -158,7 +199,9 @@ private fun FileSpec.Builder.generateTelemetryObjects(schema: List<MetricSchema>
 private fun FileSpec.Builder.generateNamespaces(namespace: String, metrics: List<MetricSchema>): FileSpec.Builder {
     val telemetryObject = TypeSpec.objectBuilder("${namespace.toTypeFormat()}Telemetry")
 
-    metrics.sortedBy { it.name }.forEach { telemetryObject.generateRecordFunctions(it) }
+    metrics.sortedBy { it.name }.forEach {
+        telemetryObject.generateRecordFunctions(it)
+    }
 
     addType(telemetryObject.build())
 

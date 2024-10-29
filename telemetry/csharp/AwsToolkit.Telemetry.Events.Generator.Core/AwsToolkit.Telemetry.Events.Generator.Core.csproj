@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Source generators must target netstandard 2.0, and this project will be a dependency. -->
+    <TargetFramework>netstandard2.0</TargetFramework>
+
+    <RootNamespace>Amazon.AwsToolkit.Telemetry.Events.Generator.Core</RootNamespace>
+    <AssemblyName>Amazon.AwsToolkit.Telemetry.Events.Generator.Core</AssemblyName>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.CodeDom" Version="8.0.0" />
+  </ItemGroup>
+
+</Project>

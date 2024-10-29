@@ -1,0 +1,89 @@
+{
+    "types": [
+        {
+            "name": "duration",
+            "type": "double",
+            "description": "The duration of the operation in milliseconds"
+        },
+        {
+            "name": "attempts",
+            "type": "int",
+            "description": "A generic number of attempts"
+        },
+        {
+            "name": "enabled",
+            "type": "boolean",
+            "description": "True if turned on, false if turned off"
+        },
+        {
+            "name": "name",
+            "type": "string",
+            "description": "A generic name metadata"
+        },
+        {
+            "name": "runtime",
+            "type": "string",
+            "allowedValues": ["dotnetcore2.1", "java11"],
+            "description": "The lambda runtime"
+        }
+    ],
+    "metrics": [
+        {
+            "name": "emit_someIntMs",
+            "unit": "Milliseconds",
+            "description": "Emits milliseconds"
+        },
+        {
+            "name": "emit_noUnit",
+            "description": "Emits something without a unit defined"
+        },
+        {
+            "name": "emit_someBigBlob",
+            "unit": "Count",
+            "description": "Emits a bunch of metadata varieties",
+            "metadata": [
+                { "type": "duration", "required": true },
+                { "type": "attempts", "required": true },
+                { "type": "enabled", "required": true },
+                { "type": "name", "required": true },
+                { "type": "runtime", "required": true }
+            ]
+        },
+        {
+            "name": "emit_someBigBlob2",
+            "unit": "Count",
+            "description": "Emits a bunch of metadata varieties - required not set",
+            "metadata": [
+                { "type": "duration" },
+                { "type": "attempts" },
+                { "type": "enabled" },
+                { "type": "name" },
+                { "type": "runtime" }
+            ]
+        },
+        {
+            "name": "emit_someBigOptionalBlob",
+            "unit": "Count",
+            "description": "Emits a bunch of optional metadata varieties",
+            "metadata": [
+                { "type": "duration", "required": false },
+                { "type": "attempts", "required": false },
+                { "type": "enabled", "required": false },
+                { "type": "name", "required": false },
+                { "type": "runtime", "required": false }
+            ]
+        },
+        {
+            "name": "emit_passive",
+            "unit": "Count",
+            "description": "Emit a passive metric",
+            "passive": true
+        },
+        {
+            "name": "emit_trackPerformance",
+            "unit": "Count",
+            "description": "Emit a metric that should track the performance",
+            "trackPerformance": true
+        }
+    ]
+}

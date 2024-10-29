@@ -65,6 +65,22 @@
                     "passive": {
                         "type": "boolean",
                         "description": "Set as true if the metric is emitted without any explicit user action."
+                    },
+                    "trackPerformance": {
+                        "type": "boolean",
+                        "description": "Set as true if the metric can track run-time performance information. Default=false"
+                    },
+                    "traceId": {
+                        "type": "string",
+                        "description": "Unique identifier for the trace (a set of events) this metric belongs to"
+                    },
+                    "metricId": {
+                        "type": "string",
+                        "description": "Unique identifier for this metric"
+                    },
+                    "parentId": {
+                        "type": "string",
+                        "description": "Unique identifier of this metrics parent metric id"
                     }
                 },
                 "required": ["name", "description"]

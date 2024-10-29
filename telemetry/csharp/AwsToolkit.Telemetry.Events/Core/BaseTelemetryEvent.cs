@@ -18,6 +18,14 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Core
         public bool Passive = false;
 
         /// <summary>
+        /// Indicates if the metric should track run-time performance information (true)
+        /// or not (false).
+        ///
+        /// Derived classes configure this value to match the telemetry definitions.
+        /// </summary>
+        public bool TrackPerformance = false;
+
+        /// <summary>
         /// Optional - The reason for a metric or exception depending on context. It describes a certain theme of errors usually the exception class name eg. FileIOException
         /// This is often used in failure scenarios to provide additional details about why something failed.
         /// </summary>
@@ -47,6 +55,21 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Core
         /// </summary>
         public string RequestId;
 
+        /// <summary>
+        /// Optional - A unique identifier for the trace (a set of events) this metric belongs to
+        /// </summary>
+        public string TraceId;
+        
+        /// <summary>
+        /// Optional - A unique identifier for this metric
+        /// </summary>
+        public string MetricId;
+        
+        /// <summary>
+        /// Optional - A unique identifier of this metrics parent metric id
+        /// </summary>
+        public string ParentId;
+        
         /// <summary>
         /// Optional - Per-request service identifier. Unlike `serviceType` (which describes the originator of the request), this describes the request itself.
         /// This is often used in failure scenarios to provide additional details about why something failed.

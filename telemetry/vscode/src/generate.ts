@@ -122,17 +122,27 @@ function getTypeOrThrow(types: MetadataType[] = [], name: string) {
 
 const baseName = 'MetricBase'
 
+/**
+ * Fields set automatically by the telemetry client (thus application code
+ * normally shouldn't set these because the value will be overridden).
+ */
 const commonMetadata = [
-  'awsAccount',
-  'awsRegion',
-  'duration',
-  'httpStatusCode',
-  'reason',
-  'reasonDesc',
-  'requestId',
-  'requestServiceType',
-  'result',
-]
+    'awsAccount',
+    'awsRegion',
+    'duration',
+    'httpStatusCode',
+    'reason',
+    'reasonDesc',
+    'requestId',
+    'requestServiceType',
+    'result',
+] as const
+
+/**
+ * These fields will also be set by the telemetry client, but the caller might
+ * know better, so they won't be overridden if specified in `.record()` calls.
+ */
+const optionalMetadata: typeof commonMetadata[number][] = ['awsRegion']
 
 const passive: PropertySignatureStructure = {
     isReadonly: true,
@@ -140,6 +150,42 @@ const passive: PropertySignatureStructure = {
     name: 'passive',
     type: 'boolean',
     docs: ['A flag indicating that the metric was not caused by the user.'],
+    kind: StructureKind.PropertySignature,
+}
+
+const trackPerformance: PropertySignatureStructure = {
+    isReadonly: true,
+    hasQuestionToken: true,
+    name: 'trackPerformance',
+    type: 'boolean',
+    docs: ['A flag indicating that the metric should track run-time performance information'],
+    kind: StructureKind.PropertySignature,
+}
+
+const traceId: PropertySignatureStructure = {
+    isReadonly: true,
+    hasQuestionToken: true,
+    name: 'traceId',
+    type: 'string',
+    docs: ['Unique identifier for the trace (a set of events) this metric belongs to'],
+    kind: StructureKind.PropertySignature,
+}
+
+const metricId: PropertySignatureStructure = {
+    isReadonly: true,
+    hasQuestionToken: true,
+    name: 'metricId',
+    type: 'string',
+    docs: ['Unique identifier for this metric'],
+    kind: StructureKind.PropertySignature,
+}
+
+const parentId: PropertySignatureStructure = {
+    isReadonly: true,
+    hasQuestionToken: true,
+    name: 'parentId',
+    type: 'string',
+    docs: ['Unique identifier of the parent of this metric'],
     kind: StructureKind.PropertySignature,
 }
 
@@ -168,6 +214,11 @@ const runtimeMetricDefinition: InterfaceDeclarationStructure = {
             isReadonly: true,
         },
         {
+            name: 'trackPerformance',
+            type: 'boolean',
+            isReadonly: true,
+        },
+        {
             name: 'requiredMetadata',
             type: 'readonly string[]',
             isReadonly: true,
@@ -183,7 +234,7 @@ const header = `
 `.trimStart()
 
 function getMetricMetadata(metric: Metric) {
-    return metric.metadata?.filter(m => !commonMetadata.includes(m.type)) ?? []
+    return metric.metadata?.filter(m => !commonMetadata.includes(m.type as typeof commonMetadata[number])) ?? []
 }
 
 function generateMetadataProperty(metadata: MetricMetadataType): PropertySignatureStructure {
@@ -204,8 +255,8 @@ function generateMetricBase(types: MetadataType[] | undefined): InterfaceDeclara
         name: baseName,
         isExported: true,
         kind: StructureKind.Interface,
-        properties: commonMetadata.map(toProp).concat(passive, value),
-    }    
+        properties: commonMetadata.map(toProp).concat(passive, value, trackPerformance, traceId, metricId, parentId),
+    }
 }
 
 function generateMetricInterface(metric: Metric, types: MetadataType[] | undefined): InterfaceDeclarationStructure {
@@ -234,22 +285,13 @@ function generateMetricRecorder(metadataType: TypeAliasDeclarationStructure): In
         ],
         methods: [
             {
-                docs: ['Adds data to the metric which is preserved for the remainder of the execution context'],
-                name: 'record',
-                returnType: 'void',
-                parameters: [{
-                    name: 'data',
-                    type: `${metadataType.name}<T>`,
-                }],
-            },
-            {
                 docs: ['Sends the metric to the telemetry service'],
                 name: 'emit',
                 returnType: 'void',
                 parameters: [{
-                    name: 'data',
-                    type: 'T',
-                    hasQuestionToken: true,
+                        name: 'data',
+                        type: 'T',
+                        hasQuestionToken: true,
                 }],
             },
             {
@@ -258,8 +300,8 @@ function generateMetricRecorder(metadataType: TypeAliasDeclarationStructure): In
                 typeParameters: ['U'],
                 returnType: 'U',
                 parameters: [{
-                    name: 'fn',
-                    type: `(span: this) => U`,
+                        name: 'fn',
+                        type: `(span: Span<T>) => U`,
                 }],
             }
         ],
@@ -282,7 +324,7 @@ function generateTelemetryHelper(recorder: InterfaceDeclarationStructure, metric
         kind: StructureKind.Class,
         isAbstract: true,
         methods: [getMetric],
-        getAccessors: metrics.map(m => {        
+        getAccessors: metrics.map(m => {
             return {
                 scope: Scope.Public,
                 name: m.name,
@@ -314,16 +356,16 @@ function generateDefinitions(metrics: Metric[]): VariableStatementStructure {
     const fields = metrics.map(m => {
         const metadataTypes = getMetricMetadata(m).filter(m => m.required ?? true).map(m => `'${m.type}'`)
         const requiredMetadata = `[${metadataTypes.join(', ')}]`
-        
-        return `${m.name}: { unit: '${m.unit ?? 'None'}', passive: ${m.passive ?? false}, requiredMetadata: ${requiredMetadata} }`
+
+        return `${m.name}: { unit: '${m.unit ?? 'None'}', passive: ${m.passive ?? false}, trackPerformance: ${m.trackPerformance ?? false}, requiredMetadata: ${requiredMetadata} }`
     })
 
     return {
         isExported: true,
         declarations: [{
-            name: 'definitions',
-            type: `Record<string, ${runtimeMetricDefinition.name}>`,
-            initializer: `{ ${fields.join(',\n')} }`,
+                name: 'definitions',
+                type: `Record<string, ${runtimeMetricDefinition.name}>`,
+                initializer: `{ ${fields.join(',\n')} }`,
         }],
         declarationKind: VariableDeclarationKind.Const,
         kind: StructureKind.VariableStatement,
@@ -351,14 +393,35 @@ function generateFile(telemetryJson: MetricDefinitionRoot, dest: string) {
         isExported: true,
         name: 'Metadata',
         typeParameters: [`T extends ${baseName}`],
-        type: `Partial<Omit<T, keyof ${baseName}>>`,
+        type: `Partial<Omit<T, keyof ${baseName}> | Partial<Pick<${baseName}, ${optionalMetadata.map(v => `'${v}'`).join(' | ')}>>>`,
         kind: StructureKind.TypeAlias,
+    }
+
+    const span: InterfaceDeclarationStructure = {
+        kind: StructureKind.Interface,
+        name: 'Span',
+        isExported: true,
+        typeParameters: [{ name: 'T' }],
+        docs: ['Represents a telemetry span for tracking and recording metric data.'],
+        methods: [
+            {
+                name: 'record',
+                parameters: [
+                    {
+                        name: 'data',
+                        type: 'Partial<T>',
+                    },
+                ],
+                returnType: 'this',
+            }
+        ],
     }
 
     const definitions = generateDefinitions(telemetryJson.metrics)
     const recorder = generateMetricRecorder(metadataType)
     file.addVariableStatement(definitions)
     file.addTypeAlias(metadataType)
+    file.addInterface(span)
     file.addInterface(recorder)
     file.addClass(generateTelemetryHelper(recorder, telemetryJson.metrics))
 

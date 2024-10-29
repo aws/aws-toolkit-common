@@ -52,7 +52,7 @@ tasks {
 
     val validatePackagedSchema by registering {
         group = "build"
-        description = "Validates that the packaged definition is compatable with the packaged schema"
+        description = "Validates that the packaged definition is compatible with the packaged schema"
         doFirst {
             try {
                 val telemetrySchema = file("src/main/resources/telemetrySchema.json")
@@ -78,6 +78,10 @@ tasks {
         from("..")
         include("*.json", "definitions/*.json")
         into("src/test/resources/")
+    }
+
+    named("sourcesJar").configure {
+        dependsOn(copyTelemetryResources)
     }
 
     compileKotlin {

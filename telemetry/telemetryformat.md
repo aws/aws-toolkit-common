@@ -89,6 +89,14 @@ result: Result
 passive: boolean
 // Value based on unit and call type
 value: number
+// Indicates that the metric should track run-time performance information
+trackPerformance: boolean
+// Unique identifier for the trace (a set of events) this metric belongs to
+traceId: number
+// Unique identifier for this metric
+metricId: number
+// Unique identifier of this metrics parent metric id
+parentId: number
 ```
 
 If not specified `createTime` defaults to UTC now, `value` defaults to `1.0`.
