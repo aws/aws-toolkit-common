@@ -8,6 +8,7 @@ package software.aws.toolkits.telemetry
 import com.intellij.openapi.project.Project
 import java.time.Instant
 import kotlin.Boolean
+import kotlin.Deprecated
 import kotlin.Double
 import kotlin.Long
 import kotlin.String
@@ -17,6 +18,10 @@ import software.aws.toolkits.core.ConnectionSettings
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
+@Deprecated(
+    "Use type-safe metric builders",
+    ReplaceWith("Telemetry.lambda", "software.aws.toolkits.telemetry.Telemetry"),
+)
 public object LambdaTelemetry {
     /**
      * called when creating lambdas remotely

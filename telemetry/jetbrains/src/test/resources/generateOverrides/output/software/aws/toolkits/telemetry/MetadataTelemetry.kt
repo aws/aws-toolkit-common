@@ -22,6 +22,10 @@ import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 )
 public typealias Result = MetricResult
 
+@Deprecated(
+    "Use type-safe metric builders",
+    ReplaceWith("Telemetry.metadata", "software.aws.toolkits.telemetry.Telemetry"),
+)
 public object MetadataTelemetry {
     /**
      * It does not actually have a result, yep
@@ -102,8 +106,7 @@ public object MetadataTelemetry {
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
-        hasResult(project, if(success) MetricResult.Succeeded else MetricResult.Failed, passive,
-                value, createTime)
+        hasResult(project, if(success) MetricResult.Succeeded else MetricResult.Failed, passive, value, createTime)
     }
 
     /**
@@ -116,8 +119,7 @@ public object MetadataTelemetry {
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
-        hasResult(connectionSettings, if(success) MetricResult.Succeeded else MetricResult.Failed,
-                passive, value, createTime)
+        hasResult(connectionSettings, if(success) MetricResult.Succeeded else MetricResult.Failed, passive, value, createTime)
     }
 
     /**
@@ -130,7 +132,6 @@ public object MetadataTelemetry {
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
-        hasResult(metadata, if(success) MetricResult.Succeeded else MetricResult.Failed, passive,
-                value, createTime)
+        hasResult(metadata, if(success) MetricResult.Succeeded else MetricResult.Failed, passive, value, createTime)
     }
 }

@@ -21,7 +21,6 @@ public enum class MetricResult(
     override fun toString(): String = value
 
     public companion object {
-        public fun from(type: String): MetricResult = values().firstOrNull { it.value == type }
-                ?: Unknown
+        public fun from(type: String): MetricResult = values().firstOrNull { it.value == type } ?: Unknown
     }
 }

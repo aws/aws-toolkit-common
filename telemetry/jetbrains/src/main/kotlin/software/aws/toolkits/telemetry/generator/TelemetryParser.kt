@@ -18,26 +18,51 @@ enum class MetricMetadataTypes(
 ) {
     STRING("string") {
         override fun kotlinType(): TypeName = com.squareup.kotlinpoet.STRING
+
+        override fun kotlinTypes() = listOf(kotlinType())
     },
     INT("int") {
         override fun kotlinType(): TypeName = com.squareup.kotlinpoet.LONG
+
+        override fun kotlinTypes() = listOf(com.squareup.kotlinpoet.LONG, com.squareup.kotlinpoet.INT)
     },
     DOUBLE("double") {
         override fun kotlinType(): TypeName = com.squareup.kotlinpoet.DOUBLE
+
+        override fun kotlinTypes() = listOf(com.squareup.kotlinpoet.FLOAT, com.squareup.kotlinpoet.DOUBLE)
     },
     BOOLEAN("boolean") {
         override fun kotlinType(): TypeName = com.squareup.kotlinpoet.BOOLEAN
+
+        override fun kotlinTypes() = listOf(kotlinType())
     }, ;
 
     abstract fun kotlinType(): TypeName
+
+    abstract fun kotlinTypes(): Iterable<TypeName>
 }
 
 data class TelemetryMetricType(
     val name: String,
     val description: String,
     val type: MetricMetadataTypes = MetricMetadataTypes.STRING,
-    val allowedValues: List<Any>?,
-)
+    val allowedValues: List<String>?,
+) {
+    private val clazz = name.toTypeFormat()
+
+    private val existsInKotlinStdlib by lazy {
+        try {
+            Class.forName("kotlin.$clazz")
+            true
+        } catch (_: ClassNotFoundException) {
+            false
+        }
+    }
+
+    val typeName by lazy {
+        if (existsInKotlinStdlib) "Metric$clazz" else clazz
+    }
+}
 
 enum class MetricUnit(
     @get:JsonValue val type: String,
