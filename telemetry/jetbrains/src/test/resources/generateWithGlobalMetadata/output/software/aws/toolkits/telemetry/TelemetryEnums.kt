@@ -11,7 +11,7 @@ import kotlin.Suppress
 /**
  * The result of the operation
  */
-public enum class Result(
+public enum class MetricResult(
     private val `value`: String,
 ) {
     Succeeded("Succeeded"),
@@ -23,6 +23,7 @@ public enum class Result(
     override fun toString(): String = value
 
     public companion object {
-        public fun from(type: String): Result = values().firstOrNull { it.value == type } ?: Unknown
+        public fun from(type: String): MetricResult = values().firstOrNull { it.value == type }
+                ?: Unknown
     }
 }

@@ -10,11 +10,12 @@ import com.squareup.kotlinpoet.DOUBLE
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
-import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.STRING
+import com.squareup.kotlinpoet.TypeAliasSpec
 import com.squareup.kotlinpoet.TypeSpec
+import com.squareup.kotlinpoet.TypeVariableName
 import java.io.File
 import java.time.Instant
 
@@ -28,6 +29,7 @@ val CONNECTION_SETTINGS = ClassName("software.aws.toolkits.core", "ConnectionSet
 
 const val RESULT = "result"
 const val SUCCESS = "success"
+const val SANITIZED_RESULT_TYPE_FORMAT = "MetricResult"
 
 fun String.filterInvalidCharacters() = this.replace(".", "")
 
@@ -118,8 +120,18 @@ private fun FileSpec.Builder.generateTelemetryEnumTypes(items: List<TelemetryMet
 }
 
 private fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType): FileSpec.Builder {
+    val clazz = item.name.toTypeFormat()
+    val existsInKotlinStdlib =
+        try {
+            Class.forName("kotlin.$clazz")
+            true
+        } catch (_: ClassNotFoundException) {
+            false
+        }
+
+    val typeName = if (existsInKotlinStdlib) "Metric$clazz" else clazz
     val enum =
-        TypeSpec.enumBuilder(item.name.toTypeFormat())
+        TypeSpec.enumBuilder(typeName)
             .primaryConstructor(
                 FunSpec.constructorBuilder()
                     .addParameter("value", String::class)
@@ -152,7 +164,7 @@ private fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType
         TypeSpec.companionObjectBuilder()
             .addFunction(
                 FunSpec.builder("from")
-                    .returns(ClassName("", item.name.toTypeFormat()))
+                    .returns(ClassName("", typeName))
                     .addParameter("type", String::class)
                     .addStatement("return values().firstOrNull·{·it.value·==·type·} ?:·$unknownType")
                     .build(),
@@ -162,6 +174,33 @@ private fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType
     enum.addType(companion)
 
     addType(enum.build())
+
+    return this
+}
+
+private fun FileSpec.Builder.generateDeprecatedOverloads(name: String): FileSpec.Builder {
+    val oldName = name.toTypeFormat()
+    val replacementType = TypeVariableName("Metric$oldName")
+    val replacementFqn = TypeVariableName("$PACKAGE_NAME.$replacementType")
+    val alias =
+        TypeAliasSpec.builder(oldName, replacementType)
+            .addAnnotation(
+                AnnotationSpec.builder(Deprecated::class)
+                    .addMember("message = %S", "Name conflicts with the Kotlin standard library")
+                    .addMember("replaceWith = ReplaceWith(%S, %S)", replacementType, replacementFqn)
+                    .build(),
+            )
+            .build()
+
+    addTypeAlias(alias)
+
+    return this
+}
+
+private fun FileSpec.Builder.generateTelemetryObjects(schema: List<MetricSchema>): FileSpec.Builder {
+    schema.groupBy { it.namespace() }
+        .toSortedMap()
+        .forEach { (namespace, metrics) -> generateNamespaces(namespace, metrics) }
 
     return this
 }
@@ -181,6 +220,7 @@ private fun FileSpec.Builder.generateNamespaces(
     return this
 }
 
+context(FileSpec.Builder)
 private fun TypeSpec.Builder.generateRecordFunctions(metric: MetricSchema) {
     // metric.name.split("_")[1] is guaranteed to work at this point because the schema requires the metric name to have at least 1 underscore
     val functionName = metric.name.split("_")[1]
@@ -193,6 +233,7 @@ private fun TypeSpec.Builder.generateRecordFunctions(metric: MetricSchema) {
     if (metric.metadata.none { it.type.name == RESULT }) {
         return
     }
+    generateDeprecatedOverloads(RESULT)
 
     addFunction(buildProjectOverloadFunction(functionName, metric))
     addFunction(buildConnectionSettingsOverloadFunction(functionName, metric))
@@ -257,7 +298,7 @@ private fun MetadataSchema.metadataToParameter(): ParameterSpec {
     // Allowed values indicates an enum
     val typeName =
         if (type.allowedValues != null) {
-            ClassName(PACKAGE_NAME, type.name.toTypeFormat())
+            ClassName(PACKAGE_NAME, type.name.toTypeFormat().replace("Result", SANITIZED_RESULT_TYPE_FORMAT))
         } else {
             type.type.kotlinType()
         }.copy(nullable = required == false)
@@ -273,11 +314,11 @@ private fun FunSpec.Builder.generateFunctionBody(
     metadataParameter: ParameterSpec,
     metric: MetricSchema,
 ): FunSpec.Builder {
-    val metricUnit = MemberName("software.amazon.awssdk.services.toolkittelemetry.model", "Unit")
+    val metricUnit = ClassName("software.amazon.awssdk.services.toolkittelemetry.model", "Unit")
     beginControlFlow("%T.getInstance().record(${metadataParameter.name})", TELEMETRY_SERVICE)
     beginControlFlow("datum(%S)", metric.name)
     addStatement("createTime(createTime)")
-    addStatement("unit(%M.${(metric.unit ?: MetricUnit.NONE).name})", metricUnit)
+    addStatement("unit(%T.${(metric.unit ?: MetricUnit.NONE).name})", metricUnit)
     addStatement("value(value)")
     addStatement("passive(passive)")
     metric.metadata.forEach {
@@ -351,7 +392,7 @@ private fun FunSpec.Builder.generateResultOverloadFunctionBody(
             if (it.name != SUCCESS) {
                 it.name
             } else {
-                "if($SUCCESS) Result.Succeeded else Result.Failed"
+                "if($SUCCESS) $SANITIZED_RESULT_TYPE_FORMAT.Succeeded else $SANITIZED_RESULT_TYPE_FORMAT.Failed"
             }
         },
     )
