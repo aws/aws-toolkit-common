@@ -23,6 +23,10 @@ import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 )
 public typealias Result = MetricResult
 
+@Deprecated(
+    "Use type-safe metric builders",
+    ReplaceWith("Telemetry.test", "software.aws.toolkits.telemetry.Telemetry"),
+)
 public object TestTelemetry {
     /**
      * Testing metric with global metadata fields
@@ -220,9 +224,7 @@ public object TestTelemetry {
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
-        metric(project, duration, httpStatusCode, reason, reasonDesc, requestId, requestServiceType,
-                if(success) MetricResult.Succeeded else MetricResult.Failed, traceId, metricId,
-                parentId, passive, value, createTime)
+        metric(project, duration, httpStatusCode, reason, reasonDesc, requestId, requestServiceType, if(success) MetricResult.Succeeded else MetricResult.Failed, traceId, metricId, parentId, passive, value, createTime)
     }
 
     /**
@@ -244,9 +246,7 @@ public object TestTelemetry {
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
-        metric(connectionSettings, duration, httpStatusCode, reason, reasonDesc, requestId,
-                requestServiceType, if(success) MetricResult.Succeeded else MetricResult.Failed,
-                traceId, metricId, parentId, passive, value, createTime)
+        metric(connectionSettings, duration, httpStatusCode, reason, reasonDesc, requestId, requestServiceType, if(success) MetricResult.Succeeded else MetricResult.Failed, traceId, metricId, parentId, passive, value, createTime)
     }
 
     /**
@@ -268,8 +268,6 @@ public object TestTelemetry {
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
-        metric(metadata, duration, httpStatusCode, reason, reasonDesc, requestId,
-                requestServiceType, if(success) MetricResult.Succeeded else MetricResult.Failed,
-                traceId, metricId, parentId, passive, value, createTime)
+        metric(metadata, duration, httpStatusCode, reason, reasonDesc, requestId, requestServiceType, if(success) MetricResult.Succeeded else MetricResult.Failed, traceId, metricId, parentId, passive, value, createTime)
     }
 }

@@ -49,7 +49,10 @@ class GeneratorTest {
 
     @Test
     fun generateOverrides() {
-        testGenerator(definitionsFile = "/resultGeneratesTwoFunctions/input.json", definitionsOverrides = listOf("/generateOverrides/overrideInput.json"))
+        testGenerator(
+            definitionsFile = "/resultGeneratesTwoFunctions/input.json",
+            definitionsOverrides = listOf("/generateOverrides/overrideInput.json"),
+        )
     }
 
     @Test
@@ -73,7 +76,9 @@ class GeneratorTest {
         generateTelemetryFromFiles(
             defaultDefinitions =
                 listOf(
-                    this.javaClass.getResourceAsStream(definitionsFile ?: "/$methodName/input.json").use { it.bufferedReader().readText() },
+                    this.javaClass.getResourceAsStream(definitionsFile ?: "/$methodName/input.json").use {
+                        it.bufferedReader().readText()
+                    },
                 ),
             inputFiles = definitionsOverrides.map { File(javaClass.getResource(it).toURI()) },
             outputFolder = folder.root,

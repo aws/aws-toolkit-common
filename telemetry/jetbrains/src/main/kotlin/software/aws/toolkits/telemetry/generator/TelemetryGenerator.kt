@@ -98,7 +98,7 @@ fun generateTelemetryFromFiles(
         }
 }
 
-private fun FileSpec.Builder.generateHeader(): FileSpec.Builder {
+internal fun FileSpec.Builder.generateHeader(): FileSpec.Builder {
     addFileComment("Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.\n")
     addFileComment("SPDX-License-Identifier: Apache-2.0\n")
     addFileComment("THIS FILE IS GENERATED! DO NOT EDIT BY HAND!")
@@ -209,10 +209,16 @@ private fun FileSpec.Builder.generateNamespaces(
     namespace: String,
     metrics: List<MetricSchema>,
 ): FileSpec.Builder {
-    val telemetryObject = TypeSpec.objectBuilder("${namespace.toTypeFormat()}Telemetry")
-
+    val telemetryObject =
+        TypeSpec.objectBuilder("${namespace.toTypeFormat()}Telemetry")
+            .addAnnotation(
+                AnnotationSpec.builder(Deprecated::class)
+                    .addMember(""""Use type-safe metric builders"""")
+                    .addMember("""ReplaceWith("Telemetry.$namespace", "software.aws.toolkits.telemetry.Telemetry")""")
+                    .build(),
+            )
     metrics.sortedBy { it.name }.forEach {
-        telemetryObject.generateRecordFunctions(it)
+        telemetryObject.generateRecordFunctions(this, it)
     }
 
     addType(telemetryObject.build())
@@ -220,8 +226,7 @@ private fun FileSpec.Builder.generateNamespaces(
     return this
 }
 
-context(FileSpec.Builder)
-private fun TypeSpec.Builder.generateRecordFunctions(metric: MetricSchema) {
+private fun TypeSpec.Builder.generateRecordFunctions(file: FileSpec.Builder, metric: MetricSchema) {
     // metric.name.split("_")[1] is guaranteed to work at this point because the schema requires the metric name to have at least 1 underscore
     val functionName = metric.name.split("_")[1]
 
@@ -233,7 +238,7 @@ private fun TypeSpec.Builder.generateRecordFunctions(metric: MetricSchema) {
     if (metric.metadata.none { it.type.name == RESULT }) {
         return
     }
-    generateDeprecatedOverloads(RESULT)
+    file.generateDeprecatedOverloads(RESULT)
 
     addFunction(buildProjectOverloadFunction(functionName, metric))
     addFunction(buildConnectionSettingsOverloadFunction(functionName, metric))

@@ -11,8 +11,7 @@ import kotlin.Suppress
 /**
  * an enum
  */
-public enum class
-        Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa(
+public enum class Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa(
     private val `value`: String,
 ) {
     A("A"),
@@ -25,8 +24,6 @@ public enum class
     override fun toString(): String = value
 
     public companion object {
-        public fun from(type: String):
-                Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                = values().firstOrNull { it.value == type } ?: Unknown
+        public fun from(type: String): Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa = values().firstOrNull { it.value == type } ?: Unknown
     }
 }
