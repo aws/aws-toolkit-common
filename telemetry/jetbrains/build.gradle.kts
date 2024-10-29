@@ -11,6 +11,7 @@ plugins {
     `maven-publish`
     signing
     alias(libs.plugins.nexus.publishing)
+    alias(libs.plugins.jlleitschuh.ktlint)
 }
 
 java {
@@ -44,10 +45,7 @@ dependencies {
 
 tasks {
     withType<KotlinCompile> {
-        compilerOptions {
-            jvmTarget = JvmTarget.JVM_17
-            freeCompilerArgs.add("-Xcontext-receivers")
-        }
+        compilerOptions.jvmTarget = JvmTarget.JVM_17
     }
 
     val validatePackagedSchema by registering {
@@ -149,9 +147,10 @@ publishing {
 gradlePlugin { setAutomatedPublishing(false) }
 
 signing {
-    if (project.hasProperty("signing.keyId")
-        && project.hasProperty("signing.password")
-        && project.hasProperty("signing.secretKeyRingFile")) {
+    if (project.hasProperty("signing.keyId") &&
+        project.hasProperty("signing.password") &&
+        project.hasProperty("signing.secretKeyRingFile")
+    ) {
         sign(publishing.publications["mavenJava"])
     }
 }
