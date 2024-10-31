@@ -13,6 +13,7 @@ import com.squareup.kotlinpoet.NUMBER
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.STRING
+import com.squareup.kotlinpoet.TypeName
 import com.squareup.kotlinpoet.TypeSpec
 import com.squareup.kotlinpoet.TypeVariableName
 import java.io.File
@@ -110,7 +111,7 @@ object OTelTelemetryGenerator {
                 commonMetadataTypes.forEach { t ->
                     val type = telemetryDefinitions.types.firstOrNull { it.name == t } ?: return@forEach
 
-                    addFunctions(MetadataSchema(type, false).overloadedFunSpec())
+                    addFunctions(MetadataSchema(type, false).overloadedFunSpec(TypeVariableName("SpanType")))
                 }
 
                 // special case attributes
@@ -130,6 +131,12 @@ object OTelTelemetryGenerator {
                     FunSpec.builder("value")
                         .addParameter("value", NUMBER)
                         .addStatement("this._%1L = %1N.toDouble()", "value")
+                        .build(),
+                )
+                addFunction(
+                    FunSpec.builder("success")
+                        .addParameter("success", BOOLEAN)
+                        .addStatement("result(if(success) MetricResult.Succeeded else MetricResult.Failed)")
                         .build(),
                 )
             }
@@ -287,7 +294,7 @@ object OTelTelemetryGenerator {
                     }
 
                     metricSchema.metadata.filterNot { it.type.name in commonMetadataTypes }.forEach { metadata ->
-                        addFunctions(metadata.overloadedFunSpec())
+                        addFunctions(metadata.overloadedFunSpec(metricSpanName))
                     }
 
                     val requiredAttributes = metricSchema.metadata.filter { it.required != false }
@@ -304,7 +311,7 @@ object OTelTelemetryGenerator {
         addType(metricSpan)
     }
 
-    private fun MetadataSchema.overloadedFunSpec(): List<FunSpec> {
+    private fun MetadataSchema.overloadedFunSpec(returnType: TypeName): List<FunSpec> {
         val types =
             if (type.allowedValues?.isNotEmpty() == true) {
                 listOf(ClassName(PACKAGE_NAME, type.typeName))
@@ -318,6 +325,7 @@ object OTelTelemetryGenerator {
 
             FunSpec.builder(type.name)
                 .addParameter(type.name, t.copy(nullable = nullable))
+                .returns(returnType)
                 .apply {
                     val valueParam =
                         if (needsToString) {
@@ -330,7 +338,7 @@ object OTelTelemetryGenerator {
                             "%N"
                         }
 
-                    addStatement("metadata(%S, $valueParam)", type.name, type.name)
+                    addStatement("return metadata(%S, $valueParam)", type.name, type.name)
                 }
                 .addKdoc(type.description)
                 .build()
