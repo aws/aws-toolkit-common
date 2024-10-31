@@ -5,6 +5,7 @@
 
 package software.aws.toolkits.telemetry
 
+import kotlin.Deprecated
 import kotlin.String
 import kotlin.Suppress
 
@@ -25,3 +26,9 @@ public enum class LambdaRuntime(
         public fun from(type: String): LambdaRuntime = values().firstOrNull { it.value == type } ?: Unknown
     }
 }
+
+@Deprecated(
+    message = "Name conflicts with the Kotlin standard library",
+    replaceWith = ReplaceWith("MetricResult", "software.aws.toolkits.telemetry.MetricResult"),
+)
+public typealias Result = MetricResult

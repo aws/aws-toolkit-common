@@ -12,16 +12,10 @@ import kotlin.Deprecated
 import kotlin.Double
 import kotlin.String
 import kotlin.Suppress
-import software.amazon.awssdk.services.toolkittelemetry.model.Unit
+import software.amazon.awssdk.services.toolkittelemetry.model.MetricUnit
 import software.aws.toolkits.core.ConnectionSettings
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
-
-@Deprecated(
-    message = "Name conflicts with the Kotlin standard library",
-    replaceWith = ReplaceWith("MetricResult", "software.aws.toolkits.telemetry.MetricResult"),
-)
-public typealias Result = MetricResult
 
 @Deprecated(
     "Use type-safe metric builders",
@@ -50,7 +44,7 @@ public object TestTelemetry {
         TelemetryService.getInstance().record(project) {
             datum("test_metric") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(duration != null) {
@@ -109,7 +103,7 @@ public object TestTelemetry {
         TelemetryService.getInstance().record(connectionSettings) {
             datum("test_metric") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(duration != null) {
@@ -168,7 +162,7 @@ public object TestTelemetry {
         TelemetryService.getInstance().record(metadata) {
             datum("test_metric") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(duration != null) {

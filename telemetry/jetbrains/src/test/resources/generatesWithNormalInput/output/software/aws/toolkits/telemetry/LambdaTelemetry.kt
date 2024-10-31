@@ -13,7 +13,7 @@ import kotlin.Double
 import kotlin.Long
 import kotlin.String
 import kotlin.Suppress
-import software.amazon.awssdk.services.toolkittelemetry.model.Unit
+import software.amazon.awssdk.services.toolkittelemetry.model.MetricUnit
 import software.aws.toolkits.core.ConnectionSettings
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
@@ -38,7 +38,7 @@ public object LambdaTelemetry {
         TelemetryService.getInstance().record(project) {
             datum("lambda_create") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 metadata("lambdaRuntime", lambdaRuntime.toString())
@@ -65,7 +65,7 @@ public object LambdaTelemetry {
         TelemetryService.getInstance().record(connectionSettings) {
             datum("lambda_create") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 metadata("lambdaRuntime", lambdaRuntime.toString())
@@ -92,7 +92,7 @@ public object LambdaTelemetry {
         TelemetryService.getInstance().record(metadata) {
             datum("lambda_create") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 metadata("lambdaRuntime", lambdaRuntime.toString())
@@ -118,7 +118,7 @@ public object LambdaTelemetry {
         TelemetryService.getInstance().record(project) {
             datum("lambda_delete") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 metadata("duration", duration.toString())
@@ -141,7 +141,7 @@ public object LambdaTelemetry {
         TelemetryService.getInstance().record(connectionSettings) {
             datum("lambda_delete") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 metadata("duration", duration.toString())
@@ -164,7 +164,7 @@ public object LambdaTelemetry {
         TelemetryService.getInstance().record(metadata) {
             datum("lambda_delete") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 metadata("duration", duration.toString())
@@ -188,7 +188,7 @@ public object LambdaTelemetry {
         TelemetryService.getInstance().record(project) {
             datum("lambda_remoteinvoke") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(lambdaRuntime != null) {
@@ -217,7 +217,7 @@ public object LambdaTelemetry {
         TelemetryService.getInstance().record(connectionSettings) {
             datum("lambda_remoteinvoke") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(lambdaRuntime != null) {
@@ -246,7 +246,7 @@ public object LambdaTelemetry {
         TelemetryService.getInstance().record(metadata) {
             datum("lambda_remoteinvoke") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(lambdaRuntime != null) {

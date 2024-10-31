@@ -11,7 +11,7 @@ import kotlin.Boolean
 import kotlin.Deprecated
 import kotlin.Double
 import kotlin.Suppress
-import software.amazon.awssdk.services.toolkittelemetry.model.Unit
+import software.amazon.awssdk.services.toolkittelemetry.model.MetricUnit
 import software.aws.toolkits.core.ConnectionSettings
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
@@ -34,7 +34,7 @@ public object PassiveTelemetry {
         TelemetryService.getInstance().record(project) {
             datum("passive_passive") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(duration != null) {
@@ -57,7 +57,7 @@ public object PassiveTelemetry {
         TelemetryService.getInstance().record(connectionSettings) {
             datum("passive_passive") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(duration != null) {
@@ -80,7 +80,7 @@ public object PassiveTelemetry {
         TelemetryService.getInstance().record(metadata) {
             datum("passive_passive") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(duration != null) {
