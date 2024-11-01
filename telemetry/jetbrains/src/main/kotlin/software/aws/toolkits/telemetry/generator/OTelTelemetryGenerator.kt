@@ -33,6 +33,8 @@ object OTelTelemetryGenerator {
     private val TOOLKIT_DEFAULT_SPAN_BUILDER = ClassName(TOOLKIT_OTEL_PACKAGE, "DefaultSpanBuilder")
     private val TOOLKIT_OTEL_SERVICE = ClassName(TOOLKIT_OTEL_PACKAGE, "OTelService")
 
+    private val SPAN_TYPE_TYPEVAR = TypeVariableName("SpanType")
+
     private val GENERATED_BASE_SPAN = ClassName(PACKAGE_NAME_IMPL, "BaseSpan")
 
     private val indent = " ".repeat(4)
@@ -49,7 +51,7 @@ object OTelTelemetryGenerator {
 //            "traceId",
 //            "metricId",
 //            "parentId",
-            // handled as special generator cases
+            // handled as special cases in base
 //            "passive",
 //            "value",
 //            "unit",
@@ -101,42 +103,26 @@ object OTelTelemetryGenerator {
                     .addParameter("delegate", OTEL_SPAN)
                     .build(),
             )
-            .addTypeVariable(TypeVariableName("SpanType", listOf(GENERATED_BASE_SPAN.parameterizedBy(TypeVariableName("SpanType")))))
+            .addTypeVariable(SPAN_TYPE_TYPEVAR.copy(bounds = listOf(GENERATED_BASE_SPAN.parameterizedBy(SPAN_TYPE_TYPEVAR))))
             .superclass(
                 TOOLKIT_ABSTRACT_BASE_SPAN
-                    .parameterizedBy(TypeVariableName("SpanType")),
+                    .parameterizedBy(SPAN_TYPE_TYPEVAR),
             )
             .addSuperclassConstructorParameter("context, delegate as %T", OTEL_RW_SPAN)
             .apply {
                 commonMetadataTypes.forEach { t ->
                     val type = telemetryDefinitions.types.firstOrNull { it.name == t } ?: return@forEach
 
-                    addFunctions(MetadataSchema(type, false).overloadedFunSpec(TypeVariableName("SpanType")))
+                    addFunctions(MetadataSchema(type, false).overloadedFunSpec(SPAN_TYPE_TYPEVAR))
                 }
 
-                // special case attributes
-                listOf(
-                    "passive" to BOOLEAN,
-                    "unit" to METRIC_UNIT,
-                ).forEach { pair ->
-                    addFunction(
-                        FunSpec.builder(pair.first)
-                            .addParameter(pair.first, pair.second)
-                            .addStatement("this._%1L = %1N", pair.first)
-                            .build(),
-                    )
-                }
-                // special-special case
-                addFunction(
-                    FunSpec.builder("value")
-                        .addParameter("value", NUMBER)
-                        .addStatement("this._%1L = %1N.toDouble()", "value")
-                        .build(),
-                )
+                // special case
                 addFunction(
                     FunSpec.builder("success")
                         .addParameter("success", BOOLEAN)
+                        .returns(SPAN_TYPE_TYPEVAR)
                         .addStatement("result(if(success) MetricResult.Succeeded else MetricResult.Failed)")
+                        .addStatement("return this as %T", SPAN_TYPE_TYPEVAR)
                         .build(),
                 )
             }
