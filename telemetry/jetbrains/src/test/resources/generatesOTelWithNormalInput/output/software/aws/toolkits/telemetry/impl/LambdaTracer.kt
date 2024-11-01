@@ -35,9 +35,7 @@ public class LambdadeleteSpan internal constructor(
     /**
      * a test boolean type
      */
-    public fun booltype(booltype: Boolean) {
-        metadata("booltype", booltype.toString())
-    }
+    public fun booltype(booltype: Boolean): LambdadeleteSpan = metadata("booltype", booltype.toString())
 }
 
 public class LambdadeleteSpanBuilder internal constructor(
@@ -62,16 +60,12 @@ public class LambdacreateSpan internal constructor(
     /**
      * The lambda runtime
      */
-    public fun lambdaRuntime(lambdaRuntime: LambdaRuntime) {
-        metadata("lambdaRuntime", lambdaRuntime.toString())
-    }
+    public fun lambdaRuntime(lambdaRuntime: LambdaRuntime): LambdacreateSpan = metadata("lambdaRuntime", lambdaRuntime.toString())
 
     /**
      * untyped string type
      */
-    public fun arbitraryString(arbitraryString: String) {
-        metadata("arbitraryString", arbitraryString)
-    }
+    public fun arbitraryString(arbitraryString: String): LambdacreateSpan = metadata("arbitraryString", arbitraryString)
 }
 
 public class LambdacreateSpanBuilder internal constructor(
@@ -96,23 +90,17 @@ public class LambdaremoteinvokeSpan internal constructor(
     /**
      * The lambda runtime
      */
-    public fun lambdaRuntime(lambdaRuntime: LambdaRuntime?) {
-        metadata("lambdaRuntime", lambdaRuntime?.let { it.toString() })
-    }
+    public fun lambdaRuntime(lambdaRuntime: LambdaRuntime?): LambdaremoteinvokeSpan = metadata("lambdaRuntime", lambdaRuntime?.let { it.toString() })
 
     /**
      * a test int type
      */
-    public fun inttype(inttype: Long) {
-        metadata("inttype", inttype.toString())
-    }
+    public fun inttype(inttype: Long): LambdaremoteinvokeSpan = metadata("inttype", inttype.toString())
 
     /**
      * a test int type
      */
-    public fun inttype(inttype: Int) {
-        metadata("inttype", inttype.toString())
-    }
+    public fun inttype(inttype: Int): LambdaremoteinvokeSpan = metadata("inttype", inttype.toString())
 }
 
 public class LambdaremoteinvokeSpanBuilder internal constructor(

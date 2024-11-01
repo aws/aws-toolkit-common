@@ -9,24 +9,15 @@ import io.opentelemetry.api.trace.Span
 import io.opentelemetry.context.Context
 import io.opentelemetry.sdk.trace.ReadWriteSpan
 import kotlin.Boolean
-import kotlin.Number
 import kotlin.Suppress
-import software.amazon.awssdk.services.toolkittelemetry.model.MetricUnit
 import software.aws.toolkits.jetbrains.services.telemetry.otel.AbstractBaseSpan
 
 public open class BaseSpan<SpanType : BaseSpan<SpanType>>(
     context: Context?,
     `delegate`: Span,
 ) : AbstractBaseSpan<SpanType>(context, delegate as ReadWriteSpan) {
-    public fun passive(passive: Boolean) {
-        this._passive = passive
-    }
-
-    public fun unit(unit: MetricUnit) {
-        this._unit = unit
-    }
-
-    public fun `value`(`value`: Number) {
-        this._value = `value`.toDouble()
+    public fun success(success: Boolean): SpanType {
+        result(if(success) MetricResult.Succeeded else MetricResult.Failed)
+        return this as SpanType
     }
 }
