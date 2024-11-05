@@ -12,7 +12,7 @@
     {
       "name": "duration",
       "type": "double",
-      "description": "The duration of the operation in miliseconds"
+      "description": "The duration of the operation in milliseconds"
     },
     {
       "name": "inttype",

@@ -19,12 +19,12 @@ public open class BaseSpan<SpanType : BaseSpan<SpanType>>(
     `delegate`: Span,
 ) : AbstractBaseSpan<SpanType>(context, delegate as ReadWriteSpan) {
     /**
-     * The duration of the operation in miliseconds
+     * The duration of the operation in milliseconds
      */
     public fun duration(duration: Float?): SpanType = metadata("duration", duration?.let { it.toString() })
 
     /**
-     * The duration of the operation in miliseconds
+     * The duration of the operation in milliseconds
      */
     public fun duration(duration: Double?): SpanType = metadata("duration", duration?.let { it.toString() })
 
