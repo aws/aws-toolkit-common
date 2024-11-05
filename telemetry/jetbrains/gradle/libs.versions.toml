@@ -5,7 +5,7 @@ jlleitschuh-ktlint = "12.1.1"
 # deprecated; should move to json-skema
 jsonSchema = "1.14.4"
 junit5 = "5.11.3"
-kotlin = "2.0.20"
+kotlin = "2.0.21"
 kotlin-poet = "2.0.0"
 nexus = "2.0.0"
 
