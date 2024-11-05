@@ -8,13 +8,18 @@ package software.aws.toolkits.telemetry
 import com.intellij.openapi.project.Project
 import java.time.Instant
 import kotlin.Boolean
+import kotlin.Deprecated
 import kotlin.Double
 import kotlin.Suppress
-import software.amazon.awssdk.services.toolkittelemetry.model.Unit
+import software.amazon.awssdk.services.toolkittelemetry.model.MetricUnit
 import software.aws.toolkits.core.ConnectionSettings
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
+@Deprecated(
+    "Use type-safe metric builders",
+    ReplaceWith("Telemetry.no", "software.aws.toolkits.telemetry.Telemetry"),
+)
 public object NoTelemetry {
     /**
      * called when invoking lambdas remotely
@@ -29,7 +34,7 @@ public object NoTelemetry {
         TelemetryService.getInstance().record(project) {
             datum("no_metadata") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(duration != null) {
@@ -52,7 +57,7 @@ public object NoTelemetry {
         TelemetryService.getInstance().record(connectionSettings) {
             datum("no_metadata") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(duration != null) {
@@ -75,7 +80,7 @@ public object NoTelemetry {
         TelemetryService.getInstance().record(metadata) {
             datum("no_metadata") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(duration != null) {

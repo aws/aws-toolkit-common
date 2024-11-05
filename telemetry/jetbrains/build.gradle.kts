@@ -39,15 +39,18 @@ dependencies {
     implementation(libs.kotlin.poet)
     implementation(libs.jackson.module.kotlin)
     implementation(libs.json.schema)
-    testImplementation(libs.junit4)
+
+    testImplementation(platform(libs.junit5.bom))
+    testImplementation(libs.junit5.jupiter)
     testImplementation(libs.assertj)
+
+    testRuntimeOnly(libs.junit5.launcher)
 }
 
 tasks {
     withType<KotlinCompile> {
         compilerOptions {
             jvmTarget = JvmTarget.JVM_17
-            freeCompilerArgs.add("-Xcontext-receivers")
         }
     }
 
@@ -108,6 +111,8 @@ tasks.withType<GenerateModuleMetadata> {
 }
 
 tasks.withType<Test> {
+    useJUnitPlatform()
+
     testLogging {
         exceptionFormat = TestExceptionFormat.FULL
     }

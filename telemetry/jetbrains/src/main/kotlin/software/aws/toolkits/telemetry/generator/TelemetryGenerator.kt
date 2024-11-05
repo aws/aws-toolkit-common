@@ -26,6 +26,7 @@ val METRIC_METADATA = ClassName(JETBRAINS_TELEMETRY_PACKAGE_NAME, "MetricEventMe
 val TELEMETRY_SERVICE = ClassName(JETBRAINS_TELEMETRY_PACKAGE_NAME, "TelemetryService")
 val PROJECT = ClassName("com.intellij.openapi.project", "Project").copy(nullable = true)
 val CONNECTION_SETTINGS = ClassName("software.aws.toolkits.core", "ConnectionSettings").copy(nullable = true)
+val METRIC_UNIT = ClassName("software.amazon.awssdk.services.toolkittelemetry.model", "MetricUnit")
 
 const val RESULT = "result"
 const val SUCCESS = "success"
@@ -82,6 +83,7 @@ fun generateTelemetryFromFiles(
         .indent(indent)
         .generateHeader()
         .generateTelemetryEnumTypes(telemetry.types)
+        .generateDeprecatedOverloads(RESULT)
         .build()
         .writeTo(outputFolder)
 
@@ -98,7 +100,7 @@ fun generateTelemetryFromFiles(
         }
 }
 
-private fun FileSpec.Builder.generateHeader(): FileSpec.Builder {
+internal fun FileSpec.Builder.generateHeader(): FileSpec.Builder {
     addFileComment("Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.\n")
     addFileComment("SPDX-License-Identifier: Apache-2.0\n")
     addFileComment("THIS FILE IS GENERATED! DO NOT EDIT BY HAND!")
@@ -120,16 +122,7 @@ private fun FileSpec.Builder.generateTelemetryEnumTypes(items: List<TelemetryMet
 }
 
 private fun FileSpec.Builder.generateTelemetryEnumType(item: TelemetryMetricType): FileSpec.Builder {
-    val clazz = item.name.toTypeFormat()
-    val existsInKotlinStdlib =
-        try {
-            Class.forName("kotlin.$clazz")
-            true
-        } catch (_: ClassNotFoundException) {
-            false
-        }
-
-    val typeName = if (existsInKotlinStdlib) "Metric$clazz" else clazz
+    val typeName = item.typeName
     val enum =
         TypeSpec.enumBuilder(typeName)
             .primaryConstructor(
@@ -197,20 +190,18 @@ private fun FileSpec.Builder.generateDeprecatedOverloads(name: String): FileSpec
     return this
 }
 
-private fun FileSpec.Builder.generateTelemetryObjects(schema: List<MetricSchema>): FileSpec.Builder {
-    schema.groupBy { it.namespace() }
-        .toSortedMap()
-        .forEach { (namespace, metrics) -> generateNamespaces(namespace, metrics) }
-
-    return this
-}
-
 private fun FileSpec.Builder.generateNamespaces(
     namespace: String,
     metrics: List<MetricSchema>,
 ): FileSpec.Builder {
-    val telemetryObject = TypeSpec.objectBuilder("${namespace.toTypeFormat()}Telemetry")
-
+    val telemetryObject =
+        TypeSpec.objectBuilder("${namespace.toTypeFormat()}Telemetry")
+            .addAnnotation(
+                AnnotationSpec.builder(Deprecated::class)
+                    .addMember(""""Use type-safe metric builders"""")
+                    .addMember("""ReplaceWith("Telemetry.$namespace", "software.aws.toolkits.telemetry.Telemetry")""")
+                    .build(),
+            )
     metrics.sortedBy { it.name }.forEach {
         telemetryObject.generateRecordFunctions(it)
     }
@@ -220,7 +211,6 @@ private fun FileSpec.Builder.generateNamespaces(
     return this
 }
 
-context(FileSpec.Builder)
 private fun TypeSpec.Builder.generateRecordFunctions(metric: MetricSchema) {
     // metric.name.split("_")[1] is guaranteed to work at this point because the schema requires the metric name to have at least 1 underscore
     val functionName = metric.name.split("_")[1]
@@ -233,7 +223,6 @@ private fun TypeSpec.Builder.generateRecordFunctions(metric: MetricSchema) {
     if (metric.metadata.none { it.type.name == RESULT }) {
         return
     }
-    generateDeprecatedOverloads(RESULT)
 
     addFunction(buildProjectOverloadFunction(functionName, metric))
     addFunction(buildConnectionSettingsOverloadFunction(functionName, metric))
@@ -314,11 +303,10 @@ private fun FunSpec.Builder.generateFunctionBody(
     metadataParameter: ParameterSpec,
     metric: MetricSchema,
 ): FunSpec.Builder {
-    val metricUnit = ClassName("software.amazon.awssdk.services.toolkittelemetry.model", "Unit")
     beginControlFlow("%T.getInstance().record(${metadataParameter.name})", TELEMETRY_SERVICE)
     beginControlFlow("datum(%S)", metric.name)
     addStatement("createTime(createTime)")
-    addStatement("unit(%T.${(metric.unit ?: MetricUnit.NONE).name})", metricUnit)
+    addStatement("unit(%T.${(metric.unit ?: MetricUnit.NONE).name})", METRIC_UNIT)
     addStatement("value(value)")
     addStatement("passive(passive)")
     metric.metadata.forEach {

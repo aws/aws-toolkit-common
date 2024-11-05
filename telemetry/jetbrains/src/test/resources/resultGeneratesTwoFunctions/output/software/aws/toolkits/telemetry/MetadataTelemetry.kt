@@ -11,17 +11,15 @@ import kotlin.Boolean
 import kotlin.Deprecated
 import kotlin.Double
 import kotlin.Suppress
-import software.amazon.awssdk.services.toolkittelemetry.model.Unit
+import software.amazon.awssdk.services.toolkittelemetry.model.MetricUnit
 import software.aws.toolkits.core.ConnectionSettings
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
 @Deprecated(
-    message = "Name conflicts with the Kotlin standard library",
-    replaceWith = ReplaceWith("MetricResult", "software.aws.toolkits.telemetry.MetricResult"),
+    "Use type-safe metric builders",
+    ReplaceWith("Telemetry.metadata", "software.aws.toolkits.telemetry.Telemetry"),
 )
-public typealias Result = MetricResult
-
 public object MetadataTelemetry {
     /**
      * It has a result
@@ -36,7 +34,7 @@ public object MetadataTelemetry {
         TelemetryService.getInstance().record(project) {
             datum("metadata_hasResult") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 metadata("result", result.toString())
@@ -57,7 +55,7 @@ public object MetadataTelemetry {
         TelemetryService.getInstance().record(connectionSettings) {
             datum("metadata_hasResult") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 metadata("result", result.toString())
@@ -78,7 +76,7 @@ public object MetadataTelemetry {
         TelemetryService.getInstance().record(metadata) {
             datum("metadata_hasResult") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 metadata("result", result.toString())
@@ -96,8 +94,7 @@ public object MetadataTelemetry {
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
-        hasResult(project, if(success) MetricResult.Succeeded else MetricResult.Failed, passive,
-                value, createTime)
+        hasResult(project, if(success) MetricResult.Succeeded else MetricResult.Failed, passive, value, createTime)
     }
 
     /**
@@ -110,8 +107,7 @@ public object MetadataTelemetry {
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
-        hasResult(connectionSettings, if(success) MetricResult.Succeeded else MetricResult.Failed,
-                passive, value, createTime)
+        hasResult(connectionSettings, if(success) MetricResult.Succeeded else MetricResult.Failed, passive, value, createTime)
     }
 
     /**
@@ -124,7 +120,6 @@ public object MetadataTelemetry {
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
-        hasResult(metadata, if(success) MetricResult.Succeeded else MetricResult.Failed, passive,
-                value, createTime)
+        hasResult(metadata, if(success) MetricResult.Succeeded else MetricResult.Failed, passive, value, createTime)
     }
 }

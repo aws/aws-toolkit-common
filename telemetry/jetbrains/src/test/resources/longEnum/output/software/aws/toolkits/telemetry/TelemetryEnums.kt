@@ -5,14 +5,14 @@
 
 package software.aws.toolkits.telemetry
 
+import kotlin.Deprecated
 import kotlin.String
 import kotlin.Suppress
 
 /**
  * an enum
  */
-public enum class
-        Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa(
+public enum class Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa(
     private val `value`: String,
 ) {
     A("A"),
@@ -25,8 +25,12 @@ public enum class
     override fun toString(): String = value
 
     public companion object {
-        public fun from(type: String):
-                Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                = values().firstOrNull { it.value == type } ?: Unknown
+        public fun from(type: String): Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa = values().firstOrNull { it.value == type } ?: Unknown
     }
 }
+
+@Deprecated(
+    message = "Name conflicts with the Kotlin standard library",
+    replaceWith = ReplaceWith("MetricResult", "software.aws.toolkits.telemetry.MetricResult"),
+)
+public typealias Result = MetricResult

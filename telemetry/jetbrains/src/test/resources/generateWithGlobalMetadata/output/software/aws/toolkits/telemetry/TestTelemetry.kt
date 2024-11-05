@@ -12,17 +12,15 @@ import kotlin.Deprecated
 import kotlin.Double
 import kotlin.String
 import kotlin.Suppress
-import software.amazon.awssdk.services.toolkittelemetry.model.Unit
+import software.amazon.awssdk.services.toolkittelemetry.model.MetricUnit
 import software.aws.toolkits.core.ConnectionSettings
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
 @Deprecated(
-    message = "Name conflicts with the Kotlin standard library",
-    replaceWith = ReplaceWith("MetricResult", "software.aws.toolkits.telemetry.MetricResult"),
+    "Use type-safe metric builders",
+    ReplaceWith("Telemetry.test", "software.aws.toolkits.telemetry.Telemetry"),
 )
-public typealias Result = MetricResult
-
 public object TestTelemetry {
     /**
      * Testing metric with global metadata fields
@@ -46,7 +44,7 @@ public object TestTelemetry {
         TelemetryService.getInstance().record(project) {
             datum("test_metric") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(duration != null) {
@@ -105,7 +103,7 @@ public object TestTelemetry {
         TelemetryService.getInstance().record(connectionSettings) {
             datum("test_metric") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(duration != null) {
@@ -164,7 +162,7 @@ public object TestTelemetry {
         TelemetryService.getInstance().record(metadata) {
             datum("test_metric") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(duration != null) {
@@ -220,9 +218,7 @@ public object TestTelemetry {
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
-        metric(project, duration, httpStatusCode, reason, reasonDesc, requestId, requestServiceType,
-                if(success) MetricResult.Succeeded else MetricResult.Failed, traceId, metricId,
-                parentId, passive, value, createTime)
+        metric(project, duration, httpStatusCode, reason, reasonDesc, requestId, requestServiceType, if(success) MetricResult.Succeeded else MetricResult.Failed, traceId, metricId, parentId, passive, value, createTime)
     }
 
     /**
@@ -244,9 +240,7 @@ public object TestTelemetry {
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
-        metric(connectionSettings, duration, httpStatusCode, reason, reasonDesc, requestId,
-                requestServiceType, if(success) MetricResult.Succeeded else MetricResult.Failed,
-                traceId, metricId, parentId, passive, value, createTime)
+        metric(connectionSettings, duration, httpStatusCode, reason, reasonDesc, requestId, requestServiceType, if(success) MetricResult.Succeeded else MetricResult.Failed, traceId, metricId, parentId, passive, value, createTime)
     }
 
     /**
@@ -268,8 +262,6 @@ public object TestTelemetry {
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
-        metric(metadata, duration, httpStatusCode, reason, reasonDesc, requestId,
-                requestServiceType, if(success) MetricResult.Succeeded else MetricResult.Failed,
-                traceId, metricId, parentId, passive, value, createTime)
+        metric(metadata, duration, httpStatusCode, reason, reasonDesc, requestId, requestServiceType, if(success) MetricResult.Succeeded else MetricResult.Failed, traceId, metricId, parentId, passive, value, createTime)
     }
 }
