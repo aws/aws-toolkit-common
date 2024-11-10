@@ -179,6 +179,16 @@
             "description": "The amount of time required for the build to complete (in seconds)."
         },
         {
+            "name": "buildStatus",
+            "type": "string",
+            "allowedValues": [
+                "SUCCESS",
+                "FAILED",
+                "CANCELLED"
+            ],
+            "description": "The amount of time required for the build to complete (in seconds)."
+        },
+        {
             "name": "buildSystemVersion",
             "type": "string",
             "description": "The build system version on the user's machine"
@@ -1413,9 +1423,39 @@
             "description": "The Lambda Package type of the function"
         },
         {
+            "name": "latencyOfClientSideBuild",
+            "type": "int",
+            "description": "Time from start to end of Client-side build."
+        },
+        {
+            "name": "latencyOfGeneratingTests",
+            "type": "int",
+            "description": "Time from start to end of Generating unit tests"
+        },
+        {
             "name": "language",
             "type": "string",
             "description": "Language used for the project."
+        },
+        {
+            "name": "linesOfCodeGenerated",
+            "type": "int",
+            "description": "Number of lines of code generated"
+        },
+        {
+            "name": "linesOfCodeAccepted",
+            "type": "int",
+            "description": "Number of lines of code accepted"
+        },
+        {
+            "name": "charsOfCodeGenerated",
+            "type": "int",
+            "description": "Number of characters of code generated"
+        },
+        {
+            "name": "charsOfCodeAccepted",
+            "type": "int",
+            "description": "Number of characters of code accepted"
         },
         {
             "name": "loadFileTime",
@@ -1456,6 +1496,31 @@
             "name": "numAttempts",
             "type": "int",
             "description": "Number of generations before the user accepted or rejected"
+        },
+        {
+            "name": "numberOfBuildExecuted",
+            "type": "int",
+            "description": "Number of build executed in unit test generation build loop"
+        },
+        {
+            "name": "numberOfBuildFailed",
+            "type": "int",
+            "description": "Number of build failures in unit test generation build loop"
+        },
+        {
+            "name": "numberOfBuildPassed",
+            "type": "int",
+            "description": "Number of build succeeded in unit test generation build loop"
+        },
+        {
+            "name": "numberOfUnitTestCasesGenerated",
+            "type": "int",
+            "description": "Number of unit test cases generated"
+        },
+        {
+            "name": "numberOfUnitTestCasesAccepted",
+            "type": "int",
+            "description": "Number of unit test cases accepted"
         },
         {
             "name": "oldVersion",
@@ -1676,6 +1741,11 @@
             "description": "The number of successful operations"
         },
         {
+            "name": "supportedLanguage",
+            "type": "boolean",
+            "description": "supported language"
+        },
+        {
             "name": "syncedResources",
             "type": "string",
             "description": "Describes which parts of an application (that we know of) were synced to the cloud. \"Code\" resources follow the SAM spec: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-sync.html",
@@ -1693,6 +1763,16 @@
             "name": "templateName",
             "type": "string",
             "description": "Generic name of a template"
+        },
+        {
+            "name": "testGenerationJobGroupName",
+            "type": "string",
+            "description": "Unit test generation job group name"
+        },
+        {
+            "name": "testGenerationJobId",
+            "type": "string",
+            "description": "Unit test generation job id"
         },
         {
             "name": "toolId",
@@ -1731,6 +1811,21 @@
             "name": "userChoice",
             "type": "string",
             "description": "User selection from a predefined menu (not user-provided input). See also `action`."
+        },
+        {
+            "name": "unitTestGenerationBuildPayloadBytes",
+            "type": "int",
+            "description": "The uncompressed payload size in bytes of the source files in customer project context sent for unit test generation"
+        },
+        {
+            "name": "unitTestGenerationBuildZipFileBytes",
+            "type": "int",
+            "description": "The compressed payload size of source files in bytes of customer project context sent for unit test generation"
+        },
+        {
+            "name": "userEnteredPromptMessage",
+            "type": "boolean",
+            "description": "True if user enter prompt message as input else false"
         },
         {
             "name": "userId",
@@ -2211,6 +2306,175 @@
                 {
                     "type": "result",
                     "required": false
+                }
+            ]
+        },
+        {
+            "name": "amazonq_unitTestGeneration",
+            "description": "Client side metrics of AmazonQ Unit Test Generation",
+            "metadata": [
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatProgrammingLanguage"
+                },
+                {
+                    "type": "supportedLanguage"
+                },
+                {
+                    "type": "userEnteredPromptMessage"
+                },
+               {
+                    "type": "testGenerationJobGroupName",
+                    "required": false
+                },
+                {
+                    "type": "linesOfCodeAccepted",
+                    "required": false
+                },
+                {
+                    "type": "linesOfCodeGenerated",
+                    "required": false
+                },
+                {
+                    "type": "charsOfCodeAccepted",
+                    "required": false
+                },
+                {
+                    "type": "charsOfCodeGenerated",
+                    "required": false
+                },
+                {
+                    "type": "numberOfUnitTestCasesAccepted",
+                    "required": false
+                },
+                {
+                    "type": "numberOfUnitTestCasesGenerated",
+                    "required": false
+                },
+                {
+                    "type": "numberOfBuildExecuted",
+                    "required": false
+                },
+                {
+                    "type": "numberOfBuildFailed",
+                    "required": false
+                },
+                {
+                    "type": "numberOfBuildPassed",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "amazonq_utg_generateTests",
+            "description": "Client side invocation of the AmazonQ Unit Test Generation",
+            "metadata": [
+                {
+                    "type": "artifactsUploadDuration",
+                    "required": false
+                },
+                {
+                    "type": "charsOfCodeGenerated",
+                    "required": false
+                },
+               {
+                    "type": "charsOfCodeAccepted",
+                    "required": false
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatProgrammingLanguage"
+                },
+                {
+                    "type": "latencyOfGeneratingTests",
+                    "required": false
+                },
+                {
+                    "type": "linesOfCodeAccepted",
+                    "required": false
+                },
+                {
+                    "type": "linesOfCodeGenerated",
+                    "required": false
+                },
+                {
+                    "type": "numberOfUnitTestCasesAccepted",
+                    "required": false
+                },
+                {
+                    "type": "numberOfUnitTestCasesGenerated",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "supportedLanguage"
+                },
+                {
+                    "type": "testGenerationJobGroupName",
+                    "required": false
+                },
+                {
+                    "type": "testGenerationJobId", 
+                    "required": false
+                },
+                {
+                    "type": "userEnteredPromptMessage"
+                },
+                {
+                    "type": "unitTestGenerationBuildPayloadBytes",
+                    "required": false
+                },
+                {
+                    "type": "unitTestGenerationBuildZipFileBytes",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "amazonq_utg_buildLoop",
+            "description": "Client side invocation of the AmazonQ Unit Test Generation build loop",
+            "metadata": [
+                {
+                    "type": "buildStatus",
+                    "required": false
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatProgrammingLanguage"
+                },
+                {
+                    "type": "latencyOfClientSideBuild",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "supportedLanguage"
+                },
+                {
+                    "type": "testGenerationJobGroupName",
+                    "required": false
+                },
+                {
+                    "type": "testGenerationJobId",
+                    "required": false
+                },
+                {
+                    "type": "userEnteredPromptMessage"
                 }
             ]
         },
@@ -6997,6 +7261,10 @@
             "metadata": [
                 {
                     "type": "elementId"
+                },
+                {
+                    "type": "step",
+                    "required": false
                 }
             ]
         },
