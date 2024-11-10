@@ -2314,6 +2314,14 @@
             "description": "Client side metrics of AmazonQ Unit Test Generation",
             "metadata": [
                 {
+                    "type": "charsOfCodeAccepted",
+                    "required": false
+                },
+                {
+                    "type": "charsOfCodeGenerated",
+                    "required": false
+                },
+                {
                     "type": "credentialStartUrl",
                     "required": false
                 },
@@ -2321,29 +2329,11 @@
                     "type": "cwsprChatProgrammingLanguage"
                 },
                 {
-                    "type": "supportedLanguage"
-                },
-                {
-                    "type": "userEnteredPromptMessage"
-                },
-               {
-                    "type": "testGenerationJobGroupName",
-                    "required": false
-                },
-                {
                     "type": "linesOfCodeAccepted",
                     "required": false
                 },
                 {
                     "type": "linesOfCodeGenerated",
-                    "required": false
-                },
-                {
-                    "type": "charsOfCodeAccepted",
-                    "required": false
-                },
-                {
-                    "type": "charsOfCodeGenerated",
                     "required": false
                 },
                 {
@@ -2363,8 +2353,57 @@
                     "required": false
                 },
                 {
+                    "type": "supportedLanguage"
+                },
+                {
+                    "type": "testGenerationJobGroupName",
+                    "required": false
+                },
+                {
                     "type": "numberOfBuildPassed",
                     "required": false
+                },
+                {
+                    "type": "userEnteredPromptMessage"
+                }
+            ]
+        },
+        {
+            "name": "amazonq_utg_buildLoop",
+            "description": "Client side invocation of the AmazonQ Unit Test Generation build loop",
+            "metadata": [
+                {
+                    "type": "buildStatus",
+                    "required": false
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatProgrammingLanguage"
+                },
+                {
+                    "type": "latencyOfClientSideBuild",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "supportedLanguage"
+                },
+                {
+                    "type": "testGenerationJobGroupName",
+                    "required": false
+                },
+                {
+                    "type": "testGenerationJobId",
+                    "required": false
+                },
+                {
+                    "type": "userEnteredPromptMessage"
                 }
             ]
         },
@@ -2377,11 +2416,11 @@
                     "required": false
                 },
                 {
-                    "type": "charsOfCodeGenerated",
+                    "type": "charsOfCodeAccepted",
                     "required": false
                 },
-               {
-                    "type": "charsOfCodeAccepted",
+                {
+                    "type": "charsOfCodeGenerated",
                     "required": false
                 },
                 {
@@ -2436,45 +2475,6 @@
                 {
                     "type": "unitTestGenerationBuildZipFileBytes",
                     "required": false
-                }
-            ]
-        },
-        {
-            "name": "amazonq_utg_buildLoop",
-            "description": "Client side invocation of the AmazonQ Unit Test Generation build loop",
-            "metadata": [
-                {
-                    "type": "buildStatus",
-                    "required": false
-                },
-                {
-                    "type": "credentialStartUrl",
-                    "required": false
-                },
-                {
-                    "type": "cwsprChatProgrammingLanguage"
-                },
-                {
-                    "type": "latencyOfClientSideBuild",
-                    "required": false
-                },
-                {
-                    "type": "source",
-                    "required": false
-                },
-                {
-                    "type": "supportedLanguage"
-                },
-                {
-                    "type": "testGenerationJobGroupName",
-                    "required": false
-                },
-                {
-                    "type": "testGenerationJobId",
-                    "required": false
-                },
-                {
-                    "type": "userEnteredPromptMessage"
                 }
             ]
         },
