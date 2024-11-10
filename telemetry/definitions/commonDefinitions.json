@@ -1433,6 +1433,11 @@
             "description": "The Lambda Package type of the function"
         },
         {
+            "name": "language",
+            "type": "string",
+            "description": "Language used for the project."
+        },
+        {
             "name": "latencyOfClientSideBuild",
             "type": "int",
             "description": "Time from start to end of Client-side build."
@@ -1441,11 +1446,6 @@
             "name": "latencyOfGeneratingTests",
             "type": "int",
             "description": "Time from start to end of Generating unit tests"
-        },
-        {
-            "name": "language",
-            "type": "string",
-            "description": "Language used for the project."
         },
         {
             "name": "linesOfCodeGenerated",
