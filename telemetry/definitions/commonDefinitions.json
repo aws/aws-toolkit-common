@@ -1513,14 +1513,14 @@
             "description": "Number of build succeeded in unit test generation build loop"
         },
         {
-            "name": "numberOfUnitTestCasesGenerated",
-            "type": "int",
-            "description": "Number of unit test cases generated"
-        },
-        {
             "name": "numberOfUnitTestCasesAccepted",
             "type": "int",
             "description": "Number of unit test cases accepted"
+        },
+        {
+            "name": "numberOfUnitTestCasesGenerated",
+            "type": "int",
+            "description": "Number of unit test cases generated"
         },
         {
             "name": "oldVersion",
