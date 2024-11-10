@@ -1803,6 +1803,16 @@
             "description": "Unique identifier for the trace (a set of events) this metric belongs to"
         },
         {
+            "name": "unitTestGenerationBuildPayloadBytes",
+            "type": "int",
+            "description": "The uncompressed payload size in bytes of the source files in customer project context sent for unit test generation"
+        },
+        {
+            "name": "unitTestGenerationBuildZipFileBytes",
+            "type": "int",
+            "description": "The compressed payload size of source files in bytes of customer project context sent for unit test generation"
+        },
+        {
             "name": "update",
             "type": "boolean",
             "description": "If the operation was an update or not"
@@ -1816,16 +1826,6 @@
             "name": "userChoice",
             "type": "string",
             "description": "User selection from a predefined menu (not user-provided input). See also `action`."
-        },
-        {
-            "name": "unitTestGenerationBuildPayloadBytes",
-            "type": "int",
-            "description": "The uncompressed payload size in bytes of the source files in customer project context sent for unit test generation"
-        },
-        {
-            "name": "unitTestGenerationBuildZipFileBytes",
-            "type": "int",
-            "description": "The compressed payload size of source files in bytes of customer project context sent for unit test generation"
         },
         {
             "name": "userEnteredPromptMessage",
