@@ -1736,6 +1736,11 @@
             "description": "Date/time that an SSO client registration expires."
         },
         {
+            "name": "step",
+            "type": "string",
+            "description": "Indicates the stage at which a user interface click action was performed." 
+        },
+        {
             "name": "successCount",
             "type": "int",
             "description": "The number of successful operations"
