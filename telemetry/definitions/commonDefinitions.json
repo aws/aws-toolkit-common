@@ -210,6 +210,16 @@
             "description": "Boolean value of whether or not a Cfn parameter file is provided."
         },
         {
+            "name": "charsOfCodeAccepted",
+            "type": "int",
+            "description": "Number of characters of code accepted"
+        },
+        {
+            "name": "charsOfCodeGenerated",
+            "type": "int",
+            "description": "Number of characters of code generated"
+        },
+        {
             "name": "checkType",
             "type": "string",
             "allowedValues": [
@@ -1446,16 +1456,6 @@
             "name": "linesOfCodeAccepted",
             "type": "int",
             "description": "Number of lines of code accepted"
-        },
-        {
-            "name": "charsOfCodeGenerated",
-            "type": "int",
-            "description": "Number of characters of code generated"
-        },
-        {
-            "name": "charsOfCodeAccepted",
-            "type": "int",
-            "description": "Number of characters of code accepted"
         },
         {
             "name": "loadFileTime",
