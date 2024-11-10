@@ -2337,19 +2337,19 @@
                     "required": false
                 },
                 {
-                    "type": "numberOfUnitTestCasesAccepted",
-                    "required": false
-                },
-                {
-                    "type": "numberOfUnitTestCasesGenerated",
-                    "required": false
-                },
-                {
                     "type": "numberOfBuildExecuted",
                     "required": false
                 },
                 {
                     "type": "numberOfBuildFailed",
+                    "required": false
+                },
+                {
+                    "type": "numberOfUnitTestCasesAccepted",
+                    "required": false
+                },
+                {
+                    "type": "numberOfUnitTestCasesGenerated",
                     "required": false
                 },
                 {
