@@ -2350,6 +2350,10 @@
                     "required": false
                 },
                 {
+                    "type": "numberOfBuildPassed",
+                    "required": false
+                },
+                {
                     "type": "numberOfUnitTestCasesAccepted",
                     "required": false
                 },
@@ -2362,10 +2366,6 @@
                 },
                 {
                     "type": "testGenerationJobGroupName",
-                    "required": false
-                },
-                {
-                    "type": "numberOfBuildPassed",
                     "required": false
                 },
                 {
@@ -2471,15 +2471,15 @@
                     "required": false
                 },
                 {
-                    "type": "userEnteredPromptMessage"
-                },
-                {
                     "type": "unitTestGenerationBuildPayloadBytes",
                     "required": false
                 },
                 {
                     "type": "unitTestGenerationBuildZipFileBytes",
                     "required": false
+                },
+                {
+                    "type": "userEnteredPromptMessage"
                 }
             ]
         },
