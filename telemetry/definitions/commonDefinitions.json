@@ -5,9 +5,10 @@
             "type": "string",
             "description": "Captures the type of fix that was accepted",
             "allowedValues": [
-                "acceptDiff",
+                "openDiff",
                 "insertAtCursor",
-                "copyDiff"
+                "copyDiff",
+                "quickFix"
             ]
         },
         {
@@ -4363,6 +4364,9 @@
             "description": "Called when a code scan issue suggested fix is applied",
             "metadata": [
                 {
+                    "type": "codeFixAction"
+                },
+                {
                     "type": "component"
                 },
                 {
@@ -4397,34 +4401,6 @@
                 },
                 {
                     "type": "findingId"
-                },
-                {
-                    "type": "ruleId",
-                    "required": false
-                },
-                {
-                    "type": "variant",
-                    "required": false
-                }
-            ]
-        },
-        {
-            "name": "codewhisperer_codeScanIssueGenerateFixDiffUse",
-            "description": "User chose to utilise the diff of a code scan issue fix",
-            "metadata": [
-                {
-                    "type": "acceptedFixType",
-                    "required": false
-                },
-                {
-                    "type": "component"
-                },
-                {
-                    "type": "credentialStartUrl",
-                    "required": false
-                },
-                {
-                    "type": "detectorId"
                 },
                 {
                     "type": "ruleId",
