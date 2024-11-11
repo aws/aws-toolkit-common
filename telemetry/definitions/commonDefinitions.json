@@ -1,7 +1,7 @@
 {
     "types": [
         {
-            "name": "acceptedFixType",
+            "name": "codeFixAction",
             "type": "string",
             "description": "Captures the type of fix that was accepted",
             "allowedValues": [
