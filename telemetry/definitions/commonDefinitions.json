@@ -265,7 +265,7 @@
                 "openDiff",
                 "insertAtCursor",
                 "copyDiff",
-                "quickFix"
+                "applyFix"
             ]
         },
         {
