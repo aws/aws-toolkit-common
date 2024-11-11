@@ -258,6 +258,17 @@
             ]
         },
         {
+            "name": "codeFixAction",
+            "type": "string",
+            "description": "Captures the type of fix that was accepted",
+            "allowedValues": [
+                "openDiff",
+                "insertAtCursor",
+                "copyDiff",
+                "applyFix"
+            ]
+        },
+        {
             "name": "codeScanServiceInvocationsDuration",
             "type": "int",
             "description": "Time taken to invoke code scan service APIs in milliseconds"
@@ -4352,6 +4363,9 @@
             "name": "codewhisperer_codeScanIssueApplyFix",
             "description": "Called when a code scan issue suggested fix is applied",
             "metadata": [
+                {
+                    "type": "codeFixAction"
+                },
                 {
                     "type": "component"
                 },
