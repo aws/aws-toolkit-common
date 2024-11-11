@@ -4413,6 +4413,10 @@
             "description": "User chose to utilise the diff of a code scan issue fix",
             "metadata": [
                 {
+                    "type": "acceptedFixType",
+                    "required": false
+                },
+                {
                     "type": "component"
                 },
                 {
@@ -4428,10 +4432,6 @@
                 },
                 {
                     "type": "variant",
-                    "required": false
-                },
-                {
-                    "type": "acceptedFixType",
                     "required": false
                 }
             ]
