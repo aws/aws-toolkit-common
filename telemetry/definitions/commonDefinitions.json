@@ -1,11 +1,6 @@
 {
     "types": [
         {
-            "name": "action",
-            "type": "string",
-            "description": "Name of an action that was taken, displayed, etc. See also `userChoice`."
-        },
-        {
             "name": "acceptedFixType",
             "type": "string",
             "description": "Captures the type of fix that was accepted",
@@ -14,6 +9,11 @@
                 "insertAtCursor",
                 "copyDiff"
             ]
+        },
+        {
+            "name": "action",
+            "type": "string",
+            "description": "Name of an action that was taken, displayed, etc. See also `userChoice`."
         },
         {
             "name": "amazonqCodeGenerationResult",
