@@ -1,17 +1,6 @@
 {
     "types": [
         {
-            "name": "codeFixAction",
-            "type": "string",
-            "description": "Captures the type of fix that was accepted",
-            "allowedValues": [
-                "openDiff",
-                "insertAtCursor",
-                "copyDiff",
-                "quickFix"
-            ]
-        },
-        {
             "name": "action",
             "type": "string",
             "description": "Name of an action that was taken, displayed, etc. See also `userChoice`."
@@ -266,6 +255,17 @@
             "allowedValues": [
                 "remote",
                 "local"
+            ]
+        },
+        {
+            "name": "codeFixAction",
+            "type": "string",
+            "description": "Captures the type of fix that was accepted",
+            "allowedValues": [
+                "openDiff",
+                "insertAtCursor",
+                "copyDiff",
+                "quickFix"
             ]
         },
         {
