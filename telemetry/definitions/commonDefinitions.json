@@ -1,6 +1,11 @@
 {
     "types": [
         {
+            "name": "acceptedCount",
+            "type": "int",
+            "description": "The number of accepted cases"
+        },
+        {
             "name": "action",
             "type": "string",
             "description": "Name of an action that was taken, displayed, etc. See also `userChoice`."
@@ -176,16 +181,6 @@
         {
             "name": "buildDuration",
             "type": "int",
-            "description": "The amount of time required for the build to complete (in seconds)."
-        },
-        {
-            "name": "buildStatus",
-            "type": "string",
-            "allowedValues": [
-                "SUCCESS",
-                "FAILED",
-                "CANCELLED"
-            ],
             "description": "The amount of time required for the build to complete (in seconds)."
         },
         {
@@ -1228,6 +1223,11 @@
             "description": "The name of the EventBridge Schema used in the operation"
         },
         {
+            "name": "executedCount",
+            "type": "int",
+            "description": "The number of executed operations"
+        },
+        {
             "name": "experimentId",
             "type": "string",
             "description": "The id of the experiment being activated or deactivated"
@@ -1292,6 +1292,11 @@
             "name": "framework",
             "type": "string",
             "description": "Application framework being used"
+        },
+        {
+            "name": "generatedCount",
+            "type": "int",
+            "description": "The number of generated cases"
         },
         {
             "name": "generateFailure",
@@ -1496,31 +1501,6 @@
             "name": "numAttempts",
             "type": "int",
             "description": "Number of generations before the user accepted or rejected"
-        },
-        {
-            "name": "numberOfBuildExecuted",
-            "type": "int",
-            "description": "Number of build executed in unit test generation build loop"
-        },
-        {
-            "name": "numberOfBuildFailed",
-            "type": "int",
-            "description": "Number of build failures in unit test generation build loop"
-        },
-        {
-            "name": "numberOfBuildPassed",
-            "type": "int",
-            "description": "Number of build succeeded in unit test generation build loop"
-        },
-        {
-            "name": "numberOfUnitTestCasesAccepted",
-            "type": "int",
-            "description": "Number of unit test cases accepted"
-        },
-        {
-            "name": "numberOfUnitTestCasesGenerated",
-            "type": "int",
-            "description": "Number of unit test cases generated"
         },
         {
             "name": "oldVersion",
@@ -2319,6 +2299,10 @@
             "description": "Client side metrics of AmazonQ Unit Test Generation",
             "metadata": [
                 {
+                    "type": "acceptedCount",
+                    "required": false
+                },
+                {
                     "type": "charsOfCodeAccepted",
                     "required": false
                 },
@@ -2334,6 +2318,18 @@
                     "type": "cwsprChatProgrammingLanguage"
                 },
                 {
+                    "type": "executedCount",
+                    "required": false
+                },
+                {
+                    "type": "failedCount",
+                    "required": false
+                },
+                {
+                    "type": "generatedCount",
+                    "required": false
+                },
+                {
                     "type": "linesOfCodeAccepted",
                     "required": false
                 },
@@ -2342,23 +2338,7 @@
                     "required": false
                 },
                 {
-                    "type": "numberOfBuildExecuted",
-                    "required": false
-                },
-                {
-                    "type": "numberOfBuildFailed",
-                    "required": false
-                },
-                {
-                    "type": "numberOfBuildPassed",
-                    "required": false
-                },
-                {
-                    "type": "numberOfUnitTestCasesAccepted",
-                    "required": false
-                },
-                {
-                    "type": "numberOfUnitTestCasesGenerated",
+                    "type": "successCount",
                     "required": false
                 },
                 {
@@ -2378,10 +2358,6 @@
             "description": "Client side invocation of the AmazonQ Unit Test Generation build loop",
             "metadata": [
                 {
-                    "type": "buildStatus",
-                    "required": false
-                },
-                {
                     "type": "credentialStartUrl",
                     "required": false
                 },
@@ -2390,6 +2366,10 @@
                 },
                 {
                     "type": "latencyOfClientSideBuild",
+                    "required": false
+                },
+                {
+                    "type": "result",
                     "required": false
                 },
                 {
@@ -2417,6 +2397,10 @@
             "description": "Client side invocation of the AmazonQ Unit Test Generation",
             "metadata": [
                 {
+                    "type": "acceptedCount",
+                    "required": false
+                },
+                {
                     "type": "artifactsUploadDuration",
                     "required": false
                 },
@@ -2436,6 +2420,10 @@
                     "type": "cwsprChatProgrammingLanguage"
                 },
                 {
+                    "type": "generatedCount",
+                    "required": false
+                },
+                {
                     "type": "latencyOfGeneratingTests",
                     "required": false
                 },
@@ -2445,14 +2433,6 @@
                 },
                 {
                     "type": "linesOfCodeGenerated",
-                    "required": false
-                },
-                {
-                    "type": "numberOfUnitTestCasesAccepted",
-                    "required": false
-                },
-                {
-                    "type": "numberOfUnitTestCasesGenerated",
                     "required": false
                 },
                 {
