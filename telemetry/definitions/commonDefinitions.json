@@ -312,6 +312,11 @@
             "description": "If dependencies are copied into upload artifact."
         },
         {
+            "name": "codeTransformEligibleForBothJavaAndSQL",
+            "type": "boolean",
+            "description": "If a project is eligible for both Java upgrade and SQL conversion"
+        },
+        {
             "name": "codeTransformJavaSourceVersionsAllowed",
             "type": "string",
             "description": "Allowed Java versions to transform from",
@@ -4153,6 +4158,10 @@
                 },
                 {
                     "type": "codeTransformBuildSystem",
+                    "required": false
+                },
+                {
+                    "type": "codeTransformEligibleForBothJavaAndSQL",
                     "required": false
                 },
                 {
