@@ -4,7 +4,7 @@
 package software.aws.toolkits.telemetry.generator
 
 import org.assertj.core.api.Assertions.assertThatThrownBy
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class ParserTest {
     @Test
@@ -13,17 +13,17 @@ class ParserTest {
             TelemetryParser.parseFiles(
                 listOf(
                     """
-            {
-                "types": [
                     {
-                        "name": "result",
-                        "allowedValues": ["Succeeded", "Failed", "Cancelled"],
+                        "types": [
+                            {
+                                "name": "result",
+                                "allowedValues": ["Succeeded", "Failed", "Cancelled"],
+                            }
+                        ],
+                        "metrics": []
                     }
-                ],
-                "metrics": []
-            }
-            """.trimIndent()
-                )
+                    """.trimIndent(),
+                ),
             )
         }.hasMessageContaining("required key [description] not found")
     }
@@ -41,21 +41,20 @@ class ParserTest {
             TelemetryParser.parseFiles(
                 listOf(
                     """
-            {
-                "types": [
                     {
-                        "name": "result",
-                        "type": "type that does not exist",
-                        "description": "abc"
+                        "types": [
+                            {
+                                "name": "result",
+                                "type": "type that does not exist",
+                                "description": "abc"
+                            }
+                        ],
+                        "metrics": []
                     }
-                ],
-                "metrics": []
-            }
-            """.trimIndent()
-                )
+                    """.trimIndent(),
+                ),
             )
         }.hasMessageContaining("type that does not exist is not a valid enum value")
-
     }
 
     @Test
@@ -63,11 +62,11 @@ class ParserTest {
         TelemetryParser.parseFiles(
             listOf(
                 """
-            {
-                "metrics": []
-            }
-            """.trimIndent()
-            )
+                {
+                    "metrics": []
+                }
+                """.trimIndent(),
+            ),
         )
     }
 }

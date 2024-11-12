@@ -8,20 +8,25 @@ package software.aws.toolkits.telemetry
 import com.intellij.openapi.project.Project
 import java.time.Instant
 import kotlin.Boolean
+import kotlin.Deprecated
 import kotlin.Double
 import kotlin.Suppress
-import software.amazon.awssdk.services.toolkittelemetry.model.Unit
+import software.amazon.awssdk.services.toolkittelemetry.model.MetricUnit
 import software.aws.toolkits.core.ConnectionSettings
 import software.aws.toolkits.jetbrains.services.telemetry.MetricEventMetadata
 import software.aws.toolkits.jetbrains.services.telemetry.TelemetryService
 
+@Deprecated(
+    "Use type-safe metric builders",
+    ReplaceWith("Telemetry.metadata", "software.aws.toolkits.telemetry.Telemetry"),
+)
 public object MetadataTelemetry {
     /**
      * It does not actually have a result, yep
      */
     public fun hasResult(
         project: Project?,
-        result: Result? = null,
+        result: MetricResult? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -29,7 +34,7 @@ public object MetadataTelemetry {
         TelemetryService.getInstance().record(project) {
             datum("metadata_hasResult") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(result != null) {
@@ -44,7 +49,7 @@ public object MetadataTelemetry {
      */
     public fun hasResult(
         connectionSettings: ConnectionSettings? = null,
-        result: Result? = null,
+        result: MetricResult? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -52,7 +57,7 @@ public object MetadataTelemetry {
         TelemetryService.getInstance().record(connectionSettings) {
             datum("metadata_hasResult") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(result != null) {
@@ -67,7 +72,7 @@ public object MetadataTelemetry {
      */
     public fun hasResult(
         metadata: MetricEventMetadata,
-        result: Result? = null,
+        result: MetricResult? = null,
         passive: Boolean = false,
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
@@ -75,7 +80,7 @@ public object MetadataTelemetry {
         TelemetryService.getInstance().record(metadata) {
             datum("metadata_hasResult") {
                 createTime(createTime)
-                unit(Unit.NONE)
+                unit(MetricUnit.NONE)
                 value(value)
                 passive(passive)
                 if(result != null) {
@@ -95,8 +100,7 @@ public object MetadataTelemetry {
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
-        hasResult(project, if(success) Result.Succeeded else Result.Failed, passive, value,
-                createTime)
+        hasResult(project, if(success) MetricResult.Succeeded else MetricResult.Failed, passive, value, createTime)
     }
 
     /**
@@ -109,8 +113,7 @@ public object MetadataTelemetry {
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
-        hasResult(connectionSettings, if(success) Result.Succeeded else Result.Failed, passive,
-                value, createTime)
+        hasResult(connectionSettings, if(success) MetricResult.Succeeded else MetricResult.Failed, passive, value, createTime)
     }
 
     /**
@@ -123,7 +126,6 @@ public object MetadataTelemetry {
         `value`: Double = 1.0,
         createTime: Instant = Instant.now(),
     ) {
-        hasResult(metadata, if(success) Result.Succeeded else Result.Failed, passive, value,
-                createTime)
+        hasResult(metadata, if(success) MetricResult.Succeeded else MetricResult.Failed, passive, value, createTime)
     }
 }
