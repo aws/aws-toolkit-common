@@ -184,6 +184,16 @@
             "description": "The amount of time required for the build to complete (in seconds)."
         },
         {
+            "name": "buildPayloadBytes",
+            "type": "int",
+            "description": "The uncompressed payload size in bytes of the source files in customer project context"
+        },
+        {
+            "name": "buildZipFileBytes",
+            "type": "int",
+            "description": "The compressed payload size of source files in bytes of customer project context sent"
+        },
+        {
             "name": "buildSystemVersion",
             "type": "string",
             "description": "The build system version on the user's machine"
@@ -1453,16 +1463,6 @@
             "description": "Time from start to end of Generating unit tests"
         },
         {
-            "name": "linesOfCodeAccepted",
-            "type": "int",
-            "description": "Number of lines of code accepted"
-        },
-        {
-            "name": "linesOfCodeGenerated",
-            "type": "int",
-            "description": "Number of lines of code generated"
-        },
-        {
             "name": "loadFileTime",
             "type": "int",
             "description": "Time from opening Composer to loading the file"
@@ -1726,7 +1726,7 @@
             "description": "The number of successful operations"
         },
         {
-            "name": "supportedLanguage",
+            "name": "isSupportedLanguage",
             "type": "boolean",
             "description": "supported language"
         },
@@ -1750,16 +1750,6 @@
             "description": "Generic name of a template"
         },
         {
-            "name": "testGenerationJobGroupName",
-            "type": "string",
-            "description": "Unit test generation job group name"
-        },
-        {
-            "name": "testGenerationJobId",
-            "type": "string",
-            "description": "Unit test generation job id"
-        },
-        {
             "name": "toolId",
             "type": "string",
             "description": "The tool being installed",
@@ -1781,16 +1771,6 @@
             "name": "traceId",
             "type": "string",
             "description": "Unique identifier for the trace (a set of events) this metric belongs to"
-        },
-        {
-            "name": "unitTestGenerationBuildPayloadBytes",
-            "type": "int",
-            "description": "The uncompressed payload size in bytes of the source files in customer project context sent for unit test generation"
-        },
-        {
-            "name": "unitTestGenerationBuildZipFileBytes",
-            "type": "int",
-            "description": "The compressed payload size of source files in bytes of customer project context sent for unit test generation"
         },
         {
             "name": "update",
@@ -2303,6 +2283,10 @@
                     "required": false
                 },
                 {
+                    "type": "acceptedLinesCount",
+                    "required": false
+                },
+                {
                     "type": "charsOfCodeAccepted",
                     "required": false
                 },
@@ -2330,22 +2314,18 @@
                     "required": false
                 },
                 {
-                    "type": "linesOfCodeAccepted",
+                    "type": "generatedLinesCount",
                     "required": false
                 },
                 {
-                    "type": "linesOfCodeGenerated",
+                    "type": "isSupportedLanguage"
+                },
+                {
+                    "type": "jobGroup",
                     "required": false
                 },
                 {
                     "type": "successCount",
-                    "required": false
-                },
-                {
-                    "type": "supportedLanguage"
-                },
-                {
-                    "type": "testGenerationJobGroupName",
                     "required": false
                 },
                 {
@@ -2358,6 +2338,10 @@
             "description": "Client side invocation of the AmazonQ Unit Test Generation build loop",
             "metadata": [
                 {
+                    "type": "codewhispererEndToEndLatency",
+                    "required": false
+                },
+                {
                     "type": "credentialStartUrl",
                     "required": false
                 },
@@ -2365,7 +2349,14 @@
                     "type": "cwsprChatProgrammingLanguage"
                 },
                 {
-                    "type": "latencyOfClientSideBuild",
+                    "type": "isSupportedLanguage"
+                },
+                {
+                    "type": "jobGroup",
+                    "required": false
+                },
+                {
+                    "type": "jobId",
                     "required": false
                 },
                 {
@@ -2374,17 +2365,6 @@
                 },
                 {
                     "type": "source",
-                    "required": false
-                },
-                {
-                    "type": "supportedLanguage"
-                },
-                {
-                    "type": "testGenerationJobGroupName",
-                    "required": false
-                },
-                {
-                    "type": "testGenerationJobId",
                     "required": false
                 },
                 {
@@ -2401,7 +2381,19 @@
                     "required": false
                 },
                 {
+                    "type": "acceptedLinesCount",
+                    "required": false
+                },
+                {
                     "type": "artifactsUploadDuration",
+                    "required": false
+                },
+                {
+                    "type": "buildPayloadBytes",
+                    "required": false
+                },
+                {
+                    "type": "buildZipFileBytes",
                     "required": false
                 },
                 {
@@ -2410,6 +2402,10 @@
                 },
                 {
                     "type": "charsOfCodeGenerated",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererEndToEndLatency",
                     "required": false
                 },
                 {
@@ -2424,38 +2420,22 @@
                     "required": false
                 },
                 {
-                    "type": "latencyOfGeneratingTests",
+                    "type": "generatedLinesCount",
                     "required": false
                 },
                 {
-                    "type": "linesOfCodeAccepted",
+                    "type": "isSupportedLanguage"
+                },
+                {
+                    "type": "jobGroup",
                     "required": false
                 },
                 {
-                    "type": "linesOfCodeGenerated",
+                    "type": "jobId", 
                     "required": false
                 },
                 {
                     "type": "source",
-                    "required": false
-                },
-                {
-                    "type": "supportedLanguage"
-                },
-                {
-                    "type": "testGenerationJobGroupName",
-                    "required": false
-                },
-                {
-                    "type": "testGenerationJobId", 
-                    "required": false
-                },
-                {
-                    "type": "unitTestGenerationBuildPayloadBytes",
-                    "required": false
-                },
-                {
-                    "type": "unitTestGenerationBuildZipFileBytes",
                     "required": false
                 },
                 {
