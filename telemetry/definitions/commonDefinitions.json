@@ -215,16 +215,6 @@
             "description": "Boolean value of whether or not a Cfn parameter file is provided."
         },
         {
-            "name": "charsOfCodeAccepted",
-            "type": "int",
-            "description": "Number of characters of code accepted"
-        },
-        {
-            "name": "charsOfCodeGenerated",
-            "type": "int",
-            "description": "Number of characters of code generated"
-        },
-        {
             "name": "checkType",
             "type": "string",
             "allowedValues": [
@@ -1304,6 +1294,11 @@
             "description": "Application framework being used"
         },
         {
+            "name": "generatedCharactersCount",
+            "type": "int",
+            "description": "Number of characters of code generated"
+        },
+        {
             "name": "generatedCount",
             "type": "int",
             "description": "The number of generated cases"
@@ -1451,16 +1446,6 @@
             "name": "language",
             "type": "string",
             "description": "Language used for the project."
-        },
-        {
-            "name": "latencyOfClientSideBuild",
-            "type": "int",
-            "description": "Time from start to end of Client-side build."
-        },
-        {
-            "name": "latencyOfGeneratingTests",
-            "type": "int",
-            "description": "Time from start to end of Generating unit tests"
         },
         {
             "name": "loadFileTime",
@@ -2283,15 +2268,11 @@
                     "required": false
                 },
                 {
-                    "type": "acceptedLinesCount",
+                    "type": "cwsprChatAcceptedCharactersLength",
                     "required": false
                 },
                 {
-                    "type": "charsOfCodeAccepted",
-                    "required": false
-                },
-                {
-                    "type": "charsOfCodeGenerated",
+                    "type": "cwsprChatAcceptedNumberOfLines",
                     "required": false
                 },
                 {
@@ -2307,6 +2288,10 @@
                 },
                 {
                     "type": "failedCount",
+                    "required": false
+                },
+                {
+                    "type": "generatedCharactersCount",
                     "required": false
                 },
                 {
@@ -2381,10 +2366,6 @@
                     "required": false
                 },
                 {
-                    "type": "acceptedLinesCount",
-                    "required": false
-                },
-                {
                     "type": "artifactsUploadDuration",
                     "required": false
                 },
@@ -2397,14 +2378,6 @@
                     "required": false
                 },
                 {
-                    "type": "charsOfCodeAccepted",
-                    "required": false
-                },
-                {
-                    "type": "charsOfCodeGenerated",
-                    "required": false
-                },
-                {
                     "type": "codewhispererEndToEndLatency",
                     "required": false
                 },
@@ -2413,7 +2386,19 @@
                     "required": false
                 },
                 {
+                    "type": "cwsprChatAcceptedCharactersLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatAcceptedNumberOfLines",
+                    "required": false
+                },
+                {
                     "type": "cwsprChatProgrammingLanguage"
+                },
+                {
+                    "type": "generatedCharactersCount",
+                    "required": false
                 },
                 {
                     "type": "generatedCount",
