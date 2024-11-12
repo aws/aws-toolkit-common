@@ -1713,7 +1713,7 @@
         {
             "name": "isSupportedLanguage",
             "type": "boolean",
-            "description": "supported language"
+            "description": "Indicate if the language is supported"
         },
         {
             "name": "syncedResources",
