@@ -210,6 +210,11 @@
             "description": "User inputted check type to denote which custom check to run."
         },
         {
+            "name": "clientLatency",
+            "type": "double",
+            "description": "The time duration in milliseconds to process an action on the client side"
+        },
+        {
             "name": "cloudWatchLogsPresentation",
             "type": "string",
             "allowedValues": [
@@ -998,21 +1003,6 @@
             "description": "Identifies the entity within the message that user interacts with."
         },
         {
-            "name": "clientLatency",
-            "type": "double",
-            "description": "The time duration in milliseconds to process an action on the client side"
-        },
-        {
-            "name": "serverLatency",
-            "type": "double",
-            "description": "The time duration in milliseconds to finish a request to the server side"
-        },
-        {
-            "name": "e2eLatency",
-            "type": "double",
-            "description": "The time duration in milliseconds to complete an end to end flow"
-        },
-        {
             "name": "cwsprChatInteractionType",
             "allowedValues": [
                 "acceptDiff",
@@ -1154,13 +1144,18 @@
             "description": "The type of DynamoDB entity referenced by a metric or operation"
         },
         {
+            "name": "e2eLatency",
+            "type": "double",
+            "description": "The time duration in milliseconds to complete an end to end flow"
+        },
+        {
             "name": "ec2ConnectionType",
             "type": "string",
             "allowedValues": [
                 "remoteDesktop",
                 "ssh",
                 "scp",
-                "ssm", 
+                "ssm",
                 "remoteWorkspace"
             ],
             "description": "Ways to connect to an EC2 Instance"
@@ -1641,6 +1636,11 @@
                 "TypeScript3"
             ],
             "description": "Languages targeted by the schemas service"
+        },
+        {
+            "name": "serverLatency",
+            "type": "double",
+            "description": "The time duration in milliseconds to finish a request to the server side"
         },
         {
             "name": "serviceType",
