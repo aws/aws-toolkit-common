@@ -4373,7 +4373,8 @@
             "description": "Called when a code scan issue suggested fix is applied",
             "metadata": [
                 {
-                    "type": "codeFixAction"
+                    "type": "codeFixAction",
+                    "required": false
                 },
                 {
                     "type": "component"
