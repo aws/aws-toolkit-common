@@ -471,11 +471,6 @@
             "description": "A unique upload ID for S3"
         },
         {
-            "name": "codeTransformValidationMetadata",
-            "type": "string",
-            "description": "A field for storing various validation metadata"
-        },
-        {
             "name": "codeTransformVCSViewerSrcComponents",
             "type": "string",
             "description": "Names of components that can initiate the diff viewer",
@@ -4187,7 +4182,7 @@
                     "required": true
                 },
                 {
-                    "type": "codeTransformValidationMetadata",
+                    "type": "codeTransformMetadata",
                     "required": false
                 },
                 {
