@@ -998,6 +998,21 @@
             "description": "Identifies the entity within the message that user interacts with."
         },
         {
+            "name": "clientLatency",
+            "type": "double",
+            "description": "The time duration in milliseconds to process an action on the client side"
+        },
+        {
+            "name": "serverLatency",
+            "type": "double",
+            "description": "The time duration in milliseconds to finish a request to the server side"
+        },
+        {
+            "name": "e2eLatency",
+            "type": "double",
+            "description": "The time duration in milliseconds to complete an end to end flow"
+        },
+        {
             "name": "cwsprChatInteractionType",
             "allowedValues": [
                 "acceptDiff",
