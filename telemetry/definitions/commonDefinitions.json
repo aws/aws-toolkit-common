@@ -323,11 +323,6 @@
             "description": "If dependencies are copied into upload artifact."
         },
         {
-            "name": "codeTransformEligibleForBothJavaAndSQL",
-            "type": "boolean",
-            "description": "If a project is eligible for both Java upgrade and SQL conversion"
-        },
-        {
             "name": "codeTransformJavaSourceVersionsAllowed",
             "type": "string",
             "description": "Allowed Java versions to transform from",
@@ -474,6 +469,11 @@
             "name": "codeTransformUploadId",
             "type": "string",
             "description": "A unique upload ID for S3"
+        },
+        {
+            "name": "codeTransformValidationMetadata",
+            "type": "string",
+            "description": "A field for storing various validation metadata"
         },
         {
             "name": "codeTransformVCSViewerSrcComponents",
@@ -4175,10 +4175,6 @@
                     "required": false
                 },
                 {
-                    "type": "codeTransformEligibleForBothJavaAndSQL",
-                    "required": false
-                },
-                {
                     "type": "codeTransformLocalJavaVersion",
                     "required": false
                 },
@@ -4189,6 +4185,10 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
+                },
+                {
+                    "type": "codeTransformValidationMetadata",
+                    "required": false
                 },
                 {
                     "type": "reason",
