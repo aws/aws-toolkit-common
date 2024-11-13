@@ -4174,16 +4174,16 @@
                     "required": false
                 },
                 {
+                    "type": "codeTransformMetadata",
+                    "required": false
+                },
+                {
                     "type": "codeTransformPreValidationError",
                     "required": false
                 },
                 {
                     "type": "codeTransformSessionId",
                     "required": true
-                },
-                {
-                    "type": "codeTransformMetadata",
-                    "required": false
                 },
                 {
                     "type": "reason",
