@@ -2895,6 +2895,10 @@
                     "type": "result"
                 },
                 {
+                    "type": "sessionDuration",
+                    "required": false
+                },
+                {
                     "type": "source"
                 },
                 {
