@@ -210,11 +210,6 @@
             "description": "User inputted check type to denote which custom check to run."
         },
         {
-            "name": "clientLatency",
-            "type": "double",
-            "description": "The time duration in milliseconds to process an action on the client side"
-        },
-        {
             "name": "cloudWatchLogsPresentation",
             "type": "string",
             "allowedValues": [
@@ -1144,11 +1139,6 @@
             "description": "The type of DynamoDB entity referenced by a metric or operation"
         },
         {
-            "name": "e2eLatency",
-            "type": "double",
-            "description": "The time duration in milliseconds to complete an end to end flow"
-        },
-        {
             "name": "ec2ConnectionType",
             "type": "string",
             "allowedValues": [
@@ -1499,6 +1489,21 @@
             "description": "Number of generation paths modified"
         },
         {
+            "name": "perfClientLatency",
+            "type": "double",
+            "description": "The time duration in milliseconds to process an action on the client side"
+        },
+        {
+            "name": "perfE2ELatency",
+            "type": "double",
+            "description": "The time duration in milliseconds to complete an end to end flow"
+        },
+        {
+            "name": "perfServerLatency",
+            "type": "double",
+            "description": "The time duration in milliseconds to finish a request to the server side"
+        },
+        {
             "name": "platform",
             "type": "string",
             "description": "Language-specific identification. Examples: v4.6.1, netcoreapp3.1, nodejs12.x. Not AWS Lambda specific. Allows for additional details when other fields are opaque, such as the Lambda runtime value 'provided'."
@@ -1636,11 +1641,6 @@
                 "TypeScript3"
             ],
             "description": "Languages targeted by the schemas service"
-        },
-        {
-            "name": "serverLatency",
-            "type": "double",
-            "description": "The time duration in milliseconds to finish a request to the server side"
         },
         {
             "name": "serviceType",
