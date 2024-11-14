@@ -1145,7 +1145,7 @@
                 "remoteDesktop",
                 "ssh",
                 "scp",
-                "ssm", 
+                "ssm",
                 "remoteWorkspace"
             ],
             "description": "Ways to connect to an EC2 Instance"
@@ -1487,6 +1487,21 @@
             "name": "pathsScrubbed",
             "type": "int",
             "description": "Number of generation paths modified"
+        },
+        {
+            "name": "perfClientLatency",
+            "type": "double",
+            "description": "The time duration in milliseconds to process an action on the client side"
+        },
+        {
+            "name": "perfE2ELatency",
+            "type": "double",
+            "description": "The time duration in milliseconds to complete an end to end flow"
+        },
+        {
+            "name": "perfServerLatency",
+            "type": "double",
+            "description": "The time duration in milliseconds to finish a request to the server side"
         },
         {
             "name": "platform",
