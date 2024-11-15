@@ -199,14 +199,14 @@
             "description": "The uncompressed payload size in bytes of the source files in customer project context"
         },
         {
-            "name": "buildZipFileBytes",
-            "type": "int",
-            "description": "The compressed payload size of source files in bytes of customer project context sent"
-        },
-        {
             "name": "buildSystemVersion",
             "type": "string",
             "description": "The build system version on the user's machine"
+        },
+        {
+            "name": "buildZipFileBytes",
+            "type": "int",
+            "description": "The compressed payload size of source files in bytes of customer project context sent"
         },
         {
             "name": "causedBy",
