@@ -13,7 +13,7 @@
         {
             "name": "acceptedLinesCount",
             "type": "int",
-            "description": "The number of accepted suggestions"
+            "description": "The number of accepted lines of code"
         },
         {
             "name": "action",
@@ -1323,6 +1323,11 @@
             "name": "generatedCount",
             "type": "int",
             "description": "The number of generated cases"
+        },
+        {
+            "name": "generatedLinesCount",
+            "type": "int",
+            "description": "The number of generated lines of code"
         },
         {
             "name": "generateFailure",
