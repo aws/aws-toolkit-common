@@ -1456,6 +1456,16 @@
             "description": "Indicate if the language is supported"
         },
         {
+            "name": "jobGroup",
+            "type": "string",
+            "description": "Job group name used in the operation"
+        },
+        {
+            "name": "jobId",
+            "type": "string",
+            "description": "Job id used in the operation"
+        },
+        {
             "name": "lambdaArchitecture",
             "type": "string",
             "allowedValues": [
