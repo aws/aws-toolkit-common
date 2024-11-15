@@ -1,6 +1,21 @@
 {
     "types": [
         {
+            "name": "acceptedCharactersCount",
+            "type": "int",
+            "description": "The number of accepted characters"
+        },
+        {
+            "name": "acceptedCount",
+            "type": "int",
+            "description": "The number of accepted cases"
+        },
+        {
+            "name": "acceptedLinesCount",
+            "type": "int",
+            "description": "The number of accepted suggestions"
+        },
+        {
             "name": "action",
             "type": "string",
             "description": "Name of an action that was taken, displayed, etc. See also `userChoice`."
@@ -177,6 +192,16 @@
             "name": "buildDuration",
             "type": "int",
             "description": "The amount of time required for the build to complete (in seconds)."
+        },
+        {
+            "name": "buildPayloadBytes",
+            "type": "int",
+            "description": "The uncompressed payload size in bytes of the source files in customer project context"
+        },
+        {
+            "name": "buildZipFileBytes",
+            "type": "int",
+            "description": "The compressed payload size of source files in bytes of customer project context sent"
         },
         {
             "name": "buildSystemVersion",
@@ -1219,6 +1244,11 @@
             "description": "The name of the EventBridge Schema used in the operation"
         },
         {
+            "name": "executedCount",
+            "type": "int",
+            "description": "The number of executed operations"
+        },
+        {
             "name": "experimentId",
             "type": "string",
             "description": "The id of the experiment being activated or deactivated"
@@ -1283,6 +1313,16 @@
             "name": "framework",
             "type": "string",
             "description": "Application framework being used"
+        },
+        {
+            "name": "generatedCharactersCount",
+            "type": "int",
+            "description": "Number of characters of code generated"
+        },
+        {
+            "name": "generatedCount",
+            "type": "int",
+            "description": "The number of generated cases"
         },
         {
             "name": "generateFailure",
@@ -1404,6 +1444,11 @@
             "name": "isRetry",
             "type": "boolean",
             "description": "Whether or not the operation was a retry"
+        },
+        {
+            "name": "isSupportedLanguage",
+            "type": "boolean",
+            "description": "Indicate if the language is supported"
         },
         {
             "name": "lambdaArchitecture",
@@ -1697,6 +1742,11 @@
             "description": "Date/time that an SSO client registration expires."
         },
         {
+            "name": "step",
+            "type": "string",
+            "description": "Indicates the stage at which a user interface click action was performed." 
+        },
+        {
             "name": "successCount",
             "type": "int",
             "description": "The number of successful operations"
@@ -1757,6 +1807,11 @@
             "name": "userChoice",
             "type": "string",
             "description": "User selection from a predefined menu (not user-provided input). See also `action`."
+        },
+        {
+            "name": "userEnteredPromptMessage",
+            "type": "boolean",
+            "description": "True if user enter prompt message as input else false"
         },
         {
             "name": "userId",
@@ -2237,6 +2292,175 @@
                 {
                     "type": "result",
                     "required": false
+                }
+            ]
+        },
+        {
+            "name": "amazonq_unitTestGeneration",
+            "description": "Client side metrics of AmazonQ Unit Test Generation",
+            "metadata": [
+                {
+                    "type": "acceptedCharactersCount",
+                    "required": false
+                },
+                {
+                    "type": "acceptedCount",
+                    "required": false
+                },
+                {
+                    "type": "acceptedLinesCount",
+                    "required": false
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatProgrammingLanguage"
+                },
+                {
+                    "type": "executedCount",
+                    "required": false
+                },
+                {
+                    "type": "failedCount",
+                    "required": false
+                },
+                {
+                    "type": "generatedCharactersCount",
+                    "required": false
+                },
+                {
+                    "type": "generatedCount",
+                    "required": false
+                },
+                {
+                    "type": "generatedLinesCount",
+                    "required": false
+                },
+                {
+                    "type": "isSupportedLanguage"
+                },
+                {
+                    "type": "jobGroup",
+                    "required": false
+                },
+                {
+                    "type": "successCount",
+                    "required": false
+                },
+                {
+                    "type": "userEnteredPromptMessage"
+                }
+            ]
+        },
+        {
+            "name": "amazonq_utg_buildLoop",
+            "description": "Client side invocation of the AmazonQ Unit Test Generation build loop",
+            "metadata": [
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatProgrammingLanguage"
+                },
+                {
+                    "type": "isSupportedLanguage"
+                },
+                {
+                    "type": "jobGroup",
+                    "required": false
+                },
+                {
+                    "type": "jobId",
+                    "required": false
+                },
+                {
+                    "type": "perfClientLatency",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "userEnteredPromptMessage"
+                }
+            ]
+        },
+        {
+            "name": "amazonq_utg_generateTests",
+            "description": "Client side invocation of the AmazonQ Unit Test Generation",
+            "metadata": [
+                {
+                    "type": "acceptedCharactersCount",
+                    "required": false
+                },
+                {
+                    "type": "acceptedCount",
+                    "required": false
+                },
+                {
+                    "type": "acceptedLinesCount",
+                    "required": false
+                },
+                {
+                    "type": "artifactsUploadDuration",
+                    "required": false
+                },
+                {
+                    "type": "buildPayloadBytes",
+                    "required": false
+                },
+                {
+                    "type": "buildZipFileBytes",
+                    "required": false
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatProgrammingLanguage"
+                },
+                {
+                    "type": "generatedCharactersCount",
+                    "required": false
+                },
+                {
+                    "type": "generatedCount",
+                    "required": false
+                },
+                {
+                    "type": "generatedLinesCount",
+                    "required": false
+                },
+                {
+                    "type": "isSupportedLanguage"
+                },
+                {
+                    "type": "jobGroup",
+                    "required": false
+                },
+                {
+                    "type": "jobId", 
+                    "required": false
+                },
+                {
+                    "type": "perfClientLatency",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "userEnteredPromptMessage"
                 }
             ]
         },
@@ -7035,6 +7259,10 @@
             "metadata": [
                 {
                     "type": "elementId"
+                },
+                {
+                    "type": "step",
+                    "required": false
                 }
             ]
         },
