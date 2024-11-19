@@ -189,6 +189,9 @@
         "OS":{"shape":"Value"},
         "OSVersion":{"shape":"Value"},
         "ComputeEnv": {"shape":"ComputeEnv"},
+        "SessionId": {"shape":"SessionId"},
+        "userAgent": {"shape":"Value"},
+        "lspVersion": {"shape":"Value"},
         "ParentProduct":{"shape":"Value"},
         "ParentProductVersion":{"shape":"Value"},
         "Metadata":{"shape":"Metadata"},
@@ -212,6 +215,9 @@
         "OSArchitecture":{"shape":"Value"},
         "OSVersion":{"shape":"Value"},
         "ComputeEnv": {"shape":"ComputeEnv"},
+        "SessionId": {"shape":"SessionId"},
+        "userAgent": {"shape":"Value"},
+        "lspVersion": {"shape":"Value"},
         "ParentProduct":{"shape":"Value"},
         "ParentProductVersion":{"shape":"Value"},
         "MetricData":{"shape":"MetricData"}
@@ -223,6 +229,10 @@
         "Positive",
         "Negative"
       ]
+    },
+    "SessionId":{
+      "type":"string",
+      "pattern":"^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$"
     },
     "StackTrace":{
       "type":"string",
