@@ -1298,6 +1298,11 @@
             "description": "Whether the user has access to CodeWhisperer Chat"
         },
         {
+            "name": "hasLogEventFilterPattern",
+            "type": "boolean",
+            "description": "If LogEvent filter pattern is applied"
+        },
+        {
             "name": "hasTextFilter",
             "type": "boolean",
             "description": "A text based filter was used"
@@ -1437,6 +1442,11 @@
             "name": "locale",
             "type": "string",
             "description": "User locale. Examples: en-US, en-GB, etc."
+        },
+        {
+            "name": "logStreamFilterType",
+            "type": "string",
+            "description": "Type of LogStream filter applied to session"
         },
         {
             "name": "metricId",
@@ -1646,6 +1656,11 @@
             "name": "serviceType",
             "type": "string",
             "description": "The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json"
+        },
+        {
+            "name": "sessionAlreadyStarted",
+            "type": "boolean",
+            "description": "Session already open that matches new request"
         },
         {
             "name": "sessionDuration",
@@ -4992,6 +5007,48 @@
                 {
                     "type": "reason",
                     "required": false
+                }
+            ]
+        },
+        {
+            "name": "cwlLiveTail_Start",
+            "description": "When user starts a new LiveTail command",
+            "metadata": [
+                {
+                    "type": "hasLogEventFilterPattern",
+                    "required": false
+                },
+                {
+                    "type": "logStreamFilterType",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "sessionAlreadyStarted",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "cwlLiveTail_Stop",
+            "description": "When user stops a liveTailSession",
+            "metadata": [
+                {
+                    "type": "duration",
+                    "required": true
+                },
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "source",
+                    "required": true
                 }
             ]
         },
