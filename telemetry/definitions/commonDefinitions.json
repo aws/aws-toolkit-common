@@ -1782,6 +1782,21 @@
             "name": "xrayEnabled",
             "type": "boolean",
             "description": "Whether or not AWS X-Ray is enabled"
+        },
+        {
+            "name": "sessionAlreadyStarted",
+            "type": "boolean",
+            "description": "Session already open"
+        },
+        {
+            "name": "hasLogEventFilterPattern",
+            "type": "boolean",
+            "description": "If LogEvent filter pattern is applied"
+        },
+        {
+            "name": "logStreamFilterType",
+            "type": "string",
+            "description": "Type of LogStream filter applied to session"
         }
     ],
     "metrics": [
@@ -7080,6 +7095,42 @@
             "metadata": [
                 {
                     "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "cwlLiveTail_Start",
+            "description": "When user starts a new LiveTail command",
+            "metadata": [
+                {
+                    "type": "source",
+                    "required": true
+                },
+                {
+                    "type": "sessionAlreadyStarted",
+                    "required": true
+                },
+                {
+                    "type": "hasLogEventFilterPattern",
+                    "required": false
+                },
+                {
+                    "type": "logStreamFilterType",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "cwlLiveTail_Stop",
+            "description": "When user stops a liveTailSession",
+            "metadata": [
+                {
+                    "type": "source",
+                    "required": true
+                },
+                {
+                    "type": "duration",
+                    "required": true
                 }
             ]
         }
