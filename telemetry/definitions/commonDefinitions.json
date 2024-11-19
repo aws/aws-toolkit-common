@@ -5011,6 +5011,42 @@
             ]
         },
         {
+            "name": "cwlLiveTail_Start",
+            "description": "When user starts a new LiveTail command",
+            "metadata": [
+                {
+                    "type": "hasLogEventFilterPattern",
+                    "required": false
+                },
+                {
+                    "type": "logStreamFilterType",
+                    "required": false
+                },
+                {
+                    "type": "sessionAlreadyStarted",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "cwlLiveTail_Stop",
+            "description": "When user stops a liveTailSession",
+            "metadata": [
+                {
+                    "type": "duration",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
+                }
+            ]
+        },
+        {
             "name": "deeplink_open",
             "description": "User requested that a resource be opened in the browser using the deeplink service",
             "metadata": [
@@ -7095,42 +7131,6 @@
             "metadata": [
                 {
                     "type": "result"
-                }
-            ]
-        },
-        {
-            "name": "cwlLiveTail_Start",
-            "description": "When user starts a new LiveTail command",
-            "metadata": [
-                {
-                    "type": "hasLogEventFilterPattern",
-                    "required": false
-                },
-                {
-                    "type": "logStreamFilterType",
-                    "required": false
-                },
-                {
-                    "type": "sessionAlreadyStarted",
-                    "required": true
-                },
-                {
-                    "type": "source",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "cwlLiveTail_Stop",
-            "description": "When user stops a liveTailSession",
-            "metadata": [
-                {
-                    "type": "duration",
-                    "required": true
-                },
-                {
-                    "type": "source",
-                    "required": true
                 }
             ]
         }
