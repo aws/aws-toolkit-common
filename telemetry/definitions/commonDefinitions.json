@@ -1298,6 +1298,11 @@
             "description": "Whether the user has access to CodeWhisperer Chat"
         },
         {
+            "name": "hasLogEventFilterPattern",
+            "type": "boolean",
+            "description": "If LogEvent filter pattern is applied"
+        },
+        {
             "name": "hasTextFilter",
             "type": "boolean",
             "description": "A text based filter was used"
@@ -1437,6 +1442,11 @@
             "name": "locale",
             "type": "string",
             "description": "User locale. Examples: en-US, en-GB, etc."
+        },
+        {
+            "name": "logStreamFilterType",
+            "type": "string",
+            "description": "Type of LogStream filter applied to session"
         },
         {
             "name": "metricId",
@@ -1648,6 +1658,11 @@
             "description": "The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json"
         },
         {
+            "name": "sessionAlreadyStarted",
+            "type": "boolean",
+            "description": "Session already open that matches new request"
+        },
+        {
             "name": "sessionDuration",
             "type": "int",
             "description": "Length of time, in milliseconds, that an authentication session has lived for. Useful for determining how frequently a user has to reauthenticate."
@@ -1782,21 +1797,6 @@
             "name": "xrayEnabled",
             "type": "boolean",
             "description": "Whether or not AWS X-Ray is enabled"
-        },
-        {
-            "name": "sessionAlreadyStarted",
-            "type": "boolean",
-            "description": "Session already open"
-        },
-        {
-            "name": "hasLogEventFilterPattern",
-            "type": "boolean",
-            "description": "If LogEvent filter pattern is applied"
-        },
-        {
-            "name": "logStreamFilterType",
-            "type": "string",
-            "description": "Type of LogStream filter applied to session"
         }
     ],
     "metrics": [
@@ -7103,20 +7103,20 @@
             "description": "When user starts a new LiveTail command",
             "metadata": [
                 {
-                    "type": "source",
-                    "required": true
-                },
-                {
-                    "type": "sessionAlreadyStarted",
-                    "required": true
-                },
-                {
                     "type": "hasLogEventFilterPattern",
                     "required": false
                 },
                 {
                     "type": "logStreamFilterType",
                     "required": false
+                },
+                {
+                    "type": "sessionAlreadyStarted",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
                 }
             ]
         },
@@ -7125,11 +7125,11 @@
             "description": "When user stops a liveTailSession",
             "metadata": [
                 {
-                    "type": "source",
+                    "type": "duration",
                     "required": true
                 },
                 {
-                    "type": "duration",
+                    "type": "source",
                     "required": true
                 }
             ]
