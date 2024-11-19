@@ -5023,6 +5023,9 @@
                     "required": false
                 },
                 {
+                    "type": "result"
+                },
+                {
                     "type": "sessionAlreadyStarted",
                     "required": true
                 },
@@ -5039,6 +5042,9 @@
                 {
                     "type": "duration",
                     "required": true
+                },
+                {
+                    "type": "result"
                 },
                 {
                     "type": "source",
