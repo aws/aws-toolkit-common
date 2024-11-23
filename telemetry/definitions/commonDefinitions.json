@@ -1353,6 +1353,11 @@
             "description": "A time based filter was used"
         },
         {
+            "name": "hasUserPromptSupplied",
+            "type": "boolean",
+            "description": "True if user supplied prompt message as input else false"
+        },
+        {
             "name": "httpMethod",
             "type": "string",
             "description": "Any valid HTTP method (GET/HEAD/etc)"
@@ -1822,11 +1827,6 @@
             "name": "userChoice",
             "type": "string",
             "description": "User selection from a predefined menu (not user-provided input). See also `action`."
-        },
-        {
-            "name": "userEnteredPromptMessage",
-            "type": "boolean",
-            "description": "True if user enter prompt message as input else false"
         },
         {
             "name": "userId",
@@ -2354,6 +2354,9 @@
                     "required": false
                 },
                 {
+                    "type": "hasUserPromptSupplied"
+                },
+                {
                     "type": "isSupportedLanguage"
                 },
                 {
@@ -2363,9 +2366,6 @@
                 {
                     "type": "successCount",
                     "required": false
-                },
-                {
-                    "type": "userEnteredPromptMessage"
                 }
             ]
         },
@@ -2392,6 +2392,9 @@
                     "required": false
                 },
                 {
+                    "type": "hasUserPromptSupplied"
+                },
+                {
                     "type": "perfClientLatency",
                     "required": false
                 },
@@ -2402,9 +2405,6 @@
                 {
                     "type": "source",
                     "required": false
-                },
-                {
-                    "type": "userEnteredPromptMessage"
                 }
             ]
         },
@@ -2456,6 +2456,9 @@
                     "required": false
                 },
                 {
+                    "type": "hasUserPromptSupplied"
+                },
+                {
                     "type": "isSupportedLanguage"
                 },
                 {
@@ -2473,9 +2476,6 @@
                 {
                     "type": "source",
                     "required": false
-                },
-                {
-                    "type": "userEnteredPromptMessage"
                 }
             ]
         },
