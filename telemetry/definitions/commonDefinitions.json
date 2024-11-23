@@ -2381,6 +2381,9 @@
                     "type": "cwsprChatProgrammingLanguage"
                 },
                 {
+                    "type": "hasUserPromptSupplied"
+                },
+                {
                     "type": "isSupportedLanguage"
                 },
                 {
@@ -2390,9 +2393,6 @@
                 {
                     "type": "jobId",
                     "required": false
-                },
-                {
-                    "type": "hasUserPromptSupplied"
                 },
                 {
                     "type": "perfClientLatency",
