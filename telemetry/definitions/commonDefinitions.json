@@ -269,6 +269,24 @@
             ]
         },
         {
+            "name": "codeScanIssueFeedback",
+            "type": "string",
+            "description": "Captures the type of feedback that was given to a code scan issue",
+            "allowedValues": [
+                "liked",
+                "disliked"
+            ]
+        },
+        {
+            "name": "codeScanIssueObject",
+            "type": "string",
+            "description": "Code Scan object for which feedback is generated",
+            "allowedValues": [
+                "CodeScanIssueDescription",
+                "CodeScanIssueSuggestedFix"
+            ]
+        },
+        {
             "name": "codeScanServiceInvocationsDuration",
             "type": "int",
             "description": "Time taken to invoke code scan service APIs in milliseconds"
@@ -4497,6 +4515,30 @@
                 },
                 {
                     "type": "variant",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanIssueFeedback",
+            "description": "User feedback for a code scan issue and its suggested fix",
+            "metadata": [
+                {
+                    "type": "codeScanIssueObject"
+                },
+                {
+                    "type": "codeScanIssueFeedback"
+                },
+                {
+                    "type": "detectorId",
+                    "required": false
+                },
+                {
+                    "type": "findingId",
+                    "required": false
+                },
+                {
+                    "type": "ruleId",
                     "required": false
                 }
             ]
