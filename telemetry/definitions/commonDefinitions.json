@@ -441,16 +441,6 @@
             "description": "Represents the IDE session from which users start the transformation process"
         },
         {
-            "name": "codeTransformStartSrcComponents",
-            "type": "string",
-            "description": "Names of components that can start a transformation",
-            "allowedValues": [
-                "devToolsStartButton",
-                "bottomPanelSideNavButton",
-                "chatPrompt"
-            ]
-        },
-        {
             "name": "codeTransformStatus",
             "type": "string",
             "description": "The current transformation job's status"
@@ -3847,14 +3837,6 @@
                 {
                     "type": "codeTransformTotalByteSize",
                     "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
                 }
             ]
         },
@@ -3873,14 +3855,6 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": false
                 }
             ]
         },
@@ -3895,14 +3869,6 @@
                 {
                     "type": "credentialSourceId",
                     "required": false
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
                 }
             ]
         },
@@ -3912,7 +3878,7 @@
             "metadata": [
                 {
                     "type": "codeTransformCancelSrcComponents",
-                    "required": true
+                    "required": false
                 },
                 {
                     "type": "codeTransformRuntimeError",
@@ -4007,14 +3973,6 @@
                     "required": false
                 },
                 {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": false
-                },
-                {
                     "type": "source",
                     "required": false
                 }
@@ -4054,14 +4012,6 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
                 }
             ]
         },
@@ -4076,10 +4026,6 @@
                 },
                 {
                     "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "reason",
                     "required": true
                 }
             ]
@@ -4102,14 +4048,6 @@
                 },
                 {
                     "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
                     "required": true
                 },
                 {
@@ -4180,14 +4118,6 @@
                 {
                     "type": "codeTransformTotalByteSize",
                     "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
                 }
             ]
         },
@@ -4218,14 +4148,6 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
                 }
             ]
         },
@@ -4251,14 +4173,6 @@
                 },
                 {
                     "type": "codeTransformVCSViewerSrcComponents",
-                    "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
                     "required": true
                 },
                 {
