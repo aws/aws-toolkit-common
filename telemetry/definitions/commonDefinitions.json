@@ -3658,9 +3658,6 @@
                     "required": false
                 },
                 {
-                    "type": "result"
-                },
-                {
                     "type": "sessionAlreadyStarted",
                     "required": true
                 },
@@ -3674,13 +3671,6 @@
             "name": "cloudwatchlogs_stopLiveTail",
             "description": "When user stops a liveTailSession",
             "metadata": [
-                {
-                    "type": "duration",
-                    "required": true
-                },
-                {
-                    "type": "result"
-                },
                 {
                     "type": "source",
                     "required": true
