@@ -1280,6 +1280,16 @@
             "description": "Filename extension (examples: .txt, .yml, .yaml, .asl.yaml, ...), or empty string if the filename does not contain dot (.) between two chars."
         },
         {
+            "name": "filterType",
+            "type": "string",
+            "allowedValues": [
+                "all",
+                "prefix",
+                "specific"
+            ],
+            "description": "Type of filter applied"
+        },
+        {
             "name": "findingId",
             "type": "string",
             "description": "The id of a security finding from a code scan"
@@ -1326,11 +1336,6 @@
             "name": "hasChatAuth",
             "type": "boolean",
             "description": "Whether the user has access to CodeWhisperer Chat"
-        },
-        {
-            "name": "hasLogEventFilterPattern",
-            "type": "boolean",
-            "description": "If LogEvent filter pattern is applied"
         },
         {
             "name": "hasTextFilter",
@@ -1497,11 +1502,6 @@
             "name": "locale",
             "type": "string",
             "description": "User locale. Examples: en-US, en-GB, etc."
-        },
-        {
-            "name": "logStreamFilterType",
-            "type": "string",
-            "description": "Type of LogStream filter applied to session"
         },
         {
             "name": "metricId",
@@ -3787,6 +3787,38 @@
             ]
         },
         {
+            "name": "cloudwatchlogs_startLiveTail",
+            "description": "When user starts a new LiveTail command",
+            "metadata": [
+                {
+                    "type": "filterType",
+                    "required": false
+                },
+                {
+                    "type": "hasTextFilter",
+                    "required": false
+                },
+                {
+                    "type": "sessionAlreadyStarted",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "cloudwatchlogs_stopLiveTail",
+            "description": "When user stops a liveTailSession",
+            "metadata": [
+                {
+                    "type": "source",
+                    "required": true
+                }
+            ]
+        },
+        {
             "name": "cloudwatchlogs_tailStream",
             "description": "Tail stream off/on",
             "metadata": [
@@ -5072,48 +5104,6 @@
                 {
                     "type": "reason",
                     "required": false
-                }
-            ]
-        },
-        {
-            "name": "cwlLiveTail_Start",
-            "description": "When user starts a new LiveTail command",
-            "metadata": [
-                {
-                    "type": "hasLogEventFilterPattern",
-                    "required": false
-                },
-                {
-                    "type": "logStreamFilterType",
-                    "required": false
-                },
-                {
-                    "type": "result"
-                },
-                {
-                    "type": "sessionAlreadyStarted",
-                    "required": true
-                },
-                {
-                    "type": "source",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "cwlLiveTail_Stop",
-            "description": "When user stops a liveTailSession",
-            "metadata": [
-                {
-                    "type": "duration",
-                    "required": true
-                },
-                {
-                    "type": "result"
-                },
-                {
-                    "type": "source",
-                    "required": true
                 }
             ]
         },
