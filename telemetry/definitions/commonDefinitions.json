@@ -2381,10 +2381,6 @@
                 },
                 {
                     "type": "result"
-                },
-                {
-                    "type": "source",
-                    "required": false
                 }
             ]
         },
