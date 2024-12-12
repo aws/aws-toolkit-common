@@ -4064,6 +4064,10 @@
                     "required": false
                 },
                 {
+                    "type": "codeTransformJobId",
+                    "required": false
+                },
+                {
                     "type": "codeTransformRuntimeError",
                     "required": false
                 },
@@ -4212,6 +4216,10 @@
                     "required": false
                 },
                 {
+                    "type": "codeTransformJobId",
+                    "required": false
+                },
+                {
                     "type": "codeTransformProjectId",
                     "required": false
                 },
@@ -4275,6 +4283,10 @@
                 {
                     "type": "codeTransformDependenciesCopied",
                     "required": true
+                },
+                {
+                    "type": "codeTransformJobId",
+                    "required": false
                 },
                 {
                     "type": "codeTransformRunTimeLatency",
