@@ -2381,19 +2381,7 @@
                     "required": false
                 },
                 {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "reasonDesc",
-                    "required": false
-                },
-                {
                     "type": "result"
-                },
-                {
-                    "type": "source",
-                    "required": false
                 }
             ]
         },
