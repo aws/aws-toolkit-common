@@ -1688,7 +1688,8 @@
             "type": "string",
             "allowedValues": [
                 "MANUAL_SAVE",
-                "AUTO_SAVE"
+                "AUTO_SAVE",
+                "AUTO_SYNC"
             ],
             "description": "Type of save executed"
         },
