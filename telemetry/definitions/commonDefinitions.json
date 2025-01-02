@@ -421,9 +421,8 @@
             "allowedValues": [
                 "NoPom",
                 "NoJavaProject",
-                "MixedLanguages",
                 "UnsupportedJavaVersion",
-                "ProjectJDKDiffersFromBuildSystemJDK",
+                "JavaDowngradeAttempt",
                 "UnsupportedBuildSystem",
                 "EmptyProject",
                 "NonSsoLogin",
