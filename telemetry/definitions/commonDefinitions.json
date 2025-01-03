@@ -486,17 +486,6 @@
             "description": "A unique upload ID for S3"
         },
         {
-            "name": "codeTransformVCSViewerSrcComponents",
-            "type": "string",
-            "description": "Names of components that can initiate the diff viewer",
-            "allowedValues": [
-                "chat",
-                "toastNotification",
-                "treeView",
-                "treeViewHeader"
-            ]
-        },
-        {
             "name": "codewhispererAcceptedTokens",
             "type": "int",
             "description": "The number of tokens that are accepted and not modified by the user"
@@ -4330,36 +4319,6 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_viewArtifact",
-            "description": "User clicks to view downloaded artifact.",
-            "metadata": [
-                {
-                    "type": "codeTransformArtifactType",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformJobId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformStatus",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformVCSViewerSrcComponents",
-                    "required": true
-                },
-                {
-                    "type": "userChoice",
-                    "required": false
                 }
             ]
         },
