@@ -1434,6 +1434,11 @@
             "description": "True if user selected code snippet as input else false"
         },
         {
+            "name": "isFileInWorkspace",
+            "type": "boolean",
+            "description": "Indicate if the file is in the current workspace."
+        },
+        {
             "name": "isReAuth",
             "type": "boolean",
             "description": "If this was performed as part of the reauthentication flow."
@@ -2352,6 +2357,9 @@
                 {
                     "type": "isCodeBlockSelected",
                     "required": false
+                },
+                {
+                    "type": "isFileInWorkspace"
                 },
                 {
                     "type": "isSupportedLanguage"
