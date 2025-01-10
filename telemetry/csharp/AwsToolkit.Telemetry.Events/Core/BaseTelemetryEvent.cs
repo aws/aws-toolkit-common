@@ -26,10 +26,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Core
         public bool TrackPerformance = false;
 
         /// <summary>
-        /// Optional - The reason for a metric or exception depending on context. It describes a certain theme of errors usually the exception class name eg. FileIOException
-        /// This is often used in failure scenarios to provide additional details about why something failed.
+        /// Optional - Reason code or name for an event (when <see cref="Result"/>=Succeeded) or error (when <see cref="Result"/>=Failed).
+        /// Unlike the <see cref="ReasonDesc"/> field, this should be a stable/predictable name for
+        /// a class of events or errors (typically the exception name, e.g. FileIOException).
         /// </summary>
         public string Reason;
+
+        /// <summary>
+        /// Optional - Error message detail. May contain arbitrary message details (unlike the <see cref="Reason"/> field),
+        /// but should be truncated (recommendation: 200 chars).
+        /// </summary>
+        public string ReasonDescription;
 
         /// <summary>
         /// Optional - User-friendly error codes describing a failed operation
