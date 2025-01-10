@@ -56,6 +56,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -129,6 +130,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -198,6 +200,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -270,6 +273,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -333,6 +337,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -396,6 +401,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -459,6 +465,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -545,6 +552,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -608,6 +616,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -671,6 +680,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -749,6 +759,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -817,6 +828,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -923,6 +935,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -990,6 +1003,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1055,6 +1069,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1120,6 +1135,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1185,6 +1201,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1253,6 +1270,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1321,6 +1339,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1404,8 +1423,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("perfClientLatency", payload.PerfClientLatency.Value);
                 }
 
-                datum.AddMetadata("reasonDesc", payload.ReasonDesc);
-
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("source", payload.Source);
@@ -1455,6 +1472,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1516,6 +1534,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1577,6 +1596,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1654,6 +1674,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1719,6 +1740,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1780,6 +1802,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1846,6 +1869,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1907,6 +1931,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1968,6 +1993,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2029,6 +2055,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2092,6 +2119,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2153,6 +2181,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2220,6 +2249,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2281,6 +2311,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2342,6 +2373,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2407,6 +2439,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2466,6 +2499,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2525,6 +2559,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2586,6 +2621,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2649,6 +2685,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2710,6 +2747,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2773,6 +2811,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2836,6 +2875,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2899,6 +2939,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2962,6 +3003,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3021,6 +3063,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3084,6 +3127,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3145,6 +3189,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3204,6 +3249,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3267,6 +3313,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3333,6 +3380,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3392,6 +3440,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3453,6 +3502,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3514,6 +3564,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3575,6 +3626,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3634,6 +3686,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3693,6 +3746,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3781,6 +3835,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3854,6 +3909,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3913,6 +3969,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3972,6 +4029,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4035,6 +4093,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4123,6 +4182,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4184,6 +4244,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4243,6 +4304,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4306,6 +4368,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4367,6 +4430,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4430,6 +4494,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4489,6 +4554,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4554,6 +4620,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4615,6 +4682,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4676,6 +4744,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4739,6 +4808,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4800,6 +4870,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4896,6 +4967,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4963,6 +5035,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5026,6 +5099,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5087,6 +5161,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5152,6 +5227,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5177,8 +5253,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("credentialType", payload.CredentialType.Value);
                 }
-
-                datum.AddMetadata("reasonDesc", payload.ReasonDesc);
 
                 datum.AddMetadata("result", payload.Result);
 
@@ -5236,6 +5310,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5295,6 +5370,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5354,6 +5430,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5413,6 +5490,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5482,6 +5560,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5543,6 +5622,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5602,6 +5682,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5661,6 +5742,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5724,6 +5806,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5795,6 +5878,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5860,6 +5944,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5921,6 +6006,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5982,6 +6068,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6063,6 +6150,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6124,6 +6212,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6185,6 +6274,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6246,6 +6336,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6311,6 +6402,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6372,6 +6464,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6433,6 +6526,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6496,6 +6590,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6557,6 +6652,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6624,6 +6720,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6685,6 +6782,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6750,6 +6848,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6811,6 +6910,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6872,6 +6972,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6933,6 +7034,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6994,6 +7096,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7055,6 +7158,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7116,6 +7220,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7177,6 +7282,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7242,6 +7348,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7303,6 +7410,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7364,6 +7472,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7425,6 +7534,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7486,6 +7596,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7549,6 +7660,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7612,6 +7724,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7675,6 +7788,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7736,6 +7850,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7811,6 +7926,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7893,6 +8009,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7956,6 +8073,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8019,6 +8137,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8080,6 +8199,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8141,6 +8261,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8200,6 +8321,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8259,6 +8381,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8320,6 +8443,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8381,6 +8505,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8442,6 +8567,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8515,6 +8641,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8576,6 +8703,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8637,6 +8765,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8698,6 +8827,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8759,6 +8889,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8822,6 +8953,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8890,6 +9022,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8957,6 +9090,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9020,6 +9154,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9085,6 +9220,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9148,6 +9284,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9209,6 +9346,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9270,6 +9408,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9336,6 +9475,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9404,6 +9544,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9475,6 +9616,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9540,6 +9682,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9606,6 +9749,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9676,6 +9820,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9741,6 +9886,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9806,6 +9952,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9893,6 +10040,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9960,6 +10108,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10023,6 +10172,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10086,6 +10236,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10167,6 +10318,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10243,6 +10395,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10312,6 +10465,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10389,6 +10543,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10463,6 +10618,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10550,6 +10706,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10630,6 +10787,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10694,6 +10852,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10768,6 +10927,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10839,6 +10999,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10908,6 +11069,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10979,6 +11141,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11046,6 +11209,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11111,6 +11275,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11174,6 +11339,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11249,6 +11415,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11357,6 +11524,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11488,6 +11656,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11606,6 +11775,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11694,6 +11864,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11867,6 +12038,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11932,6 +12104,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11993,6 +12166,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12056,6 +12230,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12119,6 +12294,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12184,6 +12360,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12243,6 +12420,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12304,6 +12482,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12365,6 +12544,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12426,6 +12606,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12489,6 +12670,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12562,6 +12744,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12630,6 +12813,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12698,6 +12882,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12761,6 +12946,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12824,6 +13010,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12885,6 +13072,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12948,6 +13136,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13009,6 +13198,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13070,6 +13260,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13131,6 +13322,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13192,6 +13384,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13253,6 +13446,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13314,6 +13508,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13375,6 +13570,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13436,6 +13632,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13497,6 +13694,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13558,6 +13756,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13619,6 +13818,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13680,6 +13880,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13741,6 +13942,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13802,6 +14004,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13868,6 +14071,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13929,6 +14133,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13995,6 +14200,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14056,6 +14262,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14117,6 +14324,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14178,6 +14386,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14241,6 +14450,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14302,6 +14512,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14363,6 +14574,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14424,6 +14636,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14485,6 +14698,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14546,6 +14760,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14607,6 +14822,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14668,6 +14884,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14729,6 +14946,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14790,6 +15008,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14851,6 +15070,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14912,6 +15132,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14971,6 +15192,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15030,6 +15252,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15091,6 +15314,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15152,6 +15376,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15213,6 +15438,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15279,6 +15505,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15340,6 +15567,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15401,6 +15629,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15462,6 +15691,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15525,6 +15755,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15588,6 +15819,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15651,6 +15883,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15712,6 +15945,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15773,6 +16007,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15834,6 +16069,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15895,6 +16131,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15956,6 +16193,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16017,6 +16255,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16080,6 +16319,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16141,6 +16381,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16202,6 +16443,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16267,6 +16509,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16330,6 +16573,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16391,6 +16635,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16454,6 +16699,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16515,6 +16761,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16578,6 +16825,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16641,6 +16889,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16702,6 +16951,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16763,6 +17013,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16824,6 +17075,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16885,6 +17137,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16946,6 +17199,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17007,6 +17261,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17074,6 +17329,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17135,6 +17391,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17223,6 +17480,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17291,6 +17549,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17352,6 +17611,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17418,6 +17678,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17497,6 +17758,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17565,6 +17827,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17630,6 +17893,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17696,6 +17960,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17761,6 +18026,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17822,6 +18088,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17883,6 +18150,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17944,6 +18212,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18005,6 +18274,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18066,6 +18336,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18131,6 +18402,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18192,6 +18464,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18253,6 +18526,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18314,6 +18588,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18375,6 +18650,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18438,6 +18714,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18501,6 +18778,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18560,6 +18838,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18619,6 +18898,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18680,6 +18960,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18743,6 +19024,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18804,6 +19086,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18865,6 +19148,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18926,6 +19210,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18997,6 +19282,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19073,6 +19359,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19134,6 +19421,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19200,6 +19488,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19261,6 +19550,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19322,6 +19612,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19383,6 +19674,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19444,6 +19736,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19520,6 +19813,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19581,6 +19875,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19649,6 +19944,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19714,6 +20010,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19777,6 +20074,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19859,6 +20157,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19931,6 +20230,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19997,6 +20297,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20058,6 +20359,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20119,6 +20421,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20178,6 +20481,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20237,6 +20541,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20298,6 +20603,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20359,6 +20665,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20420,6 +20727,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20481,6 +20789,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20542,6 +20851,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20603,6 +20913,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20664,6 +20975,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20727,6 +21039,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20793,6 +21106,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20856,6 +21170,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20922,6 +21237,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20985,6 +21301,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21046,6 +21363,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21109,6 +21427,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21172,6 +21491,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21235,6 +21555,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21296,6 +21617,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21357,6 +21679,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21418,6 +21741,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21481,6 +21805,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21542,6 +21867,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21603,6 +21929,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21683,6 +22010,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21746,6 +22074,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21810,6 +22139,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21880,6 +22210,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21949,6 +22280,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22014,6 +22346,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22081,6 +22414,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22148,6 +22482,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22215,6 +22550,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22274,6 +22610,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22335,6 +22672,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22396,6 +22734,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22457,6 +22796,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22518,6 +22858,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22579,6 +22920,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsAccount", payload.AwsAccount);
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -25210,9 +25552,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The time duration in milliseconds to process an action on the client side
         public System.Double? PerfClientLatency;
         
-        /// Optional - Error message detail. May contain arbitrary message details (unlike the `reason` field), but should be truncated (recommendation: 200 chars).
-        public string ReasonDesc;
-        
         /// The result of the operation
         public Result Result;
         
@@ -26230,9 +26569,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The type of credential that was selected
         public CredentialType? CredentialType;
-        
-        /// Optional - Error message detail. May contain arbitrary message details (unlike the `reason` field), but should be truncated (recommendation: 200 chars).
-        public string ReasonDesc;
         
         /// The result of the operation
         public Result Result;
