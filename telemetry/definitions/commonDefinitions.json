@@ -1414,16 +1414,16 @@
             "description": "Language used for the project."
         },
         {
-            "name": "languageServerSetupStage",
-            "type": "string",
-            "allowedValues": ["getManifest", "getServer", "validate", "launch", "final"],
-            "description": "The stage of the LSP setup process"
-        },
-        {
             "name": "languageServerResourceLocation",
             "type": "string",
             "allowedValues": ["cache", "remote", "fallback", "override", "unknown"],
             "description": "The location of the LSP resource"
+        },
+        {
+            "name": "languageServerSetupStage",
+            "type": "string",
+            "allowedValues": ["getManifest", "getServer", "validate", "launch", "final"],
+            "description": "The stage of the LSP setup process"
         },
         {
             "name": "loadFileTime",
@@ -5993,12 +5993,12 @@
             "description": "LSP setup event",
             "metadata": [
                 {
-                    "type": "languageServerSetupStage",
-                    "required": true
-                },
-                {
                     "type": "languageServerResourceLocation",
                     "required": false
+                },
+                {
+                    "type": "languageServerSetupStage",
+                    "required": true
                 },
                 {
                     "type": "manifestVersion",
