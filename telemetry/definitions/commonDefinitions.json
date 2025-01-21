@@ -5763,13 +5763,13 @@
             "description": "Child Process warning due to high system usage", 
             "metadata": [ 
                 { 
-                    "type": "systemResource", 
-                    "required": true 
-                }, 
-                { 
                     "type": "childProcess", 
                     "required": true 
-                } 
+                },
+                { 
+                    "type": "systemResource", 
+                    "required": true 
+                }
             ] 
         }, 
         {
