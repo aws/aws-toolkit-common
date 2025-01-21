@@ -11,6 +11,7 @@ plugins {
     `maven-publish`
     signing
     alias(libs.plugins.nexus.publishing)
+    alias(libs.plugins.jlleitschuh.ktlint)
 }
 
 java {
@@ -38,13 +39,19 @@ dependencies {
     implementation(libs.kotlin.poet)
     implementation(libs.jackson.module.kotlin)
     implementation(libs.json.schema)
-    testImplementation(libs.junit4)
+
+    testImplementation(platform(libs.junit5.bom))
+    testImplementation(libs.junit5.jupiter)
     testImplementation(libs.assertj)
+
+    testRuntimeOnly(libs.junit5.launcher)
 }
 
 tasks {
     withType<KotlinCompile> {
-        compilerOptions.jvmTarget = JvmTarget.JVM_17
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_17
+        }
     }
 
     val validatePackagedSchema by registering {
@@ -104,6 +111,8 @@ tasks.withType<GenerateModuleMetadata> {
 }
 
 tasks.withType<Test> {
+    useJUnitPlatform()
+
     testLogging {
         exceptionFormat = TestExceptionFormat.FULL
     }
@@ -146,9 +155,10 @@ publishing {
 gradlePlugin { setAutomatedPublishing(false) }
 
 signing {
-    if (project.hasProperty("signing.keyId")
-        && project.hasProperty("signing.password")
-        && project.hasProperty("signing.secretKeyRingFile")) {
+    if (project.hasProperty("signing.keyId") &&
+        project.hasProperty("signing.password") &&
+        project.hasProperty("signing.secretKeyRingFile")
+    ) {
         sign(publishing.publications["mavenJava"])
     }
 }

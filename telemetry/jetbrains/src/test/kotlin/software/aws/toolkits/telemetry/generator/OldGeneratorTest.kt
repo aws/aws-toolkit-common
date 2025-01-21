@@ -3,32 +3,34 @@
 
 package software.aws.toolkits.telemetry.generator
 
+import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.assertThatThrownBy
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInfo
+import org.junit.jupiter.api.io.TempDir
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.Paths
 import kotlin.io.path.isRegularFile
 import kotlin.io.path.readText
 import kotlin.io.path.toPath
-import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.assertThatThrownBy
-import org.junit.Rule
-import org.junit.Test
-import org.junit.rules.TemporaryFolder
-import org.junit.rules.TestName
 
-class GeneratorTest {
-    @JvmField
-    @Rule
-    val folder = TemporaryFolder()
+class OldGeneratorTest {
+    @TempDir
+    private lateinit var folder: File
 
-    @Rule
-    @JvmField
-    val testName = TestName()
+    private lateinit var methodName: String
+
+    @BeforeEach
+    fun setUp(info: TestInfo) {
+        methodName = info.testMethod.get().name
+    }
 
     @Test
     fun generateFailsWhenValidationFails() {
         assertThatThrownBy {
-            generateTelemetryFromFiles(inputFiles = listOf(), defaultDefinitions = listOf("{}"), outputFolder = folder.root)
+            generateTelemetryFromFiles(inputFiles = listOf(), defaultDefinitions = listOf("{}"), outputFolder = folder)
         }.hasMessageContaining("required key [metrics] not found")
     }
 
@@ -49,7 +51,10 @@ class GeneratorTest {
 
     @Test
     fun generateOverrides() {
-        testGenerator(definitionsFile = "/resultGeneratesTwoFunctions/input.json", definitionsOverrides = listOf("/generateOverrides/overrideInput.json"))
+        testGenerator(
+            definitionsFile = "/resultGeneratesTwoFunctions/input.json",
+            definitionsOverrides = listOf("/generateOverrides/overrideInput.json"),
+        )
     }
 
     @Test
@@ -59,21 +64,28 @@ class GeneratorTest {
 
     @Test
     fun generateGeneratesWithDefaultDefinitions() {
-        generateTelemetryFromFiles(inputFiles = listOf(), outputFolder = folder.root)
-        val outputFile = Paths.get(folder.root.absolutePath, "software", "aws", "toolkits", "telemetry")
+        generateTelemetryFromFiles(inputFiles = listOf(), outputFolder = folder)
+        val outputFile = Paths.get(folder.absolutePath, "software", "aws", "toolkits", "telemetry")
         assertThat(Files.walk(outputFile).toList()).isNotEmpty
     }
 
     // inputPath and outputPath must be in test resources
-    private fun testGenerator(definitionsFile: String? = null, definitionsOverrides: List<String> = listOf()) {
-        val methodName = testName.methodName
+    private fun testGenerator(
+        definitionsFile: String? = null,
+        definitionsOverrides: List<String> = listOf(),
+    ) {
         generateTelemetryFromFiles(
-            defaultDefinitions = listOf(this.javaClass.getResourceAsStream(definitionsFile ?: "/$methodName/input.json").use { it.bufferedReader().readText() }),
+            defaultDefinitions =
+                listOf(
+                    this.javaClass.getResourceAsStream(definitionsFile ?: "/$methodName/input.json").use {
+                        it.bufferedReader().readText()
+                    },
+                ),
             inputFiles = definitionsOverrides.map { File(javaClass.getResource(it).toURI()) },
-            outputFolder = folder.root
+            outputFolder = folder,
         )
 
-        val outputRoot = Paths.get(folder.root.absolutePath)
+        val outputRoot = Paths.get(folder.absolutePath)
         val outputFiles = Files.walk(outputRoot).filter { it.isRegularFile() }.toList()
         val expectedRoot = this.javaClass.getResource("/$methodName").toURI().toPath().resolve("output")
         val expectedFiles = Files.walk(expectedRoot).filter { it.isRegularFile() }.toList()
