@@ -13,41 +13,70 @@ import org.json.JSONObject
 import org.json.JSONTokener
 import java.io.File
 
-enum class MetricMetadataTypes(@get:JsonValue val type: String) {
+enum class MetricMetadataTypes(
+    @get:JsonValue val type: String,
+) {
     STRING("string") {
         override fun kotlinType(): TypeName = com.squareup.kotlinpoet.STRING
+
+        override fun kotlinTypes() = listOf(kotlinType())
     },
     INT("int") {
         override fun kotlinType(): TypeName = com.squareup.kotlinpoet.LONG
+
+        override fun kotlinTypes() = listOf(com.squareup.kotlinpoet.LONG, com.squareup.kotlinpoet.INT)
     },
     DOUBLE("double") {
         override fun kotlinType(): TypeName = com.squareup.kotlinpoet.DOUBLE
+
+        override fun kotlinTypes() = listOf(com.squareup.kotlinpoet.FLOAT, com.squareup.kotlinpoet.DOUBLE)
     },
     BOOLEAN("boolean") {
         override fun kotlinType(): TypeName = com.squareup.kotlinpoet.BOOLEAN
-    };
+
+        override fun kotlinTypes() = listOf(kotlinType())
+    }, ;
 
     abstract fun kotlinType(): TypeName
+
+    abstract fun kotlinTypes(): Iterable<TypeName>
 }
 
 data class TelemetryMetricType(
     val name: String,
     val description: String,
     val type: MetricMetadataTypes = MetricMetadataTypes.STRING,
-    val allowedValues: List<Any>?
-)
+    val allowedValues: List<String>?,
+) {
+    private val clazz = name.toTypeFormat()
 
-enum class MetricUnit(@get:JsonValue val type: String) {
+    private val existsInKotlinStdlib by lazy {
+        try {
+            Class.forName("kotlin.$clazz")
+            true
+        } catch (_: ClassNotFoundException) {
+            false
+        }
+    }
+
+    val typeName by lazy {
+        if (existsInKotlinStdlib) "Metric$clazz" else clazz
+    }
+}
+
+enum class MetricUnit(
+    @get:JsonValue val type: String,
+) {
     NONE("None"),
     MILLISECONDS("Milliseconds"),
     BYTES("Bytes"),
     PERCENT("Percent"),
-    COUNT("Count")
+    COUNT("Count"),
 }
 
 private data class MetadataDefinition(
     val type: String,
-    val required: Boolean?
+    val required: Boolean?,
 )
 
 private data class MetricDefinition(
@@ -55,17 +84,17 @@ private data class MetricDefinition(
     val description: String,
     val unit: MetricUnit?,
     val metadata: List<MetadataDefinition> = listOf(),
-    val passive: Boolean = false
+    val passive: Boolean = false,
 )
 
 private data class TelemetryDefinition(
     val types: List<TelemetryMetricType> = listOf(),
-    val metrics: List<MetricDefinition>
+    val metrics: List<MetricDefinition>,
 )
 
 data class TelemetrySchema(
     val types: List<TelemetryMetricType>,
-    val metrics: List<MetricSchema>
+    val metrics: List<MetricSchema>,
 )
 
 data class MetricSchema(
@@ -73,14 +102,14 @@ data class MetricSchema(
     val description: String,
     val unit: MetricUnit?,
     val metadata: List<MetadataSchema>,
-    val passive: Boolean = false
+    val passive: Boolean = false,
 )
 
 fun MetricSchema.namespace() = name.split('_').first().toLowerCase()
 
 data class MetadataSchema(
     val type: TelemetryMetricType,
-    val required: Boolean?
+    val required: Boolean?,
 )
 
 object TelemetryParser {
@@ -94,44 +123,49 @@ object TelemetryParser {
      */
     fun parseFiles(
         defaultResourcesFiles: List<String>,
-        paths: List<File> = listOf()
+        paths: List<File> = listOf(),
     ): TelemetrySchema {
         val files = paths.map { it.readText() } + defaultResourcesFiles
         val rawSchema = JSONObject(JSONTokener(ResourceLoader.SCHEMA_FILE))
         val schema: Schema = SchemaLoader.load(rawSchema)
         files.forEach { validate(it, schema) }
 
-        val telemetryDefinition = files.map { parse(it) }.fold(TelemetryDefinition(listOf(), listOf())) { it, it2 ->
-            TelemetryDefinition(
-                it.types.plus(it2.types),
-                it.metrics.plus(it2.metrics)
-            )
-        }.let {
-            TelemetryDefinition(
-                it.types.distinctBy{ t -> t.name},
-                it.metrics.distinctBy { m -> m.name }
-            )
-        }
+        val telemetryDefinition =
+            files.map { parse(it) }.fold(TelemetryDefinition(listOf(), listOf())) { it, it2 ->
+                TelemetryDefinition(
+                    it.types.plus(it2.types),
+                    it.metrics.plus(it2.metrics),
+                )
+            }.let {
+                TelemetryDefinition(
+                    it.types.distinctBy { t -> t.name },
+                    it.metrics.distinctBy { m -> m.name },
+                )
+            }
 
         val metadataTypes = telemetryDefinition.types.associateBy { it.name }
 
-        val resolvedMetricTypes = telemetryDefinition.metrics.map {
-            MetricSchema(
-                it.name,
-                it.description,
-                it.unit,
-                it.metadata.map { metadata -> MetadataSchema(metadataTypes.getValue(metadata.type), metadata.required) },
-                it.passive
-            )
-        }
+        val resolvedMetricTypes =
+            telemetryDefinition.metrics.map {
+                MetricSchema(
+                    it.name,
+                    it.description,
+                    it.unit,
+                    it.metadata.map { metadata -> MetadataSchema(metadataTypes.getValue(metadata.type), metadata.required) },
+                    it.passive,
+                )
+            }
 
         return TelemetrySchema(
             telemetryDefinition.types,
-            resolvedMetricTypes
+            resolvedMetricTypes,
         )
     }
 
-    private fun validate(fileContents: String, schema: Schema) {
+    private fun validate(
+        fileContents: String,
+        schema: Schema,
+    ) {
         try {
             schema.validate(JSONObject(fileContents))
         } catch (e: Exception) {

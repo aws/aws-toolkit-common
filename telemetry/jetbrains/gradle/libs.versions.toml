@@ -1,11 +1,12 @@
 [versions]
 assertJ = "3.26.3"
 jackson = "2.17.2"
+jlleitschuh-ktlint = "12.1.1"
 # deprecated; should move to json-skema
 jsonSchema = "1.14.4"
-junit4 = "4.13.2"
+junit5 = "5.11.3"
 kotlin = "2.0.20"
-kotlin-poet = "1.18.1"
+kotlin-poet = "2.0.0"
 nexus = "2.0.0"
 
 [libraries]
@@ -13,8 +14,11 @@ assertj = { module = "org.assertj:assertj-core", version.ref = "assertJ" }
 kotlin-poet = { module = "com.squareup:kotlinpoet", version.ref = "kotlin-poet" }
 jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
 json-schema = { module = "com.github.erosb:everit-json-schema", version.ref = "jsonSchema" }
-junit4 = { module = "junit:junit", version.ref = "junit4" }
+junit5-bom = { module = "org.junit:junit-bom", version.ref = "junit5" }
+junit5-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
+junit5-launcher = { module = "org.junit.platform:junit-platform-launcher" }
 
 [plugins]
+jlleitschuh-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "jlleitschuh-ktlint" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 nexus-publishing = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexus" }

@@ -1,6 +1,21 @@
 {
     "types": [
         {
+            "name": "acceptedCharactersCount",
+            "type": "int",
+            "description": "The number of accepted characters"
+        },
+        {
+            "name": "acceptedCount",
+            "type": "int",
+            "description": "The number of accepted cases"
+        },
+        {
+            "name": "acceptedLinesCount",
+            "type": "int",
+            "description": "The number of accepted lines of code"
+        },
+        {
             "name": "action",
             "type": "string",
             "description": "Name of an action that was taken, displayed, etc. See also `userChoice`."
@@ -179,9 +194,19 @@
             "description": "The amount of time required for the build to complete (in seconds)."
         },
         {
+            "name": "buildPayloadBytes",
+            "type": "int",
+            "description": "The uncompressed payload size in bytes of the source files in customer project context"
+        },
+        {
             "name": "buildSystemVersion",
             "type": "string",
             "description": "The build system version on the user's machine"
+        },
+        {
+            "name": "buildZipFileBytes",
+            "type": "int",
+            "description": "The compressed payload size of source files in bytes of customer project context sent"
         },
         {
             "name": "causedBy",
@@ -260,6 +285,17 @@
             "allowedValues": [
                 "remote",
                 "local"
+            ]
+        },
+        {
+            "name": "codeFixAction",
+            "type": "string",
+            "description": "Captures the type of fix that was accepted",
+            "allowedValues": [
+                "openDiff",
+                "insertAtCursor",
+                "copyDiff",
+                "applyFix"
             ]
         },
         {
@@ -390,9 +426,8 @@
             "allowedValues": [
                 "NoPom",
                 "NoJavaProject",
-                "MixedLanguages",
                 "UnsupportedJavaVersion",
-                "ProjectJDKDiffersFromBuildSystemJDK",
+                "JavaDowngradeAttempt",
                 "UnsupportedBuildSystem",
                 "EmptyProject",
                 "NonSsoLogin",
@@ -435,16 +470,6 @@
             "description": "Represents the IDE session from which users start the transformation process"
         },
         {
-            "name": "codeTransformStartSrcComponents",
-            "type": "string",
-            "description": "Names of components that can start a transformation",
-            "allowedValues": [
-                "devToolsStartButton",
-                "bottomPanelSideNavButton",
-                "chatPrompt"
-            ]
-        },
-        {
             "name": "codeTransformStatus",
             "type": "string",
             "description": "The current transformation job's status"
@@ -463,17 +488,6 @@
             "name": "codeTransformUploadId",
             "type": "string",
             "description": "A unique upload ID for S3"
-        },
-        {
-            "name": "codeTransformVCSViewerSrcComponents",
-            "type": "string",
-            "description": "Names of components that can initiate the diff viewer",
-            "allowedValues": [
-                "chat",
-                "toastNotification",
-                "treeView",
-                "treeViewHeader"
-            ]
         },
         {
             "name": "codewhispererAcceptedTokens",
@@ -559,6 +573,8 @@
             "description": "The scope of the security scan being performed",
             "allowedValues": [
                 "FILE",
+                "FILE_AUTO",
+                "FILE_ON_DEMAND",
                 "PROJECT"
             ]
         },
@@ -890,7 +906,8 @@
                 "infobar",
                 "hover",
                 "webview",
-                "quickfix"
+                "quickfix",
+                "tree"
             ],
             "description": "The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...).  See also `featureId` for specific feature names, `module` for low-level modules, and `resourceType`."
         },
@@ -1136,7 +1153,8 @@
                 "remoteDesktop",
                 "ssh",
                 "scp",
-                "ssm"
+                "ssm",
+                "remoteWorkspace"
             ],
             "description": "Ways to connect to an EC2 Instance"
         },
@@ -1255,6 +1273,16 @@
             "description": "Filename extension (examples: .txt, .yml, .yaml, .asl.yaml, ...), or empty string if the filename does not contain dot (.) between two chars."
         },
         {
+            "name": "filterType",
+            "type": "string",
+            "allowedValues": [
+                "all",
+                "prefix",
+                "specific"
+            ],
+            "description": "Type of filter applied"
+        },
+        {
             "name": "findingId",
             "type": "string",
             "description": "The id of a security finding from a code scan"
@@ -1273,6 +1301,21 @@
             "name": "framework",
             "type": "string",
             "description": "Application framework being used"
+        },
+        {
+            "name": "generatedCharactersCount",
+            "type": "int",
+            "description": "Number of characters of code generated"
+        },
+        {
+            "name": "generatedCount",
+            "type": "int",
+            "description": "The number of generated cases"
+        },
+        {
+            "name": "generatedLinesCount",
+            "type": "int",
+            "description": "The number of generated lines of code"
         },
         {
             "name": "generateFailure",
@@ -1296,6 +1339,11 @@
             "name": "hasTimeFilter",
             "type": "boolean",
             "description": "A time based filter was used"
+        },
+        {
+            "name": "hasUserPromptSupplied",
+            "type": "boolean",
+            "description": "True if user supplied prompt message as input else false"
         },
         {
             "name": "httpMethod",
@@ -1386,6 +1434,16 @@
             "description": "Whether this was an individual point or an aggregation of points."
         },
         {
+            "name": "isCodeBlockSelected",
+            "type": "boolean",
+            "description": "True if user selected code snippet as input else false"
+        },
+        {
+            "name": "isFileInWorkspace",
+            "type": "boolean",
+            "description": "Indicate if the file is in the current workspace."
+        },
+        {
             "name": "isReAuth",
             "type": "boolean",
             "description": "If this was performed as part of the reauthentication flow."
@@ -1394,6 +1452,21 @@
             "name": "isRetry",
             "type": "boolean",
             "description": "Whether or not the operation was a retry"
+        },
+        {
+            "name": "isSupportedLanguage",
+            "type": "boolean",
+            "description": "Indicate if the language is supported"
+        },
+        {
+            "name": "jobGroup",
+            "type": "string",
+            "description": "Job group name used in the operation"
+        },
+        {
+            "name": "jobId",
+            "type": "string",
+            "description": "Job id used in the operation"
         },
         {
             "name": "lambdaArchitecture",
@@ -1482,6 +1555,21 @@
             "name": "pathsScrubbed",
             "type": "int",
             "description": "Number of generation paths modified"
+        },
+        {
+            "name": "perfClientLatency",
+            "type": "double",
+            "description": "The time duration in milliseconds to process an action on the client side"
+        },
+        {
+            "name": "perfE2ELatency",
+            "type": "double",
+            "description": "The time duration in milliseconds to complete an end to end flow"
+        },
+        {
+            "name": "perfServerLatency",
+            "type": "double",
+            "description": "The time duration in milliseconds to finish a request to the server side"
         },
         {
             "name": "platform",
@@ -1603,7 +1691,8 @@
             "type": "string",
             "allowedValues": [
                 "MANUAL_SAVE",
-                "AUTO_SAVE"
+                "AUTO_SAVE",
+                "AUTO_SYNC"
             ],
             "description": "Type of save executed"
         },
@@ -1626,6 +1715,11 @@
             "name": "serviceType",
             "type": "string",
             "description": "The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json"
+        },
+        {
+            "name": "sessionAlreadyStarted",
+            "type": "boolean",
+            "description": "Session already open that matches new request"
         },
         {
             "name": "sessionDuration",
@@ -1695,6 +1789,11 @@
             "type": "string",
             "allowedValues": ["cpu", "memory"],
             "description": "The system resource being measured"
+        },
+        {
+            "name": "target",
+            "type": "string",
+            "description": "The target of the operation"
         },
         {
             "name": "templateName",
@@ -2217,6 +2316,95 @@
                 },
                 {
                     "type": "result",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "amazonq_utgGenerateTests",
+            "description": "Client side invocation of the AmazonQ Unit Test Generation",
+            "metadata": [
+                {
+                    "type": "acceptedCharactersCount",
+                    "required": false
+                },
+                {
+                    "type": "acceptedCount",
+                    "required": false
+                },
+                {
+                    "type": "acceptedLinesCount",
+                    "required": false
+                },
+                {
+                    "type": "artifactsUploadDuration",
+                    "required": false
+                },
+                {
+                    "type": "buildPayloadBytes",
+                    "required": false
+                },
+                {
+                    "type": "buildZipFileBytes",
+                    "required": false
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatProgrammingLanguage"
+                },
+                {
+                    "type": "generatedCharactersCount",
+                    "required": false
+                },
+                {
+                    "type": "generatedCount",
+                    "required": false
+                },
+                {
+                    "type": "generatedLinesCount",
+                    "required": false
+                },
+                {
+                    "type": "hasUserPromptSupplied"
+                },
+                {
+                    "type": "isCodeBlockSelected",
+                    "required": false
+                },
+                {
+                    "type": "isFileInWorkspace"
+                },
+                {
+                    "type": "isSupportedLanguage"
+                },
+                {
+                    "type": "jobGroup",
+                    "required": false
+                },
+                {
+                    "type": "jobId",
+                    "required": false
+                },
+                {
+                    "type": "perfClientLatency",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "reasonDesc",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "source",
                     "required": false
                 }
             ]
@@ -2900,6 +3088,10 @@
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "sessionDuration",
+                    "required": false
                 },
                 {
                     "type": "source"
@@ -3608,6 +3800,38 @@
             ]
         },
         {
+            "name": "cloudwatchlogs_startLiveTail",
+            "description": "When user starts a new LiveTail command",
+            "metadata": [
+                {
+                    "type": "filterType",
+                    "required": false
+                },
+                {
+                    "type": "hasTextFilter",
+                    "required": false
+                },
+                {
+                    "type": "sessionAlreadyStarted",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "cloudwatchlogs_stopLiveTail",
+            "description": "When user stops a liveTailSession",
+            "metadata": [
+                {
+                    "type": "source",
+                    "required": true
+                }
+            ]
+        },
+        {
             "name": "cloudwatchlogs_tailStream",
             "description": "Tail stream off/on",
             "metadata": [
@@ -3809,14 +4033,6 @@
                 {
                     "type": "codeTransformTotalByteSize",
                     "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
                 }
             ]
         },
@@ -3835,14 +4051,6 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": false
                 }
             ]
         },
@@ -3857,14 +4065,6 @@
                 {
                     "type": "credentialSourceId",
                     "required": false
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
                 }
             ]
         },
@@ -3874,7 +4074,11 @@
             "metadata": [
                 {
                     "type": "codeTransformCancelSrcComponents",
-                    "required": true
+                    "required": false
+                },
+                {
+                    "type": "codeTransformJobId",
+                    "required": false
                 },
                 {
                     "type": "codeTransformRuntimeError",
@@ -3923,20 +4127,6 @@
             ]
         },
         {
-            "name": "codeTransform_jobIsStartedFromChatPrompt",
-            "description": "The user initiates a transform job from the Amazon Q chat prompt.",
-            "metadata": [
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "credentialSourceId",
-                    "required": false
-                }
-            ]
-        },
-        {
             "name": "codeTransform_jobStart",
             "description": "Transform job started for uploaded project.",
             "metadata": [
@@ -3966,14 +4156,6 @@
                 },
                 {
                     "type": "credentialSourceId",
-                    "required": false
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
                     "required": false
                 },
                 {
@@ -4016,14 +4198,6 @@
                 {
                     "type": "codeTransformSessionId",
                     "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
                 }
             ]
         },
@@ -4038,10 +4212,6 @@
                 },
                 {
                     "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "reason",
                     "required": true
                 }
             ]
@@ -4059,6 +4229,10 @@
                     "required": false
                 },
                 {
+                    "type": "codeTransformJobId",
+                    "required": false
+                },
+                {
                     "type": "codeTransformProjectId",
                     "required": false
                 },
@@ -4067,12 +4241,12 @@
                     "required": true
                 },
                 {
-                    "type": "reason",
+                    "type": "source",
                     "required": false
                 },
                 {
-                    "type": "result",
-                    "required": true
+                    "type": "target",
+                    "required": false
                 },
                 {
                     "type": "userChoice",
@@ -4124,6 +4298,10 @@
                     "required": true
                 },
                 {
+                    "type": "codeTransformJobId",
+                    "required": false
+                },
+                {
                     "type": "codeTransformRunTimeLatency",
                     "required": true
                 },
@@ -4133,14 +4311,6 @@
                 },
                 {
                     "type": "codeTransformTotalByteSize",
-                    "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
                     "required": true
                 }
             ]
@@ -4162,58 +4332,16 @@
                     "required": false
                 },
                 {
+                    "type": "codeTransformMetadata",
+                    "required": false
+                },
+                {
                     "type": "codeTransformPreValidationError",
                     "required": false
                 },
                 {
                     "type": "codeTransformSessionId",
                     "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "codeTransform_viewArtifact",
-            "description": "User clicks to view downloaded artifact.",
-            "metadata": [
-                {
-                    "type": "codeTransformArtifactType",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformJobId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformSessionId",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformStatus",
-                    "required": true
-                },
-                {
-                    "type": "codeTransformVCSViewerSrcComponents",
-                    "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": false
-                },
-                {
-                    "type": "result",
-                    "required": true
-                },
-                {
-                    "type": "userChoice",
-                    "required": false
                 }
             ]
         },
@@ -4338,8 +4466,45 @@
             "passive": true
         },
         {
+            "name": "codewhisperer_codeScanChatNewTab",
+            "description": "Called when a new chat tab is opened in the code scan view",
+            "metadata": [
+                {
+                    "type": "credentialSourceId",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "codewhisperer_codeScanIssueApplyFix",
             "description": "Called when a code scan issue suggested fix is applied",
+            "metadata": [
+                {
+                    "type": "codeFixAction",
+                    "required": false
+                },
+                {
+                    "type": "component"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "detectorId"
+                },
+                {
+                    "type": "findingId"
+                },
+                {
+                    "type": "ruleId",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanIssueGenerateFix",
+            "description": "Generated fix for a code scan issue. variant=refresh means the user chose to generate a fix again after one already exists.",
             "metadata": [
                 {
                     "type": "component"
@@ -4355,14 +4520,11 @@
                     "type": "findingId"
                 },
                 {
-                    "type": "reason",
+                    "type": "ruleId",
                     "required": false
                 },
                 {
-                    "type": "result"
-                },
-                {
-                    "type": "ruleId",
+                    "type": "variant",
                     "required": false
                 }
             ]
@@ -4386,6 +4548,33 @@
                 },
                 {
                     "type": "ruleId",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "codewhisperer_codeScanIssueIgnore",
+            "description": "User ignored a code scan issue. variant=all means the user ignored all issues of a specific type.",
+            "metadata": [
+                {
+                    "type": "component"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "detectorId"
+                },
+                {
+                    "type": "findingId"
+                },
+                {
+                    "type": "ruleId",
+                    "required": false
+                },
+                {
+                    "type": "variant",
                     "required": false
                 }
             ]
@@ -4543,6 +4732,10 @@
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "source",
+                    "required": false
                 }
             ]
         },
