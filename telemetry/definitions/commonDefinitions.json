@@ -1414,6 +1414,18 @@
             "description": "Language used for the project."
         },
         {
+            "name": "languageServerSetupStage",
+            "type": "string",
+            "allowedValues": ["getManifest", "getServer", "validate", "launch", "final"],
+            "description": "The stage of the LSP setup process"
+        },
+        {
+            "name": "languageServerResourceLocation",
+            "type": "string",
+            "allowedValues": ["cache", "remote", "fallback", "override", "unknown"],
+            "description": "The location of the LSP resource"
+        },
+        {
             "name": "loadFileTime",
             "type": "int",
             "description": "Time from opening Composer to loading the file"
@@ -1422,6 +1434,11 @@
             "name": "locale",
             "type": "string",
             "description": "User locale. Examples: en-US, en-GB, etc."
+        },
+        {
+            "name": "manifestVersion",
+            "type": "string",
+            "description": "The version of the manifest file"
         },
         {
             "name": "metricId",
@@ -5967,6 +5984,24 @@
                 },
                 {
                     "type": "runtime",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "languageServer_setup",
+            "description": "LSP setup event",
+            "metadata": [
+                {
+                    "type": "languageServerSetupStage",
+                    "required": true
+                },
+                {
+                    "type": "languageServerResourceLocation",
+                    "required": false
+                },
+                {
+                    "type": "manifestVersion",
                     "required": false
                 }
             ]
