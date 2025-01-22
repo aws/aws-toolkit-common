@@ -1293,11 +1293,6 @@
             "description": "Number of findings discovered after executing IAM Policy Checks"
         },
         {
-            "name": "fixGenerated",
-            "type": "boolean",
-            "description": "Whether a code fix request was able to generate a fix"
-        },
-        {
             "name": "fps",
             "type": "int",
             "description": "Average frames per second"
@@ -4530,7 +4525,7 @@
                     "type": "findingId"
                 },
                 {
-                    "type": "fixGenerated",
+                    "type": "includesFix",
                     "required": false
                 },
                 {
