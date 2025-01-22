@@ -6011,17 +6011,17 @@
                     "required": true
                 },
                 {
-                    "type": "version",
-                    "required": false
-                },
-                {
                     "type": "manifestLocation",
                     "required": false
                 },
                 {
                     "type": "manifestVersion",
                     "required": false
-                }
+                },
+                {
+                    "type": "version",
+                    "required": false
+                },
             ]
         },
         {
