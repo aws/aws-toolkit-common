@@ -6021,7 +6021,7 @@
                 {
                     "type": "version",
                     "required": false
-                },
+                }
             ]
         },
         {
