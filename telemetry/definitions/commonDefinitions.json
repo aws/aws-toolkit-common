@@ -1442,9 +1442,9 @@
             "description": "The location of the manifest"
         },
         {
-            "name": "manifestVersion",
+            "name": "manifestSchemaVersion",
             "type": "string",
-            "description": "The version of the manifest file"
+            "description": "The version of the manifest schema file"
         },
         {
             "name": "metricId",
@@ -6014,7 +6014,7 @@
                     "required": false
                 },
                 {
-                    "type": "manifestVersion",
+                    "type": "manifestSchemaVersion",
                     "required": false
                 },
                 {
