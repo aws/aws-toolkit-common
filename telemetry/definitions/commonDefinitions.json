@@ -5996,7 +5996,7 @@
         },
         {
             "name": "languageServer_setup",
-            "description": "LSP setup event",
+            "description": "Sets up a language server",
             "metadata": [
                 {
                     "type": "id"
