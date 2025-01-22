@@ -1422,7 +1422,7 @@
         {
             "name": "languageServerSetupStage",
             "type": "string",
-            "allowedValues": ["getManifest", "getServer", "validate", "launch", "handshake", "final"],
+            "allowedValues": ["getManifest", "getServer", "validate", "launch", "handshake", "all"],
             "description": "The stage of the LSP setup process"
         },
         {
@@ -5997,6 +5997,7 @@
         {
             "name": "languageServer_setup",
             "description": "Sets up a language server",
+            "passive": true,
             "metadata": [
                 {
                     "type": "id"
