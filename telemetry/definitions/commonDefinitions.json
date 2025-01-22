@@ -5999,16 +5999,14 @@
             "description": "LSP setup event",
             "metadata": [
                 {
-                    "type": "id",
-                    "required": true
+                    "type": "id"
                 },
                 {
                     "type": "languageServerLocation",
                     "required": false
                 },
                 {
-                    "type": "languageServerSetupStage",
-                    "required": true
+                    "type": "languageServerSetupStage"
                 },
                 {
                     "type": "manifestLocation",
