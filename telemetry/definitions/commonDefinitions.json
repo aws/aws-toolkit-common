@@ -1414,16 +1414,21 @@
             "description": "Language used for the project."
         },
         {
-            "name": "languageServerResourceLocation",
+            "name": "languageServerLocation",
             "type": "string",
             "allowedValues": ["cache", "remote", "fallback", "override", "unknown"],
-            "description": "The location of the LSP resource"
+            "description": "The location of the language server"
         },
         {
             "name": "languageServerSetupStage",
             "type": "string",
-            "allowedValues": ["getManifest", "getServer", "validate", "launch", "final"],
+            "allowedValues": ["getManifest", "getServer", "validate", "launch", "handshake", "final"],
             "description": "The stage of the LSP setup process"
+        },
+        {
+            "name": "languageServerVersion",
+            "type": "string",
+            "description": "The version of the language server"
         },
         {
             "name": "loadFileTime",
@@ -1434,6 +1439,12 @@
             "name": "locale",
             "type": "string",
             "description": "User locale. Examples: en-US, en-GB, etc."
+        },
+        {
+            "name": "manifestLocation",
+            "type": "string",
+            "allowedValues": ["cache", "remote", "fallback", "override", "unknown"],
+            "description": "The location of the manifest"
         },
         {
             "name": "manifestVersion",
@@ -5993,12 +6004,24 @@
             "description": "LSP setup event",
             "metadata": [
                 {
-                    "type": "languageServerResourceLocation",
+                    "type": "id",
+                    "required": true
+                },
+                {
+                    "type": "languageServerLocation",
                     "required": false
                 },
                 {
                     "type": "languageServerSetupStage",
                     "required": true
+                },
+                {
+                    "type": "languageServerVersion",
+                    "required": false
+                },
+                {
+                    "type": "manifestLocation",
+                    "required": false
                 },
                 {
                     "type": "manifestVersion",
