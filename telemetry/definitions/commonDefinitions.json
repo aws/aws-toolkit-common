@@ -1426,6 +1426,11 @@
             "description": "The stage of the LSP setup process"
         },
         {
+            "name": "languageServerVersion",
+            "type": "string",
+            "description": "The version of the language server"
+        },
+        {
             "name": "loadFileTime",
             "type": "int",
             "description": "Time from opening Composer to loading the file"
@@ -6018,7 +6023,7 @@
                     "required": false
                 },
                 {
-                    "type": "version",
+                    "type": "languageServerVersion",
                     "required": false
                 }
             ]
