@@ -6015,15 +6015,15 @@
                     "type": "languageServerSetupStage"
                 },
                 {
+                    "type": "languageServerVersion",
+                    "required": false
+                },
+                {
                     "type": "manifestLocation",
                     "required": false
                 },
                 {
                     "type": "manifestSchemaVersion",
-                    "required": false
-                },
-                {
-                    "type": "languageServerVersion",
                     "required": false
                 }
             ]
