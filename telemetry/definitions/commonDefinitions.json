@@ -6026,6 +6026,9 @@
                 {
                     "type": "manifestSchemaVersion",
                     "required": false
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
