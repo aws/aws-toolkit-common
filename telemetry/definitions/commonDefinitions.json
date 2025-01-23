@@ -1416,7 +1416,7 @@
         {
             "name": "languageServerLocation",
             "type": "string",
-            "allowedValues": ["cache", "remote", "fallback", "override", "unknown"],
+            "allowedValues": ["cache", "remote", "fallback", "override"],
             "description": "The location of the language server"
         },
         {
@@ -1443,7 +1443,7 @@
         {
             "name": "manifestLocation",
             "type": "string",
-            "allowedValues": ["cache", "remote", "fallback", "override", "unknown"],
+            "allowedValues": ["cache", "remote", "override"],
             "description": "The location of the manifest"
         },
         {
@@ -6003,6 +6003,7 @@
             "name": "languageServer_setup",
             "description": "Sets up a language server",
             "passive": true,
+            "unit": "Milliseconds",
             "metadata": [
                 {
                     "type": "id"
