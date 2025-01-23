@@ -159,6 +159,11 @@
             "description": "The type of auth flow used for signing in"
         },
         {
+            "name": "autoDetected",
+            "type": "boolean",
+            "description": "Whether the code issue was detected by auto-review"
+        },
+        {
             "name": "awsAccount",
             "type": "string",
             "description": "AWS account ID associated with a metric.\n- \"n/a\" if credentials are not available.\n- \"not-set\" if credentials are not selected.\n- \"invalid\" if account ID cannot be obtained."
@@ -4464,7 +4469,15 @@
             "description": "Called when a code scan issue suggested fix is applied",
             "metadata": [
                 {
+                    "type": "autoDetected",
+                    "required": false
+                },
+                {
                     "type": "codeFixAction",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanJobId",
                     "required": false
                 },
                 {
@@ -4491,6 +4504,14 @@
             "description": "Generated fix for a code scan issue. variant=refresh means the user chose to generate a fix again after one already exists.",
             "metadata": [
                 {
+                    "type": "autoDetected",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanJobId",
+                    "required": false
+                },
+                {
                     "type": "component"
                 },
                 {
@@ -4502,6 +4523,10 @@
                 },
                 {
                     "type": "findingId"
+                },
+                {
+                    "type": "includesFix",
+                    "required": false
                 },
                 {
                     "type": "ruleId",
