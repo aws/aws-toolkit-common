@@ -1877,8 +1877,8 @@
             "type": "string",
             "description": "User can click on thumbs up or thumbs down for feedback.",
             "allowedValues": [
-                "upvote",
-                "downvote"
+                "downvote",
+                "upvote"
             ]
         },
         {
