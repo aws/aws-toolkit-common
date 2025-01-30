@@ -1251,6 +1251,8 @@
             "description": "The id of the feature the user is interacting in. See also: `component`, `featureId`, `module`, `resourceType`.",
             "allowedValues": [
                 "amazonQ",
+                "amazonQTest",
+                "amazonQReview",
                 "awsExplorer",
                 "awsToolkit",
                 "codewhisperer",
@@ -1871,6 +1873,15 @@
             "description": "A generic version metadata"
         },
         {
+            "name": "vote",
+            "type": "string",
+            "description": "User can click on thumbs up or thumbs down for feedback.",
+            "allowedValues": [
+                "upvote",
+                "downvote"
+            ]
+        },
+        {
             "name": "workflowToken",
             "type": "string",
             "description": "A token used for flow metrics to link calls together"
@@ -1973,34 +1984,6 @@
                 },
                 {
                     "type": "result",
-                    "required": false
-                }
-            ]
-        },
-        {
-            "name": "amazonq_approachThumbsDown",
-            "description": "User clicked on the thumbs down button to say that they are unsatisfied",
-            "unit": "Count",
-            "metadata": [
-                {
-                    "type": "amazonqConversationId"
-                },
-                {
-                    "type": "credentialStartUrl",
-                    "required": false
-                }
-            ]
-        },
-        {
-            "name": "amazonq_approachThumbsUp",
-            "description": "User clicked on the thumbs up button, to mention that they are satisfied",
-            "unit": "Count",
-            "metadata": [
-                {
-                    "type": "amazonqConversationId"
-                },
-                {
-                    "type": "credentialStartUrl",
                     "required": false
                 }
             ]
@@ -2152,6 +2135,27 @@
                 },
                 {
                     "type": "credentialStartUrl",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "amazonq_feedback",
+            "description": "When a user gives feedback using vote or comment or rating in the conversation",
+            "metadata": [
+                {
+                    "type": "amazonqConversationId",
+                    "required": false
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "featureId"
+                },
+                {
+                    "type": "vote",
                     "required": false
                 }
             ]
