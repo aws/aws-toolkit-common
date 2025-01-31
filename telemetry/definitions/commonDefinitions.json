@@ -1426,6 +1426,15 @@
             "description": "User-selected time range type while starting an insights query"
         },
         {
+            "name": "interactionType",
+            "type": "string",
+            "description": "User can click on thumbs up / down or comment or give rating to share feedback.",
+            "allowedValues": [
+                "downvote",
+                "upvote"
+            ]
+        },
+        {
             "name": "invalidInputFields",
             "type": "string",
             "description": "Comma delimited list of input fields that user has invalid inputs typed. e.g. 'profileName,accessKey,startUrl'"
@@ -1873,15 +1882,6 @@
             "description": "A generic version metadata"
         },
         {
-            "name": "vote",
-            "type": "string",
-            "description": "User can click on thumbs up or thumbs down for feedback.",
-            "allowedValues": [
-                "downvote",
-                "upvote"
-            ]
-        },
-        {
             "name": "workflowToken",
             "type": "string",
             "description": "A token used for flow metrics to link calls together"
@@ -2155,7 +2155,7 @@
                     "type": "featureId"
                 },
                 {
-                    "type": "vote",
+                    "type": "interactionType",
                     "required": false
                 }
             ]
