@@ -1021,7 +1021,7 @@
                 "viewDiff"
             ],
             "type": "string",
-            "description": "Indicates the specific interaction type with a message in a conversation"
+            "description": "(Deprecated, use `interactionType` instead.) User interaction type, especially for AI-related features."
         },
         {
             "name": "cwsprChatMessageId",
@@ -1428,7 +1428,7 @@
         {
             "name": "interactionType",
             "type": "string",
-            "description": "User can click on thumbs up / down or comment or give rating to share feedback.",
+            "description": "User interaction, especially for AI-related features.",
             "allowedValues": [
                 "downvote",
                 "upvote"
