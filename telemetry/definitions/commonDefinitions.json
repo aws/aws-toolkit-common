@@ -1430,8 +1430,17 @@
             "type": "string",
             "description": "User interaction, especially for AI-related features.",
             "allowedValues": [
+                "acceptDiff",
+                "insertAtCursor",
+                "copySnippet",
+                "copy",
+                "clickLink",
+                "clickFollowUp",
+                "hoverReference",
+                "upvote",
                 "downvote",
-                "upvote"
+                "clickBodyLink",
+                "viewDiff"
             ]
         },
         {
