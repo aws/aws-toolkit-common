@@ -58,6 +58,7 @@ namespace Test
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -118,6 +119,7 @@ namespace Test
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -178,6 +180,7 @@ namespace Test
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -246,6 +249,7 @@ namespace Test
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -314,6 +318,7 @@ namespace Test
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -391,6 +396,7 @@ namespace Test
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -451,6 +457,7 @@ namespace Test
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
