@@ -39,6 +39,13 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Core
         public string ReasonDescription;
 
         /// <summary>
+        /// The source of the operation. This answers 'who' caused/triggered the operation.
+        /// Example: did an Auth signout happen because of some expiration or since the user
+        /// explicitly clicked the signout button.
+        /// </summary>
+        public string Source;
+
+        /// <summary>
         /// Optional - User-friendly error codes describing a failed operation
         /// This is often used in failure scenarios to provide additional details about why something failed.
         /// </summary>
