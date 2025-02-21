@@ -136,6 +136,7 @@ const commonMetadata = [
     'requestId',
     'requestServiceType',
     'result',
+    'source',
 ] as const
 
 /**

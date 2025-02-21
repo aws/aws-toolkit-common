@@ -30,6 +30,8 @@ export interface MetricBase {
     readonly requestServiceType?: string
     /** The result of the operation */
     readonly result?: Result
+    /** The source of the operation. This answers 'who' caused/triggered the operation. Example: did an Auth signout happen because of some expiration or since the user explicitly clicked the signout button. */
+    readonly source?: string
     /** A flag indicating that the metric was not caused by the user. */
     readonly passive?: boolean
     /** @deprecated Arbitrary "value" of the metric. */
