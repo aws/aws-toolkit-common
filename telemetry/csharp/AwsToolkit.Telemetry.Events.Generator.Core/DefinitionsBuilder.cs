@@ -27,6 +27,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Core
         {
             "reason",
             "reasonDesc",
+            "source",
             "errorCode",
             "causedBy",
             "httpStatusCode",
@@ -439,6 +440,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generator.Core
             var payloadReasonDescription = new CodeFieldReferenceExpression(payload, "ReasonDescription");
             tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
                 new CodePrimitiveExpression("reasonDesc"), payloadReasonDescription)));
+
+            // Generate: datum.AddMetadata("source", payload.Source);
+            var payloadSource = new CodeFieldReferenceExpression(payload, "Source");
+            tryStatements.Add(new CodeExpressionStatement(new CodeMethodInvokeExpression(datumAddData,
+                new CodePrimitiveExpression("source"), payloadSource)));
 
             // Generate: datum.AddMetadata("errorCode", payload.ErrorCode);
             var payloadErrorCode = new CodeFieldReferenceExpression(payload, "ErrorCode");
