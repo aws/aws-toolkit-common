@@ -26,9 +26,20 @@ _types_ is an array that holds telemetry metadata types. This is the information
 
 ### Metrics
 
-_metrics_ is an array that contains the actual metrics posted to the service. `name` defines the metric name what is
-posted to the service, `metadata` contains data from `types` that define characteristics of the telemetry beyond
-`createTime` and a `value`. `name` must be in the format`namespace_camelCaseName` (e.g. `s3_uploadObject`). The field is optional.
+_metrics_ is an array that contains the actual metrics posted to the service.
+- `name` defines the metric name
+  - it must be in the format `namespace_camelCaseName` (e.g. `s3_objectUpload`).
+  - it must be in the format `{namespace}_{noun}{Verb}` (eg: `toolkit_moduleInit`)
+  - Common Namespaces:
+    - `toolkit_` is for general non-feature-specific metrics created by the toolkit. Eg: `toolkit_moduleOpen`
+    - `ide_` is for IDE specific metrics, not controlled by our extension. Eg: `ide_editorOpen`
+  - NOTE: due to legacy reasons the above spec may not be followed, but all future definitions must follow it.
+- `description` explains what the metric means
+  - put effort to explaining the metrics purpose in detail. This tends to be the source of truth for
+    what the metric actually means and how it should be used.
+- `metadata` contains data from `types` that define characteristics of the telemetry beyond
+`createTime` and a `value`.
+  - This field is optional, but default `types` are automatically added regardless.
 
 ```
 "metrics": [
