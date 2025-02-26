@@ -30,16 +30,16 @@ _metrics_ is an array that contains the actual metrics posted to the service.
 - `name` defines the metric name
   - it must be in the format `namespace_camelCaseName` (e.g. `s3_objectUpload`).
   - it must be in the format `{namespace}_{noun}{Verb}` (eg: `toolkit_moduleInit`)
+    - This format enables a natural grouping of related metrics in our definitions file, as well as improved searchability.
   - Common Namespaces:
     - `toolkit_` is for general non-feature-specific metrics created by the toolkit. Eg: `toolkit_moduleOpen`
     - `ide_` is for IDE specific metrics, not controlled by our extension. Eg: `ide_editorOpen`
-  - NOTE: due to legacy reasons the above spec may not be followed, but all future definitions must follow it.
+  - NOTE: legacy metrics don't always follow the above rules, but new definitions must follow them.
 - `description` explains what the metric means
-  - put effort to explaining the metrics purpose in detail. This tends to be the source of truth for
-    what the metric actually means and how it should be used.
-- `metadata` contains data from `types` that define characteristics of the telemetry beyond
-`createTime` and a `value`.
-  - This field is optional, but default `types` are automatically added regardless.
+  - put effort to explaining the metrics purpose in detail. This tends to be the source of truth for what the metric actually means and how it should be used.
+  - if a metric is deprecated, it must be indicated here
+- `metadata` contains fields (`types`) that define characteristics of the telemetry beyond `createTime` and a `value`.
+  - This field is optional, but default fields (`types`) are always present on generated metrics.
 
 ```
 "metrics": [
