@@ -7156,7 +7156,7 @@
         },
         {
             "name": "toolkit_moduleClose",
-            "description": "The user closed 'something' (specified by 'module'). Examples: a view, feature, resource, ...",
+            "description": "The module has closed/terminated. Use this when the module is done being used.",
             "metadata": [
                 {
                     "type": "module",
@@ -7166,8 +7166,8 @@
             "passive": true
         },
         {
-            "name": "toolkit_moduleInit",
-            "description": "The Toolkit has completed initialization for the specified module.",
+            "name": "toolkit_moduleLoad",
+            "description": "The module has loaded, i.e it has rendered/resolved/finished. Use this after `toolkit_moduleOpen` to indicate success.",
             "metadata": [
                 {
                     "type": "attempts",
@@ -7194,7 +7194,7 @@
         },
         {
             "name": "toolkit_moduleOpen",
-            "description": "User opened 'something' (specified by 'module'). Examples: a view, feature, resource, ...",
+            "description": "The opening of a module **started**. This does not imply it successfully finished, use `toolkit_moduleLoad` for that. The open/load separation exists because it may be difficult to capture then entire process in a single metric. A 'module' is a general term that represents things like: a view, feature, resource, ... ",
             "metadata": [
                 {
                     "type": "module",
