@@ -991,6 +991,16 @@
             "description": "Uniquely identifies a message with which the user interacts."
         },
         {
+            "name": "cwsprChatFileContextCount",
+            "type": "int",
+            "description": "Number of files manually added to context"
+        },
+        {
+            "name": "cwsprChatFolderContextCount",
+            "type": "int",
+            "description": "Number of folders manually added to context"
+        },
+        {
             "name": "cwsprChatHasProjectContext",
             "type": "boolean",
             "description": "true if query has project level context, false otherwise."
@@ -1032,6 +1042,16 @@
             "name": "cwsprChatProgrammingLanguage",
             "type": "string",
             "description": "Programming language associated with the message"
+        },
+        {
+            "name": "cwsprChatPromptContextCount",
+            "type": "int",
+            "description": "Number of saved prompts manually added to context"
+        },
+        {
+            "name": "cwsprChatRuleContextCount",
+            "type": "int",
+            "description": "Number of workspace rules automatically added to context"
         },
         {
             "name": "cwsprChatTotalCodeBlocks",
@@ -1514,13 +1534,25 @@
         {
             "name": "languageServerLocation",
             "type": "string",
-            "allowedValues": ["cache", "remote", "fallback", "override"],
+            "allowedValues": [
+                "cache",
+                "remote",
+                "fallback",
+                "override"
+            ],
             "description": "The location of the language server"
         },
         {
             "name": "languageServerSetupStage",
             "type": "string",
-            "allowedValues": ["getManifest", "getServer", "validate", "launch", "handshake", "all"],
+            "allowedValues": [
+                "getManifest",
+                "getServer",
+                "validate",
+                "launch",
+                "handshake",
+                "all"
+            ],
             "description": "The stage of the LSP setup process"
         },
         {
@@ -1541,7 +1573,11 @@
         {
             "name": "manifestLocation",
             "type": "string",
-            "allowedValues": ["cache", "remote", "override"],
+            "allowedValues": [
+                "cache",
+                "remote",
+                "override"
+            ],
             "description": "The location of the manifest"
         },
         {
@@ -2194,6 +2230,14 @@
                     "required": true
                 },
                 {
+                    "type": "cwsprChatFileContextCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatFolderContextCount",
+                    "required": false
+                },
+                {
                     "type": "cwsprChatHasProjectContext",
                     "required": false
                 },
@@ -2215,6 +2259,14 @@
                 },
                 {
                     "type": "cwsprChatProgrammingLanguage",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatPromptContextCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatRuleContextCount",
                     "required": false
                 },
                 {
