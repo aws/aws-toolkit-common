@@ -2127,10 +2127,6 @@
             ]
         },
         {
-            "name": "amazonq_createSavedPrompt",
-            "description": "When a saved user prompt is created"
-        },
-        {
             "name": "amazonq_createUpload",
             "description": "Captures createUploadUrl invocation process",
             "metadata": [
