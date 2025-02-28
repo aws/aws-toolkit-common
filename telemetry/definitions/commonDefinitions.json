@@ -1959,6 +1959,106 @@
             ]
         },
         {
+            "name": "amazonq_addMessage",
+            "description": "When a message is added to the conversation",
+            "metadata": [
+                {
+                    "type": "cwsprChatConversationId"
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatMessageId"
+                },
+                {
+                    "type": "cwsprChatTriggerInteraction"
+                },
+                {
+                    "type": "cwsprChatUserIntent",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatHasCodeSnippet",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatProgrammingLanguage",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatActiveEditorTotalCharacters",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatActiveEditorImportCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatResponseCodeSnippetCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatResponseCode"
+                },
+                {
+                    "type": "cwsprChatSourceLinkCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatReferencesCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatFollowUpCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatTimeToFirstChunk"
+                },
+                {
+                    "type": "cwsprChatTimeBetweenChunks"
+                },
+                {
+                    "type": "cwsprChatFullResponseLatency"
+                },
+                {
+                    "type": "cwsprChatTimeToFirstUsableChunk"
+                },
+                {
+                    "type": "cwsprChatFullServerResponseLatency"
+                },
+                {
+                    "type": "cwsprChatTimeToFirstDisplay"
+                },
+                {
+                    "type": "cwsprChatFullDisplayLatency"
+                },
+                {
+                    "type": "cwsprChatTimeBetweenDisplays"
+                },
+                {
+                    "type": "cwsprChatRequestLength"
+                },
+                {
+                    "type": "cwsprChatResponseLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatConversationType"
+                },
+                {
+                    "type": "cwsprChatHasProjectContext",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCustomizationArn",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "amazonq_approachInvoke",
             "description": "Captures Approach generation process",
             "metadata": [
