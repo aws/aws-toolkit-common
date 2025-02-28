@@ -4670,6 +4670,10 @@
             "description": "Called when a code scan issue is hovered over",
             "metadata": [
                 {
+                    "type": "autoDetected",
+                    "required": false
+                },
+                {
                     "type": "credentialStartUrl",
                     "required": false
                 },
@@ -4692,6 +4696,10 @@
             "name": "codewhisperer_codeScanIssueIgnore",
             "description": "User ignored a code scan issue. variant=all means the user ignored all issues of a specific type.",
             "metadata": [
+                {
+                    "type": "autoDetected",
+                    "required": false
+                },
                 {
                     "type": "component"
                 },
@@ -4719,6 +4727,10 @@
             "name": "codewhisperer_codeScanIssueViewDetails",
             "description": "Called when a code scan issue webview is opened",
             "metadata": [
+                {
+                    "type": "autoDetected",
+                    "required": false
+                },
                 {
                     "type": "credentialStartUrl",
                     "required": false
