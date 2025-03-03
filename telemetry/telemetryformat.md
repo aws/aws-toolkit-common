@@ -28,12 +28,12 @@ _types_ is an array that holds telemetry metadata types. This is the information
 
 _metrics_ is an array that contains the actual metrics posted to the service.
 - `name` defines the metric name
-  - it must be in the format `namespace_camelCaseName` (e.g. `s3_objectUpload`).
-  - it must be in the format `{namespace}_{noun}{Verb}` (eg: `toolkit_moduleInit`)
-    - This format enables a natural grouping of related metrics in our definitions file, as well as improved searchability.
+  - it must be in the format `{namespace}_{did|will| }{verb}{Noun}` (eg: `toolkit_willOpenModule`, `toolkit_didLoadModule`, `toolkit_closeModule`)
+    - This format aligns with legacy names while standardizing conventions for new names going forward, though we might have chosen differently if starting from scratch.
+  - the part after the namespace must be in camelCase. `namespace_camelCaseName` (e.g. `s3_uploadObject`).
   - Common Namespaces:
-    - `toolkit_` is for general non-feature-specific metrics created by the toolkit. Eg: `toolkit_moduleOpen`
-    - `ide_` is for IDE specific metrics, not controlled by our extension. Eg: `ide_editorOpen`
+    - `toolkit_` is for general non-feature-specific metrics created by the toolkit. Eg: `toolkit_openModule`
+    - `ide_` is for IDE specific metrics, not controlled by our extension. Eg: `ide_openEditor`
   - NOTE: legacy metrics don't always follow the above rules, but new definitions must follow them.
 - `description` explains what the metric means
   - put effort to explaining the metrics purpose in detail. This tends to be the source of truth for what the metric actually means and how it should be used.
