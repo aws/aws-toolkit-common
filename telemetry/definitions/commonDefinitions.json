@@ -7124,12 +7124,39 @@
             ]
         },
         {
-            "name": "toolkit_closeModule",
-            "description": "The user closed 'something' (specified by 'module'). Examples: a view, feature, resource, ...",
+            "name": "toolkit_didCloseModule",
+            "description": "The module has closed/terminated. Use this when the module is done being used.",
             "metadata": [
                 {
                     "type": "module",
                     "required": true
+                }
+            ],
+            "passive": true
+        },
+        {
+            "name": "toolkit_didLoadModule",
+            "description": "The module has loaded, i.e it has rendered/resolved/finished. Use this after `toolkit_willOpenModule` to indicate success.",
+            "metadata": [
+                {
+                    "type": "attempts",
+                    "required": false
+                },
+                {
+                    "type": "duration",
+                    "required": false
+                },
+                {
+                    "type": "module",
+                    "required": true
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "version",
+                    "required": false
                 }
             ],
             "passive": true
@@ -7200,33 +7227,6 @@
             "passive": true
         },
         {
-            "name": "toolkit_initModule",
-            "description": "The Toolkit has completed initialization for the specified module.",
-            "metadata": [
-                {
-                    "type": "attempts",
-                    "required": false
-                },
-                {
-                    "type": "duration",
-                    "required": false
-                },
-                {
-                    "type": "module",
-                    "required": true
-                },
-                {
-                    "type": "result",
-                    "required": true
-                },
-                {
-                    "type": "version",
-                    "required": false
-                }
-            ],
-            "passive": true
-        },
-        {
             "name": "toolkit_invokeAction",
             "description": "User invoked an action. `source` is the notification that produced the action",
             "metadata": [
@@ -7255,25 +7255,6 @@
                     "required": true
                 }
             ]
-        },
-        {
-            "name": "toolkit_openModule",
-            "description": "User opened 'something' (specified by 'module'). Examples: a view, feature, resource, ...",
-            "metadata": [
-                {
-                    "type": "module",
-                    "required": true
-                },
-                {
-                    "type": "result",
-                    "required": true
-                },
-                {
-                    "type": "source",
-                    "required": true
-                }
-            ],
-            "passive": true
         },
         {
             "name": "toolkit_showAction",
@@ -7354,6 +7335,25 @@
         {
             "name": "toolkit_viewLogs",
             "description": "View logs for the toolkit"
+        },
+        {
+            "name": "toolkit_willOpenModule",
+            "description": "The opening of a module **started**. This does not imply it successfully finished, use `toolkit_didLoadModule` for that. The open/load separation exists because it may be difficult to capture then entire process in a single metric. A 'module' is a general term that represents things like: a view, feature, resource, ... ",
+            "metadata": [
+                {
+                    "type": "module",
+                    "required": true
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
+                }
+            ],
+            "passive": true
         },
         {
             "name": "ui_click",
