@@ -7136,7 +7136,7 @@
         },
         {
             "name": "toolkit_didLoadModule",
-            "description": "The module has loaded, i.e it has rendered/resolved/finished. Use this after `toolkit_willOpenModule` to indicate success.",
+            "description": "The module has loaded, i.e it has rendered/resolved/finished. You can use this metric by itself, OR after `toolkit_willOpenModule` + `traceId` to close the loop on an asynchronous operation.",
             "metadata": [
                 {
                     "type": "attempts",
@@ -7338,7 +7338,7 @@
         },
         {
             "name": "toolkit_willOpenModule",
-            "description": "The opening of a module **started**. This does not imply it successfully finished, use `toolkit_didLoadModule` for that. The open/load separation exists because it may be difficult to capture then entire process in a single metric. A 'module' is a general term that represents things like: a view, feature, resource, ... ",
+            "description": "Indicates a module opening attempt began, not its successful completion. For load confirmation, use `toolkit_didLoadModule` with matching `traceId`. This separation handles asynchronous processes that can't be captured in a single metric. 'Module' refers to components like views, features, resources, etc.",
             "metadata": [
                 {
                     "type": "module",
