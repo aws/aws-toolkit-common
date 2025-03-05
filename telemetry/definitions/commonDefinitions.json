@@ -1380,6 +1380,11 @@
             "description": "HTTP status code for the request (if any) associated with a metric."
         },
         {
+            "name": "iac",
+            "type": "string",
+            "description": "The IaC being used"
+        },
+        {
             "name": "iamResourceType",
             "type": "string",
             "allowedValues": [
@@ -6198,6 +6203,21 @@
                 {
                     "type": "variant",
                     "required": false
+                }
+            ]
+        },
+        {
+            "name": "lambda_createServerlessLandProject",
+            "description": "Called when creating a new Serverless Project",
+            "metadata": [
+                {
+                    "type": "iac"
+                },
+                {
+                    "type": "runtimeString"
+                },
+                {
+                    "type": "templateName"
                 }
             ]
         },
