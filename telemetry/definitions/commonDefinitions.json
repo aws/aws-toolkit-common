@@ -81,7 +81,9 @@
             "description": "The intent of the upload",
             "allowedValues": [
                 "TRANSFORMATION",
-                "TASK_ASSIST_PLANNING"
+                "TASK_ASSIST_PLANNING",
+                "AUTOMATIC_FILE_SECURITY_SCAN",
+                "FULL_PROJECT_SECURITY_SCAN"
             ]
         },
         {
@@ -991,6 +993,16 @@
             "description": "Uniquely identifies a message with which the user interacts."
         },
         {
+            "name": "cwsprChatFileContextCount",
+            "type": "int",
+            "description": "Number of files manually added to context"
+        },
+        {
+            "name": "cwsprChatFolderContextCount",
+            "type": "int",
+            "description": "Number of folders manually added to context"
+        },
+        {
             "name": "cwsprChatHasProjectContext",
             "type": "boolean",
             "description": "true if query has project level context, false otherwise."
@@ -1032,6 +1044,16 @@
             "name": "cwsprChatProgrammingLanguage",
             "type": "string",
             "description": "Programming language associated with the message"
+        },
+        {
+            "name": "cwsprChatPromptContextCount",
+            "type": "int",
+            "description": "Number of saved prompts manually added to context"
+        },
+        {
+            "name": "cwsprChatRuleContextCount",
+            "type": "int",
+            "description": "Number of workspace rules automatically added to context"
         },
         {
             "name": "cwsprChatTotalCodeBlocks",
@@ -1358,6 +1380,11 @@
             "description": "HTTP status code for the request (if any) associated with a metric."
         },
         {
+            "name": "iac",
+            "type": "string",
+            "description": "The IaC being used"
+        },
+        {
             "name": "iamResourceType",
             "type": "string",
             "allowedValues": [
@@ -1514,13 +1541,25 @@
         {
             "name": "languageServerLocation",
             "type": "string",
-            "allowedValues": ["cache", "remote", "fallback", "override"],
+            "allowedValues": [
+                "cache",
+                "remote",
+                "fallback",
+                "override"
+            ],
             "description": "The location of the language server"
         },
         {
             "name": "languageServerSetupStage",
             "type": "string",
-            "allowedValues": ["getManifest", "getServer", "validate", "launch", "handshake", "all"],
+            "allowedValues": [
+                "getManifest",
+                "getServer",
+                "validate",
+                "launch",
+                "handshake",
+                "all"
+            ],
             "description": "The stage of the LSP setup process"
         },
         {
@@ -1541,7 +1580,11 @@
         {
             "name": "manifestLocation",
             "type": "string",
-            "allowedValues": ["cache", "remote", "override"],
+            "allowedValues": [
+                "cache",
+                "remote",
+                "override"
+            ],
             "description": "The location of the manifest"
         },
         {
@@ -2205,6 +2248,14 @@
                     "required": true
                 },
                 {
+                    "type": "cwsprChatFileContextCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatFolderContextCount",
+                    "required": false
+                },
+                {
                     "type": "cwsprChatHasProjectContext",
                     "required": false
                 },
@@ -2226,6 +2277,14 @@
                 },
                 {
                     "type": "cwsprChatProgrammingLanguage",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatPromptContextCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatRuleContextCount",
                     "required": false
                 },
                 {
@@ -4646,6 +4705,34 @@
             ]
         },
         {
+            "name": "codewhisperer_codeScanIssueDetected",
+            "description": "Called when a code scan issue is returned from the service",
+            "metadata": [
+                {
+                    "type": "autoDetected",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanJobId",
+                    "required": false
+                },
+                {
+                    "type": "detectorId"
+                },
+                {
+                    "type": "findingId"
+                },
+                {
+                    "type": "includesFix",
+                    "required": false
+                },
+                {
+                    "type": "ruleId",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "codewhisperer_codeScanIssueGenerateFix",
             "description": "Generated fix for a code scan issue. variant=refresh means the user chose to generate a fix again after one already exists.",
             "metadata": [
@@ -4689,6 +4776,10 @@
             "description": "Called when a code scan issue is hovered over",
             "metadata": [
                 {
+                    "type": "autoDetected",
+                    "required": false
+                },
+                {
                     "type": "credentialStartUrl",
                     "required": false
                 },
@@ -4711,6 +4802,10 @@
             "name": "codewhisperer_codeScanIssueIgnore",
             "description": "User ignored a code scan issue. variant=all means the user ignored all issues of a specific type.",
             "metadata": [
+                {
+                    "type": "autoDetected",
+                    "required": false
+                },
                 {
                     "type": "component"
                 },
@@ -4738,6 +4833,10 @@
             "name": "codewhisperer_codeScanIssueViewDetails",
             "description": "Called when a code scan issue webview is opened",
             "metadata": [
+                {
+                    "type": "autoDetected",
+                    "required": false
+                },
                 {
                     "type": "credentialStartUrl",
                     "required": false
@@ -6155,6 +6254,21 @@
             ]
         },
         {
+            "name": "lambda_createServerlessLandProject",
+            "description": "Called when creating a new Serverless Project",
+            "metadata": [
+                {
+                    "type": "iac"
+                },
+                {
+                    "type": "runtimeString"
+                },
+                {
+                    "type": "templateName"
+                }
+            ]
+        },
+        {
             "name": "lambda_delete",
             "description": "called when deleting lambdas remotely",
             "unit": "None",
@@ -7079,12 +7193,39 @@
             ]
         },
         {
-            "name": "toolkit_closeModule",
-            "description": "The user closed 'something' (specified by 'module'). Examples: a view, feature, resource, ...",
+            "name": "toolkit_didCloseModule",
+            "description": "The module has closed/terminated. Use this when the module is done being used.",
             "metadata": [
                 {
                     "type": "module",
                     "required": true
+                }
+            ],
+            "passive": true
+        },
+        {
+            "name": "toolkit_didLoadModule",
+            "description": "The module has loaded, i.e it has rendered/resolved/finished. You can use this metric by itself, OR after `toolkit_willOpenModule` + `traceId` to close the loop on an asynchronous operation.",
+            "metadata": [
+                {
+                    "type": "attempts",
+                    "required": false
+                },
+                {
+                    "type": "duration",
+                    "required": false
+                },
+                {
+                    "type": "module",
+                    "required": true
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "version",
+                    "required": false
                 }
             ],
             "passive": true
@@ -7155,33 +7296,6 @@
             "passive": true
         },
         {
-            "name": "toolkit_initModule",
-            "description": "The Toolkit has completed initialization for the specified module.",
-            "metadata": [
-                {
-                    "type": "attempts",
-                    "required": false
-                },
-                {
-                    "type": "duration",
-                    "required": false
-                },
-                {
-                    "type": "module",
-                    "required": true
-                },
-                {
-                    "type": "result",
-                    "required": true
-                },
-                {
-                    "type": "version",
-                    "required": false
-                }
-            ],
-            "passive": true
-        },
-        {
             "name": "toolkit_invokeAction",
             "description": "User invoked an action. `source` is the notification that produced the action",
             "metadata": [
@@ -7210,25 +7324,6 @@
                     "required": true
                 }
             ]
-        },
-        {
-            "name": "toolkit_openModule",
-            "description": "User opened 'something' (specified by 'module'). Examples: a view, feature, resource, ...",
-            "metadata": [
-                {
-                    "type": "module",
-                    "required": true
-                },
-                {
-                    "type": "result",
-                    "required": true
-                },
-                {
-                    "type": "source",
-                    "required": true
-                }
-            ],
-            "passive": true
         },
         {
             "name": "toolkit_showAction",
@@ -7309,6 +7404,25 @@
         {
             "name": "toolkit_viewLogs",
             "description": "View logs for the toolkit"
+        },
+        {
+            "name": "toolkit_willOpenModule",
+            "description": "Indicates a module opening attempt began, not its successful completion. For load confirmation, use `toolkit_didLoadModule` with matching `traceId`. This separation handles asynchronous processes that can't be captured in a single metric. 'Module' refers to components like views, features, resources, etc.",
+            "metadata": [
+                {
+                    "type": "module",
+                    "required": true
+                },
+                {
+                    "type": "result",
+                    "required": true
+                },
+                {
+                    "type": "source",
+                    "required": true
+                }
+            ],
+            "passive": true
         },
         {
             "name": "ui_click",
