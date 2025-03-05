@@ -4686,6 +4686,34 @@
             ]
         },
         {
+            "name": "codewhisperer_codeScanIssueDetected",
+            "description": "Called when a code scan issue is returned from the service",
+            "metadata": [
+                {
+                    "type": "autoDetected",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanJobId",
+                    "required": false
+                },
+                {
+                    "type": "detectorId"
+                },
+                {
+                    "type": "findingId"
+                },
+                {
+                    "type": "includesFix",
+                    "required": false
+                },
+                {
+                    "type": "ruleId",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "codewhisperer_codeScanIssueGenerateFix",
             "description": "Generated fix for a code scan issue. variant=refresh means the user chose to generate a fix again after one already exists.",
             "metadata": [
