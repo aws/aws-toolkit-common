@@ -1814,6 +1814,17 @@
             "description": "Date/time that an SSO client registration expires."
         },
         {
+            "name": "status",
+            "type": "string",
+            "allowedValues": [
+                "ACCEPTED",
+                "CANCELLED",
+                "FAILED",
+                "REJECTED"
+            ],
+            "description": "This field helps to emit the status of the operation."
+        },
+        {
             "name": "successCount",
             "type": "int",
             "description": "The number of successful operations"
@@ -2431,6 +2442,10 @@
                     "type": "result"
                 },
                 {
+                    "type": "status",
+                    "required": false
+                },
+                {
                     "type": "update",
                     "required": false
                 }
@@ -2521,6 +2536,10 @@
                 },
                 {
                     "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "status",
                     "required": false
                 }
             ]
