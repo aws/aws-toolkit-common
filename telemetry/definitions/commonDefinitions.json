@@ -1708,6 +1708,7 @@
                 "validate",
                 "launch",
                 "handshake",
+                "initialized",
                 "all"
             ],
             "description": "The stage of the LSP setup process"
