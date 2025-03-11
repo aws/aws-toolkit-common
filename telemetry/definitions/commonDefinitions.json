@@ -983,6 +983,16 @@
             "description": "Count of lines of code copied to the editor"
         },
         {
+            "name": "cwsprChatActiveEditorImportCount",
+            "type": "int",
+            "description": "Number of import statements in the active editor"
+        },
+        {
+            "name": "cwsprChatActiveEditorTotalCharacters",
+            "type": "int",
+            "description": "Total number of characters in the active editor"
+        },
+        {
             "name": "cwsprChatCodeBlockIndex",
             "type": "int",
             "description": "Index of the code block inside a message in the conversation."
@@ -993,14 +1003,64 @@
             "description": "Uniquely identifies a message with which the user interacts."
         },
         {
+            "name": "cwsprChatConversationType",
+            "type": "string",
+            "allowedValues": [
+                "Chat",
+                "Assign",
+                "Transform"
+            ],
+            "description": "Identifies the type of conversation"
+        },
+        {
             "name": "cwsprChatFileContextCount",
             "type": "int",
             "description": "Number of files manually added to context"
         },
         {
+            "name": "cwsprChatFileContextLength",
+            "type": "int",
+            "description": "Total length of files added to context"
+        },
+        {
+            "name": "cwsprChatFileContextTruncatedLength",
+            "type": "int",
+            "description": "Truncated length of files added to context"
+        },
+        {
             "name": "cwsprChatFolderContextCount",
             "type": "int",
             "description": "Number of folders manually added to context"
+        },
+        {
+            "name": "cwsprChatFollowUpCount",
+            "type": "int",
+            "description": "Number of follow ups in response"
+        },
+        {
+            "name": "cwsprChatFullDisplayLatency",
+            "type": "int",
+            "description": "The time between the user pressing enter and the entire response being rendered"
+        },
+        {
+            "name": "cwsprChatFullResponseLatency",
+            "type": "int",
+            "description": "The time between when the conversation id was created and the final response from the server was received"
+        },
+        {
+            "name": "cwsprChatFullServerResponseLatency",
+            "type": "int",
+            "description": "The time between the initial server request, including creating the conversation id, and the final response from the server"
+        },
+        {
+            "name": "cwsprChatHasCodeSnippet",
+            "type": "boolean",
+            "description": "true if user has selected code snippet, false otherwise."
+        },
+        {
+            "name": "cwsprChatHasContextList",
+            "type": "boolean",
+            "description": "true if context list is displayed to user"
         },
         {
             "name": "cwsprChatHasProjectContext",
@@ -1046,9 +1106,49 @@
             "description": "Programming language associated with the message"
         },
         {
+            "name": "cwsprChatProjectContextQueryMs",
+            "type": "int",
+            "description": "query latency in ms for local project context"
+        },
+        {
             "name": "cwsprChatPromptContextCount",
             "type": "int",
             "description": "Number of saved prompts manually added to context"
+        },
+        {
+            "name": "cwsprChatPromptContextLength",
+            "type": "int",
+            "description": "Total length of saved prompts added to context"
+        },
+        {
+            "name": "cwsprChatPromptContextTruncatedLength",
+            "type": "int",
+            "description": "Truncated length of saved prompts added to context"
+        },
+        {
+            "name": "cwsprChatReferencesCount",
+            "type": "int",
+            "description": "Number of references in response"
+        },
+        {
+            "name": "cwsprChatRequestLength",
+            "type": "int",
+            "description": "Number of characters in request"
+        },
+        {
+            "name": "cwsprChatResponseCode",
+            "type": "int",
+            "description": "HTTP response code for message API invocation"
+        },
+        {
+            "name": "cwsprChatResponseCodeSnippetCount",
+            "type": "int",
+            "description": "Number of code snippets in response"
+        },
+        {
+            "name": "cwsprChatResponseLength",
+            "type": "int",
+            "description": "Number of characters in response"
         },
         {
             "name": "cwsprChatRuleContextCount",
@@ -1056,9 +1156,59 @@
             "description": "Number of workspace rules automatically added to context"
         },
         {
+            "name": "cwsprChatRuleContextLength",
+            "type": "int",
+            "description": "Total length of workspace rules added to context"
+        },
+        {
+            "name": "cwsprChatRuleContextTruncatedLength",
+            "type": "int",
+            "description": "Truncated length of workspace rules added to context"
+        },
+        {
+            "name": "cwsprChatSourceLinkCount",
+            "type": "int",
+            "description": "Number of links in response"
+        },
+        {
+            "name": "cwsprChatTimeBetweenChunks",
+            "type": "string",
+            "description": "An array of time when successive chunks of data are received from the server"
+        },
+        {
+            "name": "cwsprChatTimeBetweenDisplays",
+            "type": "string",
+            "description": "An array of time when successive chunks of server responses are displayed to the user"
+        },
+        {
+            "name": "cwsprChatTimeToFirstChunk",
+            "type": "int",
+            "description": "The time between when the conversation id was created and when we got back the first usable result"
+        },
+        {
+            "name": "cwsprChatTimeToFirstDisplay",
+            "type": "int",
+            "description": "The time between the user pressing enter and when the first chunk of data is displayed to the user"
+        },
+        {
+            "name": "cwsprChatTimeToFirstUsableChunk",
+            "type": "int",
+            "description": "The time between the initial server request, including creating the conversation id, and the first usable result"
+        },
+        {
             "name": "cwsprChatTotalCodeBlocks",
             "type": "int",
             "description": "Total number of code blocks inside a message in the conversation."
+        },
+        {
+            "name": "cwsprChatTriggerInteraction",
+            "type": "string",
+            "allowedValues": [
+                "hotkeys",
+                "click",
+                "contextMenu"
+            ],
+            "description": "Identifies the specific interaction that opens the chat panel"
         },
         {
             "name": "cwsprChatUserIntent",
@@ -2009,6 +2159,154 @@
                 },
                 {
                     "type": "result"
+                }
+            ]
+        },
+        {
+            "name": "amazonq_addMessage",
+            "description": "When a message is added to the conversation",
+            "metadata": [
+                {
+                    "type": "codewhispererCustomizationArn",
+                    "required": false
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatActiveEditorImportCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatActiveEditorTotalCharacters",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatConversationId"
+                },
+                {
+                    "type": "cwsprChatConversationType"
+                },
+                {
+                    "type": "cwsprChatFileContextCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatFileContextLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatFileContextTruncatedLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatFolderContextCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatFollowUpCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatFullDisplayLatency"
+                },
+                {
+                    "type": "cwsprChatFullResponseLatency"
+                },
+                {
+                    "type": "cwsprChatFullServerResponseLatency"
+                },
+                {
+                    "type": "cwsprChatHasCodeSnippet",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatHasContextList",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatHasProjectContext",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatMessageId"
+                },
+                {
+                    "type": "cwsprChatProgrammingLanguage",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatProjectContextQueryMs",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatPromptContextCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatPromptContextLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatPromptContextTruncatedLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatReferencesCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatRequestLength"
+                },
+                {
+                    "type": "cwsprChatResponseCode"
+                },
+                {
+                    "type": "cwsprChatResponseCodeSnippetCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatResponseLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatRuleContextCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatRuleContextLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatRuleContextTruncatedLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatSourceLinkCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatTimeBetweenChunks"
+                },
+                {
+                    "type": "cwsprChatTimeBetweenDisplays"
+                },
+                {
+                    "type": "cwsprChatTimeToFirstChunk"
+                },
+                {
+                    "type": "cwsprChatTimeToFirstDisplay"
+                },
+                {
+                    "type": "cwsprChatTimeToFirstUsableChunk"
+                },
+                {
+                    "type": "cwsprChatTriggerInteraction"
+                },
+                {
+                    "type": "cwsprChatUserIntent",
+                    "required": false
                 }
             ]
         },
