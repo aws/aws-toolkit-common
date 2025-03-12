@@ -2210,13 +2210,15 @@
                     "required": false
                 },
                 {
-                    "type": "cwsprChatFullDisplayLatency"
+                    "type": "cwsprChatFullDisplayLatency",
+                    "required": false
                 },
                 {
                     "type": "cwsprChatFullResponseLatency"
                 },
                 {
-                    "type": "cwsprChatFullServerResponseLatency"
+                    "type": "cwsprChatFullServerResponseLatency",
+                    "required": false
                 },
                 {
                     "type": "cwsprChatHasCodeSnippet",
@@ -2291,16 +2293,19 @@
                     "type": "cwsprChatTimeBetweenChunks"
                 },
                 {
-                    "type": "cwsprChatTimeBetweenDisplays"
+                    "type": "cwsprChatTimeBetweenDisplays",
+                    "required": false
                 },
                 {
                     "type": "cwsprChatTimeToFirstChunk"
                 },
                 {
-                    "type": "cwsprChatTimeToFirstDisplay"
+                    "type": "cwsprChatTimeToFirstDisplay",
+                    "required": false
                 },
                 {
-                    "type": "cwsprChatTimeToFirstUsableChunk"
+                    "type": "cwsprChatTimeToFirstUsableChunk",
+                    "required": false
                 },
                 {
                     "type": "cwsprChatTriggerInteraction"
