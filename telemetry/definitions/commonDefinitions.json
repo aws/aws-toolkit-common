@@ -2220,14 +2220,6 @@
                     "type": "cwsprChatConversationType"
                 },
                 {
-                    "type": "cwsprChatCurrentFileContextLength",
-                    "required": false
-                },
-                {
-                    "type": "cwsprChatCurrentFileContextTruncatedLength",
-                    "required": false
-                },
-                {
                     "type": "cwsprChatFileContextCount",
                     "required": false
                 },
@@ -2237,6 +2229,14 @@
                 },
                 {
                     "type": "cwsprChatFileContextTruncatedLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatFocusFileContextLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatFocusFileContextTruncatedLength",
                     "required": false
                 },
                 {
