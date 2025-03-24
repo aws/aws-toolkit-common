@@ -1013,16 +1013,6 @@
             "description": "Identifies the type of conversation"
         },
         {
-            "name": "cwsprChatFocusFileContextLength",
-            "type": "int",
-            "description": "Total length of current focus file added to context"
-        },
-        {
-            "name": "cwsprChatFocusFileContextTruncatedLength",
-            "type": "int",
-            "description": "Truncated length of current focus file added to context"
-        },
-        {
             "name": "cwsprChatFileContextCount",
             "type": "int",
             "description": "Number of files manually added to context"
@@ -1036,6 +1026,16 @@
             "name": "cwsprChatFileContextTruncatedLength",
             "type": "int",
             "description": "Truncated length of files added to context"
+        },
+        {
+            "name": "cwsprChatFocusFileContextLength",
+            "type": "int",
+            "description": "Total length of current focus file added to context"
+        },
+        {
+            "name": "cwsprChatFocusFileContextTruncatedLength",
+            "type": "int",
+            "description": "Truncated length of current focus file added to context"
         },
         {
             "name": "cwsprChatFolderContextCount",
