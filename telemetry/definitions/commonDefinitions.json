@@ -1013,14 +1013,14 @@
             "description": "Identifies the type of conversation"
         },
         {
-            "name": "cwsprChatCurrentFileContextLength",
+            "name": "cwsprChatFocusFileContextLength",
             "type": "int",
-            "description": "Total length of current file added to context"
+            "description": "Total length of current focus file added to context"
         },
         {
-            "name": "cwsprChatCurrentFileContextTruncatedLength",
+            "name": "cwsprChatFocusFileContextTruncatedLength",
             "type": "int",
-            "description": "Truncated length of current file added to context"
+            "description": "Truncated length of current focus file added to context"
         },
         {
             "name": "cwsprChatFileContextCount",
