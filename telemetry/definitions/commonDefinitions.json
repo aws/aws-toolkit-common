@@ -1028,6 +1028,16 @@
             "description": "Truncated length of files added to context"
         },
         {
+            "name": "cwsprChatFocusFileContextLength",
+            "type": "int",
+            "description": "Total length of current focus file added to context"
+        },
+        {
+            "name": "cwsprChatFocusFileContextTruncatedLength",
+            "type": "int",
+            "description": "Truncated length of current focus file added to context"
+        },
+        {
             "name": "cwsprChatFolderContextCount",
             "type": "int",
             "description": "Number of folders manually added to context"
@@ -1211,6 +1221,16 @@
             "description": "Identifies the specific interaction that opens the chat panel"
         },
         {
+            "name": "cwsprChatUserInputContextLength",
+            "type": "int",
+            "description": "Total length of user inputs added to context"
+        },
+        {
+            "name": "cwsprChatUserInputContextTruncatedLength",
+            "type": "int",
+            "description": "Truncated length of user inputs added to context"
+        },
+        {
             "name": "cwsprChatUserIntent",
             "type": "string",
             "allowedValues": [
@@ -1224,6 +1244,16 @@
                 "generateUnitTests"
             ],
             "description": "Explict user intent associated with a chat message"
+        },
+        {
+            "name": "cwsprChatWorkspaceContextLength",
+            "type": "int",
+            "description": "Total length of workspace context"
+        },
+        {
+            "name": "cwsprChatWorkspaceContextTruncatedLength",
+            "type": "int",
+            "description": "Truncated length of workspace context"
         },
         {
             "name": "databaseCredentials",
@@ -2202,6 +2232,14 @@
                     "required": false
                 },
                 {
+                    "type": "cwsprChatFocusFileContextLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatFocusFileContextTruncatedLength",
+                    "required": false
+                },
+                {
                     "type": "cwsprChatFolderContextCount",
                     "required": false
                 },
@@ -2311,7 +2349,23 @@
                     "type": "cwsprChatTriggerInteraction"
                 },
                 {
+                    "type": "cwsprChatUserInputContextLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatUserInputContextTruncatedLength",
+                    "required": false
+                },
+                {
                     "type": "cwsprChatUserIntent",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatWorkspaceContextLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatWorkspaceContextTruncatedLength",
                     "required": false
                 }
             ]
