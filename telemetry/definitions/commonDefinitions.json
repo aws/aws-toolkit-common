@@ -1879,6 +1879,11 @@
             "description": "Request ID (if any) associated with a metric. For example, an event with `requestServiceType: s3` means that the request ID is associated with an S3 API call. Events that cover multiple API calls should use the request ID of the most recent call."
         },
         {
+            "name": "requestId2",
+            "type": "string",
+            "description": "A special token that is used together with the request ID header to help AWS troubleshoot problems. For example, this has to be provided with requestId when debugging S3 upload errors."
+        },
+        {
             "name": "requestServiceType",
             "type": "string",
             "description": "Per-request service identifier. Unlike `serviceType` (which describes the originator of the request), this describes the request itself."
@@ -2531,6 +2536,10 @@
                 },
                 {
                     "type": "requestId",
+                    "required": false
+                },
+                {
+                    "type": "requestId2",
                     "required": false
                 },
                 {
