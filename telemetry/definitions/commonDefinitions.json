@@ -1550,6 +1550,11 @@
             "description": "Metric-defined identifier"
         },
         {
+            "name": "id2",
+            "type": "string",
+            "description": "x-amz-id-2 for S3 Upload Debugging"
+        },
+        {
             "name": "includesFix",
             "type": "boolean",
             "description": "Whether the security issue includes a suggested fix"
@@ -2469,6 +2474,10 @@
                 },
                 {
                     "type": "duration",
+                    "required": false
+                },
+                {
+                    "type": "id2",
                     "required": false
                 },
                 {
