@@ -1269,6 +1269,11 @@
             "description": "Truncated length of workspace context"
         },
         {
+            "name": "cwsprIsAgenticLoop",
+            "type": "boolean",
+            "description": "If the message is apart of an agentic loop (LLM asks to run a tool and receives results back)"
+        },
+        {
             "name": "databaseCredentials",
             "type": "string",
             "allowedValues": [
@@ -2384,6 +2389,10 @@
                 },
                 {
                     "type": "cwsprChatWorkspaceContextTruncatedLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprIsAgenticLoop",
                     "required": false
                 }
             ]
