@@ -1021,7 +1021,8 @@
                 "Chat",
                 "Assign",
                 "Transform",
-                "AgenticChat"
+                "AgenticChat",
+                "AgenticChatWithToolUse"                
             ],
             "description": "Identifies the type of conversation"
         },
@@ -1267,11 +1268,6 @@
             "name": "cwsprChatWorkspaceContextTruncatedLength",
             "type": "int",
             "description": "Truncated length of workspace context"
-        },
-        {
-            "name": "cwsprIsAgenticLoop",
-            "type": "boolean",
-            "description": "If the message is apart of an agentic loop (LLM asks to run a tool and receives results back)"
         },
         {
             "name": "databaseCredentials",
@@ -2389,10 +2385,6 @@
                 },
                 {
                     "type": "cwsprChatWorkspaceContextTruncatedLength",
-                    "required": false
-                },
-                {
-                    "type": "cwsprIsAgenticLoop",
                     "required": false
                 }
             ]
