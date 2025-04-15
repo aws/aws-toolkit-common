@@ -1021,7 +1021,8 @@
                 "Chat",
                 "Assign",
                 "Transform",
-                "AgenticChat"
+                "AgenticChat",
+                "AgenticChatWithToolUse"                
             ],
             "description": "Identifies the type of conversation"
         },
