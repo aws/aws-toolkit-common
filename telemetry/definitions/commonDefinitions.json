@@ -1022,7 +1022,7 @@
                 "Assign",
                 "Transform",
                 "AgenticChat",
-                "AgenticChatWithToolUse"                
+                "AgenticChatWithToolUse"
             ],
             "description": "Identifies the type of conversation"
         },
@@ -1218,6 +1218,16 @@
             "name": "cwsprChatTimeToFirstUsableChunk",
             "type": "int",
             "description": "The time between the initial server request, including creating the conversation id, and the first usable result"
+        },
+        {
+            "name": "cwsprChatToolUseId",
+            "type": "string",
+            "description": "The id of the tool that LLM used directly (no acceptance needed) or suggested a tool (user acceptance required)"
+        },
+        {
+            "name": "cwsprChatToolUseSuggested",
+            "type": "string",
+            "description": "The name of the tool that LLM used directly (no acceptance needed) or suggested a tool (user acceptance required)"
         },
         {
             "name": "cwsprChatTotalCodeBlocks",
@@ -2817,6 +2827,28 @@
                 {
                     "type": "result",
                     "required": false
+                }
+            ]
+        },
+        {
+            "name": "amazonq_toolUseSuggested",
+            "description": "When the LLM either used a tool directly (no acceptance needed) or suggested a tool (user acceptance required)",
+            "metadata": [
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatConversationId"
+                },
+                {
+                    "type": "cwsprChatConversationType"
+                },
+                {
+                    "type": "cwsprChatToolUseId"
+                },
+                {
+                    "type": "cwsprChatToolUseSuggested"
                 }
             ]
         },
