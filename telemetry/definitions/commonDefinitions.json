@@ -1220,16 +1220,6 @@
             "description": "The time between the initial server request, including creating the conversation id, and the first usable result"
         },
         {
-            "name": "cwsprToolId",
-            "type": "string",
-            "description": "The id of the tool that LLM used directly (no acceptance needed) or suggested a tool (user acceptance required)"
-        },
-        {
-            "name": "cwsprToolName",
-            "type": "string",
-            "description": "The name of the tool that LLM used directly (no acceptance needed) or suggested a tool (user acceptance required)"
-        },
-        {
             "name": "cwsprChatTotalCodeBlocks",
             "type": "int",
             "description": "Total number of code blocks inside a message in the conversation."
@@ -1278,6 +1268,16 @@
             "name": "cwsprChatWorkspaceContextTruncatedLength",
             "type": "int",
             "description": "Truncated length of workspace context"
+        },
+        {
+            "name": "cwsprToolId",
+            "type": "string",
+            "description": "The id of the tool that LLM used directly (no acceptance needed) or suggested a tool (user acceptance required)"
+        },
+        {
+            "name": "cwsprToolName",
+            "type": "string",
+            "description": "The name of the tool that LLM used directly (no acceptance needed) or suggested a tool (user acceptance required)"
         },
         {
             "name": "databaseCredentials",
