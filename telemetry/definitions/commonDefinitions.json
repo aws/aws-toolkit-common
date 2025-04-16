@@ -1270,14 +1270,14 @@
             "description": "Truncated length of workspace context"
         },
         {
-            "name": "cwsprToolId",
-            "type": "string",
-            "description": "The id of the tool that LLM used directly (no acceptance needed) or suggested a tool (user acceptance required)"
-        },
-        {
             "name": "cwsprToolName",
             "type": "string",
-            "description": "The name of the tool that LLM used directly (no acceptance needed) or suggested a tool (user acceptance required)"
+            "description": "Client side tool name (ex: fsWrite, executeBash)"
+        },
+        {
+            "name": "cwsprToolUseId",
+            "type": "string",
+            "description": "The id for when a client side tool is used."
         },
         {
             "name": "databaseCredentials",
@@ -2845,10 +2845,10 @@
                     "type": "cwsprChatConversationType"
                 },
                 {
-                    "type": "cwsprToolId"
+                    "type": "cwsprToolName"
                 },
                 {
-                    "type": "cwsprToolName"
+                    "type": "cwsprToolUseId"
                 }
             ]
         },
