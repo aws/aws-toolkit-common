@@ -2845,10 +2845,10 @@
                     "type": "cwsprChatConversationType"
                 },
                 {
-                    "type": "cwsprChatToolUseId"
+                    "type": "cwsprToolId"
                 },
                 {
-                    "type": "cwsprChatToolUseSuggested"
+                    "type": "cwsprToolName"
                 }
             ]
         },
