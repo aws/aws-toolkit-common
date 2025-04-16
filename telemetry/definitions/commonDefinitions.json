@@ -1022,7 +1022,7 @@
                 "Assign",
                 "Transform",
                 "AgenticChat",
-                "AgenticChatWithToolUse"                
+                "AgenticChatWithToolUse"
             ],
             "description": "Identifies the type of conversation"
         },
@@ -1268,6 +1268,16 @@
             "name": "cwsprChatWorkspaceContextTruncatedLength",
             "type": "int",
             "description": "Truncated length of workspace context"
+        },
+        {
+            "name": "cwsprToolName",
+            "type": "string",
+            "description": "Client side tool name (ex: fsWrite, executeBash)"
+        },
+        {
+            "name": "cwsprToolUseId",
+            "type": "string",
+            "description": "The id for when a client side tool is used."
         },
         {
             "name": "databaseCredentials",
@@ -2817,6 +2827,28 @@
                 {
                     "type": "result",
                     "required": false
+                }
+            ]
+        },
+        {
+            "name": "amazonq_toolUseSuggested",
+            "description": "When the LLM either used a tool directly (no acceptance needed) or suggested a tool (user acceptance required)",
+            "metadata": [
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatConversationId"
+                },
+                {
+                    "type": "cwsprChatConversationType"
+                },
+                {
+                    "type": "cwsprToolName"
+                },
+                {
+                    "type": "cwsprToolUseId"
                 }
             ]
         },
