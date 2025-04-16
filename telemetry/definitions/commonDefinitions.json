@@ -1220,12 +1220,12 @@
             "description": "The time between the initial server request, including creating the conversation id, and the first usable result"
         },
         {
-            "name": "cwsprChatToolUseId",
+            "name": "cwsprToolId",
             "type": "string",
             "description": "The id of the tool that LLM used directly (no acceptance needed) or suggested a tool (user acceptance required)"
         },
         {
-            "name": "cwsprChatToolUseSuggested",
+            "name": "cwsprToolName",
             "type": "string",
             "description": "The name of the tool that LLM used directly (no acceptance needed) or suggested a tool (user acceptance required)"
         },
