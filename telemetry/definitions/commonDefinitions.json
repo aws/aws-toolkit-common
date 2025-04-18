@@ -1097,6 +1097,11 @@
             "description": "True if the code snippet that user interacts with has a reference."
         },
         {
+            "name": "cwsprChatHistoryMessageCharacterCount",
+            "type": "int",
+            "description": "The number of characters in a history message"
+        },
+        {
             "name": "cwsprChatInteractionTarget",
             "type": "string",
             "description": "Identifies the entity within the message that user interacts with."
@@ -2395,6 +2400,37 @@
                 },
                 {
                     "type": "cwsprChatWorkspaceContextTruncatedLength",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "amazonq_addMessageHistory",
+            "description": "When a message is added to the history",
+            "metadata": [
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatConversationId"
+                },
+                {
+                    "type": "cwsprChatConversationType"
+                },
+                {
+                    "type": "cwsprChatHistoryMessageCharacterCount"
+                },
+                {
+                    "type": "cwsprChatMessageId",
+                    "required": false
+                },
+                {
+                    "type": "cwsprToolName",
+                    "required": false
+                },
+                {
+                    "type": "cwsprToolUseId",
                     "required": false
                 }
             ]
