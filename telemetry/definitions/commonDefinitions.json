@@ -1170,6 +1170,11 @@
             "description": "Number of code snippets in response"
         },
         {
+            "name": "cwsprChatResponseErrorReason",
+            "type": "string",
+            "description": "Client error reason when processing response stream"
+        },
+        {
             "name": "cwsprChatResponseLength",
             "type": "int",
             "description": "Number of characters in response"
@@ -2396,6 +2401,10 @@
                 {
                     "type": "cwsprChatWorkspaceContextTruncatedLength",
                     "required": false
+                },
+                {
+                    "type": "languageServerVersion",
+                    "required": false
                 }
             ]
         },
@@ -2630,6 +2639,10 @@
                 },
                 {
                     "type": "cwsprChatConversationType"
+                },
+                {
+                    "type": "languageServerVersion",
+                    "required": false
                 }
             ]
         },
@@ -2776,6 +2789,60 @@
             ]
         },
         {
+            "name": "amazonq_messageResponseError",
+            "description": "When an error has occured in response to a prompt",
+            "metadata": [
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatActiveEditorImportCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatActiveEditorTotalCharacters",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatConversationId",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatConversationType"
+                },
+                {
+                    "type": "cwsprChatHasCodeSnippet",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatProgrammingLanguage",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatRequestLength"
+                },
+                {
+                    "type": "cwsprChatResponseCode"
+                },
+                {
+                    "type": "cwsprChatResponseErrorReason",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatTriggerInteraction"
+                },
+                {
+                    "type": "cwsprChatUserIntent",
+                    "required": false
+                },
+                {
+                    "type": "languageServerVersion",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "amazonq_modifySourceFolder",
             "description": "User modified source folder",
             "metadata": [
@@ -2849,6 +2916,10 @@
                 },
                 {
                     "type": "cwsprToolUseId"
+                },
+                {
+                    "type": "languageServerVersion",
+                    "required": false
                 }
             ]
         },
