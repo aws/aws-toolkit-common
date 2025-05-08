@@ -242,6 +242,11 @@
             "description": "User inputted check type to denote which custom check to run."
         },
         {
+            "name": "childProcess",
+            "type": "string",
+            "description": "A string representation of a ChildProcess"
+        },
+        {
             "name": "cloudWatchLogsPresentation",
             "type": "string",
             "allowedValues": [
@@ -1833,6 +1838,11 @@
             "description": "Number of generations before the user accepted or rejected"
         },
         {
+            "name": "numChildProcesses",
+            "type": "int",
+            "description": "number of child processes actively running"
+        },
+        {
             "name": "oldVersion",
             "type": "string",
             "description": "The old version of something. Useful when updating dependent resources."
@@ -2095,6 +2105,12 @@
                 "AllResources",
                 "CodeOnly"
             ]
+        },
+        {
+            "name": "systemResource", 
+            "type": "string",
+            "allowedValues": ["cpu", "memory"],
+            "description": "The system resource being measured"
         },
         {
             "name": "target",
@@ -6708,6 +6724,20 @@
                 }
             ]
         },
+        { 
+            "name": "ide_childProcessWarning", 
+            "description": "Child Process warning due to high system usage", 
+            "metadata": [ 
+                { 
+                    "type": "childProcess", 
+                    "required": true 
+                },
+                { 
+                    "type": "systemResource", 
+                    "required": true 
+                }
+            ] 
+        }, 
         {
             "name": "ide_editCodeFile",
             "description": "User opened a code file with the given file extension. Client should DEDUPLICATE this metric (ideally hourly/daily). AWS-specific files should (also) emit `file_editAwsFile`.",
@@ -6719,6 +6749,16 @@
                 }
             ]
         },
+        { 
+            "name": "ide_showExtStats", 
+            "description": "Emitted when user invokes show extensions stats command", 
+            "metadata": [ 
+                { 
+                    "type": "numChildProcesses", 
+                    "required": true 
+                } 
+            ] 
+        }, 
         {
             "name": "lambda_configure",
             "description": "Called when opening the local configuration of a Lambda to edit",
