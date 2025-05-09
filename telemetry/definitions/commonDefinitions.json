@@ -247,17 +247,6 @@
             "description": "Boolean value of whether or not a Cfn parameter file is provided."
         },
         {
-            "name": "chatHistoryAction",
-            "type": "string",
-            "allowedValues": [
-                "search",
-                "export",
-                "open",
-                "delete"
-            ],
-            "description": "The type of action performed on chat history"
-        },
-        {
             "name": "checkType",
             "type": "string",
             "allowedValues": [
@@ -2962,16 +2951,16 @@
             "description": "When a user searches, exports, opens, or deletes a conversation from history",
             "metadata": [
                 {
+                    "type": "action",
+                    "required": true
+                },
+                {
                     "type": "amazonqHistoryFileSize",
                     "required": false
                 },
                 {
                     "type": "amazonqTimeToSearchHistory",
                     "required": false
-                },
-                {
-                    "type": "chatHistoryAction",
-                    "required": true
                 },
                 {
                     "type": "filenameExt",
