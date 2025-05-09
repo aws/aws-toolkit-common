@@ -56,6 +56,11 @@
             "description": "The time it takes to generate code generation response"
         },
         {
+            "name": "amazonqHistoryFileSize",
+            "type": "int",
+            "description": "The size of a chat history file (in bytes)"
+        },
+        {
             "name": "amazonqNumberOfFilesAccepted",
             "type": "double",
             "description": "Captures the number of accepted files as a part of code generation iteration"
@@ -74,6 +79,16 @@
             "name": "amazonqRepositorySize",
             "type": "double",
             "description": "Captures the size of the source code"
+        },
+        {
+            "name": "amazonqTimeToLoadHistory",
+            "type": "int",
+            "description": "The time (in milliseconds) it takes to load chat history from filesystem"
+        },
+        {
+            "name": "amazonqTimeToSearchHistory",
+            "type": "int",
+            "description": "The time (in milliseconds) it takes to search through all messages in chat history for a user-provided search string"
         },
         {
             "name": "amazonqUploadIntent",
@@ -230,6 +245,17 @@
             "name": "cfnParameterFileUsed",
             "type": "boolean",
             "description": "Boolean value of whether or not a Cfn parameter file is provided."
+        },
+        {
+            "name": "chatHistoryAction",
+            "type": "string",
+            "allowedValues": [
+                "search",
+                "export",
+                "open",
+                "delete"
+            ],
+            "description": "The type of action performed on chat history"
         },
         {
             "name": "checkType",
@@ -1010,6 +1036,21 @@
             "description": "Index of the code block inside a message in the conversation."
         },
         {
+            "name": "cwsprChatCodeContextCount",
+            "type": "int",
+            "description": "Number of code symbols added to context"
+        },
+        {
+            "name": "cwsprChatCodeContextLength",
+            "type": "int",
+            "description": "Total length of code symbols added to context"
+        },
+        {
+            "name": "cwsprChatCodeContextTruncatedLength",
+            "type": "int",
+            "description": "Truncated length of code symbols added to context"
+        },
+        {
             "name": "cwsprChatConversationId",
             "type": "string",
             "description": "Uniquely identifies a message with which the user interacts."
@@ -1472,6 +1513,15 @@
             "description": "The experiment action taken action taken"
         },
         {
+            "name": "exportFormat",
+            "type": "string",
+            "allowedValues": [
+                "html",
+                "markdown"
+            ],
+            "description": "The file format chosen by the user when exporting chat history"
+        },
+        {
             "name": "failedCount",
             "type": "int",
             "description": "The number of failed operations"
@@ -1836,6 +1886,11 @@
             "name": "oldVersion",
             "type": "string",
             "description": "The old version of something. Useful when updating dependent resources."
+        },
+        {
+            "name": "openTabCount",
+            "type": "int",
+            "description": "The number of tabs automatically opened from history"
         },
         {
             "name": "parentId",
@@ -2248,6 +2303,18 @@
                     "required": false
                 },
                 {
+                    "type": "cwsprChatCodeContextCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatCodeContextLength",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatCodeContextTruncatedLength",
+                    "required": false
+                },
+                {
                     "type": "cwsprChatConversationId"
                 },
                 {
@@ -2603,6 +2670,20 @@
             ]
         },
         {
+            "name": "amazonq_exportTab",
+            "description": "When a user exports the current Amazon Q chat tab",
+            "metadata": [
+                {
+                    "type": "exportFormat",
+                    "required": true
+                },
+                {
+                    "type": "languageServerVersion",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "amazonq_feedback",
             "description": "When a user gives feedback using vote or comment or rating in the conversation",
             "metadata": [
@@ -2789,6 +2870,28 @@
             ]
         },
         {
+            "name": "amazonq_loadHistory",
+            "description": "When a history file is loaded from the filesystem and open tabs are restored",
+            "metadata": [
+                {
+                    "type": "amazonqHistoryFileSize",
+                    "required": true
+                },
+                {
+                    "type": "amazonqTimeToLoadHistory",
+                    "required": true
+                },
+                {
+                    "type": "languageServerVersion",
+                    "required": false
+                },
+                {
+                    "type": "openTabCount",
+                    "required": true
+                }
+            ]
+        },
+        {
             "name": "amazonq_messageResponseError",
             "description": "When an error has occured in response to a prompt",
             "metadata": [
@@ -2859,6 +2962,32 @@
                 },
                 {
                     "type": "result",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "amazonq_performChatHistoryAction",
+            "description": "When a user searches, exports, opens, or deletes a conversation from history",
+            "metadata": [
+                {
+                    "type": "amazonqHistoryFileSize",
+                    "required": false
+                },
+                {
+                    "type": "amazonqTimeToSearchHistory",
+                    "required": false
+                },
+                {
+                    "type": "chatHistoryAction",
+                    "required": true
+                },
+                {
+                    "type": "exportFormat",
+                    "required": false
+                },
+                {
+                    "type": "languageServerVersion",
                     "required": false
                 }
             ]
