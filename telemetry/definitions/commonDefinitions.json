@@ -1513,15 +1513,6 @@
             "description": "The experiment action taken action taken"
         },
         {
-            "name": "exportFormat",
-            "type": "string",
-            "allowedValues": [
-                "html",
-                "markdown"
-            ],
-            "description": "The file format chosen by the user when exporting chat history"
-        },
-        {
             "name": "failedCount",
             "type": "int",
             "description": "The number of failed operations"
@@ -2674,7 +2665,7 @@
             "description": "When a user exports the current Amazon Q chat tab",
             "metadata": [
                 {
-                    "type": "exportFormat",
+                    "type": "filenameExt",
                     "required": true
                 },
                 {
@@ -2983,7 +2974,7 @@
                     "required": true
                 },
                 {
-                    "type": "exportFormat",
+                    "type": "filenameExt",
                     "required": false
                 },
                 {
