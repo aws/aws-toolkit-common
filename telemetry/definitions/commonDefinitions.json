@@ -1185,6 +1185,11 @@
             "description": "Number of references in response"
         },
         {
+            "name": "cwsprChatRequestIds",
+            "type": "string",
+            "description": "The list of request ids corresponding to this user message. Request ids must be in chronological order"
+        },
+        {
             "name": "cwsprChatRequestLength",
             "type": "int",
             "description": "Number of characters in request"
@@ -2379,6 +2384,10 @@
                     "required": false
                 },
                 {
+                    "type": "cwsprChatRequestIds",
+                    "required": false
+                },
+                {
                     "type": "cwsprChatRequestLength"
                 },
                 {
@@ -2700,6 +2709,18 @@
                 },
                 {
                     "type": "cwsprChatConversationType"
+                },
+                {
+                    "type": "cwsprChatMessageId",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatRequestIds",
+                    "required": false
+                },
+                {
+                    "type": "cwsprToolUseId",
+                    "required": false
                 },
                 {
                     "type": "languageServerVersion",
