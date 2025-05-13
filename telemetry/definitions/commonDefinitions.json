@@ -2455,6 +2455,10 @@
                     "required": false
                 },
                 {
+                    "type": "enabled",
+                    "required": false
+                },
+                {
                     "type": "languageServerVersion",
                     "required": false
                 },
@@ -2711,11 +2715,11 @@
                     "type": "cwsprChatConversationType"
                 },
                 {
-                    "type": "cwsprChatMessageId",
+                    "type": "cwsprToolUseId",
                     "required": false
                 },
                 {
-                    "type": "cwsprToolUseId",
+                    "type": "enabled",
                     "required": false
                 },
                 {
@@ -2941,6 +2945,10 @@
                     "required": false
                 },
                 {
+                    "type": "enabled",
+                    "required": false
+                },
+                {
                     "type": "languageServerVersion",
                     "required": false
                 }
@@ -3048,7 +3056,15 @@
                     "type": "cwsprToolUseId"
                 },
                 {
+                    "type": "enabled",
+                    "required": false
+                },
+                {
                     "type": "languageServerVersion",
+                    "required": false
+                },
+                {
+                    "type": "perfE2ELatency",
                     "required": false
                 }
             ]
