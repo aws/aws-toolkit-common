@@ -1185,11 +1185,6 @@
             "description": "Number of references in response"
         },
         {
-            "name": "cwsprChatRequestIds",
-            "type": "string",
-            "description": "The list of request ids corresponding to this user message. Request ids must be in chronological order"
-        },
-        {
             "name": "cwsprChatRequestLength",
             "type": "int",
             "description": "Number of characters in request"
@@ -1953,6 +1948,11 @@
             "description": "A special token that is used together with the request ID header to help AWS troubleshoot problems. For example, this has to be provided with requestId when debugging S3 upload errors."
         },
         {
+            "name": "requestIds",
+            "type": "string",
+            "description": "Request ids (comma-separated) associated with a task or action, in chronological order. For example 'id1,id2,id3'"
+        },
+        {
             "name": "requestServiceType",
             "type": "string",
             "description": "Per-request service identifier. Unlike `serviceType` (which describes the originator of the request), this describes the request itself."
@@ -2384,10 +2384,6 @@
                     "required": false
                 },
                 {
-                    "type": "cwsprChatRequestIds",
-                    "required": false
-                },
-                {
                     "type": "cwsprChatRequestLength"
                 },
                 {
@@ -2460,6 +2456,10 @@
                 },
                 {
                     "type": "languageServerVersion",
+                    "required": false
+                },
+                {
+                    "type": "requestIds",
                     "required": false
                 }
             ]
@@ -2715,15 +2715,15 @@
                     "required": false
                 },
                 {
-                    "type": "cwsprChatRequestIds",
-                    "required": false
-                },
-                {
                     "type": "cwsprToolUseId",
                     "required": false
                 },
                 {
                     "type": "languageServerVersion",
+                    "required": false
+                },
+                {
+                    "type": "requestIds",
                     "required": false
                 }
             ]
