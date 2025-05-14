@@ -1307,12 +1307,12 @@
         {
             "name": "cwsprToolName",
             "type": "string",
-            "description": "Client side tool name (ex: fsWrite, executeBash)"
+            "description": "Client side tool/s name (ex: fsWrite, executeBash)"
         },
         {
             "name": "cwsprToolUseId",
             "type": "string",
-            "description": "The id for when a client side tool is used."
+            "description": "The id/s when a client side tool/s is used."
         },
         {
             "name": "databaseCredentials",
@@ -1806,6 +1806,11 @@
             "name": "languageServerVersion",
             "type": "string",
             "description": "The version of the language server"
+        },
+        {
+            "name": "latency",
+            "type": "string",
+            "description": "latency/s from any operation or an execution like tool execution."
         },
         {
             "name": "loadFileTime",
@@ -2802,6 +2807,40 @@
                 },
                 {
                     "type": "cwsprChatUserIntent",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "amazonq_invokeLLM",
+            "description": "This metric is emitted per LLM call in the agentic loop with or without tool execution.",
+            "metadata": [
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatConversationId"
+                },
+                {
+                    "type": "cwsprChatConversationType"
+                },
+                {
+                    "type": "cwsprToolName"
+                },
+                {
+                    "type": "cwsprToolUseId"
+                },
+                {
+                    "type": "enabled",
+                    "required": false
+                },
+                {
+                    "type": "languageServerVersion",
+                    "required": false
+                },
+                {
+                    "type": "latency",
                     "required": false
                 }
             ]
