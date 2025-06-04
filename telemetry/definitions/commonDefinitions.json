@@ -914,6 +914,11 @@
             "description": "The user group identifier we assign to the customer and it should be unique identifier across different IDE platforms, i.e. Classifier, CrossFile etc."
         },
         {
+            "name": "command",
+            "type": "string",
+            "description": "The command of an operation"
+        },
+        {
             "name": "component",
             "type": "string",
             "allowedValues": [
@@ -1864,9 +1869,39 @@
             "description": "Comma delimited list of NEW enabled auth connections"
         },
         {
+            "name": "numActiveServers",
+            "type": "int",
+            "description": "Number of servers active"
+        },
+        {
             "name": "numAttempts",
             "type": "int",
             "description": "Number of generations before the user accepted or rejected"
+        },
+        {
+            "name": "numGlobalServers",
+            "type": "int",
+            "description": "Number of servers in global json"
+        },
+        {
+            "name": "numProjectServers",
+            "type": "int",
+            "description": "Number of servers in project level json."
+        },
+        {
+            "name": "numTools",
+            "type": "int",
+            "description": "Number of tools in the operation"
+        },
+        {
+            "name": "numToolsAlwaysAllowed",
+            "type": "int",
+            "description": "Number of tools across servers has configuration as alwaysAllowed."
+        },
+        {
+            "name": "numToolsDenied",
+            "type": "int",
+            "description": "Number of tools across servers has configuration as denied."
         },
         {
             "name": "oldVersion",
@@ -2059,6 +2094,11 @@
             "description": "Languages targeted by the schemas service"
         },
         {
+            "name": "scope",
+            "type": "string",
+            "description": "scope of the operation/config can be a global or workspace level scope."
+        },
+        {
             "name": "serviceType",
             "type": "string",
             "description": "The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json"
@@ -2174,6 +2214,14 @@
             "name": "traceId",
             "type": "string",
             "description": "Unique identifier for the trace (a set of events) this metric belongs to"
+        },
+        {
+            "name": "transportType",
+            "type": "string",
+            "allowedValues": [
+                "stdio"
+            ],
+            "description": "Transport type of the MCP server"
         },
         {
             "name": "update",
@@ -2933,6 +2981,82 @@
                 {
                     "type": "openTabCount",
                     "required": true
+                }
+            ]
+        },
+        {
+            "name": "amazonq_mcpConfig",
+            "description": "This metric is emitted per reload of an IDE or reinitizalize of a mcp server",
+            "metadata": [
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "languageServerVersion",
+                    "required": false
+                },
+                {
+                    "type": "numActiveServers",
+                    "required": false
+                },
+                {
+                    "type": "numGlobalServers",
+                    "required": false
+                },
+                {
+                    "type": "numProjectServers",
+                    "required": false
+                },
+                {
+                    "type": "numToolsAlwaysAllowed",
+                    "required": false
+                },
+                {
+                    "type": "numToolsDenied",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "amazonq_mcpServerInit",
+            "description": "This metric is emitted per mcp server name when user reloads an IDE or does any CRUD operation on mcp config.",
+            "metadata": [
+                {
+                    "type": "command",
+                    "required": false
+                },
+                {
+                    "type": "credentialStartUrl",
+                    "required": false
+                },
+                {
+                    "type": "enabled",
+                    "required": false
+                },
+                {
+                    "type": "initializeTime",
+                    "required": false
+                },
+                {
+                    "type": "languageServerVersion",
+                    "required": false
+                },
+                {
+                    "type": "numTools",
+                    "required": false
+                },
+                {
+                    "type": "scope",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "transportType",
+                    "required": false
                 }
             ]
         },
