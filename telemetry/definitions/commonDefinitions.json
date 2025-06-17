@@ -1816,7 +1816,7 @@
         {
             "name": "latency",
             "type": "string",
-            "description": "latency/s from any operation or an execution like tool execution."
+            "description": "latency/s from any operation or an execution such as LLM response time."
         },
         {
             "name": "loadFileTime",
@@ -2191,6 +2191,11 @@
             "name": "templateName",
             "type": "string",
             "description": "Generic name of a template"
+        },
+        {
+            "name": "toolCallLatency",
+            "type": "string",
+            "description": "latency/s from any operation or an execution like tool execution."
         },
         {
             "name": "toolId",
@@ -2875,6 +2880,14 @@
                     "type": "cwsprChatConversationType"
                 },
                 {
+                    "type": "cwsprChatTimeBetweenChunks",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatTimeToFirstChunk",
+                    "required": false
+                },
+                {
                     "type": "cwsprToolName"
                 },
                 {
@@ -2890,6 +2903,10 @@
                 },
                 {
                     "type": "latency",
+                    "required": false
+                },
+                {
+                    "type": "toolCallLatency",
                     "required": false
                 }
             ]
