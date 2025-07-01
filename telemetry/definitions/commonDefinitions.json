@@ -3524,6 +3524,32 @@
             ]
         },
         {
+            "name": "appbuilder_lambda2sam",
+            "description": "User click Convert a lambda function to SAM project",
+            "metadata": [
+                {
+                    "type": "action",
+                    "required": false
+                },
+                {
+                    "type": "iac",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": false
+                },
+                {
+                    "type": "runtime",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "appBuilder_openLocalInvokeWebView",
             "description": "Click open Local invoke WebView button in Application Builder",
             "metadata": [
@@ -7267,6 +7293,30 @@
             ]
         },
         {
+            "name": "lambda_quickDeploy",
+            "description": "Lambda function was deployed from temp",
+            "metadata": [
+                {
+                    "type": "action",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "lambda_quickEditFunction",
+            "description": "Lambda function edit operation",
+            "metadata": [
+                {
+                    "type": "action",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": true
+                }
+            ]
+        },
+        {
             "name": "lambda_updateFunctionCode",
             "description": "Called when updating a Lambda function's code outside the context of a SAM template",
             "metadata": [
@@ -7278,6 +7328,10 @@
                     "required": false
                 }
             ]
+        },
+        {
+            "name": "lambda_uriHandler",
+            "description": "Lambda URI handler was invoked"
         },
         {
             "name": "languageServer_setup",
