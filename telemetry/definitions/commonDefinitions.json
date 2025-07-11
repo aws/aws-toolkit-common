@@ -1804,7 +1804,7 @@
             ]
         },
         {
-            "name": "lambda_startRemoteDebug",
+            "name": "lambda_remoteDebugStart",
             "description": "user start remote debugging",
             "metadata": [
                 {
@@ -1822,7 +1822,7 @@
             ]
         },
         {
-            "name": "lambda_stopRemoteDebug",
+            "name": "lambda_remoteDebugStop",
             "description": "user stop remote debugging",
             "metadata": [
                 {
