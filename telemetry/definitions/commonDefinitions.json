@@ -1761,6 +1761,77 @@
             "description": "Job id used in the operation"
         },
         {
+            "name": "lambda_invokeRemote",
+            "description": "Called when invoking lambdas remotely",
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "runtime",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "runtimeString",
+                    "required": false
+                },
+                {
+                    "type": "action",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "lambda_remoteDebugPrecheck",
+            "description": "user click remote debug checkbox",
+            "metadata": [
+                {
+                    "type": "runtimeString",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "action",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "lambda_startRemoteDebug",
+            "description": "user start remote debugging",
+            "metadata": [
+                {
+                    "type": "runtimeString",
+                    "required": false
+                },
+                {
+                    "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "action",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "lambda_stopRemoteDebug",
+            "description": "user stop remote debugging",
+            "metadata": [
+                {
+                    "type": "sessionDuration",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "lambdaArchitecture",
             "type": "string",
             "allowedValues": [
