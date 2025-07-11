@@ -7259,10 +7259,18 @@
             "description": "Called when invoking lambdas remotely",
             "metadata": [
                 {
+                    "type": "action",
+                    "required": false
+                },
+                {
                     "type": "result"
                 },
                 {
                     "type": "runtime",
+                    "required": false
+                },
+                {
+                    "type": "runtimeString",
                     "required": false
                 },
                 {
@@ -7313,6 +7321,44 @@
                 {
                     "type": "source",
                     "required": true
+                }
+            ]
+        },
+        {
+            "name": "lambda_remoteDebugPrecheck",
+            "description": "user click remote debug checkbox",
+            "metadata": [
+                {
+                    "type": "action",
+                    "required": false
+                },
+                {
+                    "type": "runtimeString",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "lambda_remoteDebugStart",
+            "description": "user start remote debugging",
+            "metadata": [
+                {
+                    "type": "action",
+                    "required": false
+                },
+                {
+                    "type": "runtimeString",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "lambda_remoteDebugStop",
+            "description": "user stop remote debugging",
+            "metadata": [
+                {
+                    "type": "sessionDuration",
+                    "required": false
                 }
             ]
         },
