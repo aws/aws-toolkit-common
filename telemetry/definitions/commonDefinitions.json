@@ -1769,10 +1769,6 @@
                     "required": false
                 },
                 {
-                    "type": "source",
-                    "required": false
-                },
-                {
                     "type": "action",
                     "required": false
                 }
@@ -1784,10 +1780,6 @@
             "metadata": [
                 {
                     "type": "runtimeString",
-                    "required": false
-                },
-                {
-                    "type": "source",
                     "required": false
                 },
                 {
