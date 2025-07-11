@@ -1761,44 +1761,6 @@
             "description": "Job id used in the operation"
         },
         {
-            "name": "lambda_remoteDebugPrecheck",
-            "description": "user click remote debug checkbox",
-            "metadata": [
-                {
-                    "type": "runtimeString",
-                    "required": false
-                },
-                {
-                    "type": "action",
-                    "required": false
-                }
-            ]
-        },
-        {
-            "name": "lambda_remoteDebugStart",
-            "description": "user start remote debugging",
-            "metadata": [
-                {
-                    "type": "runtimeString",
-                    "required": false
-                },
-                {
-                    "type": "action",
-                    "required": false
-                }
-            ]
-        },
-        {
-            "name": "lambda_remoteDebugStop",
-            "description": "user stop remote debugging",
-            "metadata": [
-                {
-                    "type": "sessionDuration",
-                    "required": false
-                }
-            ]
-        },
-        {
             "name": "lambdaArchitecture",
             "type": "string",
             "allowedValues": [
@@ -7359,6 +7321,44 @@
                 {
                     "type": "source",
                     "required": true
+                }
+            ]
+        },
+        {
+            "name": "lambda_remoteDebugPrecheck",
+            "description": "user click remote debug checkbox",
+            "metadata": [
+                {
+                    "type": "action",
+                    "required": false
+                },
+                {
+                    "type": "runtimeString",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "lambda_remoteDebugStart",
+            "description": "user start remote debugging",
+            "metadata": [
+                {
+                    "type": "action",
+                    "required": false
+                },
+                {
+                    "type": "runtimeString",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "lambda_remoteDebugStop",
+            "description": "user stop remote debugging",
+            "metadata": [
+                {
+                    "type": "sessionDuration",
+                    "required": false
                 }
             ]
         },
