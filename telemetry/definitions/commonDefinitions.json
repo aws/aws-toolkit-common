@@ -2327,6 +2327,18 @@
             ]
         },
         {
+            "name": "amazonq_activeUser",
+            "description": "An active user is when the user sends a message, and the user will be considered active until the remainder of the time window",
+            "metadata": [
+                {
+                    "type": "credentialStartUrl"
+                },
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
             "name": "amazonq_addMessage",
             "description": "When a message is added to the conversation",
             "metadata": [
