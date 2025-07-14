@@ -1821,7 +1821,7 @@
         {
             "name": "loadFileTime",
             "type": "int",
-            "description": "Time from opening Composer to loading the file"
+            "description": "Time from opening Composer to loading the file "
         },
         {
             "name": "locale",
