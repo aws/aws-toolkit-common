@@ -8422,7 +8422,7 @@
         },
         {
             "name": "amazonq_qCodeReviewTool",
-            "description": "Describes different metrics for QCodeReview tool"
+            "description": "Captures different metrics for QCodeReview tool"
         }
     ]
 }
