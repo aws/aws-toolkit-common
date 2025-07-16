@@ -8419,6 +8419,10 @@
                     "type": "result"
                 }
             ]
+        },
+        {
+            "name": "amazonq_qCodeReviewTool",
+            "description": "Describes different metrics for QCodeReview tool"
         }
     ]
 }
