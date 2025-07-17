@@ -8584,10 +8584,6 @@
                     "type": "result"
                 }
             ]
-        },
-        {
-            "name": "amazonq_qCodeReviewTool",
-            "description": "Captures different metrics for QCodeReview tool"
         }
     ]
 }
