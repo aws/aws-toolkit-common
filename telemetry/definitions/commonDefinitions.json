@@ -211,33 +211,6 @@
             "description": "AWS Region associated with a metric\n- \"n/a\" if not associated with a region.\n- \"not-set\" if metric is associated with a region, but region is unknown."
         },
         {
-            "name": "agenticReviewArtifactSize",
-            "type": "double",
-            "description": "Size of the artifact reviewed/scanned in bytes"
-        },
-        {
-            "name": "agenticReviewArtifactType",
-            "type": "string",
-            "description": "Type of the artifact requested to review/scan",
-            "allowedValues": ["FILE", "FOLDER"]
-        },
-        {
-            "name": "agenticReviewCustomRulesCount",
-            "type": "int",
-            "description": "Number of custom guide line files present"
-        },
-        {
-            "name": "agenticReviewFindingsCount",
-            "type": "int",
-            "description": "Number of findings discovered after running a review/scan on a source code artifact"
-        },
-        {
-            "name": "agenticReviewType",
-            "type": "string",
-            "description": "Identifies the type of agentic review triggered",
-            "allowedValues": ["FULL_REVIEW", "CODE_DIFF_REVIEW"]
-        },
-        {
             "name": "buildDuration",
             "type": "int",
             "description": "The amount of time required for the build to complete (in seconds)."
@@ -343,14 +316,46 @@
             ]
         },
         {
-            "name": "codeReviewId",
+            "name": "codeReviewArtifactId",
             "type": "string",
-            "description": "Unique identifier of an agentic review/scan request, combination of projectId and runId"
+            "description": "Unique identifier of the uploaded artifact for agentic review"
         },
         {
-            "name": "codeScanName",
+            "name": "codeReviewArtifactSize",
+            "type": "double",
+            "description": "Size of the artifact reviewed/scanned in bytes"
+        },
+        {
+            "name": "codeReviewArtifactType",
             "type": "string",
-            "description": "Unique identifier of project in the workspace in agentic review tool"
+            "description": "Type of the artifact requested for code review",
+            "allowedValues": ["FILE", "FOLDER"]
+        },
+        {
+            "name": "codeReviewCustomRulesCount",
+            "type": "int",
+            "description": "Number of custom guide line files present in the code review"
+        },
+        {
+            "name": "codeReviewFindingsCount",
+            "type": "int",
+            "description": "Number of findings discovered after running a code review on a source code artifact"
+        },
+        {
+            "name": "codeReviewId",
+            "type": "string",
+            "description": "Unique identifier of an code review/scan request, combination of projectId and runId"
+        },
+        {
+            "name": "codeReviewScanName",
+            "type": "string",
+            "description": "Unique identifier of project in the workspace in code review tool"
+        },
+        {
+            "name": "codeReviewType",
+            "type": "string",
+            "description": "Identifies the type of code review triggered",
+            "allowedValues": ["FULL_REVIEW", "CODE_DIFF_REVIEW"]
         },
         {
             "name": "codeScanServiceInvocationsDuration",
@@ -2171,11 +2176,6 @@
             "description": "Resource subtype of connection start"
         },
         {
-            "name": "sourceCodeArtifactId",
-            "type": "string",
-            "description": "Unique identifier of the uploaded artifact for agentic review"
-        },
-        {
             "name": "sourceResourceType",
             "type": "string",
             "description": "CloudFormation resource type of connection start"
@@ -3236,31 +3236,36 @@
                 }
             ]
         },
-         {
-            "name": "amazonq_qCodeReviewTool_codeScanSuccess",
-            "description": "Captures metrics for successful agentic reviews/scans",
+        {
+            "name": "amazonq_qCodeReviewTool_codeScanFailed",
+            "description": "Captures metrics for failed agentic reviews/scans",
             "metadata": [
                 {
-                    "type": "agenticReviewArtifactType"
-
+                    "type": "codeReviewArtifactId",
+                    "required": false
                 },
                 {
-                    "type": "agenticReviewArtifactSize"
-
+                    "type": "codeReviewArtifactSize"
                 },
                 {
-                    "type": "agenticReviewCustomRulesCount"
-
+                    "type": "codeReviewArtifactType"
                 },
                 {
-                    "type": "agenticReviewFindingsCount",
-                    "required": true
-                },
-                {
-                    "type": "agenticReviewType"
+                    "type": "codeReviewCustomRulesCount"
                 },
                 {
                     "type": "codeReviewId",
+                    "required": false
+                },
+                {
+                    "type": "codeReviewScanName",
+                    "required": false
+                },
+                {
+                    "type": "codeReviewType"
+                },
+                {
+                    "type": "reason",
                     "required": true
                 },
                 {
@@ -3269,36 +3274,31 @@
             ]
         },
         {
-            "name": "amazonq_qCodeReviewTool_codeScanFailed",
-            "description": "Captures metrics for failed agentic reviews/scans",
+            "name": "amazonq_qCodeReviewTool_codeScanSuccess",
+            "description": "Captures metrics for successful agentic reviews/scans",
             "metadata": [
                 {
-                    "type": "agenticReviewArtifactType"
+                    "type": "codeReviewArtifactSize"
                 },
                 {
-                    "type": "agenticReviewArtifactSize"
+                    "type": "codeReviewArtifactType"
                 },
                 {
-                    "type": "agenticReviewType"
+                    "type": "codeReviewCustomRulesCount"
                 },
                 {
-                    "type": "codeReviewId",
-                    "required": false
-                },
-                {
-                    "type": "codeScanName",
-                    "required": false
-                },
-                {
-                    "type": "reason",
+                    "type": "codeReviewFindingsCount",
                     "required": true
                 },
                 {
-                    "type": "result"
+                    "type": "codeReviewId",
+                    "required": true
                 },
                 {
-                    "type": "sourceCodeArtifactId",
-                    "required": false
+                    "type": "codeReviewType"
+                },
+                {
+                    "type": "result"
                 }
             ]
         },
@@ -3307,17 +3307,20 @@
             "description": "Captures metrics for timed out agentic reviews/scans",
             "metadata": [
                 {
-                    "type": "agenticReviewArtifactType"
+                    "type": "codeReviewArtifactSize"
                 },
                 {
-                    "type": "agenticReviewArtifactSize"
+                    "type": "codeReviewArtifactType"
                 },
                 {
-                    "type": "agenticReviewType"
+                    "type": "codeReviewCustomRulesCount"
                 },
                 {
                     "type": "codeReviewId",
                     "required": true
+                },
+                {
+                    "type": "codeReviewType"
                 },
                 {
                     "type": "reason"
@@ -3332,14 +3335,14 @@
             "description": "Captures metrics for artifact upload failures in agentic reviews/scans",
             "metadata": [
                 {
-                    "type": "codeScanName"
-                },
-                {
-                    "type": "agenticReviewArtifactSize",
+                    "type": "codeReviewArtifactSize",
                     "required": false
                 },
                 {
-                    "type": "agenticReviewArtifactType"
+                    "type": "codeReviewArtifactType"
+                },
+                {
+                    "type": "codeReviewScanName"
                 },
                 {
                     "type": "reason",
