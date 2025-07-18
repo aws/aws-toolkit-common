@@ -81,6 +81,11 @@
             "description": "Captures the size of the source code"
         },
         {
+            "name": "artifactType",
+            "type": "string",
+            "description": "type of artifact used in a request"
+        },
+        {
             "name": "amazonqTimeToLoadHistory",
             "type": "int",
             "description": "The time (in milliseconds) it takes to load chat history from filesystem"
@@ -316,46 +321,9 @@
             ]
         },
         {
-            "name": "codeReviewArtifactId",
-            "type": "string",
-            "description": "Unique identifier of the uploaded artifact for agentic review"
-        },
-        {
-            "name": "codeReviewArtifactSize",
-            "type": "double",
-            "description": "Size of the artifact reviewed/scanned in bytes"
-        },
-        {
-            "name": "codeReviewArtifactType",
-            "type": "string",
-            "description": "Type of the artifact requested for code review",
-            "allowedValues": ["FILE", "FOLDER"]
-        },
-        {
-            "name": "codeReviewCustomRulesCount",
+            "name": "customRules",
             "type": "int",
-            "description": "Number of custom guide line files present in the code review"
-        },
-        {
-            "name": "codeReviewFindingsCount",
-            "type": "int",
-            "description": "Number of findings discovered after running a code review on a source code artifact"
-        },
-        {
-            "name": "codeReviewId",
-            "type": "string",
-            "description": "Unique identifier of an code review/scan request, combination of projectId and runId"
-        },
-        {
-            "name": "codeReviewScanName",
-            "type": "string",
-            "description": "Unique identifier of project in the workspace in code review tool"
-        },
-        {
-            "name": "codeReviewType",
-            "type": "string",
-            "description": "Identifies the type of code review triggered",
-            "allowedValues": ["FULL_REVIEW", "CODE_DIFF_REVIEW"]
+            "description": "number of custom rules present in a request"
         },
         {
             "name": "codeScanServiceInvocationsDuration",
@@ -614,7 +582,7 @@
         {
             "name": "codewhispererCodeScanJobId",
             "type": "string",
-            "description": "The ID of the security scan job"
+            "description": "The ID of the scan job"
         },
         {
             "name": "codewhispererCodeScanLines",
@@ -629,13 +597,7 @@
         {
             "name": "codewhispererCodeScanScope",
             "type": "string",
-            "description": "The scope of the security scan being performed",
-            "allowedValues": [
-                "FILE",
-                "FILE_AUTO",
-                "FILE_ON_DEMAND",
-                "PROJECT"
-            ]
+            "description": "The scope of the scan being performed"
         },
         {
             "name": "codewhispererCodeScanSrcPayloadBytes",
@@ -645,12 +607,12 @@
         {
             "name": "codewhispererCodeScanSrcZipFileBytes",
             "type": "int",
-            "description": "The compressed payload size of source files in bytes of customer project context sent for security scan"
+            "description": "The compressed payload size of source files in bytes of customer project context sent for scan"
         },
         {
             "name": "codewhispererCodeScanTotalIssues",
             "type": "int",
-            "description": "The number of security issues been detected"
+            "description": "The number of issues been detected"
         },
         {
             "name": "codewhispererCompletionType",
@@ -2714,6 +2676,47 @@
             ]
         },
         {
+            "name": "amazonq_codeReviewTool",
+            "description": "Parent metric name for the code review tool.",
+            "metadata": [
+                {
+                    "type": "artifactType",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanJobId",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanSrcZipFileBytes",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanScope",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanTotalIssues",
+                    "required": false
+                },
+                {
+                    "type": "customRules",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "reasonDesc",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                }
+            ]
+        },
+        {
             "name": "amazonq_createUpload",
             "description": "Captures createUploadUrl invocation process",
             "metadata": [
@@ -3233,132 +3236,6 @@
                 {
                     "type": "languageServerVersion",
                     "required": false
-                }
-            ]
-        },
-        {
-            "name": "amazonq_qCodeReviewTool_codeScanFailed",
-            "description": "Captures metrics for failed agentic reviews/scans",
-            "metadata": [
-                {
-                    "type": "codeReviewArtifactId",
-                    "required": false
-                },
-                {
-                    "type": "codeReviewArtifactSize"
-                },
-                {
-                    "type": "codeReviewArtifactType"
-                },
-                {
-                    "type": "codeReviewCustomRulesCount"
-                },
-                {
-                    "type": "codeReviewId",
-                    "required": false
-                },
-                {
-                    "type": "codeReviewScanName",
-                    "required": false
-                },
-                {
-                    "type": "codeReviewType"
-                },
-                {
-                    "type": "reason",
-                    "required": true
-                },
-                {
-                    "type": "result"
-                }
-            ]
-        },
-        {
-            "name": "amazonq_qCodeReviewTool_codeScanSuccess",
-            "description": "Captures metrics for successful agentic reviews/scans",
-            "metadata": [
-                {
-                    "type": "codeReviewArtifactSize"
-                },
-                {
-                    "type": "codeReviewArtifactType"
-                },
-                {
-                    "type": "codeReviewCustomRulesCount"
-                },
-                {
-                    "type": "codeReviewFindingsCount",
-                    "required": true
-                },
-                {
-                    "type": "codeReviewId",
-                    "required": true
-                },
-                {
-                    "type": "codeReviewType"
-                },
-                {
-                    "type": "result"
-                }
-            ]
-        },
-        {
-            "name": "amazonq_qCodeReviewTool_codeScanTimeout",
-            "description": "Captures metrics for timed out agentic reviews/scans",
-            "metadata": [
-                {
-                    "type": "codeReviewArtifactSize"
-                },
-                {
-                    "type": "codeReviewArtifactType"
-                },
-                {
-                    "type": "codeReviewCustomRulesCount"
-                },
-                {
-                    "type": "codeReviewId",
-                    "required": true
-                },
-                {
-                    "type": "codeReviewType"
-                },
-                {
-                    "type": "reason"
-                },
-                {
-                    "type": "result"
-                }
-            ]
-        },
-        {
-            "name": "amazonq_qCodeReviewTool_createUploadUrlFailed",
-            "description": "Captures metrics for artifact upload failures in agentic reviews/scans",
-            "metadata": [
-                {
-                    "type": "codeReviewArtifactSize",
-                    "required": false
-                },
-                {
-                    "type": "codeReviewArtifactType"
-                },
-                {
-                    "type": "codeReviewScanName"
-                },
-                {
-                    "type": "reason",
-                    "required": true
-                },
-                {
-                    "type": "result"
-                }
-            ]
-        },
-        {
-            "name": "amazonq_qCodeReviewTool_missingFileOrFolder",
-            "description": "Captures metrics for invalid reviews/scans requests",
-            "metadata": [
-                {
-                    "type": "result"
                 }
             ]
         },
