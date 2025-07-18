@@ -130,6 +130,11 @@
             "description": "Time taken to fetch the upload URL and upload the artifacts in milliseconds"
         },
         {
+            "name": "artifactType",
+            "type": "string",
+            "description": "type of artifact used in a request"
+        },
+        {
             "name": "attempts",
             "type": "int",
             "description": "A generic number of attempts"
@@ -572,7 +577,7 @@
         {
             "name": "codewhispererCodeScanJobId",
             "type": "string",
-            "description": "The ID of the security scan job"
+            "description": "The ID of the scan job"
         },
         {
             "name": "codewhispererCodeScanLines",
@@ -603,12 +608,12 @@
         {
             "name": "codewhispererCodeScanSrcZipFileBytes",
             "type": "int",
-            "description": "The compressed payload size of source files in bytes of customer project context sent for security scan"
+            "description": "The compressed payload size of source files in bytes of customer project context sent for scan"
         },
         {
             "name": "codewhispererCodeScanTotalIssues",
             "type": "int",
-            "description": "The number of security issues been detected"
+            "description": "The number of issues been detected"
         },
         {
             "name": "codewhispererCompletionType",
@@ -992,6 +997,11 @@
                 "bearerToken",
                 "other"
             ]
+        },
+        {
+            "name": "customRules",
+            "type": "int",
+            "description": "number of custom rules present in a request"
         },
         {
             "name": "cwsprAgenticChatInteractionType",
@@ -2667,6 +2677,47 @@
                 },
                 {
                     "type": "credentialStartUrl",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "amazonq_codeReviewTool",
+            "description": "This metric is used to evaluate Amazon Q's code review tool",
+            "metadata": [
+                {
+                    "type": "artifactType",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanJobId",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanSrcZipFileBytes",
+                    "required": false
+                },
+                {
+                    "type": "codewhispererCodeScanTotalIssues",
+                    "required": false
+                },
+                {
+                    "type": "customRules",
+                    "required": false
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "reasonDesc",
+                    "required": false
+                },
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "scope",
                     "required": false
                 }
             ]
