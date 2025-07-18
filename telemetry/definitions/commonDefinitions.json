@@ -321,11 +321,6 @@
             ]
         },
         {
-            "name": "customRules",
-            "type": "int",
-            "description": "number of custom rules present in a request"
-        },
-        {
             "name": "codeScanServiceInvocationsDuration",
             "type": "int",
             "description": "Time taken to invoke code scan service APIs in milliseconds"
@@ -1002,6 +997,11 @@
                 "bearerToken",
                 "other"
             ]
+        },
+        {
+            "name": "customRules",
+            "type": "int",
+            "description": "number of custom rules present in a request"
         },
         {
             "name": "cwsprAgenticChatInteractionType",
