@@ -81,11 +81,6 @@
             "description": "Captures the size of the source code"
         },
         {
-            "name": "artifactType",
-            "type": "string",
-            "description": "type of artifact used in a request"
-        },
-        {
             "name": "amazonqTimeToLoadHistory",
             "type": "int",
             "description": "The time (in milliseconds) it takes to load chat history from filesystem"
@@ -128,6 +123,11 @@
                 "OPERATION_IN_PROGRESS"
             ],
             "description": "The current state of the App Runner service"
+        },
+        {
+            "name": "artifactType",
+            "type": "string",
+            "description": "type of artifact used in a request"
         },
         {
             "name": "artifactsUploadDuration",
@@ -2677,7 +2677,7 @@
         },
         {
             "name": "amazonq_codeReviewTool",
-            "description": "Parent metric name for the code review tool.",
+            "description": "This metric is used to evaluate Amazon Q's code review tool",
             "metadata": [
                 {
                     "type": "artifactType",
@@ -2689,10 +2689,6 @@
                 },
                 {
                     "type": "codewhispererCodeScanSrcZipFileBytes",
-                    "required": false
-                },
-                {
-                    "type": "codewhispererCodeScanScope",
                     "required": false
                 },
                 {
@@ -2713,6 +2709,10 @@
                 },
                 {
                     "type": "result"
+                },
+                {
+                    "type": "scope",
+                    "required": false
                 }
             ]
         },
@@ -5869,7 +5869,14 @@
                 },
                 {
                     "type": "codewhispererCodeScanScope",
-                    "required": false
+                    "required": false,
+                    "description": "The scope of the security scan being performed",
+                    "allowedValues": [
+                        "FILE",
+                        "FILE_AUTO",
+                        "FILE_ON_DEMAND",
+                        "PROJECT"
+                    ]
                 },
                 {
                     "type": "codewhispererCodeScanSrcPayloadBytes"
