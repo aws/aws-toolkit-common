@@ -125,14 +125,14 @@
             "description": "The current state of the App Runner service"
         },
         {
-            "name": "artifactType",
-            "type": "string",
-            "description": "type of artifact used in a request"
-        },
-        {
             "name": "artifactsUploadDuration",
             "type": "int",
             "description": "Time taken to fetch the upload URL and upload the artifacts in milliseconds"
+        },
+        {
+            "name": "artifactType",
+            "type": "string",
+            "description": "type of artifact used in a request"
         },
         {
             "name": "attempts",
