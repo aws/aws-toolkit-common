@@ -597,7 +597,13 @@
         {
             "name": "codewhispererCodeScanScope",
             "type": "string",
-            "description": "The scope of the scan being performed"
+            "description": "The scope of the security scan being performed",
+            "allowedValues": [
+                "FILE",
+                "FILE_AUTO",
+                "FILE_ON_DEMAND",
+                "PROJECT"
+            ]
         },
         {
             "name": "codewhispererCodeScanSrcPayloadBytes",
@@ -5869,14 +5875,7 @@
                 },
                 {
                     "type": "codewhispererCodeScanScope",
-                    "required": false,
-                    "description": "The scope of the security scan being performed",
-                    "allowedValues": [
-                        "FILE",
-                        "FILE_AUTO",
-                        "FILE_ON_DEMAND",
-                        "PROJECT"
-                    ]
+                    "required": false
                 },
                 {
                     "type": "codewhispererCodeScanSrcPayloadBytes"
