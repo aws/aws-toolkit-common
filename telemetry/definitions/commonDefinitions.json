@@ -3935,6 +3935,10 @@
                     "required": false
                 },
                 {
+                    "type": "credentialType",
+                    "required": false
+                },
+                {
                     "type": "featureId"
                 },
                 {
@@ -3995,27 +3999,6 @@
                 },
                 {
                     "type": "source"
-                }
-            ]
-        },
-        {
-            "name": "auth_loginFailure",
-            "description": "Emitted when User submit IAM/SSO form but receive error",
-            "metadata": [
-                {
-                    "type": "credentialType"
-                },
-                {
-                    "type": "reason"
-                }
-            ]
-        },
-        {
-            "name": "auth_signInOptionClick",
-            "description": "Emitted when User click a login option from login webview",
-            "metadata": [
-                {
-                    "type": "signInOption"
                 }
             ]
         },
