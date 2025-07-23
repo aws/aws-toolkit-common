@@ -3958,24 +3958,6 @@
             ]
         },
         {
-            "name": "auth_iamOptionClick",
-            "description": "Emitted when User click IAM login option from login webview"
-        },
-        {
-            "name": "auth_iamLoginFailure",
-            "description": "Emitted when User submit IAM form but receives error",
-            "metadata": [
-                {
-                    "type": "credentialType",
-                    "required": true
-                },
-                {
-                    "type": "reason",
-                    "required": true
-                }
-            ]
-        },
-        {
             "name": "auth_addedConnections",
             "description": "The diff/change in Auth connections",
             "metadata": [
@@ -4005,6 +3987,24 @@
                     "type": "source"
                 }
             ]
+        },
+        {
+            "name": "auth_iamLoginFailure",
+            "description": "Emitted when User submit IAM form but receives error",
+            "metadata": [
+                {
+                    "type": "credentialType",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "auth_iamOptionClick",
+            "description": "Emitted when User click IAM login option from login webview"
         },
         {
             "name": "auth_signInPageClosed",
