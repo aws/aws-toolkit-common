@@ -1331,6 +1331,11 @@
             "description": "The id/s when a client side tool/s is used."
         },
         {
+            "name": "cwsprToolPermission",
+            "type": "string",
+            "description": "Permission of tool/s set by user"
+        },
+        {
             "name": "databaseCredentials",
             "type": "string",
             "allowedValues": [
@@ -3143,11 +3148,11 @@
                     "required": false
                 },
                 {
-                    "type": "toolNames",
+                    "type": "cwsprToolName",
                     "required": false
                 },
                 {
-                    "type": "toolPerms",
+                    "type": "cwsprToolPermission",
                     "required": false
                 }
             ]
