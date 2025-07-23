@@ -999,26 +999,6 @@
             ]
         },
         {
-            "name": "iamCredentialType",
-            "type": "string",
-            "description": "The type of IAM credential that was submitted",
-            "allowedValues": [
-                "longTermIam",
-                "assumeRoleIam",
-                "credentialProcessProfile",
-                "assumeMfaRoleIam",
-                "stsCredential",
-                "ecsMetatdata",
-                "ec2Metadata",
-                "other"
-            ]
-        },
-        {
-            "name": "loginErrorIam",
-            "type": "string",
-            "description": "The type of Error received during IAM credential login"
-        },
-        {
             "name": "customRules",
             "type": "int",
             "description": "number of custom rules present in a request"
@@ -3945,14 +3925,6 @@
                     "required": false
                 },
                 {
-                    "type": "credentialAccessKey",
-                    "required": false
-                },
-                {
-                    "type": "credentialRoleArn",
-                    "required": false
-                },
-                {
                     "type": "featureId"
                 },
                 {
@@ -3990,11 +3962,11 @@
             "description": "Emitted when User submit IAM form but receives error",
             "metadata": [
                 {
-                    "type": "iamCredentialType",
+                    "type": "credentialType",
                     "required": true
                 },
                 {
-                    "type": "loginErrorIam",
+                    "type": "reason",
                     "required": true
                 }
             ]
@@ -4079,19 +4051,7 @@
                     "required": false
                 },
                 {
-                    "type": "credentialAccessKey",
-                    "required": false
-                },
-                {
-                    "type": "credentialRoleArn",
-                    "required": false
-                },
-                {
                     "type": "credentialType",
-                    "required": false
-                },
-                {
-                    "type": "iamCredentialType",
                     "required": false
                 },
                 {
