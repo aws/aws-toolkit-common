@@ -3925,6 +3925,10 @@
                     "required": false
                 },
                 {
+                    "type": "credentialType",
+                    "required": false
+                },
+                {
                     "type": "featureId"
                 },
                 {
