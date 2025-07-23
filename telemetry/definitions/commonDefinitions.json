@@ -2137,7 +2137,8 @@
             "name": "signInOption",
             "type": "string",
             "allowedValues": [
-                "Company account",
+                "BuilderId",
+                "iamIdentityCenter",
                 "IAM Credentials",
                 "Other"
             ],
@@ -3999,6 +4000,15 @@
                 },
                 {
                     "type": "source"
+                }
+            ]
+        },
+        {
+            "name": "auth_signInOptionClick",
+            "description": "Emitted when User click a login option from login webview",
+            "metadata": [
+                {
+                    "type": "signInOption"
                 }
             ]
         },
