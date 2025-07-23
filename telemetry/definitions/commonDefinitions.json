@@ -4003,12 +4003,10 @@
             "description": "Emitted when User submit IAM/SSO form but receive error",
             "metadata": [
                 {
-                    "type": "credentialType",
-                    "required": true
+                    "type": "credentialType"
                 },
                 {
-                    "type": "reason",
-                    "required": true
+                    "type": "reason"
                 }
             ]
         },
@@ -4017,8 +4015,7 @@
             "description": "Emitted when User click a login option from login webview",
             "metadata": [
                 {
-                    "type": "signInOption",
-                    "required": true
+                    "type": "signInOption"
                 }
             ]
         },
