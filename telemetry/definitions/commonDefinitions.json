@@ -1326,14 +1326,14 @@
             "description": "Client side tool/s name (ex: fsWrite, executeBash)"
         },
         {
-            "name": "cwsprToolUseId",
-            "type": "string",
-            "description": "The id/s when a client side tool/s is used."
-        },
-        {
             "name": "cwsprToolPermission",
             "type": "string",
             "description": "Permission of tool/s set by user"
+        },
+        {
+            "name": "cwsprToolUseId",
+            "type": "string",
+            "description": "The id/s when a client side tool/s is used."
         },
         {
             "name": "databaseCredentials",
@@ -2959,11 +2959,11 @@
                     "type": "cwsprToolName"
                 },
                 {
-                    "type": "cwsprToolUseId"
-                },
-                {
                     "type": "cwsprToolPermission",
                     "required": false
+                },
+                {
+                    "type": "cwsprToolUseId"
                 },
                 {
                     "type": "enabled",
@@ -3120,6 +3120,14 @@
                     "required": false
                 },
                 {
+                    "type": "cwsprToolName",
+                    "required": false
+                },
+                {
+                    "type": "cwsprToolPermission",
+                    "required": false
+                },
+                {
                     "type": "enabled",
                     "required": false
                 },
@@ -3145,14 +3153,6 @@
                 },
                 {
                     "type": "transportType",
-                    "required": false
-                },
-                {
-                    "type": "cwsprToolName",
-                    "required": false
-                },
-                {
-                    "type": "cwsprToolPermission",
                     "required": false
                 }
             ]
