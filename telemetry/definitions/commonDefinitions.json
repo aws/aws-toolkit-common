@@ -2134,6 +2134,16 @@
             "description": "The state of the setting being changed to. This should not be recorded for free-form settings like file-system paths. Instead, stick to things like flags, numbers, and enums."
         },
         {
+            "name": "signInOption",
+            "type": "string",
+            "allowedValues": [
+                "Company account",
+                "IAM Credentials",
+                "Other"
+            ],
+            "description": "The sign in option for AmazonQ extension."
+        },
+        {
             "name": "source",
             "type": "string",
             "description": "The source of the operation. This answers 'who' caused/triggered the operation. Example: did an Auth signout happen because of some expiration or since the user explicitly clicked the signout button."
@@ -3989,8 +3999,8 @@
             ]
         },
         {
-            "name": "auth_iamLoginFailure",
-            "description": "Emitted when User submit IAM form but receives error",
+            "name": "auth_loginFailure",
+            "description": "Emitted when User submit IAM/SSO form but receive error",
             "metadata": [
                 {
                     "type": "credentialType",
@@ -4003,8 +4013,14 @@
             ]
         },
         {
-            "name": "auth_iamOptionClick",
-            "description": "Emitted when User click IAM login option from login webview"
+            "name": "auth_signInOptionClick",
+            "description": "Emitted when User click a login option from login webview",
+            "metadata": [
+                {
+                    "type": "signInOption",
+                    "required": true
+                }
+            ]
         },
         {
             "name": "auth_signInPageClosed",
