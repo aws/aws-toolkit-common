@@ -3986,6 +3986,10 @@
             ]
         },
         {
+            "name": "auth_iamOptionClick",
+            "description": "Emitted when User click IAM login option from login webview"
+        },
+        {
             "name": "auth_iamLoginFailure",
             "description": "Emitted when User submit IAM form but receives error",
             "metadata": [
