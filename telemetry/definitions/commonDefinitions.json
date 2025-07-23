@@ -3141,6 +3141,14 @@
                 {
                     "type": "transportType",
                     "required": false
+                },
+                {
+                    "type": "toolNames",
+                    "required": false
+                },
+                {
+                    "type": "toolPerms",
+                    "required": false
                 }
             ]
         },
