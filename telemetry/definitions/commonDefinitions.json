@@ -2957,6 +2957,10 @@
                     "type": "cwsprToolUseId"
                 },
                 {
+                    "type": "cwsprToolPermission",
+                    "required": false
+                },
+                {
                     "type": "enabled",
                     "required": false
                 },
