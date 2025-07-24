@@ -1956,7 +1956,7 @@
         {
             "name": "permission",
             "type": "string",
-            "description": "Permission of tool/s set by user"
+            "description": "Permission of tool in the operation."
         },
         {
             "name": "platform",
@@ -2228,7 +2228,7 @@
         {
             "name": "toolName",
             "type": "string",
-            "description": "Tool/s name, including MCP (ex: fsWrite,executeBash)"
+            "description": "This field represents a tool name, example: fsWrite, executeBash or any mcp tools"
         },
         {
             "name": "totalResourceCount",
