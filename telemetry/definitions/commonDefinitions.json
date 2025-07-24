@@ -1326,11 +1326,6 @@
             "description": "Client side tool/s name (ex: fsWrite, executeBash)"
         },
         {
-            "name": "cwsprToolPermission",
-            "type": "string",
-            "description": "Permission of tool/s set by user"
-        },
-        {
             "name": "cwsprToolUseId",
             "type": "string",
             "description": "The id/s when a client side tool/s is used."
@@ -1959,6 +1954,11 @@
             "description": "The time duration in milliseconds to finish a request to the server side"
         },
         {
+            "name": "permission",
+            "type": "string",
+            "description": "Permission of tool/s set by user"
+        },
+        {
             "name": "platform",
             "type": "string",
             "description": "Language-specific identification. Examples: v4.6.1, netcoreapp3.1, nodejs12.x. Not AWS Lambda specific. Allows for additional details when other fields are opaque, such as the Lambda runtime value 'provided'."
@@ -2224,6 +2224,11 @@
                 "sam-cli",
                 "docker"
             ]
+        },
+        {
+            "name": "toolName",
+            "type": "string",
+            "description": "Tool/s name, including MCP (ex: fsWrite,executeBash)"
         },
         {
             "name": "totalResourceCount",
@@ -2959,10 +2964,6 @@
                     "type": "cwsprToolName"
                 },
                 {
-                    "type": "cwsprToolPermission",
-                    "required": false
-                },
-                {
                     "type": "cwsprToolUseId"
                 },
                 {
@@ -2975,6 +2976,10 @@
                 },
                 {
                     "type": "latency",
+                    "required": false
+                },
+                {
+                    "type": "permission",
                     "required": false
                 },
                 {
@@ -3120,14 +3125,6 @@
                     "required": false
                 },
                 {
-                    "type": "cwsprToolName",
-                    "required": false
-                },
-                {
-                    "type": "cwsprToolPermission",
-                    "required": false
-                },
-                {
                     "type": "enabled",
                     "required": false
                 },
@@ -3144,11 +3141,19 @@
                     "required": false
                 },
                 {
+                    "type": "permission",
+                    "required": false
+                },
+                {
                     "type": "scope",
                     "required": false
                 },
                 {
                     "type": "source",
+                    "required": false
+                },
+                {
+                    "type": "toolName",
                     "required": false
                 },
                 {
