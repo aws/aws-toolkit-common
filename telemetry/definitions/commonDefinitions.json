@@ -1065,6 +1065,7 @@
             "type": "string",
             "allowedValues": [
                 "Chat",
+                "InlineChat",
                 "Assign",
                 "Transform",
                 "AgenticChat",
