@@ -517,6 +517,11 @@
             "description": "The number of tokens that are accepted and not modified by the user"
         },
         {
+            "name": "codewhispererAddedCharactersCount",
+            "type": "int",
+            "description": "The number of new characters of code that will be added by the suggestion if accepted, excluding any characters from the beginning of the suggestion that the user had typed in after the trigger. "
+        },
+        {
             "name": "codewhispererAllCompletionsLatency",
             "type": "double",
             "description": "The time it takes for the last GenerateCompletions response to be received after plugin makes a first call to GenerateCompletions API."
@@ -638,6 +643,11 @@
             "name": "codewhispererCustomizationArn",
             "type": "string",
             "description": "The currently selected customization arn(None if using the base model)"
+        },
+        {
+            "name": "codewhispererDeletedCharacterCount",
+            "type": "int",
+            "description": "The number of characters of existing code that will be removed by the suggestion if accepted."
         },
         {
             "name": "codewhispererEndToEndLatency",
@@ -801,6 +811,11 @@
             "description": "The unique identifier for a CodeWhisperer session(which can contain multiple requests)"
         },
         {
+            "name": "codewhispererStreakLength",
+            "type": "int",
+            "description": "The length of the last completed streak. A streak is a string of unbroken, consecutive suggestion accepted by the user. "
+        },
+        {
             "name": "codewhispererSuggestedTokens",
             "type": "int",
             "description": "The number of tokens in the original code suggestions"
@@ -912,6 +927,11 @@
             "name": "codewhispererTypeaheadLength",
             "type": "int",
             "description": "The length of additional characters inputted by the user since the invocation. "
+        },
+        {
+            "name": "codewhispererUnmodifiedAddedCharacterCount",
+            "type": "int",
+            "description": "The number of new characters of code from the suggestion still in the codebase after 5 mins."
         },
         {
             "name": "codewhispererUserGroup",
