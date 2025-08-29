@@ -1,6 +1,6 @@
 [versions]
 assertJ = "3.26.3"
-jackson = "2.17.2"
+jackson = "2.20.0"
 jlleitschuh-ktlint = "12.1.1"
 # deprecated; should move to json-skema
 jsonSchema = "1.14.4"
