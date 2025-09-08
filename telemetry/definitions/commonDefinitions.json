@@ -140,6 +140,14 @@
             "description": "A generic number of attempts"
         },
         {
+            "name": "auth_customEndpoint",
+            "description": "User used a custom endpoint"
+        },
+        {
+            "name": "auth_localstackEndpoint",
+            "description": "User used a LocalStack connection"
+        },
+        {
             "name": "authConnectionsCount",
             "type": "int",
             "description": "Current number of authentication connections the user has"
@@ -2218,7 +2226,8 @@
                 "dotnet-deploy-cli",
                 "aws-cli",
                 "sam-cli",
-                "docker"
+                "docker",
+                "localstack"
             ]
         },
         {
