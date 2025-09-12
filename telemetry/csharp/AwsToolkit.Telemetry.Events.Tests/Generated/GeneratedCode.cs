@@ -57,6 +57,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -131,6 +132,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -154,6 +156,342 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("inputPolicyType", payload.InputPolicyType);
 
                 datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// An active user is when the user sends a message, and the user will be considered active until the remainder of the time window
+        public static void RecordAmazonqActiveUser(this ITelemetryLogger telemetryLogger, AmazonqActiveUser payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_activeUser";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// When a message is added to the conversation
+        public static void RecordAmazonqAddMessage(this ITelemetryLogger telemetryLogger, AmazonqAddMessage payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_addMessage";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("codewhispererCustomizationArn", payload.CodewhispererCustomizationArn);
+
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                if (payload.CwsprChatActiveEditorImportCount.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatActiveEditorImportCount", payload.CwsprChatActiveEditorImportCount.Value);
+                }
+
+                if (payload.CwsprChatActiveEditorTotalCharacters.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatActiveEditorTotalCharacters", payload.CwsprChatActiveEditorTotalCharacters.Value);
+                }
+
+                if (payload.CwsprChatCodeContextCount.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatCodeContextCount", payload.CwsprChatCodeContextCount.Value);
+                }
+
+                if (payload.CwsprChatCodeContextLength.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatCodeContextLength", payload.CwsprChatCodeContextLength.Value);
+                }
+
+                if (payload.CwsprChatCodeContextTruncatedLength.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatCodeContextTruncatedLength", payload.CwsprChatCodeContextTruncatedLength.Value);
+                }
+
+                datum.AddMetadata("cwsprChatConversationId", payload.CwsprChatConversationId);
+
+                datum.AddMetadata("cwsprChatConversationType", payload.CwsprChatConversationType);
+
+                if (payload.CwsprChatFileContextCount.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatFileContextCount", payload.CwsprChatFileContextCount.Value);
+                }
+
+                if (payload.CwsprChatFileContextLength.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatFileContextLength", payload.CwsprChatFileContextLength.Value);
+                }
+
+                if (payload.CwsprChatFileContextTruncatedLength.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatFileContextTruncatedLength", payload.CwsprChatFileContextTruncatedLength.Value);
+                }
+
+                if (payload.CwsprChatFocusFileContextLength.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatFocusFileContextLength", payload.CwsprChatFocusFileContextLength.Value);
+                }
+
+                if (payload.CwsprChatFocusFileContextTruncatedLength.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatFocusFileContextTruncatedLength", payload.CwsprChatFocusFileContextTruncatedLength.Value);
+                }
+
+                if (payload.CwsprChatFolderContextCount.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatFolderContextCount", payload.CwsprChatFolderContextCount.Value);
+                }
+
+                if (payload.CwsprChatFollowUpCount.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatFollowUpCount", payload.CwsprChatFollowUpCount.Value);
+                }
+
+                if (payload.CwsprChatFullDisplayLatency.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatFullDisplayLatency", payload.CwsprChatFullDisplayLatency.Value);
+                }
+
+                datum.AddMetadata("cwsprChatFullResponseLatency", payload.CwsprChatFullResponseLatency);
+
+                if (payload.CwsprChatFullServerResponseLatency.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatFullServerResponseLatency", payload.CwsprChatFullServerResponseLatency.Value);
+                }
+
+                if (payload.CwsprChatHasCodeSnippet.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatHasCodeSnippet", payload.CwsprChatHasCodeSnippet.Value);
+                }
+
+                if (payload.CwsprChatHasContextList.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatHasContextList", payload.CwsprChatHasContextList.Value);
+                }
+
+                if (payload.CwsprChatHasProjectContext.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatHasProjectContext", payload.CwsprChatHasProjectContext.Value);
+                }
+
+                datum.AddMetadata("cwsprChatMessageId", payload.CwsprChatMessageId);
+
+                datum.AddMetadata("cwsprChatProgrammingLanguage", payload.CwsprChatProgrammingLanguage);
+
+                if (payload.CwsprChatProjectContextQueryMs.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatProjectContextQueryMs", payload.CwsprChatProjectContextQueryMs.Value);
+                }
+
+                if (payload.CwsprChatPromptContextCount.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatPromptContextCount", payload.CwsprChatPromptContextCount.Value);
+                }
+
+                if (payload.CwsprChatPromptContextLength.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatPromptContextLength", payload.CwsprChatPromptContextLength.Value);
+                }
+
+                if (payload.CwsprChatPromptContextTruncatedLength.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatPromptContextTruncatedLength", payload.CwsprChatPromptContextTruncatedLength.Value);
+                }
+
+                if (payload.CwsprChatReferencesCount.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatReferencesCount", payload.CwsprChatReferencesCount.Value);
+                }
+
+                datum.AddMetadata("cwsprChatRequestLength", payload.CwsprChatRequestLength);
+
+                datum.AddMetadata("cwsprChatResponseCode", payload.CwsprChatResponseCode);
+
+                if (payload.CwsprChatResponseCodeSnippetCount.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatResponseCodeSnippetCount", payload.CwsprChatResponseCodeSnippetCount.Value);
+                }
+
+                if (payload.CwsprChatResponseLength.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatResponseLength", payload.CwsprChatResponseLength.Value);
+                }
+
+                if (payload.CwsprChatRuleContextCount.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatRuleContextCount", payload.CwsprChatRuleContextCount.Value);
+                }
+
+                if (payload.CwsprChatRuleContextLength.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatRuleContextLength", payload.CwsprChatRuleContextLength.Value);
+                }
+
+                if (payload.CwsprChatRuleContextTruncatedLength.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatRuleContextTruncatedLength", payload.CwsprChatRuleContextTruncatedLength.Value);
+                }
+
+                if (payload.CwsprChatSourceLinkCount.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatSourceLinkCount", payload.CwsprChatSourceLinkCount.Value);
+                }
+
+                datum.AddMetadata("cwsprChatTimeBetweenChunks", payload.CwsprChatTimeBetweenChunks);
+
+                datum.AddMetadata("cwsprChatTimeBetweenDisplays", payload.CwsprChatTimeBetweenDisplays);
+
+                datum.AddMetadata("cwsprChatTimeToFirstChunk", payload.CwsprChatTimeToFirstChunk);
+
+                if (payload.CwsprChatTimeToFirstDisplay.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatTimeToFirstDisplay", payload.CwsprChatTimeToFirstDisplay.Value);
+                }
+
+                if (payload.CwsprChatTimeToFirstUsableChunk.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatTimeToFirstUsableChunk", payload.CwsprChatTimeToFirstUsableChunk.Value);
+                }
+
+                datum.AddMetadata("cwsprChatTriggerInteraction", payload.CwsprChatTriggerInteraction);
+
+                if (payload.CwsprChatUserInputContextLength.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatUserInputContextLength", payload.CwsprChatUserInputContextLength.Value);
+                }
+
+                if (payload.CwsprChatUserInputContextTruncatedLength.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatUserInputContextTruncatedLength", payload.CwsprChatUserInputContextTruncatedLength.Value);
+                }
+
+                if (payload.CwsprChatUserIntent.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatUserIntent", payload.CwsprChatUserIntent.Value);
+                }
+
+                if (payload.CwsprChatWorkspaceContextLength.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatWorkspaceContextLength", payload.CwsprChatWorkspaceContextLength.Value);
+                }
+
+                if (payload.CwsprChatWorkspaceContextTruncatedLength.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatWorkspaceContextTruncatedLength", payload.CwsprChatWorkspaceContextTruncatedLength.Value);
+                }
+
+                if (payload.Enabled.HasValue)
+                {
+                    datum.AddMetadata("enabled", payload.Enabled.Value);
+                }
+
+                datum.AddMetadata("languageServerVersion", payload.LanguageServerVersion);
+
+                datum.AddMetadata("requestIds", payload.RequestIds);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -201,6 +539,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -227,134 +566,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("result", payload.Result.Value);
                 }
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
-        /// User clicked on the thumbs down button to say that they are unsatisfied
-        public static void RecordAmazonqApproachThumbsDown(this ITelemetryLogger telemetryLogger, AmazonqApproachThumbsDown payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "amazonq_approachThumbsDown";
-                datum.Unit = Unit.Count;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                datum.AddMetadata("traceId", payload.TraceId);
-                datum.AddMetadata("metricId", payload.MetricId);
-                datum.AddMetadata("parentId", payload.ParentId);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("amazonqConversationId", payload.AmazonqConversationId);
-
-                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
-        /// User clicked on the thumbs up button, to mention that they are satisfied
-        public static void RecordAmazonqApproachThumbsUp(this ITelemetryLogger telemetryLogger, AmazonqApproachThumbsUp payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "amazonq_approachThumbsUp";
-                datum.Unit = Unit.Count;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                datum.AddMetadata("traceId", payload.TraceId);
-                datum.AddMetadata("metricId", payload.MetricId);
-                datum.AddMetadata("parentId", payload.ParentId);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("amazonqConversationId", payload.AmazonqConversationId);
-
-                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -402,6 +613,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -466,6 +678,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -553,6 +766,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -617,6 +831,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -634,6 +849,90 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("amazonqConversationId", payload.AmazonqConversationId);
 
                 datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// This metric is used to evaluate Amazon Q's code review tool
+        public static void RecordAmazonqCodeReviewTool(this ITelemetryLogger telemetryLogger, AmazonqCodeReviewTool payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_codeReviewTool";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("artifactType", payload.ArtifactType);
+
+                datum.AddMetadata("codewhispererCodeScanJobId", payload.CodewhispererCodeScanJobId);
+
+                if (payload.CodewhispererCodeScanSrcZipFileBytes.HasValue)
+                {
+                    datum.AddMetadata("codewhispererCodeScanSrcZipFileBytes", payload.CodewhispererCodeScanSrcZipFileBytes.Value);
+                }
+
+                if (payload.CodewhispererCodeScanTotalIssues.HasValue)
+                {
+                    datum.AddMetadata("codewhispererCodeScanTotalIssues", payload.CodewhispererCodeScanTotalIssues.Value);
+                }
+
+                if (payload.CustomRules.HasValue)
+                {
+                    datum.AddMetadata("customRules", payload.CustomRules.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("scope", payload.Scope);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -681,6 +980,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -708,6 +1008,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
 
                 datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                datum.AddMetadata("requestId2", payload.RequestId2);
 
                 if (payload.Result.HasValue)
                 {
@@ -760,6 +1062,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -782,6 +1085,223 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
 
                 datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// When a user exports the current Amazon Q chat tab
+        public static void RecordAmazonqExportTab(this ITelemetryLogger telemetryLogger, AmazonqExportTab payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_exportTab";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("filenameExt", payload.FilenameExt);
+
+                datum.AddMetadata("languageServerVersion", payload.LanguageServerVersion);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// When a user gives feedback using vote or comment or rating in the conversation
+        public static void RecordAmazonqFeedback(this ITelemetryLogger telemetryLogger, AmazonqFeedback payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_feedback";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("amazonqConversationId", payload.AmazonqConversationId);
+
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                datum.AddMetadata("featureId", payload.FeatureId);
+
+                if (payload.InteractionType.HasValue)
+                {
+                    datum.AddMetadata("interactionType", payload.InteractionType.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// When a user interacts with a message in the agentic chat
+        public static void RecordAmazonqInteractWithAgenticChat(this ITelemetryLogger telemetryLogger, AmazonqInteractWithAgenticChat payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_interactWithAgenticChat";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                datum.AddMetadata("cwsprAgenticChatInteractionType", payload.CwsprAgenticChatInteractionType);
+
+                datum.AddMetadata("cwsprChatConversationId", payload.CwsprChatConversationId);
+
+                datum.AddMetadata("cwsprChatConversationType", payload.CwsprChatConversationType);
+
+                datum.AddMetadata("cwsprToolUseId", payload.CwsprToolUseId);
+
+                if (payload.Enabled.HasValue)
+                {
+                    datum.AddMetadata("enabled", payload.Enabled.Value);
+                }
+
+                datum.AddMetadata("languageServerVersion", payload.LanguageServerVersion);
+
+                datum.AddMetadata("requestIds", payload.RequestIds);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -829,6 +1349,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -862,6 +1383,16 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("cwsprChatConversationId", payload.CwsprChatConversationId);
 
+                if (payload.CwsprChatFileContextCount.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatFileContextCount", payload.CwsprChatFileContextCount.Value);
+                }
+
+                if (payload.CwsprChatFolderContextCount.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatFolderContextCount", payload.CwsprChatFolderContextCount.Value);
+                }
+
                 if (payload.CwsprChatHasProjectContext.HasValue)
                 {
                     datum.AddMetadata("cwsprChatHasProjectContext", payload.CwsprChatHasProjectContext.Value);
@@ -880,6 +1411,16 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("cwsprChatProgrammingLanguage", payload.CwsprChatProgrammingLanguage);
 
+                if (payload.CwsprChatPromptContextCount.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatPromptContextCount", payload.CwsprChatPromptContextCount.Value);
+                }
+
+                if (payload.CwsprChatRuleContextCount.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatRuleContextCount", payload.CwsprChatRuleContextCount.Value);
+                }
+
                 if (payload.CwsprChatTotalCodeBlocks.HasValue)
                 {
                     datum.AddMetadata("cwsprChatTotalCodeBlocks", payload.CwsprChatTotalCodeBlocks.Value);
@@ -889,6 +1430,95 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("cwsprChatUserIntent", payload.CwsprChatUserIntent.Value);
                 }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// This metric is emitted per LLM call in the agentic loop with or without tool execution.
+        public static void RecordAmazonqInvokeLLM(this ITelemetryLogger telemetryLogger, AmazonqInvokeLLM payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_invokeLLM";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                datum.AddMetadata("cwsprChatConversationId", payload.CwsprChatConversationId);
+
+                datum.AddMetadata("cwsprChatConversationType", payload.CwsprChatConversationType);
+
+                datum.AddMetadata("cwsprChatTimeBetweenChunks", payload.CwsprChatTimeBetweenChunks);
+
+                if (payload.CwsprChatTimeToFirstChunk.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatTimeToFirstChunk", payload.CwsprChatTimeToFirstChunk.Value);
+                }
+
+                datum.AddMetadata("cwsprToolName", payload.CwsprToolName);
+
+                datum.AddMetadata("cwsprToolUseId", payload.CwsprToolUseId);
+
+                if (payload.Enabled.HasValue)
+                {
+                    datum.AddMetadata("enabled", payload.Enabled.Value);
+                }
+
+                datum.AddMetadata("languageServerVersion", payload.LanguageServerVersion);
+
+                datum.AddMetadata("latency", payload.Latency);
+
+                datum.AddMetadata("toolCallLatency", payload.ToolCallLatency);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -936,6 +1566,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1004,6 +1635,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1070,6 +1702,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1136,6 +1769,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1155,6 +1789,358 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
 
                 datum.AddMetadata("enabled", payload.Enabled);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// When a history file is loaded from the filesystem and open tabs are restored
+        public static void RecordAmazonqLoadHistory(this ITelemetryLogger telemetryLogger, AmazonqLoadHistory payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_loadHistory";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("amazonqHistoryFileSize", payload.AmazonqHistoryFileSize);
+
+                datum.AddMetadata("amazonqTimeToLoadHistory", payload.AmazonqTimeToLoadHistory);
+
+                datum.AddMetadata("languageServerVersion", payload.LanguageServerVersion);
+
+                datum.AddMetadata("openTabCount", payload.OpenTabCount);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// This metric is emitted per reload of an IDE or reinitizalize of a mcp server
+        public static void RecordAmazonqMcpConfig(this ITelemetryLogger telemetryLogger, AmazonqMcpConfig payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_mcpConfig";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                datum.AddMetadata("languageServerVersion", payload.LanguageServerVersion);
+
+                if (payload.NumActiveServers.HasValue)
+                {
+                    datum.AddMetadata("numActiveServers", payload.NumActiveServers.Value);
+                }
+
+                if (payload.NumGlobalServers.HasValue)
+                {
+                    datum.AddMetadata("numGlobalServers", payload.NumGlobalServers.Value);
+                }
+
+                if (payload.NumProjectServers.HasValue)
+                {
+                    datum.AddMetadata("numProjectServers", payload.NumProjectServers.Value);
+                }
+
+                if (payload.NumToolsAlwaysAllowed.HasValue)
+                {
+                    datum.AddMetadata("numToolsAlwaysAllowed", payload.NumToolsAlwaysAllowed.Value);
+                }
+
+                if (payload.NumToolsDenied.HasValue)
+                {
+                    datum.AddMetadata("numToolsDenied", payload.NumToolsDenied.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// This metric is emitted per mcp server name when user reloads an IDE or does any CRUD operation on mcp config.
+        public static void RecordAmazonqMcpServerInit(this ITelemetryLogger telemetryLogger, AmazonqMcpServerInit payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_mcpServerInit";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("command", payload.Command);
+
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                if (payload.Enabled.HasValue)
+                {
+                    datum.AddMetadata("enabled", payload.Enabled.Value);
+                }
+
+                if (payload.InitializeTime.HasValue)
+                {
+                    datum.AddMetadata("initializeTime", payload.InitializeTime.Value);
+                }
+
+                datum.AddMetadata("languageServerVersion", payload.LanguageServerVersion);
+
+                if (payload.NumTools.HasValue)
+                {
+                    datum.AddMetadata("numTools", payload.NumTools.Value);
+                }
+
+                datum.AddMetadata("scope", payload.Scope);
+
+                if (payload.TransportType.HasValue)
+                {
+                    datum.AddMetadata("transportType", payload.TransportType.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// When an error has occured in response to a prompt
+        public static void RecordAmazonqMessageResponseError(this ITelemetryLogger telemetryLogger, AmazonqMessageResponseError payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_messageResponseError";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                if (payload.CwsprChatActiveEditorImportCount.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatActiveEditorImportCount", payload.CwsprChatActiveEditorImportCount.Value);
+                }
+
+                if (payload.CwsprChatActiveEditorTotalCharacters.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatActiveEditorTotalCharacters", payload.CwsprChatActiveEditorTotalCharacters.Value);
+                }
+
+                datum.AddMetadata("cwsprChatConversationId", payload.CwsprChatConversationId);
+
+                datum.AddMetadata("cwsprChatConversationType", payload.CwsprChatConversationType);
+
+                if (payload.CwsprChatHasCodeSnippet.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatHasCodeSnippet", payload.CwsprChatHasCodeSnippet.Value);
+                }
+
+                datum.AddMetadata("cwsprChatProgrammingLanguage", payload.CwsprChatProgrammingLanguage);
+
+                datum.AddMetadata("cwsprChatRequestLength", payload.CwsprChatRequestLength);
+
+                datum.AddMetadata("cwsprChatResponseCode", payload.CwsprChatResponseCode);
+
+                datum.AddMetadata("cwsprChatResponseErrorReason", payload.CwsprChatResponseErrorReason);
+
+                datum.AddMetadata("cwsprChatTriggerInteraction", payload.CwsprChatTriggerInteraction);
+
+                if (payload.CwsprChatUserIntent.HasValue)
+                {
+                    datum.AddMetadata("cwsprChatUserIntent", payload.CwsprChatUserIntent.Value);
+                }
+
+                if (payload.Enabled.HasValue)
+                {
+                    datum.AddMetadata("enabled", payload.Enabled.Value);
+                }
+
+                datum.AddMetadata("languageServerVersion", payload.LanguageServerVersion);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1202,6 +2188,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1224,6 +2211,83 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("result", payload.Result.Value);
                 }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// When a user searches, exports, opens, or deletes a conversation from history
+        public static void RecordAmazonqPerformChatHistoryAction(this ITelemetryLogger telemetryLogger, AmazonqPerformChatHistoryAction payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_performChatHistoryAction";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("action", payload.Action);
+
+                if (payload.AmazonqHistoryFileSize.HasValue)
+                {
+                    datum.AddMetadata("amazonqHistoryFileSize", payload.AmazonqHistoryFileSize.Value);
+                }
+
+                if (payload.AmazonqTimeToSearchHistory.HasValue)
+                {
+                    datum.AddMetadata("amazonqTimeToSearchHistory", payload.AmazonqTimeToSearchHistory.Value);
+                }
+
+                datum.AddMetadata("filenameExt", payload.FilenameExt);
+
+                datum.AddMetadata("languageServerVersion", payload.LanguageServerVersion);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1271,6 +2335,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1292,6 +2357,229 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 if (payload.Result.HasValue)
                 {
                     datum.AddMetadata("result", payload.Result.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// When the LLM either used a tool directly (no acceptance needed) or suggested a tool (user acceptance required)
+        public static void RecordAmazonqToolUseSuggested(this ITelemetryLogger telemetryLogger, AmazonqToolUseSuggested payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_toolUseSuggested";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                datum.AddMetadata("cwsprChatConversationId", payload.CwsprChatConversationId);
+
+                datum.AddMetadata("cwsprChatConversationType", payload.CwsprChatConversationType);
+
+                datum.AddMetadata("cwsprToolName", payload.CwsprToolName);
+
+                datum.AddMetadata("cwsprToolUseId", payload.CwsprToolUseId);
+
+                if (payload.Enabled.HasValue)
+                {
+                    datum.AddMetadata("enabled", payload.Enabled.Value);
+                }
+
+                datum.AddMetadata("languageServerVersion", payload.LanguageServerVersion);
+
+                if (payload.PerfE2ELatency.HasValue)
+                {
+                    datum.AddMetadata("perfE2ELatency", payload.PerfE2ELatency.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Client side invocation of the Amazon Q Unit Test Generation with build and execute loop
+        public static void RecordAmazonqUnitTestGeneration(this ITelemetryLogger telemetryLogger, AmazonqUnitTestGeneration payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "amazonq_unitTestGeneration";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                if (payload.AcceptedCharactersCount.HasValue)
+                {
+                    datum.AddMetadata("acceptedCharactersCount", payload.AcceptedCharactersCount.Value);
+                }
+
+                if (payload.AcceptedCount.HasValue)
+                {
+                    datum.AddMetadata("acceptedCount", payload.AcceptedCount.Value);
+                }
+
+                if (payload.AcceptedLinesCount.HasValue)
+                {
+                    datum.AddMetadata("acceptedLinesCount", payload.AcceptedLinesCount.Value);
+                }
+
+                if (payload.ArtifactsUploadDuration.HasValue)
+                {
+                    datum.AddMetadata("artifactsUploadDuration", payload.ArtifactsUploadDuration.Value);
+                }
+
+                if (payload.BuildZipFileBytes.HasValue)
+                {
+                    datum.AddMetadata("buildZipFileBytes", payload.BuildZipFileBytes.Value);
+                }
+
+                if (payload.Count.HasValue)
+                {
+                    datum.AddMetadata("count", payload.Count.Value);
+                }
+
+                datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
+
+                datum.AddMetadata("cwsprChatProgrammingLanguage", payload.CwsprChatProgrammingLanguage);
+
+                if (payload.GeneratedCharactersCount.HasValue)
+                {
+                    datum.AddMetadata("generatedCharactersCount", payload.GeneratedCharactersCount.Value);
+                }
+
+                if (payload.GeneratedCount.HasValue)
+                {
+                    datum.AddMetadata("generatedCount", payload.GeneratedCount.Value);
+                }
+
+                if (payload.GeneratedLinesCount.HasValue)
+                {
+                    datum.AddMetadata("generatedLinesCount", payload.GeneratedLinesCount.Value);
+                }
+
+                datum.AddMetadata("hasUserPromptSupplied", payload.HasUserPromptSupplied);
+
+                if (payload.IsCodeBlockSelected.HasValue)
+                {
+                    datum.AddMetadata("isCodeBlockSelected", payload.IsCodeBlockSelected.Value);
+                }
+
+                datum.AddMetadata("isSupportedLanguage", payload.IsSupportedLanguage);
+
+                datum.AddMetadata("jobGroup", payload.JobGroup);
+
+                datum.AddMetadata("jobId", payload.JobId);
+
+                if (payload.PerfClientLatency.HasValue)
+                {
+                    datum.AddMetadata("perfClientLatency", payload.PerfClientLatency.Value);
+                }
+
+                datum.AddMetadata("result", payload.Result);
+
+                if (payload.Status.HasValue)
+                {
+                    datum.AddMetadata("status", payload.Status.Value);
+                }
+
+                if (payload.Update.HasValue)
+                {
+                    datum.AddMetadata("update", payload.Update.Value);
                 }
 
                 datum = datum.InvokeTransform(transformDatum);
@@ -1340,6 +2628,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1425,7 +2714,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum.AddMetadata("source", payload.Source);
+                if (payload.Status.HasValue)
+                {
+                    datum.AddMetadata("status", payload.Status.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1473,6 +2765,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1535,6 +2828,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1597,6 +2891,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1626,8 +2921,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("runtime", payload.Runtime.Value);
                 }
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1675,6 +2968,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1692,8 +2986,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("httpMethod", payload.HttpMethod);
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1741,6 +3033,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1803,6 +3096,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1817,11 +3111,84 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("locale", payload.Locale);
 
-                datum.AddMetadata("source", payload.Source);
-
                 if (payload.ToolId.HasValue)
                 {
                     datum.AddMetadata("toolId", payload.ToolId.Value);
+                }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// User click Convert a lambda function to SAM project
+        public static void RecordAppbuilderLambda2sam(this ITelemetryLogger telemetryLogger, AppbuilderLambda2sam payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "appbuilder_lambda2sam";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("action", payload.Action);
+
+                datum.AddMetadata("iac", payload.Iac);
+
+                if (payload.Result.HasValue)
+                {
+                    datum.AddMetadata("result", payload.Result.Value);
+                }
+
+                if (payload.Runtime.HasValue)
+                {
+                    datum.AddMetadata("runtime", payload.Runtime.Value);
                 }
 
                 datum = datum.InvokeTransform(transformDatum);
@@ -1870,6 +3237,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1883,8 +3251,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1932,6 +3298,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -1945,8 +3312,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -1994,6 +3359,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2007,8 +3373,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -2056,6 +3420,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2071,8 +3436,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("action", payload.Action);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -2120,6 +3483,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2133,8 +3497,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -2182,6 +3544,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2250,6 +3613,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2312,6 +3676,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2374,6 +3739,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2440,6 +3806,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2500,6 +3867,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2560,6 +3928,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2622,6 +3991,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2686,6 +4056,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2748,6 +4119,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2812,6 +4184,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2876,6 +4249,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2940,6 +4314,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -2955,8 +4330,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("hasChatAuth", payload.HasChatAuth);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -3004,6 +4377,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3064,6 +4438,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3128,6 +4503,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3190,6 +4566,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3250,6 +4627,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3314,6 +4692,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3381,6 +4760,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3441,6 +4821,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3503,6 +4884,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3565,6 +4947,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3627,6 +5010,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3687,6 +5071,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3747,6 +5132,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3774,6 +5160,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
 
+                if (payload.CredentialType.HasValue)
+                {
+                    datum.AddMetadata("credentialType", payload.CredentialType.Value);
+                }
+
                 datum.AddMetadata("featureId", payload.FeatureId);
 
                 datum.AddMetadata("invalidInputFields", payload.InvalidInputFields);
@@ -3783,8 +5174,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("isReAuth", payload.IsReAuth);
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum.AddMetadata("ssoRegistrationClientId", payload.SsoRegistrationClientId);
 
@@ -3836,6 +5225,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3861,8 +5251,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("newEnabledAuthConnections", payload.NewEnabledAuthConnections);
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -3910,6 +5298,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -3970,6 +5359,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4030,6 +5420,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4094,6 +5485,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4130,8 +5522,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("featureId", payload.FeatureId.Value);
                 }
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum.AddMetadata("ssoRegistrationClientId", payload.SsoRegistrationClientId);
 
@@ -4183,6 +5573,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4245,6 +5636,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4305,6 +5697,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4369,6 +5762,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4431,6 +5825,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4495,6 +5890,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4555,6 +5951,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4621,6 +6018,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4683,6 +6081,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4745,6 +6144,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4809,6 +6209,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4871,6 +6272,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4915,8 +6317,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("sessionDuration", payload.SessionDuration.Value);
                 }
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum.AddMetadata("ssoRegistrationClientId", payload.SsoRegistrationClientId);
 
@@ -4968,6 +6368,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -4987,8 +6388,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -5036,6 +6435,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5100,6 +6500,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5162,6 +6563,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5177,8 +6579,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum.AddMetadata("url", payload.Url);
 
@@ -5228,6 +6628,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5311,6 +6712,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5371,6 +6773,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5431,6 +6834,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5491,6 +6895,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5561,6 +6966,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5623,6 +7029,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5683,6 +7090,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5743,6 +7151,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5807,6 +7216,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5879,6 +7289,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -5945,6 +7356,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6007,6 +7419,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6069,6 +7482,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6097,8 +7511,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
-
-                datum.AddMetadata("source", payload.Source);
 
                 if (payload.XrayEnabled.HasValue)
                 {
@@ -6151,6 +7563,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6213,6 +7626,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6275,6 +7689,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6337,6 +7752,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6354,8 +7770,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -6403,6 +7817,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6465,6 +7880,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6527,6 +7943,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6591,6 +8008,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6653,6 +8071,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6672,8 +8091,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -6721,6 +8138,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6783,6 +8201,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6800,8 +8219,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -6849,6 +8266,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6911,6 +8329,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -6973,6 +8392,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7035,6 +8455,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7097,6 +8518,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7159,6 +8581,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7221,6 +8644,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7283,6 +8707,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7349,6 +8774,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7411,6 +8837,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7473,6 +8900,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7535,6 +8963,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7597,6 +9026,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7661,6 +9091,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7725,6 +9156,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7789,6 +9221,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7851,6 +9284,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7878,8 +9312,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -7927,6 +9359,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -7961,8 +9394,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -8010,6 +9441,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8074,6 +9506,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8138,6 +9571,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8200,6 +9634,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8262,6 +9697,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8322,6 +9758,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8382,6 +9819,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8444,6 +9882,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8506,6 +9945,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8568,6 +10008,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8593,8 +10034,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
 
                 datum.AddMetadata("sessionAlreadyStarted", payload.SessionAlreadyStarted);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -8642,6 +10081,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8655,8 +10095,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -8704,6 +10142,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8766,6 +10205,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8828,6 +10268,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8890,6 +10331,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -8954,6 +10396,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9023,6 +10466,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9091,6 +10535,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9155,6 +10600,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9221,6 +10667,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9285,6 +10732,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9347,6 +10795,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9409,6 +10858,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9476,6 +10926,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9545,6 +10996,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9617,6 +11069,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9683,6 +11136,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9750,6 +11204,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9821,6 +11276,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9887,6 +11343,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9953,6 +11410,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -9992,8 +11450,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("credentialSourceId", payload.CredentialSourceId.Value);
                 }
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -10041,6 +11497,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10109,6 +11566,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10173,6 +11631,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10237,6 +11696,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10266,8 +11726,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("codeTransformProjectId", payload.CodeTransformProjectId);
 
                 datum.AddMetadata("codeTransformSessionId", payload.CodeTransformSessionId);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum.AddMetadata("target", payload.Target);
 
@@ -10319,6 +11777,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10396,6 +11855,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10466,6 +11926,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10544,6 +12005,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10619,6 +12081,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10707,6 +12170,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10788,6 +12252,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10853,6 +12318,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10867,10 +12333,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("locale", payload.Locale);
 
+                if (payload.AutoDetected.HasValue)
+                {
+                    datum.AddMetadata("autoDetected", payload.AutoDetected.Value);
+                }
+
                 if (payload.CodeFixAction.HasValue)
                 {
                     datum.AddMetadata("codeFixAction", payload.CodeFixAction.Value);
                 }
+
+                datum.AddMetadata("codewhispererCodeScanJobId", payload.CodewhispererCodeScanJobId);
 
                 datum.AddMetadata("component", payload.Component);
 
@@ -10879,6 +12352,85 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("detectorId", payload.DetectorId);
 
                 datum.AddMetadata("findingId", payload.FindingId);
+
+                datum.AddMetadata("ruleId", payload.RuleId);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when a code scan issue is returned from the service
+        public static void RecordCodewhispererCodeScanIssueDetected(this ITelemetryLogger telemetryLogger, CodewhispererCodeScanIssueDetected payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "codewhisperer_codeScanIssueDetected";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                if (payload.AutoDetected.HasValue)
+                {
+                    datum.AddMetadata("autoDetected", payload.AutoDetected.Value);
+                }
+
+                datum.AddMetadata("codewhispererCodeScanJobId", payload.CodewhispererCodeScanJobId);
+
+                datum.AddMetadata("detectorId", payload.DetectorId);
+
+                datum.AddMetadata("findingId", payload.FindingId);
+
+                if (payload.IncludesFix.HasValue)
+                {
+                    datum.AddMetadata("includesFix", payload.IncludesFix.Value);
+                }
 
                 datum.AddMetadata("ruleId", payload.RuleId);
 
@@ -10928,6 +12480,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -10942,6 +12495,13 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("locale", payload.Locale);
 
+                if (payload.AutoDetected.HasValue)
+                {
+                    datum.AddMetadata("autoDetected", payload.AutoDetected.Value);
+                }
+
+                datum.AddMetadata("codewhispererCodeScanJobId", payload.CodewhispererCodeScanJobId);
+
                 datum.AddMetadata("component", payload.Component);
 
                 datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
@@ -10949,6 +12509,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("detectorId", payload.DetectorId);
 
                 datum.AddMetadata("findingId", payload.FindingId);
+
+                if (payload.IncludesFix.HasValue)
+                {
+                    datum.AddMetadata("includesFix", payload.IncludesFix.Value);
+                }
 
                 datum.AddMetadata("ruleId", payload.RuleId);
 
@@ -11000,6 +12565,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11013,6 +12579,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
+
+                if (payload.AutoDetected.HasValue)
+                {
+                    datum.AddMetadata("autoDetected", payload.AutoDetected.Value);
+                }
 
                 datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
 
@@ -11070,6 +12641,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11083,6 +12655,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
+
+                if (payload.AutoDetected.HasValue)
+                {
+                    datum.AddMetadata("autoDetected", payload.AutoDetected.Value);
+                }
 
                 datum.AddMetadata("component", payload.Component);
 
@@ -11142,6 +12719,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11155,6 +12733,11 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
+
+                if (payload.AutoDetected.HasValue)
+                {
+                    datum.AddMetadata("autoDetected", payload.AutoDetected.Value);
+                }
 
                 datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
 
@@ -11210,6 +12793,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11227,8 +12811,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("credentialStartUrl", payload.CredentialStartUrl);
 
                 datum.AddMetadata("enabled", payload.Enabled);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -11276,6 +12858,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11340,6 +12923,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11416,6 +13000,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11477,8 +13062,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("result", payload.Result);
 
-                datum.AddMetadata("source", payload.Source);
-
                 datum = datum.InvokeTransform(transformDatum);
 
                 metrics.Data.Add(datum);
@@ -11525,6 +13108,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11657,6 +13241,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11776,6 +13361,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -11865,6 +13451,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12039,6 +13626,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12056,8 +13644,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("result", payload.Result);
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -12105,6 +13691,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12167,6 +13754,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12231,6 +13819,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12295,6 +13884,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12361,6 +13951,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12421,6 +14012,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12483,6 +14075,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12545,6 +14138,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12607,6 +14201,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12671,6 +14266,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12745,6 +14341,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12765,8 +14362,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -12814,6 +14409,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12834,8 +14430,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -12883,6 +14477,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -12947,6 +14542,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13011,6 +14607,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13073,6 +14670,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13137,6 +14735,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13199,6 +14798,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13261,6 +14861,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13323,6 +14924,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13385,6 +14987,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13447,6 +15050,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13509,6 +15113,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13571,6 +15176,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13633,6 +15239,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13695,6 +15302,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13757,6 +15365,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13819,6 +15428,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13881,6 +15491,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -13943,6 +15554,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14005,6 +15617,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14072,6 +15685,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14134,6 +15748,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14201,6 +15816,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14263,6 +15879,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14325,6 +15942,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14387,6 +16005,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14451,6 +16070,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14513,6 +16133,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14575,6 +16196,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14637,6 +16259,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14699,6 +16322,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14761,6 +16385,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14823,6 +16448,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14885,6 +16511,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -14947,6 +16574,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15009,6 +16637,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15071,6 +16700,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15133,6 +16763,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15193,6 +16824,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15253,6 +16885,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15315,6 +16948,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15377,6 +17011,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15439,6 +17074,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15506,6 +17142,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15568,6 +17205,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15630,6 +17268,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15692,6 +17331,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15756,6 +17396,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15820,6 +17461,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15884,6 +17526,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -15946,6 +17589,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16008,6 +17652,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16070,6 +17715,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16132,6 +17778,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16194,6 +17841,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16256,6 +17904,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16320,6 +17969,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16382,6 +18032,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16444,6 +18095,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16510,6 +18162,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16574,6 +18227,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16636,6 +18290,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16700,6 +18355,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16762,6 +18418,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16826,6 +18483,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16890,6 +18548,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -16952,6 +18611,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17014,6 +18674,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17076,6 +18737,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17138,6 +18800,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17200,6 +18863,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17262,6 +18926,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17283,6 +18948,73 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("templateName", payload.TemplateName);
 
                 datum.AddMetadata("variant", payload.Variant);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Called when creating a new Serverless Project
+        public static void RecordLambdaCreateServerlessLandProject(this ITelemetryLogger telemetryLogger, LambdaCreateServerlessLandProject payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "lambda_createServerlessLandProject";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("iac", payload.Iac);
+
+                datum.AddMetadata("runtimeString", payload.RuntimeString);
+
+                datum.AddMetadata("templateName", payload.TemplateName);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -17330,6 +19062,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17392,6 +19125,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17427,8 +19161,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
-
-                datum.AddMetadata("source", payload.Source);
 
                 if (payload.XrayEnabled.HasValue)
                 {
@@ -17481,6 +19213,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17550,6 +19283,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17563,8 +19297,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -17612,6 +19344,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17679,6 +19412,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17708,8 +19442,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("runtime", payload.Runtime.Value);
                 }
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum.AddMetadata("version", payload.Version);
 
@@ -17759,6 +19491,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17773,6 +19506,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
                 datum.AddMetadata("locale", payload.Locale);
 
+                datum.AddMetadata("action", payload.Action);
+
                 datum.AddMetadata("result", payload.Result);
 
                 if (payload.Runtime.HasValue)
@@ -17780,7 +19515,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("runtime", payload.Runtime.Value);
                 }
 
-                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("runtimeString", payload.RuntimeString);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -17828,6 +19563,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17846,7 +19582,327 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
 
                 datum.AddMetadata("serviceType", payload.ServiceType);
 
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Lambda function was deployed from temp
+        public static void RecordLambdaQuickDeploy(this ITelemetryLogger telemetryLogger, LambdaQuickDeploy payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "lambda_quickDeploy";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
                 datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("action", payload.Action);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Lambda function edit operation
+        public static void RecordLambdaQuickEditFunction(this ITelemetryLogger telemetryLogger, LambdaQuickEditFunction payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "lambda_quickEditFunction";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("action", payload.Action);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// user click remote debug checkbox
+        public static void RecordLambdaRemoteDebugPrecheck(this ITelemetryLogger telemetryLogger, LambdaRemoteDebugPrecheck payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "lambda_remoteDebugPrecheck";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("action", payload.Action);
+
+                datum.AddMetadata("runtimeString", payload.RuntimeString);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// user start remote debugging
+        public static void RecordLambdaRemoteDebugStart(this ITelemetryLogger telemetryLogger, LambdaRemoteDebugStart payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "lambda_remoteDebugStart";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("action", payload.Action);
+
+                datum.AddMetadata("runtimeString", payload.RuntimeString);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// user stop remote debugging
+        public static void RecordLambdaRemoteDebugStop(this ITelemetryLogger telemetryLogger, LambdaRemoteDebugStop payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "lambda_remoteDebugStop";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                if (payload.SessionDuration.HasValue)
+                {
+                    datum.AddMetadata("sessionDuration", payload.SessionDuration.Value);
+                }
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -17894,6 +19950,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -17914,6 +19971,148 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("runtime", payload.Runtime.Value);
                 }
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Lambda URI handler was invoked
+        public static void RecordLambdaUriHandler(this ITelemetryLogger telemetryLogger, LambdaUriHandler payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "lambda_uriHandler";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Sets up a language server
+        public static void RecordLanguageServerSetup(this ITelemetryLogger telemetryLogger, LanguageServerSetup payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "languageServer_setup";
+                datum.Unit = Unit.Milliseconds;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("id", payload.Id);
+
+                if (payload.LanguageServerLocation.HasValue)
+                {
+                    datum.AddMetadata("languageServerLocation", payload.LanguageServerLocation.Value);
+                }
+
+                datum.AddMetadata("languageServerSetupStage", payload.LanguageServerSetupStage);
+
+                datum.AddMetadata("languageServerVersion", payload.LanguageServerVersion);
+
+                if (payload.ManifestLocation.HasValue)
+                {
+                    datum.AddMetadata("manifestLocation", payload.ManifestLocation.Value);
+                }
+
+                datum.AddMetadata("manifestSchemaVersion", payload.ManifestSchemaVersion);
+
+                datum.AddMetadata("result", payload.Result);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -17961,6 +20160,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18027,6 +20227,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18089,6 +20290,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18151,6 +20353,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18213,6 +20416,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18275,6 +20479,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18337,6 +20542,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18403,6 +20609,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18465,6 +20672,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18527,6 +20735,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18589,6 +20798,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18651,6 +20861,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18715,6 +20926,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18779,6 +20991,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18839,6 +21052,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18899,6 +21113,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -18961,6 +21176,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19025,6 +21241,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19087,6 +21304,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19149,6 +21367,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19211,6 +21430,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19283,6 +21503,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19360,6 +21581,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19422,6 +21644,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19489,6 +21712,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19551,6 +21775,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19613,6 +21838,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19675,6 +21901,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19737,6 +21964,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19814,6 +22042,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19876,6 +22105,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19894,8 +22124,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("lambdaPackageType", payload.LambdaPackageType.Value);
                 }
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum.AddMetadata("version", payload.Version);
 
@@ -19945,6 +22173,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -19960,8 +22189,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum.AddMetadata("version", payload.Version);
 
@@ -20011,6 +22238,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20075,6 +22303,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20158,6 +22387,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20178,8 +22408,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 }
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum.AddMetadata("syncedResources", payload.SyncedResources);
 
@@ -20231,6 +22459,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20298,6 +22527,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20360,6 +22590,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20422,6 +22653,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20482,6 +22714,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20542,6 +22775,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20604,6 +22838,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20666,6 +22901,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20728,6 +22964,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20790,6 +23027,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20852,6 +23090,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20914,6 +23153,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -20976,6 +23216,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21040,6 +23281,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21107,6 +23349,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21171,6 +23414,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21238,6 +23482,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21302,6 +23547,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21364,6 +23610,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21428,6 +23675,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21492,6 +23740,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21556,6 +23805,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21618,6 +23868,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21680,6 +23931,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21742,6 +23994,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21806,6 +24059,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21835,8 +24089,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
         
         /// Records Telemetry Event:
-        /// The user closed 'something' (specified by 'module'). Examples: a view, feature, resource, ...
-        public static void RecordToolkitCloseModule(this ITelemetryLogger telemetryLogger, ToolkitCloseModule payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        /// The module has closed/terminated. Use this when the module is done being used.
+        public static void RecordToolkitDidCloseModule(this ITelemetryLogger telemetryLogger, ToolkitDidCloseModule payload, Func<MetricDatum, MetricDatum> transformDatum = null)
         {
             try
             {
@@ -21852,7 +24106,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 metrics.Data = new List<MetricDatum>();
 
                 var datum = new MetricDatum();
-                datum.MetricName = "toolkit_closeModule";
+                datum.MetricName = "toolkit_didCloseModule";
                 datum.Unit = Unit.None;
                 datum.Passive = payload.Passive;
                 datum.TrackPerformance = payload.TrackPerformance;
@@ -21868,6 +24122,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21883,6 +24138,78 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("locale", payload.Locale);
 
                 datum.AddMetadata("module", payload.Module);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// The module has loaded, i.e it has rendered/resolved/finished. You can use this metric by itself, OR after `toolkit_willOpenModule` + `traceId` to close the loop on an asynchronous operation.
+        public static void RecordToolkitDidLoadModule(this ITelemetryLogger telemetryLogger, ToolkitDidLoadModule payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "toolkit_didLoadModule";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                if (payload.Attempts.HasValue)
+                {
+                    datum.AddMetadata("attempts", payload.Attempts.Value);
+                }
+
+                datum.AddMetadata("module", payload.Module);
+
+                datum.AddMetadata("result", payload.Result);
+
+                datum.AddMetadata("version", payload.Version);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -21930,6 +24257,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -21962,8 +24290,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("enabled", payload.Enabled);
 
                 datum.AddMetadata("featureId", payload.FeatureId);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -22011,6 +24337,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22075,6 +24402,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22093,77 +24421,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 {
                     datum.AddMetadata("result", payload.Result.Value);
                 }
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
-        /// The Toolkit has completed initialization for the specified module.
-        public static void RecordToolkitInitModule(this ITelemetryLogger telemetryLogger, ToolkitInitModule payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "toolkit_initModule";
-                datum.Unit = Unit.None;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                datum.AddMetadata("traceId", payload.TraceId);
-                datum.AddMetadata("metricId", payload.MetricId);
-                datum.AddMetadata("parentId", payload.ParentId);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                if (payload.Attempts.HasValue)
-                {
-                    datum.AddMetadata("attempts", payload.Attempts.Value);
-                }
-
-                datum.AddMetadata("module", payload.Module);
-
-                datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("version", payload.Version);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -22211,6 +24468,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22232,74 +24490,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("id", payload.Id);
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("source", payload.Source);
-
-                datum = datum.InvokeTransform(transformDatum);
-
-                metrics.Data.Add(datum);
-                telemetryLogger.Record(metrics);
-            }
-            catch (System.Exception e)
-            {
-                telemetryLogger.Logger.Error("Error recording telemetry event", e);
-                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
-            }
-        }
-        
-        /// Records Telemetry Event:
-        /// User opened 'something' (specified by 'module'). Examples: a view, feature, resource, ...
-        public static void RecordToolkitOpenModule(this ITelemetryLogger telemetryLogger, ToolkitOpenModule payload, Func<MetricDatum, MetricDatum> transformDatum = null)
-        {
-            try
-            {
-                var metrics = new Metrics();
-                if (payload.CreatedOn.HasValue)
-                {
-                    metrics.CreatedOn = payload.CreatedOn.Value;
-                }
-                else
-                {
-                    metrics.CreatedOn = System.DateTime.Now;
-                }
-                metrics.Data = new List<MetricDatum>();
-
-                var datum = new MetricDatum();
-                datum.MetricName = "toolkit_openModule";
-                datum.Unit = Unit.None;
-                datum.Passive = payload.Passive;
-                datum.TrackPerformance = payload.TrackPerformance;
-                if (payload.Value.HasValue)
-                {
-                    datum.Value = payload.Value.Value;
-                }
-                else
-                {
-                    datum.Value = 1;
-                }
-                datum.AddMetadata("awsAccount", payload.AwsAccount);
-                datum.AddMetadata("awsRegion", payload.AwsRegion);
-                datum.AddMetadata("reason", payload.Reason);
-                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
-                datum.AddMetadata("errorCode", payload.ErrorCode);
-                datum.AddMetadata("causedBy", payload.CausedBy);
-                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
-                datum.AddMetadata("requestId", payload.RequestId);
-                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
-                datum.AddMetadata("traceId", payload.TraceId);
-                datum.AddMetadata("metricId", payload.MetricId);
-                datum.AddMetadata("parentId", payload.ParentId);
-                if (payload.Duration.HasValue)
-                {
-                    datum.AddMetadata("duration", payload.Duration.Value);
-                }
-                datum.AddMetadata("locale", payload.Locale);
-
-                datum.AddMetadata("module", payload.Module);
-
-                datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -22347,6 +24537,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22366,8 +24557,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("id", payload.Id);
 
                 datum.AddMetadata("result", payload.Result);
-
-                datum.AddMetadata("source", payload.Source);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -22415,6 +24604,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22483,6 +24673,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22551,6 +24742,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22564,6 +24756,71 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                     datum.AddMetadata("duration", payload.Duration.Value);
                 }
                 datum.AddMetadata("locale", payload.Locale);
+
+                datum = datum.InvokeTransform(transformDatum);
+
+                metrics.Data.Add(datum);
+                telemetryLogger.Record(metrics);
+            }
+            catch (System.Exception e)
+            {
+                telemetryLogger.Logger.Error("Error recording telemetry event", e);
+                System.Diagnostics.Debug.Assert(false, "Error Recording Telemetry");
+            }
+        }
+        
+        /// Records Telemetry Event:
+        /// Indicates a module opening attempt began, not its successful completion. For load confirmation, use `toolkit_didLoadModule` with matching `traceId`. This separation handles asynchronous processes that can't be captured in a single metric. 'Module' refers to components like views, features, resources, etc.
+        public static void RecordToolkitWillOpenModule(this ITelemetryLogger telemetryLogger, ToolkitWillOpenModule payload, Func<MetricDatum, MetricDatum> transformDatum = null)
+        {
+            try
+            {
+                var metrics = new Metrics();
+                if (payload.CreatedOn.HasValue)
+                {
+                    metrics.CreatedOn = payload.CreatedOn.Value;
+                }
+                else
+                {
+                    metrics.CreatedOn = System.DateTime.Now;
+                }
+                metrics.Data = new List<MetricDatum>();
+
+                var datum = new MetricDatum();
+                datum.MetricName = "toolkit_willOpenModule";
+                datum.Unit = Unit.None;
+                datum.Passive = payload.Passive;
+                datum.TrackPerformance = payload.TrackPerformance;
+                if (payload.Value.HasValue)
+                {
+                    datum.Value = payload.Value.Value;
+                }
+                else
+                {
+                    datum.Value = 1;
+                }
+                datum.AddMetadata("awsAccount", payload.AwsAccount);
+                datum.AddMetadata("awsRegion", payload.AwsRegion);
+                datum.AddMetadata("reason", payload.Reason);
+                datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
+                datum.AddMetadata("errorCode", payload.ErrorCode);
+                datum.AddMetadata("causedBy", payload.CausedBy);
+                datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
+                datum.AddMetadata("requestId", payload.RequestId);
+                datum.AddMetadata("requestServiceType", payload.RequestServiceType);
+                datum.AddMetadata("traceId", payload.TraceId);
+                datum.AddMetadata("metricId", payload.MetricId);
+                datum.AddMetadata("parentId", payload.ParentId);
+                if (payload.Duration.HasValue)
+                {
+                    datum.AddMetadata("duration", payload.Duration.Value);
+                }
+                datum.AddMetadata("locale", payload.Locale);
+
+                datum.AddMetadata("module", payload.Module);
+
+                datum.AddMetadata("result", payload.Result);
 
                 datum = datum.InvokeTransform(transformDatum);
 
@@ -22611,6 +24868,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22673,6 +24931,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22735,6 +24994,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22797,6 +25057,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22859,6 +25120,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22921,6 +25183,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
                 datum.AddMetadata("awsRegion", payload.AwsRegion);
                 datum.AddMetadata("reason", payload.Reason);
                 datum.AddMetadata("reasonDesc", payload.ReasonDescription);
+                datum.AddMetadata("source", payload.Source);
                 datum.AddMetadata("errorCode", payload.ErrorCode);
                 datum.AddMetadata("causedBy", payload.CausedBy);
                 datum.AddMetadata("httpStatusCode", payload.HttpStatusCode);
@@ -22962,6 +25225,12 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// TASK_ASSIST_PLANNING
         public static readonly AmazonqUploadIntent TASKASSISTPLANNING = new AmazonqUploadIntent("TASK_ASSIST_PLANNING");
+        
+        /// AUTOMATIC_FILE_SECURITY_SCAN
+        public static readonly AmazonqUploadIntent AUTOMATICFILESECURITYSCAN = new AmazonqUploadIntent("AUTOMATIC_FILE_SECURITY_SCAN");
+        
+        /// FULL_PROJECT_SECURITY_SCAN
+        public static readonly AmazonqUploadIntent FULLPROJECTSECURITYSCAN = new AmazonqUploadIntent("FULL_PROJECT_SECURITY_SCAN");
         
         public AmazonqUploadIntent(string value)
         {
@@ -23704,6 +25973,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         private string _value;
         
+        /// abap
+        public static readonly CodewhispererLanguage Abap = new CodewhispererLanguage("abap");
+        
         /// c
         public static readonly CodewhispererLanguage C = new CodewhispererLanguage("c");
         
@@ -24109,7 +26381,76 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     }
     
     /// Metric field type
-    /// Indicates the specific interaction type with a message in a conversation
+    /// Type of interaction with agentic chat messages
+    public struct CwsprAgenticChatInteractionType
+    {
+        
+        private string _value;
+        
+        /// RejectDiff
+        public static readonly CwsprAgenticChatInteractionType RejectDiff = new CwsprAgenticChatInteractionType("RejectDiff");
+        
+        /// GeneratedDiff
+        public static readonly CwsprAgenticChatInteractionType GeneratedDiff = new CwsprAgenticChatInteractionType("GeneratedDiff");
+        
+        /// RunCommand
+        public static readonly CwsprAgenticChatInteractionType RunCommand = new CwsprAgenticChatInteractionType("RunCommand");
+        
+        /// GeneratedCommand
+        public static readonly CwsprAgenticChatInteractionType GeneratedCommand = new CwsprAgenticChatInteractionType("GeneratedCommand");
+        
+        /// StopChat
+        public static readonly CwsprAgenticChatInteractionType StopChat = new CwsprAgenticChatInteractionType("StopChat");
+        
+        public CwsprAgenticChatInteractionType(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Identifies the type of conversation
+    public struct CwsprChatConversationType
+    {
+        
+        private string _value;
+        
+        /// Chat
+        public static readonly CwsprChatConversationType Chat = new CwsprChatConversationType("Chat");
+        
+        /// InlineChat
+        public static readonly CwsprChatConversationType InlineChat = new CwsprChatConversationType("InlineChat");
+        
+        /// Assign
+        public static readonly CwsprChatConversationType Assign = new CwsprChatConversationType("Assign");
+        
+        /// Transform
+        public static readonly CwsprChatConversationType Transform = new CwsprChatConversationType("Transform");
+        
+        /// AgenticChat
+        public static readonly CwsprChatConversationType AgenticChat = new CwsprChatConversationType("AgenticChat");
+        
+        /// AgenticChatWithToolUse
+        public static readonly CwsprChatConversationType AgenticChatWithToolUse = new CwsprChatConversationType("AgenticChatWithToolUse");
+        
+        public CwsprChatConversationType(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// (Deprecated, use `interactionType` instead.) User interaction type, especially for AI-related features.
     public struct CwsprChatInteractionType
     {
         
@@ -24149,6 +26490,33 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public static readonly CwsprChatInteractionType ViewDiff = new CwsprChatInteractionType("viewDiff");
         
         public CwsprChatInteractionType(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Identifies the specific interaction that opens the chat panel
+    public struct CwsprChatTriggerInteraction
+    {
+        
+        private string _value;
+        
+        /// hotkeys
+        public static readonly CwsprChatTriggerInteraction Hotkeys = new CwsprChatTriggerInteraction("hotkeys");
+        
+        /// click
+        public static readonly CwsprChatTriggerInteraction Click = new CwsprChatTriggerInteraction("click");
+        
+        /// contextMenu
+        public static readonly CwsprChatTriggerInteraction ContextMenu = new CwsprChatTriggerInteraction("contextMenu");
+        
+        public CwsprChatTriggerInteraction(string value)
         {
             this._value = value;
         }
@@ -24526,6 +26894,12 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// amazonQ
         public static readonly FeatureId AmazonQ = new FeatureId("amazonQ");
         
+        /// amazonQTest
+        public static readonly FeatureId AmazonQTest = new FeatureId("amazonQTest");
+        
+        /// amazonQReview
+        public static readonly FeatureId AmazonQReview = new FeatureId("amazonQReview");
+        
         /// awsExplorer
         public static readonly FeatureId AwsExplorer = new FeatureId("awsExplorer");
         
@@ -24727,6 +27101,57 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     }
     
     /// Metric field type
+    /// User interaction, especially for AI-related features.
+    public struct InteractionType
+    {
+        
+        private string _value;
+        
+        /// acceptDiff
+        public static readonly InteractionType AcceptDiff = new InteractionType("acceptDiff");
+        
+        /// insertAtCursor
+        public static readonly InteractionType InsertAtCursor = new InteractionType("insertAtCursor");
+        
+        /// copySnippet
+        public static readonly InteractionType CopySnippet = new InteractionType("copySnippet");
+        
+        /// copy
+        public static readonly InteractionType Copy = new InteractionType("copy");
+        
+        /// clickLink
+        public static readonly InteractionType ClickLink = new InteractionType("clickLink");
+        
+        /// clickFollowUp
+        public static readonly InteractionType ClickFollowUp = new InteractionType("clickFollowUp");
+        
+        /// hoverReference
+        public static readonly InteractionType HoverReference = new InteractionType("hoverReference");
+        
+        /// upvote
+        public static readonly InteractionType Upvote = new InteractionType("upvote");
+        
+        /// downvote
+        public static readonly InteractionType Downvote = new InteractionType("downvote");
+        
+        /// clickBodyLink
+        public static readonly InteractionType ClickBodyLink = new InteractionType("clickBodyLink");
+        
+        /// viewDiff
+        public static readonly InteractionType ViewDiff = new InteractionType("viewDiff");
+        
+        public InteractionType(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
     /// Lambda architecture identifier
     public struct LambdaArchitecture
     {
@@ -24764,6 +27189,102 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public static readonly LambdaPackageType Image = new LambdaPackageType("Image");
         
         public LambdaPackageType(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// The location of the language server
+    public struct LanguageServerLocation
+    {
+        
+        private string _value;
+        
+        /// cache
+        public static readonly LanguageServerLocation Cache = new LanguageServerLocation("cache");
+        
+        /// remote
+        public static readonly LanguageServerLocation Remote = new LanguageServerLocation("remote");
+        
+        /// fallback
+        public static readonly LanguageServerLocation Fallback = new LanguageServerLocation("fallback");
+        
+        /// override
+        public static readonly LanguageServerLocation Override = new LanguageServerLocation("override");
+        
+        public LanguageServerLocation(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// The stage of the LSP setup process
+    public struct LanguageServerSetupStage
+    {
+        
+        private string _value;
+        
+        /// getManifest
+        public static readonly LanguageServerSetupStage GetManifest = new LanguageServerSetupStage("getManifest");
+        
+        /// getServer
+        public static readonly LanguageServerSetupStage GetServer = new LanguageServerSetupStage("getServer");
+        
+        /// validate
+        public static readonly LanguageServerSetupStage Validate = new LanguageServerSetupStage("validate");
+        
+        /// launch
+        public static readonly LanguageServerSetupStage Launch = new LanguageServerSetupStage("launch");
+        
+        /// handshake
+        public static readonly LanguageServerSetupStage Handshake = new LanguageServerSetupStage("handshake");
+        
+        /// initialized
+        public static readonly LanguageServerSetupStage Initialized = new LanguageServerSetupStage("initialized");
+        
+        /// all
+        public static readonly LanguageServerSetupStage All = new LanguageServerSetupStage("all");
+        
+        public LanguageServerSetupStage(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// The location of the manifest
+    public struct ManifestLocation
+    {
+        
+        private string _value;
+        
+        /// cache
+        public static readonly ManifestLocation Cache = new ManifestLocation("cache");
+        
+        /// remote
+        public static readonly ManifestLocation Remote = new ManifestLocation("remote");
+        
+        /// override
+        public static readonly ManifestLocation Override = new ManifestLocation("override");
+        
+        public ManifestLocation(string value)
         {
             this._value = value;
         }
@@ -25009,6 +27530,36 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     }
     
     /// Metric field type
+    /// This field helps to emit the status of the operation.
+    public struct Status
+    {
+        
+        private string _value;
+        
+        /// ACCEPTED
+        public static readonly Status ACCEPTED = new Status("ACCEPTED");
+        
+        /// CANCELLED
+        public static readonly Status CANCELLED = new Status("CANCELLED");
+        
+        /// FAILED
+        public static readonly Status FAILED = new Status("FAILED");
+        
+        /// REJECTED
+        public static readonly Status REJECTED = new Status("REJECTED");
+        
+        public Status(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
     /// Describes which parts of an application (that we know of) were synced to the cloud. "Code" resources follow the SAM spec: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-sync.html
     public struct SyncedResources
     {
@@ -25058,6 +27609,27 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public static readonly ToolId Docker = new ToolId("docker");
         
         public ToolId(string value)
+        {
+            this._value = value;
+        }
+        
+        public override string ToString()
+        {
+            return this._value;
+        }
+    }
+    
+    /// Metric field type
+    /// Transport type of the MCP server
+    public struct TransportType
+    {
+        
+        private string _value;
+        
+        /// stdio
+        public static readonly TransportType Stdio = new TransportType("stdio");
+        
+        public TransportType(string value)
         {
             this._value = value;
         }
@@ -25126,6 +27698,187 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// An active user is when the user sends a message, and the user will be considered active until the remainder of the time window
+    public sealed class AmazonqActiveUser : BaseTelemetryEvent
+    {
+        
+        /// The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public AmazonqActiveUser()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// When a message is added to the conversation
+    public sealed class AmazonqAddMessage : BaseTelemetryEvent
+    {
+        
+        /// Optional - The currently selected customization arn(None if using the base model)
+        public string CodewhispererCustomizationArn;
+        
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
+        /// Optional - Number of import statements in the active editor
+        public System.Int32? CwsprChatActiveEditorImportCount;
+        
+        /// Optional - Total number of characters in the active editor
+        public System.Int32? CwsprChatActiveEditorTotalCharacters;
+        
+        /// Optional - Number of code symbols added to context
+        public System.Int32? CwsprChatCodeContextCount;
+        
+        /// Optional - Total length of code symbols added to context
+        public System.Int32? CwsprChatCodeContextLength;
+        
+        /// Optional - Truncated length of code symbols added to context
+        public System.Int32? CwsprChatCodeContextTruncatedLength;
+        
+        /// Uniquely identifies a message with which the user interacts.
+        public string CwsprChatConversationId;
+        
+        /// Identifies the type of conversation
+        public CwsprChatConversationType CwsprChatConversationType;
+        
+        /// Optional - Number of files manually added to context
+        public System.Int32? CwsprChatFileContextCount;
+        
+        /// Optional - Total length of files added to context
+        public System.Int32? CwsprChatFileContextLength;
+        
+        /// Optional - Truncated length of files added to context
+        public System.Int32? CwsprChatFileContextTruncatedLength;
+        
+        /// Optional - Total length of current focus file added to context
+        public System.Int32? CwsprChatFocusFileContextLength;
+        
+        /// Optional - Truncated length of current focus file added to context
+        public System.Int32? CwsprChatFocusFileContextTruncatedLength;
+        
+        /// Optional - Number of folders manually added to context
+        public System.Int32? CwsprChatFolderContextCount;
+        
+        /// Optional - Number of follow ups in response
+        public System.Int32? CwsprChatFollowUpCount;
+        
+        /// Optional - The time between the user pressing enter and the entire response being rendered
+        public System.Int32? CwsprChatFullDisplayLatency;
+        
+        /// The time between when the conversation id was created and the final response from the server was received
+        public int CwsprChatFullResponseLatency;
+        
+        /// Optional - The time between the initial server request, including creating the conversation id, and the final response from the server
+        public System.Int32? CwsprChatFullServerResponseLatency;
+        
+        /// Optional - true if user has selected code snippet, false otherwise.
+        public System.Boolean? CwsprChatHasCodeSnippet;
+        
+        /// Optional - true if context list is displayed to user
+        public System.Boolean? CwsprChatHasContextList;
+        
+        /// Optional - true if query has project level context, false otherwise.
+        public System.Boolean? CwsprChatHasProjectContext;
+        
+        /// Unique identifier for each message in an conversation
+        public string CwsprChatMessageId;
+        
+        /// Optional - Programming language associated with the message
+        public string CwsprChatProgrammingLanguage;
+        
+        /// Optional - query latency in ms for local project context
+        public System.Int32? CwsprChatProjectContextQueryMs;
+        
+        /// Optional - Number of saved prompts manually added to context
+        public System.Int32? CwsprChatPromptContextCount;
+        
+        /// Optional - Total length of saved prompts added to context
+        public System.Int32? CwsprChatPromptContextLength;
+        
+        /// Optional - Truncated length of saved prompts added to context
+        public System.Int32? CwsprChatPromptContextTruncatedLength;
+        
+        /// Optional - Number of references in response
+        public System.Int32? CwsprChatReferencesCount;
+        
+        /// Number of characters in request
+        public int CwsprChatRequestLength;
+        
+        /// HTTP response code for message API invocation
+        public int CwsprChatResponseCode;
+        
+        /// Optional - Number of code snippets in response
+        public System.Int32? CwsprChatResponseCodeSnippetCount;
+        
+        /// Optional - Number of characters in response
+        public System.Int32? CwsprChatResponseLength;
+        
+        /// Optional - Number of workspace rules automatically added to context
+        public System.Int32? CwsprChatRuleContextCount;
+        
+        /// Optional - Total length of workspace rules added to context
+        public System.Int32? CwsprChatRuleContextLength;
+        
+        /// Optional - Truncated length of workspace rules added to context
+        public System.Int32? CwsprChatRuleContextTruncatedLength;
+        
+        /// Optional - Number of links in response
+        public System.Int32? CwsprChatSourceLinkCount;
+        
+        /// An array of time when successive chunks of data are received from the server
+        public string CwsprChatTimeBetweenChunks;
+        
+        /// Optional - An array of time when successive chunks of server responses are displayed to the user
+        public string CwsprChatTimeBetweenDisplays;
+        
+        /// The time between when the conversation id was created and when we got back the first usable result
+        public int CwsprChatTimeToFirstChunk;
+        
+        /// Optional - The time between the user pressing enter and when the first chunk of data is displayed to the user
+        public System.Int32? CwsprChatTimeToFirstDisplay;
+        
+        /// Optional - The time between the initial server request, including creating the conversation id, and the first usable result
+        public System.Int32? CwsprChatTimeToFirstUsableChunk;
+        
+        /// Identifies the specific interaction that opens the chat panel
+        public CwsprChatTriggerInteraction CwsprChatTriggerInteraction;
+        
+        /// Optional - Total length of user inputs added to context
+        public System.Int32? CwsprChatUserInputContextLength;
+        
+        /// Optional - Truncated length of user inputs added to context
+        public System.Int32? CwsprChatUserInputContextTruncatedLength;
+        
+        /// Optional - Explict user intent associated with a chat message
+        public CwsprChatUserIntent? CwsprChatUserIntent;
+        
+        /// Optional - Total length of workspace context
+        public System.Int32? CwsprChatWorkspaceContextLength;
+        
+        /// Optional - Truncated length of workspace context
+        public System.Int32? CwsprChatWorkspaceContextTruncatedLength;
+        
+        /// Optional - True if turned on, false if turned off
+        public System.Boolean? Enabled;
+        
+        /// Optional - The version of the language server
+        public string LanguageServerVersion;
+        
+        /// Optional - Request ids (comma-separated) associated with a task or action, in chronological order. For example 'id1,id2,id3'
+        public string RequestIds;
+        
+        public AmazonqAddMessage()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
     /// Captures Approach generation process
     public sealed class AmazonqApproachInvoke : BaseTelemetryEvent
     {
@@ -25146,40 +27899,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Result? Result;
         
         public AmazonqApproachInvoke()
-        {
-            this.Passive = false;
-            this.TrackPerformance = false;
-        }
-    }
-    
-    /// User clicked on the thumbs down button to say that they are unsatisfied
-    public sealed class AmazonqApproachThumbsDown : BaseTelemetryEvent
-    {
-        
-        /// Uniquely identifies a message with which the user interacts.
-        public string AmazonqConversationId;
-        
-        /// Optional - The start URL of current SSO connection
-        public string CredentialStartUrl;
-        
-        public AmazonqApproachThumbsDown()
-        {
-            this.Passive = false;
-            this.TrackPerformance = false;
-        }
-    }
-    
-    /// User clicked on the thumbs up button, to mention that they are satisfied
-    public sealed class AmazonqApproachThumbsUp : BaseTelemetryEvent
-    {
-        
-        /// Uniquely identifies a message with which the user interacts.
-        public string AmazonqConversationId;
-        
-        /// Optional - The start URL of current SSO connection
-        public string CredentialStartUrl;
-        
-        public AmazonqApproachThumbsUp()
         {
             this.Passive = false;
             this.TrackPerformance = false;
@@ -25275,6 +27994,38 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// This metric is used to evaluate Amazon Q's code review tool
+    public sealed class AmazonqCodeReviewTool : BaseTelemetryEvent
+    {
+        
+        /// Optional - type of artifact used in a request
+        public string ArtifactType;
+        
+        /// Optional - The ID of the scan job
+        public string CodewhispererCodeScanJobId;
+        
+        /// Optional - The compressed payload size of source files in bytes of customer project context sent for scan
+        public System.Int32? CodewhispererCodeScanSrcZipFileBytes;
+        
+        /// Optional - The number of issues been detected
+        public System.Int32? CodewhispererCodeScanTotalIssues;
+        
+        /// Optional - number of custom rules present in a request
+        public System.Int32? CustomRules;
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// Optional - scope of the operation/config can be a global or workspace level scope.
+        public string Scope;
+        
+        public AmazonqCodeReviewTool()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
     /// Captures createUploadUrl invocation process
     public sealed class AmazonqCreateUpload : BaseTelemetryEvent
     {
@@ -25290,6 +28041,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The start URL of current SSO connection
         public string CredentialStartUrl;
+        
+        /// Optional - A special token that is used together with the request ID header to help AWS troubleshoot problems. For example, this has to be provided with requestId when debugging S3 upload errors.
+        public string RequestId2;
         
         /// Optional - The result of the operation
         public Result? Result;
@@ -25321,6 +28075,81 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// When a user exports the current Amazon Q chat tab
+    public sealed class AmazonqExportTab : BaseTelemetryEvent
+    {
+        
+        /// Filename extension (examples: .txt, .yml, .yaml, .asl.yaml, ...), or empty string if the filename does not contain dot (.) between two chars.
+        public string FilenameExt;
+        
+        /// Optional - The version of the language server
+        public string LanguageServerVersion;
+        
+        public AmazonqExportTab()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// When a user gives feedback using vote or comment or rating in the conversation
+    public sealed class AmazonqFeedback : BaseTelemetryEvent
+    {
+        
+        /// Optional - Uniquely identifies a message with which the user interacts.
+        public string AmazonqConversationId;
+        
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
+        /// The id of the feature the user is interacting in. See also: `component`, `featureId`, `module`, `resourceType`.
+        public FeatureId FeatureId;
+        
+        /// Optional - User interaction, especially for AI-related features.
+        public InteractionType? InteractionType;
+        
+        public AmazonqFeedback()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// When a user interacts with a message in the agentic chat
+    public sealed class AmazonqInteractWithAgenticChat : BaseTelemetryEvent
+    {
+        
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
+        /// Type of interaction with agentic chat messages
+        public CwsprAgenticChatInteractionType CwsprAgenticChatInteractionType;
+        
+        /// Uniquely identifies a message with which the user interacts.
+        public string CwsprChatConversationId;
+        
+        /// Identifies the type of conversation
+        public CwsprChatConversationType CwsprChatConversationType;
+        
+        /// Optional - The id/s when a client side tool/s is used.
+        public string CwsprToolUseId;
+        
+        /// Optional - True if turned on, false if turned off
+        public System.Boolean? Enabled;
+        
+        /// Optional - The version of the language server
+        public string LanguageServerVersion;
+        
+        /// Optional - Request ids (comma-separated) associated with a task or action, in chronological order. For example 'id1,id2,id3'
+        public string RequestIds;
+        
+        public AmazonqInteractWithAgenticChat()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
     /// When a user interacts with a message in the conversation
     public sealed class AmazonqInteractWithMessage : BaseTelemetryEvent
     {
@@ -25340,6 +28169,12 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Uniquely identifies a message with which the user interacts.
         public string CwsprChatConversationId;
         
+        /// Optional - Number of files manually added to context
+        public System.Int32? CwsprChatFileContextCount;
+        
+        /// Optional - Number of folders manually added to context
+        public System.Int32? CwsprChatFolderContextCount;
+        
         /// Optional - true if query has project level context, false otherwise.
         public System.Boolean? CwsprChatHasProjectContext;
         
@@ -25349,7 +28184,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - Identifies the entity within the message that user interacts with.
         public string CwsprChatInteractionTarget;
         
-        /// Indicates the specific interaction type with a message in a conversation
+        /// (Deprecated, use `interactionType` instead.) User interaction type, especially for AI-related features.
         public CwsprChatInteractionType CwsprChatInteractionType;
         
         /// Unique identifier for each message in an conversation
@@ -25358,6 +28193,12 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - Programming language associated with the message
         public string CwsprChatProgrammingLanguage;
         
+        /// Optional - Number of saved prompts manually added to context
+        public System.Int32? CwsprChatPromptContextCount;
+        
+        /// Optional - Number of workspace rules automatically added to context
+        public System.Int32? CwsprChatRuleContextCount;
+        
         /// Optional - Total number of code blocks inside a message in the conversation.
         public System.Int32? CwsprChatTotalCodeBlocks;
         
@@ -25365,6 +28206,50 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public CwsprChatUserIntent? CwsprChatUserIntent;
         
         public AmazonqInteractWithMessage()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// This metric is emitted per LLM call in the agentic loop with or without tool execution.
+    public sealed class AmazonqInvokeLLM : BaseTelemetryEvent
+    {
+        
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
+        /// Uniquely identifies a message with which the user interacts.
+        public string CwsprChatConversationId;
+        
+        /// Identifies the type of conversation
+        public CwsprChatConversationType CwsprChatConversationType;
+        
+        /// Optional - An array of time when successive chunks of data are received from the server
+        public string CwsprChatTimeBetweenChunks;
+        
+        /// Optional - The time between when the conversation id was created and when we got back the first usable result
+        public System.Int32? CwsprChatTimeToFirstChunk;
+        
+        /// Client side tool/s name (ex: fsWrite, executeBash)
+        public string CwsprToolName;
+        
+        /// The id/s when a client side tool/s is used.
+        public string CwsprToolUseId;
+        
+        /// Optional - True if turned on, false if turned off
+        public System.Boolean? Enabled;
+        
+        /// Optional - The version of the language server
+        public string LanguageServerVersion;
+        
+        /// Optional - latency/s from any operation or an execution such as LLM response time.
+        public string Latency;
+        
+        /// Optional - latency/s from any operation or an execution like tool execution.
+        public string ToolCallLatency;
+        
+        public AmazonqInvokeLLM()
         {
             this.Passive = false;
             this.TrackPerformance = false;
@@ -25454,6 +28339,149 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// When a history file is loaded from the filesystem and open tabs are restored
+    public sealed class AmazonqLoadHistory : BaseTelemetryEvent
+    {
+        
+        /// The size of a chat history file (in bytes)
+        public int AmazonqHistoryFileSize;
+        
+        /// The time (in milliseconds) it takes to load chat history from filesystem
+        public int AmazonqTimeToLoadHistory;
+        
+        /// Optional - The version of the language server
+        public string LanguageServerVersion;
+        
+        /// The number of tabs automatically opened from history
+        public int OpenTabCount;
+        
+        public AmazonqLoadHistory()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// This metric is emitted per reload of an IDE or reinitizalize of a mcp server
+    public sealed class AmazonqMcpConfig : BaseTelemetryEvent
+    {
+        
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
+        /// Optional - The version of the language server
+        public string LanguageServerVersion;
+        
+        /// Optional - Number of servers active
+        public System.Int32? NumActiveServers;
+        
+        /// Optional - Number of servers in global json
+        public System.Int32? NumGlobalServers;
+        
+        /// Optional - Number of servers in project level json.
+        public System.Int32? NumProjectServers;
+        
+        /// Optional - Number of tools across servers has configuration as alwaysAllowed.
+        public System.Int32? NumToolsAlwaysAllowed;
+        
+        /// Optional - Number of tools across servers has configuration as denied.
+        public System.Int32? NumToolsDenied;
+        
+        public AmazonqMcpConfig()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// This metric is emitted per mcp server name when user reloads an IDE or does any CRUD operation on mcp config.
+    public sealed class AmazonqMcpServerInit : BaseTelemetryEvent
+    {
+        
+        /// Optional - The command of an operation
+        public string Command;
+        
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
+        /// Optional - True if turned on, false if turned off
+        public System.Boolean? Enabled;
+        
+        /// Optional - Time from starting the feature until ready-to-use.
+        public System.Int32? InitializeTime;
+        
+        /// Optional - The version of the language server
+        public string LanguageServerVersion;
+        
+        /// Optional - Number of tools in the operation
+        public System.Int32? NumTools;
+        
+        /// Optional - scope of the operation/config can be a global or workspace level scope.
+        public string Scope;
+        
+        /// Optional - Transport type of the MCP server
+        public TransportType? TransportType;
+        
+        public AmazonqMcpServerInit()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// When an error has occured in response to a prompt
+    public sealed class AmazonqMessageResponseError : BaseTelemetryEvent
+    {
+        
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
+        /// Optional - Number of import statements in the active editor
+        public System.Int32? CwsprChatActiveEditorImportCount;
+        
+        /// Optional - Total number of characters in the active editor
+        public System.Int32? CwsprChatActiveEditorTotalCharacters;
+        
+        /// Optional - Uniquely identifies a message with which the user interacts.
+        public string CwsprChatConversationId;
+        
+        /// Identifies the type of conversation
+        public CwsprChatConversationType CwsprChatConversationType;
+        
+        /// Optional - true if user has selected code snippet, false otherwise.
+        public System.Boolean? CwsprChatHasCodeSnippet;
+        
+        /// Optional - Programming language associated with the message
+        public string CwsprChatProgrammingLanguage;
+        
+        /// Number of characters in request
+        public int CwsprChatRequestLength;
+        
+        /// HTTP response code for message API invocation
+        public int CwsprChatResponseCode;
+        
+        /// Optional - Client error reason when processing response stream
+        public string CwsprChatResponseErrorReason;
+        
+        /// Identifies the specific interaction that opens the chat panel
+        public CwsprChatTriggerInteraction CwsprChatTriggerInteraction;
+        
+        /// Optional - Explict user intent associated with a chat message
+        public CwsprChatUserIntent? CwsprChatUserIntent;
+        
+        /// Optional - True if turned on, false if turned off
+        public System.Boolean? Enabled;
+        
+        /// Optional - The version of the language server
+        public string LanguageServerVersion;
+        
+        public AmazonqMessageResponseError()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
     /// User modified source folder
     public sealed class AmazonqModifySourceFolder : BaseTelemetryEvent
     {
@@ -25474,6 +28502,32 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// When a user searches, exports, opens, or deletes a conversation from history
+    public sealed class AmazonqPerformChatHistoryAction : BaseTelemetryEvent
+    {
+        
+        /// Name of an action that was taken, displayed, etc. See also `userChoice`.
+        public string Action;
+        
+        /// Optional - The size of a chat history file (in bytes)
+        public System.Int32? AmazonqHistoryFileSize;
+        
+        /// Optional - The time (in milliseconds) it takes to search through all messages in chat history for a user-provided search string
+        public System.Int32? AmazonqTimeToSearchHistory;
+        
+        /// Optional - Filename extension (examples: .txt, .yml, .yaml, .asl.yaml, ...), or empty string if the filename does not contain dot (.) between two chars.
+        public string FilenameExt;
+        
+        /// Optional - The version of the language server
+        public string LanguageServerVersion;
+        
+        public AmazonqPerformChatHistoryAction()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
     /// Captures startConversation invocation process
     public sealed class AmazonqStartConversationInvoke : BaseTelemetryEvent
     {
@@ -25488,6 +28542,112 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public Result? Result;
         
         public AmazonqStartConversationInvoke()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// When the LLM either used a tool directly (no acceptance needed) or suggested a tool (user acceptance required)
+    public sealed class AmazonqToolUseSuggested : BaseTelemetryEvent
+    {
+        
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
+        /// Uniquely identifies a message with which the user interacts.
+        public string CwsprChatConversationId;
+        
+        /// Identifies the type of conversation
+        public CwsprChatConversationType CwsprChatConversationType;
+        
+        /// Client side tool/s name (ex: fsWrite, executeBash)
+        public string CwsprToolName;
+        
+        /// The id/s when a client side tool/s is used.
+        public string CwsprToolUseId;
+        
+        /// Optional - True if turned on, false if turned off
+        public System.Boolean? Enabled;
+        
+        /// Optional - The version of the language server
+        public string LanguageServerVersion;
+        
+        /// Optional - The time duration in milliseconds to complete an end to end flow
+        public System.Double? PerfE2ELatency;
+        
+        public AmazonqToolUseSuggested()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// Client side invocation of the Amazon Q Unit Test Generation with build and execute loop
+    public sealed class AmazonqUnitTestGeneration : BaseTelemetryEvent
+    {
+        
+        /// Optional - The number of accepted characters
+        public System.Int32? AcceptedCharactersCount;
+        
+        /// Optional - The number of accepted cases
+        public System.Int32? AcceptedCount;
+        
+        /// Optional - The number of accepted lines of code
+        public System.Int32? AcceptedLinesCount;
+        
+        /// Optional - Time taken to fetch the upload URL and upload the artifacts in milliseconds
+        public System.Int32? ArtifactsUploadDuration;
+        
+        /// Optional - The compressed payload size of source files in bytes of customer project context sent
+        public System.Int32? BuildZipFileBytes;
+        
+        /// Optional - Number of occurrences a metric, or some other metric-defined count.
+        public System.Int32? Count;
+        
+        /// Optional - The start URL of current SSO connection
+        public string CredentialStartUrl;
+        
+        /// Programming language associated with the message
+        public string CwsprChatProgrammingLanguage;
+        
+        /// Optional - Number of characters of code generated
+        public System.Int32? GeneratedCharactersCount;
+        
+        /// Optional - The number of generated cases
+        public System.Int32? GeneratedCount;
+        
+        /// Optional - The number of generated lines of code
+        public System.Int32? GeneratedLinesCount;
+        
+        /// True if user supplied prompt message as input else false
+        public bool HasUserPromptSupplied;
+        
+        /// Optional - True if user selected code snippet as input else false
+        public System.Boolean? IsCodeBlockSelected;
+        
+        /// Indicate if the language is supported
+        public bool IsSupportedLanguage;
+        
+        /// Optional - Job group name used in the operation
+        public string JobGroup;
+        
+        /// Optional - Job id used in the operation
+        public string JobId;
+        
+        /// Optional - The time duration in milliseconds to process an action on the client side
+        public System.Double? PerfClientLatency;
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// Optional - This field helps to emit the status of the operation.
+        public Status? Status;
+        
+        /// Optional - If the operation was an update or not
+        public System.Boolean? Update;
+        
+        public AmazonqUnitTestGeneration()
         {
             this.Passive = false;
             this.TrackPerformance = false;
@@ -25555,8 +28715,8 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The result of the operation
         public Result Result;
         
-        /// Optional - The source of the operation
-        public string Source;
+        /// Optional - This field helps to emit the status of the operation.
+        public Status? Status;
         
         public AmazonqUtgGenerateTests()
         {
@@ -25612,9 +28772,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The lambda runtime
         public Runtime? Runtime;
         
-        /// Optional - The source of the operation
-        public string Source;
-        
         public ApigatewayInvokeLocal()
         {
             this.Passive = false;
@@ -25631,9 +28788,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
-        
-        /// Optional - The source of the operation
-        public string Source;
         
         public ApigatewayInvokeRemote()
         {
@@ -25660,9 +28814,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     public sealed class AppBuilderInstallTool : BaseTelemetryEvent
     {
         
-        /// Optional - The source of the operation
-        public string Source;
-        
         /// Optional - The tool being installed
         public ToolId? ToolId;
         
@@ -25673,12 +28824,32 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// User click Convert a lambda function to SAM project
+    public sealed class AppbuilderLambda2sam : BaseTelemetryEvent
+    {
+        
+        /// Optional - Name of an action that was taken, displayed, etc. See also `userChoice`.
+        public string Action;
+        
+        /// Optional - The IaC being used
+        public string Iac;
+        
+        /// Optional - The result of the operation
+        public Result? Result;
+        
+        /// Optional - The lambda runtime
+        public Runtime? Runtime;
+        
+        public AppbuilderLambda2sam()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
     /// Click open Local invoke WebView button in Application Builder
     public sealed class AppBuilderOpenLocalInvokeWebView : BaseTelemetryEvent
     {
-        
-        /// Optional - The source of the operation
-        public string Source;
         
         public AppBuilderOpenLocalInvokeWebView()
         {
@@ -25691,9 +28862,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     public sealed class AppBuilderOpenRemoteInvokeWebView : BaseTelemetryEvent
     {
         
-        /// Optional - The source of the operation
-        public string Source;
-        
         public AppBuilderOpenRemoteInvokeWebView()
         {
             this.Passive = false;
@@ -25704,9 +28872,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     /// Click open template button in Application Builder
     public sealed class AppBuilderOpenTemplate : BaseTelemetryEvent
     {
-        
-        /// Optional - The source of the operation
-        public string Source;
         
         public AppBuilderOpenTemplate()
         {
@@ -25722,9 +28887,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - Name of an action that was taken, displayed, etc. See also `userChoice`.
         public string Action;
         
-        /// Optional - The source of the operation
-        public string Source;
-        
         public AppBuilderSelectWalkthroughTemplate()
         {
             this.Passive = false;
@@ -25735,9 +28897,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     /// Open Getting Started Walkthrough
     public sealed class AppBuilderStartWalkthrough : BaseTelemetryEvent
     {
-        
-        /// Optional - The source of the operation
-        public string Source;
         
         public AppBuilderStartWalkthrough()
         {
@@ -25942,9 +29101,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Whether the user has access to CodeWhisperer Chat
         public bool HasChatAuth;
         
-        /// Optional - The source of the operation
-        public string Source;
-        
         public AppcomposerOpenTemplate()
         {
             this.Passive = false;
@@ -26133,6 +29289,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The start URL of current SSO connection
         public string CredentialStartUrl;
         
+        /// Optional - The type of credential that was selected
+        public CredentialType? CredentialType;
+        
         /// The id of the feature the user is interacting in. See also: `component`, `featureId`, `module`, `resourceType`.
         public FeatureId FeatureId;
         
@@ -26147,9 +29306,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
-        
-        /// The source of the operation
-        public string Source;
         
         /// Optional - The client ID of an SSO registration.
         public string SsoRegistrationClientId;
@@ -26185,9 +29341,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
-        
-        /// The source of the operation
-        public string Source;
         
         public AuthAddedConnections()
         {
@@ -26259,9 +29412,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The id of the feature the user is interacting in. See also: `component`, `featureId`, `module`, `resourceType`.
         public FeatureId? FeatureId;
-        
-        /// The source of the operation
-        public string Source;
         
         /// Optional - The client ID of an SSO registration.
         public string SsoRegistrationClientId;
@@ -26467,9 +29617,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - Length of time, in milliseconds, that an authentication session has lived for. Useful for determining how frequently a user has to reauthenticate.
         public System.Int32? SessionDuration;
         
-        /// The source of the operation
-        public string Source;
-        
         /// Optional - The client ID of an SSO registration.
         public string SsoRegistrationClientId;
         
@@ -26495,9 +29642,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
         public string ServiceType;
-        
-        /// The source of the operation
-        public string Source;
         
         public AwsModifyCredentials()
         {
@@ -26543,9 +29687,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
-        
-        /// Optional - The source of the operation
-        public string Source;
         
         /// Optional - The url associated with a metric
         public string Url;
@@ -26782,9 +29923,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
         public string ServiceType;
         
-        /// Optional - The source of the operation
-        public string Source;
-        
         /// Optional - Whether or not AWS X-Ray is enabled
         public System.Boolean? XrayEnabled;
         
@@ -26846,9 +29984,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
         public string ServiceType;
-        
-        /// Optional - The source of the operation
-        public string Source;
         
         public BeanstalkPublishWizard()
         {
@@ -26929,9 +30064,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
         public string ServiceType;
         
-        /// Optional - The source of the operation
-        public string Source;
-        
         public CloudformationDeploy()
         {
             this.Passive = false;
@@ -26962,9 +30094,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
         public string ServiceType;
-        
-        /// Optional - The source of the operation
-        public string Source;
         
         public CloudformationPublishWizard()
         {
@@ -27228,9 +30357,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The result of the operation
         public Result Result;
         
-        /// Optional - The source of the operation
-        public string Source;
-        
         public CloudwatchlogsFilter()
         {
             this.Passive = false;
@@ -27259,9 +30385,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
         public string ServiceType;
-        
-        /// The source of the operation
-        public string Source;
         
         public CloudwatchlogsOpen()
         {
@@ -27409,9 +30532,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Session already open that matches new request
         public bool SessionAlreadyStarted;
         
-        /// The source of the operation
-        public string Source;
-        
         public CloudwatchlogsStartLiveTail()
         {
             this.Passive = false;
@@ -27422,9 +30542,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     /// When user stops a liveTailSession
     public sealed class CloudwatchlogsStopLiveTail : BaseTelemetryEvent
     {
-        
-        /// The source of the operation
-        public string Source;
         
         public CloudwatchlogsStopLiveTail()
         {
@@ -27808,9 +30925,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - Where credentials are stored or retrieved from
         public CredentialSourceId? CredentialSourceId;
         
-        /// Optional - The source of the operation
-        public string Source;
-        
         public CodeTransformJobStart()
         {
             this.Passive = false;
@@ -27893,9 +31007,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// Represents the IDE session from which users start the transformation process
         public string CodeTransformSessionId;
-        
-        /// Optional - The source of the operation
-        public string Source;
         
         /// Optional - The target of the operation
         public string Target;
@@ -28135,8 +31246,14 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     public sealed class CodewhispererCodeScanIssueApplyFix : BaseTelemetryEvent
     {
         
+        /// Optional - Whether the code issue was detected by auto-review
+        public System.Boolean? AutoDetected;
+        
         /// Optional - Captures the type of fix that was accepted
         public CodeFixAction? CodeFixAction;
+        
+        /// Optional - The ID of the scan job
+        public string CodewhispererCodeScanJobId;
         
         /// The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...).  See also `featureId` for specific feature names, `module` for low-level modules, and `resourceType`.
         public Component Component;
@@ -28160,9 +31277,44 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// Called when a code scan issue is returned from the service
+    public sealed class CodewhispererCodeScanIssueDetected : BaseTelemetryEvent
+    {
+        
+        /// Optional - Whether the code issue was detected by auto-review
+        public System.Boolean? AutoDetected;
+        
+        /// Optional - The ID of the scan job
+        public string CodewhispererCodeScanJobId;
+        
+        /// The id of the detector which produced the code scan issue
+        public string DetectorId;
+        
+        /// The id of a security finding from a code scan
+        public string FindingId;
+        
+        /// Optional - Whether the security issue includes a suggested fix
+        public System.Boolean? IncludesFix;
+        
+        /// Optional - The id of the rule which produced the code scan issue
+        public string RuleId;
+        
+        public CodewhispererCodeScanIssueDetected()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
     /// Generated fix for a code scan issue. variant=refresh means the user chose to generate a fix again after one already exists.
     public sealed class CodewhispererCodeScanIssueGenerateFix : BaseTelemetryEvent
     {
+        
+        /// Optional - Whether the code issue was detected by auto-review
+        public System.Boolean? AutoDetected;
+        
+        /// Optional - The ID of the scan job
+        public string CodewhispererCodeScanJobId;
         
         /// The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...).  See also `featureId` for specific feature names, `module` for low-level modules, and `resourceType`.
         public Component Component;
@@ -28175,6 +31327,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The id of a security finding from a code scan
         public string FindingId;
+        
+        /// Optional - Whether the security issue includes a suggested fix
+        public System.Boolean? IncludesFix;
         
         /// Optional - The id of the rule which produced the code scan issue
         public string RuleId;
@@ -28192,6 +31347,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     /// Called when a code scan issue is hovered over
     public sealed class CodewhispererCodeScanIssueHover : BaseTelemetryEvent
     {
+        
+        /// Optional - Whether the code issue was detected by auto-review
+        public System.Boolean? AutoDetected;
         
         /// Optional - The start URL of current SSO connection
         public string CredentialStartUrl;
@@ -28218,6 +31376,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     /// User ignored a code scan issue. variant=all means the user ignored all issues of a specific type.
     public sealed class CodewhispererCodeScanIssueIgnore : BaseTelemetryEvent
     {
+        
+        /// Optional - Whether the code issue was detected by auto-review
+        public System.Boolean? AutoDetected;
         
         /// The IDE or OS component used for the action. (Examples: S3 download to filesystem, S3 upload from editor, ...).  See also `featureId` for specific feature names, `module` for low-level modules, and `resourceType`.
         public Component Component;
@@ -28248,6 +31409,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     public sealed class CodewhispererCodeScanIssueViewDetails : BaseTelemetryEvent
     {
         
+        /// Optional - Whether the code issue was detected by auto-review
+        public System.Boolean? AutoDetected;
+        
         /// Optional - The start URL of current SSO connection
         public string CredentialStartUrl;
         
@@ -28276,9 +31440,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// True if turned on, false if turned off
         public bool Enabled;
-        
-        /// The source of the operation
-        public string Source;
         
         public CodewhispererEnabled()
         {
@@ -28358,7 +31519,7 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The number of security issues detected with suggested fixes
         public System.Int32? CodewhispererCodeScanIssuesWithFixes;
         
-        /// Optional - The ID of the security scan job
+        /// Optional - The ID of the scan job
         public string CodewhispererCodeScanJobId;
         
         /// How many lines of code being sent for security scan
@@ -28373,10 +31534,10 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The uncompressed payload size in bytes of the source files in customer project context sent for security scan
         public int CodewhispererCodeScanSrcPayloadBytes;
         
-        /// The compressed payload size of source files in bytes of customer project context sent for security scan
+        /// The compressed payload size of source files in bytes of customer project context sent for scan
         public int CodewhispererCodeScanSrcZipFileBytes;
         
-        /// The number of security issues been detected
+        /// The number of issues been detected
         public int CodewhispererCodeScanTotalIssues;
         
         /// Programming language of the CodeWhisperer recommendation
@@ -28390,9 +31551,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
-        
-        /// Optional - The source of the operation
-        public string Source;
         
         public CodewhispererSecurityScan()
         {
@@ -28713,9 +31871,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
         public string ServiceType;
         
-        /// The source of the operation
-        public string Source;
-        
         public DeeplinkOpen()
         {
             this.Passive = true;
@@ -28894,9 +32049,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The result of the operation
         public Result Result;
         
-        /// Optional - The source of the operation
-        public string Source;
-        
         public DynamodbFetchTables()
         {
             this.Passive = false;
@@ -28913,9 +32065,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
-        
-        /// Optional - The source of the operation
-        public string Source;
         
         public DynamodbOpenTable()
         {
@@ -29972,6 +33121,26 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
+    /// Called when creating a new Serverless Project
+    public sealed class LambdaCreateServerlessLandProject : BaseTelemetryEvent
+    {
+        
+        /// The IaC being used
+        public string Iac;
+        
+        /// A free-text field to record runtimes that may be separate from Lambda runtimes
+        public string RuntimeString;
+        
+        /// Generic name of a template
+        public string TemplateName;
+        
+        public LambdaCreateServerlessLandProject()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
     /// called when deleting lambdas remotely
     public sealed class LambdaDelete : BaseTelemetryEvent
     {
@@ -30014,9 +33183,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
         public string ServiceType;
         
-        /// Optional - The source of the operation
-        public string Source;
-        
         /// Optional - Whether or not AWS X-Ray is enabled
         public System.Boolean? XrayEnabled;
         
@@ -30050,9 +33216,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     /// Jump to a lambda handler from elsewhere
     public sealed class LambdaGoToHandler : BaseTelemetryEvent
     {
-        
-        /// Optional - The source of the operation
-        public string Source;
         
         public LambdaGoToHandler()
         {
@@ -30097,9 +33260,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The lambda runtime
         public Runtime? Runtime;
         
-        /// Optional - The source of the operation
-        public string Source;
-        
         /// Optional - A generic version metadata
         public string Version;
         
@@ -30114,14 +33274,17 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
     public sealed class LambdaInvokeRemote : BaseTelemetryEvent
     {
         
+        /// Optional - Name of an action that was taken, displayed, etc. See also `userChoice`.
+        public string Action;
+        
         /// The result of the operation
         public Result Result;
         
         /// Optional - The lambda runtime
         public Runtime? Runtime;
         
-        /// Optional - The source of the operation
-        public string Source;
+        /// Optional - A free-text field to record runtimes that may be separate from Lambda runtimes
+        public string RuntimeString;
         
         public LambdaInvokeRemote()
         {
@@ -30140,10 +33303,83 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The name of the AWS service acted on. These values come from the AWS SDK. To find them in the JAVA SDK search for SERVICE_NAME in each service client, or look for serviceId in metadata in the service2.json
         public string ServiceType;
         
-        /// Optional - The source of the operation
-        public string Source;
-        
         public LambdaPublishWizard()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// Lambda function was deployed from temp
+    public sealed class LambdaQuickDeploy : BaseTelemetryEvent
+    {
+        
+        /// Optional - Name of an action that was taken, displayed, etc. See also `userChoice`.
+        public string Action;
+        
+        public LambdaQuickDeploy()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// Lambda function edit operation
+    public sealed class LambdaQuickEditFunction : BaseTelemetryEvent
+    {
+        
+        /// Optional - Name of an action that was taken, displayed, etc. See also `userChoice`.
+        public string Action;
+        
+        public LambdaQuickEditFunction()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// user click remote debug checkbox
+    public sealed class LambdaRemoteDebugPrecheck : BaseTelemetryEvent
+    {
+        
+        /// Optional - Name of an action that was taken, displayed, etc. See also `userChoice`.
+        public string Action;
+        
+        /// Optional - A free-text field to record runtimes that may be separate from Lambda runtimes
+        public string RuntimeString;
+        
+        public LambdaRemoteDebugPrecheck()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// user start remote debugging
+    public sealed class LambdaRemoteDebugStart : BaseTelemetryEvent
+    {
+        
+        /// Optional - Name of an action that was taken, displayed, etc. See also `userChoice`.
+        public string Action;
+        
+        /// Optional - A free-text field to record runtimes that may be separate from Lambda runtimes
+        public string RuntimeString;
+        
+        public LambdaRemoteDebugStart()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// user stop remote debugging
+    public sealed class LambdaRemoteDebugStop : BaseTelemetryEvent
+    {
+        
+        /// Optional - Length of time, in milliseconds, that an authentication session has lived for. Useful for determining how frequently a user has to reauthenticate.
+        public System.Int32? SessionDuration;
+        
+        public LambdaRemoteDebugStop()
         {
             this.Passive = false;
             this.TrackPerformance = false;
@@ -30163,6 +33399,49 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public LambdaUpdateFunctionCode()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// Lambda URI handler was invoked
+    public sealed class LambdaUriHandler : BaseTelemetryEvent
+    {
+        
+        public LambdaUriHandler()
+        {
+            this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// Sets up a language server
+    public sealed class LanguageServerSetup : BaseTelemetryEvent
+    {
+        
+        /// Metric-defined identifier
+        public string Id;
+        
+        /// Optional - The location of the language server
+        public LanguageServerLocation? LanguageServerLocation;
+        
+        /// The stage of the LSP setup process
+        public LanguageServerSetupStage LanguageServerSetupStage;
+        
+        /// Optional - The version of the language server
+        public string LanguageServerVersion;
+        
+        /// Optional - The location of the manifest
+        public ManifestLocation? ManifestLocation;
+        
+        /// Optional - The version of the manifest schema file
+        public string ManifestSchemaVersion;
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public LanguageServerSetup()
+        {
+            this.Passive = true;
             this.TrackPerformance = false;
         }
     }
@@ -30636,9 +33915,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// Optional - The Lambda Package type of the function
         public LambdaPackageType? LambdaPackageType;
         
-        /// Optional - The source of the operation
-        public string Source;
-        
         /// Optional - A generic version metadata
         public string Version;
         
@@ -30655,9 +33931,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
-        
-        /// Optional - The source of the operation
-        public string Source;
         
         /// Optional - A generic version metadata
         public string Version;
@@ -30727,9 +34000,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
-        
-        /// Optional - The source of the operation
-        public string Source;
         
         /// Describes which parts of an application (that we know of) were synced to the cloud. "Code" resources follow the SAM spec: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-sync.html
         public SyncedResources SyncedResources;
@@ -31132,14 +34402,37 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
-    /// The user closed 'something' (specified by 'module'). Examples: a view, feature, resource, ...
-    public sealed class ToolkitCloseModule : BaseTelemetryEvent
+    /// The module has closed/terminated. Use this when the module is done being used.
+    public sealed class ToolkitDidCloseModule : BaseTelemetryEvent
     {
         
         /// Free-form module name for both high-level features such as "PublishToAWS", and lower-level modules such as "ToolkitContextProvider". Use `component` for UI components, or `featureId` for specific feature names. See also `resourceType`.
         public string Module;
         
-        public ToolkitCloseModule()
+        public ToolkitDidCloseModule()
+        {
+            this.Passive = true;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// The module has loaded, i.e it has rendered/resolved/finished. You can use this metric by itself, OR after `toolkit_willOpenModule` + `traceId` to close the loop on an asynchronous operation.
+    public sealed class ToolkitDidLoadModule : BaseTelemetryEvent
+    {
+        
+        /// Optional - A generic number of attempts
+        public System.Int32? Attempts;
+        
+        /// Free-form module name for both high-level features such as "PublishToAWS", and lower-level modules such as "ToolkitContextProvider". Use `component` for UI components, or `featureId` for specific feature names. See also `resourceType`.
+        public string Module;
+        
+        /// The result of the operation
+        public Result Result;
+        
+        /// Optional - A generic version metadata
+        public string Version;
+        
+        public ToolkitDidLoadModule()
         {
             this.Passive = true;
             this.TrackPerformance = false;
@@ -31164,9 +34457,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The id of the feature the user is interacting in. See also: `component`, `featureId`, `module`, `resourceType`.
         public FeatureId FeatureId;
-        
-        /// The source of the operation
-        public string Source;
         
         public ToolkitFeatureState()
         {
@@ -31206,29 +34496,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         }
     }
     
-    /// The Toolkit has completed initialization for the specified module.
-    public sealed class ToolkitInitModule : BaseTelemetryEvent
-    {
-        
-        /// Optional - A generic number of attempts
-        public System.Int32? Attempts;
-        
-        /// Free-form module name for both high-level features such as "PublishToAWS", and lower-level modules such as "ToolkitContextProvider". Use `component` for UI components, or `featureId` for specific feature names. See also `resourceType`.
-        public string Module;
-        
-        /// The result of the operation
-        public Result Result;
-        
-        /// Optional - A generic version metadata
-        public string Version;
-        
-        public ToolkitInitModule()
-        {
-            this.Passive = true;
-            this.TrackPerformance = false;
-        }
-    }
-    
     /// User invoked an action. `source` is the notification that produced the action
     public sealed class ToolkitInvokeAction : BaseTelemetryEvent
     {
@@ -31245,32 +34512,9 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         /// The result of the operation
         public Result Result;
         
-        /// The source of the operation
-        public string Source;
-        
         public ToolkitInvokeAction()
         {
             this.Passive = false;
-            this.TrackPerformance = false;
-        }
-    }
-    
-    /// User opened 'something' (specified by 'module'). Examples: a view, feature, resource, ...
-    public sealed class ToolkitOpenModule : BaseTelemetryEvent
-    {
-        
-        /// Free-form module name for both high-level features such as "PublishToAWS", and lower-level modules such as "ToolkitContextProvider". Use `component` for UI components, or `featureId` for specific feature names. See also `resourceType`.
-        public string Module;
-        
-        /// The result of the operation
-        public Result Result;
-        
-        /// The source of the operation
-        public string Source;
-        
-        public ToolkitOpenModule()
-        {
-            this.Passive = true;
             this.TrackPerformance = false;
         }
     }
@@ -31287,9 +34531,6 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         
         /// The result of the operation
         public Result Result;
-        
-        /// The source of the operation
-        public string Source;
         
         public ToolkitShowAction()
         {
@@ -31351,6 +34592,23 @@ namespace Amazon.AwsToolkit.Telemetry.Events.Generated
         public ToolkitViewLogs()
         {
             this.Passive = false;
+            this.TrackPerformance = false;
+        }
+    }
+    
+    /// Indicates a module opening attempt began, not its successful completion. For load confirmation, use `toolkit_didLoadModule` with matching `traceId`. This separation handles asynchronous processes that can't be captured in a single metric. 'Module' refers to components like views, features, resources, etc.
+    public sealed class ToolkitWillOpenModule : BaseTelemetryEvent
+    {
+        
+        /// Free-form module name for both high-level features such as "PublishToAWS", and lower-level modules such as "ToolkitContextProvider". Use `component` for UI components, or `featureId` for specific feature names. See also `resourceType`.
+        public string Module;
+        
+        /// The result of the operation
+        public Result Result;
+        
+        public ToolkitWillOpenModule()
+        {
+            this.Passive = true;
             this.TrackPerformance = false;
         }
     }
