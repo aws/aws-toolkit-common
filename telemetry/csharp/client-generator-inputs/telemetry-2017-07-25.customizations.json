@@ -1,8 +1,3 @@
 {
-    "file-description": "This file is used by the SDK Client Generator. See telemetry/csharp/README.md for details",
-    "customizations": {
-        "AmazonToolkitTelemetryConfig": {
-            "customCode": "public override Amazon.Runtime.Endpoints.Endpoint DetermineServiceOperationEndpoint(Amazon.Runtime.Internal.ServiceOperationEndpointParameters parameters) { return base.DetermineServiceOperationEndpoint(parameters); }"
-        }
-    }
+    "file-description": "This file is used by the SDK Client Generator. See telemetry/csharp/README.md for details"
 }

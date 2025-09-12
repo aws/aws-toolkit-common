@@ -6,6 +6,7 @@
 		<AssemblyName>Amazon.AwsToolkit.Telemetry.SDK</AssemblyName>
 		<PackageId>AWS.Toolkit.Telemetry.SDK</PackageId>
 		<TargetFramework>net472</TargetFramework>
+		<LangVersion>9.0</LangVersion>
 		<Authors>Amazon Web Services</Authors>
 		<Company>Amazon Web Services</Company>
 		<Product>AWS Toolkit Telemetry</Product>
