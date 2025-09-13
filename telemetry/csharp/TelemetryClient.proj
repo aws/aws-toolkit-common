@@ -30,7 +30,7 @@
     <!-- Produce a generated csproj and files in a temp location -->
     <Target Name="clone-sdk">
         <Message Text="Cloning AWS .NET SDK into $(DotNetSdkClone) (this will take a while)" />
-     
+        <Exec Command="git clone -c core.longpaths=true --depth 1 --branch $(DotNetSdkTag) https://github.com/aws/aws-sdk-net.git $(DotNetSdkClone)" />
     </Target>
 
     <Target Name="restore-sdk-generator">
