@@ -4,7 +4,7 @@
 		<BuildRoot Condition="'$(BuildRoot)' == ''">$(MSBuildThisFileDirectory)</BuildRoot>
 
         <BuildTemp>$(BuildRoot)buildtemp\</BuildTemp>
-        <DotNetSdkTag>4.0.56.0</DotNetSdkTag>
+        <DotNetSdkTag>4.0.92.0</DotNetSdkTag>
         <DotNetSdkClone>$(BuildTemp)dotnetsdk\</DotNetSdkClone>
         <SdkGeneratorRoot>$(DotNetSdkClone)generator\</SdkGeneratorRoot>
         <SdkGenerator>$(SdkGeneratorRoot)ServiceClientGenerator\bin\Release\ServiceClientGenerator.exe</SdkGenerator>
