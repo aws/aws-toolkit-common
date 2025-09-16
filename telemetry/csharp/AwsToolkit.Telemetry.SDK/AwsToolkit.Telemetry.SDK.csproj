@@ -22,7 +22,7 @@
 		<AssemblyOriginatorKeyFile>..\toolkit-telemetry.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="AWSSDK.Core" Version="4.0.0.18" />
+		<PackageReference Include="AWSSDK.Core" Version="4.0.0.28" />
 	</ItemGroup>
 	<ItemGroup>
 		<Reference Include="System" />

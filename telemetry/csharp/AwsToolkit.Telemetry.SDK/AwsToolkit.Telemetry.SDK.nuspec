@@ -14,7 +14,7 @@
     <tags>AWS AWSToolkit</tags>
     <dependencies>
       <group targetFramework="net472">
-        <dependency id="AWSSDK.Core" version="4.0.0.18" />
+        <dependency id="AWSSDK.Core" version="4.0.0.28" />
       </group>
     </dependencies>
   </metadata>

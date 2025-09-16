@@ -1,7 +1,7 @@
 {
     "file-description": "This file is used by the SDK Client Generator. See telemetry/csharp/README.md for details",
-    "ProductVersion": "4.0.56.0",
-    "CoreVersion": "4.0.0.18",
+    "ProductVersion": "4.0.92.0",
+    "CoreVersion": "4.0.0.28",
     "DefaultToPreview": false,
     "ServiceVersions": {
         "ToolkitTelemetry": {
