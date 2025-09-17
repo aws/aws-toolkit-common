@@ -4,7 +4,7 @@
 		<BuildRoot Condition="'$(BuildRoot)' == ''">$(MSBuildThisFileDirectory)</BuildRoot>
 
         <BuildTemp>$(BuildRoot)buildtemp\</BuildTemp>
-        <DotNetSdkTag>3.7.354.0</DotNetSdkTag>
+        <DotNetSdkTag>4.0.92.0</DotNetSdkTag>
         <DotNetSdkClone>$(BuildTemp)dotnetsdk\</DotNetSdkClone>
         <SdkGeneratorRoot>$(DotNetSdkClone)generator\</SdkGeneratorRoot>
         <SdkGenerator>$(SdkGeneratorRoot)ServiceClientGenerator\bin\Release\ServiceClientGenerator.exe</SdkGenerator>
@@ -52,6 +52,9 @@
 
     <!-- Produce a generated csproj and files in a temp location -->
     <Target Name="generate-raw-telemetry-client">
+        <!-- Create TestServiceModels folder -->
+        <MakeDir Directories="$(BuildRoot)..\TestServiceModels" />
+        <Message Text="Created TestServiceModels folder" />
 
         <!-- Pull together Sdk Generator input files -->
         <ItemGroup>
@@ -98,6 +101,7 @@
     <Target Name="cleanup">
         <RemoveDir Directories="$(BuildTemp)" />
         <RemoveDir Directories="$(BuildRoot)\sdk" />
+        <RemoveDir Directories="$(BuildRoot)..\TestServiceModels" />
     </Target>
 
 </Project>

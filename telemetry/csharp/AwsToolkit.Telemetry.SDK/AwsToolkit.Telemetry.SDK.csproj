@@ -6,6 +6,7 @@
 		<AssemblyName>Amazon.AwsToolkit.Telemetry.SDK</AssemblyName>
 		<PackageId>AWS.Toolkit.Telemetry.SDK</PackageId>
 		<TargetFramework>net472</TargetFramework>
+		<LangVersion>9.0</LangVersion>
 		<Authors>Amazon Web Services</Authors>
 		<Company>Amazon Web Services</Company>
 		<Product>AWS Toolkit Telemetry</Product>
@@ -21,7 +22,7 @@
 		<AssemblyOriginatorKeyFile>..\toolkit-telemetry.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="AWSSDK.Core" Version="3.7.13.1" />
+		<PackageReference Include="AWSSDK.Core" Version="4.0.0.28" />
 	</ItemGroup>
 	<ItemGroup>
 		<Reference Include="System" />
