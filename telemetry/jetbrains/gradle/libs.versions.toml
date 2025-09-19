@@ -1,5 +1,5 @@
 [versions]
-assertJ = "3.26.3"
+assertJ = "3.27.5"
 jackson = "2.17.2"
 jlleitschuh-ktlint = "12.1.1"
 # deprecated; should move to json-skema
