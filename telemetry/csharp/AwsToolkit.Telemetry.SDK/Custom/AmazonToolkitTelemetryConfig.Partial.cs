@@ -31,15 +31,8 @@ namespace Amazon.ToolkitTelemetry
         /// <returns>The resolved endpoint for the given request.</returns>
         public override Amazon.Runtime.Endpoints.Endpoint DetermineServiceOperationEndpoint(ServiceOperationEndpointParameters parameters)
         {
-            var request = new DefaultRequest(parameters.Request, ServiceId);
-            request.AlternateEndpoint = parameters.AlternateEndpoint;
-            
-            var requestContext = new RequestContext(false);
-            requestContext.ClientConfig = this;
-            requestContext.OriginalRequest = parameters.Request;
-            requestContext.Request = request;
-            var executionContext = new Amazon.Runtime.Internal.ExecutionContext(requestContext, null);
-            return new BaseEndpointResolver().GetEndpoint(executionContext);
+            var endpoint = new Endpoint(this.ServiceURL);
+            return endpoint;
         }
     }
 }
