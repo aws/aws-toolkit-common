@@ -1,0 +1,26 @@
+name: Trigger CodePipeline for Maven/NuGet
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  id-token: write # Required for OIDC authentication with AWS
+
+jobs:
+  trigger-pipeline:
+    # Only run if NOT from aws-toolkit-automation (avoid triggering on version commits)
+    if: github.event.head_commit.author.name != 'aws-toolkit-automation'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::305657142372:role/GitHubActionsCodePipelineRole
+          role-session-name: github-actions-codepipeline
+          aws-region: us-west-2
+
+      - name: Trigger CodePipeline for Maven/NuGet
+        run: |
+          echo "Triggering CodePipeline for user commit by ${{ github.event.head_commit.author.name }}"
+          aws codepipeline start-pipeline-execution --name PackagePipeline
