@@ -1,0 +1,94 @@
+name: Publish packages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  id-token: write # Required for OIDC authentication with npm
+  contents: write # Required to push version commits
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@aws-toolkits'
+
+      - name: Validate release commits
+        run: |
+          VERSION=$(cat version)
+          echo "validating for package version: $VERSION"
+          
+          # Now we check if there are any "interesting" commits to create a release version. These are any
+          # commits that are neither 1. from dependabot or 2. a release commit.
+          AUTHOR_DEPENDABOT="dependabot[bot]"
+          AUTHOR_AUTOMATION="aws-toolkit-automation"
+          
+          SHOULD_RELEASE=false
+          for author in $(git log --pretty=%an)
+          do
+              if [ "$author" = $AUTHOR_DEPENDABOT ]; then
+                  # Ignore dependabot commits, keep searching.
+                  continue
+              elif [ "$author" != $AUTHOR_AUTOMATION ]; then
+                  # Found a commit to release since last release.
+                  SHOULD_RELEASE=true
+                  echo "found at least one commit to release, author: $author"
+              fi
+              
+              # If the commit wasn't from dependabot, then we have enough information.
+              break
+          done
+          
+          if [ $SHOULD_RELEASE != true ]; then
+              echo "no commits detected that are not from '$AUTHOR_DEPENDABOT' or '$AUTHOR_AUTOMATION'. skipping release."
+              exit 1
+          fi
+
+      - name: Increment version and commit
+        run: |
+          git config --global user.name "aws-toolkit-automation"
+          git config --global user.email "<>"
+          
+          # increase the version
+          cat version | (IFS="." ; read a b c && echo $a.$b.$((c + 1)) > version)
+          VERSION=$(cat version)
+          echo "version is now: $VERSION"
+          
+          git add version
+          git commit -m "Release version $VERSION"
+          git push origin main
+
+      - name: Build npm package
+        run: |
+          VERSION=$(cat version)
+          cd telemetry/vscode
+          npm ci
+          npm version "$VERSION"
+          npm pack
+
+      - name: Publish to npm
+        run: |
+          cd telemetry/vscode
+          npm publish $(ls -1 *.tgz) --access public
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::305657142372:role/GitHubActionsCodePipelineRole
+          role-session-name: github-actions-codepipeline
+          aws-region: us-west-2
+
+      - name: Trigger CodePipeline for Maven/NuGet
+        run: |
+          aws codepipeline start-pipeline-execution --name PackagePipeline
