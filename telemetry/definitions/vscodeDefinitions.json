@@ -234,6 +234,19 @@
         {
             "name": "sam_openConfigUi",
             "description": "Called after opening the SAM Config UI"
+        },
+        {
+            "name": "sam_prewarmContainer",
+            "description": "Called when user clicks Start under 'Start a development container'",
+            "metadata": [
+                {
+                    "type": "result"
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                }
+            ]
         }
     ]
 }
