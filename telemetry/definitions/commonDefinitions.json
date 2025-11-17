@@ -1606,6 +1606,11 @@
             "description": "Type of generation failure"
         },
         {
+            "name": "grantType",
+            "type": "string",
+            "description": "OAuth 2.0 grant type for SSO token operations"
+        },
+        {
             "name": "hasChatAuth",
             "type": "boolean",
             "description": "Whether the user has access to CodeWhisperer Chat"
@@ -4004,6 +4009,36 @@
             "description": "When the Amazon Q sign in page is opened and focused.",
             "metadata": [],
             "passive": true
+        },
+        {
+            "name": "auth_ssoTokenOperation",
+            "description": "Tracks SSO token operations (refresh, new login)",
+            "metadata": [
+                {
+                    "type": "duration",
+                    "required": false
+                },
+                {
+                    "type": "grantType",
+                    "required": true
+                },
+                {
+                    "type": "reason",
+                    "required": false
+                },
+                {
+                    "type": "reasonDesc",
+                    "required": false
+                },
+                {
+                    "type": "requestId",
+                    "required": false
+                },
+                {
+                    "type": "result",
+                    "required": true
+                }
+            ]
         },
         {
             "name": "auth_switchRoles",
