@@ -2223,7 +2223,8 @@
                 "dotnet-deploy-cli",
                 "aws-cli",
                 "sam-cli",
-                "docker"
+                "docker",
+                "localstack"
             ]
         },
         {
@@ -3997,6 +3998,14 @@
                     "type": "source"
                 }
             ]
+        },
+        {
+            "name": "auth_customEndpoint",
+            "description": "User used a custom endpoint"
+        },
+        {
+            "name": "auth_localstackEndpoint",
+            "description": "User used a LocalStack connection"
         },
         {
             "name": "auth_signInPageClosed",
