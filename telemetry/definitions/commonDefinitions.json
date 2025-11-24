@@ -987,6 +987,7 @@
             "allowedValues": [
                 "staticProfile",
                 "staticSessionProfile",
+                "consoleSessionProfile",
                 "credentialProcessProfile",
                 "assumeRoleProfile",
                 "assumeMfaRoleProfile",
