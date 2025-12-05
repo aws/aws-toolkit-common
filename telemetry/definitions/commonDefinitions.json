@@ -186,6 +186,11 @@
             "description": "Whether the code issue was detected by auto-review"
         },
         {
+            "name": "authConsoleLoginStarted",
+            "type": "boolean",
+            "description": "Indicates the console login flow was initiated" 
+        },
+        {
             "name": "awsAccount",
             "type": "string",
             "description": "AWS account ID associated with a metric.\n- \"n/a\" if credentials are not available.\n- \"not-set\" if credentials are not selected.\n- \"invalid\" if account ID cannot be obtained."
@@ -4099,6 +4104,20 @@
                 }
             ],
             "passive": true
+        },
+        {
+            "name": "auth_consoleLoginCommand",
+            "description": "Tracks the complete console login flow, including profile creation and activation",
+            "metadata": [
+                {
+                    "type": "authConsoleLoginStarted",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "aws_consoleLoginCLISuccess",
+            "description": "Emitted when AWS CLI 'aws login' command completes successfully with exit code 0"
         },
         {
             "name": "aws_copyArn",
