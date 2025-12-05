@@ -145,6 +145,11 @@
             "description": "Current number of authentication connections the user has"
         },
         {
+            "name": "authConsoleLoginStarted",
+            "type": "boolean",
+            "description": "Indicates the console login flow was initiated" 
+        },
+        {
             "name": "authEnabledConnections",
             "type": "string",
             "description": "Comma-delimited list of enabled auths."
@@ -184,11 +189,6 @@
             "name": "autoDetected",
             "type": "boolean",
             "description": "Whether the code issue was detected by auto-review"
-        },
-        {
-            "name": "authConsoleLoginStarted",
-            "type": "boolean",
-            "description": "Indicates the console login flow was initiated" 
         },
         {
             "name": "awsAccount",
@@ -4005,6 +4005,16 @@
             ]
         },
         {
+            "name": "auth_consoleLoginCommand",
+            "description": "Tracks the complete console login flow, including profile creation and activation",
+            "metadata": [
+                {
+                    "type": "authConsoleLoginStarted",
+                    "required": false
+                }
+            ]
+        },
+        {
             "name": "auth_signInPageClosed",
             "description": "When the Amazon Q sign in page is closed.",
             "metadata": [],
@@ -4104,16 +4114,6 @@
                 }
             ],
             "passive": true
-        },
-        {
-            "name": "auth_consoleLoginCommand",
-            "description": "Tracks the complete console login flow, including profile creation and activation",
-            "metadata": [
-                {
-                    "type": "authConsoleLoginStarted",
-                    "required": false
-                }
-            ]
         },
         {
             "name": "aws_consoleLoginCLISuccess",
