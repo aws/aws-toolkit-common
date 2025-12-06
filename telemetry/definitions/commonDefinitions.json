@@ -1178,6 +1178,26 @@
             "description": "Unique identifier for each message in an conversation"
         },
         {
+            "name": "cwsprChatPinnedCodeContextCount",
+            "type": "int",
+            "description": "Number of pinned code symbols added to context"
+        },
+        {
+            "name": "cwsprChatPinnedFileContextCount",
+            "type": "int",
+            "description": "Number of pinned files added to context"
+        },
+        {
+            "name": "cwsprChatPinnedFolderContextCount",
+            "type": "int",
+            "description": "Number of pinned folders added to context"
+        },
+        {
+            "name": "cwsprChatPinnedPromptContextCount",
+            "type": "int",
+            "description": "Number of pinned saved prompts added to context"
+        },
+        {
             "name": "cwsprChatProgrammingLanguage",
             "type": "string",
             "description": "Programming language associated with the message"
@@ -1235,7 +1255,7 @@
         {
             "name": "cwsprChatRuleContextCount",
             "type": "int",
-            "description": "Number of workspace rules automatically added to context"
+            "description": "Number of workspace rules automatically added to context (does not include inactive rules)"
         },
         {
             "name": "cwsprChatRuleContextLength",
@@ -1281,6 +1301,11 @@
             "name": "cwsprChatTotalCodeBlocks",
             "type": "int",
             "description": "Total number of code blocks inside a message in the conversation."
+        },
+        {
+            "name": "cwsprChatTotalRuleContextCount",
+            "type": "int",
+            "description": "Total number of workspace rules (both active and inactive)"
         },
         {
             "name": "cwsprChatTriggerInteraction",
@@ -2453,6 +2478,22 @@
                     "type": "cwsprChatMessageId"
                 },
                 {
+                    "type": "cwsprChatPinnedCodeContextCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatPinnedFileContextCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatPinnedFolderContextCount",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatPinnedPromptContextCount",
+                    "required": false
+                },
+                {
                     "type": "cwsprChatProgrammingLanguage",
                     "required": false
                 },
@@ -2522,6 +2563,10 @@
                 },
                 {
                     "type": "cwsprChatTimeToFirstUsableChunk",
+                    "required": false
+                },
+                {
+                    "type": "cwsprChatTotalRuleContextCount",
                     "required": false
                 },
                 {
