@@ -969,6 +969,7 @@
             "type": "string",
             "description": "Where credentials are stored or retrieved from",
             "allowedValues": [
+                "consoleCredentials",
                 "sharedCredentials",
                 "sdkStore",
                 "ec2",
