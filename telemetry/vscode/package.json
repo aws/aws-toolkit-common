@@ -38,7 +38,7 @@
         "typescript": "^5.5.2"
     },
     "dependencies": {
-        "ajv": "^6.12.6",
+        "ajv": "^8.20.0",
         "cross-spawn": "^7.0.6",
         "fs-extra": "^11.1.0",
         "lodash": "^4.17.20",
