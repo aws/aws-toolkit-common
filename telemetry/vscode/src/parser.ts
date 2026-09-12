@@ -4,7 +4,7 @@
  */
 
 import { readFileSync } from 'fs-extra'
-import * as Ajv from 'ajv'
+import Ajv from 'ajv'
 import * as path from 'path'
 
 export interface CommandLineArguments {
